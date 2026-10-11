@@ -1,0 +1,74 @@
+{
+  "id": "la-mensa",
+  "title": "A mensa",
+  "area": "autonomia",
+  "skill": "mensa",
+  "type": "sceneChoice",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Fare una 'mensa' a casa: vassoio, fila, posto a tavola scelto da solo.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🍽️",
+          "text": "A mensa c'è una cosa che non hai mai mangiato.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "👅",
+              "label": "Assaggio un pezzettino",
+              "outcome": "Non è male! Non lo finisci, ma hai provato."
+            },
+            {
+              "emoji": "🙅",
+              "label": "Dico no grazie",
+              "outcome": "Va bene. La maestra ti dà il pane. Magari domani assaggi."
+            },
+            {
+              "emoji": "🙋",
+              "label": "Chiedo cos'è",
+              "outcome": "È zucca. La maestra dice che sa un po' di patata."
+            }
+          ]
+        },
+        {
+          "emoji": "🥛",
+          "text": "Ti cade il bicchiere d'acqua sul tavolo.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🙋",
+              "label": "Chiamo la maestra",
+              "outcome": "La maestra porta uno straccio. Lo asciugate insieme."
+            },
+            {
+              "emoji": "😢",
+              "label": "Mi viene da piangere",
+              "outcome": "Capita. Il compagno accanto ti aiuta a spostare il piatto."
+            },
+            {
+              "emoji": "🧻",
+              "label": "Prendo i tovaglioli",
+              "outcome": "Asciughi un po' tu, poi arriva la maestra con lo straccio."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

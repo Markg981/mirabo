@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mirabo/activity",
+  "title": "Mirabò activity",
+  "type": "object",
+  "required": ["id", "version", "title", "area", "skill", "type", "ageBands", "intro", "outro", "offscreen", "levels"],
+  "additionalProperties": false,
+  "$defs": {
+    "companionLines": {
+      "type": "object",
+      "required": ["bo", "pilu", "tango"],
+      "additionalProperties": false,
+      "properties": { "bo": { "type": "string" }, "pilu": { "type": "string" }, "tango": { "type": "string" } }
+    },
+    "pic": {
+      "type": "object",
+      "properties": { "emoji": { "type": "string" }, "image": { "type": "string" }, "label": { "type": "string" } },
+      "anyOf": [{ "required": ["emoji"] }, { "required": ["image"] }]
+    }
+  },
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "area": { "enum": ["cognitivo", "autonomia", "sociale", "paure"] },
+    "skill": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "type": { "enum": ["tapMatch", "count", "sequence", "pattern", "trace", "checklist", "sceneChoice", "explore", "countdown"] },
+    "ageBands": { "type": "array", "minItems": 1, "items": { "enum": ["3-5", "5-7", "7-10"] } },
+    "togetherSuggested": { "type": "boolean" },
+    "intro": { "$ref": "#/$defs/companionLines" },
+    "outro": { "$ref": "#/$defs/companionLines" },
+    "offscreen": { "type": "string", "minLength": 1 },
+    "levels": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "object" } }
+  }
+}

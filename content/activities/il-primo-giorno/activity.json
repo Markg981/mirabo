@@ -1,0 +1,74 @@
+{
+  "id": "il-primo-giorno",
+  "title": "Il primo giorno",
+  "area": "paure",
+  "skill": "primo-giorno",
+  "type": "sceneChoice",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "togetherSuggested": true,
+  "offscreen": "Raccontare al bambino il proprio primo giorno di scuola, con una cosa che faceva paura e com'è andata.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🏫",
+          "text": "È il primo giorno. Davanti alla porta senti la pancia stretta.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🗣️",
+              "label": "Lo dico a mamma o papà",
+              "outcome": "Ti dicono che è normale, e che la pancia si allarga quando entri."
+            },
+            {
+              "emoji": "🧸",
+              "label": "Stringo il mio pupazzo",
+              "outcome": "Il pupazzo viene con te fino all'attaccapanni, poi ti aspetta lì."
+            },
+            {
+              "emoji": "🙂",
+              "label": "Entro e vedo",
+              "outcome": "Dentro c'è una maestra che ti dice il tuo nome. Conosce già te."
+            }
+          ]
+        },
+        {
+          "emoji": "🧒",
+          "text": "In classe non conosci nessuno.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "👀",
+              "label": "Guardo cosa fanno gli altri",
+              "outcome": "Vedi un bambino con le costruzioni. Ti avvicini."
+            },
+            {
+              "emoji": "🙋",
+              "label": "Dico il mio nome a uno",
+              "outcome": "Si chiama Sara. Vi sedete vicini."
+            },
+            {
+              "emoji": "👩‍🏫",
+              "label": "Sto vicino alla maestra",
+              "outcome": "La maestra ti porta da un gruppo e ti presenta."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  }
+}

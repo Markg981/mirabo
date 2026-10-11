@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/content/package_verifier.dart';
+import 'package:mirabo/models/activity.dart';
 import 'package:mirabo/models/profile.dart';
 import 'package:mirabo/models/story.dart';
 
@@ -24,6 +25,26 @@ void main() {
         expect(v.screens.where((s) => s.isKeyPhrase).length, 1);
       }
     }
+  });
+
+  test('tutte le attività in content/ si caricano nel modello', () {
+    final dir = Directory('${root.path}/content/activities');
+    for (final d in dir.listSync().whereType<Directory>()) {
+      final a = Activity.fromJson(jsonDecode(File('${d.path}/activity.json').readAsStringSync()));
+      expect(a.id, d.uri.pathSegments.where((s) => s.isNotEmpty).last);
+      expect(a.levels, isNotEmpty);
+      expect(a.level(99), a.levels.last);
+    }
+  });
+
+  test('la regola adattiva sale dopo 3 primi tentativi e scende dopo 2 round difficili', () {
+    const p = ActivityProgress(profileId: 1, activityId: 'x');
+    const ok = RoundResult(attempts: 1, hints: 0);
+    const hard = RoundResult(attempts: 3, hints: 1);
+    expect(applyAdaptive(p, [ok, ok, ok], 3).level, 2);
+    expect(applyAdaptive(p, [ok, ok], 3).level, 1);
+    expect(applyAdaptive(p.copyWith(level: 2), [hard, hard], 3).level, 1);
+    expect(applyAdaptive(p, [hard, hard], 3).level, 1);
   });
 
   test('il profilo nasconde sicurezza in modalità da solo', () {

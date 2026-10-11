@@ -1,0 +1,128 @@
+{
+  "id": "conta-semi",
+  "title": "Conta i semi",
+  "area": "cognitivo",
+  "skill": "numeri",
+  "type": "count",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Contare le posate quando si apparecchia, o i gradini delle scale.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Quanti semi diamo alla pianta?",
+          "emoji": "🌱",
+          "count": 2,
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "prompt": "Quante mele?",
+          "emoji": "🍎",
+          "count": 3,
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "prompt": "Quanti sassolini?",
+          "emoji": "🪨",
+          "count": 1,
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Quanti fiori?",
+          "emoji": "🌼",
+          "count": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "prompt": "Quante stelle?",
+          "emoji": "⭐",
+          "count": 7,
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "prompt": "Quante foglie?",
+          "emoji": "🍃",
+          "count": 4,
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Quanti semi?",
+          "emoji": "🌱",
+          "count": 12,
+          "choices": [
+            10,
+            12,
+            14
+          ]
+        },
+        {
+          "prompt": "Quante gocce?",
+          "emoji": "💧",
+          "count": 15,
+          "choices": [
+            13,
+            15,
+            17
+          ]
+        },
+        {
+          "prompt": "Quante farfalle?",
+          "emoji": "🦋",
+          "count": 9,
+          "choices": [
+            8,
+            9,
+            11
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

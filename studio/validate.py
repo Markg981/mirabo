@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 SCHEMA_DIR = CONTENT / "schema"
 STORIES = CONTENT / "stories"
+ACTIVITIES = CONTENT / "activities"
 
 NAME_PLACEHOLDER = "{nome}"
 # Parole che il brief vieta: la storia può parlarne solo nella scheda genitore.
@@ -113,19 +114,70 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
     return errors
 
 
+LEVEL_KEYS = {
+    "tapMatch": "rounds", "count": "rounds", "sequence": "rounds", "pattern": "rounds", "trace": "rounds",
+    "checklist": "items", "sceneChoice": "scenes", "explore": "spots", "countdown": "daily",
+}
+
+
+def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
+    errors: list[str] = []
+    path = folder / "activity.json"
+    if not path.exists():
+        return [f"{folder.name}: manca activity.json"]
+    a = read_json(path)
+    for e in activity_v.iter_errors(a):
+        errors.append(f"{folder.name}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
+    if a.get("id") != folder.name:
+        errors.append(f"{folder.name}: id diverso dal nome della cartella")
+    key = LEVEL_KEYS.get(a.get("type"))
+    for i, level in enumerate(a.get("levels", []), 1):
+        if key and not level.get(key):
+            errors.append(f"{folder.name}: livello {i} senza '{key}'")
+        if a.get("type") == "tapMatch":
+            for r in level.get("rounds", []):
+                if not any(o.get("correct") for o in r.get("options", [])):
+                    errors.append(f"{folder.name}: round '{r.get('prompt')}' senza opzione corretta")
+        if a.get("type") == "pattern":
+            for r in level.get("rounds", []):
+                if r.get("answer") not in r.get("choices", []):
+                    errors.append(f"{folder.name}: la risposta del pattern non è tra le scelte")
+        if a.get("type") == "count":
+            for r in level.get("rounds", []):
+                if r.get("count") not in r.get("choices", []):
+                    errors.append(f"{folder.name}: il numero giusto non è tra le scelte")
+        if a.get("type") == "sceneChoice":
+            for sc in level.get("scenes", []):
+                if not 2 <= len(sc.get("options", [])) <= 3:
+                    errors.append(f"{folder.name}: ogni scena ha 2 o 3 opzioni")
+    for text in json.dumps(a, ensure_ascii=False).split('"'):
+        for word in BANNED:
+            if re.search(rf"\b{re.escape(word)}\b", text, flags=re.IGNORECASE):
+                errors.append(f"{folder.name}: parola da evitare: '{word}'")
+    return errors
+
+
 def main(argv: list[str]) -> int:
     story_v = load_schema("story.schema.json")
     variant_v = load_schema("variant.schema.json")
-    folders = [Path(a) for a in argv[1:]] or sorted(p for p in STORIES.iterdir() if p.is_dir())
+    activity_v = load_schema("activity.schema.json")
+    explicit = [Path(a) for a in argv[1:]]
+    stories = [f for f in explicit if f.parent.name == "stories"] or (
+        [] if explicit else sorted(p for p in STORIES.iterdir() if p.is_dir()))
+    activities = [f for f in explicit if f.parent.name == "activities"] or (
+        [] if explicit else sorted(p for p in ACTIVITIES.iterdir() if p.is_dir()))
     all_errors: list[str] = []
-    for folder in folders:
+    for folder in stories:
         errs = check_story(folder, story_v, variant_v)
-        status = "OK " if not errs else "ERR"
-        print(f"[{status}] {folder.name}")
+        print(f"[{'OK ' if not errs else 'ERR'}] storia {folder.name}")
+        all_errors += errs
+    for folder in activities:
+        errs = check_activity(folder, activity_v)
+        print(f"[{'OK ' if not errs else 'ERR'}] attività {folder.name}")
         all_errors += errs
     for e in all_errors:
         print("  -", e)
-    print(f"\n{len(folders)} storie, {len(all_errors)} errori")
+    print(f"\n{len(stories)} storie, {len(activities)} attività, {len(all_errors)} errori")
     return 1 if all_errors else 0
 
 

@@ -1,0 +1,157 @@
+{
+  "id": "forme-in-fila",
+  "title": "Forme in fila",
+  "area": "cognitivo",
+  "skill": "logica",
+  "type": "pattern",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "Fare una fila di oggetti (cucchiaio, tappo, cucchiaio, tappo...) e chiedere cosa viene dopo.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "sequence": [
+            "🔴",
+            "🔵",
+            "🔴",
+            "🔵",
+            "🔴"
+          ],
+          "choices": [
+            "🔵",
+            "🔴",
+            "🟡"
+          ],
+          "answer": "🔵"
+        },
+        {
+          "sequence": [
+            "⭐",
+            "🌙",
+            "⭐",
+            "🌙"
+          ],
+          "choices": [
+            "⭐",
+            "🌙",
+            "☀️"
+          ],
+          "answer": "⭐"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sequence": [
+            "🔴",
+            "🔴",
+            "🔵",
+            "🔴",
+            "🔴"
+          ],
+          "choices": [
+            "🔴",
+            "🔵",
+            "🟡"
+          ],
+          "answer": "🔵"
+        },
+        {
+          "sequence": [
+            "🟩",
+            "🟨",
+            "🟥",
+            "🟩",
+            "🟨"
+          ],
+          "choices": [
+            "🟩",
+            "🟨",
+            "🟥"
+          ],
+          "answer": "🟥"
+        },
+        {
+          "sequence": [
+            "🐱",
+            "🐶",
+            "🐶",
+            "🐱",
+            "🐶"
+          ],
+          "choices": [
+            "🐱",
+            "🐶",
+            "🐭"
+          ],
+          "answer": "🐶"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sequence": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "choices": [
+            "5",
+            "6",
+            "3"
+          ],
+          "answer": "5"
+        },
+        {
+          "sequence": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "choices": [
+            "9",
+            "10",
+            "12"
+          ],
+          "answer": "10"
+        },
+        {
+          "sequence": [
+            "🔺",
+            "🔺",
+            "🟦",
+            "🟦",
+            "🔺",
+            "🔺"
+          ],
+          "choices": [
+            "🔺",
+            "🟦",
+            "🟢"
+          ],
+          "answer": "🟦"
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

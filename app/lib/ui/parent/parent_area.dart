@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../app_state.dart';
+import '../../data/development_stats.dart';
+import '../../models/activity.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
 import 'profile_form.dart';
 
-/// Area genitore: modalità della sessione, profili, schede "Come parlarne", diario.
-/// Le statistiche di sviluppo arrivano in fase 1, quando ci sono le attività.
+/// Area genitore: modalità della sessione, profili, schede "Come parlarne",
+/// diario e sviluppo (statistiche solo per l'adulto, confronto con sé stesso).
 class ParentArea extends StatelessWidget {
   const ParentArea({super.key});
 
@@ -16,7 +18,7 @@ class ParentArea extends StatelessWidget {
     final state = AppStateScope.of(context);
     final profile = state.currentProfile!;
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Area genitori'),
@@ -25,6 +27,7 @@ class ParentArea extends StatelessWidget {
             Tab(text: 'Profili'),
             Tab(text: 'Come parlarne'),
             Tab(text: 'Diario'),
+            Tab(text: 'Sviluppo'),
           ]),
         ),
         body: TabBarView(children: [
@@ -32,6 +35,7 @@ class ParentArea extends StatelessWidget {
           _ProfilesTab(state: state),
           _ParentCardsTab(state: state),
           _DiaryTab(state: state, profile: profile),
+          _DevelopmentTab(state: state, profile: profile),
         ]),
       ),
     );
@@ -207,5 +211,100 @@ class _DiaryTab extends StatelessWidget {
       }
     }
     return answerId;
+  }
+}
+
+class _DevelopmentTab extends StatelessWidget {
+  const _DevelopmentTab({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<SkillStat>>(
+      future: DevelopmentStats(state.db).forProfile(profile.id, state.repo.activities),
+      builder: (context, snap) {
+        final stats = snap.data ?? const <SkillStat>[];
+        return ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            Text('Come sta crescendo ${profile.name}', style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 8),
+            const Text('Il confronto è solo con sé stesso, un mese fa. L\'app vede una parte piccola della sua giornata: '
+                'per dubbi sullo sviluppo il riferimento è il pediatra o l\'insegnante.'),
+            const SizedBox(height: 16),
+            if (snap.connectionState != ConnectionState.done)
+              const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
+            else if (stats.isEmpty)
+              const Text('Nessuna attività negli ultimi 30 giorni. Quando ne farà qualcuna, qui vedrai le tappe.')
+            else
+              for (final area in ActivityArea.values)
+                if (stats.any((s) => s.area == area)) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, bottom: 4),
+                    child: Text(area.label, style: Theme.of(context).textTheme.titleLarge),
+                  ),
+                  for (final s in stats.where((s) => s.area == area)) _SkillRow(stat: s),
+                ],
+            const SizedBox(height: 24),
+            const Text('Dove non c\'è miglioramento, prova l\'attività fuori dallo schermo suggerita nella scheda: '
+                'non più tempo sull\'app.', style: TextStyle(fontStyle: FontStyle.italic)),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _SkillRow extends StatelessWidget {
+  const _SkillRow({required this.stat});
+  final SkillStat stat;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(children: [
+            Expanded(child: Text(DevelopmentStats.label(stat.skill), style: Theme.of(context).textTheme.bodyLarge)),
+            if (stat.improved) const Icon(Icons.trending_up_rounded, color: Colors.green),
+          ]),
+          const SizedBox(height: 6),
+          Row(
+            children: [
+              for (final stage in Stage.values) ...[
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 14,
+                        decoration: BoxDecoration(
+                          color: stat.now != null && stage.index <= stat.now!.index ? scheme.primary : scheme.surfaceContainerHighest,
+                          borderRadius: BorderRadius.circular(7),
+                          border: stat.monthAgo == stage ? Border.all(color: scheme.outline, width: 2) : null,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(stage.label, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
+                    ],
+                  ),
+                ),
+                if (stage != Stage.values.last) const SizedBox(width: 6),
+              ],
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            stat.monthAgo == null
+                ? 'Negli ultimi 30 giorni: ${stat.rounds} round. Un mese fa non l\'aveva ancora provato.'
+                : 'Oggi: ${stat.now?.label ?? "—"} · un mese fa: ${stat.monthAgo!.label} (bordo grigio).',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
+      ),
+    );
   }
 }

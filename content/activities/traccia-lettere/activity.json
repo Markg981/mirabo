@@ -1,0 +1,276 @@
+{
+  "id": "traccia-lettere",
+  "title": "Traccia la lettera",
+  "area": "cognitivo",
+  "skill": "pregrafismo",
+  "type": "trace",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Tracciare la stessa lettera con il dito nella farina, nella sabbia o sulla schiena di mamma o papà.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "I",
+          "say": "i",
+          "paths": [
+            [
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.5,
+                0.85
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "L",
+          "say": "elle",
+          "paths": [
+            [
+              [
+                0.3,
+                0.15
+              ],
+              [
+                0.3,
+                0.85
+              ],
+              [
+                0.75,
+                0.85
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "O",
+          "say": "o",
+          "paths": [
+            [
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.22,
+                0.3
+              ],
+              [
+                0.2,
+                0.7
+              ],
+              [
+                0.5,
+                0.85
+              ],
+              [
+                0.8,
+                0.7
+              ],
+              [
+                0.78,
+                0.3
+              ],
+              [
+                0.5,
+                0.15
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "M",
+          "say": "emme",
+          "paths": [
+            [
+              [
+                0.15,
+                0.85
+              ],
+              [
+                0.15,
+                0.15
+              ],
+              [
+                0.5,
+                0.6
+              ],
+              [
+                0.85,
+                0.15
+              ],
+              [
+                0.85,
+                0.85
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "A",
+          "say": "a",
+          "paths": [
+            [
+              [
+                0.15,
+                0.85
+              ],
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.85,
+                0.85
+              ]
+            ],
+            [
+              [
+                0.3,
+                0.6
+              ],
+              [
+                0.7,
+                0.6
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "E",
+          "say": "e",
+          "paths": [
+            [
+              [
+                0.7,
+                0.15
+              ],
+              [
+                0.3,
+                0.15
+              ],
+              [
+                0.3,
+                0.85
+              ],
+              [
+                0.7,
+                0.85
+              ]
+            ],
+            [
+              [
+                0.3,
+                0.5
+              ],
+              [
+                0.65,
+                0.5
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "S",
+          "say": "esse",
+          "paths": [
+            [
+              [
+                0.75,
+                0.25
+              ],
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.25,
+                0.3
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.75,
+                0.7
+              ],
+              [
+                0.5,
+                0.85
+              ],
+              [
+                0.25,
+                0.75
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "R",
+          "say": "erre",
+          "paths": [
+            [
+              [
+                0.3,
+                0.85
+              ],
+              [
+                0.3,
+                0.15
+              ],
+              [
+                0.65,
+                0.15
+              ],
+              [
+                0.7,
+                0.35
+              ],
+              [
+                0.3,
+                0.5
+              ]
+            ],
+            [
+              [
+                0.4,
+                0.5
+              ],
+              [
+                0.75,
+                0.85
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

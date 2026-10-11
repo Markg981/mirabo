@@ -1,0 +1,75 @@
+{
+  "id": "chiedo-aiuto",
+  "title": "Chiedo aiuto",
+  "area": "sociale",
+  "skill": "chiedere-aiuto",
+  "type": "sceneChoice",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "Decidere insieme una frase per chiedere aiuto e provarla a casa: 'Maestra, non riesco, mi aiuti?'",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🧥",
+          "text": "La zip della giacca non si chiude.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🙋",
+              "label": "Chiedo alla maestra",
+              "outcome": "La maestra la aggancia e ti mostra il trucco per domani."
+            },
+            {
+              "emoji": "🧒",
+              "label": "Chiedo a un compagno",
+              "outcome": "Giulia ci riesce. Poi le mostri come si fa il nodo."
+            },
+            {
+              "emoji": "😤",
+              "label": "Tiro forte",
+              "outcome": "Si incastra ancora di più. Alla fine chiedi aiuto."
+            }
+          ]
+        },
+        {
+          "emoji": "🚽",
+          "text": "Devi andare in bagno ma la maestra sta leggendo.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "✋",
+              "label": "Alzo la mano",
+              "outcome": "La maestra ti vede e fa cenno di sì."
+            },
+            {
+              "emoji": "🤫",
+              "label": "Aspetto che finisca",
+              "outcome": "Resisti un po', ma è difficile. Meglio chiedere."
+            },
+            {
+              "emoji": "🏃",
+              "label": "Vado senza dirlo",
+              "outcome": "La maestra si spaventa perché non ti trova. Meglio dirlo."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

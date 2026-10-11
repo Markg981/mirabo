@@ -18,6 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STORIES = ROOT / "content" / "stories"
+ACTIVITIES = ROOT / "content" / "activities"
 COMPANIONS = ROOT / "content" / "companions" / "companions.json"
 DIST = ROOT / "dist"
 PRIVATE = ROOT / "studio" / "keys" / "signing.key"
@@ -47,11 +48,12 @@ def sign(manifest: dict) -> str:
     return key.sign(canonical(manifest)).signature.hex()
 
 
-def pack_story(folder: Path, do_sign: bool) -> Path:
-    meta = json.loads((folder / "story.json").read_text(encoding="utf-8"))
+def pack_story(folder: Path, do_sign: bool, meta_name: str = "story.json", kind: str = "story") -> Path:
+    meta = json.loads((folder / meta_name).read_text(encoding="utf-8"))
     files = sorted(p for p in folder.rglob("*") if p.is_file() and p.name != ".gitkeep")
     manifest = {
         "id": meta["id"],
+        "kind": kind,
         "version": meta["version"],
         "files": {str(p.relative_to(folder)).replace("\\", "/"): sha256(p) for p in files},
     }
@@ -73,6 +75,9 @@ def main() -> int:
         return 1
     for folder in sorted(p for p in STORIES.iterdir() if p.is_dir()):
         out = pack_story(folder, do_sign)
+        print(f"-> {out.relative_to(ROOT)} {'(firmato)' if do_sign else '(NON firmato)'}")
+    for folder in sorted(p for p in ACTIVITIES.iterdir() if p.is_dir()):
+        out = pack_story(folder, do_sign, meta_name="activity.json", kind="activity")
         print(f"-> {out.relative_to(ROOT)} {'(firmato)' if do_sign else '(NON firmato)'}")
     return 0
 

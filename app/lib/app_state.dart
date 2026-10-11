@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'content/story_repository.dart';
 import 'data/local_db.dart';
+import 'models/activity.dart';
 import 'models/profile.dart';
 import 'models/story.dart';
 
@@ -29,6 +30,19 @@ class AppState extends ChangeNotifier {
   Companion companionOf(ChildProfile p) => repo.companions.firstWhere((c) => c.id == p.companion);
 
   List<Story> storiesFor(ChildProfile p) => repo.stories.where((s) => p.canOpen(s, mode)).toList();
+
+  List<Activity> activitiesFor(ChildProfile p) => repo.activities.where((a) => a.supports(p.ageBand)).toList();
+
+  /// Chiude una sessione di attività: salva i round, applica l'adattività,
+  /// e conta la sessione come "storia completata" ai fini della crescita del compagno
+  /// solo se almeno un round è stato fatto.
+  Future<void> recordActivity(Activity activity, ActivityProgress before, List<RoundResult> results) async {
+    final p = currentProfile;
+    if (p == null || results.isEmpty) return;
+    await db.addRounds(p.id, activity, before.level, results);
+    await db.saveProgress(applyAdaptive(before, results, activity.levels.length));
+    await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+  }
 
   Future<void> selectProfile(ChildProfile p) async {
     currentProfile = p;

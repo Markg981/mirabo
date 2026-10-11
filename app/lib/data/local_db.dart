@@ -2,6 +2,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../models/activity.dart';
 import '../models/profile.dart';
 
 /// Database locale: profili e diario. Tutto resta sul dispositivo.
@@ -12,7 +13,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 1;
+  static const _version = 2;
 
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
@@ -45,10 +46,108 @@ class LocalDb {
             at TEXT NOT NULL
           )''');
         await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
+        await _createActivityTables(db);
+      },
+      onUpgrade: (db, from, to) async {
+        if (from < 2) await _createActivityTables(db);
       },
     );
     return LocalDb._(db);
   }
+
+  static Future<void> _createActivityTables(Database db) async {
+    await db.execute('''
+      CREATE TABLE activity_progress (
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        activity_id TEXT NOT NULL,
+        level INTEGER NOT NULL DEFAULT 1,
+        streak INTEGER NOT NULL DEFAULT 0,
+        sessions INTEGER NOT NULL DEFAULT 0,
+        last_played TEXT,
+        PRIMARY KEY (profile_id, activity_id)
+      )''');
+    await db.execute('''
+      CREATE TABLE activity_rounds (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        activity_id TEXT NOT NULL,
+        skill TEXT NOT NULL,
+        level INTEGER NOT NULL,
+        attempts INTEGER NOT NULL,
+        hints INTEGER NOT NULL,
+        choice TEXT,
+        at TEXT NOT NULL
+      )''');
+    await db.execute('CREATE INDEX rounds_profile ON activity_rounds(profile_id, skill, at)');
+  }
+
+  Future<ActivityProgress> progress(int profileId, String activityId) async {
+    final rows = await _db.query('activity_progress',
+        where: 'profile_id = ? AND activity_id = ?', whereArgs: [profileId, activityId]);
+    if (rows.isEmpty) return ActivityProgress(profileId: profileId, activityId: activityId);
+    final r = rows.first;
+    return ActivityProgress(
+      profileId: profileId,
+      activityId: activityId,
+      level: r['level'] as int,
+      streak: r['streak'] as int,
+      sessions: r['sessions'] as int,
+      lastPlayed: r['last_played'] == null ? null : DateTime.parse(r['last_played'] as String),
+    );
+  }
+
+  Future<Map<String, ActivityProgress>> allProgress(int profileId) async {
+    final rows = await _db.query('activity_progress', where: 'profile_id = ?', whereArgs: [profileId]);
+    return {
+      for (final r in rows)
+        r['activity_id'] as String: ActivityProgress(
+          profileId: profileId,
+          activityId: r['activity_id'] as String,
+          level: r['level'] as int,
+          streak: r['streak'] as int,
+          sessions: r['sessions'] as int,
+          lastPlayed: r['last_played'] == null ? null : DateTime.parse(r['last_played'] as String),
+        )
+    };
+  }
+
+  Future<void> saveProgress(ActivityProgress p) => _db.insert(
+        'activity_progress',
+        {
+          'profile_id': p.profileId,
+          'activity_id': p.activityId,
+          'level': p.level,
+          'streak': p.streak,
+          'sessions': p.sessions,
+          'last_played': p.lastPlayed?.toIso8601String(),
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+
+  Future<void> addRounds(int profileId, Activity activity, int level, List<RoundResult> results) async {
+    final batch = _db.batch();
+    final now = DateTime.now().toIso8601String();
+    for (final r in results) {
+      batch.insert('activity_rounds', {
+        'profile_id': profileId,
+        'activity_id': activity.id,
+        'skill': activity.skill,
+        'level': level,
+        'attempts': r.attempts,
+        'hints': r.hints,
+        'choice': r.choice,
+        'at': now,
+      });
+    }
+    await batch.commit(noResult: true);
+  }
+
+  /// Round per abilità in una finestra temporale: base delle statistiche genitore.
+  Future<List<Map<String, Object?>>> rounds(int profileId, {required DateTime from, DateTime? to}) =>
+      _db.query('activity_rounds',
+          where: 'profile_id = ? AND at >= ? AND at < ?',
+          whereArgs: [profileId, from.toIso8601String(), (to ?? DateTime.now()).toIso8601String()],
+          orderBy: 'at');
 
   Future<List<ChildProfile>> profiles() async =>
       (await _db.query('profiles', orderBy: 'id')).map(ChildProfile.fromRow).toList();
@@ -91,6 +190,8 @@ class LocalDb {
 
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
+    await _db.delete('activity_rounds');
+    await _db.delete('activity_progress');
     await _db.delete('diary');
     await _db.delete('profiles');
   }

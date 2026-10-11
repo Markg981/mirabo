@@ -1,0 +1,47 @@
+{
+  "id": "conto-alla-rovescia",
+  "title": "Conto alla rovescia",
+  "area": "paure",
+  "skill": "primo-giorno",
+  "type": "countdown",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "togetherSuggested": true,
+  "offscreen": "Un calendario di carta sul frigo: ogni sera si colora un giorno.",
+  "levels": [
+    {
+      "event": "Il primo giorno di scuola",
+      "days": 14,
+      "daily": [
+        "Oggi scegliamo lo zaino",
+        "Oggi scriviamo il nome sulle cose",
+        "Oggi passiamo davanti alla scuola",
+        "Oggi proviamo a vestirci da soli",
+        "Oggi facciamo il nostro saluto",
+        "Oggi leggiamo una storia sulla scuola",
+        "Oggi prepariamo la merenda come a scuola",
+        "Oggi chiediamo aiuto a qualcuno per una cosa",
+        "Oggi giochiamo a turno",
+        "Oggi scegliamo i vestiti del primo giorno",
+        "Oggi andiamo a letto un po' prima",
+        "Oggi facciamo finta di essere a mensa",
+        "Oggi prepariamo lo zaino sul serio",
+        "Domani si va! Stasera il saluto, domani la scuola"
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "domani-a-scuola",
+  "title": "Domani a scuola",
+  "area": "autonomia",
+  "skill": "routine-sera",
+  "type": "checklist",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "togetherSuggested": true,
+  "intro": {
+    "bo": "È sera, {nome}? Allora prepariamo le cose per domani. Una alla volta.",
+    "pilu": "{nome}, prima di dormire controlliamo che sia tutto pronto per domani.",
+    "tango": "{nome}! Domani a scuola! Prepariamo tutto adesso, così domattina si corre!"
+  },
+  "offscreen": "Appendere la stessa lista, disegnata, vicino alla porta della cameretta.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "🎒",
+          "label": "Lo zaino è pronto"
+        },
+        {
+          "emoji": "👕",
+          "label": "I vestiti sono sulla sedia"
+        },
+        {
+          "emoji": "🧃",
+          "label": "La merenda è nello zaino"
+        },
+        {
+          "emoji": "🪥",
+          "label": "Ho lavato i denti"
+        },
+        {
+          "emoji": "🧸",
+          "label": "Il mio pupazzo è a letto con me"
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  }
+}

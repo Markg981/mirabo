@@ -1,0 +1,61 @@
+{
+  "id": "com-e-fatta-una-scuola",
+  "title": "Com'è fatta una scuola",
+  "area": "paure",
+  "skill": "conoscere-la-scuola",
+  "type": "explore",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Passare davanti alla scuola vera un pomeriggio, guardare il cancello e il cortile dall'esterno.",
+  "levels": [
+    {
+      "scene": "La scuola",
+      "spots": [
+        {
+          "emoji": "🚪",
+          "label": "L'ingresso",
+          "say": "Qui si entra la mattina. C'è una maestra che ti saluta."
+        },
+        {
+          "emoji": "🧥",
+          "label": "Gli attaccapanni",
+          "say": "Ogni bambino ha il suo gancio con il nome o un disegno."
+        },
+        {
+          "emoji": "🪑",
+          "label": "L'aula",
+          "say": "Tavoli bassi, sedie piccole, tanti colori. Qui si gioca e si impara."
+        },
+        {
+          "emoji": "🚽",
+          "label": "Il bagno",
+          "say": "È piccolo, fatto per i bambini. Si può andare quando serve, basta dirlo."
+        },
+        {
+          "emoji": "🍽️",
+          "label": "La mensa",
+          "say": "Si mangia tutti insieme. Se qualcosa non ti piace, si può dire."
+        },
+        {
+          "emoji": "🌳",
+          "label": "Il cortile",
+          "say": "Qui si corre e si gioca fuori, quando non piove."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

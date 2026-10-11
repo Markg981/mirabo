@@ -1,0 +1,48 @@
+{
+  "id": "aspetto-il-mio-turno",
+  "title": "Aspetto il mio turno",
+  "area": "sociale",
+  "skill": "turno-e-condivisione",
+  "type": "sequence",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "togetherSuggested": true,
+  "intro": {
+    "bo": "Questo gioco si fa in due, {nome}: tu e un grande. Si fa a turno. Io guardo.",
+    "pilu": "{nome}, chiama un grande: qui si gioca a turno, uno tocca e poi aspetta.",
+    "tango": "A turno, {nome}! Prima tu, poi il grande, poi tu. Aspettare è difficile, lo so."
+  },
+  "offscreen": "Qualsiasi gioco da tavolo: dire ad alta voce 'tocca a te' e 'tocca a me'.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "A turno: metti in ordine la storia",
+          "turns": true,
+          "cards": [
+            {
+              "emoji": "🥚",
+              "label": "l'uovo"
+            },
+            {
+              "emoji": "🐣",
+              "label": "il pulcino"
+            },
+            {
+              "emoji": "🐔",
+              "label": "la gallina"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  }
+}

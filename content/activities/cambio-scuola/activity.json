@@ -1,0 +1,73 @@
+{
+  "id": "cambio-scuola",
+  "title": "Cambio scuola",
+  "area": "paure",
+  "skill": "primo-giorno",
+  "type": "sceneChoice",
+  "ageBands": [
+    "7-10"
+  ],
+  "intro": {
+    "bo": "{nome}, una scuola nuova fa un po' paura anche ai grandi. Vediamo cosa si può fare.",
+    "pilu": "Cambiare scuola, {nome}: tutto nuovo, ma tu sei lo stesso. Guardiamo le situazioni.",
+    "tango": "Scuola nuova, {nome}! Io correrei dentro e basta. Ma forse c'è un modo migliore."
+  },
+  "offscreen": "Fare insieme una lista di tre cose che restano uguali (gli amici di prima, lo sport, casa).",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🏫",
+          "text": "Nuova scuola. Tutti si conoscono già e tu no.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🙋",
+              "label": "Mi presento a chi mi è vicino",
+              "outcome": "Il compagno di banco ti spiega dove sono le cose."
+            },
+            {
+              "emoji": "⏳",
+              "label": "Aspetto qualche giorno",
+              "outcome": "Va bene: dopo tre giorni sai già chi gioca a cosa."
+            },
+            {
+              "emoji": "👩‍🏫",
+              "label": "Chiedo all'insegnante di presentarmi",
+              "outcome": "L'insegnante lo fa, e ti assegna un compagno-guida."
+            }
+          ]
+        },
+        {
+          "emoji": "📚",
+          "text": "Qui fanno una cosa che nella tua scuola non facevate.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🗣️",
+              "label": "Dico che non l'ho mai fatta",
+              "outcome": "L'insegnante dice: nessun problema, te la spiego."
+            },
+            {
+              "emoji": "👀",
+              "label": "Copio dagli altri",
+              "outcome": "Funziona a metà. Alla fine chiedi."
+            },
+            {
+              "emoji": "🏠",
+              "label": "Lo dico a casa",
+              "outcome": "A casa ne parlate e il giorno dopo chiedi con più calma."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

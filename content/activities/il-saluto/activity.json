@@ -1,0 +1,52 @@
+{
+  "id": "il-saluto",
+  "title": "Il nostro saluto",
+  "area": "sociale",
+  "skill": "distacco",
+  "type": "sceneChoice",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "togetherSuggested": true,
+  "intro": {
+    "bo": "{nome}, quando mamma o papà ti lasciano a scuola, come vi salutate? Scegliete insieme.",
+    "pilu": "Un saluto tutto vostro, {nome}: sempre lo stesso, così sai che poi tornano.",
+    "tango": "{nome}, inventiamo un saluto! Uno segreto, che solo voi sapete."
+  },
+  "offscreen": "Usare lo stesso saluto ogni mattina, breve: più lungo è, più è difficile.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🫂",
+          "text": "Scegliete il vostro saluto del mattino.",
+          "prompt": "Quale vi piace?",
+          "options": [
+            {
+              "emoji": "✋",
+              "label": "Batti cinque e via",
+              "outcome": "Veloce e allegro. Poi mamma o papà vanno, e tornano dopo."
+            },
+            {
+              "emoji": "💋",
+              "label": "Un bacio nella mano",
+              "outcome": "Lo tieni in tasca tutto il giorno. Se ti manca, lo stringi."
+            },
+            {
+              "emoji": "🪟",
+              "label": "Un ciao dalla finestra",
+              "outcome": "Tu entri, loro ti salutano dal vetro, poi vanno."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  }
+}

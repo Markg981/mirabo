@@ -1,0 +1,80 @@
+{
+  "id": "mi-vesto-da-solo",
+  "title": "Mi vesto da solo",
+  "area": "autonomia",
+  "skill": "vestirsi",
+  "type": "sequence",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Mettere i vestiti sulla sedia già nell'ordine in cui si indossano.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Cosa metto prima?",
+          "cards": [
+            {
+              "emoji": "🩲",
+              "label": "mutande"
+            },
+            {
+              "emoji": "👕",
+              "label": "maglietta"
+            },
+            {
+              "emoji": "🧥",
+              "label": "giacca"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Cosa metto prima?",
+          "cards": [
+            {
+              "emoji": "🩲",
+              "label": "mutande"
+            },
+            {
+              "emoji": "🧦",
+              "label": "calze"
+            },
+            {
+              "emoji": "👖",
+              "label": "pantaloni"
+            },
+            {
+              "emoji": "👕",
+              "label": "maglietta"
+            },
+            {
+              "emoji": "👟",
+              "label": "scarpe"
+            },
+            {
+              "emoji": "🧥",
+              "label": "giacca"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

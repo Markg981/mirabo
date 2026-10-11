@@ -1,0 +1,184 @@
+{
+  "id": "suoni-iniziali",
+  "title": "Senti il suono",
+  "area": "cognitivo",
+  "skill": "suoni-iniziali",
+  "type": "tapMatch",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Gioco del 'vedo vedo': 'vedo una cosa che inizia con mmm...' in cucina o in auto.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Tocca quello che inizia con M",
+          "say": "mmm, M",
+          "options": [
+            {
+              "emoji": "🍎",
+              "label": "mela",
+              "correct": true
+            },
+            {
+              "emoji": "🚗",
+              "label": "auto"
+            },
+            {
+              "emoji": "🐘",
+              "label": "elefante"
+            }
+          ]
+        },
+        {
+          "prompt": "Tocca quello che inizia con S",
+          "say": "sss, S",
+          "options": [
+            {
+              "emoji": "☀️",
+              "label": "sole",
+              "correct": true
+            },
+            {
+              "emoji": "🐱",
+              "label": "gatto"
+            },
+            {
+              "emoji": "🍌",
+              "label": "banana"
+            }
+          ]
+        },
+        {
+          "prompt": "Tocca quello che inizia con P",
+          "say": "p, P",
+          "options": [
+            {
+              "emoji": "🍞",
+              "label": "pane",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "luna"
+            },
+            {
+              "emoji": "🐟",
+              "label": "pesce",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Tocca tutti quelli che iniziano con C",
+          "say": "c, C",
+          "options": [
+            {
+              "emoji": "🏠",
+              "label": "casa",
+              "correct": true
+            },
+            {
+              "emoji": "🐶",
+              "label": "cane",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "albero"
+            },
+            {
+              "emoji": "🍬",
+              "label": "caramella",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "prompt": "Tocca tutti quelli che iniziano con L",
+          "say": "l, L",
+          "options": [
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": true
+            },
+            {
+              "emoji": "🦁",
+              "label": "leone",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "pesce"
+            },
+            {
+              "emoji": "📚",
+              "label": "libro",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Tocca quello che finisce con A",
+          "say": "...a",
+          "options": [
+            {
+              "emoji": "🍌",
+              "label": "banana",
+              "correct": true
+            },
+            {
+              "emoji": "🐘",
+              "label": "elefante"
+            },
+            {
+              "emoji": "☀️",
+              "label": "sole"
+            }
+          ]
+        },
+        {
+          "prompt": "Tocca quello che fa rima con pane",
+          "say": "pane... cane",
+          "options": [
+            {
+              "emoji": "🐶",
+              "label": "cane",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "mela"
+            },
+            {
+              "emoji": "🚗",
+              "label": "auto"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

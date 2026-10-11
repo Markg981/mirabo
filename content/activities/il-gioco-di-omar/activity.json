@@ -1,0 +1,74 @@
+{
+  "id": "il-gioco-di-omar",
+  "title": "Il gioco di Omar",
+  "area": "sociale",
+  "skill": "turno-e-condivisione",
+  "type": "sceneChoice",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Giocare a turni con un timer da cucina: quando suona, si passa il gioco.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "emoji": "🧒🧒",
+          "text": "Omar ha il gioco che volevi tu.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🙋",
+              "label": "Chiedo se posso giocare dopo",
+              "outcome": "Omar dice: tra un po' te lo passo. Intanto giochi con le costruzioni."
+            },
+            {
+              "emoji": "😤",
+              "label": "Lo prendo",
+              "outcome": "Omar si arrabbia e piange. La maestra arriva. Nessuno gioca più."
+            },
+            {
+              "emoji": "🤝",
+              "label": "Chiedo di giocare insieme",
+              "outcome": "Omar ci pensa e dice sì. Giocate in due."
+            }
+          ]
+        },
+        {
+          "emoji": "🧒🧒🧒",
+          "text": "Due bambini giocano e tu vorresti entrare.",
+          "prompt": "Cosa fai?",
+          "options": [
+            {
+              "emoji": "🗣️",
+              "label": "Chiedo: posso giocare?",
+              "outcome": "Dicono sì! Ti danno il ruolo del cane."
+            },
+            {
+              "emoji": "👀",
+              "label": "Guardo un po' da vicino",
+              "outcome": "Dopo un po' ti chiedono se vuoi giocare."
+            },
+            {
+              "emoji": "😶",
+              "label": "Vado da un'altra parte",
+              "outcome": "Va bene anche così. Domani magari chiedi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}

@@ -10,9 +10,12 @@ import 'trusted_key.dart';
 /// Un pacchetto .mirabo aperto e verificato: i file sono disponibili solo se la
 /// firma del manifest è valida e ogni file corrisponde al suo hash.
 class VerifiedPackage {
-  VerifiedPackage._(this.id, this.version, this._files);
+  VerifiedPackage._(this.id, this.kind, this.version, this._files);
 
   final String id;
+
+  /// 'story' o 'activity'.
+  final String kind;
   final int version;
   final Map<String, Uint8List> _files;
 
@@ -65,7 +68,8 @@ class PackageVerifier {
       }
     }
     files.removeWhere((k, _) => !expected.containsKey(k));
-    return VerifiedPackage._(manifest['id'] as String, manifest['version'] as int, files);
+    return VerifiedPackage._(
+        manifest['id'] as String, (manifest['kind'] as String?) ?? 'story', manifest['version'] as int, files);
   }
 
   /// JSON canonico identico a quello prodotto da studio/pack.py:

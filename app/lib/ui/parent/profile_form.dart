@@ -138,7 +138,9 @@ class _ProfileFormState extends State<ProfileForm> {
             CheckboxListTile(
               value: _worlds.contains(w),
               title: Text(_worldLabel(w)),
-              onChanged: (v) => setState(() => v == true ? _worlds = {..._worlds, w} : _worlds = _worlds.difference({w})),
+              onChanged: (v) => setState(() {
+                _worlds = v == true ? {..._worlds, w} : _worlds.difference({w});
+              }),
             ),
           SwitchListTile(
             value: _safetyTogetherOnly,

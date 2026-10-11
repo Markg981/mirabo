@@ -1,0 +1,80 @@
+{
+  "id": "mattino-in-ordine",
+  "title": "Il mattino in ordine",
+  "area": "autonomia",
+  "skill": "routine-mattino",
+  "type": "sequence",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Fotografare il bambino mentre fa ogni passo e appendere le foto in ordine in bagno.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Metti in ordine il mattino",
+          "cards": [
+            {
+              "emoji": "🛏️",
+              "label": "mi sveglio"
+            },
+            {
+              "emoji": "🥣",
+              "label": "faccio colazione"
+            },
+            {
+              "emoji": "🎒",
+              "label": "prendo lo zaino"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Metti in ordine il mattino",
+          "cards": [
+            {
+              "emoji": "🛏️",
+              "label": "mi sveglio"
+            },
+            {
+              "emoji": "🚽",
+              "label": "vado in bagno"
+            },
+            {
+              "emoji": "👕",
+              "label": "mi vesto"
+            },
+            {
+              "emoji": "🥣",
+              "label": "faccio colazione"
+            },
+            {
+              "emoji": "🪥",
+              "label": "lavo i denti"
+            },
+            {
+              "emoji": "🎒",
+              "label": "prendo lo zaino"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, riproviamo.",
+    "pilu": "Guarda bene, {nome}. Poi mi dici cosa ne pensi.",
+    "tango": "Dai {nome}, facciamolo! Piano però... va bene, piano."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Io un po' mi sono spaventato, ma è andata.",
+    "pilu": "Bravo {nome}, hai guardato bene. Basta così per oggi.",
+    "tango": "Fatto! {nome}, domani ne facciamo un'altra. Ora corro."
+  },
+  "togetherSuggested": false
+}
