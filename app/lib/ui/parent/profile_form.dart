@@ -163,7 +163,7 @@ class _ProfileFormState extends State<ProfileForm> {
             onChanged: (v) => setState(() => _lowStim = v),
           ),
           const SizedBox(height: 16),
-          Text('Sessione "da solo": ${_aloneMinutes} minuti', style: Theme.of(context).textTheme.titleLarge),
+          Text('Sessione "da solo": $_aloneMinutes minuti', style: Theme.of(context).textTheme.titleLarge),
           Slider(
             value: _aloneMinutes.toDouble(),
             min: 10,

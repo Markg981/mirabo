@@ -72,10 +72,23 @@ void main() {
       markTestSkipped('esegui prima: python studio/sync_assets.py');
       return;
     }
-    final pkgFile = dist.listSync().whereType<File>().firstWhere((f) => f.path.endsWith('.mirabo'));
     final verifier = PackageVerifier();
-    final pkg = await verifier.open(pkgFile.readAsBytesSync());
-    expect(pkg.json('story.json'), isNotNull);
+    final files = dist.listSync().whereType<File>().where((f) => f.path.endsWith('.mirabo')).toList();
+    expect(files, isNotEmpty);
+    var stories = 0, activities = 0;
+    for (final f in files) {
+      final pkg = await verifier.open(f.readAsBytesSync());
+      if (pkg.kind == 'activity') {
+        expect(pkg.json('activity.json'), isNotNull);
+        activities++;
+      } else {
+        expect(pkg.json('story.json'), isNotNull);
+        stories++;
+      }
+    }
+    expect(stories, greaterThan(0));
+    expect(activities, greaterThan(0));
+    final pkgFile = files.first;
 
     final other = PackageVerifier(publicKeyHex: '00' * 32);
     expect(() => other.open(pkgFile.readAsBytesSync()), throwsA(isA<PackageVerificationException>()));
