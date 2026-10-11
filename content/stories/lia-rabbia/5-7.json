@@ -1,0 +1,127 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": { "alt": "Il compagno seduto su un cuscino, con un libro aperto e un vulcano disegnato sulla copertina." },
+      "companionLines": {
+        "bo": "Ciao {nome}! Oggi c'è una storia con un vulcano. Io dei vulcani ho un po' paura... però se ci sei tu la guardo.",
+        "pilu": "Ciao {nome}! Sai che dentro ognuno di noi c'è un vulcano? Non ci credi? Guarda cosa succede a Lia.",
+        "tango": "Ciao {nome}! Questa storia parla di una cosa che a me capita sempre. Scommetto che capita anche a te. Guardiamo?"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": { "alt": "La cameretta di Lia; sul tavolo una torre di costruzioni altissima e colorata con una bandierina in cima. Lia la guarda con le mani sui fianchi, fierissima." },
+      "text": "Lia ha costruito la torre più alta del mondo. Ci ha messo tutto il pomeriggio: un pezzo rosso, uno blu, uno giallo, fino alla bandierina in cima. \"Nonna, vieni a vedere!\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": { "alt": "Teo, due anni, entra gattonando con un pupazzo in mano; la torre è già in bilico." },
+      "text": "Ma prima della nonna arriva Teo. Teo ha due anni e vuole sempre toccare tutto. Allunga la mano verso il pezzo rosso in basso..."
+    },
+    {
+      "n": 4,
+      "kind": "situation",
+      "illustration": { "alt": "I pezzi della torre volano ovunque; Teo ride; Lia a bocca aperta." },
+      "text": "CRASH. La torre più alta del mondo è un mucchio di pezzi sul pavimento. Teo ride. Non ha capito niente."
+    },
+    {
+      "n": 5,
+      "kind": "situation",
+      "illustration": { "alt": "Lia a tutto schermo, viso rosso, pugni chiusi; dietro di lei, in trasparenza, la sagoma di un vulcano che fuma." },
+      "text": "Lia sente una cosa calda che le sale dalla pancia. Le mani si chiudono da sole. La faccia diventa rossa. Dentro di lei c'è un vulcano, e il vulcano sta per esplodere.",
+      "companionLines": {
+        "bo": "Oh no. Io quando sono così mi sento tutto caldo nelle orecchie. Tu dove lo senti, {nome}?",
+        "pilu": "Guarda le mani di Lia. Il vulcano si sente prima nel corpo, sai. Tu dove lo senti, {nome}?",
+        "tango": "Eccolo! Lo riconosco! A me si chiudono le zampe così. Tu dove lo senti, {nome}?"
+      }
+    },
+    {
+      "n": 6,
+      "kind": "dialogue",
+      "illustration": { "alt": "La stessa scena, ferma: Lia col pugno alzato, Teo che ancora ride, la porta aperta da cui sta arrivando la nonna." },
+      "text": "Lia ha il pugno alzato. Il vulcano è quasi in cima. E adesso?",
+      "dialogue": {
+        "together": "Chiedi: secondo te cosa farà Lia? E tu, cosa faresti?",
+        "alone": {
+          "prompt": {
+            "bo": "Tu cosa faresti, {nome}?",
+            "pilu": "Tu cosa faresti, {nome}?",
+            "tango": "Tu cosa faresti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "spingo",
+              "icon": "push",
+              "label": "Spingo Teo",
+              "reaction": {
+                "bo": "Capisco, il vulcano è forte. Vediamo cosa fa Lia, poi mi dici se ti piace.",
+                "pilu": "Mmh, forse. Guardiamo cosa succede a Lia e poi ci pensiamo.",
+                "tango": "Lo so, anch'io vorrei! Ma aspetta, guardiamo."
+              }
+            },
+            {
+              "id": "urlo",
+              "icon": "shout",
+              "label": "Urlo forte",
+              "reaction": {
+                "bo": "Urlare fa uscire un po' di vulcano, è vero. Guardiamo cosa fa Lia.",
+                "pilu": "Urlare si può. Vediamo se Lia trova anche un altro modo.",
+                "tango": "Sì! Urlare! ...Però guardiamo cosa fa Lia."
+              }
+            },
+            {
+              "id": "respiro",
+              "icon": "breathe",
+              "label": "Respiro",
+              "reaction": {
+                "bo": "Io non ci sarei riuscito. Vediamo se Lia ce la fa.",
+                "pilu": "Bella idea. Vediamo se anche Lia ci pensa.",
+                "tango": "Respirare? Con il vulcano in cima? Vediamo se Lia ci riesce."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 7,
+      "kind": "turn",
+      "illustration": { "alt": "La nonna sulla porta, in ginocchio all'altezza di Lia, le mani aperte; non tocca Lia, non prende Teo." },
+      "text": "La nonna arriva e non dice \"non si fa\". Dice: \"Lia, sento il vulcano. È grosso, eh? Facciamo il respiro del vulcano, insieme.\" Mette le mani sulla pancia. Lia, con gli occhi ancora pieni di fuoco, fa lo stesso."
+    },
+    {
+      "n": 8,
+      "kind": "turn",
+      "illustration": { "alt": "Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano, che da rosso diventa arancione, poi rosa, con la lava che scende piano." },
+      "text": "Dentro: uno, due, tre. Fuori: ssssssh, piano, come la lava che scende. Ancora. Dentro: uno, due, tre. Fuori: sssssh. Il vulcano è ancora lì. Ma non esplode più. Sta scendendo.",
+      "companionLines": {
+        "bo": "Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.",
+        "pilu": "Proviamolo insieme, {nome}: mani sulla pancia, dentro uno due tre, fuori sssssh. Funziona anche con le ali, sai.",
+        "tango": "Dai {nome}, facciamolo! Mani sulla pancia. Dentro uno, due, tre. Fuori ssssh. Oh. È più difficile che correre."
+      }
+    },
+    {
+      "n": 9,
+      "kind": "turn",
+      "illustration": { "alt": "Lia seduta per terra, Teo che le porge un pezzo blu, la nonna sullo sfondo che sistema i pezzi in una scatola." },
+      "text": "\"Ero arrabbiata,\" dice Lia. \"Tanto.\" \"Lo so,\" dice la nonna. \"Ci si può arrabbiare. Il vulcano sale, esplode, e poi si calma. Si può aspettarlo.\" Teo le porge un pezzo blu. Non sa che cos'ha fatto, ma vuole giocare con lei."
+    },
+    {
+      "n": 10,
+      "kind": "closing",
+      "illustration": { "alt": "Una torre nuova, più bassa ma più larga, costruita da Lia e Teo; la bandierina in cima; il vulcano sullo sfondo ora è verde, con un fiore in cima." },
+      "text": "La torre nuova non è la più alta del mondo. È la più larga, perché l'hanno fatta in due. E il vulcano di Lia? È ancora lì dentro, tranquillo. Tornerà, un giorno. Ma adesso Lia sa aspettarlo.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde. Ci vediamo domani?",
+        "pilu": "Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno. A domani.",
+        "tango": "Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio. A domani!"
+      }
+    }
+  ]
+}

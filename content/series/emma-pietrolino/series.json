@@ -1,0 +1,18 @@
+{
+  "id": "emma-pietrolino",
+  "title": "Emma e Pietrolino",
+  "world": "ambiente",
+  "intro": "Emma ha sei anni, un cappottino giallo e un cestino. Nel bosco vicino casa trova Pietrolino, un sassolino che parla solo con chi si ferma ad ascoltare.",
+  "episodes": [
+    { "episode": 1, "draft": "bozze/Episodio_1_-_Il_Sassolino_Magino.txt", "plan": "Introduzione del mondo (3-4 schermate), non una storia a sé", "story": null },
+    { "episode": 2, "draft": "bozze/Episodio_2_-_Il_Ruscello_Triste.txt", "plan": "MVP: rifiuti", "story": "ruscello-triste" },
+    { "episode": 3, "draft": "bozze/Episodio_3_-_L_Albero_che_Non_Parlava_Più.txt", "plan": "MVP: prendersi cura, piantare", "story": null },
+    { "episode": 4, "draft": "bozze/Episodio_4_-_La_Notte_delle_Lucciole.txt", "plan": "Fase 2, mondo Emozioni: meraviglia", "story": null },
+    { "episode": 5, "draft": "bozze/Episodio_5_-_La_Piccola_Goccia_Ribelle.txt", "plan": "MVP: spreco d'acqua", "story": null },
+    { "episode": 6, "draft": "bozze/Episodio_6_-_Il_Bosco_Addormentato.txt", "plan": "Fase 2, mondo Emozioni: riposo", "story": null },
+    { "episode": 7, "draft": "bozze/Episodio_7_-_Il_Fiocco_che_non_voleva_cadere.txt", "plan": "Fase 2, mondo Emozioni: paura di sbagliare", "story": null },
+    { "episode": 8, "draft": "bozze/Episodio_8_-_La_Civetta_del_Silenzio.txt", "plan": "Fase 2, mondo Emozioni: silenzio", "story": null },
+    { "episode": 9, "draft": "bozze/Episodio_9_-_Il_Risveglio_del_Bosco.txt", "plan": "Seconda stagione; ponte con il modulo scuola", "story": null },
+    { "episode": 10, "draft": "bozze/Episodio_10_-_Il_Segreto_di_Pietrolino.txt", "plan": "Finale di stagione, solo 7-10", "story": null }
+  ]
+}

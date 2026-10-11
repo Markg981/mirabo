@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""Copia i pacchetti firmati e i compagni in app/assets/ per lo sviluppo.
+
+Flutter non può caricare asset fuori dalla cartella dell'app, quindi i file di
+content/ vengono copiati (non spostati) in app/assets/stories e app/assets/companions.
+app/assets/ è ignorata da git: la fonte di verità resta content/.
+
+Uso: python studio/sync_assets.py   (esegue anche pack.py --sign)
+"""
+from __future__ import annotations
+
+import json
+import shutil
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DIST = ROOT / "dist"
+ASSETS = ROOT / "app" / "assets"
+STORIES_OUT = ASSETS / "stories"
+COMPANIONS_OUT = ASSETS / "companions"
+
+sys.path.insert(0, str(ROOT / "studio"))
+import pack  # noqa: E402
+
+
+def main() -> int:
+    sys.argv = ["pack.py", "--sign"]
+    if pack.main() != 0:
+        return 1
+    if STORIES_OUT.exists():
+        shutil.rmtree(STORIES_OUT)
+    STORIES_OUT.mkdir(parents=True)
+    index = []
+    for f in sorted(DIST.glob("*.mirabo")):
+        shutil.copy(f, STORIES_OUT / f.name)
+        index.append(f.name)
+    (STORIES_OUT / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
+    COMPANIONS_OUT.mkdir(parents=True, exist_ok=True)
+    shutil.copy(ROOT / "content" / "companions" / "companions.json", COMPANIONS_OUT / "companions.json")
+    print(f"{len(index)} pacchetti copiati in {STORIES_OUT.relative_to(ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

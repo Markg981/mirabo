@@ -1,0 +1,40 @@
+{
+  "companions": [
+    {
+      "id": "bo",
+      "name": "Bo",
+      "kind": "piccolo mammut lanoso",
+      "tagline": "Ha un po' paura di tutto, ma con te ci prova.",
+      "growth": [
+        { "stage": 0, "label": "Cucciolo", "description": "Pelo da cucciolo, nessuna sciarpa, una casa nel ghiaccio" },
+        { "stage": 1, "label": "Con la sciarpa", "description": "Dopo le prime tre storie compare la sciarpa rossa", "after": 3 },
+        { "stage": 2, "label": "Un amico uccellino", "description": "Dopo sei storie un uccellino si posa sulla sua testa", "after": 6 },
+        { "stage": 3, "label": "La casa si scalda", "description": "Dopo dodici storie la casa nel ghiaccio ha una finestra illuminata", "after": 12 }
+      ]
+    },
+    {
+      "id": "pilu",
+      "name": "Pilù",
+      "kind": "civetta tonda",
+      "tagline": "Sa tante cose, ma vuole sempre sapere cosa ne pensi tu.",
+      "growth": [
+        { "stage": 0, "label": "Occhi chiusi", "description": "Di giorno dorme con un occhio aperto" },
+        { "stage": 1, "label": "Occhi aperti la notte", "description": "Dopo tre storie apre gli occhi anche al buio", "after": 3 },
+        { "stage": 2, "label": "Primo volo", "description": "Dopo sei storie impara a volare da un ramo all'altro", "after": 6 },
+        { "stage": 3, "label": "Nido grande", "description": "Dopo dodici storie costruisce un nido più grande", "after": 12 }
+      ]
+    },
+    {
+      "id": "tango",
+      "name": "Tango",
+      "kind": "volpe con la coda a strisce",
+      "tagline": "Corre prima di pensare. Sta imparando a fermarsi un attimo.",
+      "growth": [
+        { "stage": 0, "label": "Tana vuota", "description": "Una tana con solo un cuscino" },
+        { "stage": 1, "label": "Prime cose trovate", "description": "Dopo tre storie la tana ha un sasso e una foglia", "after": 3 },
+        { "stage": 2, "label": "La tana si riempie", "description": "Dopo sei storie compaiono oggetti dalle storie lette", "after": 6 },
+        { "stage": 3, "label": "Un posto per gli amici", "description": "Dopo dodici storie c'è un secondo cuscino per un amico", "after": 12 }
+      ]
+    }
+  ]
+}

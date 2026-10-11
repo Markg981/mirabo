@@ -1,0 +1,37 @@
+# Chiavi dello studio: MAI nel repository
+studio/keys/
+*.key
+*.secret
+
+# Pacchetti generati
+dist/
+
+# Flutter / Dart
+app/.dart_tool/
+app/.packages
+app/build/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/.metadata
+app/pubspec.lock
+app/ios/Pods/
+app/ios/.symlinks/
+app/ios/Flutter/ephemeral/
+app/android/.gradle/
+app/android/local.properties
+app/android/key.properties
+app/android/**/*.jks
+app/**/GeneratedPluginRegistrant.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+app/assets/

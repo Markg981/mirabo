@@ -1,0 +1,18 @@
+{
+  "id": "lia-rabbia",
+  "version": 1,
+  "title": "Il vulcano di Lia",
+  "world": "emozioni",
+  "topic": "rabbia",
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "La rabbia è un vulcano: sale, esplode e poi si calma. Io posso aspettarla.",
+  "gesture": "Il respiro del vulcano: mani sulla pancia, dentro contando fino a 3, fuori soffiando piano come lava che scende.",
+  "parentCard": "parent.md",
+  "sources": [
+    "CASEL, Core SEL competencies — self-management",
+    "Mireille d'Allancé, Che rabbia!, Babalibri (albo consigliato, non riprodotto)"
+  ],
+  "status": "draft"
+}

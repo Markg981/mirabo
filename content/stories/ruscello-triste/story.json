@@ -1,0 +1,20 @@
+{
+  "id": "ruscello-triste",
+  "version": 1,
+  "title": "Il Ruscello Triste",
+  "world": "ambiente",
+  "topic": "rifiuti",
+  "series": "emma-pietrolino",
+  "episode": 2,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Anche i ruscelli piccoli fanno grandi viaggi. E anche le mani piccole.",
+  "gesture": "Raccogliere con i guanti e mettere nel sacchetto; dire a un grande cosa si è trovato.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Legambiente, materiali di educazione ambientale per la primaria (da verificare)",
+    "WWF Italia, programmi scuola (da verificare)"
+  ],
+  "status": "draft"
+}

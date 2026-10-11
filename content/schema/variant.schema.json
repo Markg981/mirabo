@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mirabo/variant",
+  "title": "Mirabò story variant for one age band",
+  "type": "object",
+  "required": ["ageBand", "screens"],
+  "additionalProperties": false,
+  "$defs": {
+    "companionLines": {
+      "type": "object",
+      "required": ["bo", "pilu", "tango"],
+      "additionalProperties": false,
+      "properties": {
+        "bo": { "type": "string", "minLength": 1 },
+        "pilu": { "type": "string", "minLength": 1 },
+        "tango": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "properties": {
+    "ageBand": { "enum": ["3-5", "5-7", "7-10"] },
+    "screens": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["n", "kind", "illustration"],
+        "additionalProperties": false,
+        "properties": {
+          "n": { "type": "integer", "minimum": 1 },
+          "kind": { "enum": ["hook", "situation", "dialogue", "turn", "closing"] },
+          "illustration": {
+            "type": "object",
+            "required": ["alt"],
+            "additionalProperties": false,
+            "properties": {
+              "file": { "type": "string" },
+              "alt": { "type": "string", "minLength": 10 }
+            }
+          },
+          "text": { "type": "string" },
+          "audio": {
+            "type": "object",
+            "required": ["file"],
+            "additionalProperties": false,
+            "properties": {
+              "file": { "type": "string" },
+              "words": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "prefixItems": [{ "type": "integer", "minimum": 0 }, { "type": "string" }],
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "nameSlots": { "type": "array", "items": { "type": "integer", "minimum": 0 } }
+            }
+          },
+          "companionLines": { "$ref": "#/$defs/companionLines" },
+          "keyPhrase": { "type": "boolean" },
+          "dialogue": {
+            "type": "object",
+            "required": ["together", "alone"],
+            "additionalProperties": false,
+            "properties": {
+              "together": { "type": "string", "minLength": 1 },
+              "alone": {
+                "type": "object",
+                "required": ["prompt", "options"],
+                "additionalProperties": false,
+                "properties": {
+                  "prompt": { "$ref": "#/$defs/companionLines" },
+                  "options": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "object",
+                      "required": ["id", "icon", "label", "reaction"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+                        "icon": { "type": "string" },
+                        "label": { "type": "string", "minLength": 1 },
+                        "reaction": { "$ref": "#/$defs/companionLines" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

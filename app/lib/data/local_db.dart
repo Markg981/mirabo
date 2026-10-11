@@ -1,0 +1,97 @@
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
+
+import '../models/profile.dart';
+
+/// Database locale: profili e diario. Tutto resta sul dispositivo.
+///
+/// Nota per la fase 1: la cifratura a riposo si aggiunge sostituendo sqflite
+/// con sqflite_sqlcipher e una chiave in flutter_secure_storage; lo schema non cambia.
+class LocalDb {
+  LocalDb._(this._db);
+  final Database _db;
+
+  static const _version = 1;
+
+  static Future<LocalDb> open() async {
+    final dir = await getApplicationSupportDirectory();
+    final db = await openDatabase(
+      p.join(dir.path, 'mirabo.db'),
+      version: _version,
+      onCreate: (db, _) async {
+        await db.execute('''
+          CREATE TABLE profiles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            age_band TEXT NOT NULL,
+            companion TEXT NOT NULL,
+            enabled_worlds TEXT NOT NULL,
+            safety_together_only INTEGER NOT NULL DEFAULT 1,
+            last_mode TEXT NOT NULL DEFAULT 'together',
+            dyslexia_font INTEGER NOT NULL DEFAULT 0,
+            low_stimulation INTEGER NOT NULL DEFAULT 0,
+            alone_minutes INTEGER NOT NULL DEFAULT 20,
+            stories_completed INTEGER NOT NULL DEFAULT 0
+          )''');
+        await db.execute('''
+          CREATE TABLE diary (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+            story_id TEXT NOT NULL,
+            mode TEXT NOT NULL,
+            completed INTEGER NOT NULL,
+            dialogue_answer TEXT,
+            at TEXT NOT NULL
+          )''');
+        await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
+      },
+    );
+    return LocalDb._(db);
+  }
+
+  Future<List<ChildProfile>> profiles() async =>
+      (await _db.query('profiles', orderBy: 'id')).map(ChildProfile.fromRow).toList();
+
+  Future<ChildProfile> insertProfile(ChildProfile profile) async {
+    final row = profile.toRow()..remove('id');
+    final id = await _db.insert('profiles', row);
+    return (await _db.query('profiles', where: 'id = ?', whereArgs: [id])).map(ChildProfile.fromRow).first;
+  }
+
+  Future<void> updateProfile(ChildProfile profile) =>
+      _db.update('profiles', profile.toRow(), where: 'id = ?', whereArgs: [profile.id]);
+
+  Future<void> deleteProfile(int id) => _db.delete('profiles', where: 'id = ?', whereArgs: [id]);
+
+  Future<void> addDiaryEntry(DiaryEntry e) => _db.insert('diary', {
+        'profile_id': e.profileId,
+        'story_id': e.storyId,
+        'mode': e.mode.name,
+        'completed': e.completed ? 1 : 0,
+        'dialogue_answer': e.dialogueAnswer,
+        'at': e.when.toIso8601String(),
+      });
+
+  Future<List<DiaryEntry>> diary(int profileId, {int days = 30}) async {
+    final since = DateTime.now().subtract(Duration(days: days)).toIso8601String();
+    final rows = await _db.query('diary',
+        where: 'profile_id = ? AND at >= ?', whereArgs: [profileId, since], orderBy: 'at DESC');
+    return rows
+        .map((r) => DiaryEntry(
+              profileId: r['profile_id'] as int,
+              storyId: r['story_id'] as String,
+              mode: SessionMode.values.byName(r['mode'] as String),
+              completed: (r['completed'] as int) == 1,
+              dialogueAnswer: r['dialogue_answer'] as String?,
+              when: DateTime.parse(r['at'] as String),
+            ))
+        .toList();
+  }
+
+  /// "Elimina tutti i dati": cancella profili e diario.
+  Future<void> wipe() async {
+    await _db.delete('diary');
+    await _db.delete('profiles');
+  }
+}

@@ -1,0 +1,42 @@
+# Mirabò
+
+Storie e piccoli passi per crescere. App gratuita per tablet (iOS 15+, Android 8+) per bambini dai 3 ai 10 anni: storie su temi importanti, attività di avvicinamento alla scuola, un compagno che cresce con il bambino. Tutto funziona offline; il cloud è una scelta del genitore.
+
+Codice e contenuti sono proprietari: vedi `LICENSE`.
+
+## Struttura
+
+```
+app/       Flutter app (iOS + Android)
+content/   Storie, compagni e schema dei pacchetti (sorgente editoriale)
+studio/    Script dello studio editoriale: validazione, impacchettamento, firma
+docs/      Specifica, formato delle storie, guida di stile
+```
+
+## Primi passi su Windows
+
+1. Installa Flutter (stable) seguendo <https://docs.flutter.dev/get-started/install/windows>, Android Studio e un emulatore tablet (es. Pixel Tablet API 34) oppure collega un tablet Android con il debug USB.
+2. Genera le cartelle piattaforma, che non sono nel repository:
+
+   ```
+   cd app
+   flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
+   flutter pub get
+   ```
+
+   `flutter create .` aggiunge `android/` e `ios/` senza toccare `lib/` e `pubspec.yaml`.
+3. Avvia: `flutter run`.
+
+La build iOS richiede macOS: la fa la CI (`.github/workflows/ci.yml`) su un runner macOS.
+
+## Contenuti
+
+Ogni storia è una cartella in `content/stories/<id>/` con un `story.json` (metadati) e un file per fascia d'età (`3-5.json`, `5-7.json`, `7-10.json`). Il formato è in `docs/story-format.md` e lo schema in `content/schema/`.
+
+```
+python studio/validate.py            # controlla tutti i pacchetti
+python studio/keygen.py              # una volta sola: genera la coppia di chiavi (privata fuori dal repo!)
+python studio/pack.py --sign         # produce i pacchetti firmati in dist/
+```
+
+L'app accetta solo pacchetti firmati con la chiave pubblica inclusa in `app/lib/content/trusted_key.dart`.
