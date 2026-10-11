@@ -1,0 +1,55 @@
+{
+  "id": "piegare",
+  "title": "Piegare i tovaglioli",
+  "area": "vita-pratica",
+  "skill": "motricita-fine",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🧻",
+          "label": "Tre tovaglioli di stoffa con una riga cucita o disegnata a metà"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "🧻",
+          "text": "Stendi il tovagliolo con la riga davanti a te."
+        },
+        {
+          "emoji": "👐",
+          "text": "Prendi i due angoli in basso e portali sugli angoli in alto, seguendo la riga."
+        },
+        {
+          "emoji": "✋",
+          "text": "Passa la mano sulla piega per schiacciarla."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Ripeti con gli altri due. Poi aprili e ricomincia."
+        }
+      ],
+      "control": "Se gli angoli non combaciano, la riga non è coperta: lo vede da solo.",
+      "observe": "Precisione degli angoli e cura nel passare la mano sulla piega."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

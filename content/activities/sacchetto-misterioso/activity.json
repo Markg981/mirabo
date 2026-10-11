@@ -1,0 +1,59 @@
+{
+  "id": "sacchetto-misterioso",
+  "title": "Il sacchetto misterioso",
+  "area": "sensoriale",
+  "skill": "tatto",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "👝",
+          "label": "Un sacchetto di stoffa"
+        },
+        {
+          "emoji": "🧸",
+          "label": "5–6 oggetti piccoli e conosciuti (cucchiaio, tappo, pigna, chiave, pallina, bottone)"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "👀",
+          "text": "Guardate insieme gli oggetti e diteli a voce, uno per uno. Poi metteteli nel sacchetto."
+        },
+        {
+          "emoji": "🤚",
+          "text": "Infila la mano senza guardare, tocca un oggetto e di' cos'è prima di tirarlo fuori."
+        },
+        {
+          "emoji": "✅",
+          "text": "Tiralo fuori: era quello? Mettilo sul tavolo."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Continua fino a svuotare il sacchetto."
+        }
+      ],
+      "control": "L'oggetto tirato fuori mostra subito se la mano aveva indovinato.",
+      "observe": "Dopo qualche giorno, oggetti più simili tra loro (due cucchiai di misura diversa)."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

@@ -117,7 +117,10 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
 LEVEL_KEYS = {
     "tapMatch": "rounds", "count": "rounds", "sequence": "rounds", "pattern": "rounds", "trace": "rounds",
     "checklist": "items", "sceneChoice": "scenes", "explore": "spots", "countdown": "daily",
+    "presentation": "steps", "pairs": "rounds", "spell": "rounds",
 }
+SCHOOL_AREAS = {"cognitivo", "autonomia", "sociale", "paure"}
+MONTESSORI_AREAS = {"vita-pratica", "sensoriale", "linguaggio", "matematica", "cultura"}
 
 
 def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
@@ -130,6 +133,11 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
         errors.append(f"{folder.name}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
     if a.get("id") != folder.name:
         errors.append(f"{folder.name}: id diverso dal nome della cartella")
+    module = a.get("module", "scuola")
+    if module == "scuola" and a.get("area") not in SCHOOL_AREAS:
+        errors.append(f"{folder.name}: area '{a.get('area')}' non appartiene al modulo scuola")
+    if module == "montessori" and a.get("area") not in MONTESSORI_AREAS:
+        errors.append(f"{folder.name}: area '{a.get('area')}' non appartiene al modulo montessori")
     key = LEVEL_KEYS.get(a.get("type"))
     for i, level in enumerate(a.get("levels", []), 1):
         if key and not level.get(key):
@@ -146,6 +154,23 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
             for r in level.get("rounds", []):
                 if r.get("count") not in r.get("choices", []):
                     errors.append(f"{folder.name}: il numero giusto non è tra le scelte")
+        if a.get("type") == "presentation":
+            for key in ("materials", "control", "observe"):
+                if not level.get(key):
+                    errors.append(f"{folder.name}: presentazione senza '{key}'")
+        if a.get("type") == "pairs":
+            for r in level.get("rounds", []):
+                if any(len(pr) != 2 for pr in r.get("pairs", [])) or len(r.get("pairs", [])) < 2:
+                    errors.append(f"{folder.name}: ogni coppia ha due elementi e servono almeno 2 coppie")
+        if a.get("type") == "spell":
+            for r in level.get("rounds", []):
+                target = r.get("word") or r.get("sentence")
+                if not target or not target.isupper():
+                    errors.append(f"{folder.name}: spell richiede 'word' o 'sentence' in maiuscolo")
+        if a.get("type") == "sequence":
+            for r in level.get("rounds", []):
+                if r.get("sizes") and any("size" not in c for c in r.get("cards", [])):
+                    errors.append(f"{folder.name}: round con sizes=true ma carte senza 'size'")
         if a.get("type") == "sceneChoice":
             for sc in level.get("scenes", []):
                 if not 2 <= len(sc.get("options", [])) <= 3:

@@ -1,0 +1,123 @@
+{
+  "id": "tavolette-colori",
+  "title": "Le tavolette dei colori",
+  "area": "sensoriale",
+  "skill": "colori",
+  "type": "pairs",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Con campioni di colore (quelli dei negozi di vernici) tagliati a metà: trova le coppie uguali.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Trova le coppie uguali",
+          "pairs": [
+            [
+              "🟥",
+              "🟥"
+            ],
+            [
+              "🟦",
+              "🟦"
+            ],
+            [
+              "🟨",
+              "🟨"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Trova le coppie uguali",
+          "pairs": [
+            [
+              "🟥",
+              "🟥"
+            ],
+            [
+              "🟦",
+              "🟦"
+            ],
+            [
+              "🟨",
+              "🟨"
+            ],
+            [
+              "🟩",
+              "🟩"
+            ],
+            [
+              "🟪",
+              "🟪"
+            ],
+            [
+              "🟧",
+              "🟧"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Trova la coppia: stessa cosa, stesso colore",
+          "pairs": [
+            [
+              "🍎",
+              "🍓"
+            ],
+            [
+              "🍋",
+              "🌻"
+            ],
+            [
+              "🍇",
+              "🍆"
+            ],
+            [
+              "🥦",
+              "🍀"
+            ],
+            [
+              "🫐",
+              "🐳"
+            ]
+          ],
+          "byLabel": true,
+          "labels": {
+            "🍎": "rosso",
+            "🍓": "rosso",
+            "🍋": "giallo",
+            "🌻": "giallo",
+            "🍇": "viola",
+            "🍆": "viola",
+            "🥦": "verde",
+            "🍀": "verde",
+            "🫐": "blu",
+            "🐳": "blu"
+          }
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, il materiale ce lo dice da solo.",
+    "pilu": "Guarda bene, {nome}: qui non serve che io ti dica se è giusto. Lo vedi tu.",
+    "tango": "Dai {nome}! Qui si può sbagliare quanto vuoi: si vede subito e si riprova."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Questa, se vuoi, si fa anche con le cose vere.",
+    "pilu": "Bravo {nome}. La stessa cosa esiste con oggetti veri: chiedi a un grande.",
+    "tango": "Fatto! {nome}, domani la facciamo con le cose vere? Io porto le zampe."
+  },
+  "togetherSuggested": false
+}

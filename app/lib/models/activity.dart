@@ -4,18 +4,40 @@ library;
 
 import 'story.dart' show AgeBand, CompanionLines;
 
-enum ActivityArea {
-  cognitivo('Prerequisiti', 'Lettere, numeri, forme, logica'),
-  autonomia('Autonomia', 'Routine, vestirsi, zaino, mensa'),
-  sociale('In classe', 'Turni, aiuto, amici, saluto'),
-  paure('Primo giorno', 'Conoscere la scuola, il conto alla rovescia');
+enum ActivityModule {
+  scuola('Verso la scuola'),
+  montessori('Montessori');
 
-  const ActivityArea(this.label, this.description);
+  const ActivityModule(this.label);
   final String label;
-  final String description;
 }
 
-enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown }
+enum ActivityArea {
+  // Modulo "Verso la scuola"
+  cognitivo('Prerequisiti', 'Lettere, numeri, forme, logica', ActivityModule.scuola),
+  autonomia('Autonomia', 'Routine, vestirsi, zaino, mensa', ActivityModule.scuola),
+  sociale('In classe', 'Turni, aiuto, amici, saluto', ActivityModule.scuola),
+  paure('Primo giorno', 'Conoscere la scuola, il conto alla rovescia', ActivityModule.scuola),
+  // Modulo Montessori
+  vitaPratica('Vita pratica', 'Travasi, versare, abbottonare, apparecchiare, piegare, curare', ActivityModule.montessori),
+  sensoriale('Sensoriale', 'Torre rosa, scala marrone, colori, forme, tatto, suoni', ActivityModule.montessori),
+  linguaggio('Linguaggio e scrittura', 'Pregrafismo, incastri, lettere smerigliate, alfabeto mobile', ActivityModule.montessori),
+  matematica('Matematica', 'Aste numeriche, fuselli, perle delle decine', ActivityModule.montessori),
+  cultura('Cultura', 'Continenti, botanica, il fagiolo nel cotone', ActivityModule.montessori);
+
+  const ActivityArea(this.label, this.description, this.module);
+  final String label;
+  final String description;
+  final ActivityModule module;
+
+  /// I file usano slug con il trattino ("vita-pratica").
+  static ActivityArea fromKey(String key) => switch (key) {
+        'vita-pratica' => ActivityArea.vitaPratica,
+        _ => ActivityArea.values.byName(key),
+      };
+}
+
+enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown, presentation, pairs, spell }
 
 class Activity {
   const Activity({
@@ -48,6 +70,11 @@ class Activity {
 
   bool supports(AgeBand band) => ageBands.contains(band);
 
+  ActivityModule get module => area.module;
+
+  /// Attività da fare con le mani, fuori dallo schermo.
+  bool get isHome => type == ActivityType.presentation;
+
   /// Livello 1..levels.length, mai fuori range.
   Map<String, dynamic> level(int n) => levels[(n - 1).clamp(0, levels.length - 1)];
 
@@ -55,7 +82,7 @@ class Activity {
         id: j['id'] as String,
         version: j['version'] as int,
         title: j['title'] as String,
-        area: ActivityArea.values.byName(j['area'] as String),
+        area: ActivityArea.fromKey(j['area'] as String),
         skill: j['skill'] as String,
         type: ActivityType.values.byName(j['type'] as String),
         ageBands: (j['ageBands'] as List).map((b) => AgeBand.fromKey(b as String)).toSet(),

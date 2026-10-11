@@ -34,7 +34,14 @@ void main() {
       expect(a.id, d.uri.pathSegments.where((s) => s.isNotEmpty).last);
       expect(a.levels, isNotEmpty);
       expect(a.level(99), a.levels.last);
+      if (a.type == ActivityType.presentation) expect(a.module, ActivityModule.montessori);
     }
+  });
+
+  test('le aree si mappano da slug con il trattino', () {
+    expect(ActivityArea.fromKey('vita-pratica'), ActivityArea.vitaPratica);
+    expect(ActivityArea.fromKey('paure').module, ActivityModule.scuola);
+    expect(ActivityArea.fromKey('cultura').module, ActivityModule.montessori);
   });
 
   test('la regola adattiva sale dopo 3 primi tentativi e scende dopo 2 round difficili', () {

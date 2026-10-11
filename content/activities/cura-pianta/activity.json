@@ -1,0 +1,64 @@
+{
+  "id": "cura-pianta",
+  "title": "Prendersi cura di una pianta",
+  "area": "vita-pratica",
+  "skill": "cura-ambiente",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "Dopo un mese, una seconda pianta: diventa 'il suo angolo verde'.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🪴",
+          "label": "Una pianta in vaso tutta sua"
+        },
+        {
+          "emoji": "🫗",
+          "label": "Una brocchina"
+        },
+        {
+          "emoji": "🧽",
+          "label": "Un panno umido"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "👀",
+          "text": "Tocca la terra con un dito: è asciutta o bagnata?"
+        },
+        {
+          "emoji": "🫗",
+          "text": "Se è asciutta, versa poca acqua intorno al fusto, non sulle foglie."
+        },
+        {
+          "emoji": "🧽",
+          "text": "Pulisci una foglia alla volta con il panno, tenendola da sotto."
+        },
+        {
+          "emoji": "📅",
+          "text": "Segna sul calendario il giorno in cui l'hai innaffiata."
+        }
+      ],
+      "control": "La terra bagnata dice quando non serve altra acqua; le foglie brillano quando sono pulite.",
+      "observe": "Si collega alla storia dell'albero di Emma: è lo stesso gesto, nel mondo vero."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

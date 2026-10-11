@@ -1,0 +1,63 @@
+{
+  "id": "perle-decine",
+  "title": "Le perle delle decine",
+  "area": "matematica",
+  "skill": "decine",
+  "type": "presentation",
+  "ageBands": [
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "📿",
+          "label": "Perle o pasta da infilare in fili da 10 (fatene almeno 5)"
+        },
+        {
+          "emoji": "🔘",
+          "label": "Perle sciolte per le unità"
+        },
+        {
+          "emoji": "🔢",
+          "label": "Cartellini con i numeri 10, 20, 30... e 1–9"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "📿",
+          "text": "Conta le perle di un filo: dieci. Un filo è una decina."
+        },
+        {
+          "emoji": "🔢",
+          "text": "Metti i fili in fila: 10, 20, 30... e appoggia il cartellino giusto."
+        },
+        {
+          "emoji": "🔘",
+          "text": "Aggiungi perle sciolte a un filo: 10 e 3 fa 13. Cerca il cartellino."
+        },
+        {
+          "emoji": "🎲",
+          "text": "Ora il grande dice un numero (24) e tu lo costruisci con fili e perle."
+        }
+      ],
+      "control": "Contando le perle si vede se il numero costruito è quello detto.",
+      "observe": "Se passa da contare uno a uno a contare per decine."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

@@ -1,0 +1,67 @@
+{
+  "id": "versare-acqua",
+  "title": "Versare l'acqua",
+  "area": "vita-pratica",
+  "skill": "travasi",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🫗",
+          "label": "Una brocchina piccola con poca acqua"
+        },
+        {
+          "emoji": "🥛",
+          "label": "Un bicchiere"
+        },
+        {
+          "emoji": "🧽",
+          "label": "Una spugnetta"
+        },
+        {
+          "emoji": "🧺",
+          "label": "Un vassoio"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "🫗",
+          "text": "Prendi la brocca dal manico con una mano e tienila sotto con l'altra."
+        },
+        {
+          "emoji": "🥛",
+          "text": "Versa nel bicchiere piano, fermandoti un dito prima del bordo."
+        },
+        {
+          "emoji": "🧽",
+          "text": "Se cade una goccia, asciugala con la spugnetta e strizzala nel vassoio."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Riversa l'acqua nella brocca. Ripeti."
+        }
+      ],
+      "control": "Le gocce sul vassoio e il bicchiere troppo pieno si vedono da soli.",
+      "observe": "Se si ferma prima del bordo da solo, se asciuga senza che glielo diciate."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

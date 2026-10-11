@@ -1,0 +1,66 @@
+{
+  "id": "travaso-secco",
+  "title": "Travaso di fagioli",
+  "area": "vita-pratica",
+  "skill": "travasi",
+  "type": "presentation",
+  "ageBands": [
+    "3-5"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🥣",
+          "label": "Due ciotole uguali"
+        },
+        {
+          "emoji": "🫘",
+          "label": "Una manciata di fagioli o ceci"
+        },
+        {
+          "emoji": "🧺",
+          "label": "Un vassoio"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "🧺",
+          "text": "Porta il vassoio al tavolo con due mani, piano."
+        },
+        {
+          "emoji": "🥣",
+          "text": "Prendi la ciotola piena con due mani e versa nell'altra, lentamente, senza parlare."
+        },
+        {
+          "emoji": "👀",
+          "text": "Guarda: è caduto qualche fagiolo? Raccoglilo con due dita e mettilo nella ciotola."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Ora rimetti i fagioli nella prima ciotola. Ripeti quante volte vuoi."
+        },
+        {
+          "emoji": "🧺",
+          "text": "Riporta il vassoio dove l'hai preso."
+        }
+      ],
+      "control": "I fagioli caduti sul vassoio dicono da soli se il travaso è riuscito: non serve che lo dica il grande.",
+      "observe": "Quante volte ripete, se usa due mani, se raccoglie i fagioli caduti senza che glielo chiediate."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

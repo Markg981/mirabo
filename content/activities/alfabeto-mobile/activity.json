@@ -1,0 +1,94 @@
+{
+  "id": "alfabeto-mobile",
+  "title": "L'alfabeto mobile",
+  "area": "linguaggio",
+  "skill": "scrittura",
+  "type": "spell",
+  "ageBands": [
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "Lettere di legno o di cartoncino (vocali blu, consonanti rosse): il bambino compone le parole che vuole, senza scrivere.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "emoji": "☀️",
+          "word": "SOLE",
+          "extra": "AMR"
+        },
+        {
+          "emoji": "🍎",
+          "word": "MELA",
+          "extra": "OST"
+        },
+        {
+          "emoji": "🌙",
+          "word": "LUNA",
+          "extra": "EIM"
+        },
+        {
+          "emoji": "🐱",
+          "word": "GATTO",
+          "extra": "LEI"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "emoji": "🐘",
+          "word": "ELEFANTE",
+          "extra": "OMI"
+        },
+        {
+          "emoji": "🦋",
+          "word": "FARFALLA",
+          "extra": "OET"
+        },
+        {
+          "emoji": "🏫",
+          "word": "SCUOLA",
+          "extra": "ENI"
+        },
+        {
+          "emoji": "🫘",
+          "word": "FAGIOLO",
+          "extra": "TRE"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "emoji": "🐸",
+          "word": "RANOCCHIO",
+          "extra": "ELT"
+        },
+        {
+          "emoji": "🎒",
+          "word": "ZAINETTO",
+          "extra": "OPR"
+        },
+        {
+          "emoji": "🌧️",
+          "word": "PIOGGIA",
+          "extra": "ENT"
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, il materiale ce lo dice da solo.",
+    "pilu": "Guarda bene, {nome}: qui non serve che io ti dica se è giusto. Lo vedi tu.",
+    "tango": "Dai {nome}! Qui si può sbagliare quanto vuoi: si vede subito e si riprova."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Questa, se vuoi, si fa anche con le cose vere.",
+    "pilu": "Bravo {nome}. La stessa cosa esiste con oggetti veri: chiedi a un grande.",
+    "tango": "Fatto! {nome}, domani la facciamo con le cose vere? Io porto le zampe."
+  },
+  "togetherSuggested": false
+}

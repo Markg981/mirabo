@@ -47,6 +47,8 @@ class _SequenceRoundState extends RoundState<SequenceRound> {
     final r = _rounds[index];
     final cards = (r['cards'] as List).cast<Map<String, dynamic>>();
     final turns = r['turns'] == true;
+    final sizes = r['sizes'] == true;
+    double sizeOf(int i) => sizes ? 40 + 100 * ((cards[i]['size'] as num).toDouble()) : 110;
     final expected = _placed.length;
     final whoseTurn = turns ? (expected.isEven ? 'Tocca a te, ${widget.ctx.profile.name}' : 'Tocca al grande') : null;
 
@@ -61,15 +63,17 @@ class _SequenceRoundState extends RoundState<SequenceRound> {
         // Fila da riempire
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.end,
+            spacing: 4,
             children: [
               for (var i = 0; i < cards.length; i++) ...[
                 i < _placed.length
-                    ? PicTile(emoji: cards[i]['emoji'] as String, label: cards[i]['label'] as String?, size: 110, selected: true)
+                    ? PicTile(emoji: cards[i]['emoji'] as String, label: cards[i]['label'] as String?, size: sizeOf(i), selected: true)
                     : Container(
-                        width: 110,
-                        height: 110,
+                        width: sizes ? 48 : 110,
+                        height: sizes ? 48 : 110,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(24),
                           border: Border.all(color: Theme.of(context).colorScheme.outlineVariant, width: 2),
@@ -96,6 +100,7 @@ class _SequenceRoundState extends RoundState<SequenceRound> {
                     PicTile(
                       emoji: cards[i]['emoji'] as String,
                       label: cards[i]['label'] as String?,
+                      size: sizes ? sizeOf(i) : 140,
                       highlight: showHint && i == expected,
                       dimmed: showHint && i != expected,
                       onTap: lastCorrect == true

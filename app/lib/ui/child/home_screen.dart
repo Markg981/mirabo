@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _section = 0; // 0 storie, 1 verso la scuola
+  int _section = 0; // 0 storie, 1 verso la scuola, 2 montessori
 
   static const _worldLabels = {
     World.emozioni: ('Emozioni', Icons.favorite_rounded, Color(0xFFE57373)),
@@ -35,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final profile = state.currentProfile!;
     final companion = state.companionOf(profile);
     final stories = state.storiesFor(profile);
-    final activities = state.activitiesFor(profile);
+    final activities = state.activitiesFor(profile, module: ActivityModule.scuola);
+    final montessori = state.activitiesFor(profile, module: ActivityModule.montessori);
 
     return Scaffold(
       body: SafeArea(
@@ -65,6 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     selected: _section == 1,
                     onTap: () => setState(() => _section = 1),
                   ),
+                  const SizedBox(height: 8),
+                  _SectionButton(
+                    icon: Icons.back_hand_rounded,
+                    label: 'Montessori',
+                    selected: _section == 2,
+                    onTap: () => setState(() => _section = 2),
+                  ),
                   const Spacer(),
                   _ModeChip(mode: state.mode),
                   const SizedBox(height: 16),
@@ -79,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.fromLTRB(8, 12, 12, 0),
                     child: Row(
                       children: [
-                        Text(_section == 0 ? 'Le storie' : 'Verso la scuola',
+                        Text(switch (_section) { 0 => 'Le storie', 1 => 'Verso la scuola', _ => 'Montessori' },
                             style: Theme.of(context).textTheme.headlineMedium),
                         const Spacer(),
                         IconButton(
@@ -92,7 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  if (_section == 1)
+                  if (_section == 2)
+                    Expanded(child: _ActivitiesGrid(activities: montessori))
+                  else if (_section == 1)
                     Expanded(child: _ActivitiesGrid(activities: activities))
                   else
                   Expanded(
@@ -204,6 +214,11 @@ class _ActivitiesGrid extends StatelessWidget {
     ActivityArea.autonomia: Color(0xFF4DB6AC),
     ActivityArea.sociale: Color(0xFF64B5F6),
     ActivityArea.paure: Color(0xFFFFB74D),
+    ActivityArea.vitaPratica: Color(0xFF81C784),
+    ActivityArea.sensoriale: Color(0xFFF06292),
+    ActivityArea.linguaggio: Color(0xFF7986CB),
+    ActivityArea.matematica: Color(0xFFFF8A65),
+    ActivityArea.cultura: Color(0xFF4DD0E1),
   };
 
   @override
@@ -256,6 +271,9 @@ class _ActivityCard extends StatelessWidget {
     ActivityType.sceneChoice: Icons.forum_rounded,
     ActivityType.explore: Icons.explore_rounded,
     ActivityType.countdown: Icons.calendar_month_rounded,
+    ActivityType.presentation: Icons.back_hand_rounded,
+    ActivityType.pairs: Icons.join_inner_rounded,
+    ActivityType.spell: Icons.abc_rounded,
   };
 
   @override
@@ -279,7 +297,8 @@ class _ActivityCard extends StatelessWidget {
                 Row(children: [
                   Icon(_icons[activity.type], size: 40, color: color),
                   const Spacer(),
-                  if (activity.togetherSuggested) const Icon(Icons.people_rounded, size: 22),
+                  if (activity.isHome) const Icon(Icons.home_rounded, size: 22)
+                  else if (activity.togetherSuggested) const Icon(Icons.people_rounded, size: 22),
                 ]),
                 const Spacer(),
                 Text(activity.title, style: Theme.of(context).textTheme.titleLarge, maxLines: 2),

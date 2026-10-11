@@ -1,0 +1,59 @@
+{
+  "id": "cilindri-suoni",
+  "title": "I cilindri dei suoni",
+  "area": "sensoriale",
+  "skill": "udito",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🥚",
+          "label": "6 contenitori uguali e opachi (ovetti, barattolini)"
+        },
+        {
+          "emoji": "🌾",
+          "label": "3 riempimenti diversi, due contenitori ciascuno: riso, sassolini, farina"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "👂",
+          "text": "Scuoti un contenitore vicino all'orecchio. Ascolta."
+        },
+        {
+          "emoji": "🔍",
+          "text": "Scuoti gli altri uno alla volta finché trovi quello che fa lo stesso suono."
+        },
+        {
+          "emoji": "👫",
+          "text": "Mettili vicini. Continua con gli altri."
+        },
+        {
+          "emoji": "🔓",
+          "text": "Alla fine apri le coppie: dentro c'è la stessa cosa?"
+        }
+      ],
+      "control": "Aprendo i contenitori si vede se le coppie erano giuste.",
+      "observe": "Se chiude gli occhi da solo per sentire meglio."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

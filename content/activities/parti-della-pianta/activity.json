@@ -1,0 +1,53 @@
+{
+  "id": "parti-della-pianta",
+  "title": "Le parti della pianta",
+  "area": "cultura",
+  "skill": "botanica",
+  "type": "pairs",
+  "ageBands": [
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "Una pianta vera sradicata (una pianta di fagiolo cresciuta nel cotone): toccare e nominare radici, fusto, foglie, fiore.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Abbina la parte al suo nome",
+          "pairs": [
+            [
+              "🌱",
+              "fusto"
+            ],
+            [
+              "🍃",
+              "foglia"
+            ],
+            [
+              "🌸",
+              "fiore"
+            ],
+            [
+              "🥕",
+              "radice"
+            ]
+          ],
+          "wordPairs": true
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, il materiale ce lo dice da solo.",
+    "pilu": "Guarda bene, {nome}: qui non serve che io ti dica se è giusto. Lo vedi tu.",
+    "tango": "Dai {nome}! Qui si può sbagliare quanto vuoi: si vede subito e si riprova."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Questa, se vuoi, si fa anche con le cose vere.",
+    "pilu": "Bravo {nome}. La stessa cosa esiste con oggetti veri: chiedi a un grande.",
+    "tango": "Fatto! {nome}, domani la facciamo con le cose vere? Io porto le zampe."
+  },
+  "togetherSuggested": false
+}

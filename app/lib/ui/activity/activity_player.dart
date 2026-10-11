@@ -10,9 +10,12 @@ import 'types/checklist_round.dart';
 import 'types/count_round.dart';
 import 'types/countdown_round.dart';
 import 'types/explore_round.dart';
+import 'types/pairs_round.dart';
 import 'types/pattern_round.dart';
+import 'types/presentation_round.dart';
 import 'types/scene_choice_round.dart';
 import 'types/sequence_round.dart';
+import 'types/spell_round.dart';
 import 'types/tap_match_round.dart';
 import 'types/trace_round.dart';
 
@@ -146,6 +149,9 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       ActivityType.sceneChoice => SceneChoiceRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.explore => ExploreRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.countdown => CountdownRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
+      ActivityType.presentation => PresentationRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
+      ActivityType.pairs => PairsRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
+      ActivityType.spell => SpellRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
     };
   }
 }

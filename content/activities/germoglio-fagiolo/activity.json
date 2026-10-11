@@ -1,0 +1,68 @@
+{
+  "id": "germoglio-fagiolo",
+  "title": "Il fagiolo nel cotone",
+  "area": "cultura",
+  "skill": "botanica",
+  "type": "presentation",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "offscreen": "È già un'attività con le mani: ripetila nei giorni seguenti senza ripresentarla, il bambino la sceglie da solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🫙",
+          "label": "Un barattolo di vetro"
+        },
+        {
+          "emoji": "☁️",
+          "label": "Cotone idrofilo"
+        },
+        {
+          "emoji": "🫘",
+          "label": "Due o tre fagioli secchi"
+        },
+        {
+          "emoji": "💧",
+          "label": "Acqua"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "☁️",
+          "text": "Riempi il barattolo di cotone e bagnalo: umido, non zuppo."
+        },
+        {
+          "emoji": "🫘",
+          "text": "Infila i fagioli tra il cotone e il vetro, così li vedi."
+        },
+        {
+          "emoji": "☀️",
+          "text": "Mettilo vicino a una finestra. Ogni giorno controlla che il cotone sia umido."
+        },
+        {
+          "emoji": "📓",
+          "text": "Ogni giorno disegna cosa vedi: prima niente, poi la radice, poi il germoglio."
+        }
+      ],
+      "control": "Il fagiolo stesso: se germoglia, le cure sono andate bene; se marcisce, c'era troppa acqua.",
+      "observe": "Dopo due settimane trapiantatelo nella terra: diventa la pianta di 'Prendersi cura di una pianta'."
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "{nome}, questa si fa con le mani, non sul tablet. Chiama un grande e io vi guardo.",
+    "pilu": "{nome}, per questa servono oggetti veri. Un grande ti fa vedere una volta, poi tocca a te.",
+    "tango": "{nome}! Lavoro vero! Chiama un grande: prima guarda, poi fai tu. Io non tocco niente, promesso."
+  },
+  "outro": {
+    "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+  },
+  "togetherSuggested": true
+}

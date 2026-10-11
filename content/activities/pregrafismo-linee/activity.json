@@ -1,0 +1,343 @@
+{
+  "id": "pregrafismo-linee",
+  "title": "Linee e onde",
+  "area": "linguaggio",
+  "skill": "pregrafismo",
+  "type": "trace",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "offscreen": "Le stesse linee con il dito nella sabbia o nella farina su un vassoio, poi con un pennarello grosso su un foglio grande.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "linea in giù",
+          "say": "dall'alto in basso",
+          "paths": [
+            [
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.5,
+                0.85
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "linea di lato",
+          "say": "da sinistra a destra",
+          "paths": [
+            [
+              [
+                0.15,
+                0.5
+              ],
+              [
+                0.85,
+                0.5
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "cerchio",
+          "say": "tutto intorno",
+          "paths": [
+            [
+              [
+                0.5,
+                0.15
+              ],
+              [
+                0.22,
+                0.3
+              ],
+              [
+                0.2,
+                0.7
+              ],
+              [
+                0.5,
+                0.85
+              ],
+              [
+                0.8,
+                0.7
+              ],
+              [
+                0.78,
+                0.3
+              ],
+              [
+                0.5,
+                0.15
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "onde",
+          "say": "su e giù come il mare",
+          "paths": [
+            [
+              [
+                0.1,
+                0.5
+              ],
+              [
+                0.25,
+                0.3
+              ],
+              [
+                0.4,
+                0.5
+              ],
+              [
+                0.55,
+                0.7
+              ],
+              [
+                0.7,
+                0.5
+              ],
+              [
+                0.85,
+                0.3
+              ],
+              [
+                0.95,
+                0.5
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "zigzag",
+          "say": "a punta",
+          "paths": [
+            [
+              [
+                0.1,
+                0.7
+              ],
+              [
+                0.3,
+                0.3
+              ],
+              [
+                0.5,
+                0.7
+              ],
+              [
+                0.7,
+                0.3
+              ],
+              [
+                0.9,
+                0.7
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "ponti",
+          "say": "un ponte, un altro ponte",
+          "paths": [
+            [
+              [
+                0.1,
+                0.7
+              ],
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.3,
+                0.7
+              ],
+              [
+                0.4,
+                0.3
+              ],
+              [
+                0.5,
+                0.7
+              ],
+              [
+                0.6,
+                0.3
+              ],
+              [
+                0.7,
+                0.7
+              ],
+              [
+                0.8,
+                0.3
+              ],
+              [
+                0.9,
+                0.7
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "spirale",
+          "say": "gira gira fino al centro",
+          "paths": [
+            [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.6,
+                0.45
+              ],
+              [
+                0.62,
+                0.58
+              ],
+              [
+                0.48,
+                0.66
+              ],
+              [
+                0.35,
+                0.55
+              ],
+              [
+                0.4,
+                0.35
+              ],
+              [
+                0.6,
+                0.28
+              ],
+              [
+                0.75,
+                0.45
+              ],
+              [
+                0.7,
+                0.68
+              ],
+              [
+                0.5,
+                0.8
+              ],
+              [
+                0.25,
+                0.7
+              ],
+              [
+                0.18,
+                0.42
+              ],
+              [
+                0.35,
+                0.18
+              ],
+              [
+                0.65,
+                0.14
+              ],
+              [
+                0.85,
+                0.35
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "ricci",
+          "say": "come i riccioli",
+          "paths": [
+            [
+              [
+                0.1,
+                0.6
+              ],
+              [
+                0.2,
+                0.4
+              ],
+              [
+                0.3,
+                0.6
+              ],
+              [
+                0.25,
+                0.75
+              ],
+              [
+                0.35,
+                0.6
+              ],
+              [
+                0.45,
+                0.4
+              ],
+              [
+                0.55,
+                0.6
+              ],
+              [
+                0.5,
+                0.75
+              ],
+              [
+                0.6,
+                0.6
+              ],
+              [
+                0.7,
+                0.4
+              ],
+              [
+                0.8,
+                0.6
+              ],
+              [
+                0.75,
+                0.75
+              ],
+              [
+                0.9,
+                0.6
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori",
+  "intro": {
+    "bo": "Proviamo insieme, {nome}? Se sbagliamo, il materiale ce lo dice da solo.",
+    "pilu": "Guarda bene, {nome}: qui non serve che io ti dica se è giusto. Lo vedi tu.",
+    "tango": "Dai {nome}! Qui si può sbagliare quanto vuoi: si vede subito e si riprova."
+  },
+  "outro": {
+    "bo": "Ce l'abbiamo fatta, {nome}. Questa, se vuoi, si fa anche con le cose vere.",
+    "pilu": "Bravo {nome}. La stessa cosa esiste con oggetti veri: chiedi a un grande.",
+    "tango": "Fatto! {nome}, domani la facciamo con le cose vere? Io porto le zampe."
+  },
+  "togetherSuggested": false
+}

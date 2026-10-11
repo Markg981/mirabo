@@ -89,3 +89,39 @@ Per ogni (profilo, attività) l'app tiene `level` (1..n), `successes`, `attempts
 `lastPlayed`. Regola adattiva: 3 successi consecutivi al primo tentativo → livello +1;
 2 round con 2 o più errori → livello −1. Le statistiche genitore traducono il livello in
 tappe descrittive: "sta iniziando / ci sta lavorando / ce la fa / lo fa da solo".
+
+## Modulo Montessori (`"module": "montessori"`)
+
+Aree: `vita-pratica`, `sensoriale`, `linguaggio` (include la scrittura), `matematica`, `cultura`.
+Le attività sono generate da `studio/seed_montessori.py`. Tre tipi in più:
+
+### `presentation` — presentazione da fare a casa
+Il cuore del modulo: materiali di casa, passi mostrati dal grande una volta sola, controllo
+dell'errore nel materiale, cosa osservare. Il bambino poi lavora da solo; alla fine il
+genitore segna "l'ha fatto" / "da solo" / "vuole rifarla".
+```json
+{ "materials": [ { "emoji": "🥣", "label": "Due ciotole uguali" } ],
+  "steps": [ { "emoji": "🥣", "text": "Versa piano nell'altra ciotola." } ],
+  "control": "I fagioli caduti dicono da soli se è riuscito.",
+  "observe": "Se raccoglie i fagioli caduti senza che glielo chiediate." }
+```
+
+### `pairs` — abbinamenti (tavolette dei colori, nomenclature, numero↔quantità)
+Due colonne mescolate; si tocca un elemento a sinistra e il suo compagno a destra.
+`wordPairs: true` quando il secondo elemento è una parola; `byLabel` + `labels` quando due
+emoji diverse formano coppia per una proprietà (stesso colore, stessa forma).
+```json
+{ "rounds": [ { "prompt": "Trova le coppie", "pairs": [["🟥","🟥"],["🟦","🟦"]] } ] }
+```
+
+### `spell` — alfabeto mobile
+Si compone una parola (o, per 7–10, una frase) toccando le lettere nell'ordine giusto;
+le lettere offerte sono quelle della parola più `extra`. Vocali blu, consonanti rosse,
+come nell'alfabeto mobile.
+```json
+{ "rounds": [ { "emoji": "☀️", "word": "SOLE", "extra": "AMR" } ] }
+```
+
+### Seriazione con `sequence`
+Un round con `"sizes": true` e carte con `size` (0–1) disegna le tessere in scala: torre
+rosa, scala marrone, aste. L'ordine giusto è quello del file.

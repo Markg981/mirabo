@@ -31,7 +31,9 @@ class AppState extends ChangeNotifier {
 
   List<Story> storiesFor(ChildProfile p) => repo.stories.where((s) => p.canOpen(s, mode)).toList();
 
-  List<Activity> activitiesFor(ChildProfile p) => repo.activities.where((a) => a.supports(p.ageBand)).toList();
+  List<Activity> activitiesFor(ChildProfile p, {ActivityModule? module}) => repo.activities
+      .where((a) => a.supports(p.ageBand) && (module == null || a.module == module))
+      .toList();
 
   /// Chiude una sessione di attività: salva i round, applica l'adattività,
   /// e conta la sessione come "storia completata" ai fini della crescita del compagno

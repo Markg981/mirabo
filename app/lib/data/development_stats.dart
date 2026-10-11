@@ -49,6 +49,19 @@ class DevelopmentStats {
     'distacco': 'Il saluto del mattino',
     'conoscere-la-scuola': 'Conoscere la scuola',
     'primo-giorno': 'Il primo giorno',
+    'travasi': 'Travasi e versare',
+    'motricita-fine': 'Motricità fine',
+    'cura-ambiente': 'Cura dell\'ambiente',
+    'dimensioni': 'Grandezze e seriazione',
+    'colori': 'Colori',
+    'forme': 'Forme',
+    'tatto': 'Tatto',
+    'udito': 'Udito',
+    'scrittura': 'Scrittura',
+    'vocabolario': 'Vocabolario',
+    'decine': 'Decine e unità',
+    'geografia': 'Geografia',
+    'botanica': 'Botanica',
   };
 
   static String label(String skill) => _skillLabels[skill] ?? skill;
@@ -94,6 +107,14 @@ class DevelopmentStats {
       }
       final ratio = of == 0 ? 0.0 : alone / of;
       return ratio >= 0.8 ? Stage.alone : (ratio >= 0.5 ? Stage.canDo : (ratio > 0 ? Stage.working : Stage.starting));
+    }
+    // Presentazioni a casa: conta cosa ha segnato il genitore.
+    final presentations = choices.where((r) => (r['choice'] as String).startsWith('presentation=')).toList();
+    if (presentations.isNotEmpty && presentations.length == rounds.length) {
+      final codes = presentations.map((r) => (r['choice'] as String).split('=')[1]).toList();
+      if (codes.contains('alone') || codes.contains('repeat')) return Stage.alone;
+      if (codes.contains('done')) return Stage.canDo;
+      return Stage.working;
     }
     // Tipi senza giusto/sbagliato: l'ha fatto.
     if (choices.length == rounds.length) return rounds.length >= 3 ? Stage.canDo : Stage.working;
