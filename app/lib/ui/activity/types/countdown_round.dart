@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/activity.dart';
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// Conto alla rovescia: il genitore imposta la data dell'evento (una volta);
@@ -33,9 +35,10 @@ class _CountdownRoundState extends State<CountdownRound> {
             const SizedBox(height: 12),
             const Text('Un grande sceglie la data; poi ogni giorno si colora un giorno.'),
             const SizedBox(height: 24),
-            FilledButton.icon(
-              icon: const Icon(Icons.calendar_month_rounded),
-              label: const Text('Scegli la data'),
+            ChunkyButton(
+              icon: Icons.calendar_month_rounded,
+              label: 'Scegli la data',
+              color: MiraboColors.sky,
               onPressed: () async {
                 final now = DateTime.now();
                 final picked = await showDatePicker(
@@ -104,12 +107,14 @@ class _CountdownRoundState extends State<CountdownRound> {
                   const Text('📌', style: TextStyle(fontSize: 32)),
                   const SizedBox(width: 12),
                   Expanded(child: Text(todaysTask, style: Theme.of(context).textTheme.bodyLarge)),
-                  FilledButton(
+                  ChunkyButton(
+                    label: 'Fatto',
+                    icon: Icons.check_rounded,
+                    color: MiraboColors.leaf,
                     onPressed: () {
                       widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'day=$dayIndex'));
                       widget.onFinished();
                     },
-                    child: const Text('Fatto'),
                   ),
                 ],
               ),

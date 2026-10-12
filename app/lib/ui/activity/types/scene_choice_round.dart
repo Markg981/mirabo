@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// Mini-scena con scelte: nessuna risposta è sbagliata. Dopo la scelta si vede
@@ -54,7 +56,7 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                   ],
                 ),
               ),
-              IconButton(icon: const Icon(Icons.volume_up_rounded), onPressed: () => widget.ctx.say('$text $prompt')),
+              RoundIconButton(icon: Icons.volume_up_rounded, tooltip: 'Riascolta', onPressed: () => widget.ctx.say('$text $prompt')),
             ],
           ),
         ),
@@ -86,21 +88,21 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
         if (chosen != null)
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
-            child: Card(
-              color: Theme.of(context).colorScheme.secondaryContainer,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
+            child: SoftPanel(
+              padding: const EdgeInsets.all(18),
+              child: Row(
                   children: [
                     Expanded(child: Text(options[chosen]['outcome'] as String, style: Theme.of(context).textTheme.bodyLarge)),
                     const SizedBox(width: 12),
-                    FilledButton(
+                    ChunkyButton(
+                      color: MiraboColors.leaf,
+                      icon: Icons.arrow_forward_rounded,
+                      iconAfter: true,
                       onPressed: () => complete(choice: _firstChoice),
-                      child: Text(index + 1 >= roundCount ? 'Fine' : 'Avanti'),
+                      label: index + 1 >= roundCount ? 'Fine' : 'Avanti',
                     ),
                   ],
                 ),
-              ),
             ),
           ),
       ],

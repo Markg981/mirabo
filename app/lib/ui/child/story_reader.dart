@@ -5,6 +5,8 @@ import '../../app_state.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
+import '../design/palette.dart';
+import '../design/widgets.dart';
 import 'companion_widget.dart';
 
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
@@ -93,110 +95,135 @@ class _StoryReaderState extends State<StoryReader> {
     final screen = _screen;
     final isDialogue = screen.kind == ScreenKind.dialogue;
     final canAdvance = !isDialogue || _mode == SessionMode.together || _dialogueAnswer != null;
+    final world = worldStyle(widget.story.world);
+    final tokens = MiraboTokens.of(context);
+    final accent = tokens.tint(world.color);
+    final text = Theme.of(context).textTheme;
 
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  // Illustrazione (segnaposto finché non ci sono i file)
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Semantics(
-                        image: true,
-                        label: screen.illustration.alt,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.all(24),
-                          child: Text(screen.illustration.alt,
-                              textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyMedium),
-                        ),
-                      ),
+      body: SceneBackdrop(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
+            child: Column(
+              children: [
+                // In alto: chiudi, avanzamento, riascolta.
+                Row(
+                  children: [
+                    RoundIconButton(
+                      icon: Icons.close_rounded,
+                      tooltip: 'Chiudi',
+                      onPressed: () => Navigator.of(context).pop(),
                     ),
-                  ),
-                  // Testo e compagno
-                  Expanded(
-                    flex: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 16, 16, 16),
+                    Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (screen.text != null)
-                            Expanded(
-                              child: SingleChildScrollView(
-                                child: Text(
-                                  screen.text!,
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                              ),
-                            ),
-                          if (screen.isKeyPhrase)
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              child: Text(widget.story.keyPhrase,
-                                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                        color: Theme.of(context).colorScheme.primary,
-                                      )),
-                            ),
-                          if (isDialogue) _buildDialogue(context, screen.dialogue!),
-                          if (screen.companionLines != null && !isDialogue)
-                            _CompanionBubble(
-                              companion: companion,
-                              stage: _profile.companionStage,
-                              text: _withName(screen.companionLines!.forCompanion(_profile.companion)),
-                            ),
+                          Text(widget.story.title,
+                              style: text.titleLarge?.copyWith(color: MiraboColors.navy),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis),
+                          const SizedBox(height: 6),
+                          StepDots(count: _variant.screens.length, current: _index, color: MiraboColors.navy),
                         ],
                       ),
                     ),
+                    RoundIconButton(icon: Icons.volume_up_rounded, tooltip: 'Rileggi', onPressed: _speakCurrent),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Illustrazione (segnaposto finché non ci sono i file)
+                      Expanded(
+                        flex: 5,
+                        child: _IllustrationPlaceholder(alt: screen.illustration.alt, color: accent, icon: world.icon),
+                      ),
+                      const SizedBox(width: 20),
+                      // Testo e compagno
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (screen.text != null)
+                              Flexible(
+                                child: SoftPanel(
+                                  padding: const EdgeInsets.fromLTRB(26, 22, 26, 22),
+                                  child: SingleChildScrollView(
+                                    child: Text(screen.text!, style: text.bodyLarge?.copyWith(fontSize: 24)),
+                                  ),
+                                ),
+                              )
+                            else
+                              const Spacer(),
+                            if (screen.isKeyPhrase)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 14),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+                                  decoration: BoxDecoration(
+                                    color: tokens.tint(MiraboColors.sun),
+                                    borderRadius: BorderRadius.circular(22),
+                                    boxShadow: [
+                                      BoxShadow(color: MiraboColors.deep(tokens.tint(MiraboColors.sun), 0.14), offset: const Offset(0, 5)),
+                                    ],
+                                  ),
+                                  child: Row(children: [
+                                    const Icon(Icons.star_rounded, color: Colors.white, size: 34),
+                                    const SizedBox(width: 10),
+                                    Expanded(child: Text(widget.story.keyPhrase, style: text.titleLarge)),
+                                  ]),
+                                ),
+                              ),
+                            if (isDialogue) ...[
+                              const SizedBox(height: 14),
+                              _buildDialogue(context, screen.dialogue!),
+                            ],
+                            if (screen.companionLines != null && !isDialogue) ...[
+                              const SizedBox(height: 14),
+                              _CompanionBubble(
+                                companion: companion,
+                                stage: _profile.companionStage,
+                                text: _withName(screen.companionLines!.forCompanion(_profile.companion)),
+                                // Senza testo della storia il compagno ha tutta la colonna.
+                                size: screen.text == null ? 190 : 96,
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            // Barra di navigazione: grande, poche cose.
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-              child: Row(
-                children: [
-                  IconButton(
-                    tooltip: 'Chiudi',
-                    icon: const Icon(Icons.close_rounded, size: 32),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  IconButton(
-                    tooltip: 'Rileggi',
-                    icon: const Icon(Icons.volume_up_rounded, size: 32),
-                    onPressed: _speakCurrent,
-                  ),
-                  const Spacer(),
-                  Text('${_index + 1} / ${_variant.screens.length}', style: Theme.of(context).textTheme.bodyMedium),
-                  const SizedBox(width: 16),
-                  if (_index > 0)
-                    IconButton(
-                      tooltip: 'Indietro',
-                      icon: const Icon(Icons.arrow_back_rounded, size: 32),
-                      onPressed: () {
-                        setState(() => _index--);
-                        _speakCurrent();
-                      },
+                ),
+                const SizedBox(height: 12),
+                // In basso: indietro e avanti, grandi.
+                Row(
+                  children: [
+                    if (_index > 0)
+                      RoundIconButton(
+                        icon: Icons.arrow_back_rounded,
+                        tooltip: 'Indietro',
+                        size: 64,
+                        onPressed: () {
+                          setState(() => _index--);
+                          _speakCurrent();
+                        },
+                      ),
+                    const Spacer(),
+                    ChunkyButton(
+                      label: _isLast ? 'A domani!' : 'Avanti',
+                      icon: _isLast ? Icons.waving_hand_rounded : Icons.arrow_forward_rounded,
+                      iconAfter: !_isLast,
+                      color: _isLast ? MiraboColors.apricot : MiraboColors.leaf,
+                      onPressed: canAdvance ? _next : null,
                     ),
-                  FilledButton.icon(
-                    onPressed: canAdvance ? _next : null,
-                    icon: Icon(_isLast ? Icons.waving_hand_rounded : Icons.arrow_forward_rounded),
-                    label: Text(_isLast ? 'A domani!' : 'Avanti'),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -205,17 +232,15 @@ class _StoryReaderState extends State<StoryReader> {
   Widget _buildDialogue(BuildContext context, Dialogue dialogue) {
     final companion = _state.companionOf(_profile);
     if (_mode == SessionMode.together) {
-      return Card(
-        color: Theme.of(context).colorScheme.secondaryContainer,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              const Icon(Icons.people_rounded),
-              const SizedBox(width: 12),
-              Expanded(child: Text(dialogue.together, style: Theme.of(context).textTheme.bodyMedium)),
-            ],
-          ),
+      return SoftPanel(
+        padding: const EdgeInsets.all(18),
+        color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.teal), 0.85),
+        child: Row(
+          children: [
+            const IconBadge(icon: Icons.people_rounded, color: MiraboColors.teal, size: 52),
+            const SizedBox(width: 14),
+            Expanded(child: Text(dialogue.together, style: Theme.of(context).textTheme.bodyMedium)),
+          ],
         ),
       );
     }
@@ -232,18 +257,25 @@ class _StoryReaderState extends State<StoryReader> {
                   .reaction
                   .forCompanion(_profile.companion)),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         Wrap(
           spacing: 12,
-          runSpacing: 12,
+          runSpacing: 4,
           children: [
             for (final o in dialogue.options)
-              ChoiceChip(
-                label: Text(o.label),
-                selected: _dialogueAnswer == o.id,
-                onSelected: (_) => _choose(o),
-                labelStyle: const TextStyle(fontSize: 18),
-                padding: const EdgeInsets.all(16),
+              BlockTile(
+                onTap: () => _choose(o),
+                radius: 20,
+                depth: 6,
+                color: _dialogueAnswer == o.id ? MiraboTokens.of(context).tint(MiraboColors.sky) : MiraboColors.paper,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                semanticLabel: o.label,
+                child: Text(
+                  o.label,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: _dialogueAnswer == o.id ? Colors.white : MiraboColors.ink,
+                      ),
+                ),
               ),
           ],
         ),
@@ -252,28 +284,89 @@ class _StoryReaderState extends State<StoryReader> {
   }
 }
 
+/// Riquadro dell'illustrazione finché i disegni non ci sono: il colore e
+/// l'icona del mondo, con la descrizione della scena come didascalia.
+class _IllustrationPlaceholder extends StatelessWidget {
+  const _IllustrationPlaceholder({required this.alt, required this.color, required this.icon});
+  final String alt;
+  final Color color;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      image: true,
+      label: alt,
+      excludeSemantics: true,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(32),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color.lerp(color, Colors.white, 0.15)!, MiraboColors.deep(color, 0.06)],
+          ),
+          boxShadow: [
+            BoxShadow(color: MiraboColors.deep(color, 0.16), offset: const Offset(0, 8)),
+            ...softShadow(),
+          ],
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          children: [
+            Positioned(right: -60, top: -60, child: _disc(240, 0.14)),
+            Positioned(left: -40, bottom: -80, child: _disc(260, 0.10)),
+            Positioned(left: 40, top: 40, child: _disc(26, 0.35)),
+            Positioned(right: 70, bottom: 120, child: _disc(16, 0.4)),
+            Center(child: Icon(icon, size: 150, color: Colors.white.withValues(alpha: 0.9))),
+            Positioned(
+              left: 18,
+              right: 18,
+              bottom: 18,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.88),
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                child: Text(alt,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: MiraboColors.ink),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _disc(double size, double alpha) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(color: Colors.white.withValues(alpha: alpha), shape: BoxShape.circle),
+      );
+}
+
 class _CompanionBubble extends StatelessWidget {
-  const _CompanionBubble({required this.companion, required this.stage, required this.text});
+  const _CompanionBubble({required this.companion, required this.stage, required this.text, this.size = 96});
   final Companion companion;
   final int stage;
   final String text;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        CompanionWidget(companion: companion, stage: stage, size: 72),
-        const SizedBox(width: 12),
+        CompanionWidget(companion: companion, stage: stage, size: size),
+        const SizedBox(width: 6),
         Expanded(
-          child: Container(
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
-            ),
-            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+          child: SpeechBubble(
+            tail: TailSide.left,
+            tailAt: 0.8,
+            child: Text(text, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20)),
           ),
         ),
       ],
