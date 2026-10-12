@@ -1,0 +1,49 @@
+{
+  "title": "Pouring beans",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Two identical bowls"
+        },
+        {
+          "label": "A handful of beans or chickpeas"
+        },
+        {
+          "label": "A tray"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Carry the tray to the table with two hands, slowly."
+        },
+        {
+          "text": "Pick up the full bowl with two hands and pour into the other one, slowly, without talking."
+        },
+        {
+          "text": "Look: has a bean fallen out? Pick it up with two fingers and put it in the bowl."
+        },
+        {
+          "text": "Now pour the beans back into the first bowl. Repeat as many times as you like."
+        },
+        {
+          "text": "Take the tray back to where you found it."
+        }
+      ],
+      "control": "The beans that fell onto the tray show by themselves whether the pouring went well: the grown-up doesn't need to say so.",
+      "observe": "How many times they repeat it, whether they use two hands, whether they pick up fallen beans without being asked."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

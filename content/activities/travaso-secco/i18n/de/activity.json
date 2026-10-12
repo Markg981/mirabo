@@ -1,0 +1,49 @@
+{
+  "title": "Bohnen umschütten",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Zwei gleiche Schüsseln"
+        },
+        {
+          "label": "Eine Handvoll Bohnen oder Kichererbsen"
+        },
+        {
+          "label": "Ein Tablett"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Trag das Tablett mit beiden Händen langsam zum Tisch."
+        },
+        {
+          "text": "Nimm die volle Schüssel mit beiden Händen und schütte langsam und ohne zu sprechen in die andere."
+        },
+        {
+          "text": "Schau: Ist eine Bohne herausgefallen? Heb sie mit zwei Fingern auf und leg sie in die Schüssel."
+        },
+        {
+          "text": "Jetzt schüttest du die Bohnen zurück in die erste Schüssel. Wiederhole es, so oft du willst."
+        },
+        {
+          "text": "Bring das Tablett dorthin zurück, wo du es geholt hast."
+        }
+      ],
+      "control": "Die Bohnen auf dem Tablett zeigen von selbst, ob das Umschütten geklappt hat: Der Erwachsene muss nichts sagen.",
+      "observe": "Wie oft es wiederholt, ob es beide Hände nimmt, ob es heruntergefallene Bohnen aufhebt, ohne dass Sie es sagen."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

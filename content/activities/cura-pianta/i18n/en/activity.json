@@ -1,0 +1,46 @@
+{
+  "title": "Looking after a plant",
+  "offscreen": "After a month, a second plant: it becomes 'their green corner'.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "A potted plant all of their own"
+        },
+        {
+          "label": "A small jug"
+        },
+        {
+          "label": "A damp cloth"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Touch the soil with a finger: is it dry or wet?"
+        },
+        {
+          "text": "If it's dry, pour a little water around the stem, not on the leaves."
+        },
+        {
+          "text": "Clean one leaf at a time with the cloth, holding it from underneath."
+        },
+        {
+          "text": "Mark on the calendar the day you watered it."
+        }
+      ],
+      "control": "Wet soil tells you when no more water is needed; the leaves shine when they're clean.",
+      "observe": "It links to the story of Emma's tree: it's the same action, in the real world."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

@@ -1,0 +1,45 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "VOLCAN",
+          "extra": "EIT"
+        },
+        {
+          "word": "RUISSEAU",
+          "extra": "ONT"
+        },
+        {
+          "word": "COLÈRE",
+          "extra": "AIT"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sentence": "LE VOLCAN MONTE PUIS DESCEND",
+          "extra": "TM"
+        },
+        {
+          "sentence": "EMMA AIDE LE RUISSEAU",
+          "extra": "OP"
+        }
+      ]
+    }
+  ],
+  "title": "Je recopie le mot",
+  "offscreen": "Un cahier à lignes : chaque jour, un mot de l'histoire lue, écrit trois fois en cursive.",
+  "intro": {
+    "bo": "{nome}, ici on écrit des mots entiers. Moi, je mélange les lettres, toi non.",
+    "pilu": "Des mots longs, {nome} : une lettre à la fois, et le son te dit laquelle.",
+    "tango": "{nome}, des mots de grands ! Allez, une lettre à la fois."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,57 @@
+{
+  "title": "El primer día",
+  "offscreen": "Contarle al niño vuestro primer día de colegio, con algo que daba miedo y cómo salió.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Es el primer día. Delante de la puerta notas la barriga apretada.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Se lo digo a mamá o papá",
+              "outcome": "Te dicen que es normal y que la barriga se suelta cuando entras."
+            },
+            {
+              "label": "Aprieto mi peluche",
+              "outcome": "El peluche te acompaña hasta la percha y luego te espera allí."
+            },
+            {
+              "label": "Entro y miro",
+              "outcome": "Dentro hay una maestra que dice tu nombre. Ya te conoce."
+            }
+          ]
+        },
+        {
+          "text": "En clase no conoces a nadie.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Miro qué hacen los demás",
+              "outcome": "Ves a un niño con las construcciones. Te acercas."
+            },
+            {
+              "label": "Le digo mi nombre a alguien",
+              "outcome": "Se llama Sara. Os sentáis juntos."
+            },
+            {
+              "label": "Me quedo cerca de la maestra",
+              "outcome": "La maestra te lleva a un grupo y te presenta."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

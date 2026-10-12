@@ -1,0 +1,46 @@
+{
+  "title": "Die Zehnerperlen",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Perlen oder Nudeln, auf Schnüre zu je 10 aufgefädelt (mindestens 5 machen)"
+        },
+        {
+          "label": "Einzelne Perlen für die Einer"
+        },
+        {
+          "label": "Kärtchen mit den Zahlen 10, 20, 30... und 1–9"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Zähl die Perlen auf einer Schnur: zehn. Eine Schnur ist ein Zehner."
+        },
+        {
+          "text": "Leg die Schnüre in eine Reihe: 10, 20, 30... und leg das richtige Kärtchen dazu."
+        },
+        {
+          "text": "Leg einzelne Perlen zu einer Schnur: 10 und 3 sind 13. Such das Kärtchen."
+        },
+        {
+          "text": "Jetzt sagt der Erwachsene eine Zahl (24), und du legst sie mit Schnüren und Perlen."
+        }
+      ],
+      "control": "Beim Zählen der Perlen sieht man, ob die gelegte Zahl die gesagte ist.",
+      "observe": "Ob es vom Einzeln-Zählen zum Zählen in Zehnern übergeht."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

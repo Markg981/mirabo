@@ -1,0 +1,140 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "I spy something beginning with A",
+          "say": "a",
+          "options": [
+            {
+              "emoji": "🍎",
+              "label": "apple",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "fish",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "moon",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "I spy something beginning with O",
+          "say": "o",
+          "options": [
+            {
+              "emoji": "🐙",
+              "label": "octopus",
+              "correct": true
+            },
+            {
+              "emoji": "🐻",
+              "label": "bear",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "car",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "I spy something beginning with T",
+          "say": "t",
+          "options": [
+            {
+              "emoji": "🐢",
+              "label": "turtle",
+              "correct": true
+            },
+            {
+              "emoji": "🐶",
+              "label": "dog",
+              "correct": false
+            },
+            {
+              "emoji": "🐱",
+              "label": "cat",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "I spy something ending with G",
+          "say": "...g",
+          "options": [
+            {
+              "emoji": "🐶",
+              "label": "dog",
+              "correct": true
+            },
+            {
+              "emoji": "🐷",
+              "label": "pig",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "moon",
+              "correct": false
+            },
+            {
+              "emoji": "🍎",
+              "label": "apple",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "I spy something with the sound R in it",
+          "say": "rrr",
+          "options": [
+            {
+              "emoji": "🐸",
+              "label": "frog",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "tree",
+              "correct": true
+            },
+            {
+              "emoji": "🐝",
+              "label": "bee",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "moon",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "The sound game",
+  "offscreen": "'I spy with my little eye something beginning with mmm': you can play it anywhere, with real objects in front of you.",
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, the material tells us by itself.",
+    "pilu": "Look carefully, {nome}: I don't need to tell you if it's right here. You can see it yourself.",
+    "tango": "Come on, {nome}! You can make as many mistakes as you like here: you see it straight away and try again."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

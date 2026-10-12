@@ -1,0 +1,43 @@
+{
+  "title": "Les boîtes à sons",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "6 contenants identiques et opaques (œufs en plastique, petits pots)"
+        },
+        {
+          "label": "3 remplissages différents, deux contenants pour chacun : riz, petits cailloux, farine"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Secoue un contenant près de ton oreille. Écoute."
+        },
+        {
+          "text": "Secoue les autres un par un jusqu'à trouver celui qui fait le même bruit."
+        },
+        {
+          "text": "Mets-les côte à côte. Continue avec les autres."
+        },
+        {
+          "text": "À la fin, ouvre les paires : il y a la même chose dedans ?"
+        }
+      ],
+      "control": "En ouvrant les contenants, on voit si les paires étaient justes.",
+      "observe": "S'il ferme les yeux tout seul pour mieux entendre."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

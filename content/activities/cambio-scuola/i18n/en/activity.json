@@ -1,0 +1,57 @@
+{
+  "title": "Changing school",
+  "intro": {
+    "bo": "{nome}, a new school is a bit scary even for grown-ups. Let's see what we can do.",
+    "pilu": "Changing school, {nome}: everything's new, but you're still you. Let's look at the situations.",
+    "tango": "New school, {nome}! I'd just run straight in. But maybe there's a better way."
+  },
+  "offscreen": "Make a list together of three things that stay the same (old friends, sport, home).",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "New school. Everyone already knows each other, and you don't know anyone.",
+          "prompt": "What do you do?",
+          "options": [
+            {
+              "label": "I introduce myself to whoever is next to me",
+              "outcome": "The child sitting next to you shows you where things are."
+            },
+            {
+              "label": "I wait a few days",
+              "outcome": "That's fine: after three days you already know who plays what."
+            },
+            {
+              "label": "I ask the teacher to introduce me",
+              "outcome": "The teacher does, and gives you a buddy to show you around."
+            }
+          ]
+        },
+        {
+          "text": "Here they do something you didn't do at your old school.",
+          "prompt": "What do you do?",
+          "options": [
+            {
+              "label": "I say I've never done it",
+              "outcome": "The teacher says: no problem, I'll explain it to you."
+            },
+            {
+              "label": "I copy the others",
+              "outcome": "It half works. In the end you ask."
+            },
+            {
+              "label": "I tell them at home",
+              "outcome": "You talk about it at home, and the next day you ask more calmly."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

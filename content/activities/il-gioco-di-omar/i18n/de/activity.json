@@ -1,0 +1,57 @@
+{
+  "title": "Omars Spielzeug",
+  "offscreen": "Abwechselnd mit einer Küchenuhr spielen: Wenn sie klingelt, gibt man das Spielzeug weiter.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Omar hat das Spielzeug, das du haben wolltest.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich frage, ob ich danach spielen darf",
+              "outcome": "Omar sagt: Gleich gebe ich es dir. Solange spielst du mit den Bausteinen."
+            },
+            {
+              "label": "Ich nehme es mir",
+              "outcome": "Omar wird wütend und weint. Die Erzieherin kommt. Keiner spielt mehr."
+            },
+            {
+              "label": "Ich frage, ob wir zusammen spielen",
+              "outcome": "Omar überlegt und sagt ja. Ihr spielt zu zweit."
+            }
+          ]
+        },
+        {
+          "text": "Zwei Kinder spielen, und du möchtest mitmachen.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich frage: Darf ich mitspielen?",
+              "outcome": "Sie sagen ja! Du darfst der Hund sein."
+            },
+            {
+              "label": "Ich schaue eine Weile aus der Nähe zu",
+              "outcome": "Nach einer Weile fragen sie dich, ob du mitspielen willst."
+            },
+            {
+              "label": "Ich gehe woanders hin",
+              "outcome": "Das ist auch in Ordnung. Vielleicht fragst du morgen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

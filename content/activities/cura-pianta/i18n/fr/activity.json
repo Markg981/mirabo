@@ -1,0 +1,46 @@
+{
+  "title": "Prendre soin d'une plante",
+  "offscreen": "Après un mois, une deuxième plante : elle devient « son coin vert ».",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Une plante en pot rien qu'à lui"
+        },
+        {
+          "label": "Un petit pichet"
+        },
+        {
+          "label": "Un chiffon humide"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Touche la terre avec un doigt : elle est sèche ou mouillée ?"
+        },
+        {
+          "text": "Si elle est sèche, verse un peu d'eau autour de la tige, pas sur les feuilles."
+        },
+        {
+          "text": "Nettoie une feuille à la fois avec le chiffon, en la tenant par-dessous."
+        },
+        {
+          "text": "Note sur le calendrier le jour où tu l'as arrosée."
+        }
+      ],
+      "control": "La terre mouillée dit quand il ne faut plus d'eau ; les feuilles brillent quand elles sont propres.",
+      "observe": "Cela rejoint l'histoire de l'arbre d'Emma : c'est le même geste, dans le vrai monde."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

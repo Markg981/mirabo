@@ -1,0 +1,186 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Touche celui qui commence par M",
+          "say": "mmm, M",
+          "options": [
+            {
+              "emoji": "🏍️",
+              "label": "moto",
+              "correct": true
+            },
+            {
+              "emoji": "🚗",
+              "label": "voiture",
+              "correct": false
+            },
+            {
+              "emoji": "🐘",
+              "label": "éléphant",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Touche celui qui commence par S",
+          "say": "sss, S",
+          "options": [
+            {
+              "emoji": "☀️",
+              "label": "soleil",
+              "correct": true
+            },
+            {
+              "emoji": "🐱",
+              "label": "chat",
+              "correct": false
+            },
+            {
+              "emoji": "🍌",
+              "label": "banane",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Touche celui qui commence par P",
+          "say": "p, P",
+          "options": [
+            {
+              "emoji": "🍞",
+              "label": "pain",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "lune",
+              "correct": false
+            },
+            {
+              "emoji": "🐟",
+              "label": "poisson",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Touche tous ceux qui commencent par B",
+          "say": "b, B",
+          "options": [
+            {
+              "emoji": "🍌",
+              "label": "banane",
+              "correct": true
+            },
+            {
+              "emoji": "⛵",
+              "label": "bateau",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "arbre",
+              "correct": false
+            },
+            {
+              "emoji": "🍬",
+              "label": "bonbon",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "prompt": "Touche tous ceux qui commencent par L",
+          "say": "l, L",
+          "options": [
+            {
+              "emoji": "🌙",
+              "label": "lune",
+              "correct": true
+            },
+            {
+              "emoji": "🦁",
+              "label": "lion",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "poisson",
+              "correct": false
+            },
+            {
+              "emoji": "📚",
+              "label": "livre",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Touche celui qui finit par le son « o »",
+          "say": "...o",
+          "options": [
+            {
+              "emoji": "🚲",
+              "label": "vélo",
+              "correct": true
+            },
+            {
+              "emoji": "🐘",
+              "label": "éléphant",
+              "correct": false
+            },
+            {
+              "emoji": "☀️",
+              "label": "soleil",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Touche celui qui rime avec chat",
+          "say": "chat... rat",
+          "options": [
+            {
+              "emoji": "🐀",
+              "label": "rat",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "pomme",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "voiture",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Écoute le son",
+  "offscreen": "Le jeu « je vois, je vois » : « je vois quelque chose qui commence par mmm... » dans la cuisine ou en voiture.",
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, on recommence.",
+    "pilu": "Regarde bien, {nome}. Ensuite, tu me dis ce que tu en penses.",
+    "tango": "Allez, {nome}, on y va ! Doucement quand même... d'accord, doucement."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

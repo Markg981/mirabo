@@ -1,0 +1,43 @@
+{
+  "title": "Les barres numériques",
+  "offscreen": "Dix bandes de carton de longueur croissante, colorées en segments rouges et bleus : compter les segments et les ranger.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        },
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        },
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        },
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        },
+        {
+          "prompt": "Combien de morceaux a cette barre ?"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

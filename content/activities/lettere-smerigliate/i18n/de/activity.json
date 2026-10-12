@@ -1,0 +1,101 @@
+{
+  "title": "Die Sandpapierbuchstaben",
+  "offscreen": "Buchstaben aus Sandpapier auf Karton geklebt: Das Kind fährt sie mit zwei Fingern nach und sagt den Laut dazu, dann malt es sie in den Sand.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "say": "I"
+        },
+        {
+          "say": "L"
+        },
+        {
+          "say": "O"
+        },
+        {
+          "say": "T"
+        },
+        {
+          "say": "A"
+        },
+        {
+          "say": "M"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "E"
+        },
+        {
+          "say": "U"
+        },
+        {
+          "say": "V"
+        },
+        {
+          "say": "N"
+        },
+        {
+          "say": "C"
+        },
+        {
+          "say": "S"
+        },
+        {
+          "say": "P"
+        },
+        {
+          "say": "R"
+        },
+        {
+          "say": "B"
+        },
+        {
+          "say": "D"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "i"
+        },
+        {
+          "say": "l"
+        },
+        {
+          "say": "o"
+        },
+        {
+          "say": "a"
+        },
+        {
+          "say": "e"
+        },
+        {
+          "say": "u"
+        },
+        {
+          "say": "m"
+        },
+        {
+          "say": "t"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

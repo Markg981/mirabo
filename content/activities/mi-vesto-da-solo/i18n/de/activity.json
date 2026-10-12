@@ -1,0 +1,62 @@
+{
+  "title": "Ich ziehe mich allein an",
+  "offscreen": "Die Kleider schon in der Reihenfolge auf den Stuhl legen, in der man sie anzieht.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Was ziehe ich zuerst an?",
+          "cards": [
+            {
+              "label": "Unterhose"
+            },
+            {
+              "label": "T-Shirt"
+            },
+            {
+              "label": "Jacke"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Was ziehe ich zuerst an?",
+          "cards": [
+            {
+              "label": "Unterhose"
+            },
+            {
+              "label": "Socken"
+            },
+            {
+              "label": "Hose"
+            },
+            {
+              "label": "T-Shirt"
+            },
+            {
+              "label": "Schuhe"
+            },
+            {
+              "label": "Jacke"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

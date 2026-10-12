@@ -1,0 +1,46 @@
+{
+  "title": "The ten bead bars",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Beads or pasta to thread onto strings of 10 (make at least 5)"
+        },
+        {
+          "label": "Loose beads for the units"
+        },
+        {
+          "label": "Cards with the numbers 10, 20, 30... and 1–9"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Count the beads on one string: ten. One string is a ten."
+        },
+        {
+          "text": "Line the strings up: 10, 20, 30... and put the right card next to them."
+        },
+        {
+          "text": "Add loose beads to a string: 10 and 3 makes 13. Find the card."
+        },
+        {
+          "text": "Now the grown-up says a number (24) and you build it with strings and beads."
+        }
+      ],
+      "control": "Counting the beads shows whether the number built is the one that was said.",
+      "observe": "Whether they move from counting one by one to counting in tens."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Zahlen und Mengen",
+  "offscreen": "Die Spindelkästen: zehn Fächer mit den Zahlen 0 bis 9 und Stäbchen, die man laut zählend hineinlegt.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne die Zahl der Menge zu"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne die Zahl der Menge zu"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne die Zahl der Menge zu"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

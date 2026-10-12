@@ -1,0 +1,36 @@
+{
+  "title": "Cuenta atrás",
+  "offscreen": "Un calendario de papel en la nevera: cada noche se colorea un día.",
+  "levels": [
+    {
+      "event": "el primer día de colegio",
+      "daily": [
+        "Hoy elegimos la mochila",
+        "Hoy escribimos el nombre en las cosas",
+        "Hoy pasamos por delante de la escuela",
+        "Hoy probamos a vestirnos solos",
+        "Hoy hacemos nuestra despedida",
+        "Hoy leemos un cuento sobre la escuela",
+        "Hoy preparamos la merienda como en el cole",
+        "Hoy pedimos ayuda a alguien para una cosa",
+        "Hoy jugamos por turnos",
+        "Hoy elegimos la ropa del primer día",
+        "Hoy nos vamos a la cama un poco antes",
+        "Hoy jugamos a que estamos en el comedor",
+        "Hoy preparamos la mochila de verdad",
+        "¡Mañana vamos! Esta noche la despedida, mañana la escuela"
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Las letras de lija",
+  "offscreen": "Letras de papel de lija pegadas en cartulinas: el niño las toca con dos dedos diciendo el sonido y luego las traza en la arena.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "say": "I"
+        },
+        {
+          "say": "L"
+        },
+        {
+          "say": "O"
+        },
+        {
+          "say": "T"
+        },
+        {
+          "say": "A"
+        },
+        {
+          "say": "M"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "E"
+        },
+        {
+          "say": "U"
+        },
+        {
+          "say": "V"
+        },
+        {
+          "say": "N"
+        },
+        {
+          "say": "C"
+        },
+        {
+          "say": "S"
+        },
+        {
+          "say": "P"
+        },
+        {
+          "say": "R"
+        },
+        {
+          "say": "B"
+        },
+        {
+          "say": "D"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "i"
+        },
+        {
+          "say": "l"
+        },
+        {
+          "say": "o"
+        },
+        {
+          "say": "a"
+        },
+        {
+          "say": "e"
+        },
+        {
+          "say": "u"
+        },
+        {
+          "say": "m"
+        },
+        {
+          "say": "t"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

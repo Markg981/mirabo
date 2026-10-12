@@ -1,0 +1,57 @@
+{
+  "title": "Cambio de escuela",
+  "intro": {
+    "bo": "{nome}, una escuela nueva da un poco de miedo incluso a los mayores. Veamos qué se puede hacer.",
+    "pilu": "Cambiar de escuela, {nome}: todo es nuevo, pero tú sigues siendo tú. Miremos las situaciones.",
+    "tango": "¡Escuela nueva, {nome}! Yo entraría corriendo y ya está. Pero quizá hay una manera mejor."
+  },
+  "offscreen": "Hacer juntos una lista de tres cosas que siguen igual (los amigos de antes, el deporte, la casa).",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Escuela nueva. Todos se conocen ya y tú no.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Me presento a quien tengo al lado",
+              "outcome": "El compañero de mesa te explica dónde están las cosas."
+            },
+            {
+              "label": "Espero unos días",
+              "outcome": "Está bien: a los tres días ya sabes quién juega a qué."
+            },
+            {
+              "label": "Le pido a la maestra que me presente",
+              "outcome": "La maestra lo hace y te asigna un compañero guía."
+            }
+          ]
+        },
+        {
+          "text": "Aquí hacen algo que en tu escuela no hacíais.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Digo que nunca lo he hecho",
+              "outcome": "La maestra dice: no pasa nada, te lo explico."
+            },
+            {
+              "label": "Copio a los demás",
+              "outcome": "Funciona a medias. Al final preguntas."
+            },
+            {
+              "label": "Lo cuento en casa",
+              "outcome": "En casa lo habláis y al día siguiente preguntas con más calma."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

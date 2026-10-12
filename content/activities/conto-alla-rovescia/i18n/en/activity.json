@@ -1,0 +1,36 @@
+{
+  "title": "Countdown",
+  "offscreen": "A paper calendar on the fridge: colour in one day every evening.",
+  "levels": [
+    {
+      "event": "the first day of school",
+      "daily": [
+        "Today we choose the school bag",
+        "Today we write your name on your things",
+        "Today we walk past the school",
+        "Today we try getting dressed on our own",
+        "Today we do our goodbye",
+        "Today we read a story about school",
+        "Today we make a snack like at school",
+        "Today we ask someone for help with something",
+        "Today we play taking turns",
+        "Today we choose the clothes for the first day",
+        "Today we go to bed a bit earlier",
+        "Today we pretend we're in the dining hall",
+        "Today we pack the school bag for real",
+        "Tomorrow's the day! Our goodbye tonight, school tomorrow"
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, we'll try again.",
+    "pilu": "Look carefully, {nome}. Then tell me what you think.",
+    "tango": "Come on, {nome}, let's do it! Slowly though... all right, slowly."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

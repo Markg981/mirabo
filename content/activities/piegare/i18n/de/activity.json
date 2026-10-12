@@ -1,0 +1,40 @@
+{
+  "title": "Servietten falten",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Drei Stoffservietten mit einer aufgenähten oder aufgemalten Linie in der Mitte"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Leg die Serviette glatt hin, mit der Linie vor dir."
+        },
+        {
+          "text": "Nimm die beiden unteren Ecken und leg sie auf die oberen Ecken, an der Linie entlang."
+        },
+        {
+          "text": "Streich mit der Hand über den Knick, damit er flach wird."
+        },
+        {
+          "text": "Mach das Gleiche mit den anderen beiden. Dann falte sie auf und fang von vorn an."
+        }
+      ],
+      "control": "Wenn die Ecken nicht aufeinanderliegen, ist die Linie nicht verdeckt: Das sieht es selbst.",
+      "observe": "Wie genau die Ecken liegen und wie sorgfältig es über den Knick streicht."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

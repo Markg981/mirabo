@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/content/story_repository.dart';
 import 'package:mirabo/l10n/l10n.dart';
+import 'package:mirabo/models/activity.dart';
 import 'package:mirabo/models/story.dart';
 
 /// Le traduzioni sono overlay sui file italiani: cambiano i testi, mai la struttura.
@@ -59,6 +60,24 @@ void main() {
             if (base.screens[i].text != null) expect(v.screens[i].text, isNot(base.screens[i].text));
           }
         }
+      }
+    }
+  });
+
+  test('ogni attività ha le quattro traduzioni e si carica nel modello', () {
+    final activities = Directory('${root.path}/content/activities');
+    for (final dir in activities.listSync().whereType<Directory>()) {
+      final baseJson = readJson('${dir.path}/activity.json') as Map<String, dynamic>;
+      final it = Activity.fromJson(baseJson);
+      for (final lang in AppLanguage.values.where((l) => l != AppLanguage.it)) {
+        final file = File('${dir.path}/i18n/${lang.code}/activity.json');
+        expect(file.existsSync(), isTrue, reason: '${it.id} senza ${lang.code}');
+        final over = readJson(file.path) as Map<String, dynamic>;
+        expect(over['title'], isA<String>(), reason: '${it.id} [${lang.code}] titolo non tradotto');
+        final a = Activity.fromJson(mergeTranslation(baseJson, over) as Map<String, dynamic>);
+        expect(a.id, it.id);
+        expect(a.type, it.type);
+        expect(a.levels.length, it.levels.length);
       }
     }
   });

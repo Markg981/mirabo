@@ -1,0 +1,39 @@
+{
+  "title": "Unser Abschiedsgruß",
+  "intro": {
+    "bo": "{nome}, wenn Mama oder Papa dich in der Schule abgeben, wie verabschiedet ihr euch? Sucht es zusammen aus.",
+    "pilu": "Ein Abschiedsgruß ganz für euch, {nome}: immer derselbe, dann weißt du, dass sie wiederkommen.",
+    "tango": "{nome}, wir erfinden einen Abschiedsgruß! Einen geheimen, den nur ihr kennt."
+  },
+  "offscreen": "Jeden Morgen denselben kurzen Abschied nehmen: Je länger er dauert, desto schwerer wird es.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Sucht euren Morgengruß aus.",
+          "prompt": "Welcher gefällt euch?",
+          "options": [
+            {
+              "label": "Abklatschen und los",
+              "outcome": "Schnell und fröhlich. Dann gehen Mama oder Papa und kommen später wieder."
+            },
+            {
+              "label": "Ein Kuss in die Hand",
+              "outcome": "Du steckst ihn den ganzen Tag in die Tasche. Wenn du sie vermisst, drückst du ihn."
+            },
+            {
+              "label": "Winken am Fenster",
+              "outcome": "Du gehst rein, sie winken dir durchs Fenster, dann gehen sie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

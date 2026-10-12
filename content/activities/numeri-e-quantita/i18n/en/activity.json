@@ -1,0 +1,38 @@
+{
+  "title": "Numbers and quantities",
+  "offscreen": "The spindle box: ten compartments numbered 0 to 9, and sticks to put in while counting out loud.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Match the number to the quantity"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Match the number to the quantity"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Match the number to the quantity"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, the material tells us by itself.",
+    "pilu": "Look carefully, {nome}: I don't need to tell you if it's right here. You can see it yourself.",
+    "tango": "Come on, {nome}! You can make as many mistakes as you like here: you see it straight away and try again."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

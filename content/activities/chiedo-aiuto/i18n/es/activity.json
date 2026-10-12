@@ -1,0 +1,57 @@
+{
+  "title": "Pido ayuda",
+  "offscreen": "Decidir juntos una frase para pedir ayuda y probarla en casa: 'Seño, no puedo, ¿me ayudas?'",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "La cremallera de la chaqueta no se cierra.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Se lo pido a la maestra",
+              "outcome": "La maestra la engancha y te enseña el truco para mañana."
+            },
+            {
+              "label": "Se lo pido a un compañero",
+              "outcome": "Giulia lo consigue. Luego tú le enseñas cómo se hace el nudo."
+            },
+            {
+              "label": "Tiro fuerte",
+              "outcome": "Se atasca todavía más. Al final pides ayuda."
+            }
+          ]
+        },
+        {
+          "text": "Tienes que ir al baño, pero la maestra está leyendo.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Levanto la mano",
+              "outcome": "La maestra te ve y te dice que sí con la cabeza."
+            },
+            {
+              "label": "Espero a que termine",
+              "outcome": "Aguantas un poco, pero es difícil. Mejor pedirlo."
+            },
+            {
+              "label": "Voy sin decir nada",
+              "outcome": "La maestra se asusta porque no te encuentra. Mejor decirlo."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

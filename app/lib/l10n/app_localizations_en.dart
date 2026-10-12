@@ -222,7 +222,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String exploreTap(Object scene) {
-    return '$scene: tap to find out';
+    return 'Tap to explore $scene';
   }
 
   @override

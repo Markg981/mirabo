@@ -1,0 +1,57 @@
+{
+  "title": "I ask for help",
+  "offscreen": "Choose a sentence together for asking for help and practise it at home: 'Miss, I can't do it, can you help me?'",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Your coat zip won't close.",
+          "prompt": "What do you do?",
+          "options": [
+            {
+              "label": "I ask the teacher",
+              "outcome": "The teacher hooks it in and shows you the trick for tomorrow."
+            },
+            {
+              "label": "I ask a classmate",
+              "outcome": "Giulia manages it. Then you show her how to tie a knot."
+            },
+            {
+              "label": "I pull hard",
+              "outcome": "It gets even more stuck. In the end you ask for help."
+            }
+          ]
+        },
+        {
+          "text": "You need the toilet but the teacher is reading.",
+          "prompt": "What do you do?",
+          "options": [
+            {
+              "label": "I put my hand up",
+              "outcome": "The teacher sees you and nods yes."
+            },
+            {
+              "label": "I wait until she finishes",
+              "outcome": "You hold on for a bit, but it's hard. Better to ask."
+            },
+            {
+              "label": "I go without saying anything",
+              "outcome": "The teacher gets worried because she can't find you. Better to say."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, we'll try again.",
+    "pilu": "Look carefully, {nome}. Then tell me what you think.",
+    "tango": "Come on, {nome}, let's do it! Slowly though... all right, slowly."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Morgen in die Schule",
+  "intro": {
+    "bo": "Ist es Abend, {nome}? Dann legen wir die Sachen für morgen bereit. Eins nach dem anderen.",
+    "pilu": "{nome}, vor dem Schlafen schauen wir, ob alles für morgen bereit ist.",
+    "tango": "{nome}! Morgen ist Schule! Wir machen jetzt alles fertig, dann können wir morgen früh losflitzen!"
+  },
+  "offscreen": "Dieselbe Liste als Bilder neben die Kinderzimmertür hängen.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Der Rucksack ist gepackt"
+        },
+        {
+          "label": "Die Kleider liegen auf dem Stuhl"
+        },
+        {
+          "label": "Die Brotzeit ist im Rucksack"
+        },
+        {
+          "label": "Ich habe Zähne geputzt"
+        },
+        {
+          "label": "Mein Kuscheltier ist bei mir im Bett"
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

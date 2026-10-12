@@ -1,0 +1,31 @@
+{
+  "title": "Las barras en orden",
+  "offscreen": "Las mismas tiras de cartón: de la más larga a la más corta, como una escalera.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "De la más larga a la más corta"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "De la más corta a la más larga"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

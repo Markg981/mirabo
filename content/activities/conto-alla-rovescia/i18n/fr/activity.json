@@ -1,0 +1,36 @@
+{
+  "title": "Compte à rebours",
+  "offscreen": "Un calendrier en papier sur le frigo : chaque soir, on colorie un jour.",
+  "levels": [
+    {
+      "event": "le premier jour d'école",
+      "daily": [
+        "Aujourd'hui, on choisit le cartable",
+        "Aujourd'hui, on écrit ton prénom sur tes affaires",
+        "Aujourd'hui, on passe devant l'école",
+        "Aujourd'hui, on essaie de s'habiller tout seul",
+        "Aujourd'hui, on fait notre au revoir",
+        "Aujourd'hui, on lit une histoire sur l'école",
+        "Aujourd'hui, on prépare le goûter comme à l'école",
+        "Aujourd'hui, on demande de l'aide à quelqu'un pour une chose",
+        "Aujourd'hui, on joue chacun son tour",
+        "Aujourd'hui, on choisit les habits du premier jour",
+        "Aujourd'hui, on va se coucher un peu plus tôt",
+        "Aujourd'hui, on fait semblant d'être à la cantine",
+        "Aujourd'hui, on prépare le cartable pour de vrai",
+        "Demain, on y va ! Ce soir l'au revoir, demain l'école"
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, on recommence.",
+    "pilu": "Regarde bien, {nome}. Ensuite, tu me dis ce que tu en penses.",
+    "tango": "Allez, {nome}, on y va ! Doucement quand même... d'accord, doucement."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

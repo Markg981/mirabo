@@ -222,7 +222,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String exploreTap(Object scene) {
-    return '$scene: toca para descubrir';
+    return 'Toca para explorar $scene';
   }
 
   @override
@@ -316,7 +316,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String tracePrompt(Object label) {
-    return 'Traza la $label con el dedo';
+    return 'Repasa con el dedo: $label';
   }
 
   @override

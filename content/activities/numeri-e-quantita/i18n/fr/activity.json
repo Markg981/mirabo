@@ -1,0 +1,38 @@
+{
+  "title": "Nombres et quantités",
+  "offscreen": "Les fuseaux : dix cases numérotées de 0 à 9, et des bâtonnets à y mettre en comptant à voix haute.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Associe le nombre à la quantité"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Associe le nombre à la quantité"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Associe le nombre à la quantité"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

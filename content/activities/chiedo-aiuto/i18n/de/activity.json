@@ -1,0 +1,57 @@
+{
+  "title": "Ich bitte um Hilfe",
+  "offscreen": "Gemeinsam einen Satz zum Hilfeholen ausmachen und zu Hause üben: „Ich schaffe es nicht, kannst du mir helfen?“",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Der Reißverschluss deiner Jacke geht nicht zu.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich frage die Lehrerin",
+              "outcome": "Die Lehrerin hakt ihn ein und zeigt dir den Trick für morgen."
+            },
+            {
+              "label": "Ich frage ein anderes Kind",
+              "outcome": "Giulia schafft es. Dann zeigst du ihr, wie man einen Knoten macht."
+            },
+            {
+              "label": "Ich ziehe fest",
+              "outcome": "Er klemmt noch mehr. Am Ende bittest du doch um Hilfe."
+            }
+          ]
+        },
+        {
+          "text": "Du musst aufs Klo, aber die Lehrerin liest gerade vor.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich melde mich",
+              "outcome": "Die Lehrerin sieht dich und nickt."
+            },
+            {
+              "label": "Ich warte, bis sie fertig ist",
+              "outcome": "Du hältst ein bisschen durch, aber es ist schwer. Besser fragen."
+            },
+            {
+              "label": "Ich gehe, ohne etwas zu sagen",
+              "outcome": "Die Lehrerin erschrickt, weil sie dich nicht findet. Besser Bescheid sagen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

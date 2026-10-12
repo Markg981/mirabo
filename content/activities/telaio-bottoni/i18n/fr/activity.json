@@ -1,0 +1,40 @@
+{
+  "title": "Boutonner",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Une chemise ou un gilet à gros boutons, étalé sur la table"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Tiens le bouton avec deux doigts et la boutonnière avec deux autres."
+        },
+        {
+          "text": "Glisse la moitié du bouton dans la boutonnière, puis tire-le de l'autre côté."
+        },
+        {
+          "text": "Fais pareil pour tous les boutons, de haut en bas."
+        },
+        {
+          "text": "Puis déboutonne-les tous, de bas en haut."
+        }
+      ],
+      "control": "Si un bouton est dans la mauvaise boutonnière, la chemise fait un pli de travers : ça se voit.",
+      "observe": "Après quelques jours, essayez avec la chemise sur soi : c'est le passage à l'habillage tout seul."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

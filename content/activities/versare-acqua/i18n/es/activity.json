@@ -1,0 +1,49 @@
+{
+  "title": "Verter agua",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Una jarrita pequeña con poca agua"
+        },
+        {
+          "label": "Un vaso"
+        },
+        {
+          "label": "Una esponjita"
+        },
+        {
+          "label": "Una bandeja"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Coge la jarra por el asa con una mano y sujétala por debajo con la otra."
+        },
+        {
+          "text": "Vierte en el vaso despacio y para un dedo antes del borde."
+        },
+        {
+          "text": "Si cae una gota, sécala con la esponjita y escúrrela en la bandeja."
+        },
+        {
+          "text": "Vuelve a echar el agua en la jarra. Repite."
+        }
+      ],
+      "control": "Las gotas en la bandeja y el vaso demasiado lleno se ven solos.",
+      "observe": "Si se para antes del borde por sí solo, si seca sin que se lo digáis."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

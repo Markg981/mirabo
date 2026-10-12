@@ -1,0 +1,49 @@
+{
+  "title": "Pouring water",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "A small jug with a little water"
+        },
+        {
+          "label": "A glass"
+        },
+        {
+          "label": "A little sponge"
+        },
+        {
+          "label": "A tray"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Hold the jug by the handle with one hand and support it underneath with the other."
+        },
+        {
+          "text": "Pour into the glass slowly, stopping a finger's width below the rim."
+        },
+        {
+          "text": "If a drop falls, wipe it up with the sponge and squeeze it out over the tray."
+        },
+        {
+          "text": "Pour the water back into the jug. Repeat."
+        }
+      ],
+      "control": "Drops on the tray and a glass that's too full can be seen without anyone saying so.",
+      "observe": "Whether they stop before the rim on their own, whether they wipe up without being told."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

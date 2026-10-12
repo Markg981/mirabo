@@ -1,0 +1,40 @@
+{
+  "title": "Doblar servilletas",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Tres servilletas de tela con una raya cosida o dibujada por la mitad"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Extiende la servilleta con la raya delante de ti."
+        },
+        {
+          "text": "Coge las dos esquinas de abajo y llévalas a las de arriba, siguiendo la raya."
+        },
+        {
+          "text": "Pasa la mano por el doblez para aplastarlo."
+        },
+        {
+          "text": "Repite con las otras dos. Luego ábrelas y vuelve a empezar."
+        }
+      ],
+      "control": "Si las esquinas no coinciden, la raya no queda tapada: lo ve solo.",
+      "observe": "Precisión de las esquinas y cuidado al pasar la mano por el doblez."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Las tablillas de colores",
+  "offscreen": "Con muestras de color (las de las tiendas de pintura) cortadas por la mitad: encuentra las parejas iguales.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Encuentra las parejas iguales"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Encuentra las parejas iguales"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Encuentra la pareja: misma cosa, mismo color",
+          "labels": {
+            "🍎": "rojo",
+            "🍓": "rojo",
+            "🍋": "amarillo",
+            "🌻": "amarillo",
+            "🍇": "morado",
+            "🍆": "morado",
+            "🥦": "verde",
+            "🍀": "verde",
+            "🫐": "azul",
+            "🐳": "azul"
+          }
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

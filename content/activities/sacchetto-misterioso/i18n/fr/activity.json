@@ -1,0 +1,43 @@
+{
+  "title": "Le sac à mystère",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Un sac en tissu"
+        },
+        {
+          "label": "5 ou 6 petits objets connus (cuillère, bouchon, pomme de pin, clé, balle, bouton)"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Regardez ensemble les objets et nommez-les à voix haute, un par un. Puis mettez-les dans le sac."
+        },
+        {
+          "text": "Glisse la main sans regarder, touche un objet et dis ce que c'est avant de le sortir."
+        },
+        {
+          "text": "Sors-le : c'était bien ça ? Pose-le sur la table."
+        },
+        {
+          "text": "Continue jusqu'à ce que le sac soit vide."
+        }
+      ],
+      "control": "L'objet sorti montre tout de suite si la main avait deviné.",
+      "observe": "Après quelques jours, des objets plus proches les uns des autres (deux cuillères de tailles différentes)."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

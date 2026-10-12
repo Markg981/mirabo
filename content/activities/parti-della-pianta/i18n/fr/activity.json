@@ -1,0 +1,42 @@
+{
+  "title": "Les parties de la plante",
+  "offscreen": "Une vraie plante déracinée (un plant de haricot poussé dans le coton) : toucher et nommer les racines, la tige, les feuilles, la fleur.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Associe la partie à son nom",
+          "pairs": [
+            [
+              "🌱",
+              "tige"
+            ],
+            [
+              "🍃",
+              "feuille"
+            ],
+            [
+              "🌸",
+              "fleur"
+            ],
+            [
+              "🥕",
+              "racine"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

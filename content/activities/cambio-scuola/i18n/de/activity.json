@@ -1,0 +1,57 @@
+{
+  "title": "Schulwechsel",
+  "intro": {
+    "bo": "{nome}, eine neue Schule macht sogar Erwachsenen ein bisschen Angst. Schauen wir, was man tun kann.",
+    "pilu": "Die Schule wechseln, {nome}: Alles ist neu, aber du bist immer noch du. Schauen wir uns die Situationen an.",
+    "tango": "Neue Schule, {nome}! Ich würde einfach reinrennen. Aber vielleicht gibt es einen besseren Weg."
+  },
+  "offscreen": "Gemeinsam eine Liste mit drei Dingen machen, die gleich bleiben (die alten Freunde, der Sport, das Zuhause).",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Neue Schule. Alle kennen sich schon, nur du nicht.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich stelle mich meinem Nachbarn vor",
+              "outcome": "Dein Tischnachbar erklärt dir, wo die Sachen sind."
+            },
+            {
+              "label": "Ich warte ein paar Tage",
+              "outcome": "Das ist in Ordnung: Nach drei Tagen weißt du schon, wer was spielt."
+            },
+            {
+              "label": "Ich bitte die Lehrerin, mich vorzustellen",
+              "outcome": "Die Lehrerin macht das und gibt dir ein Patenkind an die Seite."
+            }
+          ]
+        },
+        {
+          "text": "Hier macht man etwas, das ihr in deiner alten Schule nicht gemacht habt.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich sage, dass ich das noch nie gemacht habe",
+              "outcome": "Die Lehrerin sagt: Kein Problem, ich erkläre es dir."
+            },
+            {
+              "label": "Ich mache es den anderen nach",
+              "outcome": "Das klappt nur halb. Am Ende fragst du doch."
+            },
+            {
+              "label": "Ich erzähle es zu Hause",
+              "outcome": "Zu Hause sprecht ihr darüber, und am nächsten Tag fragst du ruhiger nach."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

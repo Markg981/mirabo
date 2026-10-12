@@ -1,0 +1,71 @@
+{
+  "title": "Die Kontinente",
+  "offscreen": "Ein Globus oder eine Weltkarte: Das Kind sucht jeden Kontinent und stellt ein Tier darauf, das dort lebt.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne das Tier seinem Kontinent zu",
+          "pairs": [
+            [
+              "🦘",
+              "Ozeanien"
+            ],
+            [
+              "🐧",
+              "Antarktis"
+            ],
+            [
+              "🦁",
+              "Afrika"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne das Tier seinem Kontinent zu",
+          "pairs": [
+            [
+              "🦘",
+              "Ozeanien"
+            ],
+            [
+              "🐧",
+              "Antarktis"
+            ],
+            [
+              "🦁",
+              "Afrika"
+            ],
+            [
+              "🐼",
+              "Asien"
+            ],
+            [
+              "🦬",
+              "Amerika"
+            ],
+            [
+              "🐺",
+              "Europa"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

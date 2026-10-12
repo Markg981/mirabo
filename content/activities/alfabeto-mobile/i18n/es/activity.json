@@ -1,0 +1,73 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "SOL",
+          "extra": "AMR"
+        },
+        {
+          "word": "MANZANA",
+          "extra": "OST"
+        },
+        {
+          "word": "LUNA",
+          "extra": "EIM"
+        },
+        {
+          "word": "GATO",
+          "extra": "LEI"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "ELEFANTE",
+          "extra": "OMI"
+        },
+        {
+          "word": "MARIPOSA",
+          "extra": "ENT"
+        },
+        {
+          "word": "ESCUELA",
+          "extra": "INO"
+        },
+        {
+          "word": "ALUBIA",
+          "extra": "TRE"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "RANA",
+          "extra": "ELT"
+        },
+        {
+          "word": "MOCHILA",
+          "extra": "EPR"
+        },
+        {
+          "word": "LLUVIA",
+          "extra": "ENT"
+        }
+      ]
+    }
+  ],
+  "title": "El alfabeto móvil",
+  "offscreen": "Letras de madera o de cartulina (vocales azules, consonantes rojas): el niño compone las palabras que quiera, sin escribir.",
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,49 @@
+{
+  "title": "The bean in cotton wool",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "A glass jar"
+        },
+        {
+          "label": "Cotton wool"
+        },
+        {
+          "label": "Two or three dried beans"
+        },
+        {
+          "label": "Water"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Fill the jar with cotton wool and wet it: damp, not soaking."
+        },
+        {
+          "text": "Push the beans between the cotton wool and the glass, so you can see them."
+        },
+        {
+          "text": "Put it near a window. Every day check that the cotton wool is damp."
+        },
+        {
+          "text": "Every day draw what you see: first nothing, then the root, then the shoot."
+        }
+      ],
+      "control": "The bean itself: if it sprouts, the care went well; if it rots, there was too much water.",
+      "observe": "After two weeks, plant it in soil: it becomes the plant for 'Looking after a plant'."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

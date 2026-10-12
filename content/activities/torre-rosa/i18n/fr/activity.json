@@ -1,0 +1,38 @@
+{
+  "title": "La tour rose",
+  "offscreen": "Avec dix boîtes ou pots de tailles différentes : construis la tour du plus grand au plus petit, puis défais-la et refais-la.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Du plus grand au plus petit"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Du plus grand au plus petit"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Du plus grand au plus petit"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

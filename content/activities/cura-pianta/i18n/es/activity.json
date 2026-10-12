@@ -1,0 +1,46 @@
+{
+  "title": "Cuidar de una planta",
+  "offscreen": "Al cabo de un mes, una segunda planta: se convierte en 'su rincón verde'.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Una planta en maceta solo para él"
+        },
+        {
+          "label": "Una jarrita"
+        },
+        {
+          "label": "Un paño húmedo"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Toca la tierra con un dedo: ¿está seca o mojada?"
+        },
+        {
+          "text": "Si está seca, echa un poco de agua alrededor del tallo, no sobre las hojas."
+        },
+        {
+          "text": "Limpia una hoja cada vez con el paño, sujetándola por debajo."
+        },
+        {
+          "text": "Marca en el calendario el día que la has regado."
+        }
+      ],
+      "control": "La tierra mojada dice cuándo no hace falta más agua; las hojas brillan cuando están limpias.",
+      "observe": "Se relaciona con el cuento del árbol de Emma: es el mismo gesto, en el mundo real."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

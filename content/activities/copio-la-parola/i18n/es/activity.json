@@ -1,0 +1,45 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "VOLCÁN",
+          "extra": "EIT"
+        },
+        {
+          "word": "ARROYO",
+          "extra": "EIT"
+        },
+        {
+          "word": "ENFADO",
+          "extra": "LIT"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sentence": "EL VOLCÁN SUBE Y LUEGO BAJA",
+          "extra": "TM"
+        },
+        {
+          "sentence": "EMMA AYUDA AL ARROYO",
+          "extra": "OP"
+        }
+      ]
+    }
+  ],
+  "title": "Copio la palabra",
+  "offscreen": "Un cuaderno de rayas: cada día una palabra del cuento leído, escrita tres veces en letra ligada.",
+  "intro": {
+    "bo": "{nome}, aquí se escriben palabras enteras. Yo confundo las letras, tú no.",
+    "pilu": "Palabras largas, {nome}: una letra cada vez, y el sonido te dice cuál.",
+    "tango": "¡{nome}, palabras de mayores! Venga, una letra cada vez."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

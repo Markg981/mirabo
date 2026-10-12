@@ -1,0 +1,57 @@
+{
+  "title": "Beim Mittagessen",
+  "offscreen": "Zu Hause „Schulessen“ spielen: Tablett, Schlange stehen, den Platz am Tisch selbst aussuchen.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Beim Mittagessen gibt es etwas, das du noch nie gegessen hast.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich probiere ein kleines Stück",
+              "outcome": "Gar nicht schlecht! Du isst es nicht auf, aber du hast probiert."
+            },
+            {
+              "label": "Ich sage nein danke",
+              "outcome": "Das ist in Ordnung. Die Erzieherin gibt dir Brot. Vielleicht probierst du morgen."
+            },
+            {
+              "label": "Ich frage, was das ist",
+              "outcome": "Das ist Kürbis. Die Erzieherin sagt, er schmeckt ein bisschen wie Kartoffel."
+            }
+          ]
+        },
+        {
+          "text": "Dein Wasserglas kippt auf dem Tisch um.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich rufe die Erzieherin",
+              "outcome": "Die Erzieherin bringt einen Lappen. Ihr wischt es zusammen auf."
+            },
+            {
+              "label": "Mir kommen die Tränen",
+              "outcome": "Das passiert. Das Kind neben dir hilft dir, den Teller wegzuschieben."
+            },
+            {
+              "label": "Ich hole die Servietten",
+              "outcome": "Du wischst selbst ein bisschen auf, dann kommt die Erzieherin mit dem Lappen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

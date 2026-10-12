@@ -1,0 +1,57 @@
+{
+  "title": "El juguete de Omar",
+  "offscreen": "Jugar por turnos con un temporizador de cocina: cuando suena, se pasa el juguete.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Omar tiene el juguete que tú querías.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Pregunto si puedo jugar después",
+              "outcome": "Omar dice: dentro de un rato te lo paso. Mientras, juegas con las construcciones."
+            },
+            {
+              "label": "Se lo quito",
+              "outcome": "Omar se enfada y llora. Llega la maestra. Ya no juega nadie."
+            },
+            {
+              "label": "Pregunto si jugamos juntos",
+              "outcome": "Omar se lo piensa y dice que sí. Jugáis los dos."
+            }
+          ]
+        },
+        {
+          "text": "Dos niños juegan y a ti te gustaría unirte.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Pregunto: ¿puedo jugar?",
+              "outcome": "¡Dicen que sí! Te dan el papel del perro."
+            },
+            {
+              "label": "Miro un rato de cerca",
+              "outcome": "Al rato te preguntan si quieres jugar."
+            },
+            {
+              "label": "Me voy a otro sitio",
+              "outcome": "También está bien. Quizá mañana lo preguntas."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

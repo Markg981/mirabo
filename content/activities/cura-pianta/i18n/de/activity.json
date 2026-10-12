@@ -1,0 +1,46 @@
+{
+  "title": "Eine Pflanze pflegen",
+  "offscreen": "Nach einem Monat eine zweite Pflanze: So entsteht „seine grüne Ecke“.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Eine Topfpflanze ganz für sich allein"
+        },
+        {
+          "label": "Ein kleines Kännchen"
+        },
+        {
+          "label": "Ein feuchtes Tuch"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Fühl die Erde mit einem Finger: Ist sie trocken oder nass?"
+        },
+        {
+          "text": "Wenn sie trocken ist, gieß ein wenig Wasser rund um den Stiel, nicht auf die Blätter."
+        },
+        {
+          "text": "Wisch ein Blatt nach dem anderen mit dem Tuch ab und halte es dabei von unten."
+        },
+        {
+          "text": "Mach im Kalender ein Zeichen an dem Tag, an dem du sie gegossen hast."
+        }
+      ],
+      "control": "Nasse Erde zeigt, wann kein Wasser mehr nötig ist; die Blätter glänzen, wenn sie sauber sind.",
+      "observe": "Das passt zur Geschichte von Emmas Baum: dieselbe Handlung, in der echten Welt."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

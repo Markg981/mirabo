@@ -1,0 +1,140 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Ich sehe was, das fängt mit A an",
+          "say": "aaa",
+          "options": [
+            {
+              "emoji": "🐒",
+              "label": "Affe",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "Fisch",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "Mond",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Ich sehe was, das fängt mit O an",
+          "say": "ooo",
+          "options": [
+            {
+              "emoji": "🍊",
+              "label": "Orange",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "Apfel",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "Auto",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Ich sehe was, das fängt mit T an",
+          "say": "t",
+          "options": [
+            {
+              "emoji": "🐯",
+              "label": "Tiger",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "Baum",
+              "correct": false
+            },
+            {
+              "emoji": "🐱",
+              "label": "Katze",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Ich sehe was, das hört mit E auf",
+          "say": "...e",
+          "options": [
+            {
+              "emoji": "🐱",
+              "label": "Katze",
+              "correct": true
+            },
+            {
+              "emoji": "🐒",
+              "label": "Affe",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "Mond",
+              "correct": false
+            },
+            {
+              "emoji": "🍎",
+              "label": "Apfel",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Ich sehe was mit dem Laut R",
+          "say": "rrr",
+          "options": [
+            {
+              "emoji": "🐸",
+              "label": "Frosch",
+              "correct": true
+            },
+            {
+              "emoji": "🐢",
+              "label": "Schildkröte",
+              "correct": true
+            },
+            {
+              "emoji": "🐝",
+              "label": "Biene",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "Mond",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Das Lautespiel",
+  "offscreen": "„Ich sehe was, was du nicht siehst, und das fängt mit mmm an“: Das geht überall, mit echten Dingen vor Augen.",
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

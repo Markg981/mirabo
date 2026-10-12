@@ -1,0 +1,46 @@
+{
+  "title": "Comment est faite une école",
+  "offscreen": "Passer devant la vraie école un après-midi et regarder le portail et la cour de l'extérieur.",
+  "levels": [
+    {
+      "scene": "l'école",
+      "spots": [
+        {
+          "label": "L'entrée",
+          "say": "C'est par ici qu'on entre le matin. Une maîtresse te dit bonjour."
+        },
+        {
+          "label": "Les portemanteaux",
+          "say": "Chaque enfant a son crochet avec son prénom ou un dessin."
+        },
+        {
+          "label": "La classe",
+          "say": "Des tables basses, des petites chaises, plein de couleurs. Ici, on joue et on apprend."
+        },
+        {
+          "label": "Les toilettes",
+          "say": "Elles sont petites, faites pour les enfants. On peut y aller quand on en a besoin, il suffit de le dire."
+        },
+        {
+          "label": "La cantine",
+          "say": "On mange tous ensemble. Si quelque chose ne te plaît pas, on peut le dire."
+        },
+        {
+          "label": "La cour",
+          "say": "Ici, on court et on joue dehors, quand il ne pleut pas."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, on recommence.",
+    "pilu": "Regarde bien, {nome}. Ensuite, tu me dis ce que tu en penses.",
+    "tango": "Allez, {nome}, on y va ! Doucement quand même... d'accord, doucement."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,140 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Veo una cosa que empieza por A",
+          "say": "aaa",
+          "options": [
+            {
+              "emoji": "🐝",
+              "label": "abeja",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "pez",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Veo una cosa que empieza por O",
+          "say": "ooo",
+          "options": [
+            {
+              "emoji": "🐻",
+              "label": "oso",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "manzana",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "coche",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Veo una cosa que empieza por T",
+          "say": "t",
+          "options": [
+            {
+              "emoji": "🐢",
+              "label": "tortuga",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "árbol",
+              "correct": false
+            },
+            {
+              "emoji": "🐱",
+              "label": "gato",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Veo una cosa que termina en O",
+          "say": "...o",
+          "options": [
+            {
+              "emoji": "🐻",
+              "label": "oso",
+              "correct": true
+            },
+            {
+              "emoji": "🐱",
+              "label": "gato",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": false
+            },
+            {
+              "emoji": "🍎",
+              "label": "manzana",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Veo una cosa con el sonido R",
+          "say": "rrr",
+          "options": [
+            {
+              "emoji": "🐸",
+              "label": "rana",
+              "correct": true
+            },
+            {
+              "emoji": "🐢",
+              "label": "tortuga",
+              "correct": true
+            },
+            {
+              "emoji": "🐝",
+              "label": "abeja",
+              "correct": false
+            },
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "El juego del sonido",
+  "offscreen": "'Veo, veo una cosita que empieza por mmm': se juega en cualquier sitio, con objetos de verdad delante.",
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

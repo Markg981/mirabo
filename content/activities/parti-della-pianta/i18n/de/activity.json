@@ -1,0 +1,42 @@
+{
+  "title": "Die Teile der Pflanze",
+  "offscreen": "Eine echte ausgegrabene Pflanze (eine Bohnenpflanze aus der Watte): Wurzeln, Stiel, Blätter und Blüte anfassen und benennen.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Ordne den Teil seinem Namen zu",
+          "pairs": [
+            [
+              "🌱",
+              "Stiel"
+            ],
+            [
+              "🍃",
+              "Blatt"
+            ],
+            [
+              "🌸",
+              "Blüte"
+            ],
+            [
+              "🥕",
+              "Wurzel"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

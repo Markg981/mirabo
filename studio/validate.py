@@ -240,7 +240,70 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
         for word in BANNED:
             if re.search(rf"\b{re.escape(word)}\b", text, flags=re.IGNORECASE):
                 errors.append(f"{folder.name}: parola da evitare: '{word}'")
+    errors += check_activity_translations(folder, a)
     return errors
+
+
+def _shape_errors(label: str, base, over, path: str = "") -> list[str]:
+    """L'overlay può solo sostituire valori che esistono già nell'originale."""
+    if isinstance(over, dict):
+        if not isinstance(base, dict):
+            return [f"{label}: '{path}' non è un oggetto nell'originale"]
+        errs = []
+        for k, v in over.items():
+            if k == "reviewed" and not path:
+                continue
+            if k not in base and k != "correct":
+                errs.append(f"{label}: campo '{path}/{k}' assente nell'originale")
+            else:
+                errs += _shape_errors(label, base.get(k), v, f"{path}/{k}")
+        return errs
+    if isinstance(over, list):
+        if not isinstance(base, list) or len(over) > len(base):
+            return [f"{label}: lista '{path}' più lunga dell'originale"]
+        return [e for i, v in enumerate(over) for e in _shape_errors(label, base[i], v, f"{path}/{i}")]
+    if isinstance(base, str) and NAME_PLACEHOLDER in base and NAME_PLACEHOLDER not in str(over):
+        return [f"{label}: '{path}' ha perso {NAME_PLACEHOLDER}"]
+    return []
+
+
+def check_activity_translations(folder: Path, a: dict) -> list[str]:
+    errors: list[str] = []
+    base_dir = folder / "i18n"
+    if not base_dir.exists():
+        return errors
+    for lang_dir in sorted(p for p in base_dir.iterdir() if p.is_dir()):
+        label = f"{folder.name}/i18n/{lang_dir.name}"
+        if lang_dir.name not in LANGUAGES:
+            errors.append(f"{label}: lingua non supportata")
+            continue
+        over = read_json(lang_dir / "activity.json")
+        if not over.get("reviewed", False):
+            DRAFTS.append(label)
+        errors += _shape_errors(label, a, over)
+        merged = _merge(a, over)
+        for level in merged.get("levels", []):
+            for r in level.get("rounds", []):
+                target = r.get("word") or r.get("sentence")
+                if a.get("type") == "spell" and (not target or not target.isupper()):
+                    errors.append(f"{label}: parola da comporre non in maiuscolo: {target!r}")
+                if a.get("type") == "tapMatch" and not any(o.get("correct") for o in r.get("options", [])):
+                    errors.append(f"{label}: round '{r.get('prompt')}' senza opzione corretta")
+    return errors
+
+
+def _merge(base, over):
+    """Stessa regola di mergeTranslation nell'app: mappe per chiave, liste per indice."""
+    if over is None:
+        return base
+    if isinstance(base, dict) and isinstance(over, dict):
+        out = dict(base)
+        for k, v in over.items():
+            out[k] = _merge(base.get(k), v)
+        return out
+    if isinstance(base, list) and isinstance(over, list):
+        return [_merge(b, over[i]) if i < len(over) else b for i, b in enumerate(base)]
+    return over
 
 
 def main(argv: list[str]) -> int:

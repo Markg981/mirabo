@@ -1,0 +1,73 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "SONNE",
+          "extra": "AMR"
+        },
+        {
+          "word": "APFEL",
+          "extra": "OST"
+        },
+        {
+          "word": "MOND",
+          "extra": "EIA"
+        },
+        {
+          "word": "KATZE",
+          "extra": "LOI"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "ELEFANT",
+          "extra": "OMI"
+        },
+        {
+          "word": "SCHMETTERLING",
+          "extra": "OAU"
+        },
+        {
+          "word": "SCHULE",
+          "extra": "ANI"
+        },
+        {
+          "word": "BOHNE",
+          "extra": "TRA"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "FROSCH",
+          "extra": "ELT"
+        },
+        {
+          "word": "RUCKSACK",
+          "extra": "OPE"
+        },
+        {
+          "word": "REGEN",
+          "extra": "OST"
+        }
+      ]
+    }
+  ],
+  "title": "Das bewegliche Alphabet",
+  "offscreen": "Buchstaben aus Holz oder Karton (Vokale blau, Konsonanten rot): Das Kind legt die Wörter, die es möchte, ohne zu schreiben.",
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Les formes à dessin",
+  "offscreen": "Découpe les formes dans du carton et utilise-les comme pochoirs : fais le contour au crayon, puis remplis avec des lignes parallèles sans dépasser.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "carré",
+          "say": "quatre côtés égaux"
+        },
+        {
+          "label": "triangle",
+          "say": "trois pointes"
+        },
+        {
+          "label": "cercle",
+          "say": "sans coins"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "rectangle",
+          "say": "deux côtés longs, deux courts"
+        },
+        {
+          "label": "trapèze",
+          "say": "large en bas, étroit en haut"
+        },
+        {
+          "label": "pentagone",
+          "say": "cinq côtés"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

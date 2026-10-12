@@ -1,0 +1,61 @@
+{
+  "title": "Lines and waves",
+  "offscreen": "The same lines with a finger in sand or flour on a tray, then with a thick felt-tip on a big sheet of paper.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "line down",
+          "say": "from top to bottom"
+        },
+        {
+          "label": "line across",
+          "say": "from left to right"
+        },
+        {
+          "label": "circle",
+          "say": "all the way round"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "waves",
+          "say": "up and down like the sea"
+        },
+        {
+          "label": "zigzag",
+          "say": "pointy"
+        },
+        {
+          "label": "bridges",
+          "say": "one bridge, another bridge"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "spiral",
+          "say": "round and round to the middle"
+        },
+        {
+          "label": "curls",
+          "say": "like curly hair"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, the material tells us by itself.",
+    "pilu": "Look carefully, {nome}: I don't need to tell you if it's right here. You can see it yourself.",
+    "tango": "Come on, {nome}! You can make as many mistakes as you like here: you see it straight away and try again."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

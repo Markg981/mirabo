@@ -1,0 +1,186 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Toca el que empieza por M",
+          "say": "mmm, M",
+          "options": [
+            {
+              "emoji": "🍎",
+              "label": "manzana",
+              "correct": true
+            },
+            {
+              "emoji": "🚗",
+              "label": "coche",
+              "correct": false
+            },
+            {
+              "emoji": "🐘",
+              "label": "elefante",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Toca el que empieza por S",
+          "say": "sss, S",
+          "options": [
+            {
+              "emoji": "☀️",
+              "label": "sol",
+              "correct": true
+            },
+            {
+              "emoji": "🐱",
+              "label": "gato",
+              "correct": false
+            },
+            {
+              "emoji": "🍌",
+              "label": "plátano",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Toca el que empieza por P",
+          "say": "p, P",
+          "options": [
+            {
+              "emoji": "🍞",
+              "label": "pan",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": false
+            },
+            {
+              "emoji": "🐟",
+              "label": "pez",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Toca todos los que empiezan por C",
+          "say": "c, C",
+          "options": [
+            {
+              "emoji": "🏠",
+              "label": "casa",
+              "correct": true
+            },
+            {
+              "emoji": "🐴",
+              "label": "caballo",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "árbol",
+              "correct": false
+            },
+            {
+              "emoji": "🍬",
+              "label": "caramelo",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "prompt": "Toca todos los que empiezan por L",
+          "say": "l, L",
+          "options": [
+            {
+              "emoji": "🌙",
+              "label": "luna",
+              "correct": true
+            },
+            {
+              "emoji": "🦁",
+              "label": "león",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "pez",
+              "correct": false
+            },
+            {
+              "emoji": "📚",
+              "label": "libro",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Toca el que termina en A",
+          "say": "...a",
+          "options": [
+            {
+              "emoji": "🏠",
+              "label": "casa",
+              "correct": true
+            },
+            {
+              "emoji": "🐘",
+              "label": "elefante",
+              "correct": false
+            },
+            {
+              "emoji": "☀️",
+              "label": "sol",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Toca el que rima con gato",
+          "say": "gato... pato",
+          "options": [
+            {
+              "emoji": "🦆",
+              "label": "pato",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "manzana",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "coche",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Escucha el sonido",
+  "offscreen": "Juego del 'veo, veo': 'veo una cosita que empieza por mmm...' en la cocina o en el coche.",
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

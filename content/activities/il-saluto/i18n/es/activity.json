@@ -1,0 +1,39 @@
+{
+  "title": "Nuestra despedida",
+  "intro": {
+    "bo": "{nome}, cuando mamá o papá te dejan en el cole, ¿cómo os despedís? Elegidlo juntos.",
+    "pilu": "Una despedida solo vuestra, {nome}: siempre la misma, así sabes que luego vuelven.",
+    "tango": "¡{nome}, inventemos una despedida! Una secreta, que solo sepáis vosotros."
+  },
+  "offscreen": "Usar la misma despedida cada mañana, breve: cuanto más larga, más difícil.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Elegid vuestra despedida de la mañana.",
+          "prompt": "¿Cuál os gusta?",
+          "options": [
+            {
+              "label": "Choca esos cinco y adentro",
+              "outcome": "Rápida y alegre. Luego mamá o papá se van, y vuelven después."
+            },
+            {
+              "label": "Un beso en la mano",
+              "outcome": "Lo guardas en el bolsillo todo el día. Si los echas de menos, lo aprietas."
+            },
+            {
+              "label": "Un adiós desde la ventana",
+              "outcome": "Tú entras, ellos te dicen adiós desde el cristal y luego se van."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

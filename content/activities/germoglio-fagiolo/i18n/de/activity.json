@@ -1,0 +1,49 @@
+{
+  "title": "Die Bohne in der Watte",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Ein Glas"
+        },
+        {
+          "label": "Watte"
+        },
+        {
+          "label": "Zwei oder drei getrocknete Bohnen"
+        },
+        {
+          "label": "Wasser"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Füll das Glas mit Watte und mach sie nass: feucht, nicht triefend."
+        },
+        {
+          "text": "Steck die Bohnen zwischen Watte und Glas, dann kannst du sie sehen."
+        },
+        {
+          "text": "Stell es in die Nähe eines Fensters. Prüf jeden Tag, ob die Watte feucht ist."
+        },
+        {
+          "text": "Mal jeden Tag, was du siehst: erst nichts, dann die Wurzel, dann den Keim."
+        }
+      ],
+      "control": "Die Bohne selbst: Wenn sie keimt, war die Pflege gut; wenn sie fault, war es zu viel Wasser.",
+      "observe": "Nach zwei Wochen in Erde umpflanzen: So wird sie die Pflanze für „Eine Pflanze pflegen“."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Linien und Wellen",
+  "offscreen": "Dieselben Linien mit dem Finger in Sand oder Mehl auf einem Tablett, dann mit einem dicken Filzstift auf einem großen Blatt.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "Linie nach unten",
+          "say": "von oben nach unten"
+        },
+        {
+          "label": "Linie zur Seite",
+          "say": "von links nach rechts"
+        },
+        {
+          "label": "Kreis",
+          "say": "einmal ganz herum"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "Wellen",
+          "say": "rauf und runter wie das Meer"
+        },
+        {
+          "label": "Zickzack",
+          "say": "mit Spitzen"
+        },
+        {
+          "label": "Brücken",
+          "say": "eine Brücke, noch eine Brücke"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "Spirale",
+          "say": "rundherum bis zur Mitte"
+        },
+        {
+          "label": "Locken",
+          "say": "wie Ringellocken"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,57 @@
+{
+  "title": "Le premier jour",
+  "offscreen": "Raconter à l'enfant votre propre premier jour d'école, avec une chose qui faisait peur et comment ça s'est passé.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "C'est le premier jour. Devant la porte, tu as le ventre tout serré.",
+          "prompt": "Que fais-tu ?",
+          "options": [
+            {
+              "label": "Je le dis à maman ou papa",
+              "outcome": "Ils te disent que c'est normal, et que le ventre se dénoue quand on entre."
+            },
+            {
+              "label": "Je serre mon doudou",
+              "outcome": "Ton doudou vient avec toi jusqu'au portemanteau, puis il t'attend là."
+            },
+            {
+              "label": "J'entre et je regarde",
+              "outcome": "Dedans, il y a une maîtresse qui dit ton prénom. Elle te connaît déjà."
+            }
+          ]
+        },
+        {
+          "text": "En classe, tu ne connais personne.",
+          "prompt": "Que fais-tu ?",
+          "options": [
+            {
+              "label": "Je regarde ce que font les autres",
+              "outcome": "Tu vois un enfant avec des cubes. Tu t'approches."
+            },
+            {
+              "label": "Je dis mon prénom à quelqu'un",
+              "outcome": "Elle s'appelle Sara. Vous vous asseyez côte à côte."
+            },
+            {
+              "label": "Je reste près de la maîtresse",
+              "outcome": "La maîtresse t'emmène vers un groupe et te présente."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, on recommence.",
+    "pilu": "Regarde bien, {nome}. Ensuite, tu me dis ce que tu en penses.",
+    "tango": "Allez, {nome}, on y va ! Doucement quand même... d'accord, doucement."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Transvaser des haricots",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Deux bols identiques"
+        },
+        {
+          "label": "Une poignée de haricots ou de pois chiches"
+        },
+        {
+          "label": "Un plateau"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Porte le plateau jusqu'à la table avec les deux mains, doucement."
+        },
+        {
+          "text": "Prends le bol plein avec les deux mains et verse dans l'autre, lentement, sans parler."
+        },
+        {
+          "text": "Regarde : un haricot est tombé ? Ramasse-le avec deux doigts et mets-le dans le bol."
+        },
+        {
+          "text": "Maintenant, remets les haricots dans le premier bol. Recommence autant de fois que tu veux."
+        },
+        {
+          "text": "Rapporte le plateau là où tu l'as pris."
+        }
+      ],
+      "control": "Les haricots tombés sur le plateau disent tout seuls si le transvasement a réussi : le grand n'a pas besoin de le dire.",
+      "observe": "Combien de fois il recommence, s'il utilise les deux mains, s'il ramasse les haricots tombés sans qu'on le lui demande."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

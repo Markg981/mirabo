@@ -1,0 +1,38 @@
+{
+  "title": "Der rosa Turm",
+  "offscreen": "Mit zehn Schachteln oder Dosen in verschiedenen Größen: Bau den Turm vom größten zum kleinsten, dann bau ihn ab und wieder auf.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Vom größten zum kleinsten"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Vom größten zum kleinsten"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Vom größten zum kleinsten"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn wir uns irren, zeigt uns das Material das von selbst.",
+    "pilu": "Schau genau hin, {nome}: Hier muss ich dir nicht sagen, ob es richtig ist. Du siehst es selbst.",
+    "tango": "Los, {nome}! Hier darfst du dich so oft irren, wie du willst: Man sieht es sofort und probiert es noch mal."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}
