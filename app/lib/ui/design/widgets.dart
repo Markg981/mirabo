@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import '../../l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'palette.dart';
@@ -297,7 +298,7 @@ class StepDots extends StatelessWidget {
     // Con molti passi i pallini si stringono per stare in una riga.
     final dot = count > 14 ? 8.0 : 12.0;
     return Semantics(
-      label: 'Passo ${current + 1} di $count',
+      label: context.l10n.stepOf('${current + 1}', '$count'),
       excludeSemantics: true,
       child: Wrap(
         spacing: dot * 0.6,

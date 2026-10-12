@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../app_state.dart';
 import '../../content/story_repository.dart';
+import '../../l10n/l10n.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
 import '../child/companion_widget.dart';
@@ -28,6 +29,7 @@ class _ProfileFormState extends State<ProfileForm> {
   late bool _dyslexia = widget.existing?.dyslexiaFont ?? false;
   late bool _lowStim = widget.existing?.lowStimulation ?? false;
   late int _aloneMinutes = widget.existing?.aloneSessionMinutes ?? 20;
+  late String _language = widget.existing?.language ?? AppLanguage.ofDevice().code;
 
   @override
   void initState() {
@@ -51,6 +53,7 @@ class _ProfileFormState extends State<ProfileForm> {
         dyslexiaFont: _dyslexia,
         lowStimulation: _lowStim,
         aloneSessionMinutes: _aloneMinutes,
+        language: _language,
       ));
     } else {
       await state.updateProfile(existing.copyWith(
@@ -61,6 +64,7 @@ class _ProfileFormState extends State<ProfileForm> {
         dyslexiaFont: _dyslexia,
         lowStimulation: _lowStim,
         aloneSessionMinutes: _aloneMinutes,
+        language: _language,
       ));
     }
     if (mounted && !widget.firstRun) Navigator.of(context).pop();
@@ -71,7 +75,9 @@ class _ProfileFormState extends State<ProfileForm> {
     final state = AppStateScope.of(context);
     final editing = widget.existing != null;
     final text = Theme.of(context).textTheme;
-    final title = widget.firstRun ? 'Benvenuti in Mirabò' : (editing ? 'Modifica profilo' : 'Nuovo profilo');
+    final l = context.l10n;
+    final companions = state.repo.companionsIn(AppLanguage.ofDevice().code);
+    final title = widget.firstRun ? l.profileWelcome : (editing ? l.profileEdit : l.profileNew);
 
     return Scaffold(
       appBar: widget.firstRun ? null : AppBar(title: Text(title)),
@@ -89,28 +95,26 @@ class _ProfileFormState extends State<ProfileForm> {
                 FormSection(
                   icon: Icons.child_care_rounded,
                   color: MiraboColors.sky,
-                  title: 'Il bambino',
-                  subtitle: widget.firstRun
-                      ? 'Questa parte la compila un adulto. Ci vuole un minuto, poi il tablet passa al bambino.'
-                      : null,
+                  title: l.profileChild,
+                  subtitle: widget.firstRun ? l.profileFirstRunHint : null,
                   children: [
                     TextField(
                       controller: _name,
-                      decoration: const InputDecoration(labelText: 'Nome', helperText: 'Il compagno lo chiamerà così'),
+                      decoration: InputDecoration(labelText: l.profileName, helperText: l.profileNameHint),
                       onChanged: (_) => setState(() {}),
                       textCapitalization: TextCapitalization.words,
                       style: text.titleMedium,
                     ),
                     const SizedBox(height: 20),
-                    Text('Età', style: text.titleSmall),
+                    Text(l.profileAge, style: text.titleSmall),
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         for (final b in AgeBand.values) ...[
                           Expanded(
                             child: _AgeOption(
-                              label: b.label,
-                              years: '${b.key} anni',
+                              label: l.ageBandLabel(_bandKey(b)),
+                              years: l.profileYears(b.key),
                               selected: _band == b,
                               onTap: () => setState(() => _band = b),
                             ),
@@ -123,17 +127,36 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
                 const SizedBox(height: 20),
                 FormSection(
+                  icon: Icons.translate_rounded,
+                  color: MiraboColors.indigo,
+                  title: l.profileLanguage,
+                  subtitle: l.profileLanguageHint,
+                  children: [
+                    Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: [
+                        for (final lang in AppLanguage.values)
+                          ChoiceChip(
+                            label: Text(lang.nativeName),
+                            selected: _language == lang.code,
+                            onSelected: (_) => setState(() => _language = lang.code),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                FormSection(
                   icon: Icons.pets_rounded,
                   color: MiraboColors.apricot,
-                  title: 'Il compagno',
-                  subtitle: editing
-                      ? 'Il compagno si sceglie una volta sola: è il suo migliore amico.'
-                      : 'Fate scegliere al bambino. Si sceglie una volta sola e non si cambia.',
+                  title: l.profileCompanion,
+                  subtitle: editing ? l.profileCompanionEditHint : l.profileCompanionNewHint,
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (final c in state.repo.companions) ...[
+                        for (final c in companions) ...[
                           Expanded(
                             child: Opacity(
                               opacity: editing && c.id != _companion ? 0.35 : 1,
@@ -144,7 +167,7 @@ class _ProfileFormState extends State<ProfileForm> {
                               ),
                             ),
                           ),
-                          if (c != state.repo.companions.last) const SizedBox(width: 14),
+                          if (c != companions.last) const SizedBox(width: 14),
                         ],
                       ],
                     ),
@@ -154,8 +177,8 @@ class _ProfileFormState extends State<ProfileForm> {
                 FormSection(
                   icon: Icons.public_rounded,
                   color: MiraboColors.leaf,
-                  title: 'Mondi delle storie',
-                  subtitle: 'Scegliete i temi che il bambino troverà nella sua libreria.',
+                  title: l.profileWorlds,
+                  subtitle: l.profileWorldsHint,
                   children: [
                     Wrap(
                       spacing: 10,
@@ -164,7 +187,7 @@ class _ProfileFormState extends State<ProfileForm> {
                         for (final w in World.values)
                           _WorldChip(
                             world: w,
-                            label: _worldLabel(w),
+                            label: l.worldLong(w.name),
                             selected: _worlds.contains(w),
                             onTap: () => setState(() {
                               _worlds = _worlds.contains(w) ? _worlds.difference({w}) : {..._worlds, w};
@@ -176,8 +199,8 @@ class _ProfileFormState extends State<ProfileForm> {
                     SwitchListTile(
                       contentPadding: EdgeInsets.zero,
                       value: _safetyTogetherOnly,
-                      title: const Text('"Il mio corpo" solo in modalità insieme'),
-                      subtitle: const Text('Consigliato: le storie su sicurezza e corpo si leggono con un adulto.'),
+                      title: Text(l.profileSafetyTogether),
+                      subtitle: Text(l.profileSafetyTogetherHint),
                       onChanged: (v) => setState(() => _safetyTogetherOnly = v),
                     ),
                   ],
@@ -186,27 +209,27 @@ class _ProfileFormState extends State<ProfileForm> {
                 FormSection(
                   icon: Icons.tune_rounded,
                   color: MiraboColors.plum,
-                  title: 'Accessibilità e tempo',
+                  title: l.profileAccess,
                   children: [
                     SwitchListTile(
                       contentPadding: EdgeInsets.zero,
                       value: _dyslexia,
-                      title: const Text('Testo ad alta leggibilità'),
-                      subtitle: const Text('Carattere Lexend, spaziatura e interlinea maggiori.'),
+                      title: Text(l.profileDyslexia),
+                      subtitle: Text(l.profileDyslexiaHint),
                       onChanged: (v) => setState(() => _dyslexia = v),
                     ),
                     SwitchListTile(
                       contentPadding: EdgeInsets.zero,
                       value: _lowStim,
-                      title: const Text('Bassa stimolazione'),
-                      subtitle: const Text('Colori tenui, nessuna animazione.'),
+                      title: Text(l.profileLowStim),
+                      subtitle: Text(l.profileLowStimHint),
                       onChanged: (v) => setState(() => _lowStim = v),
                     ),
                     const Divider(height: 28),
                     Row(
                       children: [
-                        Expanded(child: Text('Sessione "da solo"', style: text.titleMedium)),
-                        Text('$_aloneMinutes minuti', style: text.titleMedium?.copyWith(color: MiraboColors.teal)),
+                        Expanded(child: Text(l.profileAloneSession, style: text.titleMedium)),
+                        Text(l.profileMinutes(_aloneMinutes), style: text.titleMedium?.copyWith(color: MiraboColors.teal)),
                       ],
                     ),
                     Slider(
@@ -214,7 +237,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       min: 10,
                       max: 30,
                       divisions: 4,
-                      label: '$_aloneMinutes min',
+                      label: l.profileMinutesShort(_aloneMinutes),
                       onChanged: (v) => setState(() => _aloneMinutes = v.round()),
                     ),
                   ],
@@ -230,19 +253,19 @@ class _ProfileFormState extends State<ProfileForm> {
                           await state.deleteProfile(widget.existing!.id);
                           if (context.mounted) Navigator.of(context).pop();
                         },
-                        label: const Text('Elimina questo profilo'),
+                        label: Text(l.profileDelete),
                       ),
                     const Spacer(),
                     if (!_valid)
                       Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: Text(
-                          _name.text.trim().isEmpty ? 'Manca il nome' : 'Manca il compagno',
+                          _name.text.trim().isEmpty ? l.profileMissingName : l.profileMissingCompanion,
                           style: text.bodySmall,
                         ),
                       ),
                     ChunkyButton(
-                      label: widget.firstRun ? 'Iniziamo' : 'Salva',
+                      label: widget.firstRun ? l.profileStart : l.save,
                       icon: widget.firstRun ? Icons.arrow_forward_rounded : Icons.check_rounded,
                       iconAfter: widget.firstRun,
                       color: MiraboColors.leaf,
@@ -259,11 +282,10 @@ class _ProfileFormState extends State<ProfileForm> {
     );
   }
 
-  static String _worldLabel(World w) => switch (w) {
-        World.emozioni => 'Emozioni e conflitti',
-        World.inclusione => 'Diversità e inclusione',
-        World.ambiente => 'Ambiente e viventi',
-        World.sicurezza => 'Sicurezza e corpo',
+  static String _bandKey(AgeBand b) => switch (b) {
+        AgeBand.b3to5 => 'small',
+        AgeBand.b5to7 => 'mid',
+        AgeBand.b7to10 => 'big',
       };
 }
 
@@ -291,7 +313,7 @@ class _WelcomeHeader extends StatelessWidget {
               children: [
                 Text(title, style: text.displaySmall?.copyWith(color: Colors.white)),
                 const SizedBox(height: 6),
-                Text('Storie e piccoli passi per crescere.',
+                Text(context.l10n.appTagline,
                     style: text.titleMedium?.copyWith(color: Colors.white.withValues(alpha: 0.85))),
               ],
             ),

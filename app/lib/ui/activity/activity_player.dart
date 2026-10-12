@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../models/activity.dart';
 import '../../models/profile.dart';
@@ -62,7 +63,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     super.initState();
     _state = AppStateScope.read(context);
     _profile = _state.currentProfile!;
-    _tts.setLanguage('it-IT');
+    _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
     _tts.setSpeechRate(0.45);
     _ctx = ActivityContext(
       profile: _profile,
@@ -108,14 +109,14 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
           companion: companion,
           stage: _profile.companionStage,
           text: _ctx.withName(widget.activity.intro.forCompanion(_profile.companion)),
-          button: 'Via!',
+          button: context.l10n.go,
           onPressed: () => setState(() => _phase = _Phase.rounds),
         ),
       _Phase.outro => _CompanionSays(
           companion: companion,
           stage: _profile.companionStage,
           text: _ctx.withName(widget.activity.outro.forCompanion(_profile.companion)),
-          button: 'A domani!',
+          button: context.l10n.seeYouTomorrow,
           onPressed: () => Navigator.of(context).pop(),
         ),
       _Phase.rounds => _buildRounds(level),
@@ -132,7 +133,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
                   children: [
                     RoundIconButton(
                       icon: Icons.close_rounded,
-                      tooltip: 'Chiudi',
+                      tooltip: context.l10n.close,
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                     const SizedBox(width: 16),
@@ -147,7 +148,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
                     if (_phase != _Phase.rounds)
                       RoundIconButton(
                         icon: Icons.volume_up_rounded,
-                        tooltip: 'Rileggi',
+                        tooltip: context.l10n.readAgain,
                         onPressed: () => _ctx.say(_phase == _Phase.intro
                             ? widget.activity.intro.forCompanion(_profile.companion)
                             : widget.activity.outro.forCompanion(_profile.companion)),
@@ -279,7 +280,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
         lastCorrect = false;
         if (attempts >= 2) hints++;
       });
-      widget.ctx.say(attempts == 1 ? 'Riprova.' : 'Guarda bene. Ti aiuto io.');
+      widget.ctx.say(attempts == 1 ? context.l10n.activityTryAgain : context.l10n.activityHelp);
     }
   }
 
@@ -419,7 +420,7 @@ class PromptBar extends StatelessWidget {
         child: Row(
           children: [
             Tooltip(
-              message: 'Riascolta',
+              message: context.l10n.listenAgain,
               child: Material(
                 color: MiraboTokens.of(context).tint(MiraboColors.sky),
                 shape: const CircleBorder(),

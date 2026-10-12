@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../activity_player.dart';
 
 /// "Traccia con il dito": la lettera è disegnata come guida tratteggiata; il
@@ -52,7 +53,7 @@ class _TraceRoundState extends RoundState<TraceRound> {
     final r = _rounds[index];
     final label = r['label'] as String;
     final say = r['say'] as String? ?? label;
-    final prompt = 'Traccia la $label con il dito';
+    final prompt = context.l10n.tracePrompt(label);
     if (_spokenFor != index) {
       _spokenFor = index;
       WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say('$prompt. $say'));
@@ -104,7 +105,7 @@ class _TraceRoundState extends RoundState<TraceRound> {
           padding: const EdgeInsets.only(bottom: 12),
           child: TextButton.icon(
             icon: const Icon(Icons.refresh_rounded),
-            label: const Text('Ricomincio'),
+            label: Text(context.l10n.traceRestart),
             onPressed: lastCorrect == true ? null : () => setState(_strokes.clear),
           ),
         ),

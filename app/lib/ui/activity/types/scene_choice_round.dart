@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../design/palette.dart';
 import '../../design/widgets.dart';
 import '../activity_player.dart';
@@ -56,7 +57,7 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                   ],
                 ),
               ),
-              RoundIconButton(icon: Icons.volume_up_rounded, tooltip: 'Riascolta', onPressed: () => widget.ctx.say('$text $prompt')),
+              RoundIconButton(icon: Icons.volume_up_rounded, tooltip: context.l10n.listenAgain, onPressed: () => widget.ctx.say('$text $prompt')),
             ],
           ),
         ),
@@ -99,7 +100,7 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                       icon: Icons.arrow_forward_rounded,
                       iconAfter: true,
                       onPressed: () => complete(choice: _firstChoice),
-                      label: index + 1 >= roundCount ? 'Fine' : 'Avanti',
+                      label: index + 1 >= roundCount ? context.l10n.finish : context.l10n.next,
                     ),
                   ],
                 ),

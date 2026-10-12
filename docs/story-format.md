@@ -45,7 +45,7 @@ Ogni `Screen` ha:
 | --- | --- | --- |
 | `n` | int | numero progressivo da 1 |
 | `kind` | `hook` \| `situation` \| `dialogue` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, svolta, chiusura) |
-| `illustration` | object | `{ "file": "...", "alt": "descrizione" }`; `file` può mancare finché non esiste |
+| `illustration` | object | `{ "file": "...", "alt": "descrizione", "scene": {...} }`; `file` può mancare finché non esiste, e allora l'app disegna `scene` se c'è |
 | `text` | string? | testo della narrazione; `{nome}` è il nome del bambino |
 | `audio` | object? | `{ "file": "...", "words": [[ms, "parola"], ...], "nameSlots": [ms, ...] }` |
 | `companionLines` | object? | `{ "bo": "...", "pilu": "...", "tango": "..." }` |
@@ -78,6 +78,33 @@ Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del comp
 - `{nome}` compare solo nelle battute del compagno; la narrazione non lo usa.
 - Le battute del compagno parlano al bambino, mai ai personaggi.
 - Ogni schermata ha `illustration.alt`: è il testo per lo screen reader e il brief per chi disegna.
+
+### Scena composta (`illustration.scene`)
+
+Finché manca il disegno vero, la pagina può avere una scena composta dall'app: uno sfondo dipinto e
+alcune figure posizionate, come in un libro illustrato.
+
+```json
+"scene": {
+  "bg": "room",
+  "items": [
+    { "e": "👧", "x": 0.3, "y": 0.64, "s": 0.36 },
+    { "paint": "tower", "variant": "leaning", "x": 0.6, "y": 0.55, "s": 0.55, "rot": 6 }
+  ]
+}
+```
+
+| Campo | Valori |
+| --- | --- |
+| `bg` | `room` (cameretta), `forest` (sentiero nel bosco), `stream` (ruscello; `"dirty": true` per l'acqua torbida), `sky` |
+| `e` | un'emoji (persone, oggetti, animali) |
+| `paint` | `companion` (il compagno del bambino), `volcano` (`color`: `red`/`orange`/`pink`/`green`, `smoke`, `flower`), `tower` (`variant`: `tall`/`leaning`/`fallen`/`wide`, `flag`), `pebble` (Pietrolino) |
+| `x`, `y` | centro della figura, in frazioni del riquadro (0–1) |
+| `s` | altezza della figura, in frazioni dell'altezza del riquadro |
+| `rot`, `flip`, `opacity` | rotazione in gradi, specchiata, trasparenza |
+
+Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la linea del pavimento
+(`y` + `s`/2 tra 0.75 e 0.95), così stanno "in piedi" nella scena.
 - Una sola schermata `dialogue` per storia; nessuna in fascia 3–5 quando `togetherOnly` è vero.
 - `studio/validate.py` controlla tutto questo.
 

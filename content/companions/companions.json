@@ -6,11 +6,124 @@
       "kind": "piccolo mammut lanoso",
       "tagline": "Ha un po' paura di tutto, ma con te ci prova.",
       "growth": [
-        { "stage": 0, "label": "Cucciolo", "description": "Pelo da cucciolo, nessuna sciarpa, una casa nel ghiaccio" },
-        { "stage": 1, "label": "Con la sciarpa", "description": "Dopo le prime tre storie compare la sciarpa rossa", "after": 3 },
-        { "stage": 2, "label": "Un amico uccellino", "description": "Dopo sei storie un uccellino si posa sulla sua testa", "after": 6 },
-        { "stage": 3, "label": "La casa si scalda", "description": "Dopo dodici storie la casa nel ghiaccio ha una finestra illuminata", "after": 12 }
-      ]
+        {
+          "stage": 0,
+          "label": "Cucciolo",
+          "description": "Pelo da cucciolo, nessuna sciarpa, una casa nel ghiaccio"
+        },
+        {
+          "stage": 1,
+          "label": "Con la sciarpa",
+          "description": "Dopo le prime tre storie compare la sciarpa rossa",
+          "after": 3
+        },
+        {
+          "stage": 2,
+          "label": "Un amico uccellino",
+          "description": "Dopo sei storie un uccellino si posa sulla sua testa",
+          "after": 6
+        },
+        {
+          "stage": 3,
+          "label": "La casa si scalda",
+          "description": "Dopo dodici storie la casa nel ghiaccio ha una finestra illuminata",
+          "after": 12
+        }
+      ],
+      "i18n": {
+        "en": {
+          "kind": "little woolly mammoth",
+          "tagline": "He's a bit scared of everything, but with you he gives it a try.",
+          "growth": [
+            {
+              "label": "Baby",
+              "description": "Baby fur, no scarf, a home in the ice"
+            },
+            {
+              "label": "With a scarf",
+              "description": "After the first three stories a red scarf appears"
+            },
+            {
+              "label": "A little bird friend",
+              "description": "After six stories a little bird lands on his head"
+            },
+            {
+              "label": "The house warms up",
+              "description": "After twelve stories the ice house has a lit window"
+            }
+          ],
+          "reviewed": true
+        },
+        "es": {
+          "kind": "pequeño mamut lanudo",
+          "tagline": "Le da un poco de miedo todo, pero contigo lo intenta.",
+          "growth": [
+            {
+              "label": "Cachorro",
+              "description": "Pelo de cachorro, sin bufanda, una casa en el hielo"
+            },
+            {
+              "label": "Con bufanda",
+              "description": "Después de las tres primeras historias aparece la bufanda roja"
+            },
+            {
+              "label": "Un pajarito amigo",
+              "description": "Después de seis historias un pajarito se posa en su cabeza"
+            },
+            {
+              "label": "La casa se calienta",
+              "description": "Después de doce historias la casa de hielo tiene una ventana iluminada"
+            }
+          ],
+          "reviewed": true
+        },
+        "fr": {
+          "kind": "petit mammouth laineux",
+          "tagline": "Il a un peu peur de tout, mais avec toi il essaie.",
+          "growth": [
+            {
+              "label": "Petit",
+              "description": "Pelage de bébé, pas d'écharpe, une maison dans la glace"
+            },
+            {
+              "label": "Avec l'écharpe",
+              "description": "Après les trois premières histoires, l'écharpe rouge apparaît"
+            },
+            {
+              "label": "Un ami oiseau",
+              "description": "Après six histoires, un petit oiseau se pose sur sa tête"
+            },
+            {
+              "label": "La maison se réchauffe",
+              "description": "Après douze histoires, la maison de glace a une fenêtre allumée"
+            }
+          ],
+          "reviewed": true
+        },
+        "de": {
+          "kind": "kleines Wollmammut",
+          "tagline": "Ihm macht alles ein bisschen Angst, aber mit dir traut er sich.",
+          "growth": [
+            {
+              "label": "Baby",
+              "description": "Babyfell, kein Schal, ein Haus im Eis"
+            },
+            {
+              "label": "Mit Schal",
+              "description": "Nach den ersten drei Geschichten erscheint der rote Schal"
+            },
+            {
+              "label": "Ein Vogelfreund",
+              "description": "Nach sechs Geschichten setzt sich ein Vögelchen auf seinen Kopf"
+            },
+            {
+              "label": "Das Haus wird warm",
+              "description": "Nach zwölf Geschichten hat das Eishaus ein erleuchtetes Fenster"
+            }
+          ],
+          "reviewed": true
+        }
+      }
     },
     {
       "id": "pilu",
@@ -18,11 +131,124 @@
       "kind": "civetta tonda",
       "tagline": "Sa tante cose, ma vuole sempre sapere cosa ne pensi tu.",
       "growth": [
-        { "stage": 0, "label": "Occhi chiusi", "description": "Di giorno dorme con un occhio aperto" },
-        { "stage": 1, "label": "Occhi aperti la notte", "description": "Dopo tre storie apre gli occhi anche al buio", "after": 3 },
-        { "stage": 2, "label": "Primo volo", "description": "Dopo sei storie impara a volare da un ramo all'altro", "after": 6 },
-        { "stage": 3, "label": "Nido grande", "description": "Dopo dodici storie costruisce un nido più grande", "after": 12 }
-      ]
+        {
+          "stage": 0,
+          "label": "Occhi chiusi",
+          "description": "Di giorno dorme con un occhio aperto"
+        },
+        {
+          "stage": 1,
+          "label": "Occhi aperti la notte",
+          "description": "Dopo tre storie apre gli occhi anche al buio",
+          "after": 3
+        },
+        {
+          "stage": 2,
+          "label": "Primo volo",
+          "description": "Dopo sei storie impara a volare da un ramo all'altro",
+          "after": 6
+        },
+        {
+          "stage": 3,
+          "label": "Nido grande",
+          "description": "Dopo dodici storie costruisce un nido più grande",
+          "after": 12
+        }
+      ],
+      "i18n": {
+        "en": {
+          "kind": "round little owl",
+          "tagline": "She knows lots of things, but always wants to know what you think.",
+          "growth": [
+            {
+              "label": "Eyes closed",
+              "description": "By day she sleeps with one eye open"
+            },
+            {
+              "label": "Eyes open at night",
+              "description": "After three stories she opens her eyes in the dark too"
+            },
+            {
+              "label": "First flight",
+              "description": "After six stories she learns to fly from branch to branch"
+            },
+            {
+              "label": "Big nest",
+              "description": "After twelve stories she builds a bigger nest"
+            }
+          ],
+          "reviewed": true
+        },
+        "es": {
+          "kind": "lechuza redondita",
+          "tagline": "Sabe muchas cosas, pero siempre quiere saber qué piensas tú.",
+          "growth": [
+            {
+              "label": "Ojos cerrados",
+              "description": "De día duerme con un ojo abierto"
+            },
+            {
+              "label": "Ojos abiertos de noche",
+              "description": "Después de tres historias abre los ojos también en la oscuridad"
+            },
+            {
+              "label": "Primer vuelo",
+              "description": "Después de seis historias aprende a volar de rama en rama"
+            },
+            {
+              "label": "Nido grande",
+              "description": "Después de doce historias construye un nido más grande"
+            }
+          ],
+          "reviewed": true
+        },
+        "fr": {
+          "kind": "chouette toute ronde",
+          "tagline": "Elle sait plein de choses, mais veut toujours savoir ce que tu en penses.",
+          "growth": [
+            {
+              "label": "Yeux fermés",
+              "description": "Le jour, elle dort un œil ouvert"
+            },
+            {
+              "label": "Yeux ouverts la nuit",
+              "description": "Après trois histoires, elle ouvre les yeux même dans le noir"
+            },
+            {
+              "label": "Premier envol",
+              "description": "Après six histoires, elle apprend à voler de branche en branche"
+            },
+            {
+              "label": "Grand nid",
+              "description": "Après douze histoires, elle construit un nid plus grand"
+            }
+          ],
+          "reviewed": true
+        },
+        "de": {
+          "kind": "kugelrunde Eule",
+          "tagline": "Sie weiß viele Dinge, will aber immer wissen, was du denkst.",
+          "growth": [
+            {
+              "label": "Augen zu",
+              "description": "Tagsüber schläft sie mit einem offenen Auge"
+            },
+            {
+              "label": "Nachts Augen auf",
+              "description": "Nach drei Geschichten öffnet sie die Augen auch im Dunkeln"
+            },
+            {
+              "label": "Erster Flug",
+              "description": "Nach sechs Geschichten lernt sie, von Ast zu Ast zu fliegen"
+            },
+            {
+              "label": "Großes Nest",
+              "description": "Nach zwölf Geschichten baut sie ein größeres Nest"
+            }
+          ],
+          "reviewed": true
+        }
+      }
     },
     {
       "id": "tango",
@@ -30,11 +256,124 @@
       "kind": "volpe con la coda a strisce",
       "tagline": "Corre prima di pensare. Sta imparando a fermarsi un attimo.",
       "growth": [
-        { "stage": 0, "label": "Tana vuota", "description": "Una tana con solo un cuscino" },
-        { "stage": 1, "label": "Prime cose trovate", "description": "Dopo tre storie la tana ha un sasso e una foglia", "after": 3 },
-        { "stage": 2, "label": "La tana si riempie", "description": "Dopo sei storie compaiono oggetti dalle storie lette", "after": 6 },
-        { "stage": 3, "label": "Un posto per gli amici", "description": "Dopo dodici storie c'è un secondo cuscino per un amico", "after": 12 }
-      ]
+        {
+          "stage": 0,
+          "label": "Tana vuota",
+          "description": "Una tana con solo un cuscino"
+        },
+        {
+          "stage": 1,
+          "label": "Prime cose trovate",
+          "description": "Dopo tre storie la tana ha un sasso e una foglia",
+          "after": 3
+        },
+        {
+          "stage": 2,
+          "label": "La tana si riempie",
+          "description": "Dopo sei storie compaiono oggetti dalle storie lette",
+          "after": 6
+        },
+        {
+          "stage": 3,
+          "label": "Un posto per gli amici",
+          "description": "Dopo dodici storie c'è un secondo cuscino per un amico",
+          "after": 12
+        }
+      ],
+      "i18n": {
+        "en": {
+          "kind": "fox with a striped tail",
+          "tagline": "He runs before he thinks. He's learning to stop for a moment.",
+          "growth": [
+            {
+              "label": "Empty den",
+              "description": "A den with just a cushion"
+            },
+            {
+              "label": "First things found",
+              "description": "After three stories the den has a pebble and a leaf"
+            },
+            {
+              "label": "The den fills up",
+              "description": "After six stories things from the stories appear"
+            },
+            {
+              "label": "A place for friends",
+              "description": "After twelve stories there's a second cushion for a friend"
+            }
+          ],
+          "reviewed": true
+        },
+        "es": {
+          "kind": "zorro con la cola a rayas",
+          "tagline": "Corre antes de pensar. Está aprendiendo a pararse un momento.",
+          "growth": [
+            {
+              "label": "Madriguera vacía",
+              "description": "Una madriguera con solo un cojín"
+            },
+            {
+              "label": "Primeros hallazgos",
+              "description": "Después de tres historias la madriguera tiene una piedra y una hoja"
+            },
+            {
+              "label": "La madriguera se llena",
+              "description": "Después de seis historias aparecen objetos de las historias leídas"
+            },
+            {
+              "label": "Un sitio para los amigos",
+              "description": "Después de doce historias hay un segundo cojín para un amigo"
+            }
+          ],
+          "reviewed": true
+        },
+        "fr": {
+          "kind": "renard à la queue rayée",
+          "tagline": "Il court avant de réfléchir. Il apprend à s'arrêter un instant.",
+          "growth": [
+            {
+              "label": "Terrier vide",
+              "description": "Un terrier avec juste un coussin"
+            },
+            {
+              "label": "Premières trouvailles",
+              "description": "Après trois histoires, le terrier a un caillou et une feuille"
+            },
+            {
+              "label": "Le terrier se remplit",
+              "description": "Après six histoires, des objets des histoires apparaissent"
+            },
+            {
+              "label": "Une place pour les amis",
+              "description": "Après douze histoires, il y a un deuxième coussin pour un ami"
+            }
+          ],
+          "reviewed": true
+        },
+        "de": {
+          "kind": "Fuchs mit gestreiftem Schwanz",
+          "tagline": "Er rennt, bevor er denkt. Er lernt gerade, kurz anzuhalten.",
+          "growth": [
+            {
+              "label": "Leerer Bau",
+              "description": "Ein Bau mit nur einem Kissen"
+            },
+            {
+              "label": "Erste Fundstücke",
+              "description": "Nach drei Geschichten liegen ein Stein und ein Blatt im Bau"
+            },
+            {
+              "label": "Der Bau füllt sich",
+              "description": "Nach sechs Geschichten tauchen Dinge aus den Geschichten auf"
+            },
+            {
+              "label": "Ein Platz für Freunde",
+              "description": "Nach zwölf Geschichten gibt es ein zweites Kissen für einen Freund"
+            }
+          ],
+          "reviewed": true
+        }
+      }
     }
   ]
 }

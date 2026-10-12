@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  intl: any
   # Dati locali
   sqflite: ^2.3.3
   path_provider: ^2.1.3
@@ -34,6 +35,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  # Testi dell'interfaccia in lib/l10n/app_<lingua>.arb (italiano è la base).
+  generate: true
   assets:
     # Copiati da content/ con `python studio/sync_assets.py` (cartella ignorata da git)
     - assets/stories/

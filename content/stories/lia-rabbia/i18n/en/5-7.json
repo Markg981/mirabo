@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion sitting on a cushion, with an open book and a volcano drawn on the cover."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! Today's story has a volcano in it. I'm a bit scared of volcanoes... but if you're here, I'll look.",
+        "pilu": "Hi {nome}! Did you know there's a volcano inside each of us? You don't believe me? Watch what happens to Lia.",
+        "tango": "Hi {nome}! This story is about something that happens to me all the time. I bet it happens to you too. Shall we look?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia's bedroom; on the table a very tall, colourful tower of blocks with a little flag on top. Lia looks at it, hands on hips, very proud."
+      },
+      "text": "Lia has built the tallest tower in the world. It took her all afternoon: a red block, a blue one, a yellow one, all the way up to the little flag on top. \"Grandma, come and see!\""
+    },
+    {
+      "illustration": {
+        "alt": "Teo, two years old, crawls in with a cuddly toy in his hand; the tower is already wobbling."
+      },
+      "text": "But before Grandma comes, Teo arrives. Teo is two and always wants to touch everything. He reaches for the red block at the bottom..."
+    },
+    {
+      "illustration": {
+        "alt": "The tower's pieces fly everywhere; Teo laughs; Lia's mouth is wide open."
+      },
+      "text": "CRASH. The tallest tower in the world is a heap of blocks on the floor. Teo laughs. He hasn't understood a thing."
+    },
+    {
+      "illustration": {
+        "alt": "Lia fills the screen, red face, fists clenched; behind her, see-through, the shape of a smoking volcano."
+      },
+      "text": "Lia feels something hot rising from her tummy. Her hands close all by themselves. Her face turns red. There's a volcano inside her, and the volcano is about to erupt.",
+      "companionLines": {
+        "bo": "Oh no. When I'm like that my ears feel all hot. Where do you feel it, {nome}?",
+        "pilu": "Look at Lia's hands. You feel the volcano in your body first, you know. Where do you feel it, {nome}?",
+        "tango": "There it is! I know it! My paws close just like that. Where do you feel it, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "The same scene, frozen: Lia with her fist raised, Teo still laughing, the open door where Grandma is coming in."
+      },
+      "text": "Lia's fist is up. The volcano is almost at the top. What now?",
+      "dialogue": {
+        "together": "Ask: what do you think Lia will do? And what would you do?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do, {nome}?",
+            "pilu": "What would you do, {nome}?",
+            "tango": "What would you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I push Teo",
+              "reaction": {
+                "bo": "I understand, the volcano is strong. Let's see what Lia does, then tell me if you like it.",
+                "pilu": "Hmm, maybe. Let's see what happens to Lia and then we'll think about it.",
+                "tango": "I know, I'd like to as well! But wait, let's watch."
+              }
+            },
+            {
+              "label": "I shout loudly",
+              "reaction": {
+                "bo": "Shouting lets a bit of the volcano out, that's true. Let's see what Lia does.",
+                "pilu": "You can shout. Let's see if Lia finds another way too.",
+                "tango": "Yes! Shouting! ...But let's see what Lia does."
+              }
+            },
+            {
+              "label": "I breathe",
+              "reaction": {
+                "bo": "I couldn't have done it. Let's see if Lia can.",
+                "pilu": "Good idea. Let's see if Lia thinks of it too.",
+                "tango": "Breathing? With the volcano at the top? Let's see if Lia can do it."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Grandma at the door, kneeling down to Lia's height, hands open; she doesn't touch Lia, she doesn't pick up Teo."
+      },
+      "text": "Grandma comes in and doesn't say \"you mustn't do that\". She says: \"Lia, I can feel the volcano. It's a big one, isn't it? Let's do the volcano breath, together.\" She puts her hands on her tummy. Lia, her eyes still full of fire, does the same."
+    },
+    {
+      "illustration": {
+        "alt": "Lia and Grandma with their hands on their tummies; above them the volcano turns from red to orange, then pink, with the lava slowly flowing down."
+      },
+      "text": "In: one, two, three. Out: ssssssh, gently, like lava flowing down. Again. In: one, two, three. Out: sssssh. The volcano is still there. But it doesn't erupt any more. It's going down.",
+      "companionLines": {
+        "bo": "Let's do it too, {nome}. Hands on your tummy. In... one, two, three. Out... ssssh. I feel better already.",
+        "pilu": "Let's try it together, {nome}: hands on your tummy, in one two three, out sssssh. It works with wings too, you know.",
+        "tango": "Come on {nome}, let's do it! Hands on your tummy. In one, two, three. Out ssssh. Oh. It's harder than running."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia sitting on the floor, Teo handing her a blue block, Grandma in the background putting the blocks in a box."
+      },
+      "text": "\"I was angry,\" says Lia. \"Really angry.\" \"I know,\" says Grandma. \"It's all right to get angry. The volcano rises, erupts, and then calms down. You can wait for it.\" Teo hands her a blue block. He doesn't know what he did, but he wants to play with her."
+    },
+    {
+      "illustration": {
+        "alt": "A new tower, lower but wider, built by Lia and Teo; the little flag on top; the volcano in the background is now green, with a flower on top."
+      },
+      "text": "The new tower isn't the tallest in the world. It's the widest, because they built it together. And Lia's volcano? It's still in there, quiet. It will come back one day. But now Lia knows how to wait for it.",
+      "companionLines": {
+        "bo": "We did it, {nome}. My volcano is all green now. See you tomorrow?",
+        "pilu": "Now you know too, {nome}: the volcano passes. I'm off to sleep a bit, it's daytime. See you tomorrow.",
+        "tango": "I'll remember, {nome}: in one two three, out sssh. I'll try it this afternoon. See you tomorrow!"
+      }
+    }
+  ]
+}

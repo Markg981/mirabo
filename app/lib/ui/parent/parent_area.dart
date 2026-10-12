@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
+import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../data/development_stats.dart';
 import '../../models/activity.dart';
@@ -23,7 +24,7 @@ class ParentArea extends StatelessWidget {
       length: 5,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Area genitori'),
+          title: Text(context.l10n.parentArea),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(64),
             child: Padding(
@@ -41,12 +42,12 @@ class ParentArea extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                     boxShadow: softShadow(0.8),
                   ),
-                  tabs: const [
-                    Tab(height: 44, text: 'Sessione'),
-                    Tab(height: 44, text: 'Profili'),
-                    Tab(height: 44, text: 'Come parlarne'),
-                    Tab(height: 44, text: 'Diario'),
-                    Tab(height: 44, text: 'Sviluppo'),
+                  tabs: [
+                    Tab(height: 44, text: context.l10n.parentTabSession),
+                    Tab(height: 44, text: context.l10n.parentTabProfiles),
+                    Tab(height: 44, text: context.l10n.parentTabCards),
+                    Tab(height: 44, text: context.l10n.parentTabDiary),
+                    Tab(height: 44, text: context.l10n.parentTabGrowth),
                   ],
                 ),
               ),
@@ -83,14 +84,13 @@ class _SessionTab extends StatelessWidget {
         FormSection(
           icon: Icons.people_rounded,
           color: MiraboColors.sky,
-          title: 'Come usate l\'app adesso?',
-          subtitle: 'In modalità "insieme" compaiono le pause di dialogo per voi due. '
-              'In modalità "da solo" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.',
+          title: context.l10n.parentHowUse,
+          subtitle: context.l10n.parentHowUseHint,
           children: [
             SegmentedButton<SessionMode>(
-              segments: const [
-                ButtonSegment(value: SessionMode.together, icon: Icon(Icons.people_rounded), label: Text('Insieme')),
-                ButtonSegment(value: SessionMode.alone, icon: Icon(Icons.person_rounded), label: Text('Da solo')),
+              segments: [
+                ButtonSegment(value: SessionMode.together, icon: const Icon(Icons.people_rounded), label: Text(context.l10n.modeTogether)),
+                ButtonSegment(value: SessionMode.alone, icon: const Icon(Icons.person_rounded), label: Text(context.l10n.modeAlone)),
               ],
               selected: {state.mode},
               onSelectionChanged: (s) => state.setMode(s.first),
@@ -101,8 +101,8 @@ class _SessionTab extends StatelessWidget {
         FormSection(
           icon: Icons.lock_rounded,
           color: MiraboColors.teal,
-          title: 'Dove vivono i dati',
-          subtitle: 'Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.',
+          title: context.l10n.parentData,
+          subtitle: context.l10n.parentDataHint,
           children: [
             Align(
               alignment: Alignment.centerLeft,
@@ -127,16 +127,16 @@ class _WipeButton extends StatelessWidget {
             side: BorderSide(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.5), width: 1.5),
           ),
           icon: const Icon(Icons.delete_forever_rounded),
-          label: const Text('Elimina tutti i dati'),
+          label: Text(context.l10n.parentWipe),
           onPressed: () async {
             final ok = await showDialog<bool>(
               context: context,
               builder: (_) => AlertDialog(
-                title: const Text('Eliminare tutto?'),
-                content: const Text('Profili e diario verranno cancellati da questo dispositivo. Non si può annullare.'),
+                title: Text(context.l10n.parentWipeConfirmTitle),
+                content: Text(context.l10n.parentWipeConfirm),
                 actions: [
-                  TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annulla')),
-                  FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Elimina')),
+                  TextButton(onPressed: () => Navigator.pop(context, false), child: Text(context.l10n.cancel)),
+                  FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(context.l10n.parentWipeYes)),
                 ],
               ),
             );
@@ -162,11 +162,11 @@ class _ProfilesTab extends StatelessWidget {
           _carded(ListTile(
             leading: Icon(p.id == state.currentProfile?.id ? Icons.check_circle_rounded : Icons.circle_outlined),
             title: Text(p.name),
-            subtitle: Text('${p.ageBand.label} · compagno ${state.companionOf(p).name} · ${p.storiesCompleted} storie'),
+            subtitle: Text(context.l10n.parentProfileLine(context.l10n.ageBandLabel(_bandKey(p.ageBand)), state.companionOf(p).name, p.storiesCompleted)),
             onTap: () => state.selectProfile(p),
             trailing: IconButton(
               icon: const Icon(Icons.edit_rounded),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileForm(existing: p))),
+              onPressed: () => Navigator.of(context).push(adultRoute((_) => ProfileForm(existing: p))),
             ),
           )),
         const SizedBox(height: 16),
@@ -174,8 +174,8 @@ class _ProfilesTab extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: FilledButton.icon(
             icon: const Icon(Icons.add_rounded),
-            label: const Text('Nuovo profilo'),
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileForm())),
+            label: Text(context.l10n.parentNewProfile),
+            onPressed: () => Navigator.of(context).push(adultRoute((_) => const ProfileForm())),
           ),
         ),
       ],
@@ -189,7 +189,7 @@ class _ParentCardsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stories = state.repo.stories.where((s) => s.parentCard != null).toList();
+    final stories = state.repo.storiesIn(AppLanguage.ofDevice().code).where((s) => s.parentCard != null).toList();
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
       children: [
@@ -198,7 +198,7 @@ class _ParentCardsTab extends StatelessWidget {
             title: Text(s.title),
             subtitle: Text(s.keyPhrase),
             trailing: const Icon(Icons.chevron_right_rounded),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => _ParentCardPage(story: s))),
+            onTap: () => Navigator.of(context).push(adultRoute((_) => _ParentCardPage(story: s))),
           )),
       ],
     );
@@ -211,8 +211,18 @@ class _ParentCardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final draft = AppStateScope.of(context).repo.isDraft(story.id, AppLanguage.ofDevice().code);
     return Scaffold(
-      appBar: AppBar(title: Text(story.title)),
+      appBar: AppBar(
+        title: Text(story.title),
+        actions: [
+          if (draft)
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Chip(avatar: const Icon(Icons.translate_rounded, size: 18), label: Text(context.l10n.translationDraft)),
+            ),
+        ],
+      ),
       body: Markdown(
         data: story.parentCard!,
         padding: const EdgeInsets.all(24),
@@ -233,22 +243,22 @@ class _DiaryTab extends StatelessWidget {
       builder: (context, snap) {
         final entries = snap.data ?? const [];
         if (entries.isEmpty) {
-          return const Center(child: Padding(padding: EdgeInsets.all(24), child: Text('Nessuna storia negli ultimi 30 giorni.')));
+          return Center(child: Padding(padding: const EdgeInsets.all(24), child: Text(context.l10n.diaryEmpty)));
         }
         return ListView.builder(
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           itemCount: entries.length,
           itemBuilder: (context, i) {
             final e = entries[i];
-            final story = state.repo.byId(e.storyId);
+            final story = state.repo.byId(e.storyId, AppLanguage.ofDevice().code);
             final answer = _answerLabel(story, e.dialogueAnswer);
             return _carded(ListTile(
               leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
               title: Text(story?.title ?? e.storyId),
               subtitle: Text([
                 '${e.when.day}/${e.when.month}/${e.when.year}',
-                e.mode == SessionMode.together ? 'insieme' : 'da solo',
-                if (answer != null) 'alla pausa ha scelto: "$answer"',
+                e.mode == SessionMode.together ? context.l10n.diaryTogether : context.l10n.diaryAlone,
+                if (answer != null) context.l10n.diaryChose(answer),
               ].join(' · ')),
             ));
           },
@@ -284,27 +294,25 @@ class _DevelopmentTab extends StatelessWidget {
         return ListView(
           padding: const EdgeInsets.all(24),
           children: [
-            Text('Come sta crescendo ${profile.name}', style: Theme.of(context).textTheme.titleLarge),
+            Text(context.l10n.growthTitle(profile.name), style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 8),
-            const Text('Il confronto è solo con sé stesso, un mese fa. L\'app vede una parte piccola della sua giornata: '
-                'per dubbi sullo sviluppo il riferimento è il pediatra o l\'insegnante.'),
+            Text(context.l10n.growthIntro),
             const SizedBox(height: 16),
             if (snap.connectionState != ConnectionState.done)
               const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
             else if (stats.isEmpty)
-              const Text('Nessuna attività negli ultimi 30 giorni. Quando ne farà qualcuna, qui vedrai le tappe.')
+              Text(context.l10n.growthEmpty)
             else
               for (final area in ActivityArea.values)
                 if (stats.any((s) => s.area == area)) ...[
                   Padding(
                     padding: const EdgeInsets.only(top: 16, bottom: 4),
-                    child: Text(area.label, style: Theme.of(context).textTheme.titleLarge),
+                    child: Text(context.l10n.areaLabel(area.name), style: Theme.of(context).textTheme.titleLarge),
                   ),
                   for (final s in stats.where((s) => s.area == area)) _SkillRow(stat: s),
                 ],
             const SizedBox(height: 24),
-            const Text('Dove non c\'è miglioramento, prova l\'attività fuori dallo schermo suggerita nella scheda: '
-                'non più tempo sull\'app.', style: TextStyle(fontStyle: FontStyle.italic)),
+            Text(context.l10n.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
           ],
         );
       },
@@ -325,7 +333,7 @@ class _SkillRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Expanded(child: Text(DevelopmentStats.label(stat.skill), style: Theme.of(context).textTheme.bodyLarge)),
+            Expanded(child: Text(context.l10n.skillLabel(stat.skill.replaceAll('-', '_')), style: Theme.of(context).textTheme.bodyLarge)),
             if (stat.improved) const Icon(Icons.trending_up_rounded, color: Colors.green),
           ]),
           const SizedBox(height: 6),
@@ -344,7 +352,7 @@ class _SkillRow extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      Text(stage.label, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
+                      Text(context.l10n.stageLabel(stage.name), style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
                     ],
                   ),
                 ),
@@ -355,8 +363,11 @@ class _SkillRow extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             stat.monthAgo == null
-                ? 'Negli ultimi 30 giorni: ${stat.rounds} round. Un mese fa non l\'aveva ancora provato.'
-                : 'Oggi: ${stat.now?.label ?? "—"} · un mese fa: ${stat.monthAgo!.label} (bordo grigio).',
+                ? context.l10n.growthNew('${stat.rounds}')
+                : context.l10n.growthCompare(
+                    stat.now == null ? '—' : context.l10n.stageLabel(stat.now!.name),
+                    context.l10n.stageLabel(stat.monthAgo!.name),
+                  ),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
@@ -370,3 +381,9 @@ Widget _carded(Widget tile) => Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Card(child: tile),
     );
+
+String _bandKey(AgeBand b) => switch (b) {
+      AgeBand.b3to5 => 'small',
+      AgeBand.b5to7 => 'mid',
+      AgeBand.b7to10 => 'big',
+    };

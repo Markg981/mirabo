@@ -1,0 +1,1315 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations_de.dart';
+import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_it.dart';
+
+// ignore_for_file: type=lint
+
+/// Callers can lookup localized strings with an instance of AppLocalizations
+/// returned by `AppLocalizations.of(context)`.
+///
+/// Applications need to include `AppLocalizations.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'l10n/app_localizations.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: AppLocalizations.localizationsDelegates,
+///   supportedLocales: AppLocalizations.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the AppLocalizations.supportedLocales
+/// property.
+abstract class AppLocalizations {
+  AppLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+
+  final String localeName;
+
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+  }
+
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
+
+  /// A list of this localizations delegate's supported locales.
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('de'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('it')
+  ];
+
+  /// No description provided for @appTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Mirabò'**
+  String get appTitle;
+
+  /// No description provided for @appTagline.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie e piccoli passi per crescere.'**
+  String get appTagline;
+
+  /// No description provided for @close.
+  ///
+  /// In it, this message translates to:
+  /// **'Chiudi'**
+  String get close;
+
+  /// No description provided for @back.
+  ///
+  /// In it, this message translates to:
+  /// **'Indietro'**
+  String get back;
+
+  /// No description provided for @next.
+  ///
+  /// In it, this message translates to:
+  /// **'Avanti'**
+  String get next;
+
+  /// No description provided for @done.
+  ///
+  /// In it, this message translates to:
+  /// **'Fatto'**
+  String get done;
+
+  /// No description provided for @finish.
+  ///
+  /// In it, this message translates to:
+  /// **'Fine'**
+  String get finish;
+
+  /// No description provided for @cancel.
+  ///
+  /// In it, this message translates to:
+  /// **'Annulla'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In it, this message translates to:
+  /// **'Salva'**
+  String get save;
+
+  /// No description provided for @listenAgain.
+  ///
+  /// In it, this message translates to:
+  /// **'Riascolta'**
+  String get listenAgain;
+
+  /// No description provided for @readAgain.
+  ///
+  /// In it, this message translates to:
+  /// **'Rileggi'**
+  String get readAgain;
+
+  /// No description provided for @seeYouTomorrow.
+  ///
+  /// In it, this message translates to:
+  /// **'A domani!'**
+  String get seeYouTomorrow;
+
+  /// No description provided for @go.
+  ///
+  /// In it, this message translates to:
+  /// **'Via!'**
+  String get go;
+
+  /// No description provided for @home.
+  ///
+  /// In it, this message translates to:
+  /// **'Casa'**
+  String get home;
+
+  /// No description provided for @parentArea.
+  ///
+  /// In it, this message translates to:
+  /// **'Area genitori'**
+  String get parentArea;
+
+  /// No description provided for @modeTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Insieme'**
+  String get modeTogether;
+
+  /// No description provided for @modeAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'Da solo'**
+  String get modeAlone;
+
+  /// No description provided for @stepOf.
+  ///
+  /// In it, this message translates to:
+  /// **'Passo {current} di {total}'**
+  String stepOf(Object current, Object total);
+
+  /// No description provided for @homeHello.
+  ///
+  /// In it, this message translates to:
+  /// **'Ciao {name}!'**
+  String homeHello(Object name);
+
+  /// No description provided for @homeQuestion.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa facciamo oggi?'**
+  String get homeQuestion;
+
+  /// No description provided for @homeOneStory.
+  ///
+  /// In it, this message translates to:
+  /// **'Una storia'**
+  String get homeOneStory;
+
+  /// No description provided for @homeLetsPlay.
+  ///
+  /// In it, this message translates to:
+  /// **'Giochiamo'**
+  String get homeLetsPlay;
+
+  /// No description provided for @switchChildA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Cambia bambino. Ora gioca {name}'**
+  String switchChildA11y(Object name);
+
+  /// No description provided for @chooseWhoPlays.
+  ///
+  /// In it, this message translates to:
+  /// **'Chi gioca oggi?'**
+  String get chooseWhoPlays;
+
+  /// No description provided for @chooseWith.
+  ///
+  /// In it, this message translates to:
+  /// **'con {companion}'**
+  String chooseWith(Object companion);
+
+  /// No description provided for @chooseAdd.
+  ///
+  /// In it, this message translates to:
+  /// **'Aggiungi'**
+  String get chooseAdd;
+
+  /// No description provided for @chooseAddHint.
+  ///
+  /// In it, this message translates to:
+  /// **'per i grandi'**
+  String get chooseAddHint;
+
+  /// No description provided for @chooseAddA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Aggiungi un bambino'**
+  String get chooseAddA11y;
+
+  /// No description provided for @catStories.
+  ///
+  /// In it, this message translates to:
+  /// **'Le storie'**
+  String get catStories;
+
+  /// No description provided for @catGames.
+  ///
+  /// In it, this message translates to:
+  /// **'Giochi'**
+  String get catGames;
+
+  /// No description provided for @catEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Qui non c\'è niente per oggi.'**
+  String get catEmpty;
+
+  /// No description provided for @badgeAtHome.
+  ///
+  /// In it, this message translates to:
+  /// **'A casa'**
+  String get badgeAtHome;
+
+  /// No description provided for @badgeTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Insieme'**
+  String get badgeTogether;
+
+  /// No description provided for @areaLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{area, select, cognitivo{Prerequisiti} autonomia{Autonomia} sociale{In classe} paure{Primo giorno} vitaPratica{Vita pratica} sensoriale{Sensoriale} linguaggio{Linguaggio e scrittura} matematica{Matematica} cultura{Cultura} other{{area}}}'**
+  String areaLabel(String area);
+
+  /// No description provided for @worldShort.
+  ///
+  /// In it, this message translates to:
+  /// **'{world, select, emozioni{Emozioni} inclusione{Insieme} ambiente{Il bosco} sicurezza{Il mio corpo} other{{world}}}'**
+  String worldShort(String world);
+
+  /// No description provided for @worldLong.
+  ///
+  /// In it, this message translates to:
+  /// **'{world, select, emozioni{Emozioni e conflitti} inclusione{Diversità e inclusione} ambiente{Ambiente e viventi} sicurezza{Sicurezza e corpo} other{{world}}}'**
+  String worldLong(String world);
+
+  /// No description provided for @storyKeyPhrase.
+  ///
+  /// In it, this message translates to:
+  /// **'La frase da ricordare'**
+  String get storyKeyPhrase;
+
+  /// No description provided for @activityTryAgain.
+  ///
+  /// In it, this message translates to:
+  /// **'Riprova.'**
+  String get activityTryAgain;
+
+  /// No description provided for @activityHelp.
+  ///
+  /// In it, this message translates to:
+  /// **'Guarda bene. Ti aiuto io.'**
+  String get activityHelp;
+
+  /// No description provided for @checklistPrompt.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa è già pronto?'**
+  String get checklistPrompt;
+
+  /// No description provided for @checklistSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa è già pronto per domani?'**
+  String get checklistSay;
+
+  /// No description provided for @checklistAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'da solo'**
+  String get checklistAlone;
+
+  /// No description provided for @checklistAllDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Tutto pronto, buonanotte'**
+  String get checklistAllDone;
+
+  /// No description provided for @enoughForToday.
+  ///
+  /// In it, this message translates to:
+  /// **'Per oggi basta così'**
+  String get enoughForToday;
+
+  /// No description provided for @countdownPick.
+  ///
+  /// In it, this message translates to:
+  /// **'Scegli la data'**
+  String get countdownPick;
+
+  /// No description provided for @countdownToday.
+  ///
+  /// In it, this message translates to:
+  /// **'È oggi!'**
+  String get countdownToday;
+
+  /// No description provided for @countdownTodaySay.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi è il giorno!'**
+  String get countdownTodaySay;
+
+  /// No description provided for @countdownDaysTo.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Manca 1 giorno a: {event}} other{Mancano {count} giorni a: {event}}}'**
+  String countdownDaysTo(int count, String event);
+
+  /// No description provided for @countdownDaysSay.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Manca 1 giorno. {task}} other{Mancano {count} giorni. {task}}}'**
+  String countdownDaysSay(int count, String task);
+
+  /// No description provided for @exploreTap.
+  ///
+  /// In it, this message translates to:
+  /// **'{scene}: tocca per scoprire'**
+  String exploreTap(Object scene);
+
+  /// No description provided for @exploreSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Questa è {scene}. Tocca per scoprire.'**
+  String exploreSay(Object scene);
+
+  /// No description provided for @exploreAllSeen.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho visto tutto!'**
+  String get exploreAllSeen;
+
+  /// No description provided for @exploreEnough.
+  ///
+  /// In it, this message translates to:
+  /// **'Per oggi basta'**
+  String get exploreEnough;
+
+  /// No description provided for @patternPrompt.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa viene dopo?'**
+  String get patternPrompt;
+
+  /// No description provided for @presentationWhatYouNeed.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa serve'**
+  String get presentationWhatYouNeed;
+
+  /// No description provided for @presentationWhatYouNeedSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa serve: {items}'**
+  String presentationWhatYouNeedSay(Object items);
+
+  /// No description provided for @presentationReady.
+  ///
+  /// In it, this message translates to:
+  /// **'Tutto pronto'**
+  String get presentationReady;
+
+  /// No description provided for @presentationPrepare.
+  ///
+  /// In it, this message translates to:
+  /// **'Prepara tutto su un vassoio prima di chiamare il bambino. Mostra i passi una volta, lentamente e senza parlare; poi lascia fare.'**
+  String get presentationPrepare;
+
+  /// No description provided for @presentationStep.
+  ///
+  /// In it, this message translates to:
+  /// **'Passo {current} di {total}'**
+  String presentationStep(Object current, Object total);
+
+  /// No description provided for @presentationWorkAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'Ora lavora da solo'**
+  String get presentationWorkAlone;
+
+  /// No description provided for @presentationYourTurnSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Adesso tocca a te, {name}. Il tablet lo mettiamo via.'**
+  String presentationYourTurnSay(Object name);
+
+  /// No description provided for @presentationHowDidItGo.
+  ///
+  /// In it, this message translates to:
+  /// **'Per il grande: com\'è andata?'**
+  String get presentationHowDidItGo;
+
+  /// No description provided for @presentationControl.
+  ///
+  /// In it, this message translates to:
+  /// **'Controllo dell\'errore'**
+  String get presentationControl;
+
+  /// No description provided for @presentationObserve.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa osservare'**
+  String get presentationObserve;
+
+  /// No description provided for @presentationMarkLater.
+  ///
+  /// In it, this message translates to:
+  /// **'Segna quando ha finito di lavorare, anche dopo un po\'. Non correggere mentre lavora.'**
+  String get presentationMarkLater;
+
+  /// No description provided for @presentationWatched.
+  ///
+  /// In it, this message translates to:
+  /// **'Ha guardato'**
+  String get presentationWatched;
+
+  /// No description provided for @presentationDid.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ha fatto'**
+  String get presentationDid;
+
+  /// No description provided for @presentationAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'Da solo'**
+  String get presentationAlone;
+
+  /// No description provided for @presentationRepeat.
+  ///
+  /// In it, this message translates to:
+  /// **'Vuole rifarla'**
+  String get presentationRepeat;
+
+  /// No description provided for @forTheAdult.
+  ///
+  /// In it, this message translates to:
+  /// **'Per il grande'**
+  String get forTheAdult;
+
+  /// No description provided for @turnYou.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca a te, {name}'**
+  String turnYou(Object name);
+
+  /// No description provided for @turnAdult.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca al grande'**
+  String get turnAdult;
+
+  /// No description provided for @spellSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Componi: {word}'**
+  String spellSay(Object word);
+
+  /// No description provided for @spellSentence.
+  ///
+  /// In it, this message translates to:
+  /// **'Componi la frase'**
+  String get spellSentence;
+
+  /// No description provided for @spellWord.
+  ///
+  /// In it, this message translates to:
+  /// **'Componi la parola'**
+  String get spellWord;
+
+  /// No description provided for @tracePrompt.
+  ///
+  /// In it, this message translates to:
+  /// **'Traccia la {label} con il dito'**
+  String tracePrompt(Object label);
+
+  /// No description provided for @traceRestart.
+  ///
+  /// In it, this message translates to:
+  /// **'Ricomincio'**
+  String get traceRestart;
+
+  /// No description provided for @gameWellDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Bravo, {name}!'**
+  String gameWellDone(Object name);
+
+  /// No description provided for @gameNiceGame.
+  ///
+  /// In it, this message translates to:
+  /// **'Che bella partita.'**
+  String get gameNiceGame;
+
+  /// No description provided for @gameWellDoneSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Bravo, {name}! Che bella partita.'**
+  String gameWellDoneSay(Object name);
+
+  /// No description provided for @gameAgain.
+  ///
+  /// In it, this message translates to:
+  /// **'Ancora'**
+  String get gameAgain;
+
+  /// No description provided for @gameEnough.
+  ///
+  /// In it, this message translates to:
+  /// **'Basta così'**
+  String get gameEnough;
+
+  /// No description provided for @gameMemoryTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Memory degli animali'**
+  String get gameMemoryTitle;
+
+  /// No description provided for @gameMemoryDesc.
+  ///
+  /// In it, this message translates to:
+  /// **'Trova le coppie: {count} coppie.'**
+  String gameMemoryDesc(int count);
+
+  /// No description provided for @memoryIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Trova le coppie di animali uguali.'**
+  String get memoryIntro;
+
+  /// No description provided for @memoryCovered.
+  ///
+  /// In it, this message translates to:
+  /// **'Carta coperta'**
+  String get memoryCovered;
+
+  /// No description provided for @animalName.
+  ///
+  /// In it, this message translates to:
+  /// **'{animal, select, dog{il cane} cat{il gatto} rabbit{il coniglio} fox{la volpe} bear{l\'orso} panda{il panda} frog{la rana} monkey{la scimmia} lion{il leone} tiger{la tigre} cow{la mucca} pig{il maiale} other{{animal}}}'**
+  String animalName(String animal);
+
+  /// No description provided for @gameBalloonsTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'I palloncini'**
+  String get gameBalloonsTitle;
+
+  /// No description provided for @gameBalloonsDescSmall.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia i palloncini.'**
+  String get gameBalloonsDescSmall;
+
+  /// No description provided for @gameBalloonsDescMid.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia solo quelli del colore che dice il compagno.'**
+  String get gameBalloonsDescMid;
+
+  /// No description provided for @gameBalloonsDescBig.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia i numeri in ordine, da 1 a 10.'**
+  String get gameBalloonsDescBig;
+
+  /// No description provided for @balloonsPopAll.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia i palloncini!'**
+  String get balloonsPopAll;
+
+  /// No description provided for @balloonsPopColor.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia solo i palloncini {color, select, red{rossi} blue{blu} green{verdi} yellow{gialli} purple{viola} other{{color}}}.'**
+  String balloonsPopColor(String color);
+
+  /// No description provided for @balloonsNowColor.
+  ///
+  /// In it, this message translates to:
+  /// **'Adesso i palloncini {color, select, red{rossi} blue{blu} green{verdi} yellow{gialli} purple{viola} other{{color}}}.'**
+  String balloonsNowColor(String color);
+
+  /// No description provided for @balloonsOnlyColor.
+  ///
+  /// In it, this message translates to:
+  /// **'Solo quelli {color, select, red{rossi} blue{blu} green{verdi} yellow{gialli} purple{viola} other{{color}}}'**
+  String balloonsOnlyColor(String color);
+
+  /// No description provided for @balloonsNumbersStart.
+  ///
+  /// In it, this message translates to:
+  /// **'Scoppia i numeri in ordine. Comincia dall\'uno.'**
+  String get balloonsNumbersStart;
+
+  /// No description provided for @balloonsNow.
+  ///
+  /// In it, this message translates to:
+  /// **'Adesso il {n}.'**
+  String balloonsNow(Object n);
+
+  /// No description provided for @balloonsFind.
+  ///
+  /// In it, this message translates to:
+  /// **'Trova il {n}'**
+  String balloonsFind(Object n);
+
+  /// No description provided for @balloonsWrongNumber.
+  ///
+  /// In it, this message translates to:
+  /// **'Quello è il {got}. Cerca il {want}.'**
+  String balloonsWrongNumber(Object got, Object want);
+
+  /// No description provided for @balloonsDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Fatto!'**
+  String get balloonsDone;
+
+  /// No description provided for @balloonA11yNumber.
+  ///
+  /// In it, this message translates to:
+  /// **'Palloncino {n}'**
+  String balloonA11yNumber(Object n);
+
+  /// No description provided for @balloonA11yColor.
+  ///
+  /// In it, this message translates to:
+  /// **'Palloncino {color, select, red{rosso} blue{blu} green{verde} yellow{giallo} purple{viola} other{{color}}}'**
+  String balloonA11yColor(String color);
+
+  /// No description provided for @gameShapesTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Le forme al loro posto'**
+  String get gameShapesTitle;
+
+  /// No description provided for @gameShapesDescSmall.
+  ///
+  /// In it, this message translates to:
+  /// **'Tre forme da trascinare nel buco giusto.'**
+  String get gameShapesDescSmall;
+
+  /// No description provided for @gameShapesDescMid.
+  ///
+  /// In it, this message translates to:
+  /// **'Cinque forme da trascinare nel buco giusto.'**
+  String get gameShapesDescMid;
+
+  /// No description provided for @gameShapesDescBig.
+  ///
+  /// In it, this message translates to:
+  /// **'Sei forme, grandi e piccole: attenzione alla misura.'**
+  String get gameShapesDescBig;
+
+  /// No description provided for @shapesIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Metti ogni forma nel suo buco.'**
+  String get shapesIntro;
+
+  /// No description provided for @shapesIntroBig.
+  ///
+  /// In it, this message translates to:
+  /// **'Metti ogni forma nel suo buco. Attenzione alla misura: grandi e piccole.'**
+  String get shapesIntroBig;
+
+  /// No description provided for @shapesWrong.
+  ///
+  /// In it, this message translates to:
+  /// **'Questo è {shape}. Prova un altro buco.'**
+  String shapesWrong(Object shape);
+
+  /// No description provided for @shapeName.
+  ///
+  /// In it, this message translates to:
+  /// **'{shape, select, circle{il cerchio} square{il quadrato} triangle{il triangolo} star{la stella} heart{il cuore} hexagon{l\'esagono} circleSmall{il cerchio piccolo} squareSmall{il quadrato piccolo} other{{shape}}}'**
+  String shapeName(String shape);
+
+  /// No description provided for @gameDrawingTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Disegna e colora'**
+  String get gameDrawingTitle;
+
+  /// No description provided for @gameDrawingDesc.
+  ///
+  /// In it, this message translates to:
+  /// **'Un foglio bianco, i colori e i timbri.'**
+  String get gameDrawingDesc;
+
+  /// No description provided for @drawingIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Scegli un colore e disegna con il dito.'**
+  String get drawingIntro;
+
+  /// No description provided for @drawingSheet.
+  ///
+  /// In it, this message translates to:
+  /// **'Foglio da disegno'**
+  String get drawingSheet;
+
+  /// No description provided for @drawingEraser.
+  ///
+  /// In it, this message translates to:
+  /// **'Gomma'**
+  String get drawingEraser;
+
+  /// No description provided for @drawingUndo.
+  ///
+  /// In it, this message translates to:
+  /// **'Torna indietro'**
+  String get drawingUndo;
+
+  /// No description provided for @drawingNewSheet.
+  ///
+  /// In it, this message translates to:
+  /// **'Foglio nuovo'**
+  String get drawingNewSheet;
+
+  /// No description provided for @gameXyloTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Lo xilofono'**
+  String get gameXyloTitle;
+
+  /// No description provided for @gameXyloDescSmall.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona libero.'**
+  String get gameXyloDescSmall;
+
+  /// No description provided for @gameXyloDescBig.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona libero o impara \"{song}\".'**
+  String gameXyloDescBig(Object song);
+
+  /// No description provided for @xyloNotes.
+  ///
+  /// In it, this message translates to:
+  /// **'do re mi fa sol la si do'**
+  String get xyloNotes;
+
+  /// No description provided for @xyloSong.
+  ///
+  /// In it, this message translates to:
+  /// **'Fra Martino'**
+  String get xyloSong;
+
+  /// No description provided for @xyloIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca le barre e suona.'**
+  String get xyloIntro;
+
+  /// No description provided for @xyloIntroSong.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona quello che vuoi, oppure impara {song}.'**
+  String xyloIntroSong(Object song);
+
+  /// No description provided for @xyloFree.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona libero'**
+  String get xyloFree;
+
+  /// No description provided for @xyloFreeSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona quello che vuoi.'**
+  String get xyloFreeSay;
+
+  /// No description provided for @xyloSongSay.
+  ///
+  /// In it, this message translates to:
+  /// **'Suona la barra che si illumina.'**
+  String get xyloSongSay;
+
+  /// No description provided for @xyloNoteA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Nota {note}'**
+  String xyloNoteA11y(Object note);
+
+  /// No description provided for @gamePuzzleTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Il gioco del 15'**
+  String get gamePuzzleTitle;
+
+  /// No description provided for @gamePuzzleDesc.
+  ///
+  /// In it, this message translates to:
+  /// **'Rimetti in ordine i numeri da 1 a 8 facendo scorrere le tessere.'**
+  String get gamePuzzleDesc;
+
+  /// No description provided for @puzzleIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Fai scorrere le tessere per metterle in ordine, da uno a otto.'**
+  String get puzzleIntro;
+
+  /// No description provided for @puzzleTileA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Tessera {n}'**
+  String puzzleTileA11y(Object n);
+
+  /// No description provided for @gateTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Area per i grandi'**
+  String get gateTitle;
+
+  /// No description provided for @gateQuestion.
+  ///
+  /// In it, this message translates to:
+  /// **'Quanto fa {a} × {b}?'**
+  String gateQuestion(Object a, Object b);
+
+  /// No description provided for @gateWrong.
+  ///
+  /// In it, this message translates to:
+  /// **'Riprova'**
+  String get gateWrong;
+
+  /// No description provided for @gateEnter.
+  ///
+  /// In it, this message translates to:
+  /// **'Entra'**
+  String get gateEnter;
+
+  /// No description provided for @parentTabSession.
+  ///
+  /// In it, this message translates to:
+  /// **'Sessione'**
+  String get parentTabSession;
+
+  /// No description provided for @parentTabProfiles.
+  ///
+  /// In it, this message translates to:
+  /// **'Profili'**
+  String get parentTabProfiles;
+
+  /// No description provided for @parentTabCards.
+  ///
+  /// In it, this message translates to:
+  /// **'Come parlarne'**
+  String get parentTabCards;
+
+  /// No description provided for @parentTabDiary.
+  ///
+  /// In it, this message translates to:
+  /// **'Diario'**
+  String get parentTabDiary;
+
+  /// No description provided for @parentTabGrowth.
+  ///
+  /// In it, this message translates to:
+  /// **'Sviluppo'**
+  String get parentTabGrowth;
+
+  /// No description provided for @parentHowUse.
+  ///
+  /// In it, this message translates to:
+  /// **'Come usate l\'app adesso?'**
+  String get parentHowUse;
+
+  /// No description provided for @parentHowUseHint.
+  ///
+  /// In it, this message translates to:
+  /// **'In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.'**
+  String get parentHowUseHint;
+
+  /// No description provided for @parentData.
+  ///
+  /// In it, this message translates to:
+  /// **'Dove vivono i dati'**
+  String get parentData;
+
+  /// No description provided for @parentDataHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.'**
+  String get parentDataHint;
+
+  /// No description provided for @parentWipe.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina tutti i dati'**
+  String get parentWipe;
+
+  /// No description provided for @parentWipeConfirmTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Eliminare tutto?'**
+  String get parentWipeConfirmTitle;
+
+  /// No description provided for @parentWipeConfirm.
+  ///
+  /// In it, this message translates to:
+  /// **'Profili e diario verranno cancellati da questo dispositivo. Non si può annullare.'**
+  String get parentWipeConfirm;
+
+  /// No description provided for @parentWipeYes.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina'**
+  String get parentWipeYes;
+
+  /// No description provided for @parentNewProfile.
+  ///
+  /// In it, this message translates to:
+  /// **'Nuovo profilo'**
+  String get parentNewProfile;
+
+  /// No description provided for @parentProfileLine.
+  ///
+  /// In it, this message translates to:
+  /// **'{age} · compagno {companion} · {count, plural, =1{1 storia} other{{count} storie}}'**
+  String parentProfileLine(String age, String companion, int count);
+
+  /// No description provided for @diaryEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessuna storia negli ultimi 30 giorni.'**
+  String get diaryEmpty;
+
+  /// No description provided for @diaryTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'insieme'**
+  String get diaryTogether;
+
+  /// No description provided for @diaryAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'da solo'**
+  String get diaryAlone;
+
+  /// No description provided for @diaryChose.
+  ///
+  /// In it, this message translates to:
+  /// **'alla pausa ha scelto: \"{answer}\"'**
+  String diaryChose(Object answer);
+
+  /// No description provided for @growthTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Come sta crescendo {name}'**
+  String growthTitle(Object name);
+
+  /// No description provided for @growthIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Il confronto è solo con sé stesso, un mese fa. L\'app vede una parte piccola della sua giornata: per dubbi sullo sviluppo il riferimento è il pediatra o l\'insegnante.'**
+  String get growthIntro;
+
+  /// No description provided for @growthEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessuna attività negli ultimi 30 giorni. Quando ne farà qualcuna, qui vedrai le tappe.'**
+  String get growthEmpty;
+
+  /// No description provided for @growthOffscreen.
+  ///
+  /// In it, this message translates to:
+  /// **'Dove non c\'è miglioramento, prova l\'attività fuori dallo schermo suggerita nella scheda: non più tempo sull\'app.'**
+  String get growthOffscreen;
+
+  /// No description provided for @growthNew.
+  ///
+  /// In it, this message translates to:
+  /// **'Negli ultimi 30 giorni: {count} round. Un mese fa non l\'aveva ancora provato.'**
+  String growthNew(Object count);
+
+  /// No description provided for @growthCompare.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi: {now} · un mese fa: {before} (bordo grigio).'**
+  String growthCompare(Object before, Object now);
+
+  /// No description provided for @stageLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{stage, select, starting{sta iniziando} working{ci sta lavorando} canDo{ce la fa} alone{lo fa da solo} other{{stage}}}'**
+  String stageLabel(String stage);
+
+  /// No description provided for @skillLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{skill, select, suoni_iniziali{Suoni e lettere} pregrafismo{Tracciare lettere} numeri{Numeri e quantità} logica{Logica e sequenze} routine_sera{Preparare le cose per domani} routine_mattino{La routine del mattino} vestirsi{Vestirsi da solo} mensa{A mensa} turno_e_condivisione{Aspettare il turno e condividere} chiedere_aiuto{Chiedere aiuto} distacco{Il saluto del mattino} conoscere_la_scuola{Conoscere la scuola} primo_giorno{Il primo giorno} travasi{Travasi e versare} motricita_fine{Motricità fine} cura_ambiente{Cura dell\'ambiente} dimensioni{Grandezze e seriazione} colori{Colori} forme{Forme} tatto{Tatto} udito{Udito} scrittura{Scrittura} vocabolario{Vocabolario} decine{Decine e unità} geografia{Geografia} botanica{Botanica} other{{skill}}}'**
+  String skillLabel(String skill);
+
+  /// No description provided for @profileWelcome.
+  ///
+  /// In it, this message translates to:
+  /// **'Benvenuti in Mirabò'**
+  String get profileWelcome;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In it, this message translates to:
+  /// **'Modifica profilo'**
+  String get profileEdit;
+
+  /// No description provided for @profileNew.
+  ///
+  /// In it, this message translates to:
+  /// **'Nuovo profilo'**
+  String get profileNew;
+
+  /// No description provided for @profileChild.
+  ///
+  /// In it, this message translates to:
+  /// **'Il bambino'**
+  String get profileChild;
+
+  /// No description provided for @profileFirstRunHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Questa parte la compila un adulto. Ci vuole un minuto, poi il tablet passa al bambino.'**
+  String get profileFirstRunHint;
+
+  /// No description provided for @profileName.
+  ///
+  /// In it, this message translates to:
+  /// **'Nome'**
+  String get profileName;
+
+  /// No description provided for @profileNameHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il compagno lo chiamerà così'**
+  String get profileNameHint;
+
+  /// No description provided for @profileAge.
+  ///
+  /// In it, this message translates to:
+  /// **'Età'**
+  String get profileAge;
+
+  /// No description provided for @profileYears.
+  ///
+  /// In it, this message translates to:
+  /// **'{range} anni'**
+  String profileYears(Object range);
+
+  /// No description provided for @ageBandLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{band, select, small{Piccoli} mid{Primi passi} big{Grandi} other{{band}}}'**
+  String ageBandLabel(String band);
+
+  /// No description provided for @profileLanguage.
+  ///
+  /// In it, this message translates to:
+  /// **'Lingua'**
+  String get profileLanguage;
+
+  /// No description provided for @profileLanguageHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie, attività, giochi e voce del compagno saranno in questa lingua.'**
+  String get profileLanguageHint;
+
+  /// No description provided for @profileCompanion.
+  ///
+  /// In it, this message translates to:
+  /// **'Il compagno'**
+  String get profileCompanion;
+
+  /// No description provided for @profileCompanionEditHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il compagno si sceglie una volta sola: è il suo migliore amico.'**
+  String get profileCompanionEditHint;
+
+  /// No description provided for @profileCompanionNewHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Fate scegliere al bambino. Si sceglie una volta sola e non si cambia.'**
+  String get profileCompanionNewHint;
+
+  /// No description provided for @profileWorlds.
+  ///
+  /// In it, this message translates to:
+  /// **'Mondi delle storie'**
+  String get profileWorlds;
+
+  /// No description provided for @profileWorldsHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Scegliete i temi che il bambino troverà nella sua libreria.'**
+  String get profileWorldsHint;
+
+  /// No description provided for @profileSafetyTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'\"Il mio corpo\" solo in modalità insieme'**
+  String get profileSafetyTogether;
+
+  /// No description provided for @profileSafetyTogetherHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Consigliato: le storie su sicurezza e corpo si leggono con un adulto.'**
+  String get profileSafetyTogetherHint;
+
+  /// No description provided for @profileAccess.
+  ///
+  /// In it, this message translates to:
+  /// **'Accessibilità e tempo'**
+  String get profileAccess;
+
+  /// No description provided for @profileDyslexia.
+  ///
+  /// In it, this message translates to:
+  /// **'Testo ad alta leggibilità'**
+  String get profileDyslexia;
+
+  /// No description provided for @profileDyslexiaHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Carattere Lexend, spaziatura e interlinea maggiori.'**
+  String get profileDyslexiaHint;
+
+  /// No description provided for @profileLowStim.
+  ///
+  /// In it, this message translates to:
+  /// **'Bassa stimolazione'**
+  String get profileLowStim;
+
+  /// No description provided for @profileLowStimHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Colori tenui, nessuna animazione.'**
+  String get profileLowStimHint;
+
+  /// No description provided for @profileAloneSession.
+  ///
+  /// In it, this message translates to:
+  /// **'Sessione \"da solo\"'**
+  String get profileAloneSession;
+
+  /// No description provided for @profileMinutes.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} minuti'**
+  String profileMinutes(Object count);
+
+  /// No description provided for @profileMinutesShort.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} min'**
+  String profileMinutesShort(Object count);
+
+  /// No description provided for @profileDelete.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina questo profilo'**
+  String get profileDelete;
+
+  /// No description provided for @profileMissingName.
+  ///
+  /// In it, this message translates to:
+  /// **'Manca il nome'**
+  String get profileMissingName;
+
+  /// No description provided for @profileMissingCompanion.
+  ///
+  /// In it, this message translates to:
+  /// **'Manca il compagno'**
+  String get profileMissingCompanion;
+
+  /// No description provided for @profileStart.
+  ///
+  /// In it, this message translates to:
+  /// **'Iniziamo'**
+  String get profileStart;
+
+  /// No description provided for @translationDraft.
+  ///
+  /// In it, this message translates to:
+  /// **'Traduzione in revisione'**
+  String get translationDraft;
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  Future<AppLocalizations> load(Locale locale) {
+    return SynchronousFuture<AppLocalizations>(lookupAppLocalizations(locale));
+  }
+
+  @override
+  bool isSupported(Locale locale) =>
+      <String>['de', 'en', 'es', 'fr', 'it'].contains(locale.languageCode);
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+AppLocalizations lookupAppLocalizations(Locale locale) {
+  // Lookup logic when only language code is specified.
+  switch (locale.languageCode) {
+    case 'de':
+      return AppLocalizationsDe();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'it':
+      return AppLocalizationsIt();
+  }
+
+  throw FlutterError(
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
+}

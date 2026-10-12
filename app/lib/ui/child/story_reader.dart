@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
@@ -8,6 +9,7 @@ import '../../models/story.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'companion_widget.dart';
+import 'scene_illustration.dart';
 
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
 /// la pausa di dialogo a metà, il saluto alla fine. Nessun "prossima storia".
@@ -41,7 +43,7 @@ class _StoryReaderState extends State<StoryReader> {
     _profile = _state.currentProfile!;
     _mode = _state.mode;
     _variant = widget.story.variants[_profile.ageBand]!;
-    _tts.setLanguage('it-IT');
+    _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
     _tts.setSpeechRate(0.45);
     WidgetsBinding.instance.addPostFrameCallback((_) => _speakCurrent());
   }
@@ -112,7 +114,7 @@ class _StoryReaderState extends State<StoryReader> {
                   children: [
                     RoundIconButton(
                       icon: Icons.close_rounded,
-                      tooltip: 'Chiudi',
+                      tooltip: context.l10n.close,
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                     Expanded(
@@ -127,7 +129,7 @@ class _StoryReaderState extends State<StoryReader> {
                         ],
                       ),
                     ),
-                    RoundIconButton(icon: Icons.volume_up_rounded, tooltip: 'Rileggi', onPressed: _speakCurrent),
+                    RoundIconButton(icon: Icons.volume_up_rounded, tooltip: context.l10n.readAgain, onPressed: _speakCurrent),
                   ],
                 ),
                 const SizedBox(height: 14),
@@ -138,7 +140,18 @@ class _StoryReaderState extends State<StoryReader> {
                       // Illustrazione (segnaposto finché non ci sono i file)
                       Expanded(
                         flex: 5,
-                        child: _IllustrationPlaceholder(alt: screen.illustration.alt, color: accent, icon: world.icon),
+                        child: screen.illustration.scene == null
+                            ? _IllustrationPlaceholder(alt: screen.illustration.alt, color: accent, icon: world.icon)
+                            : _IllustrationFrame(
+                                alt: screen.illustration.alt,
+                                color: accent,
+                                child: SceneIllustration(
+                                  key: ValueKey(_index),
+                                  scene: screen.illustration.scene!,
+                                  companion: companion,
+                                  stage: _profile.companionStage,
+                                ),
+                              ),
                       ),
                       const SizedBox(width: 20),
                       // Testo e compagno
@@ -187,8 +200,12 @@ class _StoryReaderState extends State<StoryReader> {
                                 companion: companion,
                                 stage: _profile.companionStage,
                                 text: _withName(screen.companionLines!.forCompanion(_profile.companion)),
-                                // Senza testo della storia il compagno ha tutta la colonna.
-                                size: screen.text == null ? 190 : 96,
+                                // Senza testo della storia il compagno ha tutta la colonna,
+                                // a meno che non sia già nella scena.
+                                size: screen.text == null &&
+                                        !(screen.illustration.scene?.items.any((i) => i.paint == 'companion') ?? false)
+                                    ? 190
+                                    : 96,
                               ),
                             ],
                           ],
@@ -204,7 +221,7 @@ class _StoryReaderState extends State<StoryReader> {
                     if (_index > 0)
                       RoundIconButton(
                         icon: Icons.arrow_back_rounded,
-                        tooltip: 'Indietro',
+                        tooltip: context.l10n.back,
                         size: 64,
                         onPressed: () {
                           setState(() => _index--);
@@ -213,7 +230,7 @@ class _StoryReaderState extends State<StoryReader> {
                       ),
                     const Spacer(),
                     ChunkyButton(
-                      label: _isLast ? 'A domani!' : 'Avanti',
+                      label: _isLast ? context.l10n.seeYouTomorrow : context.l10n.next,
                       icon: _isLast ? Icons.waving_hand_rounded : Icons.arrow_forward_rounded,
                       iconAfter: !_isLast,
                       color: _isLast ? MiraboColors.apricot : MiraboColors.leaf,
@@ -280,6 +297,33 @@ class _StoryReaderState extends State<StoryReader> {
           ],
         ),
       ],
+    );
+  }
+}
+
+/// Cornice della pagina illustrata: angoli tondi e bordo "a rilievo" nel
+/// colore del mondo. La descrizione resta per lo screen reader.
+class _IllustrationFrame extends StatelessWidget {
+  const _IllustrationFrame({required this.alt, required this.color, required this.child});
+  final String alt;
+  final Color color;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      image: true,
+      label: alt,
+      excludeSemantics: true,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(32),
+          border: Border.all(color: Colors.white, width: 8),
+          boxShadow: [BoxShadow(color: MiraboColors.deep(color, 0.1), offset: const Offset(0, 8)), ...softShadow()],
+        ),
+        child: ClipRRect(borderRadius: BorderRadius.circular(24), child: child),
+      ),
     );
   }
 }

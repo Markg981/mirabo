@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mirabo/l10n/app_localizations.dart';
 import 'package:mirabo/theme.dart';
 import 'package:mirabo/ui/parent/adult_gate.dart';
 
@@ -7,8 +8,14 @@ import 'package:mirabo/ui/parent/adult_gate.dart';
 /// adulti, che è la barriera tra bambino e impostazioni.
 void main() {
   testWidgets('il gate adulti chiede una moltiplicazione e rifiuta la risposta sbagliata', (tester) async {
+    // Il gate usa la lingua del dispositivo, non quella del bambino.
+    tester.platformDispatcher.localeTestValue = const Locale('it');
+    addTearDown(tester.platformDispatcher.clearLocaleTestValue);
     var opened = false;
     await tester.pumpWidget(MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('it'),
       theme: miraboTheme(dyslexiaFont: false, lowStimulation: false),
       home: Builder(
         builder: (context) => Scaffold(

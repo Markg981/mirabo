@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'app_state.dart';
 import 'content/story_repository.dart';
 import 'data/local_db.dart';
+import 'l10n/l10n.dart';
 import 'theme.dart';
+import 'ui/child/choose_child_screen.dart';
 import 'ui/child/home_screen.dart';
 import 'ui/parent/profile_form.dart';
 
@@ -39,14 +40,18 @@ class MiraboApp extends StatelessWidget {
               dyslexiaFont: profile?.dyslexiaFont ?? false,
               lowStimulation: profile?.lowStimulation ?? false,
             ),
-            locale: const Locale('it'),
-            supportedLocales: const [Locale('it')],
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            home: profile == null ? const ProfileForm(firstRun: true) : const HomeScreen(),
+            // Lato bambino: la lingua del bambino che gioca. Prima di sceglierlo
+            // (primo avvio, "Chi gioca oggi?") quella del tablet.
+            locale: profile == null || state.needsChildChoice
+                ? AppLanguage.ofDevice().locale
+                : AppLanguage.fromCode(profile.language).locale,
+            supportedLocales: [for (final l in AppLanguage.values) l.locale],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            home: profile == null
+                ? const ProfileForm(firstRun: true)
+                : state.needsChildChoice
+                    ? const ChooseChildScreen()
+                    : const HomeScreen(),
           );
         },
       ),

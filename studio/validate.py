@@ -59,6 +59,67 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
         if variant.get("ageBand") != band:
             errors.append(f"{folder.name}/{file}: ageBand '{variant.get('ageBand')}' diverso da '{band}'")
         errors += check_screens(f"{folder.name}/{file}", variant.get("screens", []), band, meta)
+    errors += check_translations(folder, meta)
+    return errors
+
+
+LANGUAGES = ("en", "es", "fr", "de")
+META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
+SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue"}
+DRAFTS: list[str] = []
+
+
+def check_translations(folder: Path, meta: dict) -> list[str]:
+    """Gli overlay i18n/<lingua>/ traducono solo testi: stessa struttura dell'italiano, {nome} conservato."""
+    errors: list[str] = []
+    base_dir = folder / "i18n"
+    if not base_dir.exists():
+        return errors
+    for lang_dir in sorted(p for p in base_dir.iterdir() if p.is_dir()):
+        lang = lang_dir.name
+        label = f"{folder.name}/i18n/{lang}"
+        if lang not in LANGUAGES:
+            errors.append(f"{label}: lingua non supportata")
+            continue
+        tmeta_path = lang_dir / "story.json"
+        if not tmeta_path.exists():
+            errors.append(f"{label}: manca story.json")
+            continue
+        tmeta = read_json(tmeta_path)
+        extra = set(tmeta) - META_TEXT_KEYS
+        if extra:
+            errors.append(f"{label}/story.json: campi non traducibili {sorted(extra)}")
+        if not tmeta.get("reviewed", False):
+            DRAFTS.append(label)
+        if not (lang_dir / meta.get("parentCard", "parent.md")).exists():
+            errors.append(f"{label}: manca la scheda genitore tradotta")
+        for band, file in meta.get("ageBands", {}).items():
+            tpath = lang_dir / file
+            if not tpath.exists():
+                errors.append(f"{label}: manca la variante {file}")
+                continue
+            base = read_json(folder / file).get("screens", [])
+            over = read_json(tpath).get("screens", [])
+            if len(over) != len(base):
+                errors.append(f"{label}/{file}: {len(over)} schermate, l'italiano ne ha {len(base)}")
+            for b, o in zip(base, over):
+                n = b.get("n")
+                extra = set(o) - SCREEN_TEXT_KEYS
+                if extra:
+                    errors.append(f"{label}/{file} #{n}: campi non traducibili {sorted(extra)}")
+                if b.get("text") and not o.get("text"):
+                    errors.append(f"{label}/{file} #{n}: manca il testo")
+                for c, line in (b.get("companionLines") or {}).items():
+                    t = (o.get("companionLines") or {}).get(c)
+                    if t is None:
+                        errors.append(f"{label}/{file} #{n}: manca la battuta di {c}")
+                    elif NAME_PLACEHOLDER in line and NAME_PLACEHOLDER not in t:
+                        errors.append(f"{label}/{file} #{n}: la battuta di {c} ha perso {NAME_PLACEHOLDER}")
+                if "dialogue" in b:
+                    bo = b["dialogue"]["alone"]["options"]
+                    oo = ((o.get("dialogue") or {}).get("alone") or {}).get("options", [])
+                    if len(oo) != len(bo):
+                        errors.append(f"{label}/{file} #{n}: {len(oo)} opzioni tradotte su {len(bo)}")
     return errors
 
 
@@ -202,6 +263,8 @@ def main(argv: list[str]) -> int:
         all_errors += errs
     for e in all_errors:
         print("  -", e)
+    if DRAFTS:
+        print(f"\nTraduzioni da revisionare ({len(DRAFTS)}): " + ", ".join(DRAFTS))
     print(f"\n{len(stories)} storie, {len(activities)} attività, {len(all_errors)} errori")
     return 1 if all_errors else 0
 

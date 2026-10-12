@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../../models/activity.dart';
 import '../../design/palette.dart';
 import '../../design/widgets.dart';
@@ -24,7 +25,7 @@ class _ExploreRoundState extends State<ExploreRound> {
     final scene = widget.level['scene'] as String;
     return Column(
       children: [
-        PromptBar(text: '$scene: tocca per scoprire', onSay: () => widget.ctx.say('Questa è $scene. Tocca per scoprire.')),
+        PromptBar(text: context.l10n.exploreTap(scene), onSay: () => widget.ctx.say(context.l10n.exploreSay(scene))),
         Expanded(
           child: Center(
             child: Wrap(
@@ -65,7 +66,7 @@ class _ExploreRoundState extends State<ExploreRound> {
                     widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'seen=${_seen.length};of=${_spots.length}'));
                     widget.onFinished();
                   },
-            label: _seen.length == _spots.length ? 'Ho visto tutto!' : 'Per oggi basta',
+            label: _seen.length == _spots.length ? context.l10n.exploreAllSeen : context.l10n.exploreEnough,
           ),
         ),
       ],

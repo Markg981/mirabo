@@ -4,7 +4,17 @@
     {
       "n": 1,
       "kind": "hook",
-      "illustration": { "alt": "Il compagno con gli stivaletti di gomma rossi troppo grandi, davanti a un sentiero che entra nel bosco." },
+      "illustration": {
+        "alt": "Il compagno con gli stivaletti di gomma rossi troppo grandi, davanti a un sentiero che entra nel bosco.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.38, "y": 0.68, "s": 0.48},
+            {"e": "👢", "x": 0.62, "y": 0.88, "s": 0.14},
+            {"e": "🍄", "x": 0.14, "y": 0.86, "s": 0.08}
+          ]
+        }
+      },
       "companionLines": {
         "bo": "Ciao {nome}! Oggi andiamo nel bosco con Emma. Ho messo gli stivali. Sono un po' grandi. Mi tieni la mano?",
         "pilu": "Ciao {nome}! Nel bosco di Emma c'è un ruscello che canta. Oggi però ho sentito una cosa strana. Andiamo a vedere?",
@@ -14,25 +24,73 @@
     {
       "n": 2,
       "kind": "situation",
-      "illustration": { "alt": "Emma con il cappottino giallo e il cestino, Pietrolino che sbuca dal taschino; sullo sfondo la nonna seduta su un tronco, con un sacchetto e due guanti che spuntano dal cestino." },
+      "illustration": {
+        "alt": "Emma con il cappottino giallo e il cestino, Pietrolino che sbuca dal taschino; sullo sfondo la nonna seduta su un tronco, con un sacchetto e due guanti che spuntano dal cestino.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.34, "y": 0.7, "s": 0.38},
+            {"paint": "pebble", "x": 0.43, "y": 0.62, "s": 0.07},
+            {"e": "🧺", "x": 0.5, "y": 0.84, "s": 0.14},
+            {"e": "🪵", "x": 0.78, "y": 0.76, "s": 0.2},
+            {"e": "👵", "x": 0.78, "y": 0.62, "s": 0.26, "flip": true},
+            {"e": "🧤", "x": 0.56, "y": 0.86, "s": 0.07}
+          ]
+        }
+      },
       "text": "Emma torna nel bosco con Pietrolino nel taschino del cappotto. Pietrolino è un sassolino, e parla: ma solo con chi si ferma ad ascoltare. La nonna si siede sul tronco all'ingresso. \"Io sto qui,\" dice. \"Se trovi qualcosa, chiamami.\""
     },
     {
       "n": 3,
       "kind": "situation",
-      "illustration": { "alt": "Emma che cammina seguendo il ruscello tra i sassi, con l'orecchio teso; piccole note musicali escono dall'acqua." },
+      "illustration": {
+        "alt": "Emma che cammina seguendo il ruscello tra i sassi, con l'orecchio teso; piccole note musicali escono dall'acqua.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.28, "y": 0.8, "s": 0.32},
+            {"paint": "pebble", "x": 0.36, "y": 0.72, "s": 0.05},
+            {"e": "🎵", "x": 0.52, "y": 0.4, "s": 0.1},
+            {"e": "🎶", "x": 0.66, "y": 0.32, "s": 0.11},
+            {"e": "🎵", "x": 0.8, "y": 0.38, "s": 0.09}
+          ]
+        }
+      },
       "text": "\"Dove andiamo oggi?\" chiede Emma. Pietrolino vibra tra le cuciture. \"Segui il ruscello. C'è qualcuno che ha bisogno di parlare.\" Emma segue il suono dell'acqua, che scivola tra i sassi come una canzone: plin, plon, plin."
     },
     {
       "n": 4,
       "kind": "situation",
-      "illustration": { "alt": "Le note musicali diventano storte e piccole; Emma rallenta." },
+      "illustration": {
+        "alt": "Le note musicali diventano storte e piccole; Emma rallenta.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.26, "y": 0.82, "s": 0.32},
+            {"e": "🎵", "x": 0.58, "y": 0.4, "s": 0.06, "rot": 40},
+            {"e": "🎵", "x": 0.7, "y": 0.36, "s": 0.05, "rot": -35},
+            {"e": "🎶", "x": 0.82, "y": 0.42, "s": 0.06, "rot": 60, "opacity": 0.6}
+          ]
+        }
+      },
       "text": "Ma più si avvicina, più il suono cambia. Non è più una canzone allegra. È un piagnucolio. \"Pio... plo... plic...\""
     },
     {
       "n": 5,
       "kind": "situation",
-      "illustration": { "alt": "Emma in ginocchio sulla riva; nell'acqua cartacce, una bottiglia di plastica, una scarpa rotta; l'acqua è opaca." },
+      "illustration": {
+        "alt": "Emma in ginocchio sulla riva; nell'acqua cartacce, una bottiglia di plastica, una scarpa rotta; l'acqua è opaca.",
+        "scene": {
+          "bg": "stream", "dirty": true,
+          "items": [
+            {"e": "👧", "x": 0.18, "y": 0.82, "s": 0.3},
+            {"e": "🧴", "x": 0.5, "y": 0.58, "s": 0.1, "rot": 70},
+            {"e": "📄", "x": 0.66, "y": 0.62, "s": 0.08, "rot": -20},
+            {"e": "👞", "x": 0.8, "y": 0.56, "s": 0.09, "rot": 15},
+            {"e": "🗞️", "x": 0.36, "y": 0.64, "s": 0.07, "rot": 30}
+          ]
+        }
+      },
       "text": "Emma si inginocchia. L'acqua non è più chiara. Ci sono cartacce, una bottiglia di plastica, perfino una scarpa rotta. \"Oh no...\" \"Il ruscello è triste,\" dice Pietrolino. \"Era limpido e cantava. Adesso è tutto sporco e non ci riesce più.\" \"Glu glu...\" gorgoglia l'acqua. \"Non riesco più a cantare come prima.\"",
       "companionLines": {
         "bo": "Mi dispiace per il ruscello. Mi viene da piangere anche a me, {nome}.",
@@ -43,7 +101,20 @@
     {
       "n": 6,
       "kind": "dialogue",
-      "illustration": { "alt": "Emma ferma sulla riva, guarda il cestino vuoto, poi Pietrolino, poi la nonna lontana sul tronco." },
+      "illustration": {
+        "alt": "Emma ferma sulla riva, guarda il cestino vuoto, poi Pietrolino, poi la nonna lontana sul tronco.",
+        "scene": {
+          "bg": "stream", "dirty": true,
+          "items": [
+            {"e": "👧", "x": 0.28, "y": 0.82, "s": 0.32},
+            {"paint": "pebble", "x": 0.37, "y": 0.72, "s": 0.05},
+            {"e": "🧺", "x": 0.45, "y": 0.9, "s": 0.11},
+            {"e": "🧴", "x": 0.6, "y": 0.6, "s": 0.08, "rot": 70},
+            {"e": "🪵", "x": 0.88, "y": 0.38, "s": 0.09},
+            {"e": "👵", "x": 0.88, "y": 0.32, "s": 0.11, "flip": true}
+          ]
+        }
+      },
       "text": "Emma guarda il cestino vuoto. Guarda Pietrolino. Guarda la nonna, laggiù sul tronco. E adesso?",
       "dialogue": {
         "together": "Chiedi: cosa può fare Emma? E se lo trovassi tu, un ruscello così?",
@@ -91,13 +162,38 @@
     {
       "n": 7,
       "kind": "turn",
-      "illustration": { "alt": "Emma corre verso la nonna; la nonna le porge i guanti e il sacchetto, senza alzarsi." },
+      "illustration": {
+        "alt": "Emma corre verso la nonna; la nonna le porge i guanti e il sacchetto, senza alzarsi.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🏃‍♀️", "x": 0.3, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🪵", "x": 0.74, "y": 0.78, "s": 0.2},
+            {"e": "👵", "x": 0.74, "y": 0.64, "s": 0.28, "flip": true},
+            {"e": "🧤", "x": 0.58, "y": 0.64, "s": 0.08},
+            {"e": "🛍️", "x": 0.6, "y": 0.76, "s": 0.1}
+          ]
+        }
+      },
       "text": "\"Nonna! Il ruscello è pieno di roba sporca!\" La nonna non si alza. Le porge i guanti e il sacchetto. \"Allora servono questi. Io guardo da qui. Se trovi vetro, non lo toccare: lo prendo io.\""
     },
     {
       "n": 8,
       "kind": "turn",
-      "illustration": { "alt": "Emma con i guanti troppo grandi raccoglie le cartacce; la bottiglia nel sacchetto; le maniche bagnate." },
+      "illustration": {
+        "alt": "Emma con i guanti troppo grandi raccoglie le cartacce; la bottiglia nel sacchetto; le maniche bagnate.",
+        "scene": {
+          "bg": "stream", "dirty": true,
+          "items": [
+            {"e": "👧", "x": 0.28, "y": 0.8, "s": 0.32},
+            {"e": "🧤", "x": 0.4, "y": 0.72, "s": 0.1},
+            {"e": "🛍️", "x": 0.5, "y": 0.88, "s": 0.14},
+            {"e": "🧴", "x": 0.52, "y": 0.8, "s": 0.06, "rot": -15},
+            {"e": "📄", "x": 0.68, "y": 0.62, "s": 0.07, "rot": -20},
+            {"e": "💦", "x": 0.36, "y": 0.7, "s": 0.06}
+          ]
+        }
+      },
       "text": "Emma comincia piano, dalle cartacce. Poi la bottiglia. Ogni volta che tocca qualcosa di sporco, dice: \"Scusa, ruscello. Adesso ti aiuto.\" La scarpa è pesante. Si bagna le maniche. Ma non si ferma.",
       "companionLines": {
         "bo": "Dai che ce la fa. Dai che ce la fa. {nome}, tienimi la mano che non guardo.",
@@ -108,13 +204,39 @@
     {
       "n": 9,
       "kind": "turn",
-      "illustration": { "alt": "Il ruscello di nuovo limpido, il sole che ci si riflette; il sacchetto pieno accanto alla nonna; Emma con le maniche gocciolanti." },
+      "illustration": {
+        "alt": "Il ruscello di nuovo limpido, il sole che ci si riflette; il sacchetto pieno accanto alla nonna; Emma con le maniche gocciolanti.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.28, "y": 0.8, "s": 0.32},
+            {"e": "💧", "x": 0.38, "y": 0.72, "s": 0.06},
+            {"e": "✨", "x": 0.52, "y": 0.58, "s": 0.07},
+            {"e": "✨", "x": 0.72, "y": 0.6, "s": 0.06},
+            {"e": "👵", "x": 0.86, "y": 0.68, "s": 0.28, "flip": true},
+            {"e": "🛍️", "x": 0.74, "y": 0.84, "s": 0.13}
+          ]
+        }
+      },
       "text": "Quando finisce, il ruscello brilla di nuovo sotto il sole. \"Grazie... gluu... grazie...\" sussurra l'acqua. \"È solo un ruscello piccolo,\" dice Emma. \"Anche i ruscelli piccoli fanno grandi viaggi,\" risponde Pietrolino. \"Diventano fiumi, arrivano al mare. E tutto parte da qui.\""
     },
     {
       "n": 10,
       "kind": "closing",
-      "illustration": { "alt": "Emma e la nonna sul sentiero del ritorno; il sacchetto chiuso; dietro, il ruscello con le note musicali dritte; una farfalla gialla." },
+      "illustration": {
+        "alt": "Emma e la nonna sul sentiero del ritorno; il sacchetto chiuso; dietro, il ruscello con le note musicali dritte; una farfalla gialla.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.44, "y": 0.78, "s": 0.28},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🛍️", "x": 0.67, "y": 0.86, "s": 0.1},
+            {"e": "🎵", "x": 0.18, "y": 0.5, "s": 0.07},
+            {"e": "🎶", "x": 0.86, "y": 0.46, "s": 0.07},
+            {"e": "🦋", "x": 0.3, "y": 0.34, "s": 0.1}
+          ]
+        }
+      },
       "text": "Sulla via di casa Emma dice: \"Nonna, domani lo racconto a Sara e a Omar. Che il ruscello era triste, e io l'ho aiutato.\" La nonna annuisce. E dietro di loro il ruscello riprende a cantare: plin... plon... plin.",
       "keyPhrase": true,
       "companionLines": {

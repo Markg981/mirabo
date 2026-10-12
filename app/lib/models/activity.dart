@@ -75,25 +75,29 @@ class Activity {
   /// Attività da fare con le mani, fuori dallo schermo.
   bool get isHome => type == ActivityType.presentation;
 
-  /// La prima emoji che compare nei livelli: fa da copertina alla carta
-  /// finché le attività non hanno un'illustrazione propria.
-  String? get coverEmoji => _firstEmoji(levels);
+  /// Le prime emoji diverse che compaiono nei livelli (al massimo tre): fanno
+  /// da copertina alla carta finché le attività non hanno un'illustrazione propria.
+  List<String> get coverEmojis {
+    final out = <String>[];
+    _collectEmojis(levels, out);
+    return out;
+  }
 
-  static String? _firstEmoji(Object? node) {
+  String? get coverEmoji => coverEmojis.firstOrNull;
+
+  static void _collectEmojis(Object? node, List<String> out) {
+    if (out.length >= 3) return;
     if (node is Map) {
       final e = node['emoji'];
-      if (e is String && e.isNotEmpty) return e;
+      if (e is String && e.isNotEmpty && !out.contains(e)) out.add(e);
       for (final v in node.values) {
-        final found = _firstEmoji(v);
-        if (found != null) return found;
+        _collectEmojis(v, out);
       }
     } else if (node is List) {
       for (final v in node) {
-        final found = _firstEmoji(v);
-        if (found != null) return found;
+        _collectEmojis(v, out);
       }
     }
-    return null;
   }
 
   /// Livello 1..levels.length, mai fuori range.

@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon assis sur un coussin, avec un livre ouvert et un volcan dessiné sur la couverture."
+      },
+      "companionLines": {
+        "bo": "Coucou {nome} ! Aujourd'hui il y a une histoire avec un volcan. Moi, les volcans, ça me fait un peu peur... mais si tu es là, je regarde.",
+        "pilu": "Coucou {nome} ! Tu sais qu'à l'intérieur de chacun de nous il y a un volcan ? Tu ne me crois pas ? Regarde ce qui arrive à Lia.",
+        "tango": "Coucou {nome} ! Cette histoire parle d'un truc qui m'arrive tout le temps. Je parie que ça t'arrive aussi. On regarde ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La chambre de Lia ; sur la table, une tour de cubes très haute et colorée avec un petit drapeau au sommet. Lia la regarde, les mains sur les hanches, très fière."
+      },
+      "text": "Lia a construit la tour la plus haute du monde. Ça lui a pris tout l'après-midi : un cube rouge, un bleu, un jaune, jusqu'au petit drapeau tout en haut. « Mamie, viens voir ! »"
+    },
+    {
+      "illustration": {
+        "alt": "Teo, deux ans, arrive à quatre pattes avec une peluche à la main ; la tour vacille déjà."
+      },
+      "text": "Mais avant Mamie, c'est Teo qui arrive. Teo a deux ans et veut toujours tout toucher. Il tend la main vers le cube rouge tout en bas..."
+    },
+    {
+      "illustration": {
+        "alt": "Les cubes de la tour volent partout ; Teo rit ; Lia a la bouche grande ouverte."
+      },
+      "text": "CRAC. La tour la plus haute du monde n'est plus qu'un tas de cubes par terre. Teo rit. Il n'a rien compris."
+    },
+    {
+      "illustration": {
+        "alt": "Lia en plein écran, le visage rouge, les poings serrés ; derrière elle, en transparence, la silhouette d'un volcan qui fume."
+      },
+      "text": "Lia sent quelque chose de chaud qui monte de son ventre. Ses mains se ferment toutes seules. Son visage devient rouge. À l'intérieur d'elle il y a un volcan, et le volcan va exploser.",
+      "companionLines": {
+        "bo": "Oh non. Moi, quand je suis comme ça, j'ai les oreilles toutes chaudes. Et toi, où tu le sens, {nome} ?",
+        "pilu": "Regarde les mains de Lia. Le volcan, on le sent d'abord dans le corps, tu sais. Et toi, où tu le sens, {nome} ?",
+        "tango": "Le voilà ! Je le reconnais ! Moi, mes pattes se ferment comme ça. Et toi, où tu le sens, {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La même scène, figée : Lia le poing levé, Teo qui rit encore, la porte ouverte par laquelle arrive Mamie."
+      },
+      "text": "Lia a le poing levé. Le volcan est presque au sommet. Et maintenant ?",
+      "dialogue": {
+        "together": "Demandez : à ton avis, que va faire Lia ? Et toi, que ferais-tu ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, que ferais-tu, {nome} ?",
+            "pilu": "Et toi, que ferais-tu, {nome} ?",
+            "tango": "Et toi, que ferais-tu, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je pousse Teo",
+              "reaction": {
+                "bo": "Je comprends, le volcan est fort. Voyons ce que fait Lia, puis tu me diras si ça te plaît.",
+                "pilu": "Mmh, peut-être. Regardons ce qui arrive à Lia et puis on y réfléchit.",
+                "tango": "Je sais, moi aussi j'aimerais bien ! Mais attends, regardons."
+              }
+            },
+            {
+              "label": "Je crie fort",
+              "reaction": {
+                "bo": "Crier fait sortir un peu de volcan, c'est vrai. Regardons ce que fait Lia.",
+                "pilu": "On a le droit de crier. Voyons si Lia trouve aussi une autre façon.",
+                "tango": "Oui ! Crier ! ...Mais regardons ce que fait Lia."
+              }
+            },
+            {
+              "label": "Je respire",
+              "reaction": {
+                "bo": "Moi, je n'y serais pas arrivé. Voyons si Lia y arrive.",
+                "pilu": "Bonne idée. Voyons si Lia y pense aussi.",
+                "tango": "Respirer ? Avec le volcan au sommet ? Voyons si Lia y arrive."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Mamie à la porte, à genoux à la hauteur de Lia, les mains ouvertes ; elle ne touche pas Lia, elle ne prend pas Teo."
+      },
+      "text": "Mamie arrive et ne dit pas « on ne fait pas ça ». Elle dit : « Lia, je sens le volcan. Il est gros, hein ? Faisons la respiration du volcan, ensemble. » Elle pose les mains sur son ventre. Lia, les yeux encore pleins de feu, fait pareil."
+    },
+    {
+      "illustration": {
+        "alt": "Lia et Mamie, les mains sur le ventre ; au-dessus d'elles le volcan, qui passe du rouge à l'orange puis au rose, avec la lave qui descend doucement."
+      },
+      "text": "On inspire : un, deux, trois. On souffle : ssssssh, doucement, comme la lave qui descend. Encore. On inspire : un, deux, trois. On souffle : sssssh. Le volcan est toujours là. Mais il n'explose plus. Il redescend.",
+      "companionLines": {
+        "bo": "Faisons-le nous aussi, {nome}. Les mains sur le ventre. On inspire... un, deux, trois. On souffle... ssssh. Je me sens déjà mieux.",
+        "pilu": "Essayons ensemble, {nome} : les mains sur le ventre, on inspire un deux trois, on souffle sssssh. Ça marche aussi avec des ailes, tu sais.",
+        "tango": "Allez {nome}, on le fait ! Les mains sur le ventre. On inspire un, deux, trois. On souffle ssssh. Oh. C'est plus difficile que de courir."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia assise par terre, Teo qui lui tend un cube bleu, Mamie au fond qui range les cubes dans une boîte."
+      },
+      "text": "« J'étais en colère », dit Lia. « Très fort. » « Je sais », dit Mamie. « On a le droit d'être en colère. Le volcan monte, explose, et puis il se calme. On peut l'attendre. » Teo lui tend un cube bleu. Il ne sait pas ce qu'il a fait, mais il veut jouer avec elle."
+    },
+    {
+      "illustration": {
+        "alt": "Une nouvelle tour, plus basse mais plus large, construite par Lia et Teo ; le petit drapeau au sommet ; le volcan au fond est maintenant vert, avec une fleur au sommet."
+      },
+      "text": "La nouvelle tour n'est pas la plus haute du monde. C'est la plus large, parce qu'ils l'ont faite à deux. Et le volcan de Lia ? Il est toujours là-dedans, tranquille. Il reviendra, un jour. Mais maintenant Lia sait l'attendre.",
+      "companionLines": {
+        "bo": "On a réussi, {nome}. Mon volcan est tout vert maintenant. On se voit demain ?",
+        "pilu": "Maintenant tu le sais toi aussi, {nome} : le volcan, ça passe. Je vais dormir un peu, il fait jour. À demain.",
+        "tango": "Je m'en souviens, {nome} : on inspire un deux trois, on souffle sssh. J'essaie cet après-midi. À demain !"
+      }
+    }
+  ]
+}

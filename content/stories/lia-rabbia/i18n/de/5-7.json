@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter sitzt auf einem Kissen, mit einem offenen Buch, auf dessen Umschlag ein Vulkan gemalt ist."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Heute gibt es eine Geschichte mit einem Vulkan. Vor Vulkanen habe ich ein bisschen Angst... aber wenn du da bist, schaue ich hin.",
+        "pilu": "Hallo {nome}! Weißt du, dass in jedem von uns ein Vulkan steckt? Glaubst du nicht? Schau, was mit Lia passiert.",
+        "tango": "Hallo {nome}! In dieser Geschichte geht es um etwas, das mir ständig passiert. Ich wette, dir auch. Schauen wir?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lias Zimmer; auf dem Tisch ein riesig hoher, bunter Turm aus Bausteinen mit einem Fähnchen oben drauf. Lia schaut ihn an, die Hände in den Hüften, mächtig stolz."
+      },
+      "text": "Lia hat den höchsten Turm der Welt gebaut. Sie hat den ganzen Nachmittag gebraucht: ein roter Stein, ein blauer, ein gelber, bis hinauf zum Fähnchen. „Oma, komm gucken!“"
+    },
+    {
+      "illustration": {
+        "alt": "Teo, zwei Jahre alt, krabbelt mit einem Kuscheltier in der Hand herein; der Turm wackelt schon."
+      },
+      "text": "Aber noch vor Oma kommt Teo. Teo ist zwei und will immer alles anfassen. Er streckt die Hand nach dem roten Stein ganz unten aus..."
+    },
+    {
+      "illustration": {
+        "alt": "Die Steine des Turms fliegen überall herum; Teo lacht; Lia steht mit offenem Mund da."
+      },
+      "text": "KRACH. Der höchste Turm der Welt ist ein Haufen Steine auf dem Boden. Teo lacht. Er hat gar nichts verstanden."
+    },
+    {
+      "illustration": {
+        "alt": "Lia bildschirmfüllend, rotes Gesicht, geballte Fäuste; hinter ihr, durchscheinend, die Umrisse eines rauchenden Vulkans."
+      },
+      "text": "Lia spürt, wie etwas Heißes aus ihrem Bauch aufsteigt. Ihre Hände ballen sich ganz von allein. Ihr Gesicht wird rot. In ihr steckt ein Vulkan, und der Vulkan wird gleich ausbrechen.",
+      "companionLines": {
+        "bo": "Oh nein. Wenn es mir so geht, werden meine Ohren ganz heiß. Wo spürst du es, {nome}?",
+        "pilu": "Schau dir Lias Hände an. Den Vulkan spürt man zuerst im Körper, weißt du. Wo spürst du es, {nome}?",
+        "tango": "Da ist er! Den kenne ich! Bei mir ballen sich die Pfoten genauso. Wo spürst du es, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Dieselbe Szene, angehalten: Lia mit erhobener Faust, Teo lacht noch immer, die offene Tür, durch die Oma gerade kommt."
+      },
+      "text": "Lia hat die Faust erhoben. Der Vulkan ist fast oben. Und jetzt?",
+      "dialogue": {
+        "together": "Fragen Sie: Was glaubst du, was Lia macht? Und was würdest du machen?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du machen, {nome}?",
+            "pilu": "Was würdest du machen, {nome}?",
+            "tango": "Was würdest du machen, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich schubse Teo",
+              "reaction": {
+                "bo": "Ich verstehe, der Vulkan ist stark. Schauen wir, was Lia macht, dann sagst du mir, ob es dir gefällt.",
+                "pilu": "Hmm, vielleicht. Schauen wir, was mit Lia passiert, und dann denken wir darüber nach.",
+                "tango": "Ich weiß, das würde ich auch gern! Aber warte, schauen wir."
+              }
+            },
+            {
+              "label": "Ich schreie laut",
+              "reaction": {
+                "bo": "Schreien lässt ein bisschen Vulkan raus, das stimmt. Schauen wir, was Lia macht.",
+                "pilu": "Schreien darf man. Schauen wir, ob Lia auch noch einen anderen Weg findet.",
+                "tango": "Ja! Schreien! ...Aber schauen wir, was Lia macht."
+              }
+            },
+            {
+              "label": "Ich atme",
+              "reaction": {
+                "bo": "Ich hätte das nicht geschafft. Schauen wir, ob Lia es schafft.",
+                "pilu": "Gute Idee. Schauen wir, ob Lia auch daran denkt.",
+                "tango": "Atmen? Mit dem Vulkan ganz oben? Schauen wir, ob Lia das schafft."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Oma an der Tür, kniend auf Lias Höhe, die Hände offen; sie fasst Lia nicht an, sie nimmt Teo nicht hoch."
+      },
+      "text": "Oma kommt und sagt nicht „Das macht man nicht“. Sie sagt: „Lia, ich spüre den Vulkan. Der ist groß, was? Machen wir zusammen den Vulkan-Atem.“ Sie legt die Hände auf den Bauch. Lia, die Augen noch voller Feuer, macht es ihr nach."
+    },
+    {
+      "illustration": {
+        "alt": "Lia und Oma mit den Händen auf dem Bauch; über ihnen der Vulkan, der von Rot zu Orange und dann zu Rosa wird, und die Lava fließt langsam herunter."
+      },
+      "text": "Einatmen: eins, zwei, drei. Ausatmen: schschschsch, langsam, wie Lava, die herunterfließt. Noch einmal. Einatmen: eins, zwei, drei. Ausatmen: schschsch. Der Vulkan ist noch da. Aber er bricht nicht mehr aus. Er wird kleiner.",
+      "companionLines": {
+        "bo": "Machen wir es auch, {nome}. Hände auf den Bauch. Einatmen... eins, zwei, drei. Ausatmen... schschsch. Mir geht es schon besser.",
+        "pilu": "Probieren wir es zusammen, {nome}: Hände auf den Bauch, einatmen eins zwei drei, ausatmen schschsch. Das klappt auch mit Flügeln, weißt du.",
+        "tango": "Los, {nome}, machen wir es! Hände auf den Bauch. Einatmen: eins, zwei, drei. Ausatmen: schschsch. Oh. Das ist schwerer als Rennen."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia sitzt auf dem Boden, Teo reicht ihr einen blauen Stein, im Hintergrund räumt Oma die Steine in eine Kiste."
+      },
+      "text": "„Ich war wütend“, sagt Lia. „Ganz doll.“ „Ich weiß“, sagt Oma. „Man darf wütend werden. Der Vulkan steigt, bricht aus und beruhigt sich dann. Man kann auf ihn warten.“ Teo reicht ihr einen blauen Stein. Er weiß nicht, was er gemacht hat, aber er will mit ihr spielen."
+    },
+    {
+      "illustration": {
+        "alt": "Ein neuer Turm, niedriger, aber breiter, von Lia und Teo gebaut; das Fähnchen oben drauf; der Vulkan im Hintergrund ist jetzt grün, mit einer Blume auf der Spitze."
+      },
+      "text": "Der neue Turm ist nicht der höchste der Welt. Er ist der breiteste, weil sie ihn zu zweit gebaut haben. Und Lias Vulkan? Der ist immer noch da drin, ganz ruhig. Eines Tages kommt er wieder. Aber jetzt weiß Lia, wie sie auf ihn warten kann.",
+      "companionLines": {
+        "bo": "Wir haben es geschafft, {nome}. Mein Vulkan ist jetzt ganz grün. Sehen wir uns morgen?",
+        "pilu": "Jetzt weißt du es auch, {nome}: Der Vulkan geht vorbei. Ich schlafe jetzt ein bisschen, es ist ja Tag. Bis morgen.",
+        "tango": "Ich merke es mir, {nome}: einatmen eins zwei drei, ausatmen schschsch. Ich probiere es heute Nachmittag. Bis morgen!"
+      }
+    }
+  ]
+}
