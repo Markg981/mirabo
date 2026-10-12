@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../../models/activity.dart';
 import '../../design/palette.dart';
 import '../../design/widgets.dart';
@@ -24,7 +25,7 @@ class _ChecklistRoundState extends State<ChecklistRound> {
     final allDone = _done.every((d) => d);
     return Column(
       children: [
-        PromptBar(text: 'Cosa è già pronto?', onSay: () => widget.ctx.say('Cosa è già pronto per domani?')),
+        PromptBar(text: context.l10n.checklistPrompt, onSay: () => widget.ctx.say(context.l10n.checklistSay)),
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -37,7 +38,7 @@ class _ChecklistRoundState extends State<ChecklistRound> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     FilterChip(
-                      label: const Text('da solo'),
+                      label: Text(context.l10n.checklistAlone),
                       selected: _alone[i],
                       onSelected: _done[i] ? (v) => setState(() => _alone[i] = v) : null,
                     ),
@@ -64,7 +65,7 @@ class _ChecklistRoundState extends State<ChecklistRound> {
           padding: const EdgeInsets.all(16),
           child: ChunkyButton(
               icon: allDone ? Icons.bedtime_rounded : Icons.check_rounded,
-              label: allDone ? 'Tutto pronto, buonanotte' : 'Per oggi basta così',
+              label: allDone ? context.l10n.checklistAllDone : context.l10n.enoughForToday,
               color: MiraboColors.leaf,
             onPressed: () {
               final alone = _alone.where((a) => a).length;

@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero con unas botas de agua rojas demasiado grandes, delante de un sendero que entra en el bosque."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Hoy vamos al bosque con Emma. Me he puesto las botas. Me quedan un poco grandes. ¿Me das la mano?",
+        "pilu": "¡Hola, {nome}! En el bosque de Emma hay un arroyo que canta. Pero hoy he oído algo raro. ¿Vamos a ver?",
+        "tango": "¡Hola, {nome}! ¡Bosque! ¡Arroyo! ¡Barro! ¡Venga, corramos con Emma!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con su abrigo amarillo y la cesta, Pietrolino asomando del bolsillo; al fondo la abuela sentada en un tronco, con una bolsa y dos guantes que asoman de la cesta."
+      },
+      "text": "Emma vuelve al bosque con Pietrolino en el bolsillo del abrigo. Pietrolino es una piedrecita, y habla: pero solo con quien se para a escuchar. La abuela se sienta en el tronco a la entrada. \"Yo me quedo aquí\", dice. \"Si encuentras algo, llámame.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma caminando junto al arroyo entre las piedras, con la oreja atenta; del agua salen pequeñas notas musicales."
+      },
+      "text": "\"¿Adónde vamos hoy?\", pregunta Emma. Pietrolino se mueve entre las costuras. \"Sigue el arroyo. Hay alguien que necesita hablar.\" Emma sigue el sonido del agua, que se desliza entre las piedras como una canción: plin, plon, plin."
+    },
+    {
+      "illustration": {
+        "alt": "Las notas musicales se vuelven torcidas y pequeñas; Emma va más despacio."
+      },
+      "text": "Pero cuanto más se acerca, más cambia el sonido. Ya no es una canción alegre. Es un lloriqueo. \"Pio... plo... plic...\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma de rodillas en la orilla; en el agua hay papeles, una botella de plástico, un zapato roto; el agua está turbia."
+      },
+      "text": "Emma se arrodilla. El agua ya no está clara. Hay papeles, una botella de plástico, hasta un zapato roto. \"Oh, no...\" \"El arroyo está triste\", dice Pietrolino. \"Era limpio y cantaba. Ahora está todo sucio y ya no puede.\" \"Glu, glu...\", borbotea el agua. \"Ya no puedo cantar como antes.\"",
+      "companionLines": {
+        "bo": "Me da pena el arroyo. A mí también me dan ganas de llorar, {nome}.",
+        "pilu": "¿Oyes cómo ha cambiado la voz del arroyo, {nome}? De plin plon a glu glu.",
+        "tango": "¡Qué asco! ¡Un zapato! ¿Quién mete un zapato en un arroyo, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma quieta en la orilla, mira la cesta vacía, luego a Pietrolino, luego a la abuela lejos en el tronco."
+      },
+      "text": "Emma mira la cesta vacía. Mira a Pietrolino. Mira a la abuela, allá en el tronco. ¿Y ahora?",
+      "dialogue": {
+        "together": "Pregunta: ¿qué puede hacer Emma? ¿Y si lo encontraras tú, un arroyo así?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué harías, {nome}?",
+            "pilu": "¿Tú qué harías, {nome}?",
+            "tango": "¿Tú qué harías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Lo limpio yo",
+              "reaction": {
+                "bo": "¡Qué valiente! Pero el zapato está sucio... veamos cómo lo hace Emma.",
+                "pilu": "Buena idea. A lo mejor antes necesita algo. Miremos.",
+                "tango": "¡Sí! ¡Ya! ...Espera, veamos qué hace Emma."
+              }
+            },
+            {
+              "label": "Llamo a la abuela",
+              "reaction": {
+                "bo": "Yo también habría llamado a alguien. Veamos qué hace Emma.",
+                "pilu": "Pedir ayuda no es rendirse. Veamos si Emma también lo piensa.",
+                "tango": "¿La abuela? ¡Pero está lejos! Veamos qué hace Emma."
+              }
+            },
+            {
+              "label": "Lo siento, no sé qué hacer",
+              "reaction": {
+                "bo": "Lo sé. A mí me pasa igual. Quedémonos aquí un poco y luego vemos qué hace Emma.",
+                "pilu": "No pasa nada por no saberlo. Veamos juntos qué hace Emma.",
+                "tango": "Uf. Veamos qué hace Emma, a lo mejor se nos ocurre algo."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma corre hacia la abuela; la abuela le da los guantes y la bolsa sin levantarse."
+      },
+      "text": "\"¡Abuela! ¡El arroyo está lleno de cosas sucias!\" La abuela no se levanta. Le da los guantes y la bolsa. \"Entonces hacen falta estos. Yo miro desde aquí. Si encuentras cristal, no lo toques: lo cojo yo.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma con unos guantes demasiado grandes recoge los papeles; la botella en la bolsa; las mangas mojadas."
+      },
+      "text": "Emma empieza despacio, por los papeles. Luego la botella. Cada vez que toca algo sucio, dice: \"Perdona, arroyo. Ahora te ayudo.\" El zapato pesa. Se moja las mangas. Pero no se para.",
+      "companionLines": {
+        "bo": "Venga, que lo consigue. Venga, que lo consigue. {nome}, dame la mano, que no miro.",
+        "pilu": "Mira, {nome}: una cosa cada vez. Primero los papeles, luego la botella. Así no parece imposible.",
+        "tango": "¡El zapato! ¡Coge el zapato! ¡Sí! Yo habría cogido primero el zapato, {nome}, ¿y tú?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "El arroyo de nuevo limpio, el sol reflejado en él; la bolsa llena junto a la abuela; Emma con las mangas chorreando."
+      },
+      "text": "Cuando termina, el arroyo vuelve a brillar bajo el sol. \"Gracias... gluu... gracias...\", susurra el agua. \"Solo es un arroyo pequeño\", dice Emma. \"También los arroyos pequeños hacen grandes viajes\", responde Pietrolino. \"Se convierten en ríos, llegan al mar. Y todo empieza aquí.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela en el sendero de vuelta; la bolsa cerrada; detrás, el arroyo con las notas musicales derechas; una mariposa amarilla."
+      },
+      "text": "De camino a casa Emma dice: \"Abuela, mañana se lo cuento a Sara y a Omar. Que el arroyo estaba triste y yo lo he ayudado.\" La abuela asiente. Y detrás de ellas el arroyo vuelve a cantar: plin... plon... plin.",
+      "companionLines": {
+        "bo": "Lo ha conseguido, {nome}. Incluso con las mangas mojadas. Mañana, si ves un papel tirado, ¿me lo dices?",
+        "pilu": "¿Lo has visto, {nome}? Nada de magia: solo guantes, una bolsa y alguien que miraba. Hasta mañana.",
+        "tango": "¡Plin plon plin! Mañana busco un arroyo. ¿Vienes tú también, {nome}? ¡Hasta mañana!"
+      }
+    }
+  ]
+}

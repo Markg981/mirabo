@@ -1,0 +1,893 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Spanish Castilian (`es`).
+class AppLocalizationsEs extends AppLocalizations {
+  AppLocalizationsEs([String locale = 'es']) : super(locale);
+
+  @override
+  String get appTitle => 'Mirabò';
+
+  @override
+  String get appTagline => 'Cuentos y pequeños pasos para crecer.';
+
+  @override
+  String get close => 'Cerrar';
+
+  @override
+  String get back => 'Atrás';
+
+  @override
+  String get next => 'Siguiente';
+
+  @override
+  String get done => 'Hecho';
+
+  @override
+  String get finish => 'Fin';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Guardar';
+
+  @override
+  String get listenAgain => 'Escuchar otra vez';
+
+  @override
+  String get readAgain => 'Leer otra vez';
+
+  @override
+  String get seeYouTomorrow => '¡Hasta mañana!';
+
+  @override
+  String get go => '¡Vamos!';
+
+  @override
+  String get home => 'Casa';
+
+  @override
+  String get parentArea => 'Zona de mayores';
+
+  @override
+  String get modeTogether => 'Juntos';
+
+  @override
+  String get modeAlone => 'Yo solo';
+
+  @override
+  String stepOf(Object current, Object total) {
+    return 'Paso $current de $total';
+  }
+
+  @override
+  String homeHello(Object name) {
+    return '¡Hola, $name!';
+  }
+
+  @override
+  String get homeQuestion => '¿Qué hacemos hoy?';
+
+  @override
+  String get homeOneStory => 'Un cuento';
+
+  @override
+  String get homeLetsPlay => 'A jugar';
+
+  @override
+  String switchChildA11y(Object name) {
+    return 'Cambiar de niño. Ahora juega $name';
+  }
+
+  @override
+  String get chooseWhoPlays => '¿Quién juega hoy?';
+
+  @override
+  String chooseWith(Object companion) {
+    return 'con $companion';
+  }
+
+  @override
+  String get chooseAdd => 'Añadir';
+
+  @override
+  String get chooseAddHint => 'para los mayores';
+
+  @override
+  String get chooseAddA11y => 'Añadir un niño';
+
+  @override
+  String get catStories => 'Cuentos';
+
+  @override
+  String get catGames => 'Juegos';
+
+  @override
+  String get catEmpty => 'Aquí no hay nada para hoy.';
+
+  @override
+  String get badgeAtHome => 'En casa';
+
+  @override
+  String get badgeTogether => 'Juntos';
+
+  @override
+  String areaLabel(String area) {
+    String _temp0 = intl.Intl.selectLogic(
+      area,
+      {
+        'cognitivo': 'Preparación',
+        'autonomia': 'Autonomía',
+        'sociale': 'En clase',
+        'paure': 'Primer día',
+        'vitaPratica': 'Vida práctica',
+        'sensoriale': 'Sensorial',
+        'linguaggio': 'Lenguaje y escritura',
+        'matematica': 'Matemáticas',
+        'cultura': 'Cultura',
+        'other': '$area',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String worldShort(String world) {
+    String _temp0 = intl.Intl.selectLogic(
+      world,
+      {
+        'emozioni': 'Emociones',
+        'inclusione': 'Juntos',
+        'ambiente': 'El bosque',
+        'sicurezza': 'Mi cuerpo',
+        'other': '$world',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String worldLong(String world) {
+    String _temp0 = intl.Intl.selectLogic(
+      world,
+      {
+        'emozioni': 'Emociones y conflictos',
+        'inclusione': 'Diversidad e inclusión',
+        'ambiente': 'Naturaleza y seres vivos',
+        'sicurezza': 'Seguridad y cuerpo',
+        'other': '$world',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get storyKeyPhrase => 'La frase para recordar';
+
+  @override
+  String get activityTryAgain => 'Inténtalo otra vez.';
+
+  @override
+  String get activityHelp => 'Mira bien. Yo te ayudo.';
+
+  @override
+  String get checklistPrompt => '¿Qué está ya listo?';
+
+  @override
+  String get checklistSay => '¿Qué está ya listo para mañana?';
+
+  @override
+  String get checklistAlone => 'yo solo';
+
+  @override
+  String get checklistAllDone => 'Todo listo, buenas noches';
+
+  @override
+  String get enoughForToday => 'Por hoy ya basta';
+
+  @override
+  String get countdownPick => 'Elige la fecha';
+
+  @override
+  String get countdownToday => '¡Es hoy!';
+
+  @override
+  String get countdownTodaySay => '¡Hoy es el día!';
+
+  @override
+  String countdownDaysTo(int count, String event) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Faltan $count días para: $event',
+      one: 'Falta 1 día para: $event',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String countdownDaysSay(int count, String task) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Faltan $count días. $task',
+      one: 'Falta 1 día. $task',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String exploreTap(Object scene) {
+    return '$scene: toca para descubrir';
+  }
+
+  @override
+  String exploreSay(Object scene) {
+    return 'Esto es $scene. Toca para descubrir.';
+  }
+
+  @override
+  String get exploreAllSeen => '¡Lo he visto todo!';
+
+  @override
+  String get exploreEnough => 'Por hoy ya basta';
+
+  @override
+  String get patternPrompt => '¿Qué viene después?';
+
+  @override
+  String get presentationWhatYouNeed => 'Qué hace falta';
+
+  @override
+  String presentationWhatYouNeedSay(Object items) {
+    return 'Qué hace falta: $items';
+  }
+
+  @override
+  String get presentationReady => 'Todo listo';
+
+  @override
+  String get presentationPrepare =>
+      'Prepara todo en una bandeja antes de llamar al niño. Muestra los pasos una vez, despacio y sin hablar; luego deja que lo haga.';
+
+  @override
+  String presentationStep(Object current, Object total) {
+    return 'Paso $current de $total';
+  }
+
+  @override
+  String get presentationWorkAlone => 'Ahora trabaja solo';
+
+  @override
+  String presentationYourTurnSay(Object name) {
+    return 'Ahora te toca a ti, $name. Guardamos la tableta.';
+  }
+
+  @override
+  String get presentationHowDidItGo => 'Para el mayor: ¿cómo ha ido?';
+
+  @override
+  String get presentationControl => 'Control del error';
+
+  @override
+  String get presentationObserve => 'Qué observar';
+
+  @override
+  String get presentationMarkLater =>
+      'Márcalo cuando haya terminado, aunque sea un rato después. No lo corrijas mientras trabaja.';
+
+  @override
+  String get presentationWatched => 'Ha mirado';
+
+  @override
+  String get presentationDid => 'Lo ha hecho';
+
+  @override
+  String get presentationAlone => 'Solo';
+
+  @override
+  String get presentationRepeat => 'Quiere repetir';
+
+  @override
+  String get forTheAdult => 'Para el mayor';
+
+  @override
+  String turnYou(Object name) {
+    return 'Te toca a ti, $name';
+  }
+
+  @override
+  String get turnAdult => 'Le toca al mayor';
+
+  @override
+  String spellSay(Object word) {
+    return 'Forma: $word';
+  }
+
+  @override
+  String get spellSentence => 'Forma la frase';
+
+  @override
+  String get spellWord => 'Forma la palabra';
+
+  @override
+  String tracePrompt(Object label) {
+    return 'Traza la $label con el dedo';
+  }
+
+  @override
+  String get traceRestart => 'Empiezo de nuevo';
+
+  @override
+  String gameWellDone(Object name) {
+    return '¡Muy bien, $name!';
+  }
+
+  @override
+  String get gameNiceGame => '¡Qué buena partida!';
+
+  @override
+  String gameWellDoneSay(Object name) {
+    return '¡Muy bien, $name! ¡Qué buena partida!';
+  }
+
+  @override
+  String get gameAgain => 'Otra vez';
+
+  @override
+  String get gameEnough => 'Ya basta';
+
+  @override
+  String get gameMemoryTitle => 'Memoria de animales';
+
+  @override
+  String gameMemoryDesc(int count) {
+    return 'Encuentra las parejas: $count parejas.';
+  }
+
+  @override
+  String get memoryIntro => 'Encuentra las parejas de animales iguales.';
+
+  @override
+  String get memoryCovered => 'Carta boca abajo';
+
+  @override
+  String animalName(String animal) {
+    String _temp0 = intl.Intl.selectLogic(
+      animal,
+      {
+        'dog': 'el perro',
+        'cat': 'el gato',
+        'rabbit': 'el conejo',
+        'fox': 'el zorro',
+        'bear': 'el oso',
+        'panda': 'el panda',
+        'frog': 'la rana',
+        'monkey': 'el mono',
+        'lion': 'el león',
+        'tiger': 'el tigre',
+        'cow': 'la vaca',
+        'pig': 'el cerdo',
+        'other': '$animal',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameBalloonsTitle => 'Los globos';
+
+  @override
+  String get gameBalloonsDescSmall => 'Explota los globos.';
+
+  @override
+  String get gameBalloonsDescMid =>
+      'Explota solo los del color que dice el compañero.';
+
+  @override
+  String get gameBalloonsDescBig =>
+      'Explota los números en orden, del 1 al 10.';
+
+  @override
+  String get balloonsPopAll => '¡Explota los globos!';
+
+  @override
+  String balloonsPopColor(String color) {
+    String _temp0 = intl.Intl.selectLogic(
+      color,
+      {
+        'red': 'rojos',
+        'blue': 'azules',
+        'green': 'verdes',
+        'yellow': 'amarillos',
+        'purple': 'morados',
+        'other': '$color',
+      },
+    );
+    return 'Explota solo los globos $_temp0.';
+  }
+
+  @override
+  String balloonsNowColor(String color) {
+    String _temp0 = intl.Intl.selectLogic(
+      color,
+      {
+        'red': 'rojos',
+        'blue': 'azules',
+        'green': 'verdes',
+        'yellow': 'amarillos',
+        'purple': 'morados',
+        'other': '$color',
+      },
+    );
+    return 'Ahora los globos $_temp0.';
+  }
+
+  @override
+  String balloonsOnlyColor(String color) {
+    String _temp0 = intl.Intl.selectLogic(
+      color,
+      {
+        'red': 'rojos',
+        'blue': 'azules',
+        'green': 'verdes',
+        'yellow': 'amarillos',
+        'purple': 'morados',
+        'other': '$color',
+      },
+    );
+    return 'Solo los $_temp0';
+  }
+
+  @override
+  String get balloonsNumbersStart =>
+      'Explota los números en orden. Empieza por el uno.';
+
+  @override
+  String balloonsNow(Object n) {
+    return 'Ahora el $n.';
+  }
+
+  @override
+  String balloonsFind(Object n) {
+    return 'Busca el $n';
+  }
+
+  @override
+  String balloonsWrongNumber(Object got, Object want) {
+    return 'Ese es el $got. Busca el $want.';
+  }
+
+  @override
+  String get balloonsDone => '¡Hecho!';
+
+  @override
+  String balloonA11yNumber(Object n) {
+    return 'Globo $n';
+  }
+
+  @override
+  String balloonA11yColor(String color) {
+    String _temp0 = intl.Intl.selectLogic(
+      color,
+      {
+        'red': 'rojo',
+        'blue': 'azul',
+        'green': 'verde',
+        'yellow': 'amarillo',
+        'purple': 'morado',
+        'other': '$color',
+      },
+    );
+    return 'Globo $_temp0';
+  }
+
+  @override
+  String get gameShapesTitle => 'Cada forma en su sitio';
+
+  @override
+  String get gameShapesDescSmall =>
+      'Tres formas para arrastrar al hueco correcto.';
+
+  @override
+  String get gameShapesDescMid =>
+      'Cinco formas para arrastrar al hueco correcto.';
+
+  @override
+  String get gameShapesDescBig =>
+      'Seis formas, grandes y pequeñas: atención al tamaño.';
+
+  @override
+  String get shapesIntro => 'Pon cada forma en su hueco.';
+
+  @override
+  String get shapesIntroBig =>
+      'Pon cada forma en su hueco. Atención al tamaño: grandes y pequeñas.';
+
+  @override
+  String shapesWrong(Object shape) {
+    return 'Esto es $shape. Prueba otro hueco.';
+  }
+
+  @override
+  String shapeName(String shape) {
+    String _temp0 = intl.Intl.selectLogic(
+      shape,
+      {
+        'circle': 'el círculo',
+        'square': 'el cuadrado',
+        'triangle': 'el triángulo',
+        'star': 'la estrella',
+        'heart': 'el corazón',
+        'hexagon': 'el hexágono',
+        'circleSmall': 'el círculo pequeño',
+        'squareSmall': 'el cuadrado pequeño',
+        'other': '$shape',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameDrawingTitle => 'Dibuja y colorea';
+
+  @override
+  String get gameDrawingDesc => 'Una hoja en blanco, los colores y los sellos.';
+
+  @override
+  String get drawingIntro => 'Elige un color y dibuja con el dedo.';
+
+  @override
+  String get drawingSheet => 'Hoja de dibujo';
+
+  @override
+  String get drawingEraser => 'Goma';
+
+  @override
+  String get drawingUndo => 'Deshacer';
+
+  @override
+  String get drawingNewSheet => 'Hoja nueva';
+
+  @override
+  String get gameXyloTitle => 'El xilófono';
+
+  @override
+  String get gameXyloDescSmall => 'Toca libremente.';
+
+  @override
+  String gameXyloDescBig(Object song) {
+    return 'Toca libremente o aprende \"$song\".';
+  }
+
+  @override
+  String get xyloNotes => 'do re mi fa sol la si do';
+
+  @override
+  String get xyloSong => 'Martinillo';
+
+  @override
+  String get xyloIntro => 'Toca las barras y haz música.';
+
+  @override
+  String xyloIntroSong(Object song) {
+    return 'Toca lo que quieras, o aprende $song.';
+  }
+
+  @override
+  String get xyloFree => 'Toca libre';
+
+  @override
+  String get xyloFreeSay => 'Toca lo que quieras.';
+
+  @override
+  String get xyloSongSay => 'Toca la barra que se ilumina.';
+
+  @override
+  String xyloNoteA11y(Object note) {
+    return 'Nota $note';
+  }
+
+  @override
+  String get gamePuzzleTitle => 'El rompecabezas deslizante';
+
+  @override
+  String get gamePuzzleDesc =>
+      'Ordena los números del 1 al 8 deslizando las fichas.';
+
+  @override
+  String get puzzleIntro =>
+      'Desliza las fichas para ponerlas en orden, del uno al ocho.';
+
+  @override
+  String puzzleTileA11y(Object n) {
+    return 'Ficha $n';
+  }
+
+  @override
+  String get gateTitle => 'Zona para mayores';
+
+  @override
+  String gateQuestion(Object a, Object b) {
+    return '¿Cuánto es $a × $b?';
+  }
+
+  @override
+  String get gateWrong => 'Inténtalo otra vez';
+
+  @override
+  String get gateEnter => 'Entrar';
+
+  @override
+  String get parentTabSession => 'Sesión';
+
+  @override
+  String get parentTabProfiles => 'Perfiles';
+
+  @override
+  String get parentTabCards => 'Cómo hablarlo';
+
+  @override
+  String get parentTabDiary => 'Diario';
+
+  @override
+  String get parentTabGrowth => 'Desarrollo';
+
+  @override
+  String get parentHowUse => '¿Cómo usáis la app ahora?';
+
+  @override
+  String get parentHowUseHint =>
+      'En el modo \"juntos\" aparecen las pausas de diálogo para los dos. En el modo \"yo solo\" el niño responde tocando y los cuentos sobre seguridad y cuerpo quedan ocultos.';
+
+  @override
+  String get parentData => 'Dónde están los datos';
+
+  @override
+  String get parentDataHint =>
+      'Solo en este dispositivo. La copia en Drive y la cuenta en la nube llegarán en próximas versiones.';
+
+  @override
+  String get parentWipe => 'Borrar todos los datos';
+
+  @override
+  String get parentWipeConfirmTitle => '¿Borrar todo?';
+
+  @override
+  String get parentWipeConfirm =>
+      'Los perfiles y el diario se borrarán de este dispositivo. No se puede deshacer.';
+
+  @override
+  String get parentWipeYes => 'Borrar';
+
+  @override
+  String get parentNewProfile => 'Nuevo perfil';
+
+  @override
+  String parentProfileLine(String age, String companion, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cuentos',
+      one: '1 cuento',
+    );
+    return '$age · compañero $companion · $_temp0';
+  }
+
+  @override
+  String get diaryEmpty => 'Ningún cuento en los últimos 30 días.';
+
+  @override
+  String get diaryTogether => 'juntos';
+
+  @override
+  String get diaryAlone => 'solo';
+
+  @override
+  String diaryChose(Object answer) {
+    return 'en la pausa eligió: \"$answer\"';
+  }
+
+  @override
+  String growthTitle(Object name) {
+    return 'Cómo está creciendo $name';
+  }
+
+  @override
+  String get growthIntro =>
+      'La comparación es solo consigo mismo, hace un mes. La app ve una parte pequeña de su día: ante dudas sobre el desarrollo, la referencia es el pediatra o el maestro.';
+
+  @override
+  String get growthEmpty =>
+      'Ninguna actividad en los últimos 30 días. Cuando haga alguna, aquí verás las etapas.';
+
+  @override
+  String get growthOffscreen =>
+      'Donde no hay mejora, prueba la actividad fuera de la pantalla sugerida en la ficha: no más tiempo en la app.';
+
+  @override
+  String growthNew(Object count) {
+    return 'En los últimos 30 días: $count rondas. Hace un mes aún no lo había probado.';
+  }
+
+  @override
+  String growthCompare(Object before, Object now) {
+    return 'Hoy: $now · hace un mes: $before (borde gris).';
+  }
+
+  @override
+  String stageLabel(String stage) {
+    String _temp0 = intl.Intl.selectLogic(
+      stage,
+      {
+        'starting': 'está empezando',
+        'working': 'está trabajando en ello',
+        'canDo': 'lo consigue',
+        'alone': 'lo hace solo',
+        'other': '$stage',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String skillLabel(String skill) {
+    String _temp0 = intl.Intl.selectLogic(
+      skill,
+      {
+        'suoni_iniziali': 'Sonidos y letras',
+        'pregrafismo': 'Trazar letras',
+        'numeri': 'Números y cantidades',
+        'logica': 'Lógica y secuencias',
+        'routine_sera': 'Preparar las cosas para mañana',
+        'routine_mattino': 'La rutina de la mañana',
+        'vestirsi': 'Vestirse solo',
+        'mensa': 'En el comedor',
+        'turno_e_condivisione': 'Esperar el turno y compartir',
+        'chiedere_aiuto': 'Pedir ayuda',
+        'distacco': 'La despedida de la mañana',
+        'conoscere_la_scuola': 'Conocer la escuela',
+        'primo_giorno': 'El primer día',
+        'travasi': 'Trasvasar y verter',
+        'motricita_fine': 'Motricidad fina',
+        'cura_ambiente': 'Cuidado del entorno',
+        'dimensioni': 'Tamaños y seriación',
+        'colori': 'Colores',
+        'forme': 'Formas',
+        'tatto': 'Tacto',
+        'udito': 'Oído',
+        'scrittura': 'Escritura',
+        'vocabolario': 'Vocabulario',
+        'decine': 'Decenas y unidades',
+        'geografia': 'Geografía',
+        'botanica': 'Botánica',
+        'other': '$skill',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get profileWelcome => 'Bienvenidos a Mirabò';
+
+  @override
+  String get profileEdit => 'Editar perfil';
+
+  @override
+  String get profileNew => 'Nuevo perfil';
+
+  @override
+  String get profileChild => 'El niño';
+
+  @override
+  String get profileFirstRunHint =>
+      'Esta parte la rellena un adulto. Se tarda un minuto y luego la tableta pasa al niño.';
+
+  @override
+  String get profileName => 'Nombre';
+
+  @override
+  String get profileNameHint => 'El compañero lo llamará así';
+
+  @override
+  String get profileAge => 'Edad';
+
+  @override
+  String profileYears(Object range) {
+    return '$range años';
+  }
+
+  @override
+  String ageBandLabel(String band) {
+    String _temp0 = intl.Intl.selectLogic(
+      band,
+      {
+        'small': 'Pequeños',
+        'mid': 'Primeros pasos',
+        'big': 'Mayores',
+        'other': '$band',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get profileLanguage => 'Idioma';
+
+  @override
+  String get profileLanguageHint =>
+      'Cuentos, actividades, juegos y la voz del compañero estarán en este idioma.';
+
+  @override
+  String get profileCompanion => 'El compañero';
+
+  @override
+  String get profileCompanionEditHint =>
+      'El compañero se elige una sola vez: es su mejor amigo.';
+
+  @override
+  String get profileCompanionNewHint =>
+      'Dejad que elija el niño. Se elige una sola vez y no se cambia.';
+
+  @override
+  String get profileWorlds => 'Mundos de los cuentos';
+
+  @override
+  String get profileWorldsHint =>
+      'Elegid los temas que el niño encontrará en su biblioteca.';
+
+  @override
+  String get profileSafetyTogether => '\"Mi cuerpo\" solo en modo juntos';
+
+  @override
+  String get profileSafetyTogetherHint =>
+      'Recomendado: los cuentos sobre seguridad y cuerpo se leen con un adulto.';
+
+  @override
+  String get profileAccess => 'Accesibilidad y tiempo';
+
+  @override
+  String get profileDyslexia => 'Texto de fácil lectura';
+
+  @override
+  String get profileDyslexiaHint =>
+      'Tipografía Lexend, más espacio entre letras y líneas.';
+
+  @override
+  String get profileLowStim => 'Baja estimulación';
+
+  @override
+  String get profileLowStimHint => 'Colores suaves, sin animaciones.';
+
+  @override
+  String get profileAloneSession => 'Sesión \"yo solo\"';
+
+  @override
+  String profileMinutes(Object count) {
+    return '$count minutos';
+  }
+
+  @override
+  String profileMinutesShort(Object count) {
+    return '$count min';
+  }
+
+  @override
+  String get profileDelete => 'Borrar este perfil';
+
+  @override
+  String get profileMissingName => 'Falta el nombre';
+
+  @override
+  String get profileMissingCompanion => 'Falta el compañero';
+
+  @override
+  String get profileStart => 'Empezamos';
+
+  @override
+  String get translationDraft => 'Traducción en revisión';
+}

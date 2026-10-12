@@ -4,7 +4,17 @@
     {
       "n": 1,
       "kind": "hook",
-      "illustration": { "alt": "Il compagno seduto su un cuscino, con un libro aperto e un vulcano disegnato sulla copertina." },
+      "illustration": {
+        "alt": "Il compagno seduto su un cuscino, con un libro aperto e un vulcano disegnato sulla copertina.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "companion", "x": 0.38, "y": 0.6, "s": 0.58},
+            {"e": "📖", "x": 0.68, "y": 0.78, "s": 0.18},
+            {"paint": "volcano", "x": 0.7, "y": 0.52, "s": 0.2, "color": "red", "smoke": true}
+          ]
+        }
+      },
       "companionLines": {
         "bo": "Ciao {nome}! Oggi c'è una storia con un vulcano. Io dei vulcani ho un po' paura... però se ci sei tu la guardo.",
         "pilu": "Ciao {nome}! Sai che dentro ognuno di noi c'è un vulcano? Non ci credi? Guarda cosa succede a Lia.",
@@ -14,25 +24,67 @@
     {
       "n": 2,
       "kind": "situation",
-      "illustration": { "alt": "La cameretta di Lia; sul tavolo una torre di costruzioni altissima e colorata con una bandierina in cima. Lia la guarda con le mani sui fianchi, fierissima." },
+      "illustration": {
+        "alt": "La cameretta di Lia; sul tavolo una torre di costruzioni altissima e colorata con una bandierina in cima. Lia la guarda con le mani sui fianchi, fierissima.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.62, "y": 0.55, "s": 0.55},
+            {"e": "👧", "x": 0.3, "y": 0.64, "s": 0.36},
+            {"e": "✨", "x": 0.8, "y": 0.2, "s": 0.1}
+          ]
+        }
+      },
       "text": "Lia ha costruito la torre più alta del mondo. Ci ha messo tutto il pomeriggio: un pezzo rosso, uno blu, uno giallo, fino alla bandierina in cima. \"Nonna, vieni a vedere!\""
     },
     {
       "n": 3,
       "kind": "situation",
-      "illustration": { "alt": "Teo, due anni, entra gattonando con un pupazzo in mano; la torre è già in bilico." },
+      "illustration": {
+        "alt": "Teo, due anni, entra gattonando con un pupazzo in mano; la torre è già in bilico.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.6, "y": 0.55, "s": 0.55, "variant": "leaning", "rot": 6},
+            {"e": "👧", "x": 0.26, "y": 0.64, "s": 0.32},
+            {"e": "👶", "x": 0.84, "y": 0.8, "s": 0.24, "flip": true},
+            {"e": "🧸", "x": 0.73, "y": 0.86, "s": 0.11}
+          ]
+        }
+      },
       "text": "Ma prima della nonna arriva Teo. Teo ha due anni e vuole sempre toccare tutto. Allunga la mano verso il pezzo rosso in basso..."
     },
     {
       "n": 4,
       "kind": "situation",
-      "illustration": { "alt": "I pezzi della torre volano ovunque; Teo ride; Lia a bocca aperta." },
+      "illustration": {
+        "alt": "I pezzi della torre volano ovunque; Teo ride; Lia a bocca aperta.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.55, "y": 0.8, "s": 0.46, "variant": "fallen"},
+            {"e": "👧", "x": 0.24, "y": 0.62, "s": 0.34},
+            {"e": "❗", "x": 0.3, "y": 0.36, "s": 0.1},
+            {"e": "👶", "x": 0.84, "y": 0.74, "s": 0.24, "flip": true},
+            {"e": "😆", "x": 0.9, "y": 0.58, "s": 0.08}
+          ]
+        }
+      },
       "text": "CRASH. La torre più alta del mondo è un mucchio di pezzi sul pavimento. Teo ride. Non ha capito niente."
     },
     {
       "n": 5,
       "kind": "situation",
-      "illustration": { "alt": "Lia a tutto schermo, viso rosso, pugni chiusi; dietro di lei, in trasparenza, la sagoma di un vulcano che fuma." },
+      "illustration": {
+        "alt": "Lia a tutto schermo, viso rosso, pugni chiusi; dietro di lei, in trasparenza, la sagoma di un vulcano che fuma.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "volcano", "x": 0.62, "y": 0.5, "s": 0.78, "color": "red", "smoke": true, "opacity": 0.45},
+            {"e": "😡", "x": 0.38, "y": 0.56, "s": 0.5}
+          ]
+        }
+      },
       "text": "Lia sente una cosa calda che le sale dalla pancia. Le mani si chiudono da sole. La faccia diventa rossa. Dentro di lei c'è un vulcano, e il vulcano sta per esplodere.",
       "companionLines": {
         "bo": "Oh no. Io quando sono così mi sento tutto caldo nelle orecchie. Tu dove lo senti, {nome}?",
@@ -43,7 +95,21 @@
     {
       "n": 6,
       "kind": "dialogue",
-      "illustration": { "alt": "La stessa scena, ferma: Lia col pugno alzato, Teo che ancora ride, la porta aperta da cui sta arrivando la nonna." },
+      "illustration": {
+        "alt": "La stessa scena, ferma: Lia col pugno alzato, Teo che ancora ride, la porta aperta da cui sta arrivando la nonna.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "volcano", "x": 0.62, "y": 0.38, "s": 0.5, "color": "red", "smoke": true, "opacity": 0.3},
+            {"e": "👧", "x": 0.28, "y": 0.62, "s": 0.36},
+            {"e": "✊", "x": 0.43, "y": 0.42, "s": 0.11},
+            {"paint": "tower", "x": 0.55, "y": 0.88, "s": 0.3, "variant": "fallen"},
+            {"e": "👶", "x": 0.76, "y": 0.78, "s": 0.22, "flip": true},
+            {"e": "🚪", "x": 0.93, "y": 0.48, "s": 0.46},
+            {"e": "👵", "x": 0.93, "y": 0.54, "s": 0.22}
+          ]
+        }
+      },
       "text": "Lia ha il pugno alzato. Il vulcano è quasi in cima. E adesso?",
       "dialogue": {
         "together": "Chiedi: secondo te cosa farà Lia? E tu, cosa faresti?",
@@ -91,13 +157,35 @@
     {
       "n": 7,
       "kind": "turn",
-      "illustration": { "alt": "La nonna sulla porta, in ginocchio all'altezza di Lia, le mani aperte; non tocca Lia, non prende Teo." },
+      "illustration": {
+        "alt": "La nonna sulla porta, in ginocchio all'altezza di Lia, le mani aperte; non tocca Lia, non prende Teo.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"e": "🚪", "x": 0.9, "y": 0.46, "s": 0.48},
+            {"e": "👵", "x": 0.64, "y": 0.66, "s": 0.36, "flip": true},
+            {"e": "👐", "x": 0.5, "y": 0.7, "s": 0.1},
+            {"e": "👧", "x": 0.3, "y": 0.64, "s": 0.32}
+          ]
+        }
+      },
       "text": "La nonna arriva e non dice \"non si fa\". Dice: \"Lia, sento il vulcano. È grosso, eh? Facciamo il respiro del vulcano, insieme.\" Mette le mani sulla pancia. Lia, con gli occhi ancora pieni di fuoco, fa lo stesso."
     },
     {
       "n": 8,
       "kind": "turn",
-      "illustration": { "alt": "Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano, che da rosso diventa arancione, poi rosa, con la lava che scende piano." },
+      "illustration": {
+        "alt": "Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano, che da rosso diventa arancione, poi rosa, con la lava che scende piano.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "volcano", "x": 0.5, "y": 0.3, "s": 0.42, "color": "orange"},
+            {"e": "👧", "x": 0.34, "y": 0.72, "s": 0.32},
+            {"e": "👵", "x": 0.66, "y": 0.7, "s": 0.36, "flip": true},
+            {"e": "💗", "x": 0.5, "y": 0.58, "s": 0.08}
+          ]
+        }
+      },
       "text": "Dentro: uno, due, tre. Fuori: ssssssh, piano, come la lava che scende. Ancora. Dentro: uno, due, tre. Fuori: sssssh. Il vulcano è ancora lì. Ma non esplode più. Sta scendendo.",
       "companionLines": {
         "bo": "Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.",
@@ -108,13 +196,36 @@
     {
       "n": 9,
       "kind": "turn",
-      "illustration": { "alt": "Lia seduta per terra, Teo che le porge un pezzo blu, la nonna sullo sfondo che sistema i pezzi in una scatola." },
+      "illustration": {
+        "alt": "Lia seduta per terra, Teo che le porge un pezzo blu, la nonna sullo sfondo che sistema i pezzi in una scatola.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"e": "👧", "x": 0.28, "y": 0.76, "s": 0.3},
+            {"e": "🟦", "x": 0.42, "y": 0.74, "s": 0.07},
+            {"e": "👶", "x": 0.52, "y": 0.8, "s": 0.22, "flip": true},
+            {"e": "👵", "x": 0.8, "y": 0.6, "s": 0.3, "flip": true},
+            {"e": "📦", "x": 0.86, "y": 0.82, "s": 0.14}
+          ]
+        }
+      },
       "text": "\"Ero arrabbiata,\" dice Lia. \"Tanto.\" \"Lo so,\" dice la nonna. \"Ci si può arrabbiare. Il vulcano sale, esplode, e poi si calma. Si può aspettarlo.\" Teo le porge un pezzo blu. Non sa che cos'ha fatto, ma vuole giocare con lei."
     },
     {
       "n": 10,
       "kind": "closing",
-      "illustration": { "alt": "Una torre nuova, più bassa ma più larga, costruita da Lia e Teo; la bandierina in cima; il vulcano sullo sfondo ora è verde, con un fiore in cima." },
+      "illustration": {
+        "alt": "Una torre nuova, più bassa ma più larga, costruita da Lia e Teo; la bandierina in cima; il vulcano sullo sfondo ora è verde, con un fiore in cima.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.5, "y": 0.64, "s": 0.42, "variant": "wide"},
+            {"e": "👧", "x": 0.24, "y": 0.66, "s": 0.32},
+            {"e": "👶", "x": 0.78, "y": 0.78, "s": 0.22, "flip": true},
+            {"paint": "volcano", "x": 0.82, "y": 0.3, "s": 0.3, "color": "green", "flower": true}
+          ]
+        }
+      },
       "text": "La torre nuova non è la più alta del mondo. È la più larga, perché l'hanno fatta in due. E il vulcano di Lia? È ancora lì dentro, tranquillo. Tornerà, un giorno. Ma adesso Lia sa aspettarlo.",
       "keyPhrase": true,
       "companionLines": {

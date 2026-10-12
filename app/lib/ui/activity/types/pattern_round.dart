@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../activity_player.dart';
 
 /// "Completa la sequenza": si vede la fila con un posto vuoto in fondo e si
@@ -23,7 +24,7 @@ class _PatternRoundState extends RoundState<PatternRound> {
     final seq = (r['sequence'] as List).cast<String>();
     final choices = (r['choices'] as List).cast<String>();
     final answerValue = r['answer'] as String;
-    const prompt = 'Cosa viene dopo?';
+    final prompt = context.l10n.patternPrompt;
     if (_spokenFor != index) {
       _spokenFor = index;
       WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(prompt));

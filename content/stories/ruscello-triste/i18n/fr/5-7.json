@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon avec des bottes en caoutchouc rouges trop grandes, devant un sentier qui entre dans le bois."
+      },
+      "companionLines": {
+        "bo": "Coucou {nome} ! Aujourd'hui on va dans le bois avec Emma. J'ai mis mes bottes. Elles sont un peu grandes. Tu me tiens la main ?",
+        "pilu": "Coucou {nome} ! Dans le bois d'Emma il y a un ruisseau qui chante. Mais aujourd'hui j'ai entendu un drôle de bruit. On va voir ?",
+        "tango": "Coucou {nome} ! Le bois ! Le ruisseau ! La boue ! Allez, on court rejoindre Emma !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma avec son petit manteau jaune et son panier, Pietrolino qui dépasse de sa poche ; au fond, Mamie assise sur un tronc, avec un sac et deux gants qui dépassent du panier."
+      },
+      "text": "Emma retourne dans le bois avec Pietrolino dans la poche de son manteau. Pietrolino est un petit caillou, et il parle : mais seulement avec ceux qui s'arrêtent pour écouter. Mamie s'assoit sur le tronc à l'entrée du bois. « Moi, je reste ici », dit-elle. « Si tu trouves quelque chose, appelle-moi. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma qui marche le long du ruisseau entre les pierres, l'oreille tendue ; de petites notes de musique sortent de l'eau."
+      },
+      "text": "« Où on va aujourd'hui ? » demande Emma. Pietrolino frétille entre les coutures. « Suis le ruisseau. Quelqu'un a besoin de parler. » Emma suit le bruit de l'eau, qui glisse entre les pierres comme une chanson : plin, plon, plin."
+    },
+    {
+      "illustration": {
+        "alt": "Les notes de musique deviennent tordues et petites ; Emma ralentit."
+      },
+      "text": "Mais plus elle s'approche, plus le bruit change. Ce n'est plus une chanson joyeuse. C'est un pleurnichement. « Pio... plo... plic... »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma à genoux sur la rive ; dans l'eau, des papiers, une bouteille en plastique, une chaussure cassée ; l'eau est trouble."
+      },
+      "text": "Emma s'agenouille. L'eau n'est plus claire. Il y a des papiers, une bouteille en plastique, et même une chaussure cassée. « Oh non... » « Le ruisseau est triste », dit Pietrolino. « Il était limpide et il chantait. Maintenant il est tout sale et il n'y arrive plus. » « Glou glou... » gargouille l'eau. « Je n'arrive plus à chanter comme avant. »",
+      "companionLines": {
+        "bo": "Ça me fait de la peine pour le ruisseau. Moi aussi j'ai envie de pleurer, {nome}.",
+        "pilu": "Tu entends comme la voix du ruisseau a changé, {nome} ? De plin plon à glou glou.",
+        "tango": "Beurk ! Une chaussure ! Qui met une chaussure dans un ruisseau, {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma immobile sur la rive, regarde son panier vide, puis Pietrolino, puis Mamie au loin sur le tronc."
+      },
+      "text": "Emma regarde son panier vide. Elle regarde Pietrolino. Elle regarde Mamie, là-bas sur le tronc. Et maintenant ?",
+      "dialogue": {
+        "together": "Demandez : que peut faire Emma ? Et si c'était toi qui trouvais un ruisseau comme ça ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, que ferais-tu, {nome} ?",
+            "pilu": "Et toi, que ferais-tu, {nome} ?",
+            "tango": "Et toi, que ferais-tu, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je nettoie moi-même",
+              "reaction": {
+                "bo": "Quel courage ! Mais la chaussure est sale... voyons comment fait Emma.",
+                "pilu": "Bonne idée. Elle a peut-être besoin de quelque chose avant. Regardons.",
+                "tango": "Oui ! Tout de suite ! ...Attends, voyons ce que fait Emma."
+              }
+            },
+            {
+              "label": "J'appelle Mamie",
+              "reaction": {
+                "bo": "Moi aussi, j'aurais appelé quelqu'un. Voyons ce que fait Emma.",
+                "pilu": "Demander de l'aide, ce n'est pas abandonner. Voyons si Emma y pense aussi.",
+                "tango": "Mamie ? Mais elle est loin ! Voyons ce que fait Emma."
+              }
+            },
+            {
+              "label": "Je suis triste, je ne sais pas quoi faire",
+              "reaction": {
+                "bo": "Je sais. Moi aussi. Restons un peu ici, puis voyons ce que fait Emma.",
+                "pilu": "Ce n'est pas grave de ne pas savoir. Regardons ensemble ce que fait Emma.",
+                "tango": "Pff. Regardons ce que fait Emma, ça nous donnera peut-être une idée."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma court vers Mamie ; Mamie lui tend les gants et le sac sans se lever."
+      },
+      "text": "« Mamie ! Le ruisseau est plein de saletés ! » Mamie ne se lève pas. Elle lui tend les gants et le sac. « Alors il faut ça. Moi, je regarde d'ici. Si tu trouves du verre, ne le touche pas : c'est moi qui le prends. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma avec des gants trop grands ramasse les papiers ; la bouteille dans le sac ; les manches mouillées."
+      },
+      "text": "Emma commence doucement, par les papiers. Puis la bouteille. Chaque fois qu'elle touche quelque chose de sale, elle dit : « Pardon, ruisseau. Je vais t'aider. » La chaussure est lourde. Elle se mouille les manches. Mais elle ne s'arrête pas.",
+      "companionLines": {
+        "bo": "Allez, elle va y arriver. Allez, elle va y arriver. {nome}, tiens-moi la main, je ne regarde pas.",
+        "pilu": "Regarde, {nome} : une chose à la fois. D'abord les papiers, puis la bouteille. Comme ça, ça ne paraît pas impossible.",
+        "tango": "La chaussure ! Prends la chaussure ! Oui ! Moi, j'aurais pris la chaussure en premier, {nome}, et toi ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Le ruisseau de nouveau limpide, le soleil qui s'y reflète ; le sac plein à côté de Mamie ; Emma avec les manches qui dégoulinent."
+      },
+      "text": "Quand elle a fini, le ruisseau brille de nouveau au soleil. « Merci... glouu... merci... » murmure l'eau. « C'est juste un petit ruisseau », dit Emma. « Même les petits ruisseaux font de grands voyages », répond Pietrolino. « Ils deviennent des rivières, ils arrivent à la mer. Et tout commence ici. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie sur le chemin du retour ; le sac fermé ; derrière, le ruisseau avec les notes de musique bien droites ; un papillon jaune."
+      },
+      "text": "Sur le chemin de la maison, Emma dit : « Mamie, demain je le raconte à Sara et à Omar. Que le ruisseau était triste, et que je l'ai aidé. » Mamie hoche la tête. Et derrière elles, le ruisseau se remet à chanter : plin... plon... plin.",
+      "companionLines": {
+        "bo": "Elle a réussi, {nome}. Même avec les manches mouillées. Demain, si tu vois un papier par terre, tu me le dis ?",
+        "pilu": "Tu as vu, {nome} ? Pas de magie : juste des gants, un sac et quelqu'un qui regardait. À demain.",
+        "tango": "Plin plon plin ! Demain je cherche un ruisseau. Tu viens aussi, {nome} ? À demain !"
+      }
+    }
+  ]
+}

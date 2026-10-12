@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion in red rubber boots that are too big, in front of a path leading into the wood."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! Today we're going to the wood with Emma. I've put my boots on. They're a bit big. Will you hold my hand?",
+        "pilu": "Hi {nome}! In Emma's wood there's a stream that sings. But today I heard something strange. Shall we go and see?",
+        "tango": "Hi {nome}! Wood! Stream! Mud! Come on, let's run to Emma!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in her yellow coat with a basket, Pietrolino peeking out of her pocket; in the background Grandma sitting on a log, with a bag and two gloves sticking out of the basket."
+      },
+      "text": "Emma goes back to the wood with Pietrolino in her coat pocket. Pietrolino is a little pebble, and he talks: but only to people who stop to listen. Grandma sits down on the log at the edge of the wood. \"I'll stay here,\" she says. \"If you find something, call me.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma walking along the stream between the stones, listening hard; little musical notes come out of the water."
+      },
+      "text": "\"Where are we going today?\" asks Emma. Pietrolino wriggles between the seams. \"Follow the stream. Someone needs to talk.\" Emma follows the sound of the water, sliding between the stones like a song: plink, plonk, plink."
+    },
+    {
+      "illustration": {
+        "alt": "The musical notes become crooked and small; Emma slows down."
+      },
+      "text": "But the closer she gets, the more the sound changes. It isn't a happy song any more. It's a whimper. \"Plip... plop... plick...\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma kneeling on the bank; in the water there are scraps of paper, a plastic bottle, a broken shoe; the water is cloudy."
+      },
+      "text": "Emma kneels down. The water isn't clear any more. There are scraps of paper, a plastic bottle, even a broken shoe. \"Oh no...\" \"The stream is sad,\" says Pietrolino. \"It used to be clear and it used to sing. Now it's all dirty and it can't any more.\" \"Glug glug...\" gurgles the water. \"I can't sing like I used to.\"",
+      "companionLines": {
+        "bo": "I feel sorry for the stream. It makes me want to cry too, {nome}.",
+        "pilu": "Can you hear how the stream's voice has changed, {nome}? From plink plonk to glug glug.",
+        "tango": "Yuck! A shoe! Who puts a shoe in a stream, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma standing on the bank, looking at her empty basket, then at Pietrolino, then at Grandma far away on the log."
+      },
+      "text": "Emma looks at her empty basket. She looks at Pietrolino. She looks at Grandma, over there on the log. What now?",
+      "dialogue": {
+        "together": "Ask: what can Emma do? And what if you found a stream like that?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do, {nome}?",
+            "pilu": "What would you do, {nome}?",
+            "tango": "What would you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I'll clean it up",
+              "reaction": {
+                "bo": "Brave. But the shoe is dirty... let's see what Emma does.",
+                "pilu": "Good idea. I wonder if she needs something first. Let's watch.",
+                "tango": "Yes! Right now! ...Wait, let's see what Emma does."
+              }
+            },
+            {
+              "label": "I call Grandma",
+              "reaction": {
+                "bo": "I would have called someone too. Let's see what Emma does.",
+                "pilu": "Asking for help isn't giving up. Let's see if Emma thinks of it too.",
+                "tango": "Grandma? But she's far away! Let's see what Emma does."
+              }
+            },
+            {
+              "label": "I'm sorry, I don't know what to do",
+              "reaction": {
+                "bo": "I know. Me neither. Let's stay here a bit, then see what Emma does.",
+                "pilu": "It's fine not to know. Let's see together what Emma does.",
+                "tango": "Hmm. Let's see what Emma does, maybe we'll get an idea."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma runs to Grandma; Grandma hands her the gloves and the bag without getting up."
+      },
+      "text": "\"Grandma! The stream is full of dirty stuff!\" Grandma doesn't get up. She hands her the gloves and the bag. \"Then you'll need these. I'll watch from here. If you find glass, don't touch it: I'll pick it up.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma, in gloves that are too big, picks up the scraps of paper; the bottle in the bag; wet sleeves."
+      },
+      "text": "Emma starts slowly, with the scraps of paper. Then the bottle. Every time she touches something dirty, she says: \"Sorry, stream. I'm helping you now.\" The shoe is heavy. Her sleeves get wet. But she doesn't stop.",
+      "companionLines": {
+        "bo": "Come on, she can do it. Come on, she can do it. {nome}, hold my hand, I'm not looking.",
+        "pilu": "Look, {nome}: one thing at a time. First the paper, then the bottle. That way it doesn't seem impossible.",
+        "tango": "The shoe! Grab the shoe! Yes! I'd have grabbed the shoe first, {nome}, would you?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "The stream clear again, the sun reflected in it; the full bag next to Grandma; Emma with dripping sleeves."
+      },
+      "text": "When she finishes, the stream sparkles in the sun again. \"Thank you... gluug... thank you...\" whispers the water. \"It's only a small stream,\" says Emma. \"Even small streams make big journeys,\" answers Pietrolino. \"They become rivers, they reach the sea. And it all starts here.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma on the path home; the bag tied up; behind them, the stream with straight musical notes; a yellow butterfly."
+      },
+      "text": "On the way home Emma says: \"Grandma, tomorrow I'll tell Sara and Omar. That the stream was sad, and I helped it.\" Grandma nods. And behind them the stream starts singing again: plink... plonk... plink.",
+      "companionLines": {
+        "bo": "She did it, {nome}. Even with wet sleeves. Tomorrow, if you see some litter, will you tell me?",
+        "pilu": "Did you see, {nome}? No magic: just gloves, a bag and someone watching. See you tomorrow.",
+        "tango": "Plink plonk plink! Tomorrow I'm going to look for a stream. Will you come too, {nome}? See you tomorrow!"
+      }
+    }
+  ]
+}

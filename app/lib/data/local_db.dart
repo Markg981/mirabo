@@ -13,7 +13,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 2;
+  static const _version = 3;
 
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
@@ -33,7 +33,8 @@ class LocalDb {
             dyslexia_font INTEGER NOT NULL DEFAULT 0,
             low_stimulation INTEGER NOT NULL DEFAULT 0,
             alone_minutes INTEGER NOT NULL DEFAULT 20,
-            stories_completed INTEGER NOT NULL DEFAULT 0
+            stories_completed INTEGER NOT NULL DEFAULT 0,
+            language TEXT NOT NULL DEFAULT 'it'
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -50,6 +51,8 @@ class LocalDb {
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
+        // v3: lingua per bambino. I profili esistenti restano in italiano.
+        if (from < 3) await db.execute("ALTER TABLE profiles ADD COLUMN language TEXT NOT NULL DEFAULT 'it'");
       },
     );
     return LocalDb._(db);

@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero sentado en un cojín, con un libro abierto y un volcán dibujado en la portada."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Hoy hay una historia con un volcán. A mí los volcanes me dan un poco de miedo... pero si estás tú, la miro.",
+        "pilu": "¡Hola, {nome}! ¿Sabes que dentro de cada uno de nosotros hay un volcán? ¿No te lo crees? Mira lo que le pasa a Lía.",
+        "tango": "¡Hola, {nome}! Esta historia habla de algo que a mí me pasa siempre. Seguro que a ti también. ¿La miramos?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La habitación de Lía; en la mesa, una torre de bloques altísima y de colores con una banderita en lo alto. Lía la mira con las manos en la cintura, orgullosísima."
+      },
+      "text": "Lía ha construido la torre más alta del mundo. Ha tardado toda la tarde: un bloque rojo, uno azul, uno amarillo, hasta la banderita de arriba. \"¡Abuela, ven a verla!\""
+    },
+    {
+      "illustration": {
+        "alt": "Teo, de dos años, entra gateando con un muñeco en la mano; la torre ya se tambalea."
+      },
+      "text": "Pero antes que la abuela llega Teo. Teo tiene dos años y siempre quiere tocarlo todo. Estira la mano hacia el bloque rojo de abajo..."
+    },
+    {
+      "illustration": {
+        "alt": "Los bloques de la torre vuelan por todas partes; Teo se ríe; Lía con la boca abierta."
+      },
+      "text": "CRASH. La torre más alta del mundo es un montón de bloques en el suelo. Teo se ríe. No ha entendido nada."
+    },
+    {
+      "illustration": {
+        "alt": "Lía ocupa toda la pantalla, la cara roja, los puños cerrados; detrás de ella, transparente, la silueta de un volcán que echa humo."
+      },
+      "text": "Lía siente algo caliente que le sube desde la barriga. Las manos se le cierran solas. La cara se le pone roja. Dentro de ella hay un volcán, y el volcán está a punto de explotar.",
+      "companionLines": {
+        "bo": "Oh, no. Cuando yo estoy así, siento las orejas muy calientes. ¿Tú dónde lo sientes, {nome}?",
+        "pilu": "Mira las manos de Lía. El volcán se siente primero en el cuerpo, ¿sabes? ¿Tú dónde lo sientes, {nome}?",
+        "tango": "¡Ahí está! ¡Lo reconozco! A mí las patas se me cierran así. ¿Tú dónde lo sientes, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La misma escena, quieta: Lía con el puño levantado, Teo que sigue riéndose, la puerta abierta por donde llega la abuela."
+      },
+      "text": "Lía tiene el puño levantado. El volcán está casi arriba del todo. ¿Y ahora?",
+      "dialogue": {
+        "together": "Pregunta: ¿qué crees que hará Lía? ¿Y tú qué harías?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué harías, {nome}?",
+            "pilu": "¿Tú qué harías, {nome}?",
+            "tango": "¿Tú qué harías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Empujo a Teo",
+              "reaction": {
+                "bo": "Lo entiendo, el volcán es fuerte. Veamos qué hace Lía y luego me dices si te gusta.",
+                "pilu": "Mmm, quizá. Veamos qué le pasa a Lía y luego lo pensamos.",
+                "tango": "¡Lo sé, yo también querría! Pero espera, miremos."
+              }
+            },
+            {
+              "label": "Grito muy fuerte",
+              "reaction": {
+                "bo": "Gritar saca un poco de volcán, es verdad. Veamos qué hace Lía.",
+                "pilu": "Se puede gritar. Veamos si Lía encuentra también otra manera.",
+                "tango": "¡Sí! ¡Gritar! ...Pero veamos qué hace Lía."
+              }
+            },
+            {
+              "label": "Respiro",
+              "reaction": {
+                "bo": "Yo no lo habría conseguido. Veamos si Lía lo consigue.",
+                "pilu": "Buena idea. Veamos si Lía también lo piensa.",
+                "tango": "¿Respirar? ¿Con el volcán arriba del todo? Veamos si Lía lo consigue."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La abuela en la puerta, de rodillas a la altura de Lía, con las manos abiertas; no toca a Lía, no coge a Teo."
+      },
+      "text": "La abuela llega y no dice \"eso no se hace\". Dice: \"Lía, noto el volcán. Es grande, ¿eh? Hagamos la respiración del volcán, juntas.\" Se pone las manos en la barriga. Lía, con los ojos todavía llenos de fuego, hace lo mismo."
+    },
+    {
+      "illustration": {
+        "alt": "Lía y la abuela con las manos en la barriga; encima de ellas el volcán, que pasa de rojo a naranja y luego a rosa, con la lava que baja despacio."
+      },
+      "text": "Dentro: uno, dos, tres. Fuera: ssssssh, despacio, como la lava que baja. Otra vez. Dentro: uno, dos, tres. Fuera: sssssh. El volcán sigue ahí. Pero ya no explota. Está bajando.",
+      "companionLines": {
+        "bo": "Hagámoslo también nosotros, {nome}. Manos en la barriga. Dentro... uno, dos, tres. Fuera... ssssh. Yo ya me siento mejor.",
+        "pilu": "Probémoslo juntos, {nome}: manos en la barriga, dentro uno dos tres, fuera sssssh. También funciona con alas, ¿sabes?",
+        "tango": "¡Venga, {nome}, hagámoslo! Manos en la barriga. Dentro uno, dos, tres. Fuera ssssh. Oh. Es más difícil que correr."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lía sentada en el suelo, Teo le da un bloque azul, la abuela al fondo guardando los bloques en una caja."
+      },
+      "text": "\"Estaba enfadada\", dice Lía. \"Mucho.\" \"Lo sé\", dice la abuela. \"Uno se puede enfadar. El volcán sube, explota y luego se calma. Se puede esperar.\" Teo le da un bloque azul. No sabe lo que ha hecho, pero quiere jugar con ella."
+    },
+    {
+      "illustration": {
+        "alt": "Una torre nueva, más baja pero más ancha, construida por Lía y Teo; la banderita en lo alto; el volcán del fondo ahora es verde, con una flor en la cima."
+      },
+      "text": "La torre nueva no es la más alta del mundo. Es la más ancha, porque la han hecho entre los dos. ¿Y el volcán de Lía? Sigue ahí dentro, tranquilo. Volverá, algún día. Pero ahora Lía sabe esperarlo.",
+      "companionLines": {
+        "bo": "Lo hemos conseguido, {nome}. Mi volcán ahora está todo verde. ¿Nos vemos mañana?",
+        "pilu": "Ahora tú también lo sabes, {nome}: el volcán pasa. Me voy a dormir un poco, que es de día. Hasta mañana.",
+        "tango": "Me lo apunto, {nome}: dentro uno dos tres, fuera sssh. Lo pruebo esta tarde. ¡Hasta mañana!"
+      }
+    }
+  ]
+}

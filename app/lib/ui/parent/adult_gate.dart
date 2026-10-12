@@ -1,12 +1,13 @@
 import 'dart:math';
 
+import '../../l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 /// Gate adulti: una moltiplicazione semplice da scrivere entro pochi secondi.
 /// Facile per un adulto, impraticabile per un bambino di 3-7 anni. Nessuna password.
 class AdultGate {
   static Future<void> open(BuildContext context, {required VoidCallback then}) async {
-    final ok = await showDialog<bool>(context: context, builder: (_) => const _GateDialog());
+    final ok = await showDialog<bool>(context: context, builder: (_) => const AdultLocale(child: _GateDialog()));
     if (ok == true) then();
   }
 }
@@ -34,11 +35,11 @@ class _GateDialogState extends State<_GateDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Area per i grandi'),
+      title: Text(context.l10n.gateTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Quanto fa $_a × $_b?', style: Theme.of(context).textTheme.titleLarge),
+          Text(context.l10n.gateQuestion('$_a', '$_b'), style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
           TextField(
             controller: _controller,
@@ -47,13 +48,13 @@ class _GateDialogState extends State<_GateDialog> {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 24),
             onSubmitted: (_) => _check(),
-            decoration: InputDecoration(errorText: _wrong ? 'Riprova' : null),
+            decoration: InputDecoration(errorText: _wrong ? context.l10n.gateWrong : null),
           ),
         ],
       ),
       actions: [
-        TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Annulla')),
-        FilledButton(onPressed: _check, child: const Text('Entra')),
+        TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(context.l10n.cancel)),
+        FilledButton(onPressed: _check, child: Text(context.l10n.gateEnter)),
       ],
     );
   }

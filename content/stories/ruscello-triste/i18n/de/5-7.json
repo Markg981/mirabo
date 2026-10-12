@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter in zu großen roten Gummistiefeln, vor einem Weg, der in den Wald führt."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Heute gehen wir mit Emma in den Wald. Ich habe meine Stiefel angezogen. Sie sind ein bisschen groß. Hältst du meine Hand?",
+        "pilu": "Hallo {nome}! In Emmas Wald gibt es einen Bach, der singt. Aber heute habe ich etwas Seltsames gehört. Schauen wir nach?",
+        "tango": "Hallo {nome}! Wald! Bach! Matsch! Los, wir rennen zu Emma!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in ihrem gelben Mäntelchen mit dem Körbchen, Pietrolino lugt aus der Tasche; im Hintergrund sitzt Oma auf einem Baumstamm, aus dem Korb schauen ein Beutel und zwei Handschuhe heraus."
+      },
+      "text": "Emma geht wieder in den Wald, mit Pietrolino in der Manteltasche. Pietrolino ist ein kleiner Kieselstein, und er spricht: aber nur mit denen, die stehen bleiben und zuhören. Oma setzt sich auf den Baumstamm am Waldrand. „Ich bleibe hier“, sagt sie. „Wenn du etwas findest, ruf mich.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma geht zwischen den Steinen am Bach entlang und lauscht; kleine Musiknoten steigen aus dem Wasser."
+      },
+      "text": "„Wohin gehen wir heute?“, fragt Emma. Pietrolino zappelt zwischen den Nähten. „Folge dem Bach. Da ist jemand, der reden muss.“ Emma folgt dem Klang des Wassers, das zwischen den Steinen dahingleitet wie ein Lied: plin, plon, plin."
+    },
+    {
+      "illustration": {
+        "alt": "Die Musiknoten werden krumm und klein; Emma wird langsamer."
+      },
+      "text": "Aber je näher sie kommt, desto mehr verändert sich der Klang. Es ist kein fröhliches Lied mehr. Es ist ein Wimmern. „Pio... plo... plick...“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma kniet am Ufer; im Wasser liegen Papierfetzen, eine Plastikflasche, ein kaputter Schuh; das Wasser ist trüb."
+      },
+      "text": "Emma kniet sich hin. Das Wasser ist nicht mehr klar. Da sind Papierfetzen, eine Plastikflasche, sogar ein kaputter Schuh. „Oh nein...“ „Der Bach ist traurig“, sagt Pietrolino. „Er war klar und hat gesungen. Jetzt ist er ganz schmutzig und schafft es nicht mehr.“ „Blubb blubb...“, gluckert das Wasser. „Ich kann nicht mehr singen wie früher.“",
+      "companionLines": {
+        "bo": "Der Bach tut mir leid. Mir ist auch zum Weinen, {nome}.",
+        "pilu": "Hörst du, wie sich die Stimme des Baches verändert hat, {nome}? Von plin plon zu blubb blubb.",
+        "tango": "Igitt! Ein Schuh! Wer wirft denn einen Schuh in einen Bach, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma steht still am Ufer, schaut auf das leere Körbchen, dann auf Pietrolino, dann auf Oma weit weg auf dem Baumstamm."
+      },
+      "text": "Emma schaut auf das leere Körbchen. Sie schaut Pietrolino an. Sie schaut zu Oma, dort drüben auf dem Baumstamm. Und jetzt?",
+      "dialogue": {
+        "together": "Fragen Sie: Was kann Emma tun? Und wenn du so einen Bach finden würdest?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du machen, {nome}?",
+            "pilu": "Was würdest du machen, {nome}?",
+            "tango": "Was würdest du machen, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich räume selbst auf",
+              "reaction": {
+                "bo": "Mutig. Aber der Schuh ist schmutzig... schauen wir, wie Emma es macht.",
+                "pilu": "Gute Idee. Vielleicht braucht sie vorher etwas. Schauen wir.",
+                "tango": "Ja! Sofort! ...Warte, schauen wir, was Emma macht."
+              }
+            },
+            {
+              "label": "Ich rufe Oma",
+              "reaction": {
+                "bo": "Ich hätte auch jemanden gerufen. Schauen wir, was Emma macht.",
+                "pilu": "Um Hilfe bitten heißt nicht aufgeben. Schauen wir, ob Emma auch daran denkt.",
+                "tango": "Oma? Aber die ist doch weit weg! Schauen wir, was Emma macht."
+              }
+            },
+            {
+              "label": "Es tut mir leid, ich weiß nicht, was ich tun soll",
+              "reaction": {
+                "bo": "Ich weiß. Mir auch. Bleiben wir ein bisschen hier, dann schauen wir, was Emma macht.",
+                "pilu": "Es ist in Ordnung, es nicht zu wissen. Schauen wir zusammen, was Emma macht.",
+                "tango": "Puh. Schauen wir, was Emma macht, vielleicht kommt uns eine Idee."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma rennt zu Oma; Oma reicht ihr die Handschuhe und den Beutel, ohne aufzustehen."
+      },
+      "text": "„Oma! Der Bach ist voller Dreck!“ Oma steht nicht auf. Sie reicht ihr die Handschuhe und den Beutel. „Dann brauchst du die hier. Ich schaue von hier aus zu. Wenn du Glas findest, fass es nicht an: Das hole ich.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma sammelt mit viel zu großen Handschuhen die Papierfetzen ein; die Flasche im Beutel; nasse Ärmel."
+      },
+      "text": "Emma fängt langsam an, mit den Papierfetzen. Dann die Flasche. Jedes Mal, wenn sie etwas Schmutziges anfasst, sagt sie: „Entschuldigung, Bach. Jetzt helfe ich dir.“ Der Schuh ist schwer. Ihre Ärmel werden nass. Aber sie hört nicht auf.",
+      "companionLines": {
+        "bo": "Los, sie schafft das. Los, sie schafft das. {nome}, halt meine Hand, ich schaue nicht hin.",
+        "pilu": "Schau, {nome}: eins nach dem anderen. Erst das Papier, dann die Flasche. So wirkt es nicht unmöglich.",
+        "tango": "Der Schuh! Nimm den Schuh! Ja! Ich hätte zuerst den Schuh genommen, {nome}, und du?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Der Bach ist wieder klar, die Sonne spiegelt sich darin; der volle Beutel neben Oma; Emma mit tropfenden Ärmeln."
+      },
+      "text": "Als sie fertig ist, glitzert der Bach wieder in der Sonne. „Danke... bluub... danke...“, flüstert das Wasser. „Es ist doch nur ein kleiner Bach“, sagt Emma. „Auch kleine Bäche machen große Reisen“, antwortet Pietrolino. „Sie werden zu Flüssen, sie kommen bis ans Meer. Und alles fängt hier an.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma auf dem Heimweg; der Beutel ist zugebunden; dahinter der Bach mit geraden Musiknoten; ein gelber Schmetterling."
+      },
+      "text": "Auf dem Heimweg sagt Emma: „Oma, morgen erzähle ich es Sara und Omar. Dass der Bach traurig war und ich ihm geholfen habe.“ Oma nickt. Und hinter ihnen fängt der Bach wieder an zu singen: plin... plon... plin.",
+      "companionLines": {
+        "bo": "Sie hat es geschafft, {nome}. Sogar mit nassen Ärmeln. Wenn du morgen Müll siehst, sagst du es mir?",
+        "pilu": "Hast du gesehen, {nome}? Keine Zauberei: nur Handschuhe, ein Beutel und jemand, der zugeschaut hat. Bis morgen.",
+        "tango": "Plin plon plin! Morgen suche ich einen Bach. Kommst du mit, {nome}? Bis morgen!"
+      }
+    }
+  ]
+}

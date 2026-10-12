@@ -81,13 +81,88 @@ class Dialogue {
   }
 }
 
+/// Una figura della scena composta: un'emoji o un elemento dipinto dall'app
+/// (`companion`, `volcano`, `tower`, `pebble`). x e y sono il centro in
+/// frazioni del riquadro, s l'altezza in frazioni dell'altezza del riquadro.
+class SceneItem {
+  const SceneItem({
+    this.emoji,
+    this.paint,
+    required this.x,
+    required this.y,
+    required this.size,
+    this.rotation = 0,
+    this.flip = false,
+    this.opacity = 1,
+    this.color,
+    this.variant,
+    this.smoke = false,
+    this.flower = false,
+    this.flag = true,
+  });
+
+  final String? emoji;
+  final String? paint;
+  final double x;
+  final double y;
+  final double size;
+
+  /// Gradi, in senso orario.
+  final double rotation;
+  final bool flip;
+  final double opacity;
+  final String? color;
+  final String? variant;
+  final bool smoke;
+  final bool flower;
+  final bool flag;
+
+  factory SceneItem.fromJson(Map<String, dynamic> j) => SceneItem(
+        emoji: j['e'] as String?,
+        paint: j['paint'] as String?,
+        x: (j['x'] as num).toDouble(),
+        y: (j['y'] as num).toDouble(),
+        size: (j['s'] as num).toDouble(),
+        rotation: (j['rot'] as num?)?.toDouble() ?? 0,
+        flip: j['flip'] as bool? ?? false,
+        opacity: (j['opacity'] as num?)?.toDouble() ?? 1,
+        color: j['color'] as String?,
+        variant: j['variant'] as String?,
+        smoke: j['smoke'] as bool? ?? false,
+        flower: j['flower'] as bool? ?? false,
+        flag: j['flag'] as bool? ?? true,
+      );
+}
+
+/// Illustrazione composta: sfondo dipinto (`room`, `forest`, `stream`, `sky`)
+/// e figure. Serve finché la schermata non ha un disegno vero (`file`).
+class SceneSpec {
+  const SceneSpec({required this.background, required this.items, this.dirty = false});
+  final String background;
+  final List<SceneItem> items;
+
+  /// Solo per `stream`: acqua torbida.
+  final bool dirty;
+
+  factory SceneSpec.fromJson(Map<String, dynamic> j) => SceneSpec(
+        background: j['bg'] as String,
+        dirty: j['dirty'] as bool? ?? false,
+        items: (j['items'] as List).map((i) => SceneItem.fromJson(i as Map<String, dynamic>)).toList(),
+      );
+}
+
 class Illustration {
-  const Illustration({this.file, required this.alt});
+  const Illustration({this.file, required this.alt, this.scene});
   final String? file;
   final String alt;
+  final SceneSpec? scene;
 
   factory Illustration.fromJson(Map<String, dynamic> j) =>
-      Illustration(file: j['file'] as String?, alt: j['alt'] as String);
+      Illustration(
+        file: j['file'] as String?,
+        alt: j['alt'] as String,
+        scene: j['scene'] == null ? null : SceneSpec.fromJson(j['scene'] as Map<String, dynamic>),
+      );
 }
 
 class StoryAudio {

@@ -17,6 +17,7 @@ class ChildProfile {
     this.lowStimulation = false,
     this.aloneSessionMinutes = 20,
     this.storiesCompleted = 0,
+    this.language = 'it',
   });
 
   final int id;
@@ -34,6 +35,10 @@ class ChildProfile {
 
   /// Storie completate: guida la crescita del compagno (progressione narrativa).
   final int storiesCompleted;
+
+  /// Codice della lingua del bambino (it, en, es, fr, de): interfaccia lato
+  /// bambino, contenuti e voce del compagno.
+  final String language;
 
   int get companionStage {
     if (storiesCompleted >= 12) return 3;
@@ -62,6 +67,7 @@ class ChildProfile {
     bool? lowStimulation,
     int? aloneSessionMinutes,
     int? storiesCompleted,
+    String? language,
   }) =>
       ChildProfile(
         id: id,
@@ -75,6 +81,7 @@ class ChildProfile {
         lowStimulation: lowStimulation ?? this.lowStimulation,
         aloneSessionMinutes: aloneSessionMinutes ?? this.aloneSessionMinutes,
         storiesCompleted: storiesCompleted ?? this.storiesCompleted,
+        language: language ?? this.language,
       );
 
   Map<String, Object?> toRow() => {
@@ -89,6 +96,7 @@ class ChildProfile {
         'low_stimulation': lowStimulation ? 1 : 0,
         'alone_minutes': aloneSessionMinutes,
         'stories_completed': storiesCompleted,
+        'language': language,
       };
 
   factory ChildProfile.fromRow(Map<String, Object?> r) => ChildProfile(
@@ -103,6 +111,7 @@ class ChildProfile {
         lowStimulation: (r['low_stimulation'] as int) == 1,
         aloneSessionMinutes: r['alone_minutes'] as int,
         storiesCompleted: r['stories_completed'] as int,
+        language: r['language'] as String? ?? 'it',
       );
 }
 

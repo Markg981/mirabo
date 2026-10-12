@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../../models/activity.dart';
 import '../../design/palette.dart';
 import '../../design/widgets.dart';
@@ -37,7 +38,7 @@ class _CountdownRoundState extends State<CountdownRound> {
             const SizedBox(height: 24),
             ChunkyButton(
               icon: Icons.calendar_month_rounded,
-              label: 'Scegli la data',
+              label: context.l10n.countdownPick,
               color: MiraboColors.sky,
               onPressed: () async {
                 final now = DateTime.now();
@@ -62,8 +63,8 @@ class _CountdownRoundState extends State<CountdownRound> {
     return Column(
       children: [
         PromptBar(
-          text: remaining <= 0 ? 'È oggi!' : 'Mancano $remaining giorni a: $event',
-          onSay: () => widget.ctx.say(remaining <= 0 ? 'Oggi è il giorno!' : 'Mancano $remaining giorni. $todaysTask'),
+          text: remaining <= 0 ? context.l10n.countdownToday : context.l10n.countdownDaysTo(remaining, event),
+          onSay: () => widget.ctx.say(remaining <= 0 ? context.l10n.countdownTodaySay : context.l10n.countdownDaysSay(remaining, todaysTask)),
         ),
         Expanded(
           child: Center(
@@ -108,7 +109,7 @@ class _CountdownRoundState extends State<CountdownRound> {
                   const SizedBox(width: 12),
                   Expanded(child: Text(todaysTask, style: Theme.of(context).textTheme.bodyLarge)),
                   ChunkyButton(
-                    label: 'Fatto',
+                    label: context.l10n.done,
                     icon: Icons.check_rounded,
                     color: MiraboColors.leaf,
                     onPressed: () {

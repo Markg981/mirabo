@@ -18,6 +18,11 @@ class AppState extends ChangeNotifier {
   ChildProfile? currentProfile;
   SessionMode mode = SessionMode.together;
 
+  /// Con più figli, a ogni avvio il bambino sceglie chi gioca ("Chi gioca oggi?").
+  /// Vale per la sessione: non si salva.
+  bool _childChosen = false;
+  bool get needsChildChoice => profiles.length > 1 && !_childChosen;
+
   Future<void> init() async {
     profiles = await db.profiles();
     if (profiles.isNotEmpty) {
@@ -27,11 +32,24 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Companion companionOf(ChildProfile p) => repo.companions.firstWhere((c) => c.id == p.companion);
+  /// Il bambino tocca il suo compagno nella schermata di scelta.
+  Future<void> chooseChild(ChildProfile p) async {
+    _childChosen = true;
+    await selectProfile(p);
+  }
 
-  List<Story> storiesFor(ChildProfile p) => repo.stories.where((s) => p.canOpen(s, mode)).toList();
+  /// Torna a "Chi gioca oggi?" (fratelli che si passano il tablet).
+  void switchChild() {
+    _childChosen = false;
+    notifyListeners();
+  }
 
-  List<Activity> activitiesFor(ChildProfile p, {ActivityModule? module}) => repo.activities
+  /// Il compagno, le storie e le attività arrivano nella lingua del bambino.
+  Companion companionOf(ChildProfile p) => repo.companionsIn(p.language).firstWhere((c) => c.id == p.companion);
+
+  List<Story> storiesFor(ChildProfile p) => repo.storiesIn(p.language).where((s) => p.canOpen(s, mode)).toList();
+
+  List<Activity> activitiesFor(ChildProfile p, {ActivityModule? module}) => repo.activitiesIn(p.language)
       .where((a) => a.supports(p.ageBand) && (module == null || a.module == module))
       .toList();
 
@@ -67,6 +85,7 @@ class AppState extends ChangeNotifier {
     final saved = await db.insertProfile(draft);
     profiles = await db.profiles();
     currentProfile = saved;
+    _childChosen = true;
     mode = saved.lastMode;
     notifyListeners();
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../../models/activity.dart';
 import '../../design/palette.dart';
 import '../../design/widgets.dart';
@@ -32,7 +33,7 @@ class _PresentationRoundState extends State<PresentationRound> {
       case _Step.materials:
         return Column(
           children: [
-            PromptBar(text: 'Cosa serve', onSay: () => widget.ctx.say('Cosa serve: ${_materials.map((m) => m['label']).join(', ')}')),
+            PromptBar(text: context.l10n.presentationWhatYouNeed, onSay: () => widget.ctx.say(context.l10n.presentationWhatYouNeedSay(_materials.map((m) => m['label']).join(', ')))),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
@@ -46,10 +47,7 @@ class _PresentationRoundState extends State<PresentationRound> {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  const _AdultNote(
-                    text: 'Prepara tutto su un vassoio prima di chiamare il bambino. '
-                        'Mostra i passi una volta, lentamente e senza parlare; poi lascia fare.',
-                  ),
+                  _AdultNote(text: context.l10n.presentationPrepare),
                 ],
               ),
             ),
@@ -58,7 +56,7 @@ class _PresentationRoundState extends State<PresentationRound> {
               child: ChunkyButton(
                 icon: Icons.arrow_forward_rounded,
                 iconAfter: true,
-                label: 'Tutto pronto',
+                label: context.l10n.presentationReady,
                 color: MiraboColors.leaf,
                 onPressed: () {
                   setState(() => _phase = _Step.steps);
@@ -73,7 +71,7 @@ class _PresentationRoundState extends State<PresentationRound> {
         final last = _step == _steps.length - 1;
         return Column(
           children: [
-            PromptBar(text: 'Passo ${_step + 1} di ${_steps.length}', onSay: () => widget.ctx.say(s['text'] as String)),
+            PromptBar(text: context.l10n.presentationStep('${_step + 1}', '${_steps.length}'), onSay: () => widget.ctx.say(s['text'] as String)),
             Expanded(
               child: Center(
                 child: ConstrainedBox(
@@ -101,7 +99,7 @@ class _PresentationRoundState extends State<PresentationRound> {
                   if (_step > 0)
                     RoundIconButton(
                       icon: Icons.arrow_back_rounded,
-                      tooltip: 'Indietro',
+                      tooltip: context.l10n.back,
                       size: 64,
                       onPressed: () {
                         setState(() => _step--);
@@ -113,11 +111,11 @@ class _PresentationRoundState extends State<PresentationRound> {
                     icon: last ? Icons.pan_tool_rounded : Icons.arrow_forward_rounded,
                     iconAfter: !last,
                     color: last ? MiraboColors.apricot : MiraboColors.leaf,
-                    label: last ? 'Ora lavora da solo' : 'Avanti',
+                    label: last ? context.l10n.presentationWorkAlone : context.l10n.next,
                     onPressed: () {
                       if (last) {
                         setState(() => _phase = _Step.done);
-                        widget.ctx.say('Adesso tocca a te, ${widget.ctx.profile.name}. Il tablet lo mettiamo via.');
+                        widget.ctx.say(context.l10n.presentationYourTurnSay(widget.ctx.profile.name));
                       } else {
                         setState(() => _step++);
                         widget.ctx.say(_steps[_step]['text'] as String);
@@ -132,15 +130,15 @@ class _PresentationRoundState extends State<PresentationRound> {
       case _Step.done:
         return Column(
           children: [
-            PromptBar(text: 'Per il grande: com\'è andata?', onSay: () {}),
+            PromptBar(text: context.l10n.presentationHowDidItGo, onSay: () {}),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 children: [
-                  _Note(title: 'Controllo dell\'errore', text: widget.level['control'] as String),
-                  _Note(title: 'Cosa osservare', text: widget.level['observe'] as String),
+                  _Note(title: context.l10n.presentationControl, text: widget.level['control'] as String),
+                  _Note(title: context.l10n.presentationObserve, text: widget.level['observe'] as String),
                   const SizedBox(height: 12),
-                  const Text('Segna quando ha finito di lavorare, anche dopo un po\'. Non correggere mentre lavora.'),
+                  _AdultNote(text: context.l10n.presentationMarkLater),
                 ],
               ),
             ),
@@ -151,7 +149,7 @@ class _PresentationRoundState extends State<PresentationRound> {
                 runSpacing: 12,
                 alignment: WrapAlignment.center,
                 children: [
-                  for (final (label, code) in [('Ha guardato', 'watched'), ('L\'ha fatto', 'done'), ('Da solo', 'alone'), ('Vuole rifarla', 'repeat')])
+                  for (final (label, code) in [(context.l10n.presentationWatched, 'watched'), (context.l10n.presentationDid, 'done'), (context.l10n.presentationAlone, 'alone'), (context.l10n.presentationRepeat, 'repeat')])
                     ChunkyButton(
                       label: label,
                       color: MiraboColors.sky,
@@ -207,7 +205,7 @@ class _AdultNote extends StatelessWidget {
             Expanded(
               child: Text.rich(
                 TextSpan(children: [
-                  const TextSpan(text: 'Per il grande  ', style: TextStyle(fontWeight: FontWeight.w800, color: MiraboColors.teal)),
+                  TextSpan(text: '${context.l10n.forTheAdult}  ', style: const TextStyle(fontWeight: FontWeight.w800, color: MiraboColors.teal)),
                   TextSpan(text: text),
                 ]),
                 style: Theme.of(context).textTheme.bodyMedium,

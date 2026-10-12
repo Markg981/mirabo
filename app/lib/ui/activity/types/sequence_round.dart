@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../activity_player.dart';
 
 /// "Rimetti in ordine": le carte compaiono mescolate; il bambino le tocca
@@ -50,7 +51,7 @@ class _SequenceRoundState extends RoundState<SequenceRound> {
     final sizes = r['sizes'] == true;
     double sizeOf(int i) => sizes ? 40 + 100 * ((cards[i]['size'] as num).toDouble()) : 110;
     final expected = _placed.length;
-    final whoseTurn = turns ? (expected.isEven ? 'Tocca a te, ${widget.ctx.profile.name}' : 'Tocca al grande') : null;
+    final whoseTurn = turns ? (expected.isEven ? context.l10n.turnYou(widget.ctx.profile.name) : context.l10n.turnAdult) : null;
 
     return Column(
       children: [

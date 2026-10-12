@@ -35,7 +35,42 @@
             "additionalProperties": false,
             "properties": {
               "file": { "type": "string" },
-              "alt": { "type": "string", "minLength": 10 }
+              "alt": { "type": "string", "minLength": 10 },
+              "scene": {
+                "description": "Illustrazione composta finché non c'è il file: sfondo dipinto e figure posizionate",
+                "type": "object",
+                "required": ["bg", "items"],
+                "additionalProperties": false,
+                "properties": {
+                  "bg": { "enum": ["room", "forest", "stream", "sky"] },
+                  "dirty": { "type": "boolean" },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": ["x", "y", "s"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "e": { "type": "string", "minLength": 1 },
+                        "paint": { "enum": ["companion", "volcano", "tower", "pebble"] },
+                        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+                        "y": { "type": "number", "minimum": 0, "maximum": 1 },
+                        "s": { "type": "number", "exclusiveMinimum": 0, "maximum": 1.5 },
+                        "rot": { "type": "number" },
+                        "flip": { "type": "boolean" },
+                        "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+                        "color": { "enum": ["red", "orange", "pink", "green"] },
+                        "variant": { "enum": ["tall", "leaning", "fallen", "wide"] },
+                        "smoke": { "type": "boolean" },
+                        "flower": { "type": "boolean" },
+                        "flag": { "type": "boolean" }
+                      },
+                      "oneOf": [{ "required": ["e"] }, { "required": ["paint"] }]
+                    }
+                  }
+                }
+              }
             }
           },
           "text": { "type": "string" },

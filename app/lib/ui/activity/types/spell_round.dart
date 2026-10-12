@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../l10n/l10n.dart';
 import '../activity_player.dart';
 
 /// Alfabeto mobile: la figura, la parola da comporre (o la frase per i grandi) e
@@ -74,7 +75,7 @@ class _SpellRoundState extends RoundState<SpellRound> {
   Widget buildRound(BuildContext context, int index) {
     if (_preparedFor != index) {
       _prepare(index);
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say('Componi: ${_target.toLowerCase()}'));
+      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(context.l10n.spellSay(_target.toLowerCase())));
     }
     final emoji = _rounds[index]['emoji'] as String? ?? '';
     final expected = _expected;
@@ -84,7 +85,7 @@ class _SpellRoundState extends RoundState<SpellRound> {
     return Column(
       children: [
         PromptBar(
-          text: isSentence ? 'Componi la frase' : 'Componi la parola',
+          text: isSentence ? context.l10n.spellSentence : context.l10n.spellWord,
           onSay: () => widget.ctx.say(_target.toLowerCase()),
         ),
         Padding(
