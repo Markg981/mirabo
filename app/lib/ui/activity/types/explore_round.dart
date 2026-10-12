@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/activity.dart';
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// Scena da esplorare: ogni punto toccato racconta qualcosa. Il round finisce
@@ -55,14 +57,15 @@ class _ExploreRoundState extends State<ExploreRound> {
           ),
         Padding(
           padding: const EdgeInsets.all(16),
-          child: FilledButton(
+          child: ChunkyButton(
+            color: MiraboColors.leaf,
             onPressed: _seen.isEmpty
                 ? null
                 : () {
                     widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'seen=${_seen.length};of=${_spots.length}'));
                     widget.onFinished();
                   },
-            child: Text(_seen.length == _spots.length ? 'Ho visto tutto!' : 'Per oggi basta'),
+            label: _seen.length == _spots.length ? 'Ho visto tutto!' : 'Per oggi basta',
           ),
         ),
       ],

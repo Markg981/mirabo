@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// "Conta e scegli il numero". Toccando gli oggetti vengono contati a voce
@@ -64,10 +66,11 @@ class _CountRoundState extends RoundState<CountRound> {
             spacing: 16,
             children: [
               for (final c in choices)
-                FilledButton.tonal(
-                  style: FilledButton.styleFrom(minimumSize: const Size(96, 72), textStyle: const TextStyle(fontSize: 32)),
+                ChunkyButton(
+                  label: '$c',
+                  color: MiraboColors.sky,
+                  height: 84,
                   onPressed: lastCorrect == true || (showHint && c != count) ? null : () => answer(c == count),
-                  child: Text('$c'),
                 ),
             ],
           ),

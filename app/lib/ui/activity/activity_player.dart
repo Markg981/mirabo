@@ -6,6 +6,8 @@ import '../../models/activity.dart';
 import '../../models/profile.dart';
 import '../../content/story_repository.dart';
 import '../child/companion_widget.dart';
+import '../design/palette.dart';
+import '../design/widgets.dart';
 import 'types/checklist_round.dart';
 import 'types/count_round.dart';
 import 'types/countdown_round.dart';
@@ -120,20 +122,44 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     };
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.activity.title),
-        leading: IconButton(icon: const Icon(Icons.close_rounded), onPressed: () => Navigator.of(context).pop()),
-        actions: [
-          IconButton(
-            tooltip: 'Rileggi',
-            icon: const Icon(Icons.volume_up_rounded),
-            onPressed: () => _ctx.say(_phase == _Phase.intro
-                ? widget.activity.intro.forCompanion(_profile.companion)
-                : widget.activity.outro.forCompanion(_profile.companion)),
+      body: SceneBackdrop(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                child: Row(
+                  children: [
+                    RoundIconButton(
+                      icon: Icons.close_rounded,
+                      tooltip: 'Chiudi',
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        widget.activity.title,
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: MiraboColors.navy),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    if (_phase != _Phase.rounds)
+                      RoundIconButton(
+                        icon: Icons.volume_up_rounded,
+                        tooltip: 'Rileggi',
+                        onPressed: () => _ctx.say(_phase == _Phase.intro
+                            ? widget.activity.intro.forCompanion(_profile.companion)
+                            : widget.activity.outro.forCompanion(_profile.companion)),
+                      ),
+                  ],
+                ),
+              ),
+              Expanded(child: body),
+            ],
           ),
-        ],
+        ),
       ),
-      body: SafeArea(child: body),
     );
   }
 
@@ -174,17 +200,39 @@ class _CompanionSays extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 640),
+        constraints: const BoxConstraints(maxWidth: 860),
         child: Padding(
           padding: const EdgeInsets.all(24),
-          child: Column(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CompanionWidget(companion: companion, stage: stage, size: 160),
-              const SizedBox(height: 24),
-              Text(text, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyLarge),
-              const SizedBox(height: 32),
-              FilledButton(onPressed: onPressed, child: Text(button)),
+              CompanionWidget(companion: companion, stage: stage, size: 240),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SpeechBubble(
+                      tail: TailSide.left,
+                      tailAt: 0.7,
+                      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 22),
+                      child: Text(text, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 24)),
+                    ),
+                    const SizedBox(height: 28),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 14),
+                      child: ChunkyButton(
+                        label: button,
+                        icon: Icons.play_arrow_rounded,
+                        color: MiraboColors.leaf,
+                        onPressed: onPressed,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -263,14 +311,15 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
         children: [
           Expanded(child: buildRound(context, index)),
           Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Text('${index + 1} / $roundCount', style: Theme.of(context).textTheme.bodyMedium),
+            padding: const EdgeInsets.only(bottom: 14),
+            child: StepDots(count: roundCount, current: index, color: MiraboColors.navy),
           ),
         ],
       );
 }
 
 /// Tessera grande con emoji e, se c'è, etichetta. Riutilizzata da più tipi.
+/// Selezionata diventa verde con la spunta; con l'aiuto attivo ha un alone giallo.
 class PicTile extends StatelessWidget {
   const PicTile({
     super.key,
@@ -292,43 +341,59 @@ class PicTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Semantics(
-      button: onTap != null,
-      label: label ?? emoji,
-      child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 250),
-        opacity: dimmed ? 0.3 : 1,
-        child: Material(
-          color: selected ? scheme.primaryContainer : scheme.surface,
-          borderRadius: BorderRadius.circular(24),
-          elevation: highlight ? 6 : 1,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(24),
+    final tokens = MiraboTokens.of(context);
+    final green = tokens.tint(MiraboColors.leaf);
+    final gold = tokens.tint(MiraboColors.sun);
+    final fg = selected ? Colors.white : MiraboColors.ink;
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 250),
+      opacity: dimmed ? 0.3 : 1,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          BlockTile(
             onTap: onTap,
-            child: Container(
-              width: size,
-              height: size,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  width: 3,
-                  color: highlight ? scheme.primary : (selected ? scheme.primary : scheme.outlineVariant),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(emoji, style: TextStyle(fontSize: size * 0.42)),
-                  if (label != null) ...[
-                    const SizedBox(height: 4),
-                    Text(label!, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
-                  ],
+            width: size,
+            height: size,
+            color: selected ? green : MiraboColors.paper,
+            border: highlight ? Border.all(color: gold, width: 5) : null,
+            semanticLabel: label ?? emoji,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(emoji, style: TextStyle(fontSize: size * (label == null ? 0.5 : 0.4))),
+                if (label != null) ...[
+                  const SizedBox(height: 4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      label!,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: fg),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
-              ),
+              ],
             ),
           ),
-        ),
+          if (selected)
+            Positioned(
+              right: -8,
+              top: -8,
+              child: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: green, width: 3),
+                ),
+                child: Icon(Icons.check_rounded, color: green, size: 26),
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -344,12 +409,35 @@ class PromptBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-      child: Row(
-        children: [
-          IconButton(icon: const Icon(Icons.volume_up_rounded, size: 32), onPressed: onSay, tooltip: 'Riascolta'),
-          const SizedBox(width: 8),
-          Expanded(child: Text(text, style: Theme.of(context).textTheme.titleLarge)),
-        ],
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(10, 10, 24, 10),
+        decoration: BoxDecoration(
+          color: MiraboColors.paper,
+          borderRadius: BorderRadius.circular(999),
+          boxShadow: softShadow(),
+        ),
+        child: Row(
+          children: [
+            Tooltip(
+              message: 'Riascolta',
+              child: Material(
+                color: MiraboTokens.of(context).tint(MiraboColors.sky),
+                shape: const CircleBorder(),
+                child: InkWell(
+                  customBorder: const CircleBorder(),
+                  onTap: onSay,
+                  child: const SizedBox(
+                    width: 56,
+                    height: 56,
+                    child: Icon(Icons.volume_up_rounded, size: 30, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(child: Text(text, style: Theme.of(context).textTheme.titleLarge)),
+          ],
+        ),
       ),
     );
   }

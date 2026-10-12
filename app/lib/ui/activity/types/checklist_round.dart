@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/activity.dart';
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// Lista da spuntare nel momento reale (la sera, per domani). Ogni voce ha due
@@ -60,9 +62,10 @@ class _ChecklistRoundState extends State<ChecklistRound> {
         ),
         Padding(
           padding: const EdgeInsets.all(16),
-          child: FilledButton.icon(
-            icon: Icon(allDone ? Icons.bedtime_rounded : Icons.check_rounded),
-            label: Text(allDone ? 'Tutto pronto, buonanotte' : 'Per oggi basta così'),
+          child: ChunkyButton(
+              icon: allDone ? Icons.bedtime_rounded : Icons.check_rounded,
+              label: allDone ? 'Tutto pronto, buonanotte' : 'Per oggi basta così',
+              color: MiraboColors.leaf,
             onPressed: () {
               final alone = _alone.where((a) => a).length;
               final done = _done.where((d) => d).length;

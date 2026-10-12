@@ -38,3 +38,32 @@ flutter:
     # Copiati da content/ con `python studio/sync_assets.py` (cartella ignorata da git)
     - assets/stories/
     - assets/companions/
+  # Font con licenza OFL (testi in fonts/OFL-*.txt). Fredoka per i titoli,
+  # Nunito per i testi, Lexend per l'opzione "testo ad alta leggibilità".
+  fonts:
+    - family: Fredoka
+      fonts:
+        - asset: fonts/Fredoka-500.ttf
+          weight: 500
+        - asset: fonts/Fredoka-600.ttf
+          weight: 600
+        - asset: fonts/Fredoka-700.ttf
+          weight: 700
+    - family: Nunito
+      fonts:
+        - asset: fonts/Nunito-400.ttf
+        - asset: fonts/Nunito-600.ttf
+          weight: 600
+        - asset: fonts/Nunito-700.ttf
+          weight: 700
+        - asset: fonts/Nunito-800.ttf
+          weight: 800
+        - asset: fonts/Nunito-900.ttf
+          weight: 900
+    - family: Lexend
+      fonts:
+        - asset: fonts/Lexend-400.ttf
+        - asset: fonts/Lexend-600.ttf
+          weight: 600
+        - asset: fonts/Lexend-700.ttf
+          weight: 700

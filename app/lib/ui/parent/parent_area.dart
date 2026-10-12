@@ -6,6 +6,8 @@ import '../../data/development_stats.dart';
 import '../../models/activity.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
+import '../design/palette.dart';
+import '../design/widgets.dart';
 import 'profile_form.dart';
 
 /// Area genitore: modalità della sessione, profili, schede "Come parlarne",
@@ -22,21 +24,47 @@ class ParentArea extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Area genitori'),
-          bottom: const TabBar(tabs: [
-            Tab(text: 'Sessione'),
-            Tab(text: 'Profili'),
-            Tab(text: 'Come parlarne'),
-            Tab(text: 'Diario'),
-            Tab(text: 'Sviluppo'),
-          ]),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(64),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                child: TabBar(
+                  splashBorderRadius: BorderRadius.circular(14),
+                  indicator: BoxDecoration(
+                    color: MiraboColors.paper,
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: softShadow(0.8),
+                  ),
+                  tabs: const [
+                    Tab(height: 44, text: 'Sessione'),
+                    Tab(height: 44, text: 'Profili'),
+                    Tab(height: 44, text: 'Come parlarne'),
+                    Tab(height: 44, text: 'Diario'),
+                    Tab(height: 44, text: 'Sviluppo'),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
-        body: TabBarView(children: [
-          _SessionTab(state: state, profile: profile),
-          _ProfilesTab(state: state),
-          _ParentCardsTab(state: state),
-          _DiaryTab(state: state, profile: profile),
-          _DevelopmentTab(state: state, profile: profile),
-        ]),
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 920),
+            child: TabBarView(children: [
+              _SessionTab(state: state, profile: profile),
+              _ProfilesTab(state: state),
+              _ParentCardsTab(state: state),
+              _DiaryTab(state: state, profile: profile),
+              _DevelopmentTab(state: state, profile: profile),
+            ]),
+          ),
+        ),
       ),
     );
   }
@@ -50,27 +78,54 @@ class _SessionTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
       children: [
-        Text('Come usate l\'app adesso?', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 8),
-        const Text('In modalità "insieme" compaiono le pause di dialogo per voi due. '
-            'In modalità "da solo" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.'),
-        const SizedBox(height: 16),
-        SegmentedButton<SessionMode>(
-          segments: const [
-            ButtonSegment(value: SessionMode.together, icon: Icon(Icons.people_rounded), label: Text('Insieme')),
-            ButtonSegment(value: SessionMode.alone, icon: Icon(Icons.person_rounded), label: Text('Da solo')),
+        FormSection(
+          icon: Icons.people_rounded,
+          color: MiraboColors.sky,
+          title: 'Come usate l\'app adesso?',
+          subtitle: 'In modalità "insieme" compaiono le pause di dialogo per voi due. '
+              'In modalità "da solo" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.',
+          children: [
+            SegmentedButton<SessionMode>(
+              segments: const [
+                ButtonSegment(value: SessionMode.together, icon: Icon(Icons.people_rounded), label: Text('Insieme')),
+                ButtonSegment(value: SessionMode.alone, icon: Icon(Icons.person_rounded), label: Text('Da solo')),
+              ],
+              selected: {state.mode},
+              onSelectionChanged: (s) => state.setMode(s.first),
+            ),
           ],
-          selected: {state.mode},
-          onSelectionChanged: (s) => state.setMode(s.first),
         ),
-        const SizedBox(height: 32),
-        Text('Dove vivono i dati', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 8),
-        const Text('Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.'),
-        const SizedBox(height: 32),
-        OutlinedButton.icon(
+        const SizedBox(height: 20),
+        FormSection(
+          icon: Icons.lock_rounded,
+          color: MiraboColors.teal,
+          title: 'Dove vivono i dati',
+          subtitle: 'Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.',
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _WipeButton(state: state),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _WipeButton extends StatelessWidget {
+  const _WipeButton({required this.state});
+  final AppState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton.icon(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Theme.of(context).colorScheme.error,
+            side: BorderSide(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.5), width: 1.5),
+          ),
           icon: const Icon(Icons.delete_forever_rounded),
           label: const Text('Elimina tutti i dati'),
           onPressed: () async {
@@ -90,9 +145,7 @@ class _SessionTab extends StatelessWidget {
               if (context.mounted) Navigator.of(context).popUntil((r) => r.isFirst);
             }
           },
-        ),
-      ],
-    );
+        );
   }
 }
 
@@ -103,10 +156,10 @@ class _ProfilesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
       children: [
         for (final p in state.profiles)
-          ListTile(
+          _carded(ListTile(
             leading: Icon(p.id == state.currentProfile?.id ? Icons.check_circle_rounded : Icons.circle_outlined),
             title: Text(p.name),
             subtitle: Text('${p.ageBand.label} · compagno ${state.companionOf(p).name} · ${p.storiesCompleted} storie'),
@@ -115,12 +168,15 @@ class _ProfilesTab extends StatelessWidget {
               icon: const Icon(Icons.edit_rounded),
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileForm(existing: p))),
             ),
-          ),
+          )),
         const SizedBox(height: 16),
-        FilledButton.icon(
-          icon: const Icon(Icons.add_rounded),
-          label: const Text('Nuovo profilo'),
-          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileForm())),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: FilledButton.icon(
+            icon: const Icon(Icons.add_rounded),
+            label: const Text('Nuovo profilo'),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileForm())),
+          ),
         ),
       ],
     );
@@ -135,15 +191,15 @@ class _ParentCardsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final stories = state.repo.stories.where((s) => s.parentCard != null).toList();
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
       children: [
         for (final s in stories)
-          ListTile(
+          _carded(ListTile(
             title: Text(s.title),
             subtitle: Text(s.keyPhrase),
             trailing: const Icon(Icons.chevron_right_rounded),
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => _ParentCardPage(story: s))),
-          ),
+          )),
       ],
     );
   }
@@ -180,13 +236,13 @@ class _DiaryTab extends StatelessWidget {
           return const Center(child: Padding(padding: EdgeInsets.all(24), child: Text('Nessuna storia negli ultimi 30 giorni.')));
         }
         return ListView.builder(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           itemCount: entries.length,
           itemBuilder: (context, i) {
             final e = entries[i];
             final story = state.repo.byId(e.storyId);
             final answer = _answerLabel(story, e.dialogueAnswer);
-            return ListTile(
+            return _carded(ListTile(
               leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
               title: Text(story?.title ?? e.storyId),
               subtitle: Text([
@@ -194,7 +250,7 @@ class _DiaryTab extends StatelessWidget {
                 e.mode == SessionMode.together ? 'insieme' : 'da solo',
                 if (answer != null) 'alla pausa ha scelto: "$answer"',
               ].join(' · ')),
-            );
+            ));
           },
         );
       },
@@ -308,3 +364,9 @@ class _SkillRow extends StatelessWidget {
     );
   }
 }
+
+/// Riga di elenco dentro una carta, con lo spazio fra una e l'altra.
+Widget _carded(Widget tile) => Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Card(child: tile),
+    );

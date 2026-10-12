@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/activity.dart';
+import '../../design/palette.dart';
+import '../../design/widgets.dart';
 import '../activity_player.dart';
 
 /// Presentazione Montessori da fare a casa. Tre momenti sullo schermo:
@@ -33,30 +35,31 @@ class _PresentationRoundState extends State<PresentationRound> {
             PromptBar(text: 'Cosa serve', onSay: () => widget.ctx.say('Cosa serve: ${_materials.map((m) => m['label']).join(', ')}')),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
                 children: [
-                  for (final m in _materials)
-                    ListTile(
-                      leading: Text(m['emoji'] as String, style: const TextStyle(fontSize: 36)),
-                      title: Text(m['label'] as String, style: text.bodyLarge),
-                    ),
+                  Wrap(
+                    spacing: 18,
+                    runSpacing: 6,
+                    children: [
+                      for (final m in _materials)
+                        PicTile(emoji: m['emoji'] as String, label: m['label'] as String, size: 170),
+                    ],
+                  ),
                   const SizedBox(height: 12),
-                  Card(
-                    color: Theme.of(context).colorScheme.secondaryContainer,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text('Per il grande: prepara tutto su un vassoio prima di chiamare il bambino. '
-                          'Mostra i passi una volta, lentamente e senza parlare; poi lascia fare.', style: text.bodyMedium),
-                    ),
+                  const _AdultNote(
+                    text: 'Prepara tutto su un vassoio prima di chiamare il bambino. '
+                        'Mostra i passi una volta, lentamente e senza parlare; poi lascia fare.',
                   ),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
-              child: FilledButton.icon(
-                icon: const Icon(Icons.arrow_forward_rounded),
-                label: const Text('Tutto pronto'),
+              child: ChunkyButton(
+                icon: Icons.arrow_forward_rounded,
+                iconAfter: true,
+                label: 'Tutto pronto',
+                color: MiraboColors.leaf,
                 onPressed: () {
                   setState(() => _phase = _Step.steps);
                   widget.ctx.say(_steps[0]['text'] as String);
@@ -78,10 +81,11 @@ class _PresentationRoundState extends State<PresentationRound> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(s['emoji'] as String, style: const TextStyle(fontSize: 96)),
+                      PicTile(emoji: s['emoji'] as String, size: 200),
                       const SizedBox(height: 16),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                      SpeechBubble(
+                        tail: TailSide.top,
+                        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
                         child: Text(s['text'] as String, textAlign: TextAlign.center, style: text.titleLarge),
                       ),
                     ],
@@ -95,17 +99,21 @@ class _PresentationRoundState extends State<PresentationRound> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (_step > 0)
-                    OutlinedButton(
+                    RoundIconButton(
+                      icon: Icons.arrow_back_rounded,
+                      tooltip: 'Indietro',
+                      size: 64,
                       onPressed: () {
                         setState(() => _step--);
                         widget.ctx.say(_steps[_step]['text'] as String);
                       },
-                      child: const Text('Indietro'),
                     ),
-                  const SizedBox(width: 16),
-                  FilledButton.icon(
-                    icon: Icon(last ? Icons.pan_tool_rounded : Icons.arrow_forward_rounded),
-                    label: Text(last ? 'Ora lavora da solo' : 'Avanti'),
+                  const SizedBox(width: 20),
+                  ChunkyButton(
+                    icon: last ? Icons.pan_tool_rounded : Icons.arrow_forward_rounded,
+                    iconAfter: !last,
+                    color: last ? MiraboColors.apricot : MiraboColors.leaf,
+                    label: last ? 'Ora lavora da solo' : 'Avanti',
                     onPressed: () {
                       if (last) {
                         setState(() => _phase = _Step.done);
@@ -144,12 +152,14 @@ class _PresentationRoundState extends State<PresentationRound> {
                 alignment: WrapAlignment.center,
                 children: [
                   for (final (label, code) in [('Ha guardato', 'watched'), ('L\'ha fatto', 'done'), ('Da solo', 'alone'), ('Vuole rifarla', 'repeat')])
-                    FilledButton.tonal(
+                    ChunkyButton(
+                      label: label,
+                      color: MiraboColors.sky,
+                      height: 60,
                       onPressed: () {
                         widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'presentation=$code'));
                         widget.onFinished();
                       },
-                      child: Text(label),
                     ),
                 ],
               ),
@@ -165,10 +175,45 @@ class _Note extends StatelessWidget {
   final String title;
   final String text;
   @override
-  Widget build(BuildContext context) => Card(
-        child: ListTile(
-          title: Text(title, style: Theme.of(context).textTheme.titleLarge),
-          subtitle: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: SoftPanel(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 4),
+              Text(text, style: Theme.of(context).textTheme.bodyMedium),
+            ],
+          ),
+        ),
+      );
+}
+
+/// Nota per l'adulto: si distingue dal resto con l'etichetta "Per il grande".
+class _AdultNote extends StatelessWidget {
+  const _AdultNote({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => SoftPanel(
+        padding: const EdgeInsets.all(18),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const IconBadge(icon: Icons.person_rounded, color: MiraboColors.teal, size: 44),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text.rich(
+                TextSpan(children: [
+                  const TextSpan(text: 'Per il grande  ', style: TextStyle(fontWeight: FontWeight.w800, color: MiraboColors.teal)),
+                  TextSpan(text: text),
+                ]),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+          ],
         ),
       );
 }
