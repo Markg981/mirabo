@@ -26,18 +26,22 @@ class ShelfTab extends StatelessWidget {
         // Tutto ciò che il bambino può aprire insieme all'adulto: da solo
         // alcune storie restano nascoste anche se sono sulla mensola.
         final candidates = state.shelfCandidates(profile, mode: SessionMode.together);
-        final shelf = Shelf.arrange(candidates, profile.shelf);
+        final shelf = state.shelfFor(profile, mode: SessionMode.together);
         final onShelf = Shelf.keysOf(shelf).toSet();
+        final size = Shelf.size(profile.ageBand);
+
+        void tell(String message) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 
         Future<void> toggle(ShelfItem item) async {
           final keys = Shelf.keysOf(shelf);
           if (onShelf.contains(item.key)) {
             keys.remove(item.key);
-          } else if ((shelf[item.capacity]?.length ?? 0) < Shelf.perCapacity) {
-            keys.add(item.key);
+          } else if (keys.length >= size) {
+            return tell(l.shelfFull(size));
+          } else if ((shelf[item.capacity]?.length ?? 0) >= Shelf.maxPerCapacity) {
+            return tell(l.shelfCapacityFull(Shelf.maxPerCapacity));
           } else {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l.shelfFull(Shelf.perCapacity))));
-            return;
+            keys.add(item.key);
           }
           await state.setShelf(profile, keys);
         }
@@ -52,23 +56,33 @@ class ShelfTab extends StatelessWidget {
                 children: [
                   Text(l.shelfTitle(profile.name), style: text.titleLarge?.copyWith(color: MiraboColors.navy)),
                   const SizedBox(height: 6),
-                  Text(l.shelfHint(profile.name, Shelf.perCapacity), style: text.bodyMedium?.copyWith(color: MiraboColors.inkSoft)),
+                  Text(l.shelfHint(profile.name, size, Shelf.maxPerCapacity),
+                      style: text.bodyMedium?.copyWith(color: MiraboColors.inkSoft)),
+                  const SizedBox(height: 10),
+                  Text(l.shelfTotal(onShelf.length, size), style: text.titleSmall?.copyWith(color: MiraboColors.navy)),
                   const SizedBox(height: 14),
-                  if (profile.shelf == null)
+                  if (profile.shelf == null) ...[
                     Row(children: [
                       const Icon(Icons.auto_awesome_rounded, color: MiraboColors.teal),
                       const SizedBox(width: 8),
                       Expanded(child: Text(l.shelfAutoHint, style: text.bodyMedium)),
-                    ])
-                  else
+                    ]),
+                    const SizedBox(height: 10),
+                    OutlinedButton.icon(
+                      icon: const Icon(Icons.autorenew_rounded),
+                      label: Text(l.shelfRotateNow),
+                      onPressed: () async {
+                        await state.rotateShelf(profile, force: true);
+                        if (context.mounted) tell(l.shelfRotated);
+                      },
+                    ),
+                  ] else
                     OutlinedButton.icon(
                       icon: const Icon(Icons.auto_awesome_rounded),
                       label: Text(l.shelfAuto),
                       onPressed: () async {
                         await state.setShelf(profile, null);
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l.shelfAutoOn)));
-                        }
+                        if (context.mounted) tell(l.shelfAutoOn);
                       },
                     ),
                 ],
@@ -115,7 +129,7 @@ class _CapacityShelf extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(color: MiraboColors.pale(capacity.color), borderRadius: BorderRadius.circular(999)),
-              child: Text(l.shelfCount(count, Shelf.perCapacity), style: text.labelMedium?.copyWith(color: MiraboColors.navy)),
+              child: Text(l.shelfCount(count, Shelf.maxPerCapacity), style: text.labelMedium?.copyWith(color: MiraboColors.navy)),
             ),
           ]),
           const SizedBox(height: 12),

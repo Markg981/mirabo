@@ -1188,8 +1188,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String shelfHint(String name, int max) {
-    return 'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: $name sceglie liberamente tra quelli che metti qui. Al massimo $max per capacità; cambiali quando li ha esplorati.';
+  String shelfHint(String name, int max, int per) {
+    return 'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: $name sceglie liberamente tra quelli che metti qui. Al massimo $max in tutto e $per per capacità; cambiali quando li ha esplorati.';
   }
 
   @override
@@ -1202,16 +1202,32 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get shelfAutoOn =>
-      'Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.';
+      'Ora la mensola si riempie da sola e cambia una volta a settimana.';
 
   @override
   String get shelfAutoHint =>
-      'La mensola si riempie da sola. Tocca un materiale per sceglierli tu.';
+      'La mensola si riempie da sola e cambia una volta a settimana: resta ciò su cui il bambino lavora, il resto lascia il posto ad altro. Tocca un materiale per sceglierli tu.';
 
   @override
   String shelfFull(int max) {
-    return 'Su questa mensola ci sono già $max materiali: togline uno per metterne un altro.';
+    return 'Sulla mensola ci sono già $max materiali: togline uno per metterne un altro.';
   }
+
+  @override
+  String shelfCapacityFull(int max) {
+    return 'Per questa capacità ci sono già $max materiali: togline uno per metterne un altro.';
+  }
+
+  @override
+  String shelfTotal(int count, int max) {
+    return 'Sulla mensola: $count di $max';
+  }
+
+  @override
+  String get shelfRotateNow => 'Cambia adesso';
+
+  @override
+  String get shelfRotated => 'La mensola è cambiata.';
 
   @override
   String get shelfKindStory => 'Storia';
