@@ -76,6 +76,7 @@ Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del comp
 ## Regole
 
 - `{nome}` compare solo nelle battute del compagno; la narrazione non lo usa.
+- L'audio registrato non contiene il nome: `nameSlots` sono gli istanti (ms) in cui l'app inserisce il nome del bambino, detto dal TTS di sistema e messo in cache una volta per profilo. Se l'app non riesce a generarlo, la schermata si legge tutta col TTS.
 - Le battute del compagno parlano al bambino, mai ai personaggi.
 - Ogni schermata ha `illustration.alt`: è il testo per lo screen reader e il brief per chi disegna.
 

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:just_audio/just_audio.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
+import '../../audio/narration.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
@@ -14,9 +16,9 @@ import 'scene_illustration.dart';
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
 /// la pausa di dialogo a metà, il saluto alla fine. Nessun "prossima storia".
 ///
-/// MVP: la lettura ad alta voce usa il TTS di sistema su tutto il testo.
-/// In fase 1 l'audio registrato sostituisce il TTS per la narrazione e il TTS
-/// resta solo per il nome del bambino (audio.nameSlots).
+/// Se la schermata ha l'audio registrato, si ascolta quello con il nome del
+/// bambino (TTS di sistema in cache, vedi NameVoice) inserito nei punti
+/// audio.nameSlots. Altrimenti, o se manca un pezzo, legge il TTS su tutto il testo.
 class StoryReader extends StatefulWidget {
   const StoryReader({super.key, required this.story});
   final Story story;
@@ -27,6 +29,7 @@ class StoryReader extends StatefulWidget {
 
 class _StoryReaderState extends State<StoryReader> {
   final _tts = FlutterTts();
+  final _player = AudioPlayer();
   int _index = 0;
   String? _dialogueAnswer;
   bool _recorded = false;
@@ -51,6 +54,7 @@ class _StoryReaderState extends State<StoryReader> {
   @override
   void dispose() {
     _tts.stop();
+    _player.dispose();
     if (!_recorded) {
       // Uscita a metà: resta nel diario come non completata.
       _state.recordStory(widget.story, completed: false, dialogueAnswer: _dialogueAnswer);
@@ -63,15 +67,47 @@ class _StoryReaderState extends State<StoryReader> {
 
   String _withName(String s) => s.replaceAll('{nome}', _profile.name);
 
+  /// Solo da soli: la domanda del compagno nella pausa di dialogo.
+  String? get _alonePrompt => _screen.kind == ScreenKind.dialogue && _mode == SessionMode.alone
+      ? _withName(_screen.dialogue!.alonePrompt.forCompanion(_profile.companion))
+      : null;
+
   Future<void> _speakCurrent() async {
     await _tts.stop();
+    await _player.stop();
+    if (await _playRecorded()) return;
     final parts = <String>[];
     if (_screen.text != null) parts.add(_screen.text!);
     if (_screen.companionLines != null) parts.add(_withName(_screen.companionLines!.forCompanion(_profile.companion)));
-    if (_screen.kind == ScreenKind.dialogue && _mode == SessionMode.alone) {
-      parts.add(_withName(_screen.dialogue!.alonePrompt.forCompanion(_profile.companion)));
-    }
+    if (_alonePrompt != null) parts.add(_alonePrompt!);
     if (parts.isNotEmpty) await _tts.speak(parts.join(' '));
+  }
+
+  /// L'audio registrato della schermata, con il nome nei punti nameSlots.
+  /// False se non c'è o se manca il nome (piattaforma senza sintesi su file):
+  /// allora si legge col TTS, mai una registrazione con un buco al posto del nome.
+  Future<bool> _playRecorded() async {
+    final audio = _screen.audio;
+    if (audio == null) return false;
+    final index = _index;
+    try {
+      final bytes = _state.repo.storyFile(widget.story.id, audio.file);
+      if (bytes == null) return false;
+      final narration = await storyAudioFile(widget.story.id, audio.file, bytes);
+      final name = audio.nameSlots.isEmpty ? null : await _state.nameVoice.fileFor(_profile);
+      if (audio.nameSlots.isNotEmpty && name == null) return false;
+      // Il bambino è già andato avanti: questa schermata non si legge più.
+      if (!mounted || index != _index) return true;
+      await _player.setAudioSource(narrationWithName(narration.uri, name?.uri, audio.nameSlots));
+      await _player.play();
+      // La registrazione non conosce la modalità: la domanda "da solo" la dice il TTS.
+      if (mounted && index == _index && _player.processingState == ProcessingState.completed && _alonePrompt != null) {
+        await _tts.speak(_alonePrompt!);
+      }
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> _next() async {
@@ -87,6 +123,7 @@ class _StoryReaderState extends State<StoryReader> {
 
   Future<void> _choose(DialogueOption option) async {
     setState(() => _dialogueAnswer = option.id);
+    await _player.stop();
     await _tts.stop();
     await _tts.speak(_withName(option.reaction.forCompanion(_profile.companion)));
   }
