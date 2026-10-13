@@ -2,4 +2,4 @@
 // Chiave pubblica Ed25519 dello studio editoriale di Mirabò.
 // L'app accetta solo pacchetti la cui firma è valida per questa chiave.
 
-const String trustedPublicKeyHex = 'f5867f7b7e0dc0c6574f5cda92d290f7b3b7b92438b33bd5a257ef3cfc387fa3';
+const String trustedPublicKeyHex = 'b51c6393cec9ca6b1d54caa6a39d9ac061613bf7c7ada64f14500afd9e96c685';
