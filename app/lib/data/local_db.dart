@@ -11,6 +11,7 @@ import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
 import '../models/profile.dart';
+import '../models/story.dart' show AgeBand;
 
 /// Database locale: profili (con la loro mensola), diario, gesti fatti nella
 /// vita vera, storie inventate e calendario della natura. Tutto resta sul dispositivo.
@@ -22,7 +23,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 6;
+  static const _version = 7;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -56,7 +57,10 @@ class LocalDb {
             gestures_done INTEGER NOT NULL DEFAULT 0,
             stage_floor INTEGER NOT NULL DEFAULT 0,
             shelf TEXT,
-            read_along INTEGER NOT NULL DEFAULT 1
+            read_along INTEGER NOT NULL DEFAULT 1,
+            hands INTEGER,
+            reading TEXT,
+            autonomy INTEGER
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -91,6 +95,13 @@ class LocalDb {
         if (from < 6) {
           await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
           await _createMakeTables(db);
+        }
+        // v7: profilo di interazione (mani, lettura, autonomia), dalla fascia d'età.
+        if (from < 7) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN hands INTEGER');
+          await db.execute('ALTER TABLE profiles ADD COLUMN reading TEXT');
+          await db.execute('ALTER TABLE profiles ADD COLUMN autonomy INTEGER');
+          await db.execute(_interactionFromAgeSql);
         }
       },
     );
@@ -222,6 +233,17 @@ class LocalDb {
         PRIMARY KEY (profile_id, day)
       )''');
   }
+
+  /// Riempie il profilo di interazione mancante con i valori della fascia d'età.
+  static final _interactionFromAgeSql = () {
+    String byBand(Object? Function(InteractionProfile p) value) => [
+          'CASE age_band',
+          for (final b in AgeBand.values) "WHEN '${b.key}' THEN '${value(InteractionProfile.forAge(b))}'",
+          'END',
+        ].join(' ');
+    return 'UPDATE profiles SET hands = ${byBand((p) => p.hands)}, reading = ${byBand((p) => p.reading.name)}, '
+        'autonomy = ${byBand((p) => p.autonomy)} WHERE hands IS NULL OR reading IS NULL OR autonomy IS NULL';
+  }();
 
   /// Stadio che il compagno aveva quando cresceva con le storie completate.
   static const _legacyStageSql =
@@ -421,6 +443,8 @@ class LocalDb {
       }
       // Come nella migrazione v4: chi era cresciuto con le storie non torna indietro.
       if (schema < 4) await tx.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
+      // Backup di prima del profilo di interazione: si parte dalla fascia d'età.
+      if (schema < 7) await tx.execute(_interactionFromAgeSql);
     });
   }
 }

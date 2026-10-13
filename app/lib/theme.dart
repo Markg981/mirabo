@@ -1,12 +1,22 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
+import 'models/profile.dart';
 import 'ui/design/palette.dart';
 
 /// Tema: carta crema, inchiostro prugna, Nunito arrotondato, target touch grandi.
 /// Con dyslexiaFont passa a Lexend con spaziatura e interlinea maggiori.
 /// Con lowStimulation i colori si spengono e le transizioni spariscono.
-ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}) {
-  final tokens = MiraboTokens(lowStimulation: lowStimulation);
+/// Il profilo di interazione decide la grandezza minima dei bottoni (asse mani)
+/// e finisce nei MiraboTokens per i widget del bambino.
+ThemeData miraboTheme({
+  required bool dyslexiaFont,
+  required bool lowStimulation,
+  InteractionProfile interaction = const InteractionProfile(),
+}) {
+  final tokens = MiraboTokens.forProfile(lowStimulation: lowStimulation, interaction: interaction);
+  final m = tokens.minTarget;
   final primary = tokens.tint(MiraboColors.sky);
   final secondary = tokens.tint(MiraboColors.teal);
 
@@ -91,7 +101,7 @@ ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}
     dividerTheme: const DividerThemeData(color: MiraboColors.line, thickness: 1, space: 1),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
-        minimumSize: const Size(120, 60),
+        minimumSize: _filledMin(m),
         padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
         shape: RoundedRectangleBorder(borderRadius: radius20),
         textStyle: textTheme.labelLarge?.copyWith(fontSize: 20),
@@ -101,7 +111,7 @@ ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        minimumSize: const Size(120, 56),
+        minimumSize: _outlinedMin(m),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: radius20),
         side: const BorderSide(color: Color(0xFFB9CBDB), width: 1.5),
@@ -111,14 +121,14 @@ ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        minimumSize: const Size(64, 52),
+        minimumSize: _textMin(m),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         shape: RoundedRectangleBorder(borderRadius: radius16),
         textStyle: textTheme.labelLarge,
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(minimumSize: const Size(56, 56), foregroundColor: MiraboColors.ink),
+      style: IconButton.styleFrom(minimumSize: _iconMin(m), foregroundColor: MiraboColors.ink),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -136,7 +146,7 @@ ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}
     ),
     segmentedButtonTheme: SegmentedButtonThemeData(
       style: SegmentedButton.styleFrom(
-        minimumSize: const Size(0, 56),
+        minimumSize: _segmentedMin(m),
         textStyle: textTheme.labelLarge,
         backgroundColor: MiraboColors.paper,
         selectedBackgroundColor: MiraboColors.pale(primary, 0.78),
@@ -207,6 +217,30 @@ ThemeData miraboTheme({required bool dyslexiaFont, required bool lowStimulation}
   );
 }
 
+// Grandezze minime dei bottoni: mai sotto quelle di sempre, più grandi quando
+// l'asse mani chiede target più grandi.
+Size _filledMin(double m) => Size(120, math.max(60, m));
+Size _outlinedMin(double m) => Size(120, math.max(56, m));
+Size _textMin(double m) => Size(math.max(64, m), math.max(52, m));
+Size _iconMin(double m) => Size.square(m);
+Size _segmentedMin(double m) => Size(0, m);
+
+/// Lo stesso tema per le pagine dei grandi (area genitori, profili): niente
+/// adattamenti del bambino, solo le scelte d'aspetto come la bassa stimolazione.
+ThemeData adultTheme(ThemeData theme) {
+  final tokens = (theme.extension<MiraboTokens>() ?? const MiraboTokens(lowStimulation: false)).adult;
+  final m = tokens.minTarget;
+  ButtonStyle? sized(ButtonStyle? s, Size min) => s?.copyWith(minimumSize: WidgetStatePropertyAll(min));
+  return theme.copyWith(
+    extensions: [tokens],
+    filledButtonTheme: FilledButtonThemeData(style: sized(theme.filledButtonTheme.style, _filledMin(m))),
+    outlinedButtonTheme: OutlinedButtonThemeData(style: sized(theme.outlinedButtonTheme.style, _outlinedMin(m))),
+    textButtonTheme: TextButtonThemeData(style: sized(theme.textButtonTheme.style, _textMin(m))),
+    iconButtonTheme: IconButtonThemeData(style: sized(theme.iconButtonTheme.style, _iconMin(m))),
+    segmentedButtonTheme: SegmentedButtonThemeData(style: sized(theme.segmentedButtonTheme.style, _segmentedMin(m))),
+  );
+}
+
 class _NoTransition extends PageTransitionsBuilder {
   const _NoTransition();
   @override
@@ -214,6 +248,3 @@ class _NoTransition extends PageTransitionsBuilder {
           Animation<double> secondaryAnimation, Widget child) =>
       child;
 }
-
-/// Dimensione minima dei target touch per fascia: 64 px per i più piccoli.
-double minTouch(bool youngest) => youngest ? 64 : 48;

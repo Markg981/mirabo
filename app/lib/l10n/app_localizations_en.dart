@@ -1690,4 +1690,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pdfSeen => 'I saw';
+
+  @override
+  String get exitAsk => 'Do you want to leave?';
+
+  @override
+  String get exitStay => 'Stay';
+
+  @override
+  String get exitLeave => 'Leave';
+
+  @override
+  String get profileInteraction => 'How they use the app';
+
+  @override
+  String profileInteractionHint(Object name) {
+    return 'These start from the age band: move them if $name can do more or less. The app never changes them on its own.';
+  }
+
+  @override
+  String get profileHands => 'Hands';
+
+  @override
+  String get profileHandsHint =>
+      'Bigger buttons and wider tracing for beginners.';
+
+  @override
+  String get hands1 => 'Tap only';
+
+  @override
+  String get hands2 => 'Drag';
+
+  @override
+  String get hands3 => 'Precise';
+
+  @override
+  String get profileReading => 'Reading';
+
+  @override
+  String get profileReadingHint =>
+      'No text (voice only), the key phrase only, text with read-along, or full text.';
+
+  @override
+  String get readingNone => 'Doesn\'t read yet';
+
+  @override
+  String get readingLetters => 'Letters';
+
+  @override
+  String get readingWords => 'Words';
+
+  @override
+  String get readingFluent => 'Reads well';
+
+  @override
+  String get profileAutonomy => 'Independence';
+
+  @override
+  String get profileAutonomyHint =>
+      'How many choices at a time, repeated instructions, confirmation before leaving.';
+
+  @override
+  String get autonomy1 => 'With help';
+
+  @override
+  String get autonomy2 => 'Partly alone';
+
+  @override
+  String get autonomy3 => 'Alone';
+
+  @override
+  String adviceHands(Object name) {
+    return 'Lately $name traces letters on the first try: would you like to try finer tracing?';
+  }
+
+  @override
+  String adviceReading(Object name) {
+    return 'Lately $name builds words on the first try: would you like to show more text?';
+  }
+
+  @override
+  String adviceAutonomy(Object name) {
+    return 'Lately $name answers right on the first try: would you like to try more choices at a time?';
+  }
+
+  @override
+  String get adviceYes => 'Yes, let\'s try';
+
+  @override
+  String get adviceNo => 'Not now';
 }

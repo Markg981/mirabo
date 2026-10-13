@@ -90,6 +90,28 @@ Per ogni (profilo, attività) l'app tiene `level` (1..n), `successes`, `attempts
 2 round con 2 o più errori → livello −1. Le statistiche genitore traducono il livello in
 tappe descrittive: "sta iniziando / ci sta lavorando / ce la fa / lo fa da solo".
 
+## Profilo di interazione
+
+Il file descrive il contenuto; come lo si vede dipende dal profilo di interazione del
+bambino (`InteractionProfile`, tre assi separati dalla fascia d'età, che dà solo i valori
+iniziali). L'app li legge da `MiraboTokens`:
+
+| Asse | Livelli | Effetto |
+|---|---|---|
+| Mani | 1 · 2 · 3 | target minimi 88 / 72 / 56 dp; tolleranza di `trace` 0,16 / 0,12 / 0,08 |
+| Lettura | nessuna · lettere · parole · fluente | testo nascosto (solo voce) · solo la frase-chiave · karaoke · testo pieno; chi non legge vede i bottoni senza scritta |
+| Autonomia | 1 · 2 · 3 | opzioni per round 2 / 3 / 4; consegna ripetuta da sola solo con 1; conferma per uscire con 1 e 2 |
+
+Quindi un round può mostrare **meno opzioni di quelle scritte nel file**: `tapMatch`,
+`count`, `pattern` e `sceneChoice` tengono sempre la risposta giusta e scelgono le altre a
+caso; `spell` tiene al massimo 1 / 2 / 3 lettere in più. Il numero di opzioni scritto nel
+file resta il massimo. Il limite delle opzioni della pausa di dialogo nelle storie resta
+nel contenuto (`validate.py`).
+
+Il genitore sposta gli assi nel profilo del bambino. L'app non li cambia da sola: quando i
+round dell'ultima settimana lo suggeriscono (almeno 6 round in 2 giorni, l'80% al primo
+tentativo senza aiuti) lo propone nell'area genitori.
+
 ## Modulo Montessori (`"module": "montessori"`)
 
 Aree: `vita-pratica`, `sensoriale`, `linguaggio` (include la scrittura), `matematica`, `cultura`.

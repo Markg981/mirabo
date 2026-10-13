@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -31,6 +34,19 @@ class ActivityContext {
   final Future<void> Function(String text) say;
 
   String withName(String s) => s.replaceAll('{nome}', profile.name);
+}
+
+/// Al massimo [max] opzioni per round (asse autonomia): le giuste restano
+/// (almeno una, anche quando sono più di quante ne stanno), le altre si
+/// scelgono a caso. L'ordine resta quello del file. Per i tipi senza risposta
+/// giusta si tengono [max] opzioni a caso.
+List<T> pickOptions<T>(List<T> options, bool Function(T option) isCorrect, int max, {math.Random? random}) {
+  if (options.length <= max) return options;
+  final correct = [for (var i = 0; i < options.length; i++) if (isCorrect(options[i])) i]..shuffle(random);
+  final wrong = [for (var i = 0; i < options.length; i++) if (!isCorrect(options[i])) i]..shuffle(random);
+  final keepWrong = correct.isEmpty ? max : math.min(wrong.length, math.max(1, max - correct.length));
+  final keep = {...correct.take(max - keepWrong), ...wrong.take(keepWrong)};
+  return [for (var i = 0; i < options.length; i++) if (keep.contains(i)) options[i]];
 }
 
 /// Chi esegue un round chiama [onDone] una volta sola con il risultato.
@@ -123,7 +139,8 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       _Phase.rounds => _buildRounds(level),
     };
 
-    return Scaffold(
+    return ExitGuard(
+      child: Scaffold(
       body: SceneBackdrop(
         child: SafeArea(
           child: Column(
@@ -135,7 +152,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
                     RoundIconButton(
                       icon: Icons.close_rounded,
                       tooltip: context.l10n.close,
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => leaveChildPage(context),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -161,6 +178,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
             ],
           ),
         ),
+      ),
       ),
     );
   }
@@ -270,9 +288,50 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   int get roundCount;
   Widget buildRound(BuildContext context, int index);
 
-  /// Chiamata dal round quando il bambino risponde.
+  /// Ogni quanto si ripete la consegna se il bambino non tocca niente
+  /// (autonomia 1), e quante volte al massimo.
+  static const repeatEvery = Duration(seconds: 15);
+  static const maxRepeats = 2;
+
+  int _announcedFor = -1;
+  Timer? _repeat;
+  final Map<int, List<Object?>> _picked = {};
+
+  /// La consegna del round: detta all'inizio e, con autonomia 1, ripetuta se il
+  /// bambino non tocca niente. Si chiama da buildRound: parla una volta per round.
+  void announce(String text) {
+    if (_announcedFor == index) return;
+    _announcedFor = index;
+    _repeat?.cancel();
+    _repeat = null;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.ctx.say(text);
+    });
+    if (MiraboTokens.of(context).repeatPrompt) {
+      var left = maxRepeats;
+      _repeat = Timer.periodic(repeatEvery, (t) {
+        if (!mounted || lastCorrect == true || left-- <= 0) return t.cancel();
+        widget.ctx.say(text);
+      });
+    }
+  }
+
+  /// Le opzioni di questo round, tagliate a MiraboTokens.maxOptions. La scelta
+  /// resta la stessa per tutto il round.
+  List<E> options<E>(List<E> all, bool Function(E option) isCorrect) =>
+      (_picked[index] ??= pickOptions<E>(all, isCorrect, MiraboTokens.of(context).maxOptions)) as List<E>;
+
+  @override
+  void dispose() {
+    _repeat?.cancel();
+    super.dispose();
+  }
+
+  /// Chiamata dal round quando il bambino risponde: da qui la consegna si
+  /// ripete solo se la chiede lui.
   void answer(bool correct, {String? choice}) {
     attempts++;
+    _repeat?.cancel();
     if (correct) {
       setState(() => lastCorrect = true);
       widget.onRound(RoundResult(attempts: attempts, hints: hints, choice: choice));
@@ -294,6 +353,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
 
   void next() {
     if (!mounted) return;
+    _repeat?.cancel();
     if (index + 1 >= roundCount) {
       widget.onFinished();
       return;
@@ -348,6 +408,9 @@ class PicTile extends StatelessWidget {
     final green = tokens.tint(MiraboColors.leaf);
     final gold = tokens.tint(MiraboColors.sun);
     final fg = selected ? Colors.white : MiraboColors.ink;
+    // Per chi non legge solo la figura; la scritta resta per lo screen reader.
+    final label = tokens.textMode.showsLabels ? this.label : null;
+    final size = onTap == null ? this.size : math.max(this.size, tokens.minTarget);
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 250),
       opacity: dimmed ? 0.3 : 1,
@@ -360,7 +423,7 @@ class PicTile extends StatelessWidget {
             height: size,
             color: selected ? green : MiraboColors.paper,
             border: highlight ? Border.all(color: gold, width: 5) : null,
-            semanticLabel: label ?? emoji,
+            semanticLabel: this.label ?? emoji,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -370,7 +433,7 @@ class PicTile extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
-                      label!,
+                      label,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(color: fg),
                       textAlign: TextAlign.center,
                       maxLines: 2,
@@ -410,6 +473,7 @@ class PromptBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tokens = MiraboTokens.of(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
       child: Container(
@@ -424,21 +488,25 @@ class PromptBar extends StatelessWidget {
             Tooltip(
               message: context.l10n.listenAgain,
               child: Material(
-                color: MiraboTokens.of(context).tint(MiraboColors.sky),
+                color: tokens.tint(MiraboColors.sky),
                 shape: const CircleBorder(),
                 child: InkWell(
                   customBorder: const CircleBorder(),
                   onTap: onSay,
-                  child: const SizedBox(
-                    width: 56,
-                    height: 56,
-                    child: Icon(Icons.volume_up_rounded, size: 30, color: Colors.white),
+                  child: SizedBox.square(
+                    dimension: tokens.minTarget,
+                    child: Icon(Icons.volume_up_rounded, size: tokens.minTarget * 0.54, color: Colors.white),
                   ),
                 ),
               ),
             ),
             const SizedBox(width: 16),
-            Expanded(child: Text(text, style: Theme.of(context).textTheme.titleLarge)),
+            // Per chi non legge ancora le frasi la consegna arriva solo a voce.
+            Expanded(
+              child: tokens.textMode.showsText
+                  ? Text(text, style: Theme.of(context).textTheme.titleLarge)
+                  : Semantics(label: text, child: const SizedBox(height: 1)),
+            ),
           ],
         ),
       ),

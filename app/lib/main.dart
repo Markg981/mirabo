@@ -7,6 +7,7 @@ import 'app_state.dart';
 import 'content/story_repository.dart';
 import 'data/local_db.dart';
 import 'l10n/l10n.dart';
+import 'models/profile.dart';
 import 'theme.dart';
 import 'ui/child/choose_child_screen.dart';
 import 'ui/child/home_screen.dart';
@@ -45,6 +46,7 @@ class MiraboApp extends StatelessWidget {
             theme: miraboTheme(
               dyslexiaFont: profile?.dyslexiaFont ?? false,
               lowStimulation: profile?.lowStimulation ?? false,
+              interaction: profile?.interaction ?? const InteractionProfile(),
             ),
             // Lato bambino: la lingua del bambino che gioca. Prima di sceglierlo
             // (primo avvio, "Chi gioca oggi?") quella del tablet.

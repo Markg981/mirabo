@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../l10n/l10n.dart';
+import '../../design/palette.dart';
 import '../activity_player.dart';
 
 /// Alfabeto mobile: la figura, la parola da comporre (o la frase per i grandi) e
@@ -28,9 +29,12 @@ class _SpellRoundState extends RoundState<SpellRound> {
 
   String _targetOf(int i) => (_rounds[i]['word'] ?? _rounds[i]['sentence']) as String;
 
+  /// Le lettere in più (quelle che non servono) seguono l'autonomia: al
+  /// massimo una, due o tre (MiraboTokens.maxOptions − 1), scelte a caso.
   void _prepare(int i) {
     _target = _targetOf(i);
-    final letters = _target.replaceAll(' ', '').split('') + ((_rounds[i]['extra'] as String?) ?? '').split('');
+    final extra = ((_rounds[i]['extra'] as String?) ?? '').split('').where((l) => l.isNotEmpty).toList()..shuffle();
+    final letters = _target.replaceAll(' ', '').split('') + extra.take(MiraboTokens.of(context).maxOptions - 1).toList();
     _pool = letters.where((l) => l.isNotEmpty).toList()..shuffle();
     _used.clear();
     _pos = 0;
@@ -73,10 +77,8 @@ class _SpellRoundState extends RoundState<SpellRound> {
 
   @override
   Widget buildRound(BuildContext context, int index) {
-    if (_preparedFor != index) {
-      _prepare(index);
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(context.l10n.spellSay(_target.toLowerCase())));
-    }
+    if (_preparedFor != index) _prepare(index);
+    announce(context.l10n.spellSay(_target.toLowerCase()));
     final emoji = _rounds[index]['emoji'] as String? ?? '';
     final expected = _expected;
     final isSentence = _rounds[index].containsKey('sentence');

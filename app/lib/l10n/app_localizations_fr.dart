@@ -1703,4 +1703,93 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pdfSeen => 'J\'ai vu';
+
+  @override
+  String get exitAsk => 'Tu veux sortir ?';
+
+  @override
+  String get exitStay => 'Je reste';
+
+  @override
+  String get exitLeave => 'Je sors';
+
+  @override
+  String get profileInteraction => 'Comment il utilise l\'app';
+
+  @override
+  String profileInteractionHint(Object name) {
+    return 'Ils partent de l\'âge : déplacez-les si $name fait plus ou moins. L\'app ne les change jamais seule.';
+  }
+
+  @override
+  String get profileHands => 'Mains';
+
+  @override
+  String get profileHandsHint =>
+      'Boutons plus grands et tracés plus larges pour les débutants.';
+
+  @override
+  String get hands1 => 'Toucher';
+
+  @override
+  String get hands2 => 'Glisser';
+
+  @override
+  String get hands3 => 'Précis';
+
+  @override
+  String get profileReading => 'Lecture';
+
+  @override
+  String get profileReadingHint =>
+      'Pas de texte (voix seule), la phrase-clé seule, texte en karaoké ou texte complet.';
+
+  @override
+  String get readingNone => 'Ne lit pas';
+
+  @override
+  String get readingLetters => 'Lettres';
+
+  @override
+  String get readingWords => 'Mots';
+
+  @override
+  String get readingFluent => 'Lit bien';
+
+  @override
+  String get profileAutonomy => 'Autonomie';
+
+  @override
+  String get profileAutonomyHint =>
+      'Combien de choix à la fois, consigne répétée, confirmation avant de sortir.';
+
+  @override
+  String get autonomy1 => 'Avec aide';
+
+  @override
+  String get autonomy2 => 'Un peu seul';
+
+  @override
+  String get autonomy3 => 'Seul';
+
+  @override
+  String adviceHands(Object name) {
+    return 'Ces derniers jours, $name trace les lettres du premier coup : voulez-vous essayer des tracés plus fins ?';
+  }
+
+  @override
+  String adviceReading(Object name) {
+    return 'Ces derniers jours, $name compose les mots du premier coup : voulez-vous afficher plus de texte ?';
+  }
+
+  @override
+  String adviceAutonomy(Object name) {
+    return 'Ces derniers jours, $name répond juste du premier coup : voulez-vous essayer avec plus de choix à la fois ?';
+  }
+
+  @override
+  String get adviceYes => 'Oui, essayons';
+
+  @override
+  String get adviceNo => 'Pas maintenant';
 }

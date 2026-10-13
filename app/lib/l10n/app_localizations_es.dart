@@ -1691,4 +1691,93 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pdfSeen => 'He visto';
+
+  @override
+  String get exitAsk => '¿Quieres salir?';
+
+  @override
+  String get exitStay => 'Me quedo';
+
+  @override
+  String get exitLeave => 'Salgo';
+
+  @override
+  String get profileInteraction => 'Cómo usa la app';
+
+  @override
+  String profileInteractionHint(Object name) {
+    return 'Parten de la edad: muévelos si $name hace más o menos. La app no los cambia sola.';
+  }
+
+  @override
+  String get profileHands => 'Manos';
+
+  @override
+  String get profileHandsHint =>
+      'Botones más grandes y trazos más anchos para quien empieza.';
+
+  @override
+  String get hands1 => 'Solo tocar';
+
+  @override
+  String get hands2 => 'Arrastrar';
+
+  @override
+  String get hands3 => 'Preciso';
+
+  @override
+  String get profileReading => 'Lectura';
+
+  @override
+  String get profileReadingHint =>
+      'Sin texto (solo voz), solo la frase clave, texto con karaoke o texto completo.';
+
+  @override
+  String get readingNone => 'No lee';
+
+  @override
+  String get readingLetters => 'Letras';
+
+  @override
+  String get readingWords => 'Palabras';
+
+  @override
+  String get readingFluent => 'Lee bien';
+
+  @override
+  String get profileAutonomy => 'Autonomía';
+
+  @override
+  String get profileAutonomyHint =>
+      'Cuántas opciones a la vez, consigna repetida, confirmación antes de salir.';
+
+  @override
+  String get autonomy1 => 'Con ayuda';
+
+  @override
+  String get autonomy2 => 'Un poco solo';
+
+  @override
+  String get autonomy3 => 'Solo';
+
+  @override
+  String adviceHands(Object name) {
+    return 'Estos días $name traza las letras al primer intento: ¿quieres probar trazos más finos?';
+  }
+
+  @override
+  String adviceReading(Object name) {
+    return 'Estos días $name forma las palabras al primer intento: ¿quieres probar a mostrar más texto?';
+  }
+
+  @override
+  String adviceAutonomy(Object name) {
+    return 'Estos días $name acierta al primer intento: ¿quieres probar con más opciones a la vez?';
+  }
+
+  @override
+  String get adviceYes => 'Sí, probemos';
+
+  @override
+  String get adviceNo => 'Ahora no';
 }

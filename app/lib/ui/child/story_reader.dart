@@ -67,6 +67,11 @@ class _StoryReaderState extends State<StoryReader> {
   late final ChildProfile _profile;
   late final SessionMode _mode;
   late final StoryVariant _variant;
+  late final TextMode _textMode;
+
+  /// Karaoke: sempre per chi legge parole, a scelta del genitore per chi legge
+  /// bene, mai quando il testo non si vede.
+  bool get _readAlong => _textMode == TextMode.karaoke || (_textMode == TextMode.full && _profile.readAlong);
 
   @override
   void initState() {
@@ -77,7 +82,9 @@ class _StoryReaderState extends State<StoryReader> {
     _variant = widget.story.variants[_profile.ageBand]!;
     _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
     _tts.setSpeechRate(0.45);
-    if (_profile.readAlong) {
+    // initState non può leggere il tema: i token si ricavano dal profilo, come fa il tema.
+    _textMode = MiraboTokens.forProfile(lowStimulation: _profile.lowStimulation, interaction: _profile.interaction).textMode;
+    if (_readAlong) {
       // Il testo della schermata è il primo pezzo detto: gli indici coincidono.
       _tts.setProgressHandler((_, start, __, ___) {
         if (_ttsReadsText) _highlight(wordAtChar(readAlongWords(_screen.text ?? ''), start));
@@ -265,7 +272,8 @@ class _StoryReaderState extends State<StoryReader> {
     final accent = tokens.tint(world.color);
     final text = Theme.of(context).textTheme;
 
-    return Scaffold(
+    return ExitGuard(
+      child: Scaffold(
       body: SceneBackdrop(
         child: SafeArea(
           child: Padding(
@@ -278,7 +286,7 @@ class _StoryReaderState extends State<StoryReader> {
                     RoundIconButton(
                       icon: Icons.close_rounded,
                       tooltip: context.l10n.close,
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => leaveChildPage(context),
                     ),
                     Expanded(
                       child: Column(
@@ -331,24 +339,9 @@ class _StoryReaderState extends State<StoryReader> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            if (screen.text != null)
-                              Flexible(
-                                child: SoftPanel(
-                                  padding: const EdgeInsets.fromLTRB(26, 22, 26, 22),
-                                  child: SingleChildScrollView(
-                                    child: ReadAlongText(
-                                      text: screen.text!,
-                                      current: _word,
-                                      enabled: _profile.readAlong,
-                                      onWord: _say,
-                                      style: text.bodyLarge?.copyWith(fontSize: 24),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            else
-                              const Spacer(),
-                            if (screen.isKeyPhrase)
+                            ScreenText(text: screen.text, current: _word, readAlong: _readAlong, onWord: _say),
+                            // La frase-chiave resta anche per chi legge solo le lettere.
+                            if (screen.isKeyPhrase && tokens.textMode != TextMode.hidden)
                               Padding(
                                 padding: const EdgeInsets.only(top: 14),
                                 child: Container(
@@ -424,6 +417,7 @@ class _StoryReaderState extends State<StoryReader> {
             ),
           ),
         ),
+      ),
       ),
     );
   }
@@ -652,6 +646,37 @@ class _IllustrationPlaceholder extends StatelessWidget {
         height: size,
         decoration: BoxDecoration(color: Colors.white.withValues(alpha: alpha), shape: BoxShape.circle),
       );
+}
+
+/// Il testo di una schermata secondo l'asse lettura (MiraboTokens.textMode):
+/// per chi non legge ancora frasi la storia è solo voce e il posto resta vuoto.
+/// Va messo direttamente in una Column: occupa lo spazio che resta.
+class ScreenText extends StatelessWidget {
+  const ScreenText({super.key, required this.text, required this.current, required this.readAlong, required this.onWord});
+  final String? text;
+  final int current;
+  final bool readAlong;
+  final ValueChanged<String> onWord;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = this.text;
+    if (text == null || !MiraboTokens.of(context).textMode.showsText) return const Spacer();
+    return Flexible(
+      child: SoftPanel(
+        padding: const EdgeInsets.fromLTRB(26, 22, 26, 22),
+        child: SingleChildScrollView(
+          child: ReadAlongText(
+            text: text,
+            current: current,
+            enabled: readAlong,
+            onWord: onWord,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 24),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _CompanionBubble extends StatelessWidget {

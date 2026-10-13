@@ -15,7 +15,6 @@ class CountRound extends RoundWidget {
 class _CountRoundState extends RoundState<CountRound> {
   List<Map<String, dynamic>> get _rounds => (widget.level['rounds'] as List).cast<Map<String, dynamic>>();
   final Set<int> _counted = {};
-  int _spokenFor = -1;
 
   @override
   int get roundCount => _rounds.length;
@@ -30,12 +29,9 @@ class _CountRoundState extends RoundState<CountRound> {
   Widget buildRound(BuildContext context, int index) {
     final r = _rounds[index];
     final count = r['count'] as int;
-    final choices = (r['choices'] as List).cast<int>();
+    final choices = options((r['choices'] as List).cast<int>(), (c) => c == count);
     final prompt = r['prompt'] as String;
-    if (_spokenFor != index) {
-      _spokenFor = index;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(prompt));
-    }
+    announce(prompt);
     return Column(
       children: [
         PromptBar(text: prompt, onSay: () => widget.ctx.say(prompt)),

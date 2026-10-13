@@ -12,6 +12,8 @@ List<BoxShadow> softShadow([double strength = 1]) => [
     ];
 
 /// Bottone grande "a rilievo" per il bambino: si abbassa quando lo tocchi.
+/// Mai più basso del target minimo del profilo; per chi non legge, se ha
+/// un'icona, mostra solo quella (la scritta resta per lo screen reader).
 class ChunkyButton extends StatefulWidget {
   const ChunkyButton({
     super.key,
@@ -54,10 +56,12 @@ class _ChunkyButtonState extends State<ChunkyButton> {
     final edge = MiraboColors.deep(base, enabled ? 0.16 : 0.08);
     final fg = enabled ? widget.foreground : MiraboColors.inkSoft;
     final down = _down && enabled;
-    final icon = widget.icon == null ? null : Icon(widget.icon, color: fg, size: widget.height * 0.44);
+    final height = math.max(widget.height, tokens.minTarget);
+    final iconOnly = widget.icon != null && !tokens.textMode.showsLabels;
+    final icon = widget.icon == null ? null : Icon(widget.icon, color: fg, size: height * (iconOnly ? 0.56 : 0.44));
     final text = Text(
       widget.label,
-      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: fg, fontSize: widget.height * 0.32),
+      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: fg, fontSize: height * 0.32),
     );
 
     return Semantics(
@@ -75,26 +79,86 @@ class _ChunkyButtonState extends State<ChunkyButton> {
           padding: const EdgeInsets.only(bottom: _depth),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 70),
-            height: widget.height,
+            height: height,
+            constraints: BoxConstraints(minWidth: height),
             transform: Matrix4.translationValues(0, down ? _depth : 0, 0),
-            padding: EdgeInsets.symmetric(horizontal: widget.height * 0.42),
+            padding: EdgeInsets.symmetric(horizontal: height * 0.42),
             decoration: BoxDecoration(
               color: base,
-              borderRadius: BorderRadius.circular(widget.height * 0.36),
+              borderRadius: BorderRadius.circular(height * 0.36),
               boxShadow: [BoxShadow(color: edge, offset: Offset(0, down ? 0 : _depth))],
             ),
             child: Row(
               mainAxisSize: widget.expand ? MainAxisSize.max : MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (icon != null && !widget.iconAfter) ...[icon, const SizedBox(width: 10)],
-                Flexible(child: text),
-                if (icon != null && widget.iconAfter) ...[const SizedBox(width: 10), icon],
-              ],
+              children: iconOnly
+                  ? [icon!]
+                  : [
+                      if (icon != null && !widget.iconAfter) ...[icon, const SizedBox(width: 10)],
+                      Flexible(child: text),
+                      if (icon != null && widget.iconAfter) ...[const SizedBox(width: 10), icon],
+                    ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Esce da una storia o da un'attività. Con poca autonomia (MiraboTokens.confirmExit)
+/// prima chiede conferma con due bottoni grandi a icona, così un tocco per
+/// sbaglio non chiude tutto.
+Future<void> leaveChildPage(BuildContext context) async {
+  final nav = Navigator.of(context);
+  if (MiraboTokens.of(context).confirmExit && await _confirmExit(context) != true) return;
+  nav.pop();
+}
+
+Future<bool?> _confirmExit(BuildContext context) {
+  final l = context.l10n;
+  final tokens = MiraboTokens.of(context);
+  return showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: tokens.textMode.showsLabels ? Text(l.exitAsk) : null,
+      content: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ChunkyButton(
+            label: l.exitStay,
+            icon: Icons.play_arrow_rounded,
+            color: MiraboColors.leaf,
+            onPressed: () => Navigator.of(context).pop(false),
+          ),
+          const SizedBox(width: 20),
+          ChunkyButton(
+            label: l.exitLeave,
+            icon: Icons.home_rounded,
+            color: MiraboColors.apricot,
+            onPressed: () => Navigator.of(context).pop(true),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+/// Il tasto indietro del sistema passa da [leaveChildPage]: con la conferma
+/// attiva non chiude la pagina da solo.
+class ExitGuard extends StatelessWidget {
+  const ExitGuard({super.key, required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final confirm = MiraboTokens.of(context).confirmExit;
+    return PopScope(
+      canPop: !confirm,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) leaveChildPage(context);
+      },
+      child: child,
     );
   }
 }
@@ -118,6 +182,7 @@ class RoundIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = math.max(this.size, MiraboTokens.of(context).minTarget);
     return Tooltip(
       message: tooltip,
       child: Container(
@@ -429,7 +494,8 @@ class _BackdropPainter extends CustomPainter {
 }
 
 /// Tessera "solida": faccia colorata con il bordo inferiore più scuro, come i
-/// blocchi dei materiali Montessori. Si abbassa quando la tocchi.
+/// blocchi dei materiali Montessori. Si abbassa quando la tocchi. Se si può
+/// toccare non è mai più piccola del target minimo del profilo.
 class BlockTile extends StatefulWidget {
   const BlockTile({
     super.key,
@@ -476,6 +542,7 @@ class _BlockTileState extends State<BlockTile> {
     final edge = widget.edgeColor ??
         (widget.color == MiraboColors.paper ? const Color(0xFFC9DAE7) : MiraboColors.deep(widget.color, 0.14));
     final d = widget.depth;
+    final min = enabled ? MiraboTokens.of(context).minTarget : 0.0;
     return Semantics(
       button: enabled,
       label: widget.semanticLabel,
@@ -491,6 +558,7 @@ class _BlockTileState extends State<BlockTile> {
             duration: const Duration(milliseconds: 80),
             width: widget.width,
             height: widget.height,
+            constraints: BoxConstraints(minWidth: min, minHeight: min),
             transform: Matrix4.translationValues(0, down ? d * 0.7 : 0, 0),
             decoration: BoxDecoration(
               color: widget.color,

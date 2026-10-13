@@ -47,10 +47,8 @@ class _PairsRoundState extends RoundState<PairsRound> {
 
   @override
   Widget buildRound(BuildContext context, int index) {
-    if (_preparedFor != index) {
-      _prepare(index);
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(_rounds[index]['prompt'] as String));
-    }
+    if (_preparedFor != index) _prepare(index);
+    announce(_rounds[index]['prompt'] as String);
     final pairs = _pairs(index);
     final wordPairs = _rounds[index]['wordPairs'] == true;
     final tileSize = pairs.length > 4 ? 96.0 : 120.0;

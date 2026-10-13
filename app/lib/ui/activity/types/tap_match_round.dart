@@ -14,7 +14,6 @@ class _TapMatchRoundState extends RoundState<TapMatchRound> {
   List<Map<String, dynamic>> get _rounds => (widget.level['rounds'] as List).cast<Map<String, dynamic>>();
   final Set<int> _found = {};
   final Set<int> _wrong = {};
-  int _spokenFor = -1;
 
   @override
   int get roundCount => _rounds.length;
@@ -26,8 +25,14 @@ class _TapMatchRoundState extends RoundState<TapMatchRound> {
     super.next();
   }
 
+  static bool _correct(Map<String, dynamic> o) => o['correct'] == true;
+
+  /// Le opzioni del round tagliate per l'autonomia: la giusta c'è sempre.
+  List<Map<String, dynamic>> _options(Map<String, dynamic> r) =>
+      options((r['options'] as List).cast<Map<String, dynamic>>(), _correct);
+
   void _tap(int i, Map<String, dynamic> r) {
-    final options = (r['options'] as List).cast<Map<String, dynamic>>();
+    final options = _options(r);
     final correctCount = options.where((o) => o['correct'] == true).length;
     if (options[i]['correct'] == true) {
       setState(() => _found.add(i));
@@ -42,12 +47,9 @@ class _TapMatchRoundState extends RoundState<TapMatchRound> {
   @override
   Widget buildRound(BuildContext context, int index) {
     final r = _rounds[index];
-    final options = (r['options'] as List).cast<Map<String, dynamic>>();
+    final options = _options(r);
     final prompt = r['prompt'] as String;
-    if (_spokenFor != index) {
-      _spokenFor = index;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say('$prompt. ${r['say'] ?? ''}'));
-    }
+    announce('$prompt. ${r['say'] ?? ''}');
     return Column(
       children: [
         PromptBar(text: prompt, onSay: () => widget.ctx.say('$prompt. ${r['say'] ?? ''}')),
