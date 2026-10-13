@@ -971,7 +971,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentDataHint.
   ///
   /// In it, this message translates to:
-  /// **'Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.'**
+  /// **'Profili, diario e progressi restano su questo dispositivo, cifrati. Il backup su Google Drive qui sotto è facoltativo.'**
   String get parentDataHint;
 
   /// No description provided for @parentWipe.
@@ -989,7 +989,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentWipeConfirm.
   ///
   /// In it, this message translates to:
-  /// **'Profili e diario verranno cancellati da questo dispositivo. Non si può annullare.'**
+  /// **'Profili e diario verranno cancellati da questo dispositivo. Non si può annullare. Un eventuale backup su Google Drive resta dov\'è.'**
   String get parentWipeConfirm;
 
   /// No description provided for @parentWipeYes.
@@ -997,6 +997,222 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Elimina'**
   String get parentWipeYes;
+
+  /// No description provided for @backupTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Backup su Google Drive'**
+  String get backupTitle;
+
+  /// No description provided for @backupHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Facoltativo. Il backup finisce in una cartella nascosta del tuo Drive, che l\'app non può usare per altro, ed è cifrato con una password che conosci solo tu. Serve per passare a un nuovo tablet o reinstallare l\'app senza perdere niente.'**
+  String get backupHint;
+
+  /// No description provided for @backupOff.
+  ///
+  /// In it, this message translates to:
+  /// **'Non attivo: i dati sono solo su questo tablet.'**
+  String get backupOff;
+
+  /// No description provided for @backupOnAccount.
+  ///
+  /// In it, this message translates to:
+  /// **'Attivo su {account}'**
+  String backupOnAccount(String account);
+
+  /// No description provided for @backupLast.
+  ///
+  /// In it, this message translates to:
+  /// **'Ultimo backup: {date}'**
+  String backupLast(String date);
+
+  /// No description provided for @backupNever.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun backup ancora.'**
+  String get backupNever;
+
+  /// No description provided for @backupAutoFailed.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ultimo backup automatico non è riuscito. Prova con \"Fai il backup adesso\".'**
+  String get backupAutoFailed;
+
+  /// No description provided for @backupEnable.
+  ///
+  /// In it, this message translates to:
+  /// **'Attiva il backup'**
+  String get backupEnable;
+
+  /// No description provided for @backupNow.
+  ///
+  /// In it, this message translates to:
+  /// **'Fai il backup adesso'**
+  String get backupNow;
+
+  /// No description provided for @backupRestore.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripristina da Drive'**
+  String get backupRestore;
+
+  /// No description provided for @backupDisable.
+  ///
+  /// In it, this message translates to:
+  /// **'Disattiva'**
+  String get backupDisable;
+
+  /// No description provided for @backupPasswordTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Scegli la password del backup'**
+  String get backupPasswordTitle;
+
+  /// No description provided for @backupPasswordHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il backup viene cifrato con questa password prima di lasciare il tablet. Ti servirà per ripristinarlo su un altro dispositivo: se la dimentichi il backup non si può recuperare, nemmeno da noi.'**
+  String get backupPasswordHint;
+
+  /// No description provided for @backupPassword.
+  ///
+  /// In it, this message translates to:
+  /// **'Password'**
+  String get backupPassword;
+
+  /// No description provided for @backupPasswordRepeat.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripeti la password'**
+  String get backupPasswordRepeat;
+
+  /// No description provided for @backupPasswordShort.
+  ///
+  /// In it, this message translates to:
+  /// **'Almeno {n} caratteri.'**
+  String backupPasswordShort(int n);
+
+  /// No description provided for @backupPasswordMismatch.
+  ///
+  /// In it, this message translates to:
+  /// **'Le due password non coincidono.'**
+  String get backupPasswordMismatch;
+
+  /// No description provided for @backupRestorePasswordTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Password del backup'**
+  String get backupRestorePasswordTitle;
+
+  /// No description provided for @backupRestorePasswordHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La password scelta quando hai attivato il backup.'**
+  String get backupRestorePasswordHint;
+
+  /// No description provided for @backupWrongPassword.
+  ///
+  /// In it, this message translates to:
+  /// **'Password errata.'**
+  String get backupWrongPassword;
+
+  /// No description provided for @backupNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Su questo account Google non c\'è ancora un backup di Mirabò.'**
+  String get backupNone;
+
+  /// No description provided for @backupExistsTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'C\'è già un backup'**
+  String get backupExistsTitle;
+
+  /// No description provided for @backupExists.
+  ///
+  /// In it, this message translates to:
+  /// **'Su questo account Google c\'è già un backup di Mirabò. Vuoi ripristinarlo su questo tablet, oppure sostituirlo con i dati di questo tablet?'**
+  String get backupExists;
+
+  /// No description provided for @backupExistsRestore.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripristina'**
+  String get backupExistsRestore;
+
+  /// No description provided for @backupExistsReplace.
+  ///
+  /// In it, this message translates to:
+  /// **'Sostituisci'**
+  String get backupExistsReplace;
+
+  /// No description provided for @backupRestoreConfirmTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripristinare il backup?'**
+  String get backupRestoreConfirmTitle;
+
+  /// No description provided for @backupRestoreConfirm.
+  ///
+  /// In it, this message translates to:
+  /// **'Profili, diario e progressi di questo tablet saranno sostituiti da quelli del backup.'**
+  String get backupRestoreConfirm;
+
+  /// No description provided for @backupDisableTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Disattivare il backup?'**
+  String get backupDisableTitle;
+
+  /// No description provided for @backupDisableConfirm.
+  ///
+  /// In it, this message translates to:
+  /// **'Il tablet smette di fare backup e dimentica l\'account. La copia su Drive puoi tenerla, per ripristinarla in futuro, o eliminarla.'**
+  String get backupDisableConfirm;
+
+  /// No description provided for @backupDisableKeep.
+  ///
+  /// In it, this message translates to:
+  /// **'Disattiva e tieni la copia'**
+  String get backupDisableKeep;
+
+  /// No description provided for @backupDisableDelete.
+  ///
+  /// In it, this message translates to:
+  /// **'Disattiva ed elimina la copia'**
+  String get backupDisableDelete;
+
+  /// No description provided for @backupDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Backup completato.'**
+  String get backupDone;
+
+  /// No description provided for @backupRestored.
+  ///
+  /// In it, this message translates to:
+  /// **'Backup ripristinato.'**
+  String get backupRestored;
+
+  /// No description provided for @backupError.
+  ///
+  /// In it, this message translates to:
+  /// **'Non è riuscito. Controlla la connessione e riprova.'**
+  String get backupError;
+
+  /// No description provided for @backupContinue.
+  ///
+  /// In it, this message translates to:
+  /// **'Continua'**
+  String get backupContinue;
+
+  /// No description provided for @profileRestoreLink.
+  ///
+  /// In it, this message translates to:
+  /// **'Hai già usato Mirabò? Ripristina da Google Drive'**
+  String get profileRestoreLink;
 
   /// No description provided for @parentNewProfile.
   ///

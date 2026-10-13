@@ -3,6 +3,7 @@
 - **Specifica del prodotto**: la spec completa vive nel Project claude.ai "App per Bambini" (documento *Spec — App per bambini: crescita, scuola e storie*). Le decisioni prese sono riassunte qui sotto.
 - `story-format.md`: formato dei pacchetti storia (contratto studio ↔ app).
 - `style-guide.md`: personaggi ricorrenti e regole editoriali (da completare).
+- `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 
 ## Decisioni chiave
 

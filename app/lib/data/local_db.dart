@@ -278,4 +278,32 @@ class LocalDb {
     await _db.delete('diary');
     await _db.delete('profiles');
   }
+
+  /// Tabelle nell'ordine di inserimento (prima i profili, poi chi li riferisce).
+  static const _tables = ['profiles', 'diary', 'activity_progress', 'activity_rounds'];
+
+  /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
+  /// del backup su Drive, che viene cifrato prima di uscire dal dispositivo.
+  Future<Map<String, Object?>> exportAll() async => {
+        'schema': _version,
+        for (final t in _tables) t: await _db.query(t),
+      };
+
+  /// Sostituisce tutti i dati con quelli di un backup. Un backup di una versione
+  /// precedente va bene (le colonne aggiunte dopo prendono il default); uno di
+  /// una versione più recente no, perché avrebbe colonne che qui non esistono.
+  Future<void> importAll(Map<String, Object?> data) async {
+    final schema = data['schema'];
+    if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
+    await _db.transaction((tx) async {
+      for (final t in _tables.reversed) {
+        await tx.delete(t);
+      }
+      for (final t in _tables) {
+        for (final row in (data[t] as List? ?? const [])) {
+          await tx.insert(t, Map<String, Object?>.from(row as Map));
+        }
+      }
+    });
+  }
 }

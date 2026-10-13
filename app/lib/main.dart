@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,6 +20,10 @@ Future<void> main() async {
   await repo.load();
   final state = AppState(db: db, repo: repo);
   await state.init();
+  await state.backup.load();
+  // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
+  unawaited(state.backup.autoBackup());
+  AppLifecycleListener(onResume: () => unawaited(state.backup.autoBackup()));
   runApp(MiraboApp(state: state));
 }
 

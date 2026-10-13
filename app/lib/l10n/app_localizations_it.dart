@@ -646,7 +646,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get parentDataHint =>
-      'Solo su questo dispositivo. Il backup su Drive e l\'account cloud arrivano nelle prossime versioni.';
+      'Profili, diario e progressi restano su questo dispositivo, cifrati. Il backup su Google Drive qui sotto è facoltativo.';
 
   @override
   String get parentWipe => 'Elimina tutti i dati';
@@ -656,10 +656,134 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get parentWipeConfirm =>
-      'Profili e diario verranno cancellati da questo dispositivo. Non si può annullare.';
+      'Profili e diario verranno cancellati da questo dispositivo. Non si può annullare. Un eventuale backup su Google Drive resta dov\'è.';
 
   @override
   String get parentWipeYes => 'Elimina';
+
+  @override
+  String get backupTitle => 'Backup su Google Drive';
+
+  @override
+  String get backupHint =>
+      'Facoltativo. Il backup finisce in una cartella nascosta del tuo Drive, che l\'app non può usare per altro, ed è cifrato con una password che conosci solo tu. Serve per passare a un nuovo tablet o reinstallare l\'app senza perdere niente.';
+
+  @override
+  String get backupOff => 'Non attivo: i dati sono solo su questo tablet.';
+
+  @override
+  String backupOnAccount(String account) {
+    return 'Attivo su $account';
+  }
+
+  @override
+  String backupLast(String date) {
+    return 'Ultimo backup: $date';
+  }
+
+  @override
+  String get backupNever => 'Nessun backup ancora.';
+
+  @override
+  String get backupAutoFailed =>
+      'L\'ultimo backup automatico non è riuscito. Prova con \"Fai il backup adesso\".';
+
+  @override
+  String get backupEnable => 'Attiva il backup';
+
+  @override
+  String get backupNow => 'Fai il backup adesso';
+
+  @override
+  String get backupRestore => 'Ripristina da Drive';
+
+  @override
+  String get backupDisable => 'Disattiva';
+
+  @override
+  String get backupPasswordTitle => 'Scegli la password del backup';
+
+  @override
+  String get backupPasswordHint =>
+      'Il backup viene cifrato con questa password prima di lasciare il tablet. Ti servirà per ripristinarlo su un altro dispositivo: se la dimentichi il backup non si può recuperare, nemmeno da noi.';
+
+  @override
+  String get backupPassword => 'Password';
+
+  @override
+  String get backupPasswordRepeat => 'Ripeti la password';
+
+  @override
+  String backupPasswordShort(int n) {
+    return 'Almeno $n caratteri.';
+  }
+
+  @override
+  String get backupPasswordMismatch => 'Le due password non coincidono.';
+
+  @override
+  String get backupRestorePasswordTitle => 'Password del backup';
+
+  @override
+  String get backupRestorePasswordHint =>
+      'La password scelta quando hai attivato il backup.';
+
+  @override
+  String get backupWrongPassword => 'Password errata.';
+
+  @override
+  String get backupNone =>
+      'Su questo account Google non c\'è ancora un backup di Mirabò.';
+
+  @override
+  String get backupExistsTitle => 'C\'è già un backup';
+
+  @override
+  String get backupExists =>
+      'Su questo account Google c\'è già un backup di Mirabò. Vuoi ripristinarlo su questo tablet, oppure sostituirlo con i dati di questo tablet?';
+
+  @override
+  String get backupExistsRestore => 'Ripristina';
+
+  @override
+  String get backupExistsReplace => 'Sostituisci';
+
+  @override
+  String get backupRestoreConfirmTitle => 'Ripristinare il backup?';
+
+  @override
+  String get backupRestoreConfirm =>
+      'Profili, diario e progressi di questo tablet saranno sostituiti da quelli del backup.';
+
+  @override
+  String get backupDisableTitle => 'Disattivare il backup?';
+
+  @override
+  String get backupDisableConfirm =>
+      'Il tablet smette di fare backup e dimentica l\'account. La copia su Drive puoi tenerla, per ripristinarla in futuro, o eliminarla.';
+
+  @override
+  String get backupDisableKeep => 'Disattiva e tieni la copia';
+
+  @override
+  String get backupDisableDelete => 'Disattiva ed elimina la copia';
+
+  @override
+  String get backupDone => 'Backup completato.';
+
+  @override
+  String get backupRestored => 'Backup ripristinato.';
+
+  @override
+  String get backupError =>
+      'Non è riuscito. Controlla la connessione e riprova.';
+
+  @override
+  String get backupContinue => 'Continua';
+
+  @override
+  String get profileRestoreLink =>
+      'Hai già usato Mirabò? Ripristina da Google Drive';
 
   @override
   String get parentNewProfile => 'Nuovo profilo';

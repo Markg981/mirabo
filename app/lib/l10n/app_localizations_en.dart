@@ -644,7 +644,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get parentDataHint =>
-      'Only on this device. Drive backup and a cloud account are coming in future versions.';
+      'Profiles, diary and progress stay on this device, encrypted. The Google Drive backup below is optional.';
 
   @override
   String get parentWipe => 'Delete all data';
@@ -654,10 +654,134 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get parentWipeConfirm =>
-      'Profiles and diary will be erased from this device. This can\'t be undone.';
+      'Profiles and diary will be erased from this device. This can\'t be undone. Any Google Drive backup stays where it is.';
 
   @override
   String get parentWipeYes => 'Delete';
+
+  @override
+  String get backupTitle => 'Google Drive backup';
+
+  @override
+  String get backupHint =>
+      'Optional. The backup goes into a hidden folder in your Drive that the app can\'t use for anything else, and it\'s encrypted with a password only you know. Use it to move to a new tablet or reinstall the app without losing anything.';
+
+  @override
+  String get backupOff => 'Off: the data is only on this tablet.';
+
+  @override
+  String backupOnAccount(String account) {
+    return 'On, with $account';
+  }
+
+  @override
+  String backupLast(String date) {
+    return 'Last backup: $date';
+  }
+
+  @override
+  String get backupNever => 'No backup yet.';
+
+  @override
+  String get backupAutoFailed =>
+      'The last automatic backup didn\'t work. Try \"Back up now\".';
+
+  @override
+  String get backupEnable => 'Turn on backup';
+
+  @override
+  String get backupNow => 'Back up now';
+
+  @override
+  String get backupRestore => 'Restore from Drive';
+
+  @override
+  String get backupDisable => 'Turn off';
+
+  @override
+  String get backupPasswordTitle => 'Choose a backup password';
+
+  @override
+  String get backupPasswordHint =>
+      'The backup is encrypted with this password before it leaves the tablet. You\'ll need it to restore on another device: if you forget it, the backup can\'t be recovered, not even by us.';
+
+  @override
+  String get backupPassword => 'Password';
+
+  @override
+  String get backupPasswordRepeat => 'Repeat the password';
+
+  @override
+  String backupPasswordShort(int n) {
+    return 'At least $n characters.';
+  }
+
+  @override
+  String get backupPasswordMismatch => 'The two passwords don\'t match.';
+
+  @override
+  String get backupRestorePasswordTitle => 'Backup password';
+
+  @override
+  String get backupRestorePasswordHint =>
+      'The password you chose when you turned on backup.';
+
+  @override
+  String get backupWrongPassword => 'Wrong password.';
+
+  @override
+  String get backupNone =>
+      'There\'s no Mirabò backup on this Google account yet.';
+
+  @override
+  String get backupExistsTitle => 'There\'s already a backup';
+
+  @override
+  String get backupExists =>
+      'This Google account already has a Mirabò backup. Do you want to restore it on this tablet, or replace it with this tablet\'s data?';
+
+  @override
+  String get backupExistsRestore => 'Restore';
+
+  @override
+  String get backupExistsReplace => 'Replace';
+
+  @override
+  String get backupRestoreConfirmTitle => 'Restore the backup?';
+
+  @override
+  String get backupRestoreConfirm =>
+      'Profiles, diary and progress on this tablet will be replaced by the ones in the backup.';
+
+  @override
+  String get backupDisableTitle => 'Turn off backup?';
+
+  @override
+  String get backupDisableConfirm =>
+      'The tablet stops backing up and forgets the account. You can keep the copy on Drive to restore later, or delete it.';
+
+  @override
+  String get backupDisableKeep => 'Turn off, keep the copy';
+
+  @override
+  String get backupDisableDelete => 'Turn off, delete the copy';
+
+  @override
+  String get backupDone => 'Backup complete.';
+
+  @override
+  String get backupRestored => 'Backup restored.';
+
+  @override
+  String get backupError =>
+      'That didn\'t work. Check the connection and try again.';
+
+  @override
+  String get backupContinue => 'Continue';
+
+  @override
+  String get profileRestoreLink =>
+      'Used Mirabò before? Restore from Google Drive';
 
   @override
   String get parentNewProfile => 'New profile';

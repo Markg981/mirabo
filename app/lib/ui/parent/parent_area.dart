@@ -9,6 +9,7 @@ import '../../models/profile.dart';
 import '../../models/story.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
+import 'backup_section.dart';
 import 'profile_form.dart';
 
 /// Area genitore: modalità della sessione, profili, schede "Come parlarne",
@@ -109,6 +110,14 @@ class _SessionTab extends StatelessWidget {
               child: _WipeButton(state: state),
             ),
           ],
+        ),
+        const SizedBox(height: 20),
+        FormSection(
+          icon: Icons.cloud_rounded,
+          color: MiraboColors.sky,
+          title: context.l10n.backupTitle,
+          subtitle: context.l10n.backupHint,
+          children: [BackupSection(state: state)],
         ),
       ],
     );
