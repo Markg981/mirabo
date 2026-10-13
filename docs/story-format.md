@@ -28,7 +28,8 @@ lia-rabbia/
 | `gesture` | string? | gesto da imparare, mostrato al genitore |
 | `parentCard` | string | file markdown della scheda genitore |
 | `sources` | string[] | fonti pedagogiche |
-| `reviewedBy` | string? | chi ha fatto la revisione pedagogica |
+| `reviewedBy` | string? | chi ha fatto la revisione pedagogica, con qualifica e data; obbligatorio se `status` è `published` |
+| `status` | `draft` \| `review` \| `published` | stato della revisione pedagogica, vedi [`pedagogical-review.md`](pedagogical-review.md) |
 
 ## Variante per fascia (`5-7.json`)
 

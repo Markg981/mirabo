@@ -60,6 +60,23 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
             errors.append(f"{folder.name}/{file}: ageBand '{variant.get('ageBand')}' diverso da '{band}'")
         errors += check_screens(f"{folder.name}/{file}", variant.get("screens", []), band, meta)
     errors += check_translations(folder, meta)
+    errors += check_review(folder, meta)
+    return errors
+
+
+def check_review(folder: Path, meta: dict) -> list[str]:
+    """Una storia si pubblica solo dopo la revisione pedagogica, con le fonti verificate."""
+    if meta.get("status") != "published":
+        UNREVIEWED.append(folder.name)
+        return []
+    errors: list[str] = []
+    if not meta.get("reviewedBy"):
+        errors.append(f"{folder.name}: pubblicata senza revisione pedagogica ('reviewedBy')")
+    if any("da verificare" in s for s in meta.get("sources", [])):
+        errors.append(f"{folder.name}: pubblicata con fonti ancora da verificare")
+    card = folder / meta.get("parentCard", "parent.md")
+    if card.exists() and "da verificare" in card.read_text(encoding="utf-8"):
+        errors.append(f"{folder.name}: scheda genitore pubblicata con fonti ancora da verificare")
     return errors
 
 
@@ -67,6 +84,7 @@ LANGUAGES = ("en", "es", "fr", "de")
 META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
 SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue"}
 DRAFTS: list[str] = []
+UNREVIEWED: list[str] = []
 
 
 def check_translations(folder: Path, meta: dict) -> list[str]:
@@ -328,6 +346,8 @@ def main(argv: list[str]) -> int:
         print("  -", e)
     if DRAFTS:
         print(f"\nTraduzioni da revisionare ({len(DRAFTS)}): " + ", ".join(DRAFTS))
+    if UNREVIEWED:
+        print(f"\nStorie in attesa di revisione pedagogica ({len(UNREVIEWED)}): " + ", ".join(UNREVIEWED))
     print(f"\n{len(stories)} storie, {len(activities)} attività, {len(all_errors)} errori")
     return 1 if all_errors else 0
 

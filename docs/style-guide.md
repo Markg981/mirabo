@@ -181,5 +181,7 @@ Il tono è da pari a pari: si parla al genitore con il tu, senza colpevolizzarlo
 - [ ] Ogni battuta di ogni compagno funziona da sola, letta senza le altre due.
 - [ ] Nessuna opzione della pausa di dialogo ha una reazione che la giudica.
 - [ ] La scheda genitore ha tutte le sezioni e le fonti sono verificate o segnate.
-- [ ] Revisione pedagogica fatta e annotata in `reviewedBy`.
+- [ ] `python studio/review.py --sheet <id>` senza avvisi, o con avvisi lasciati al revisore.
+- [ ] Revisione pedagogica fatta e annotata in `reviewedBy` con `review.py --approve`
+      (processo in [`pedagogical-review.md`](pedagogical-review.md)).
 - [ ] `version` aumentata se la storia era già pubblicata.
