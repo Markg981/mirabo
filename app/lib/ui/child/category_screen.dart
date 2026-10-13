@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
-import '../../games/game.dart';
 import '../../games/game_shell.dart';
-import '../../models/profile.dart';
+import '../../models/shelf.dart';
 import '../activity/activity_player.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
@@ -14,37 +13,23 @@ import 'categories.dart';
 import 'category_widgets.dart';
 import 'story_reader.dart';
 
-/// Le categorie che hanno almeno un contenuto per questo profilo.
-List<ChildCategory> visibleCategories(AppState state, ChildProfile profile) {
-  final activities = state.activitiesFor(profile);
-  return [
-    for (final c in ChildCategory.all())
-      if (switch (c.kind) {
-        CategoryKind.stories => state.storiesFor(profile).isNotEmpty,
-        CategoryKind.games => gamesFor(profile.ageBand).isNotEmpty,
-        CategoryKind.area => activities.any((a) => a.area == c.area),
-      })
-        c,
-  ];
-}
-
 void openParentArea(BuildContext context) => AdultGate.open(
       context,
       then: () => Navigator.of(context).push(adultRoute((_) => const ParentArea())),
     );
 
-/// Una categoria: carte grandi che scorrono in orizzontale, la barra delle
-/// categorie in basso per cambiare senza tornare alla casa.
+/// Una capacità della mensola: i suoi pochi materiali come carte grandi, la
+/// barra delle capacità in basso per cambiare senza tornare alla casa.
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key, required this.initial});
-  final ChildCategory initial;
+  final Capacity initial;
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  late ChildCategory _category = widget.initial;
+  late Capacity _category = widget.initial;
   final _scroll = ScrollController();
 
   @override
@@ -53,7 +38,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     super.dispose();
   }
 
-  void _select(ChildCategory c) {
+  void _select(Capacity c) {
     if (c == _category) return;
     setState(() => _category = c);
     if (_scroll.hasClients) _scroll.jumpTo(0);
@@ -61,55 +46,42 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   void _open(Widget page) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
 
-  List<Widget> _cards(AppState state, ChildProfile profile, double width) {
+  Widget _card(ShelfItem item, double width) {
     final l = context.l10n;
-    switch (_category.kind) {
-      case CategoryKind.stories:
-        return [
-          for (final s in state.storiesFor(profile))
-            BigCard(
-              title: s.title,
-              color: worldStyle(s.world).color,
-              icon: worldStyle(s.world).icon,
-              width: width,
-              onTap: () => _open(StoryReader(story: s)),
-            ),
-        ];
-      case CategoryKind.games:
-        return [
-          for (final g in gamesFor(profile.ageBand))
-            BigCard(
-              title: g.title(l),
-              color: g.color,
-              emojis: g.emojis,
-              width: width,
-              onTap: () => _open(GameShell(game: g)),
-            ),
-        ];
-      case CategoryKind.area:
-        return [
-          for (final a in state.activitiesFor(profile).where((a) => a.area == _category.area))
-            BigCard(
-              title: a.title,
-              color: _category.color,
-              emojis: a.coverEmojis,
-              icon: a.coverEmojis.isEmpty ? Icons.extension_rounded : null,
-              width: width,
-              badges: [
-                if (a.isHome) (Icons.home_rounded, l.badgeAtHome),
-                if (!a.isHome && a.togetherSuggested) (Icons.people_rounded, l.badgeTogether),
-              ],
-              onTap: () => _open(ActivityPlayer(activity: a)),
-            ),
-        ];
-    }
+    return switch (item) {
+      StoryItem(:final story) => BigCard(
+          title: story.title,
+          color: worldStyle(story.world).color,
+          icon: worldStyle(story.world).icon,
+          width: width,
+          onTap: () => _open(StoryReader(story: story)),
+        ),
+      GameItem(:final game) => BigCard(
+          title: game.title(l),
+          color: game.color,
+          emojis: game.emojis,
+          width: width,
+          onTap: () => _open(GameShell(game: game)),
+        ),
+      ActivityItem(activity: final a) => BigCard(
+          title: a.title,
+          color: _category.color,
+          emojis: a.coverEmojis,
+          icon: a.coverEmojis.isEmpty ? Icons.extension_rounded : null,
+          width: width,
+          badges: [
+            if (a.isHome) (Icons.home_rounded, l.badgeAtHome),
+            if (!a.isHome && a.togetherSuggested) (Icons.people_rounded, l.badgeTogether),
+          ],
+          onTap: () => _open(ActivityPlayer(activity: a)),
+        ),
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     final state = AppStateScope.of(context);
-    final profile = state.currentProfile!;
-    final categories = visibleCategories(state, profile);
+    final shelf = state.shelfFor(state.currentProfile!);
     final text = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -164,7 +136,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 child: LayoutBuilder(builder: (context, c) {
                   final cardH = c.maxHeight - 48;
                   final cardW = (cardH * 0.82).clamp(260.0, 380.0);
-                  final cards = _cards(state, profile, cardW);
+                  final cards = [for (final i in shelf[_category] ?? const <ShelfItem>[]) _card(i, cardW)];
                   if (cards.isEmpty) {
                     return Center(child: SoftPanel(child: Text(context.l10n.catEmpty, style: text.titleLarge)));
                   }
@@ -179,7 +151,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   );
                 }),
               ),
-              CategoryDock(categories: categories, selected: _category, onSelect: _select),
+              CategoryDock(categories: shelf.keys.toList(), selected: _category, onSelect: _select),
             ],
           ),
         ),

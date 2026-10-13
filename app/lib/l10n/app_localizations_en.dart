@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -76,9 +77,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeOneStory => 'A story';
 
   @override
-  String get homeLetsPlay => 'Let\'s play';
-
-  @override
   String switchChildA11y(Object name) {
     return 'Change child. $name is playing now';
   }
@@ -101,13 +99,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chooseAddA11y => 'Add a child';
 
   @override
-  String get catStories => 'Stories';
-
-  @override
-  String get catGames => 'Games';
-
-  @override
   String get catEmpty => 'Nothing here for today.';
+
+  @override
+  String capacityLabel(String capacity) {
+    String _temp0 = intl.Intl.selectLogic(capacity, {
+      'insieme': 'Me and others',
+      'mani': 'Hands',
+      'sensi': 'Senses',
+      'parole': 'Words',
+      'pensare': 'Counting and thinking',
+      'mondo': 'The world',
+      'other': '$capacity',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get badgeAtHome => 'At home';
@@ -117,51 +123,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String areaLabel(String area) {
-    String _temp0 = intl.Intl.selectLogic(
-      area,
-      {
-        'cognitivo': 'Getting ready',
-        'autonomia': 'Independence',
-        'sociale': 'In class',
-        'paure': 'First day',
-        'vitaPratica': 'Practical life',
-        'sensoriale': 'Sensorial',
-        'linguaggio': 'Language and writing',
-        'matematica': 'Maths',
-        'cultura': 'Culture',
-        'other': '$area',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(area, {
+      'cognitivo': 'Getting ready',
+      'autonomia': 'Independence',
+      'sociale': 'In class',
+      'paure': 'First day',
+      'vitaPratica': 'Practical life',
+      'sensoriale': 'Sensorial',
+      'linguaggio': 'Language and writing',
+      'matematica': 'Maths',
+      'cultura': 'Culture',
+      'other': '$area',
+    });
     return '$_temp0';
   }
 
   @override
   String worldShort(String world) {
-    String _temp0 = intl.Intl.selectLogic(
-      world,
-      {
-        'emozioni': 'Feelings',
-        'inclusione': 'Together',
-        'ambiente': 'The woods',
-        'sicurezza': 'My body',
-        'other': '$world',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(world, {
+      'emozioni': 'Feelings',
+      'inclusione': 'Together',
+      'ambiente': 'The woods',
+      'sicurezza': 'My body',
+      'other': '$world',
+    });
     return '$_temp0';
   }
 
   @override
   String worldLong(String world) {
-    String _temp0 = intl.Intl.selectLogic(
-      world,
-      {
-        'emozioni': 'Feelings and conflicts',
-        'inclusione': 'Diversity and inclusion',
-        'ambiente': 'Nature and living things',
-        'sicurezza': 'Safety and body',
-        'other': '$world',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(world, {
+      'emozioni': 'Feelings and conflicts',
+      'inclusione': 'Diversity and inclusion',
+      'ambiente': 'Nature and living things',
+      'sicurezza': 'Safety and body',
+      'other': '$world',
+    });
     return '$_temp0';
   }
 
@@ -357,24 +354,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String animalName(String animal) {
-    String _temp0 = intl.Intl.selectLogic(
-      animal,
-      {
-        'dog': 'dog',
-        'cat': 'cat',
-        'rabbit': 'rabbit',
-        'fox': 'fox',
-        'bear': 'bear',
-        'panda': 'panda',
-        'frog': 'frog',
-        'monkey': 'monkey',
-        'lion': 'lion',
-        'tiger': 'tiger',
-        'cow': 'cow',
-        'pig': 'pig',
-        'other': '$animal',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(animal, {
+      'dog': 'dog',
+      'cat': 'cat',
+      'rabbit': 'rabbit',
+      'fox': 'fox',
+      'bear': 'bear',
+      'panda': 'panda',
+      'frog': 'frog',
+      'monkey': 'monkey',
+      'lion': 'lion',
+      'tiger': 'tiger',
+      'cow': 'cow',
+      'pig': 'pig',
+      'other': '$animal',
+    });
     return '$_temp0';
   }
 
@@ -395,49 +389,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String balloonsPopColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'red',
-        'blue': 'blue',
-        'green': 'green',
-        'yellow': 'yellow',
-        'purple': 'purple',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'red',
+      'blue': 'blue',
+      'green': 'green',
+      'yellow': 'yellow',
+      'purple': 'purple',
+      'other': '$color',
+    });
     return 'Pop only the $_temp0 balloons.';
   }
 
   @override
   String balloonsNowColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'red',
-        'blue': 'blue',
-        'green': 'green',
-        'yellow': 'yellow',
-        'purple': 'purple',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'red',
+      'blue': 'blue',
+      'green': 'green',
+      'yellow': 'yellow',
+      'purple': 'purple',
+      'other': '$color',
+    });
     return 'Now the $_temp0 balloons.';
   }
 
   @override
   String balloonsOnlyColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'red',
-        'blue': 'blue',
-        'green': 'green',
-        'yellow': 'yellow',
-        'purple': 'purple',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'red',
+      'blue': 'blue',
+      'green': 'green',
+      'yellow': 'yellow',
+      'purple': 'purple',
+      'other': '$color',
+    });
     return 'Only the $_temp0 ones';
   }
 
@@ -470,17 +455,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String balloonA11yColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'Red',
-        'blue': 'Blue',
-        'green': 'Green',
-        'yellow': 'Yellow',
-        'purple': 'Purple',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'Red',
+      'blue': 'Blue',
+      'green': 'Green',
+      'yellow': 'Yellow',
+      'purple': 'Purple',
+      'other': '$color',
+    });
     return '$_temp0 balloon';
   }
 
@@ -510,20 +492,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String shapeName(String shape) {
-    String _temp0 = intl.Intl.selectLogic(
-      shape,
-      {
-        'circle': 'the circle',
-        'square': 'the square',
-        'triangle': 'the triangle',
-        'star': 'the star',
-        'heart': 'the heart',
-        'hexagon': 'the hexagon',
-        'circleSmall': 'the small circle',
-        'squareSmall': 'the small square',
-        'other': '$shape',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(shape, {
+      'circle': 'the circle',
+      'square': 'the square',
+      'triangle': 'the triangle',
+      'star': 'the star',
+      'heart': 'the heart',
+      'hexagon': 'the hexagon',
+      'circleSmall': 'the small circle',
+      'squareSmall': 'the small square',
+      'other': '$shape',
+    });
     return '$_temp0';
   }
 
@@ -631,6 +610,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get parentTabGrowth => 'Growth';
+
+  @override
+  String get parentTabShelf => 'Shelf';
 
   @override
   String get parentHowUse => 'How are you using the app right now?';
@@ -887,53 +869,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stageLabel(String stage) {
-    String _temp0 = intl.Intl.selectLogic(
-      stage,
-      {
-        'starting': 'getting started',
-        'working': 'working on it',
-        'canDo': 'can do it',
-        'alone': 'does it alone',
-        'other': '$stage',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(stage, {
+      'starting': 'getting started',
+      'working': 'working on it',
+      'canDo': 'can do it',
+      'alone': 'does it alone',
+      'other': '$stage',
+    });
     return '$_temp0';
   }
 
   @override
   String skillLabel(String skill) {
-    String _temp0 = intl.Intl.selectLogic(
-      skill,
-      {
-        'suoni_iniziali': 'Sounds and letters',
-        'pregrafismo': 'Tracing letters',
-        'numeri': 'Numbers and quantities',
-        'logica': 'Logic and sequences',
-        'routine_sera': 'Getting ready for tomorrow',
-        'routine_mattino': 'The morning routine',
-        'vestirsi': 'Getting dressed alone',
-        'mensa': 'At lunch',
-        'turno_e_condivisione': 'Waiting your turn and sharing',
-        'chiedere_aiuto': 'Asking for help',
-        'distacco': 'Saying goodbye in the morning',
-        'conoscere_la_scuola': 'Getting to know school',
-        'primo_giorno': 'The first day',
-        'travasi': 'Pouring and transferring',
-        'motricita_fine': 'Fine motor skills',
-        'cura_ambiente': 'Caring for the environment',
-        'dimensioni': 'Sizes and ordering',
-        'colori': 'Colours',
-        'forme': 'Shapes',
-        'tatto': 'Touch',
-        'udito': 'Hearing',
-        'scrittura': 'Writing',
-        'vocabolario': 'Vocabulary',
-        'decine': 'Tens and units',
-        'geografia': 'Geography',
-        'botanica': 'Botany',
-        'other': '$skill',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(skill, {
+      'suoni_iniziali': 'Sounds and letters',
+      'pregrafismo': 'Tracing letters',
+      'numeri': 'Numbers and quantities',
+      'logica': 'Logic and sequences',
+      'routine_sera': 'Getting ready for tomorrow',
+      'routine_mattino': 'The morning routine',
+      'vestirsi': 'Getting dressed alone',
+      'mensa': 'At lunch',
+      'turno_e_condivisione': 'Waiting your turn and sharing',
+      'chiedere_aiuto': 'Asking for help',
+      'distacco': 'Saying goodbye in the morning',
+      'conoscere_la_scuola': 'Getting to know school',
+      'primo_giorno': 'The first day',
+      'travasi': 'Pouring and transferring',
+      'motricita_fine': 'Fine motor skills',
+      'cura_ambiente': 'Caring for the environment',
+      'dimensioni': 'Sizes and ordering',
+      'colori': 'Colours',
+      'forme': 'Shapes',
+      'tatto': 'Touch',
+      'udito': 'Hearing',
+      'scrittura': 'Writing',
+      'vocabolario': 'Vocabulary',
+      'decine': 'Tens and units',
+      'geografia': 'Geography',
+      'botanica': 'Botany',
+      'other': '$skill',
+    });
     return '$_temp0';
   }
 
@@ -969,15 +945,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String ageBandLabel(String band) {
-    String _temp0 = intl.Intl.selectLogic(
-      band,
-      {
-        'small': 'Little ones',
-        'mid': 'First steps',
-        'big': 'Big kids',
-        'other': '$band',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(band, {
+      'small': 'Little ones',
+      'mid': 'First steps',
+      'big': 'Big kids',
+      'other': '$band',
+    });
     return '$_temp0';
   }
 
@@ -1065,4 +1038,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lessonTell => 'What is it called?';
+
+  @override
+  String shelfTitle(Object name) {
+    return '$name\'s shelf';
+  }
+
+  @override
+  String shelfHint(String name, int max) {
+    return 'A few materials at a time, like the shelves of a Montessori environment: $name freely chooses among the ones you put here. At most $max per ability; change them once they\'ve been explored.';
+  }
+
+  @override
+  String shelfCount(int count, int max) {
+    return '$count of $max';
+  }
+
+  @override
+  String get shelfAuto => 'Automatic choice';
+
+  @override
+  String get shelfAutoOn =>
+      'The shelf now fills itself: the first suitable materials for each ability.';
+
+  @override
+  String get shelfAutoHint =>
+      'The shelf fills itself. Tap a material to choose them yourself.';
+
+  @override
+  String shelfFull(int max) {
+    return 'This shelf already holds $max materials: take one off to put another on.';
+  }
+
+  @override
+  String get shelfKindStory => 'Story';
+
+  @override
+  String get shelfKindGame => 'Game';
+
+  @override
+  String get shelfKindActivity => 'Activity';
 }

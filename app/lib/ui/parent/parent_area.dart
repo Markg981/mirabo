@@ -11,8 +11,9 @@ import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'backup_section.dart';
 import 'profile_form.dart';
+import 'shelf_tab.dart';
 
-/// Area genitore: modalità della sessione, profili, schede "Come parlarne",
+/// Area genitore: modalità della sessione, profili, mensola, schede "Come parlarne",
 /// diario e sviluppo (statistiche solo per l'adulto, confronto con sé stesso).
 class ParentArea extends StatelessWidget {
   const ParentArea({super.key});
@@ -22,7 +23,7 @@ class ParentArea extends StatelessWidget {
     final state = AppStateScope.of(context);
     final profile = state.currentProfile!;
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: Text(context.l10n.parentArea),
@@ -46,6 +47,7 @@ class ParentArea extends StatelessWidget {
                   tabs: [
                     Tab(height: 44, text: context.l10n.parentTabSession),
                     Tab(height: 44, text: context.l10n.parentTabProfiles),
+                    Tab(height: 44, text: context.l10n.parentTabShelf),
                     Tab(height: 44, text: context.l10n.parentTabCards),
                     Tab(height: 44, text: context.l10n.parentTabDiary),
                     Tab(height: 44, text: context.l10n.parentTabGrowth),
@@ -61,6 +63,7 @@ class ParentArea extends StatelessWidget {
             child: TabBarView(children: [
               _SessionTab(state: state, profile: profile),
               _ProfilesTab(state: state),
+              ShelfTab(state: state),
               _ParentCardsTab(state: state),
               _DiaryTab(state: state, profile: profile),
               _DevelopmentTab(state: state, profile: profile),

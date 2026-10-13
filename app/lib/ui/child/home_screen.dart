@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../models/profile.dart';
+import '../../models/shelf.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'categories.dart';
@@ -11,7 +12,8 @@ import 'category_widgets.dart';
 import 'companion_widget.dart';
 
 /// Casa del bambino: il compagno nella sua casa che chiede "cosa facciamo
-/// oggi?", due scorciatoie e la barra delle categorie in basso.
+/// oggi?" e, in basso, la mensola divisa per capacità. Ci sono solo i
+/// materiali che l'adulto ha preparato, non tutto il catalogo.
 /// Nessun testo di configurazione; il genitore entra dal lucchetto.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,10 +23,11 @@ class HomeScreen extends StatelessWidget {
     final state = AppStateScope.of(context);
     final profile = state.currentProfile!;
     final companion = state.companionOf(profile);
-    final categories = visibleCategories(state, profile);
+    final shelf = state.shelfFor(profile);
+    final hasStory = shelf[Capacity.insieme]?.any((i) => i is StoryItem) ?? false;
     final text = Theme.of(context).textTheme;
 
-    void open(ChildCategory c) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoryScreen(initial: c)));
+    void open(Capacity c) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoryScreen(initial: c)));
 
     return Scaffold(
       body: SceneBackdrop(
@@ -83,26 +86,15 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              const SizedBox(height: 22),
-                              Wrap(
-                                spacing: 14,
-                                runSpacing: 6,
-                                children: [
-                                  if (categories.contains(ChildCategory.stories))
-                                    ChunkyButton(
-                                      label: context.l10n.homeOneStory,
-                                      icon: Icons.auto_stories_rounded,
-                                      color: ChildCategory.stories.color,
-                                      onPressed: () => open(ChildCategory.stories),
-                                    ),
-                                  ChunkyButton(
-                                    label: context.l10n.homeLetsPlay,
-                                    icon: Icons.sports_esports_rounded,
-                                    color: ChildCategory.games.color,
-                                    onPressed: () => open(ChildCategory.games),
-                                  ),
-                                ],
-                              ),
+                              if (hasStory) ...[
+                                const SizedBox(height: 22),
+                                ChunkyButton(
+                                  label: context.l10n.homeOneStory,
+                                  icon: Icons.auto_stories_rounded,
+                                  color: Capacity.insieme.color,
+                                  onPressed: () => open(Capacity.insieme),
+                                ),
+                              ],
                             ],
                           ),
                         ),
@@ -111,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 }),
               ),
-              CategoryDock(categories: categories, onSelect: open),
+              CategoryDock(categories: shelf.keys.toList(), onSelect: open),
             ],
           ),
         ),
