@@ -82,7 +82,9 @@ def check_review(folder: Path, meta: dict) -> list[str]:
 
 LANGUAGES = ("en", "es", "fr", "de")
 META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
-SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue"}
+SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "lesson"}
+LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
+LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
 DRAFTS: list[str] = []
 UNREVIEWED: list[str] = []
 
@@ -138,6 +140,16 @@ def check_translations(folder: Path, meta: dict) -> list[str]:
                     oo = ((o.get("dialogue") or {}).get("alone") or {}).get("options", [])
                     if len(oo) != len(bo):
                         errors.append(f"{label}/{file} #{n}: {len(oo)} opzioni tradotte su {len(bo)}")
+                if "lesson" in b:
+                    ol = o.get("lesson") or {}
+                    if set(ol) - LESSON_TEXT_KEYS:
+                        errors.append(f"{label}/{file} #{n}: campi della lezione non traducibili {sorted(set(ol) - LESSON_TEXT_KEYS)}")
+                    items = ol.get("items", [])
+                    if len(items) != len(b["lesson"]["items"]):
+                        errors.append(f"{label}/{file} #{n}: {len(items)} figure tradotte su {len(b['lesson']['items'])}")
+                    for i, it in enumerate(items, 1):
+                        if set(it) != LESSON_ITEM_TEXT_KEYS:
+                            errors.append(f"{label}/{file} #{n}: la figura {i} va tradotta in {sorted(LESSON_ITEM_TEXT_KEYS)} e basta")
     return errors
 
 
@@ -155,6 +167,11 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
         errors.append(f"{label}: al massimo una pausa di dialogo")
     if band == "3-5" and meta.get("togetherOnly") and "dialogue" in kinds:
         errors.append(f"{label}: nessuna pausa di dialogo in 3-5 quando la storia è solo insieme")
+    # La lezione in tre tempi è il cuore della fascia 3-5, e solo di quella.
+    if band == "3-5" and kinds.count("lesson") != 1:
+        errors.append(f"{label}: in 3-5 serve esattamente una lezione in tre tempi ('lesson')")
+    if band != "3-5" and "lesson" in kinds:
+        errors.append(f"{label}: la lezione in tre tempi è solo per la fascia 3-5")
     if sum(1 for s in screens if s.get("keyPhrase")) != 1:
         errors.append(f"{label}: esattamente una schermata deve avere keyPhrase: true")
     if kinds and not any(s.get("companionLines") for s in screens if s.get("kind") == "hook"):
@@ -180,6 +197,13 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
                     errors.append(f"{label} #{n}: al massimo {band_max} opzioni per la fascia {band}")
         elif "dialogue" in s:
             errors.append(f"{label} #{n}: campo dialogue su una schermata che non è 'dialogue'")
+        if s.get("kind") == "lesson":
+            if "lesson" not in s:
+                errors.append(f"{label} #{n}: schermata 'lesson' senza campo lesson")
+            else:
+                errors += check_lesson(f"{label} #{n}", s["lesson"])
+        elif "lesson" in s:
+            errors.append(f"{label} #{n}: campo lesson su una schermata che non è 'lesson'")
         if s.get("kind") not in ("hook",) and not text and s.get("kind") != "dialogue":
             errors.append(f"{label} #{n}: schermata senza testo")
         lines = s.get("companionLines")
@@ -190,6 +214,27 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
         audio = s.get("audio")
         if audio and NAME_PLACEHOLDER in json.dumps(lines or {}) and not audio.get("nameSlots"):
             errors.append(f"{label} #{n}: audio con {NAME_PLACEHOLDER} nelle battute ma senza nameSlots")
+    return errors
+
+
+def check_lesson(label: str, lesson: dict) -> list[str]:
+    """Figure distinte, frasi uguali per tutti i compagni: niente nome del bambino, niente parole vietate."""
+    errors: list[str] = []
+    items = lesson.get("items", [])
+    for key in ("id", "e", "name"):
+        values = [i.get(key) for i in items]
+        if len(values) != len(set(values)):
+            errors.append(f"{label}: due figure della lezione con lo stesso '{key}'")
+    texts = [lesson.get("ask", ""), lesson.get("done", "")] + [i.get(k, "") for i in items for k in ("this", "show")]
+    for t in texts:
+        if NAME_PLACEHOLDER in t:
+            errors.append(f"{label}: {NAME_PLACEHOLDER} non va nelle frasi della lezione, che sono sempre le stesse")
+        for word in BANNED:
+            if re.search(rf"\b{re.escape(word)}\b", t, flags=re.IGNORECASE):
+                errors.append(f"{label}: parola da evitare nella lezione: '{word}'")
+    for i in items:
+        if i.get("name", "").lower() not in i.get("this", "").lower():
+            errors.append(f"{label}: la frase del primo tempo di '{i.get('id')}' deve contenere il nome '{i.get('name')}'")
     return errors
 
 

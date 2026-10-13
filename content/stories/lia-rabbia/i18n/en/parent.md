@@ -12,6 +12,10 @@
 
 When the volcano rises, name it ("I can see you're really angry") instead of stopping it ("calm down"); do the breath **together**, don't order it; talk about what happened only afterwards, once the volcano has gone down. Repair (tidying up, rebuilding, saying sorry) comes later, and works better if the child suggests it.
 
+## The three-period lesson (ages 3–5)
+
+The version for the youngest has a pause to name three faces: angry, sad, happy. It's Maria Montessori's three-period lesson: first you say the name ("This face is angry"), then you ask your child to recognise it ("Where is the angry face?"), and only at the end you ask for the name ("How does this face feel?"). If your child gets it wrong, don't correct: say the name of the one they pointed to and move on. At home you can do it again with three faces you draw on paper, and with a mirror: "Show me an angry face".
+
 ## Common mistakes
 
 - "There's nothing to be angry about": for them there is, and they feel it.

@@ -12,6 +12,10 @@
 
 Quando il vulcano sale, nominarlo ("vedo che sei arrabbiatissimo") invece di fermarlo ("calmati"); fare il respiro **insieme**, non ordinarlo; parlare di cosa è successo solo dopo, a vulcano sceso. La riparazione (sistemare, rifare, chiedere scusa) viene dopo, e funziona meglio se la propone il bambino.
 
+## La lezione in tre tempi (3–5 anni)
+
+Nella versione per i più piccoli c'è una pausa per dare un nome a tre facce: arrabbiata, triste, contenta. È la lezione in tre tempi di Maria Montessori: prima si dice il nome ("Questa faccia è arrabbiata"), poi si chiede di riconoscerla ("Dov'è la faccia arrabbiata?"), solo alla fine si chiede il nome ("Com'è questa faccia?"). Se il bambino sbaglia non si corregge: si dice il nome di quella che ha indicato e si va avanti. A casa potete rifarla con tre foglietti disegnati da voi, e con lo specchio: "Fammi una faccia arrabbiata".
+
 ## Errori comuni
 
 - "Non c'è niente per cui arrabbiarsi": per lui c'è, e lo sente.

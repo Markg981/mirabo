@@ -1,0 +1,81 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter auf dem Waldweg, neben einem kleinen grauen Kiesel und einer Blume."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Im Wald ist ein Stimmchen. Hören wir leise zu?",
+        "pilu": "Hallo {nome}! Hörst du? Im Wald spricht jemand ganz leise.",
+        "tango": "Hallo {nome}! Wir rennen in den Wald! ...Warte. Erst hören wir zu."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, mit zwei zerzausten Zöpfen, gelbem Mäntelchen und roten Gummistiefeln, geht mit ihrem Korb in den Wald; Oma sitzt am Waldrand auf einem Baumstamm."
+      },
+      "text": "Emma hat zwei Zöpfe, rote Stiefel und ein gelbes Mäntelchen. Sie geht in den Wald. Oma sagt: „Ich bleibe hier.“"
+    },
+    {
+      "illustration": {
+        "alt": "Am Bach hält Emma einen grauen, runden, glatten Kiesel in der Hand, der zu lächeln scheint; das Wasser spritzt ein bisschen."
+      },
+      "text": "Am Bach wirft Emma Kiesel: plin, plon, plin. Dann findet sie einen runden, glatten. „He! Wirf mich nicht!“, sagt ein Stimmchen.",
+      "companionLines": {
+        "bo": "Ein Stimmchen! Ich hab ein bisschen Angst. Hörst du es?",
+        "pilu": "Hast du gehört? Emma bleibt stehen und hört zu.",
+        "tango": "Wer hat da gesprochen? Schnell, schauen! ...Warte. Zuhören."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitzt am Bach im Gras, Pietrolino in der Handfläche; zwei Vögelchen auf den Zweigen."
+      },
+      "text": "„Ich bin Pietrolino“, sagt der Kiesel. „Ich spreche mit allen, die stehen bleiben und zuhören.“ Emma setzt sich ins Gras."
+    },
+    {
+      "illustration": {
+        "alt": "Drei Bilder in einer Reihe: ein Wassertropfen für den Bach, ein Vögelchen, trockene Blätter. Emma hört daneben mit geschlossenen Augen zu."
+      },
+      "text": "Emma macht die Augen zu. Der Wald hat viele Stimmen.",
+      "companionLines": {
+        "bo": "Wir hören auch zu. Eine Stimme nach der anderen.",
+        "pilu": "Hörst du, wie der Wald spricht? Eine Stimme nach der anderen.",
+        "tango": "So viele Stimmen! ...Warte. Eine nach der anderen."
+      },
+      "lesson": {
+        "together": "Zeig auf ein Bild nach dem anderen und sag nur: „Das ist der Bach: plin, plon“. Dann frag: „Wo ist das Vögelchen?“. Zum Schluss zeig auf eins und frag: „Wie heißt das?“. Wenn dein Kind ein anderes Bild berührt, sag ihm den Namen von diesem, sonst nichts.",
+        "items": [
+          {
+            "name": "der Bach",
+            "this": "Das ist der Bach: plin, plon.",
+            "show": "Wo ist der Bach?"
+          },
+          {
+            "name": "das Vögelchen",
+            "this": "Das ist das Vögelchen: piep, piep.",
+            "show": "Wo ist das Vögelchen?"
+          },
+          {
+            "name": "die Blätter",
+            "this": "Das sind die Blätter: rasch, rasch.",
+            "show": "Wo sind die Blätter?"
+          }
+        ],
+        "ask": "Und das, wie heißt das?",
+        "done": "Der Bach, das Vögelchen, die Blätter. Der Wald spricht leise."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma geht mit ihrem Korb auf dem Weg zurück zu Oma; aus der Manteltasche schaut Pietrolino heraus."
+      },
+      "text": "Emma steckt Pietrolino in die Tasche und geht zurück zu Oma. Aus der Tasche kommt ein Stimmchen: „Auch ein kleiner Kiesel macht große Kreise.“",
+      "companionLines": {
+        "bo": "Morgen höre ich mit dir dem Wald zu, {nome}. Bis morgen.",
+        "pilu": "Morgen mache ich die Augen zu und höre, {nome}. Bis morgen.",
+        "tango": "Morgen bleibe ich eine Minute stehen und höre, {nome}. Bis morgen!"
+      }
+    }
+  ]
+}

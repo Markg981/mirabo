@@ -91,6 +91,15 @@ def prereview(folder: Path) -> list[str]:
                 for c, line in (s.get("companionLines") or {}).items():
                     if has_any(line, ["continuiamo", "un'altra storia", "ancora una"]):
                         notes.append(f"{band} #{n} {c}: la chiusura invita a continuare")
+            les = s.get("lesson")
+            if les:
+                lines = [les.get("ask", ""), les.get("done", "")]
+                lines += [i.get(k, "") for i in les.get("items", []) for k in ("this", "show")]
+                for line in lines:
+                    if words(line) > lim["companion"]:
+                        notes.append(f"{band} #{n} lezione: \"{line}\" ha {words(line)} parole, oltre {lim['companion']}")
+                    for t in has_any(line, JUDGEMENTS + REWARDS):
+                        notes.append(f"{band} #{n} lezione: \"{t}\" giudica o premia: nel secondo tempo non c'è errore")
             d = s.get("dialogue")
             if d:
                 together = d.get("together", "")
@@ -179,6 +188,11 @@ def sheet(folder: Path) -> str:
                     out += [f"- Opzione **{o['label']}**"]
                     out += [f"  - {c}: {r}" for c, r in o["reaction"].items()]
                 out += [""]
+            les = s.get("lesson")
+            if les:
+                out += ["*Lezione in tre tempi.*", "", f"*Insieme:* {les['together']}", ""]
+                out += [f"- {i['e']} **{i['name']}**: \"{i['this']}\" / \"{i['show']}\"" for i in les["items"]]
+                out += [f"- Terzo tempo: \"{les['ask']}\"", f"- Alla fine: \"{les['done']}\"", ""]
     out += [
         "## Scheda genitore",
         "",
@@ -194,6 +208,7 @@ def sheet(folder: Path) -> str:
         "- [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.",
         "- [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.",
         "- [ ] Le opzioni della pausa di dialogo sono tutte legittime, \"non so\" compreso.",
+        "- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.",
         "- [ ] Personaggi e nomi senza stereotipi di genere o provenienza.",
         "- [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.",
         "- [ ] \"Se qualcosa ti preoccupa\" indica segnali e figure giuste (se presente o richiesta).",

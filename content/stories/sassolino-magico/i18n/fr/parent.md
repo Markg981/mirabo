@@ -12,6 +12,10 @@
 
 Faites ensemble la « minute d'écoute » : au jardin, au parc ou à la fenêtre, les yeux fermés, chacun compte sur ses doigts les bruits qu'il entend. Puis vous vous les racontez. Pas besoin d'un bois : un balcon suffit.
 
+## La leçon en trois temps (3–5 ans)
+
+La version pour les plus petits contient une pause pour nommer trois voix du bois : le ruisseau, le petit oiseau, les feuilles. C'est la leçon en trois temps de Maria Montessori : d'abord on dit le nom (« Voici le ruisseau : plin, plon »), puis on demande de le reconnaître (« Où est le petit oiseau ? »), et seulement à la fin on demande le nom (« Comment ça s'appelle ? »). Si ton enfant se trompe, ne le corrige pas : dis le nom de ce qu'il a montré et continue. Au parc, vous pouvez la refaire avec trois vraies choses : une feuille, un caillou, une brindille.
+
 ## Erreurs fréquentes
 
 - Expliquer tout de suite « ce que veut dire » l'histoire : laissez l'enfant y arriver par les questions.

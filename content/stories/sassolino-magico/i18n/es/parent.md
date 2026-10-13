@@ -12,6 +12,10 @@
 
 Haced juntos el "minuto de escucha": en el jardín, en el parque o en la ventana, con los ojos cerrados, cada uno cuenta con los dedos los sonidos que oye. Luego os los contáis. No hace falta un bosque: basta un balcón.
 
+## La lección en tres tiempos (3–5 años)
+
+La versión para los más pequeños tiene una pausa para poner nombre a tres voces del bosque: el arroyo, el pajarito, las hojas. Es la lección en tres tiempos de Maria Montessori: primero se dice el nombre ("Este es el arroyo: plin, plon"), luego se pide reconocerlo ("¿Dónde está el pajarito?") y solo al final se pregunta el nombre ("¿Cómo se llama?"). Si tu hijo se equivoca, no lo corrijas: di el nombre del que ha señalado y sigue. En el parque podéis repetirla con tres cosas de verdad: una hoja, una piedra, una ramita.
+
 ## Errores frecuentes
 
 - Explicar enseguida "qué significa" la historia: dejad que el niño llegue con las preguntas.

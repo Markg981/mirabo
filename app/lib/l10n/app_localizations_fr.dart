@@ -1018,4 +1018,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get translationDraft => 'Traduction en cours de relecture';
+
+  @override
+  String get lessonNaming => 'Voici';
+
+  @override
+  String get lessonShow => 'Où est-il ?';
+
+  @override
+  String get lessonTell => 'Comment ça s\'appelle ?';
 }

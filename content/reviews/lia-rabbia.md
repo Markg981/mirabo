@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il vulcano di Lia
 
-`lia-rabbia` v1 · mondo emozioni · tema rabbia · fasce 5-7
+`lia-rabbia` v1 · mondo emozioni · tema rabbia · fasce 3-5, 5-7
 
 **Frase-chiave.** La rabbia è un vulcano: sale, esplode e poi si calma. Io posso aspettarla.
 
@@ -9,6 +9,78 @@
 ## Avvisi della pre-revisione automatica
 
 Nessuno.
+
+## La storia (3-5 anni)
+
+### 1. hook
+
+*Illustrazione:* Il compagno seduto su un cuscino accanto a un libro aperto, con un vulcano disegnato sulla copertina.
+
+- **bo**: Ciao {nome}! C'è un vulcano. Mi tieni la mano?
+- **pilu**: Ciao {nome}! Hai visto? Lia ha fatto una torre altissima.
+- **tango**: Ciao {nome}! Dai, guardiamo subito! ...Aspetta. Prima ci sediamo.
+
+### 2. situation
+
+*Illustrazione:* Lia guarda fiera una torre di costruzioni colorata con una bandierina in cima.
+
+> Lia fa una torre alta alta. Un pezzo rosso, uno blu, uno giallo. In cima, la bandierina.
+
+### 3. situation
+
+*Illustrazione:* Teo, il fratellino piccolo, tocca il pezzo in basso; la torre cade e i pezzi volano sul pavimento.
+
+> Arriva Teo, il fratellino piccolo. Tocca il pezzo in basso. CRASH! La torre cade tutta.
+
+### 4. situation
+
+*Illustrazione:* Lia con la faccia rossa e i pugni chiusi; dietro di lei, in trasparenza, un vulcano che fuma.
+
+> Lia sente una cosa calda nella pancia. Le mani si chiudono da sole. La faccia diventa rossa. Lia è arrabbiata.
+
+- **bo**: Io lo sento nelle orecchie. Tu dove lo senti?
+- **pilu**: Guarda le mani di Lia. Sono chiuse chiuse.
+- **tango**: Lo conosco! Le zampe si chiudono così!
+
+### 5. lesson
+
+*Illustrazione:* Sul tavolo tre facce disegnate su cartoncini: una arrabbiata, una triste, una contenta. La nonna e Lia sono sedute vicine.
+
+> La nonna si siede vicino a Lia. Disegna tre facce su tre cartoncini.
+
+- **bo**: Guardiamo le facce insieme, piano piano.
+- **pilu**: Una faccia alla volta. Guarda bene.
+- **tango**: Tre facce! Dai! ...Aspetta. Una alla volta.
+
+*Lezione in tre tempi.*
+
+*Insieme:* Indica una faccia alla volta e di' solo: "Questa faccia è arrabbiata". Poi chiedi: "Dov'è la faccia triste?". Alla fine indicane una e chiedi: "Com'è questa faccia?". Se tocca un'altra faccia, dille il nome di quella e basta.
+
+- 😡 **arrabbiata**: "Questa faccia è arrabbiata." / "Dov'è la faccia arrabbiata?"
+- 😢 **triste**: "Questa faccia è triste." / "Dov'è la faccia triste?"
+- 😊 **contenta**: "Questa faccia è contenta." / "Dov'è la faccia contenta?"
+- Terzo tempo: "E questa faccia, com'è?"
+- Alla fine: "Arrabbiata, triste, contenta. Tutte le facce si possono avere."
+
+### 6. turn
+
+*Illustrazione:* Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano diventa arancione e la lava scende piano.
+
+> La nonna dice: "Ci si può arrabbiare. Facciamo il respiro del vulcano." Mani sulla pancia. Dentro: uno, due, tre. Fuori: ssssh.
+
+- **bo**: Facciamolo anche noi. Dentro, uno, due, tre. Fuori, ssssh.
+- **pilu**: Mani sulla pancia. Senti come sale e scende?
+- **tango**: Dentro, uno, due, tre! Fuori... ssssh. Piano, piano.
+
+### 7. closing
+
+*Illustrazione:* Lia e Teo costruiscono insieme una torre bassa e larga; sullo sfondo il vulcano è verde, con un fiore in cima.
+
+> Il vulcano scende piano piano. Lia e Teo fanno una torre nuova, larga larga.
+
+- **bo**: Il mio vulcano adesso è calmo, {nome}. A domani!
+- **pilu**: Stasera provo il respiro del vulcano, {nome}. A domani.
+- **tango**: Domani respiro prima di correre, {nome}. A domani!
 
 ## La storia (5-7 anni)
 
@@ -118,6 +190,7 @@ Da leggere in `content/stories/lia-rabbia/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

@@ -28,7 +28,7 @@
         "additionalProperties": false,
         "properties": {
           "n": { "type": "integer", "minimum": 1 },
-          "kind": { "enum": ["hook", "situation", "dialogue", "turn", "closing"] },
+          "kind": { "enum": ["hook", "situation", "dialogue", "lesson", "turn", "closing"] },
           "illustration": {
             "type": "object",
             "required": ["alt"],
@@ -94,6 +94,34 @@
           },
           "companionLines": { "$ref": "#/$defs/companionLines" },
           "keyPhrase": { "type": "boolean" },
+          "lesson": {
+            "description": "Lezione in tre tempi (solo fascia 3-5): si nomina, si riconosce, si ricorda",
+            "type": "object",
+            "required": ["together", "items", "ask", "done"],
+            "additionalProperties": false,
+            "properties": {
+              "together": { "type": "string", "minLength": 1 },
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": ["id", "e", "name", "this", "show"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+                    "e": { "type": "string", "minLength": 1 },
+                    "name": { "type": "string", "minLength": 1 },
+                    "this": { "type": "string", "minLength": 1 },
+                    "show": { "type": "string", "minLength": 1 }
+                  }
+                }
+              },
+              "ask": { "type": "string", "minLength": 1 },
+              "done": { "type": "string", "minLength": 1 }
+            }
+          },
           "dialogue": {
             "type": "object",
             "required": ["together", "alone"],

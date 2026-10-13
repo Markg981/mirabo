@@ -5,6 +5,7 @@ Una storia è una cartella `content/stories/<id>/`:
 ```
 lia-rabbia/
   story.json        metadati, fasce disponibili, scheda genitore, fonti
+  3-5.json          variante per la fascia 3–5, con la lezione in tre tempi
   5-7.json          variante per la fascia 5–7 (una per fascia disponibile)
   parent.md         scheda "Come parlarne"
   assets/           illustrazioni (png/webp) e audio (opus/aac), quando esistono
@@ -45,12 +46,13 @@ Ogni `Screen` ha:
 | Campo | Tipo | Note |
 | --- | --- | --- |
 | `n` | int | numero progressivo da 1 |
-| `kind` | `hook` \| `situation` \| `dialogue` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, svolta, chiusura) |
+| `kind` | `hook` \| `situation` \| `dialogue` \| `lesson` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, lezione in tre tempi, svolta, chiusura) |
 | `illustration` | object | `{ "file": "...", "alt": "descrizione", "scene": {...} }`; `file` può mancare finché non esiste, e allora l'app disegna `scene` se c'è |
 | `text` | string? | testo della narrazione; `{nome}` è il nome del bambino |
 | `audio` | object? | `{ "file": "...", "words": [[ms, "parola"], ...], "nameSlots": [ms, ...] }` |
 | `companionLines` | object? | `{ "bo": "...", "pilu": "...", "tango": "..." }` |
 | `dialogue` | object? | solo per `kind = dialogue`, vedi sotto |
+| `lesson` | object? | solo per `kind = lesson`, vedi sotto |
 | `keyPhrase` | bool? | se true, questa schermata mostra la frase-chiave in evidenza |
 
 ### Pausa di dialogo
@@ -73,6 +75,38 @@ Ogni `Screen` ha:
 ```
 
 Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del compagno. L'`id` scelto va nel diario del genitore.
+
+### Lezione in tre tempi (solo 3–5)
+
+```json
+"lesson": {
+  "together": "Indica una faccia alla volta e di' solo: \"Questa faccia è arrabbiata\". Poi chiedi: ...",
+  "items": [
+    { "id": "arrabbiata", "e": "😡", "name": "arrabbiata", "this": "Questa faccia è arrabbiata.", "show": "Dov'è la faccia arrabbiata?" }
+  ],
+  "ask": "E questa faccia, com'è?",
+  "done": "Arrabbiata, triste, contenta. Tutte le facce si possono avere."
+}
+```
+
+| Campo | Note |
+| --- | --- |
+| `items` | da 2 a 3 figure: `e` è l'emoji mostrata, `name` il nome da solo, `this` la frase del primo tempo (contiene `name`), `show` la domanda del secondo |
+| `ask` | la domanda del terzo tempo, uguale per tutte le figure |
+| `done` | detta alla fine, con tutte le figure e i loro nomi in vista |
+| `together` | guida per il genitore in modalità insieme |
+
+Da solo, l'app conduce i tre tempi: nomina le figure in ordine (primo tempo), le chiede in un
+ordine diverso (secondo), poi ne mostra una alla volta e chiede `ask` (terzo); il bambino risponde
+a voce e tocca la figura per sentire il nome. Se nel secondo tempo tocca un'altra figura, il
+compagno dice il nome di quella toccata e ripete la domanda; dopo due tocchi altrove la figura
+chiesta si illumina. Si va avanti nella storia solo a lezione finita. Insieme, la lezione la fa il
+genitore con `together` e le figure dicono il loro nome quando si toccano.
+
+Le frasi della lezione sono le stesse per i tre compagni: in questa lezione le parole sono poche e
+sempre uguali. `companionLines` sulla schermata della lezione è la presentazione, detta una volta.
+Negli overlay tradotti si traducono `together`, `ask`, `done` e, per ogni figura, `name`, `this` e
+`show`.
 
 ## Regole
 
@@ -108,6 +142,8 @@ alcune figure posizionate, come in un libro illustrato.
 Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la linea del pavimento
 (`y` + `s`/2 tra 0.75 e 0.95), così stanno "in piedi" nella scena.
 - Una sola schermata `dialogue` per storia; nessuna in fascia 3–5 quando `togetherOnly` è vero.
+- Ogni variante 3–5 ha esattamente una schermata `lesson`; le altre fasce non ne hanno. Le figure
+  hanno `id`, emoji e nome distinti; le frasi non usano `{nome}`.
 - `studio/validate.py` controlla tutto questo.
 
 ## Pacchetto distribuito

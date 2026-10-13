@@ -12,6 +12,10 @@
 
 Mettete un secchiello o una ciotola fuori quando piove e usate quell'acqua per le piante: il bambino vede quanta ne cade. Mentre vi lavate i denti insieme, fate a gara a chi si ricorda di chiudere il rubinetto. Per i più curiosi: un barattolo chiuso con un po' d'acqua al sole mostra le goccioline che "salgono".
 
+## La lezione in tre tempi (3–5 anni)
+
+Nella versione per i più piccoli c'è una pausa per dare un nome al viaggio di Goccia: la nuvola, la goccia, il fiore. È la lezione in tre tempi di Maria Montessori: prima si dice il nome ("Questa è la nuvola"), poi si chiede di riconoscerla ("Dov'è la goccia?"), solo alla fine si chiede il nome ("Come si chiama?"). Se il bambino sbaglia non si corregge: si dice il nome di quella che ha indicato e si va avanti. A casa potete rifarla guardando dalla finestra un giorno di pioggia, o annaffiando insieme una pianta.
+
 ## Errori comuni
 
 - Far sentire il bambino responsabile della siccità o dei problemi del pianeta.

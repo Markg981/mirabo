@@ -1014,4 +1014,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get translationDraft => 'Traducción en revisión';
+
+  @override
+  String get lessonNaming => 'Esto es';
+
+  @override
+  String get lessonShow => '¿Dónde está?';
+
+  @override
+  String get lessonTell => '¿Cómo se llama?';
 }

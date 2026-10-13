@@ -25,7 +25,7 @@ enum AgeBand {
   }
 }
 
-enum ScreenKind { hook, situation, dialogue, turn, closing }
+enum ScreenKind { hook, situation, dialogue, lesson, turn, closing }
 
 enum CompanionId { bo, pilu, tango }
 
@@ -182,6 +182,58 @@ class StoryAudio {
       );
 }
 
+/// Una figura della lezione in tre tempi: cosa si vede, come si chiama e le
+/// due frasi fisse del primo e del secondo tempo.
+class LessonItem {
+  const LessonItem({required this.id, required this.emoji, required this.name, required this.naming, required this.show});
+
+  final String id;
+  final String emoji;
+
+  /// Il nome da solo, come lo dice il bambino nel terzo tempo.
+  final String name;
+
+  /// Primo tempo: "Questa è la luna."
+  final String naming;
+
+  /// Secondo tempo: "Dov'è la luna?"
+  final String show;
+
+  factory LessonItem.fromJson(Map<String, dynamic> j) => LessonItem(
+        id: j['id'] as String,
+        emoji: j['e'] as String,
+        name: j['name'] as String,
+        naming: j['this'] as String,
+        show: j['show'] as String,
+      );
+}
+
+/// Lezione in tre tempi (Montessori), solo in fascia 3–5: si nomina, si
+/// riconosce, si ricorda. Le frasi sono le stesse per i tre compagni: in
+/// questa lezione le parole devono essere poche e sempre uguali.
+class Lesson {
+  const Lesson({required this.together, required this.items, required this.ask, required this.done});
+
+  /// Guida per il genitore in modalità insieme.
+  final String together;
+  final List<LessonItem> items;
+
+  /// Terzo tempo: la domanda davanti a una figura ("E questa, cos'è?").
+  final String ask;
+
+  /// Detta alla fine, con tutte le figure di nuovo in vista.
+  final String done;
+
+  LessonItem item(String id) => items.firstWhere((i) => i.id == id);
+
+  factory Lesson.fromJson(Map<String, dynamic> j) => Lesson(
+        together: j['together'] as String,
+        items: (j['items'] as List).map((i) => LessonItem.fromJson(i as Map<String, dynamic>)).toList(),
+        ask: j['ask'] as String,
+        done: j['done'] as String,
+      );
+}
+
 class StoryScreen {
   const StoryScreen({
     required this.n,
@@ -191,6 +243,7 @@ class StoryScreen {
     this.audio,
     this.companionLines,
     this.dialogue,
+    this.lesson,
     this.isKeyPhrase = false,
   });
 
@@ -201,6 +254,7 @@ class StoryScreen {
   final StoryAudio? audio;
   final CompanionLines? companionLines;
   final Dialogue? dialogue;
+  final Lesson? lesson;
   final bool isKeyPhrase;
 
   factory StoryScreen.fromJson(Map<String, dynamic> j) => StoryScreen(
@@ -212,6 +266,7 @@ class StoryScreen {
         companionLines:
             j['companionLines'] == null ? null : CompanionLines.fromJson(j['companionLines'] as Map<String, dynamic>),
         dialogue: j['dialogue'] == null ? null : Dialogue.fromJson(j['dialogue'] as Map<String, dynamic>),
+        lesson: j['lesson'] == null ? null : Lesson.fromJson(j['lesson'] as Map<String, dynamic>),
         isKeyPhrase: (j['keyPhrase'] as bool?) ?? false,
       );
 }

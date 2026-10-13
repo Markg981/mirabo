@@ -1,0 +1,144 @@
+{
+  "ageBand": "3-5",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno sul sentiero del bosco, accanto a un sassolino grigio e a un fiore.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.4, "y": 0.68, "s": 0.48},
+            {"paint": "pebble", "x": 0.64, "y": 0.84, "s": 0.08},
+            {"e": "🌼", "x": 0.16, "y": 0.86, "s": 0.08}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! Nel bosco c'è una vocina. Ascoltiamo piano?",
+        "pilu": "Ciao {nome}! Senti? Nel bosco qualcuno parla piano piano.",
+        "tango": "Ciao {nome}! Corriamo nel bosco! ...Aspetta. Prima ascoltiamo."
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma, due codini scompigliati, cappottino giallo e stivaletti rossi, entra nel bosco con il cestino; la nonna è seduta su un tronco all'ingresso.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.34, "y": 0.74, "s": 0.34},
+            {"e": "🧺", "x": 0.46, "y": 0.84, "s": 0.12},
+            {"e": "🪵", "x": 0.82, "y": 0.8, "s": 0.16},
+            {"e": "👵", "x": 0.82, "y": 0.64, "s": 0.26, "flip": true}
+          ]
+        }
+      },
+      "text": "Emma ha due codini, gli stivali rossi e un cappottino giallo. Va nel bosco. La nonna dice: \"Io sto qui.\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Al ruscello Emma tiene in mano un sassolino grigio, tondo e liscio, che sembra sorridere; l'acqua fa piccoli spruzzi.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.3, "y": 0.8, "s": 0.32},
+            {"paint": "pebble", "x": 0.42, "y": 0.62, "s": 0.08},
+            {"e": "💦", "x": 0.6, "y": 0.6, "s": 0.07}
+          ]
+        }
+      },
+      "text": "Al ruscello Emma lancia i sassolini: plin, plon, plin. Poi ne trova uno tondo e liscio. \"Ehi! Non lanciarmi!\" dice una vocina.",
+      "companionLines": {
+        "bo": "Una vocina! Ho un po' paura. Tu la senti?",
+        "pilu": "Hai sentito? Emma si ferma e ascolta.",
+        "tango": "Chi ha parlato? Guardiamo, subito! ...Aspetta. Ascoltiamo."
+      }
+    },
+    {
+      "n": 4,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma seduta sull'erba vicino al ruscello, con Pietrolino sul palmo della mano; due uccellini sui rami.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.8, "s": 0.3},
+            {"paint": "pebble", "x": 0.52, "y": 0.68, "s": 0.08},
+            {"e": "🐦", "x": 0.2, "y": 0.3, "s": 0.08},
+            {"e": "🐦", "x": 0.78, "y": 0.28, "s": 0.07, "flip": true}
+          ]
+        }
+      },
+      "text": "\"Sono Pietrolino,\" dice il sassolino. \"Parlo con chi si ferma ad ascoltare.\" Emma si siede sull'erba."
+    },
+    {
+      "n": 5,
+      "kind": "lesson",
+      "illustration": {
+        "alt": "Tre figure in fila: una goccia d'acqua per il ruscello, un uccellino, delle foglie secche. Emma, accanto, ascolta con gli occhi chiusi."
+      },
+      "text": "Emma chiude gli occhi. Il bosco ha tante voci.",
+      "companionLines": {
+        "bo": "Ascoltiamo anche noi. Una voce alla volta.",
+        "pilu": "Senti come parla il bosco? Una voce alla volta.",
+        "tango": "Tante voci! ...Aspetta. Una alla volta."
+      },
+      "lesson": {
+        "together": "Indica una figura alla volta e di' solo: \"Questo è il ruscello: plin, plon\". Poi chiedi: \"Dov'è l'uccellino?\". Alla fine indicane una e chiedi: \"Come si chiama?\". Se tocca un'altra figura, dille il nome di quella e basta.",
+        "items": [
+          {
+            "id": "ruscello",
+            "e": "💧",
+            "name": "il ruscello",
+            "this": "Questo è il ruscello: plin, plon.",
+            "show": "Dov'è il ruscello?"
+          },
+          {
+            "id": "uccellino",
+            "e": "🐦",
+            "name": "l'uccellino",
+            "this": "Questo è l'uccellino: cip, cip.",
+            "show": "Dov'è l'uccellino?"
+          },
+          {
+            "id": "foglie",
+            "e": "🍂",
+            "name": "le foglie",
+            "this": "Queste sono le foglie: fru, fru.",
+            "show": "Dove sono le foglie?"
+          }
+        ],
+        "ask": "E questo, come si chiama?",
+        "done": "Il ruscello, l'uccellino, le foglie. Il bosco parla piano."
+      }
+    },
+    {
+      "n": 6,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma torna dalla nonna sul sentiero, con il cestino; dal taschino del cappotto spunta Pietrolino.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.42, "y": 0.78, "s": 0.28},
+            {"paint": "pebble", "x": 0.47, "y": 0.72, "s": 0.05},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🧺", "x": 0.32, "y": 0.86, "s": 0.1}
+          ]
+        }
+      },
+      "text": "Emma mette Pietrolino nel taschino e torna dalla nonna. Dal taschino, una vocina: \"Anche un sassolino piccolo fa cerchi grandi.\"",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Domani ascolto il bosco con te, {nome}. A domani.",
+        "pilu": "Domani chiudo gli occhi e ascolto, {nome}. A domani.",
+        "tango": "Domani mi fermo un minuto e ascolto, {nome}. A domani!"
+      }
+    }
+  ]
+}

@@ -1009,4 +1009,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get translationDraft => 'Translation under review';
+
+  @override
+  String get lessonNaming => 'This is';
+
+  @override
+  String get lessonShow => 'Where is it?';
+
+  @override
+  String get lessonTell => 'What is it called?';
 }

@@ -1,0 +1,86 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion under an open umbrella, as the first raindrops fall."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! It's raining. Will you come under the umbrella with me?",
+        "pilu": "Hi {nome}! Can you hear the rain on the window? Tap, tap.",
+        "tango": "Hi {nome}! It's raining! Outside, now! ...Wait. Wellies."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, with two messy bunches, a yellow coat and red wellies, watches the rain from the window; Grandma holds the umbrella; Pietrolino is on the windowsill."
+      },
+      "text": "It's raining. The drops tap on the window: tap, tap. Emma puts on her red wellies. Grandma takes the umbrella."
+    },
+    {
+      "illustration": {
+        "alt": "In the wood the water runs away in a little stream; one drop jumps out towards a flower. Emma watches, Grandma is close by with the umbrella."
+      },
+      "text": "In the wood the water runs away. But one drop jumps! \"Hi! I'm Drop. I want to give the flowers a drink!\"",
+      "companionLines": {
+        "bo": "A drop that talks! Careful, I'll get wet.",
+        "pilu": "Did you see? Drop is jumping towards the flowers.",
+        "tango": "It jumps like me! ...Wait. Where is it going?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Three pictures in a row: a cloud, a drop, a flower. Emma and Grandma look at them under the umbrella."
+      },
+      "text": "Drop goes on a long journey. Emma watches it with Grandma.",
+      "companionLines": {
+        "bo": "Let's look at Drop's journey, slowly.",
+        "pilu": "Look carefully: one picture at a time.",
+        "tango": "Three pictures! Come on! ...Wait. One at a time."
+      },
+      "lesson": {
+        "together": "Point to one picture at a time and just say: \"This is the cloud\". Then ask: \"Where is the drop?\". At the end, point to one and ask: \"What is it called?\". If they touch a different picture, tell them that one's name, nothing more.",
+        "items": [
+          {
+            "name": "the cloud",
+            "this": "This is the cloud.",
+            "show": "Where is the cloud?"
+          },
+          {
+            "name": "the drop",
+            "this": "This is the drop.",
+            "show": "Where is the drop?"
+          },
+          {
+            "name": "the flower",
+            "this": "This is the flower.",
+            "show": "Where is the flower?"
+          }
+        ],
+        "ask": "And this one, what is it called?",
+        "done": "The cloud, the drop, the flower. That's Drop's journey."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "A drop jumps onto a flower, then rises up, smaller and smaller, all the way to a cloud. Emma looks up."
+      },
+      "text": "Plop! Drop jumps onto a flower. The flower drinks. Then Drop goes up, up, all the way to the cloud.",
+      "companionLines": {
+        "bo": "Drop is flying up! Will it come back with the rain?",
+        "pilu": "Look: Drop goes all the way up to the cloud.",
+        "tango": "Up, up, up! Faster than me!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "On the balcony at home Emma and Grandma put a bowl out in the rain, next to a plant."
+      },
+      "text": "At home, Emma and Grandma put a bowl on the balcony. \"This one's for the rain,\" says Emma.",
+      "companionLines": {
+        "bo": "Tonight I'll turn off the tap, {nome}. See you tomorrow.",
+        "pilu": "Tomorrow I'll see if the bowl is full, {nome}. See you tomorrow.",
+        "tango": "Tonight I'll turn off the tap, quick, {nome}! See you tomorrow!"
+      }
+    }
+  ]
+}

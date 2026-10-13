@@ -1,0 +1,92 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero sentado en un cojín junto a un libro abierto con un volcán dibujado en la portada."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Hay un volcán. ¿Me das la mano?",
+        "pilu": "¡Hola, {nome}! ¿Has visto? Lia ha hecho una torre altísima.",
+        "tango": "¡Hola, {nome}! ¡Venga, miremos ya! ...Espera. Primero nos sentamos."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia mira orgullosa una torre de bloques de colores con una banderita arriba."
+      },
+      "text": "Lia hace una torre alta, alta. Un bloque rojo, uno azul, uno amarillo. Arriba, la banderita."
+    },
+    {
+      "illustration": {
+        "alt": "Teo, el hermanito pequeño, toca el bloque de abajo; la torre se cae y los bloques vuelan por el suelo."
+      },
+      "text": "Llega Teo, el hermanito pequeño. Toca el bloque de abajo. ¡CRASH! Se cae toda la torre."
+    },
+    {
+      "illustration": {
+        "alt": "Lia con la cara roja y los puños cerrados; detrás de ella, transparente, un volcán que echa humo."
+      },
+      "text": "Lia siente algo caliente en la barriga. Las manos se cierran solas. La cara se pone roja. Lia está enfadada.",
+      "companionLines": {
+        "bo": "Yo lo siento en las orejas. ¿Tú dónde lo sientes?",
+        "pilu": "Mira las manos de Lia. Están muy cerradas.",
+        "tango": "¡Lo conozco! ¡Las patas se cierran así!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "En la mesa, tres caras dibujadas en cartulinas: una enfadada, una triste, una contenta. La abuela y Lia están sentadas juntas."
+      },
+      "text": "La abuela se sienta junto a Lia. Dibuja tres caras en tres cartulinas.",
+      "companionLines": {
+        "bo": "Miremos las caras juntos, despacito.",
+        "pilu": "Una cara cada vez. Mira bien.",
+        "tango": "¡Tres caras! ¡Venga! ...Espera. Una cada vez."
+      },
+      "lesson": {
+        "together": "Señala una cara cada vez y di solo: \"Esta cara está enfadada\". Luego pregunta: \"¿Dónde está la cara triste?\". Al final señala una y pregunta: \"¿Cómo está esta cara?\". Si toca otra cara, dile el nombre de esa y nada más.",
+        "items": [
+          {
+            "name": "enfadada",
+            "this": "Esta cara está enfadada.",
+            "show": "¿Dónde está la cara enfadada?"
+          },
+          {
+            "name": "triste",
+            "this": "Esta cara está triste.",
+            "show": "¿Dónde está la cara triste?"
+          },
+          {
+            "name": "contenta",
+            "this": "Esta cara está contenta.",
+            "show": "¿Dónde está la cara contenta?"
+          }
+        ],
+        "ask": "Y esta cara, ¿cómo está?",
+        "done": "Enfadada, triste, contenta. Todas las caras se pueden tener."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia y la abuela con las manos en la barriga; encima de ellas el volcán se vuelve naranja y la lava baja despacio."
+      },
+      "text": "La abuela dice: \"Uno se puede enfadar. Hagamos la respiración del volcán.\" Manos en la barriga. Dentro: uno, dos, tres. Fuera: ssssh.",
+      "companionLines": {
+        "bo": "Hagámoslo nosotros también. Dentro, uno, dos, tres. Fuera, ssssh.",
+        "pilu": "Manos en la barriga. ¿Sientes cómo sube y baja?",
+        "tango": "¡Dentro, uno, dos, tres! Fuera... ssssh. Despacio, despacio."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia y Teo construyen juntos una torre baja y ancha; al fondo el volcán es verde, con una flor arriba."
+      },
+      "text": "El volcán baja despacito. Lia y Teo hacen una torre nueva, ancha, ancha.",
+      "companionLines": {
+        "bo": "Mi volcán ahora está tranquilo, {nome}. ¡Hasta mañana!",
+        "pilu": "Esta noche pruebo la respiración del volcán, {nome}. Hasta mañana.",
+        "tango": "Mañana respiro antes de correr, {nome}. ¡Hasta mañana!"
+      }
+    }
+  ]
+}

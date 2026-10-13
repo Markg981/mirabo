@@ -1489,6 +1489,24 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Traduzione in revisione'**
   String get translationDraft;
+
+  /// No description provided for @lessonNaming.
+  ///
+  /// In it, this message translates to:
+  /// **'Questo è'**
+  String get lessonNaming;
+
+  /// No description provided for @lessonShow.
+  ///
+  /// In it, this message translates to:
+  /// **'Dov\'è?'**
+  String get lessonShow;
+
+  /// No description provided for @lessonTell.
+  ///
+  /// In it, this message translates to:
+  /// **'Come si chiama?'**
+  String get lessonTell;
 }
 
 class _AppLocalizationsDelegate

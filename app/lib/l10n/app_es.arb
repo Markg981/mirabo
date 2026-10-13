@@ -251,5 +251,9 @@
   "profileMissingName": "Falta el nombre",
   "profileMissingCompanion": "Falta el compañero",
   "profileStart": "Empezamos",
-  "translationDraft": "Traducción en revisión"
+  "translationDraft": "Traducción en revisión",
+
+  "lessonNaming": "Esto es",
+  "lessonShow": "¿Dónde está?",
+  "lessonTell": "¿Cómo se llama?"
 }

@@ -1,0 +1,86 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon sous un parapluie ouvert, pendant que tombent les premières gouttes de pluie."
+      },
+      "companionLines": {
+        "bo": "Coucou {nome} ! Il pleut. Tu viens sous le parapluie avec moi ?",
+        "pilu": "Coucou {nome} ! Tu entends la pluie sur la vitre ? Tic, tic.",
+        "tango": "Coucou {nome} ! Il pleut ! Dehors, tout de suite ! ...Attends. Les bottes."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, deux couettes en bataille, petit manteau jaune et bottes rouges, regarde la pluie par la fenêtre ; Mamie tient le parapluie ; Pietrolino est sur le rebord."
+      },
+      "text": "Il pleut. Les gouttes tapent sur la vitre : tic, tic. Emma met ses bottes rouges. Mamie prend le parapluie."
+    },
+    {
+      "illustration": {
+        "alt": "Dans le bois, l'eau s'en va dans une rigole ; une goutte saute vers une fleur. Emma la regarde, Mamie est tout près avec le parapluie."
+      },
+      "text": "Dans le bois, l'eau s'en va en courant. Mais une goutte saute ! « Coucou ! Je suis Goutte. Je veux donner à boire aux fleurs ! »",
+      "companionLines": {
+        "bo": "Une goutte qui parle ! Doucement, je vais être mouillé.",
+        "pilu": "Tu as vu ? Goutte saute vers les fleurs.",
+        "tango": "Elle saute comme moi ! ...Attends. Où va-t-elle ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Trois images en ligne : un nuage, une goutte, une fleur. Emma et Mamie les regardent sous le parapluie."
+      },
+      "text": "Goutte fait un long voyage. Emma le regarde avec Mamie.",
+      "companionLines": {
+        "bo": "On regarde le voyage de Goutte, doucement.",
+        "pilu": "Regarde bien : une image à la fois.",
+        "tango": "Trois images ! Allez ! ...Attends. Une à la fois."
+      },
+      "lesson": {
+        "together": "Montre une image à la fois et dis seulement : « Voici le nuage ». Puis demande : « Où est la goutte ? ». À la fin, montres-en une et demande : « Comment ça s'appelle ? ». S'il touche une autre image, dis-lui le nom de celle-là, c'est tout.",
+        "items": [
+          {
+            "name": "le nuage",
+            "this": "Voici le nuage.",
+            "show": "Où est le nuage ?"
+          },
+          {
+            "name": "la goutte",
+            "this": "Voici la goutte.",
+            "show": "Où est la goutte ?"
+          },
+          {
+            "name": "la fleur",
+            "this": "Voici la fleur.",
+            "show": "Où est la fleur ?"
+          }
+        ],
+        "ask": "Et ça, comment ça s'appelle ?",
+        "done": "Le nuage, la goutte, la fleur. C'est le voyage de Goutte."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Une goutte saute sur une fleur, puis monte, de plus en plus petite, jusqu'à un nuage. Emma lève les yeux."
+      },
+      "text": "Plop ! Goutte saute sur une fleur. La fleur boit. Puis Goutte monte, monte, jusqu'au nuage.",
+      "companionLines": {
+        "bo": "Goutte s'envole ! Elle reviendra avec la pluie ?",
+        "pilu": "Regarde : Goutte monte jusqu'au nuage.",
+        "tango": "Haut, haut, haut ! Plus vite que moi !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Sur le balcon de la maison, Emma et Mamie posent un bol sous la pluie, à côté d'une plante."
+      },
+      "text": "À la maison, Emma et Mamie posent un bol sur le balcon. « Celui-là, c'est pour la pluie », dit Emma.",
+      "companionLines": {
+        "bo": "Ce soir, je ferme le robinet, {nome}. À demain.",
+        "pilu": "Demain, je regarde si le bol est plein, {nome}. À demain.",
+        "tango": "Ce soir, je ferme le robinet, vite, {nome} ! À demain !"
+      }
+    }
+  ]
+}
