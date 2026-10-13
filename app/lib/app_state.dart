@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'content/story_repository.dart';
+import 'data/cloud_backup.dart';
 import 'data/local_db.dart';
 import 'models/activity.dart';
 import 'models/profile.dart';
@@ -9,10 +10,14 @@ import 'models/story.dart';
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
 /// Volutamente semplice (ChangeNotifier) finché non serve di più.
 class AppState extends ChangeNotifier {
-  AppState({required this.db, required this.repo});
+  AppState({required this.db, required this.repo, CloudBackup? backup})
+      : backup = backup ?? CloudBackup(db: db);
 
   final LocalDb db;
   final StoryRepository repo;
+
+  /// Backup opt-in su Drive: spento finché il genitore non lo attiva.
+  final CloudBackup backup;
 
   List<ChildProfile> profiles = const [];
   ChildProfile? currentProfile;
@@ -25,11 +30,15 @@ class AppState extends ChangeNotifier {
 
   Future<void> init() async {
     profiles = await db.profiles();
-    if (profiles.isNotEmpty) {
-      currentProfile = profiles.first;
-      mode = currentProfile!.lastMode;
-    }
+    currentProfile = profiles.isEmpty ? null : profiles.first;
+    if (currentProfile != null) mode = currentProfile!.lastMode;
     notifyListeners();
+  }
+
+  /// Dopo un ripristino da Drive: ricarica tutto e ripropone "Chi gioca oggi?".
+  Future<void> reloadAfterRestore() async {
+    _childChosen = false;
+    await init();
   }
 
   /// Il bambino tocca il suo compagno nella schermata di scelta.
@@ -119,8 +128,11 @@ class AppState extends ChangeNotifier {
     if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
   }
 
+  /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così
+  /// resta ripristinabile e un tablet vuoto non lo sovrascrive.
   Future<void> wipeAll() async {
     await db.wipe();
+    await backup.forget();
     profiles = const [];
     currentProfile = null;
     notifyListeners();

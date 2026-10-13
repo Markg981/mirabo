@@ -8,6 +8,7 @@ import '../../models/story.dart';
 import '../child/companion_widget.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
+import 'backup_section.dart';
 
 /// Creazione o modifica di un profilo bambino. Lo compila il genitore.
 /// Al primo avvio è l'unica schermata; il compagno si sceglie una volta sola.
@@ -90,7 +91,17 @@ class _ProfileFormState extends State<ProfileForm> {
               children: [
                 if (widget.firstRun) ...[
                   _WelcomeHeader(title: title),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 8),
+                  // Tablet nuovo o app reinstallata: si riparte dal backup su Drive.
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton.icon(
+                      icon: const Icon(Icons.settings_backup_restore_rounded),
+                      label: Text(l.profileRestoreLink),
+                      onPressed: () => restoreFromDrive(context),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
                 ],
                 FormSection(
                   icon: Icons.child_care_rounded,
