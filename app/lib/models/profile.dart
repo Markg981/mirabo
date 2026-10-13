@@ -21,6 +21,7 @@ class ChildProfile {
     this.gesturesDone = 0,
     this.stageFloor = 0,
     this.language = 'it',
+    this.shelf,
   });
 
   final int id;
@@ -53,6 +54,10 @@ class ChildProfile {
   /// Codice della lingua del bambino (it, en, es, fr, de): interfaccia lato
   /// bambino, contenuti e voce del compagno.
   final String language;
+
+  /// Chiavi dei materiali che il genitore ha messo sulla mensola
+  /// (vedi models/shelf.dart); null finché la mensola si riempie da sola.
+  final List<String>? shelf;
 
   /// Gesti necessari per ogni stadio del compagno (1, 2, 3).
   static const stageThresholds = [3, 6, 12];
@@ -112,6 +117,26 @@ class ChildProfile {
         gesturesDone: gesturesDone ?? this.gesturesDone,
         stageFloor: stageFloor,
         language: language ?? this.language,
+        shelf: shelf,
+      );
+
+  /// La mensola scelta dal genitore; null torna alla scelta automatica.
+  ChildProfile withShelf(List<String>? keys) => ChildProfile(
+        id: id,
+        name: name,
+        ageBand: ageBand,
+        companion: companion,
+        enabledWorlds: enabledWorlds,
+        safetyTogetherOnly: safetyTogetherOnly,
+        lastMode: lastMode,
+        dyslexiaFont: dyslexiaFont,
+        lowStimulation: lowStimulation,
+        aloneSessionMinutes: aloneSessionMinutes,
+        storiesCompleted: storiesCompleted,
+        gesturesDone: gesturesDone,
+        stageFloor: stageFloor,
+        language: language,
+        shelf: keys == null ? null : List.unmodifiable(keys),
       );
 
   Map<String, Object?> toRow() => {
@@ -130,6 +155,7 @@ class ChildProfile {
         'gestures_done': gesturesDone,
         'stage_floor': stageFloor,
         'language': language,
+        'shelf': shelf?.join(','),
       };
 
   factory ChildProfile.fromRow(Map<String, Object?> r) => ChildProfile(
@@ -148,6 +174,7 @@ class ChildProfile {
         gesturesDone: r['gestures_done'] as int? ?? 0,
         stageFloor: r['stage_floor'] as int? ?? 0,
         language: r['language'] as String? ?? 'it',
+        shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
       );
 }
 

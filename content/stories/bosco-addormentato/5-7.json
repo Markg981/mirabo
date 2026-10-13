@@ -142,7 +142,7 @@
     },
     {
       "n": 6,
-      "kind": "turn",
+      "kind": "gesture",
       "illustration": {
         "alt": "Emma con gli occhi chiusi seduta sulla neve appena caduta; il primo fiocco di neve scende dal cielo.",
         "scene": {
@@ -154,7 +154,22 @@
           ]
         }
       },
-      "text": "Emma chiude gli occhi. Sente il vento tra le foglie. Sente il bosco che respira piano. Quando li riapre, un fiocco di neve scende dal cielo. \"Nevica!\" \"È il cuscino del bosco,\" dice Pietrolino. \"Adesso può sognare davvero.\""
+      "text": "Emma chiude gli occhi. Sente il vento tra le foglie. Sente il bosco che respira piano. Quando li riapre, un fiocco di neve scende dal cielo. \"Nevica!\" \"È il cuscino del bosco,\" dice Pietrolino. \"Adesso può sognare davvero.\"",
+      "companionLines": {
+        "bo": "Chiudiamo gli occhi anche noi, {nome}. Tre respiri lenti, come il bosco che si addormenta.",
+        "pilu": "Facciamo come Emma, {nome}: occhi chiusi e tre respiri lenti. Lo senti il bosco?",
+        "tango": "Occhi chiusi, {nome}! E tre respiri... lenti. Lenti! Per una volpe non è facile."
+      },
+      "gesture": {
+        "e": "🍂",
+        "seconds": 20,
+        "together": "Chiudete gli occhi e fate insieme tre respiri lenti, come il bosco che si addormenta. Poi riaprite gli occhi piano.",
+        "back": {
+          "bo": "Che pace, {nome}. Mi viene quasi sonno.",
+          "pilu": "Anche il bosco respira così, {nome}. Piano piano.",
+          "tango": "Tre respiri! Lentissimi! Adesso vediamo Emma, {nome}."
+        }
+      }
     },
     {
       "n": 7,

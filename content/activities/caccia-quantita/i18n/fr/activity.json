@@ -1,0 +1,49 @@
+{
+  "title": "Chasse aux quantités",
+  "offscreen": "En mettant la table, demandez : « Tu apportes trois cuillères ? ». Comptez ensemble en touchant chaque chose une seule fois.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Un livre",
+          "say": "Cherche un livre et apporte-le ici. Un seul."
+        },
+        {
+          "label": "Deux cuillères",
+          "say": "Maintenant deux cuillères. Compte-les en les prenant."
+        },
+        {
+          "label": "Trois chaussettes",
+          "say": "Et maintenant trois chaussettes. Un, deux, trois."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Quatre chaussettes",
+          "say": "Cherche quatre chaussettes. Compte-les en les touchant."
+        },
+        {
+          "label": "Deux chaussures qui vont ensemble",
+          "say": "Maintenant deux chaussures qui font la paire."
+        },
+        {
+          "label": "Cinq jouets",
+          "say": "Et cinq jouets. Mets-les en ligne et compte-les."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}

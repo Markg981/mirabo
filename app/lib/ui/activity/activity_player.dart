@@ -13,6 +13,7 @@ import 'types/checklist_round.dart';
 import 'types/count_round.dart';
 import 'types/countdown_round.dart';
 import 'types/explore_round.dart';
+import 'types/hunt_round.dart';
 import 'types/pairs_round.dart';
 import 'types/pattern_round.dart';
 import 'types/presentation_round.dart';
@@ -179,6 +180,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       ActivityType.presentation => PresentationRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.pairs => PairsRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.spell => SpellRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
+      ActivityType.hunt => HuntRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
     };
   }
 }

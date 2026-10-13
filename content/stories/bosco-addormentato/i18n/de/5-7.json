@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "Emma sitzt mit geschlossenen Augen auf frisch gefallenem Schnee; die erste Schneeflocke fällt vom Himmel."
       },
-      "text": "Emma schließt die Augen. Sie hört den Wind in den Blättern. Sie hört den Wald langsam atmen. Als sie die Augen wieder öffnet, fällt eine Schneeflocke vom Himmel. „Es schneit!“ „Das ist das Kopfkissen des Waldes“, sagt Pietrolino. „Jetzt kann er richtig träumen.“"
+      "text": "Emma schließt die Augen. Sie hört den Wind in den Blättern. Sie hört den Wald langsam atmen. Als sie die Augen wieder öffnet, fällt eine Schneeflocke vom Himmel. „Es schneit!“ „Das ist das Kopfkissen des Waldes“, sagt Pietrolino. „Jetzt kann er richtig träumen.“",
+      "companionLines": {
+        "bo": "Machen wir auch die Augen zu, {nome}. Drei langsame Atemzüge, wie der Wald, der einschläft.",
+        "pilu": "Machen wir es wie Emma, {nome}: Augen zu und drei langsame Atemzüge. Spürst du den Wald?",
+        "tango": "Augen zu, {nome}! Und drei Atemzüge... langsame. Langsam! Für einen Fuchs ist das nicht leicht."
+      },
+      "gesture": {
+        "together": "Schließt die Augen und atmet zusammen dreimal langsam, wie der Wald, der einschläft. Dann öffnet die Augen ganz langsam.",
+        "back": {
+          "bo": "Wie ruhig, {nome}. Ich werde fast müde.",
+          "pilu": "Der Wald atmet auch so, {nome}. Ganz langsam.",
+          "tango": "Drei Atemzüge! Superlangsam! Jetzt schauen wir zu Emma, {nome}."
+        }
+      }
     },
     {
       "illustration": {

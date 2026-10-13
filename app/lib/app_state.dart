@@ -4,10 +4,12 @@ import 'audio/name_voice.dart';
 import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
 import 'data/local_db.dart';
+import 'games/game.dart';
 import 'models/activity.dart';
 import 'models/made_story.dart';
 import 'models/nature_day.dart';
 import 'models/profile.dart';
+import 'models/shelf.dart';
 import 'models/story.dart';
 
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
@@ -67,11 +69,29 @@ class AppState extends ChangeNotifier {
   /// Il compagno, le storie e le attività arrivano nella lingua del bambino.
   Companion companionOf(ChildProfile p) => repo.companionsIn(p.language).firstWhere((c) => c.id == p.companion);
 
-  List<Story> storiesFor(ChildProfile p) => repo.storiesIn(p.language).where((s) => p.canOpen(s, mode)).toList();
+  List<Story> storiesFor(ChildProfile p, {SessionMode? mode}) =>
+      repo.storiesIn(p.language).where((s) => p.canOpen(s, mode ?? this.mode)).toList();
 
   List<Activity> activitiesFor(ChildProfile p, {ActivityModule? module}) => repo.activitiesIn(p.language)
       .where((a) => a.supports(p.ageBand) && (module == null || a.module == module))
       .toList();
+
+  /// Tutto quello che potrebbe stare sulla mensola di questo bambino: storie,
+  /// attività e giochi della sua fascia, nella sua lingua, più fabbrica di
+  /// storie e calendario della natura. Con [mode] null vale la modalità
+  /// della sessione.
+  List<ShelfItem> shelfCandidates(ChildProfile p, {SessionMode? mode}) => [
+        for (final s in storiesFor(p, mode: mode)) StoryItem(s),
+        for (final a in activitiesFor(p)) ActivityItem(a),
+        for (final g in gamesFor(p.ageBand)) GameItem(g),
+        for (final t in MakeTool.values) MakeItem(t),
+      ];
+
+  /// La mensola che il bambino vede adesso, capacità per capacità.
+  Map<Capacity, List<ShelfItem>> shelfFor(ChildProfile p) => Shelf.arrange(shelfCandidates(p), p.shelf);
+
+  /// Il genitore cambia la mensola; null la lascia riempire da sola.
+  Future<void> setShelf(ChildProfile p, List<String>? keys) => updateProfile(p.withShelf(keys));
 
   /// Chiude una sessione di attività: salva i round e applica l'adattività.
   /// Il compagno non cresce: cresce solo con i gesti fatti davvero.

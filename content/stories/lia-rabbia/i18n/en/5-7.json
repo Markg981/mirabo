@@ -96,6 +96,14 @@
         "bo": "Let's do it too, {nome}. Hands on your tummy. In... one, two, three. Out... ssssh. I feel better already.",
         "pilu": "Let's try it together, {nome}: hands on your tummy, in one two three, out sssssh. It works with wings too, you know.",
         "tango": "Come on {nome}, let's do it! Hands on your tummy. In one, two, three. Out ssssh. Oh. It's harder than running."
+      },
+      "gesture": {
+        "together": "Do it together, sitting or standing: hands on your tummies, breathe in counting to three, breathe out blowing gently. Three times, no rush.",
+        "back": {
+          "bo": "Here we are, {nome}. My volcano is teeny tiny now.",
+          "pilu": "Can you feel how slow your tummy is now, {nome}? Let's go back to Lia.",
+          "tango": "Done. I mean... done slowly! My volcano is asleep. Let's go to Lia, {nome}."
+        }
       }
     },
     {

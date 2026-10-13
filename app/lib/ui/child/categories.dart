@@ -1,54 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../../l10n/l10n.dart';
-import '../../models/activity.dart';
+import '../../models/shelf.dart';
 import '../design/palette.dart';
 
-enum CategoryKind { stories, games, make, area }
-
-/// Una voce della barra in basso: le storie, i giochi, "Creo e scopro"
-/// (fabbrica di storie e calendario della natura) o un'area di attività.
+/// Come si presenta una capacità nella barra in basso e sulla mensola.
 /// Il bambino la riconosce dall'emoji e dal colore, non dal nome.
-@immutable
-class ChildCategory {
-  const ChildCategory._(this.kind, this.emoji, this.color, [this.area]);
-
-  final CategoryKind kind;
-  final String emoji;
-  final Color color;
-  final ActivityArea? area;
-
-  static const stories = ChildCategory._(CategoryKind.stories, '📚', MiraboColors.rose);
-  static const games = ChildCategory._(CategoryKind.games, '🎈', MiraboColors.apricot);
-  static const make = ChildCategory._(CategoryKind.make, '🌻', MiraboColors.teal);
-
-  static ChildCategory forArea(ActivityArea a) => ChildCategory._(CategoryKind.area, _areaEmoji[a]!, areaColor(a), a);
-
-  String label(AppLocalizations l) => switch (kind) {
-        CategoryKind.stories => l.catStories,
-        CategoryKind.games => l.catGames,
-        CategoryKind.make => l.catMake,
-        CategoryKind.area => l.areaLabel(area!.name),
+extension CapacityStyle on Capacity {
+  String get emoji => switch (this) {
+        Capacity.insieme => '🤝',
+        Capacity.mani => '🧺',
+        Capacity.sensi => '🖐️',
+        Capacity.parole => '✏️',
+        Capacity.pensare => '🔢',
+        Capacity.mondo => '🌍',
       };
 
-  static const _areaEmoji = {
-    ActivityArea.cognitivo: '🧠',
-    ActivityArea.autonomia: '👟',
-    ActivityArea.sociale: '🤝',
-    ActivityArea.paure: '🏫',
-    ActivityArea.vitaPratica: '🧺',
-    ActivityArea.sensoriale: '🖐️',
-    ActivityArea.linguaggio: '✏️',
-    ActivityArea.matematica: '🔢',
-    ActivityArea.cultura: '🌍',
-  };
+  Color get color => switch (this) {
+        Capacity.insieme => MiraboColors.rose,
+        Capacity.mani => MiraboColors.leaf,
+        Capacity.sensi => MiraboColors.plum,
+        Capacity.parole => MiraboColors.indigo,
+        Capacity.pensare => MiraboColors.apricot,
+        Capacity.mondo => MiraboColors.cyan,
+      };
 
-  /// Storie, giochi, creo e scopro, poi le aree nell'ordine del modello (scuola, poi Montessori).
-  static List<ChildCategory> all() => [stories, games, make, for (final a in ActivityArea.values) forArea(a)];
-
-  @override
-  bool operator ==(Object other) => other is ChildCategory && other.kind == kind && other.area == area;
-
-  @override
-  int get hashCode => Object.hash(kind, area);
+  String label(AppLocalizations l) => l.capacityLabel(name);
 }

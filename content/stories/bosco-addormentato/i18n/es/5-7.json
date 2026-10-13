@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "Emma con los ojos cerrados, sentada en la nieve recién caída; el primer copo de nieve baja del cielo."
       },
-      "text": "Emma cierra los ojos. Oye el viento entre las hojas. Oye el bosque que respira despacio. Cuando los vuelve a abrir, un copo de nieve baja del cielo. \"¡Nieva!\" \"Es la almohada del bosque\", dice Pietrolino. \"Ahora puede soñar de verdad.\""
+      "text": "Emma cierra los ojos. Oye el viento entre las hojas. Oye el bosque que respira despacio. Cuando los vuelve a abrir, un copo de nieve baja del cielo. \"¡Nieva!\" \"Es la almohada del bosque\", dice Pietrolino. \"Ahora puede soñar de verdad.\"",
+      "companionLines": {
+        "bo": "Cerremos los ojos también nosotros, {nome}. Tres respiraciones lentas, como el bosque que se duerme.",
+        "pilu": "Hagamos como Emma, {nome}: ojos cerrados y tres respiraciones lentas. ¿Notas el bosque?",
+        "tango": "¡Ojos cerrados, {nome}! Y tres respiraciones... lentas. ¡Lentas! Para un zorro no es fácil."
+      },
+      "gesture": {
+        "together": "Cerrad los ojos y haced juntos tres respiraciones lentas, como el bosque que se duerme. Después abrid los ojos despacio.",
+        "back": {
+          "bo": "Qué paz, {nome}. Casi me entra sueño.",
+          "pilu": "El bosque también respira así, {nome}. Despacito.",
+          "tango": "¡Tres respiraciones! ¡Lentísimas! Ahora veamos a Emma, {nome}."
+        }
+      }
     },
     {
       "illustration": {

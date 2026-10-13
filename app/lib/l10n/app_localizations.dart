@@ -230,12 +230,6 @@ abstract class AppLocalizations {
   /// **'Una storia'**
   String get homeOneStory;
 
-  /// No description provided for @homeLetsPlay.
-  ///
-  /// In it, this message translates to:
-  /// **'Giochiamo'**
-  String get homeLetsPlay;
-
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:
@@ -272,23 +266,17 @@ abstract class AppLocalizations {
   /// **'Aggiungi un bambino'**
   String get chooseAddA11y;
 
-  /// No description provided for @catStories.
-  ///
-  /// In it, this message translates to:
-  /// **'Le storie'**
-  String get catStories;
-
-  /// No description provided for @catGames.
-  ///
-  /// In it, this message translates to:
-  /// **'Giochi'**
-  String get catGames;
-
   /// No description provided for @catEmpty.
   ///
   /// In it, this message translates to:
   /// **'Qui non c\'è niente per oggi.'**
   String get catEmpty;
+
+  /// No description provided for @capacityLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{capacity, select, insieme{Io e gli altri} mani{Le mani} sensi{I sensi} parole{Le parole} pensare{Contare e pensare} mondo{Il mondo} other{{capacity}}}'**
+  String capacityLabel(String capacity);
 
   /// No description provided for @badgeAtHome.
   ///
@@ -950,6 +938,12 @@ abstract class AppLocalizations {
   /// **'Sviluppo'**
   String get parentTabGrowth;
 
+  /// No description provided for @parentTabShelf.
+  ///
+  /// In it, this message translates to:
+  /// **'Mensola'**
+  String get parentTabShelf;
+
   /// No description provided for @parentHowUse.
   ///
   /// In it, this message translates to:
@@ -1298,6 +1292,120 @@ abstract class AppLocalizations {
   /// **'{count, plural, =0{non ancora fatto} =1{fatto 1 volta} other{fatto {count} volte}}'**
   String gestureTimes(int count);
 
+  /// No description provided for @ideaTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'idea per oggi'**
+  String get ideaTitle;
+
+  /// No description provided for @ideaIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Una cosa piccola da fare con {name}, lontano dallo schermo. Cambia ogni giorno.'**
+  String ideaIntro(String name);
+
+  /// No description provided for @ideaFromStory.
+  ///
+  /// In it, this message translates to:
+  /// **'Dalla storia «{story}»'**
+  String ideaFromStory(String story);
+
+  /// No description provided for @ideaHome.
+  ///
+  /// In it, this message translates to:
+  /// **'Da fare con le mani: {title} ({area})'**
+  String ideaHome(String title, String area);
+
+  /// No description provided for @ideaHomeHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La presentazione passo per passo è tra le attività Montessori.'**
+  String get ideaHomeHint;
+
+  /// No description provided for @ideaAnother.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'altra idea'**
+  String get ideaAnother;
+
+  /// No description provided for @ideaEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Quando {name} avrà finito una storia, qui troverai un\'idea da fare insieme.'**
+  String ideaEmpty(String name);
+
+  /// No description provided for @weekTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'La settimana di {name}'**
+  String weekTitle(String name);
+
+  /// No description provided for @weekIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Gli ultimi 7 giorni, raccontati. Niente voti: solo quello che è successo.'**
+  String get weekIntro;
+
+  /// No description provided for @weekStories.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Ha ascoltato una storia: {titles}.} other{Ha ascoltato {count} storie: {titles}.}}'**
+  String weekStories(int count, String titles);
+
+  /// No description provided for @weekAllTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Le avete ascoltate sempre insieme.'**
+  String get weekAllTogether;
+
+  /// No description provided for @weekAllAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'Le ha ascoltate da solo: la prossima potete ascoltarla insieme.'**
+  String get weekAllAlone;
+
+  /// No description provided for @weekTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'{together, plural, =1{Una volta su {total} eravate insieme.} other{{together} volte su {total} eravate insieme.}}'**
+  String weekTogether(int together, int total);
+
+  /// No description provided for @weekChoice.
+  ///
+  /// In it, this message translates to:
+  /// **'In «{story}», alla pausa ha scelto: «{answer}».'**
+  String weekChoice(String story, String answer);
+
+  /// No description provided for @weekKeyPhrase.
+  ///
+  /// In it, this message translates to:
+  /// **'Una frase da ripetere insieme: «{phrase}»'**
+  String weekKeyPhrase(String phrase);
+
+  /// No description provided for @weekGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Nella vita vera ha fatto il gesto di {titles}.} other{Nella vita vera ha fatto {count} gesti, delle storie {titles}.}}'**
+  String weekGestures(int count, String titles);
+
+  /// No description provided for @weekNoGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun gesto segnato: se l\'avete fatto, segnalo qui sotto.'**
+  String get weekNoGestures;
+
+  /// No description provided for @weekHome.
+  ///
+  /// In it, this message translates to:
+  /// **'Con le mani, fuori dallo schermo: {titles}.'**
+  String weekHome(String titles);
+
+  /// No description provided for @weekEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Questa settimana nessuna storia e nessun gesto segnato. Va bene così: anche le settimane lontane dallo schermo contano.'**
+  String get weekEmpty;
+
   /// No description provided for @growthTitle.
   ///
   /// In it, this message translates to:
@@ -1555,6 +1663,102 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come si chiama?'**
   String get lessonTell;
+
+  /// No description provided for @shelfTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola di {name}'**
+  String shelfTitle(Object name);
+
+  /// No description provided for @shelfHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} per capacità; cambiali quando li ha esplorati.'**
+  String shelfHint(String name, int max);
+
+  /// No description provided for @shelfCount.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} di {max}'**
+  String shelfCount(int count, int max);
+
+  /// No description provided for @shelfAuto.
+  ///
+  /// In it, this message translates to:
+  /// **'Scelta automatica'**
+  String get shelfAuto;
+
+  /// No description provided for @shelfAutoOn.
+  ///
+  /// In it, this message translates to:
+  /// **'Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.'**
+  String get shelfAutoOn;
+
+  /// No description provided for @shelfAutoHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola si riempie da sola. Tocca un materiale per sceglierli tu.'**
+  String get shelfAutoHint;
+
+  /// No description provided for @shelfFull.
+  ///
+  /// In it, this message translates to:
+  /// **'Su questa mensola ci sono già {max} materiali: togline uno per metterne un altro.'**
+  String shelfFull(int max);
+
+  /// No description provided for @shelfKindStory.
+  ///
+  /// In it, this message translates to:
+  /// **'Storia'**
+  String get shelfKindStory;
+
+  /// No description provided for @shelfKindGame.
+  ///
+  /// In it, this message translates to:
+  /// **'Gioco'**
+  String get shelfKindGame;
+
+  /// No description provided for @shelfKindActivity.
+  ///
+  /// In it, this message translates to:
+  /// **'Attività'**
+  String get shelfKindActivity;
+
+  /// No description provided for @gesturePause.
+  ///
+  /// In it, this message translates to:
+  /// **'Pausa: facciamo il gesto'**
+  String get gesturePause;
+
+  /// No description provided for @gestureStart.
+  ///
+  /// In it, this message translates to:
+  /// **'Pronti? Via!'**
+  String get gestureStart;
+
+  /// No description provided for @huntFound.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ho trovato!'**
+  String get huntFound;
+
+  /// No description provided for @huntNotFound.
+  ///
+  /// In it, this message translates to:
+  /// **'Non lo trovo'**
+  String get huntNotFound;
+
+  /// No description provided for @huntTellMe.
+  ///
+  /// In it, this message translates to:
+  /// **'Che cosa hai trovato? Dillo a voce alta.'**
+  String get huntTellMe;
+
+  /// No description provided for @huntRules.
+  ///
+  /// In it, this message translates to:
+  /// **'il bambino cerca una cosa alla volta, in casa o all\'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.'**
+  String get huntRules;
 
   /// No description provided for @catMake.
   ///

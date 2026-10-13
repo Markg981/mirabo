@@ -76,9 +76,6 @@ class AppLocalizationsIt extends AppLocalizations {
   String get homeOneStory => 'Una storia';
 
   @override
-  String get homeLetsPlay => 'Giochiamo';
-
-  @override
   String switchChildA11y(Object name) {
     return 'Cambia bambino. Ora gioca $name';
   }
@@ -101,13 +98,24 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chooseAddA11y => 'Aggiungi un bambino';
 
   @override
-  String get catStories => 'Le storie';
-
-  @override
-  String get catGames => 'Giochi';
-
-  @override
   String get catEmpty => 'Qui non c\'è niente per oggi.';
+
+  @override
+  String capacityLabel(String capacity) {
+    String _temp0 = intl.Intl.selectLogic(
+      capacity,
+      {
+        'insieme': 'Io e gli altri',
+        'mani': 'Le mani',
+        'sensi': 'I sensi',
+        'parole': 'Le parole',
+        'pensare': 'Contare e pensare',
+        'mondo': 'Il mondo',
+        'other': '$capacity',
+      },
+    );
+    return '$_temp0';
+  }
 
   @override
   String get badgeAtHome => 'A casa';
@@ -635,6 +643,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get parentTabGrowth => 'Sviluppo';
 
   @override
+  String get parentTabShelf => 'Mensola';
+
+  @override
   String get parentHowUse => 'Come usate l\'app adesso?';
 
   @override
@@ -861,6 +872,108 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String get ideaTitle => 'Un\'idea per oggi';
+
+  @override
+  String ideaIntro(String name) {
+    return 'Una cosa piccola da fare con $name, lontano dallo schermo. Cambia ogni giorno.';
+  }
+
+  @override
+  String ideaFromStory(String story) {
+    return 'Dalla storia «$story»';
+  }
+
+  @override
+  String ideaHome(String title, String area) {
+    return 'Da fare con le mani: $title ($area)';
+  }
+
+  @override
+  String get ideaHomeHint =>
+      'La presentazione passo per passo è tra le attività Montessori.';
+
+  @override
+  String get ideaAnother => 'Un\'altra idea';
+
+  @override
+  String ideaEmpty(String name) {
+    return 'Quando $name avrà finito una storia, qui troverai un\'idea da fare insieme.';
+  }
+
+  @override
+  String weekTitle(String name) {
+    return 'La settimana di $name';
+  }
+
+  @override
+  String get weekIntro =>
+      'Gli ultimi 7 giorni, raccontati. Niente voti: solo quello che è successo.';
+
+  @override
+  String weekStories(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ha ascoltato $count storie: $titles.',
+      one: 'Ha ascoltato una storia: $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekAllTogether => 'Le avete ascoltate sempre insieme.';
+
+  @override
+  String get weekAllAlone =>
+      'Le ha ascoltate da solo: la prossima potete ascoltarla insieme.';
+
+  @override
+  String weekTogether(int together, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      together,
+      locale: localeName,
+      other: '$together volte su $total eravate insieme.',
+      one: 'Una volta su $total eravate insieme.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String weekChoice(String story, String answer) {
+    return 'In «$story», alla pausa ha scelto: «$answer».';
+  }
+
+  @override
+  String weekKeyPhrase(String phrase) {
+    return 'Una frase da ripetere insieme: «$phrase»';
+  }
+
+  @override
+  String weekGestures(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Nella vita vera ha fatto $count gesti, delle storie $titles.',
+      one: 'Nella vita vera ha fatto il gesto di $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekNoGestures =>
+      'Nessun gesto segnato: se l\'avete fatto, segnalo qui sotto.';
+
+  @override
+  String weekHome(String titles) {
+    return 'Con le mani, fuori dallo schermo: $titles.';
+  }
+
+  @override
+  String get weekEmpty =>
+      'Questa settimana nessuna storia e nessun gesto segnato. Va bene così: anche le settimane lontane dallo schermo contano.';
+
+  @override
   String growthTitle(Object name) {
     return 'Come sta crescendo $name';
   }
@@ -1068,6 +1181,65 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get lessonTell => 'Come si chiama?';
+
+  @override
+  String shelfTitle(Object name) {
+    return 'La mensola di $name';
+  }
+
+  @override
+  String shelfHint(String name, int max) {
+    return 'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: $name sceglie liberamente tra quelli che metti qui. Al massimo $max per capacità; cambiali quando li ha esplorati.';
+  }
+
+  @override
+  String shelfCount(int count, int max) {
+    return '$count di $max';
+  }
+
+  @override
+  String get shelfAuto => 'Scelta automatica';
+
+  @override
+  String get shelfAutoOn =>
+      'Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.';
+
+  @override
+  String get shelfAutoHint =>
+      'La mensola si riempie da sola. Tocca un materiale per sceglierli tu.';
+
+  @override
+  String shelfFull(int max) {
+    return 'Su questa mensola ci sono già $max materiali: togline uno per metterne un altro.';
+  }
+
+  @override
+  String get shelfKindStory => 'Storia';
+
+  @override
+  String get shelfKindGame => 'Gioco';
+
+  @override
+  String get shelfKindActivity => 'Attività';
+
+  @override
+  String get gesturePause => 'Pausa: facciamo il gesto';
+
+  @override
+  String get gestureStart => 'Pronti? Via!';
+
+  @override
+  String get huntFound => 'L\'ho trovato!';
+
+  @override
+  String get huntNotFound => 'Non lo trovo';
+
+  @override
+  String get huntTellMe => 'Che cosa hai trovato? Dillo a voce alta.';
+
+  @override
+  String get huntRules =>
+      'il bambino cerca una cosa alla volta, in casa o all\'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.';
 
   @override
   String get catMake => 'Creo e scopro';

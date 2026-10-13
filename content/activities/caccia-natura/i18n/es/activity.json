@@ -1,0 +1,53 @@
+{
+  "title": "Búsqueda en la naturaleza",
+  "offscreen": "Llevad a casa un solo tesoro, ya caído al suelo, y ponedlo en un platito: es el comienzo de la mesa de la naturaleza.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Una hoja caída",
+          "say": "Busca una hoja caída en el suelo. Las de los árboles se quedan allí."
+        },
+        {
+          "label": "Una piedra lisa",
+          "say": "Ahora una piedra lisa, pequeña como tu mano."
+        },
+        {
+          "label": "Una ramita caída",
+          "say": "Y una ramita caída. ¿Cómo es al tocarla?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Una semilla o una bellota",
+          "say": "Busca una semilla, una bellota o una piña."
+        },
+        {
+          "label": "Un pétalo caído",
+          "say": "Ahora un pétalo caído en el suelo. Las flores no se arrancan."
+        },
+        {
+          "label": "Un bichito para mirar",
+          "say": "Busca un bichito, una hormiga o una mariquita. No se coge: míralo y vuelve a contarme cómo es."
+        },
+        {
+          "label": "Un trozo de corteza",
+          "say": "Y un trocito de corteza caída. Huélelo: ¿a qué huele?"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

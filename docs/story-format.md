@@ -46,13 +46,14 @@ Ogni `Screen` ha:
 | Campo | Tipo | Note |
 | --- | --- | --- |
 | `n` | int | numero progressivo da 1 |
-| `kind` | `hook` \| `situation` \| `dialogue` \| `lesson` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, lezione in tre tempi, svolta, chiusura) |
+| `kind` | `hook` \| `situation` \| `dialogue` \| `lesson` \| `gesture` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, lezione in tre tempi, pausa di gesto, svolta, chiusura) |
 | `illustration` | object | `{ "file": "...", "alt": "descrizione", "scene": {...} }`; `file` può mancare finché non esiste, e allora l'app disegna `scene` se c'è |
 | `text` | string? | testo della narrazione; `{nome}` è il nome del bambino |
 | `audio` | object? | `{ "file": "...", "words": [[ms, "parola"], ...], "nameSlots": [ms, ...] }` |
 | `companionLines` | object? | `{ "bo": "...", "pilu": "...", "tango": "..." }` |
 | `dialogue` | object? | solo per `kind = dialogue`, vedi sotto |
 | `lesson` | object? | solo per `kind = lesson`, vedi sotto |
+| `gesture` | object? | solo per `kind = gesture`, vedi sotto |
 | `keyPhrase` | bool? | se true, questa schermata mostra la frase-chiave in evidenza |
 
 ### Pausa di dialogo
@@ -108,6 +109,36 @@ sempre uguali. `companionLines` sulla schermata della lezione è la presentazion
 Negli overlay tradotti si traducono `together`, `ask`, `done` e, per ogni figura, `name`, `this` e
 `show`.
 
+### Pausa di gesto
+
+La storia si ferma e il bambino fa con il corpo il gesto del protagonista: il respiro del vulcano,
+gli occhi chiusi ad ascoltare, tre respiri lenti. È il ponte tra la storia e la vita vera, di solito
+una prova del `gesture` di `story.json`. Usa i campi che ogni schermata ha già: `text` racconta il
+protagonista che fa il gesto, `companionLines` è l'invito del compagno ("Facciamolo anche noi").
+
+```json
+"gesture": {
+  "e": "🌋",
+  "seconds": 20,
+  "together": "Fatelo insieme: mani sulla pancia, dentro fino a tre, fuori soffiando piano. Tre volte.",
+  "back": { "bo": "Eccoci, {nome}. Il mio vulcano adesso è piccolo piccolo.", "pilu": "...", "tango": "..." }
+}
+```
+
+| Campo | Note |
+| --- | --- |
+| `e` | l'emoji al centro del cerchio che respira |
+| `seconds` | da 5 a 60: quanto dura la pausa da soli |
+| `together` | guida per il genitore in modalità insieme |
+| `back` | detta dal compagno quando la pausa finisce, per tornare alla storia |
+
+Da solo, il bambino preme "Pronti? Via!": per `seconds` il compagno tace e un cerchio si gonfia e si
+sgonfia piano (fermo con la bassa stimolazione), con un anello che si riempie; nessun numero. Poi il
+compagno dice `back` e si può andare avanti. Il tablet non controlla se il gesto è stato fatto e la
+pausa non fa crescere il compagno: lo fa solo il gesto nella vita vera, segnato dal genitore.
+Insieme, la pausa la guida il genitore con `together` e si va avanti quando si vuole. Negli overlay
+tradotti si traducono `together` e `back`.
+
 ## Regole
 
 - `{nome}` compare solo nelle battute del compagno; la narrazione non lo usa.
@@ -143,6 +174,7 @@ alcune figure posizionate, come in un libro illustrato.
 Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la linea del pavimento
 (`y` + `s`/2 tra 0.75 e 0.95), così stanno "in piedi" nella scena.
 - Una sola schermata `dialogue` per storia; nessuna in fascia 3–5 quando `togetherOnly` è vero.
+- Al massimo una schermata `gesture` per variante, con `companionLines` (l'invito).
 - Ogni variante 3–5 ha esattamente una schermata `lesson`; le altre fasce non ne hanno. Le figure
   hanno `id`, emoji e nome distinti; le frasi non usano `{nome}`.
 - `studio/validate.py` controlla tutto questo.

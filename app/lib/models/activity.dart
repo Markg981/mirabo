@@ -37,7 +37,7 @@ enum ActivityArea {
       };
 }
 
-enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown, presentation, pairs, spell }
+enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown, presentation, pairs, spell, hunt }
 
 class Activity {
   const Activity({
@@ -72,8 +72,9 @@ class Activity {
 
   ActivityModule get module => area.module;
 
-  /// Attività da fare con le mani, fuori dallo schermo.
-  bool get isHome => type == ActivityType.presentation;
+  /// Attività da fare con le mani, fuori dallo schermo: le presentazioni e le
+  /// cacce al tesoro in casa.
+  bool get isHome => type == ActivityType.presentation || type == ActivityType.hunt;
 
   /// Le prime emoji diverse che compaiono nei livelli (al massimo tre): fanno
   /// da copertina alla carta finché le attività non hanno un'illustrazione propria.
@@ -156,7 +157,7 @@ class RoundResult {
   final int attempts;
   final int hints;
 
-  /// Per sceneChoice/checklist: cosa è stato scelto (nessuna risposta sbagliata).
+  /// Per sceneChoice/checklist/hunt: cosa è stato scelto (nessuna risposta sbagliata).
   final String? choice;
 
   bool get firstTry => attempts == 1 && hints == 0;

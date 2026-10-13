@@ -96,6 +96,14 @@
         "bo": "Machen wir es auch, {nome}. Hände auf den Bauch. Einatmen... eins, zwei, drei. Ausatmen... schschsch. Mir geht es schon besser.",
         "pilu": "Probieren wir es zusammen, {nome}: Hände auf den Bauch, einatmen eins zwei drei, ausatmen schschsch. Das klappt auch mit Flügeln, weißt du.",
         "tango": "Los, {nome}, machen wir es! Hände auf den Bauch. Einatmen: eins, zwei, drei. Ausatmen: schschsch. Oh. Das ist schwerer als Rennen."
+      },
+      "gesture": {
+        "together": "Macht es zusammen, im Sitzen oder im Stehen: Hände auf den Bauch, einatmen und bis drei zählen, ausatmen und sanft pusten. Dreimal, ganz ohne Eile.",
+        "back": {
+          "bo": "Da sind wir, {nome}. Mein Vulkan ist jetzt ganz klein.",
+          "pilu": "Spürst du, wie langsam dein Bauch jetzt ist, {nome}? Gehen wir zurück zu Lia.",
+          "tango": "Fertig. Also... langsam fertig! Mein Vulkan schläft. Gehen wir zu Lia, {nome}."
+        }
       }
     },
     {

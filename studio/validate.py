@@ -82,7 +82,8 @@ def check_review(folder: Path, meta: dict) -> list[str]:
 
 LANGUAGES = ("en", "es", "fr", "de")
 META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
-SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "lesson"}
+SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "lesson", "gesture"}
+GESTURE_TEXT_KEYS = {"together", "back"}
 LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
 LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
 DRAFTS: list[str] = []
@@ -150,6 +151,16 @@ def check_translations(folder: Path, meta: dict) -> list[str]:
                     for i, it in enumerate(items, 1):
                         if set(it) != LESSON_ITEM_TEXT_KEYS:
                             errors.append(f"{label}/{file} #{n}: la figura {i} va tradotta in {sorted(LESSON_ITEM_TEXT_KEYS)} e basta")
+                if "gesture" in b:
+                    og = o.get("gesture") or {}
+                    if set(og) != GESTURE_TEXT_KEYS:
+                        errors.append(f"{label}/{file} #{n}: la pausa di gesto va tradotta in {sorted(GESTURE_TEXT_KEYS)} e basta")
+                    for c, line in b["gesture"]["back"].items():
+                        t = (og.get("back") or {}).get(c)
+                        if t is None:
+                            errors.append(f"{label}/{file} #{n}: manca la battuta di ritorno di {c}")
+                        elif NAME_PLACEHOLDER in line and NAME_PLACEHOLDER not in t:
+                            errors.append(f"{label}/{file} #{n}: la battuta di ritorno di {c} ha perso {NAME_PLACEHOLDER}")
     return errors
 
 
@@ -172,6 +183,9 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
         errors.append(f"{label}: in 3-5 serve esattamente una lezione in tre tempi ('lesson')")
     if band != "3-5" and "lesson" in kinds:
         errors.append(f"{label}: la lezione in tre tempi è solo per la fascia 3-5")
+    # La pausa di gesto è facoltativa: al massimo una, perché resti un momento speciale.
+    if kinds.count("gesture") > 1:
+        errors.append(f"{label}: al massimo una pausa di gesto")
     if sum(1 for s in screens if s.get("keyPhrase")) != 1:
         errors.append(f"{label}: esattamente una schermata deve avere keyPhrase: true")
     if kinds and not any(s.get("companionLines") for s in screens if s.get("kind") == "hook"):
@@ -204,6 +218,17 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
                 errors += check_lesson(f"{label} #{n}", s["lesson"])
         elif "lesson" in s:
             errors.append(f"{label} #{n}: campo lesson su una schermata che non è 'lesson'")
+        if s.get("kind") == "gesture":
+            if "gesture" not in s:
+                errors.append(f"{label} #{n}: schermata 'gesture' senza campo gesture")
+            if not s.get("companionLines"):
+                errors.append(f"{label} #{n}: la pausa di gesto ha bisogno dell'invito del compagno ('companionLines')")
+            for line in [(s.get("gesture") or {}).get("together", "")] + list(((s.get("gesture") or {}).get("back") or {}).values()):
+                for word in BANNED:
+                    if re.search(rf"\b{re.escape(word)}\b", line, flags=re.IGNORECASE):
+                        errors.append(f"{label} #{n}: parola da evitare nella pausa di gesto: '{word}'")
+        elif "gesture" in s:
+            errors.append(f"{label} #{n}: campo gesture su una schermata che non è 'gesture'")
         if s.get("kind") not in ("hook",) and not text and s.get("kind") != "dialogue":
             errors.append(f"{label} #{n}: schermata senza testo")
         lines = s.get("companionLines")
@@ -241,7 +266,7 @@ def check_lesson(label: str, lesson: dict) -> list[str]:
 LEVEL_KEYS = {
     "tapMatch": "rounds", "count": "rounds", "sequence": "rounds", "pattern": "rounds", "trace": "rounds",
     "checklist": "items", "sceneChoice": "scenes", "explore": "spots", "countdown": "daily",
-    "presentation": "steps", "pairs": "rounds", "spell": "rounds",
+    "presentation": "steps", "pairs": "rounds", "spell": "rounds", "hunt": "items",
 }
 SCHOOL_AREAS = {"cognitivo", "autonomia", "sociale", "paure"}
 MONTESSORI_AREAS = {"vita-pratica", "sensoriale", "linguaggio", "matematica", "cultura"}
@@ -295,6 +320,13 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
             for r in level.get("rounds", []):
                 if r.get("sizes") and any("size" not in c for c in r.get("cards", [])):
                     errors.append(f"{folder.name}: round con sizes=true ma carte senza 'size'")
+        if a.get("type") == "hunt":
+            items = level.get("items", [])
+            if not 2 <= len(items) <= 6:
+                errors.append(f"{folder.name}: livello {i}: una caccia ha da 2 a 6 cose da cercare")
+            for it in items:
+                if not (it.get("emoji") and it.get("label") and it.get("say")):
+                    errors.append(f"{folder.name}: livello {i}: ogni cosa da cercare ha 'emoji', 'label' e 'say'")
         if a.get("type") == "sceneChoice":
             for sc in level.get("scenes", []):
                 if not 2 <= len(sc.get("options", [])) <= 3:

@@ -22,7 +22,7 @@ sta imparando a leggere.
 
 ## Fabbrica di storie
 
-Nella categoria **Creo e scopro** (🌻). Il bambino sceglie sei pezzi: chi, dove, cosa succede, come
+Un materiale della mensola, sotto la capacità **parole** (`MakeItem`, chiave `make:factory`). Il bambino sceglie sei pezzi: chi, dove, cosa succede, come
 si sente, chi arriva ad aiutare, come finisce. A ogni tocco il compagno dice il nome del pezzo,
 così si può fare anche senza saper leggere. In fascia 7–10 alla fine si scrive il titolo (se resta
 vuoto, il titolo è il protagonista).
@@ -42,7 +42,7 @@ l'emozione si accoglie con un respiro, qualunque sia.
 
 ## Calendario della natura
 
-Sempre in **Creo e scopro**. Ogni giorno il bambino segna che tempo fa (sole, nuvole, pioggia,
+Un materiale della mensola, sotto la capacità **mondo** (chiave `make:nature`). Ogni giorno il bambino segna che tempo fa (sole, nuvole, pioggia,
 neve, vento, nebbia) e fino a tre cose viste fuori. Il compagno dà un suggerimento per il mese
 (emisfero nord). Sotto, il riassunto del mese: quanti giorni di sole, quante volte le foglie.
 
@@ -65,8 +65,11 @@ i disegni li fa il bambino.
 
 Dipendenze: `pdf` e `printing`. I font sono quelli dell'app (Nunito e Fredoka, OFL).
 
+Come gli altri materiali, fabbrica e calendario entrano da soli nella mensola automatica e il
+genitore può toglierli o rimetterli dalla scheda *Mensola*.
+
 ## Dati e backup
 
-Schema del database 5: colonna `profiles.read_along`, tabelle `made_stories` e `nature_days`.
+Schema del database 6: colonna `profiles.read_along`, tabelle `made_stories` e `nature_days`.
 Entrambe vanno nel backup su Drive; un backup di una versione precedente si ripristina con le
 tabelle nuove vuote.

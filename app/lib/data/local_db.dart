@@ -12,8 +12,8 @@ import '../models/made_story.dart';
 import '../models/nature_day.dart';
 import '../models/profile.dart';
 
-/// Database locale: profili, diario, gesti fatti nella vita vera, storie
-/// inventate e calendario della natura. Tutto resta sul dispositivo.
+/// Database locale: profili (con la loro mensola), diario, gesti fatti nella
+/// vita vera, storie inventate e calendario della natura. Tutto resta sul dispositivo.
 ///
 /// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
 /// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
@@ -22,7 +22,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 5;
+  static const _version = 6;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -55,6 +55,7 @@ class LocalDb {
             language TEXT NOT NULL DEFAULT 'it',
             gestures_done INTEGER NOT NULL DEFAULT 0,
             stage_floor INTEGER NOT NULL DEFAULT 0,
+            shelf TEXT,
             read_along INTEGER NOT NULL DEFAULT 1
           )''');
         await db.execute('''
@@ -84,8 +85,10 @@ class LocalDb {
           await db.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
           await _createGesturesTable(db);
         }
-        // v5: lettura karaoke, storie inventate, calendario della natura.
-        if (from < 5) {
+        // v5: la mensola scelta dal genitore. NULL: si riempie da sola.
+        if (from < 5) await db.execute('ALTER TABLE profiles ADD COLUMN shelf TEXT');
+        // v6: lettura karaoke, storie inventate, calendario della natura.
+        if (from < 6) {
           await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
           await _createMakeTables(db);
         }

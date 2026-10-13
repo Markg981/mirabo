@@ -1,0 +1,49 @@
+{
+  "title": "Lautsuche",
+  "offscreen": "Das ist das bekannte Lautspiel: „Ich sehe etwas, das mit mmm anfängt“. Sagt den Laut, nicht den Namen des Buchstabens.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Fängt mit mmm an",
+          "say": "Such etwas, das mit mmm anfängt, wie Mond."
+        },
+        {
+          "label": "Fängt mit fff an",
+          "say": "Jetzt etwas, das mit fff anfängt, wie Fisch."
+        },
+        {
+          "label": "Fängt mit p an",
+          "say": "Und etwas, das mit p anfängt, wie Puppe."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Fängt mit lll an",
+          "say": "Such etwas, das mit lll anfängt, wie Löffel."
+        },
+        {
+          "label": "Fängt mit t an",
+          "say": "Jetzt etwas, das mit t anfängt, wie Tisch."
+        },
+        {
+          "label": "Fängt mit sch an",
+          "say": "Und etwas, das mit sch anfängt, wie Schuh."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

@@ -62,7 +62,7 @@ Nessuno.
 - Terzo tempo: "E questa faccia, com'è?"
 - Alla fine: "Arrabbiata, triste, contenta. Tutte le facce si possono avere."
 
-### 6. turn
+### 6. gesture
 
 *Illustrazione:* Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano diventa arancione e la lava scende piano.
 
@@ -71,6 +71,14 @@ Nessuno.
 - **bo**: Facciamolo anche noi. Dentro, uno, due, tre. Fuori, ssssh.
 - **pilu**: Mani sulla pancia. Senti come sale e scende?
 - **tango**: Dentro, uno, due, tre! Fuori... ssssh. Piano, piano.
+
+*Pausa di gesto* 🌋, 15 secondi.
+
+*Insieme:* Fatelo insieme: mani sulla pancia, dentro fino a tre, fuori ssssh. Tre volte.
+
+- **bo** al ritorno: Il mio vulcano adesso è piccolo.
+- **pilu** al ritorno: Senti? La pancia va piano piano.
+- **tango** al ritorno: Ssssh... Il vulcano dorme. Torniamo da Lia!
 
 ### 7. closing
 
@@ -150,7 +158,7 @@ Nessuno.
 
 > La nonna arriva e non dice "non si fa". Dice: "Lia, sento il vulcano. È grosso, eh? Facciamo il respiro del vulcano, insieme." Mette le mani sulla pancia. Lia, con gli occhi ancora pieni di fuoco, fa lo stesso.
 
-### 8. turn
+### 8. gesture
 
 *Illustrazione:* Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano, che da rosso diventa arancione, poi rosa, con la lava che scende piano.
 
@@ -159,6 +167,14 @@ Nessuno.
 - **bo**: Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.
 - **pilu**: Proviamolo insieme, {nome}: mani sulla pancia, dentro uno due tre, fuori sssssh. Funziona anche con le ali, sai.
 - **tango**: Dai {nome}, facciamolo! Mani sulla pancia. Dentro uno, due, tre. Fuori ssssh. Oh. È più difficile che correre.
+
+*Pausa di gesto* 🌋, 20 secondi.
+
+*Insieme:* Fatelo insieme, seduti o in piedi: mani sulla pancia, dentro contando fino a tre, fuori soffiando piano. Tre volte, senza fretta.
+
+- **bo** al ritorno: Eccoci, {nome}. Il mio vulcano adesso è piccolo piccolo.
+- **pilu** al ritorno: Senti com'è lenta la pancia adesso, {nome}? Torniamo da Lia.
+- **tango** al ritorno: Fatto. Cioè... fatto piano! Il mio vulcano dorme. Andiamo da Lia, {nome}.
 
 ### 9. turn
 
@@ -191,6 +207,7 @@ Da leggere in `content/stories/lia-rabbia/parent.md`.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
 - [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
+- [ ] La pausa di gesto si fa sul posto e senza oggetti: è sicura anche per un bambino da solo.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

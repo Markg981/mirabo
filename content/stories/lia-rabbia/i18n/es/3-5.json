@@ -75,6 +75,14 @@
         "bo": "Hagámoslo nosotros también. Dentro, uno, dos, tres. Fuera, ssssh.",
         "pilu": "Manos en la barriga. ¿Sientes cómo sube y baja?",
         "tango": "¡Dentro, uno, dos, tres! Fuera... ssssh. Despacio, despacio."
+      },
+      "gesture": {
+        "together": "Hacedlo juntos: manos en la barriga, dentro hasta tres, fuera shhhh. Tres veces.",
+        "back": {
+          "bo": "Mi volcán ahora es pequeño.",
+          "pilu": "¿Lo notas? La barriga va despacito.",
+          "tango": "Shhhh... El volcán duerme. ¡Volvamos con Lia!"
+        }
       }
     },
     {

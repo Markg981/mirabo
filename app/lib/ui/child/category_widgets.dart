@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../l10n/l10n.dart';
+import '../../models/shelf.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'categories.dart';
 
-/// Barra in basso con le categorie: bottoni rotondi colorati con un'emoji.
-/// Quella scelta si alza e prende l'anello blu.
+/// Barra in basso con le capacità che hanno qualcosa sulla mensola: bottoni
+/// rotondi colorati con un'emoji. Quella scelta si alza e prende l'anello blu.
 class CategoryDock extends StatelessWidget {
   const CategoryDock({super.key, required this.categories, required this.onSelect, this.selected});
-  final List<ChildCategory> categories;
-  final ChildCategory? selected;
-  final ValueChanged<ChildCategory> onSelect;
+  final List<Capacity> categories;
+  final Capacity? selected;
+  final ValueChanged<Capacity> onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class CategoryDock extends StatelessWidget {
 
 class _DockButton extends StatelessWidget {
   const _DockButton({required this.category, required this.selected, required this.onTap});
-  final ChildCategory category;
+  final Capacity category;
   final bool selected;
   final VoidCallback onTap;
 

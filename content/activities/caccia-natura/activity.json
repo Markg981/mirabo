@@ -1,0 +1,71 @@
+{
+  "id": "caccia-natura",
+  "title": "Caccia nella natura",
+  "area": "cultura",
+  "skill": "natura",
+  "type": "hunt",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": true,
+  "offscreen": "Portate a casa un tesoro solo, già caduto a terra, e mettetelo su un piattino: è l'inizio del tavolo della natura.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "🍂",
+          "label": "Una foglia caduta",
+          "say": "Cerca una foglia caduta a terra. Quelle sugli alberi restano lì."
+        },
+        {
+          "emoji": "🪨",
+          "label": "Un sasso liscio",
+          "say": "Adesso un sasso liscio, piccolo come la tua mano."
+        },
+        {
+          "emoji": "🌿",
+          "label": "Un rametto caduto",
+          "say": "E un rametto caduto. Senti com'è?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🌰",
+          "label": "Un seme o una ghianda",
+          "say": "Cerca un seme, una ghianda o una pigna."
+        },
+        {
+          "emoji": "🌸",
+          "label": "Un petalo caduto",
+          "say": "Adesso un petalo caduto a terra. I fiori non si strappano."
+        },
+        {
+          "emoji": "🐞",
+          "label": "Un animaletto da guardare",
+          "say": "Cerca un animaletto, una formica o una coccinella. Non si prende: guardalo e torna a dirmi com'è."
+        },
+        {
+          "emoji": "🪵",
+          "label": "Un pezzo di corteccia",
+          "say": "E un pezzetto di corteccia caduto. Annusalo: di cosa sa?"
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

@@ -41,6 +41,7 @@ Valori indicativi, ricavati dalle storie già scritte. In 3–5 le prime variant
    scelta. Il testo finisce con una domanda aperta ("E adesso?").
    In 3–5, al suo posto o accanto, c'è la **lezione in tre tempi** (`lesson`, esattamente una
    **[V]**), vedi sotto.
+   Più avanti, facoltativa, la **pausa di gesto** (`gesture`, al massimo una **[V]**), vedi sotto.
 4. **Svolta** (`turn`): il protagonista agisce, spesso con l'aiuto dell'adulto di fiducia. Il
    cambiamento si vede a passi piccoli.
 5. **Chiusura** (`closing`, l'ultima **[V]**): ritorno alla calma e a casa. Il compagno chiama il
@@ -77,6 +78,21 @@ impara tre parole che vengono dalla storia stessa.
   il nome di quella e basta."
 - La scheda genitore ha la sezione "La lezione in tre tempi (3–5 anni)" con un modo di rifarla a
   casa con cose vere.
+
+### Pausa di gesto
+
+La storia si ferma e il bambino fa con il corpo quello che fa il protagonista. Non è un esercizio
+in più: è il momento della storia in cui il gesto si prova davvero, prima di portarlo nella vita.
+
+- Il gesto si fa sul posto, senza oggetti e senza pericoli, anche da soli: respirare, chiudere gli
+  occhi, ascoltare, stringere i pugni e poi aprirli. Niente che chieda di alzarsi e andare altrove.
+- Di solito è il `gesture` della storia, in piccolo: la pausa lo fa provare, il genitore poi lo
+  segna quando succede nella vita vera.
+- `text` racconta il protagonista che lo fa; `companionLines` è l'invito al bambino **[V]** e ogni
+  compagno invita a modo suo (Bo chiede la mano, Pilù fa notare, Tango si ferma a fatica).
+- `back` dice com'è stato per il compagno e riporta alla storia. Mai "bravo", "giusto", "ce l'hai
+  fatta": il tablet non sa se il gesto è stato fatto, e non deve importargli.
+- `seconds` è il tempo del gesto vero: 15–20 per tre respiri, 30 per un momento di silenzio.
 
 ## I compagni
 
@@ -180,6 +196,9 @@ Titolo `# Come parlarne: <titolo della storia>`, poi queste sezioni, nell'ordine
 1. **Perché questo tema a *X* anni.** Un paragrafo: cosa succede a quell'età e cosa offre la storia.
 2. `## Tre domande dopo la storia`: una sul fatto, una sul perché, una sulla vita del bambino.
 3. `## Nella vita vera`: due o tre gesti concreti da fare in casa, con il materiale necessario.
+   L'app mostra questa sezione al genitore come "Un'idea per oggi": il titolo va scritto
+   esattamente così (nelle traduzioni: `In real life`, `En la vida real`, `Dans la vraie vie`,
+   `Im echten Leben`) e il testo deve reggersi da solo, senza rimandi alle altre sezioni.
 4. `## Errori comuni`: tre punti, ognuno con il perché in poche parole.
 5. `## Se qualcosa ti preoccupa` (facoltativa, obbligatoria per paure, rabbia, perdita, sicurezza):
    i segnali da non ignorare e a chi rivolgersi (pediatra, insegnanti). Mai una diagnosi.
