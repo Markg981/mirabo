@@ -1,0 +1,92 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon assis sur un coussin à côté d'un livre ouvert, avec un volcan dessiné sur la couverture."
+      },
+      "companionLines": {
+        "bo": "Coucou {nome} ! Il y a un volcan. Tu me tiens la main ?",
+        "pilu": "Coucou {nome} ! Tu as vu ? Lia a fait une tour très haute.",
+        "tango": "Coucou {nome} ! Allez, on regarde tout de suite ! ...Attends. D'abord on s'assoit."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia regarde fièrement une tour de cubes colorés avec un petit drapeau en haut."
+      },
+      "text": "Lia fait une tour haute, haute. Un cube rouge, un bleu, un jaune. En haut, le petit drapeau."
+    },
+    {
+      "illustration": {
+        "alt": "Teo, le petit frère, touche le cube du bas ; la tour tombe et les cubes volent sur le sol."
+      },
+      "text": "Voici Teo, le petit frère. Il touche le cube du bas. CRAC ! Toute la tour tombe."
+    },
+    {
+      "illustration": {
+        "alt": "Lia, le visage rouge et les poings serrés ; derrière elle, en transparence, un volcan qui fume."
+      },
+      "text": "Lia sent quelque chose de chaud dans son ventre. Ses mains se ferment toutes seules. Son visage devient rouge. Lia est en colère.",
+      "companionLines": {
+        "bo": "Moi, je le sens dans les oreilles. Et toi, où ?",
+        "pilu": "Regarde les mains de Lia. Elles sont toutes fermées.",
+        "tango": "Je connais ça ! Mes pattes se ferment comme ça !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Sur la table, trois visages dessinés sur des cartons : un en colère, un triste, un content. Mamie et Lia sont assises côte à côte."
+      },
+      "text": "Mamie s'assoit à côté de Lia. Elle dessine trois visages sur trois cartons.",
+      "companionLines": {
+        "bo": "On regarde les visages ensemble, doucement.",
+        "pilu": "Un visage à la fois. Regarde bien.",
+        "tango": "Trois visages ! Allez ! ...Attends. Un à la fois."
+      },
+      "lesson": {
+        "together": "Montre un visage à la fois et dis seulement : « Ce visage est en colère ». Puis demande : « Où est le visage triste ? ». À la fin, montres-en un et demande : « Comment est ce visage ? ». S'il touche un autre visage, dis-lui le nom de celui-là, c'est tout.",
+        "items": [
+          {
+            "name": "en colère",
+            "this": "Ce visage est en colère.",
+            "show": "Où est le visage en colère ?"
+          },
+          {
+            "name": "triste",
+            "this": "Ce visage est triste.",
+            "show": "Où est le visage triste ?"
+          },
+          {
+            "name": "content",
+            "this": "Ce visage est content.",
+            "show": "Où est le visage content ?"
+          }
+        ],
+        "ask": "Et ce visage, comment est-il ?",
+        "done": "En colère, triste, content. Tous les visages ont le droit d'exister."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia et Mamie les mains sur le ventre ; au-dessus d'elles, le volcan devient orange et la lave descend doucement."
+      },
+      "text": "Mamie dit : « On a le droit d'être en colère. Faisons la respiration du volcan. » Les mains sur le ventre. On inspire : un, deux, trois. On souffle : chhhh.",
+      "companionLines": {
+        "bo": "On le fait aussi. On inspire, un, deux, trois. On souffle, chhhh.",
+        "pilu": "Les mains sur le ventre. Tu sens comme ça monte et descend ?",
+        "tango": "On inspire, un, deux, trois ! On souffle... chhhh. Doucement, doucement."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia et Teo construisent ensemble une tour basse et large ; au fond, le volcan est vert, avec une fleur au sommet."
+      },
+      "text": "Le volcan descend tout doucement. Lia et Teo font une nouvelle tour, large, large.",
+      "companionLines": {
+        "bo": "Mon volcan est calme maintenant, {nome}. À demain !",
+        "pilu": "Ce soir, j'essaie la respiration du volcan, {nome}. À demain.",
+        "tango": "Demain, je respire avant de courir, {nome}. À demain !"
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Revisione pedagogica: La Piccola Goccia Ribelle
 
-`goccia-ribelle` v1 · mondo ambiente · tema acqua · fasce 5-7
+`goccia-ribelle` v1 · mondo ambiente · tema acqua · fasce 3-5, 5-7
 
 **Frase-chiave.** Ogni cambiamento comincia da una goccia.
 
@@ -12,6 +12,72 @@
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: WWF Italia, materiali sul risparmio idrico per la scuola (da verificare)
 - fonte da verificare: Materiali didattici sul ciclo dell'acqua per la primaria (da verificare)
+
+## La storia (3-5 anni)
+
+### 1. hook
+
+*Illustrazione:* Il compagno sotto un ombrello aperto, mentre cadono le prime gocce di pioggia.
+
+- **bo**: Ciao {nome}! Piove. Vieni sotto l'ombrello con me?
+- **pilu**: Ciao {nome}! Senti la pioggia sul vetro? Tic, tic.
+- **tango**: Ciao {nome}! Piove! Fuori, subito! ...Aspetta. Gli stivali.
+
+### 2. situation
+
+*Illustrazione:* Emma, due codini scompigliati, cappottino giallo e stivaletti rossi, guarda la pioggia dalla finestra; la nonna tiene l'ombrello; Pietrolino è sul davanzale.
+
+> Piove. Le gocce battono sul vetro: tic, tic. Emma mette gli stivali rossi. La nonna prende l'ombrello.
+
+### 3. situation
+
+*Illustrazione:* Nel bosco l'acqua scorre via in un rigagnolo; una goccia salta fuori verso un fiore. Emma la guarda, la nonna è vicina con l'ombrello.
+
+> Nel bosco l'acqua corre via. Ma una goccia salta! "Ciao! Io sono Goccia. Voglio dare da bere ai fiori!"
+
+- **bo**: Una goccia che parla! Piano, che mi bagno.
+- **pilu**: Hai visto? Goccia salta verso i fiori.
+- **tango**: Salta come me! ...Aspetta. Dove va?
+
+### 4. lesson
+
+*Illustrazione:* Tre figure in fila: una nuvola, una goccia, un fiore. Emma e la nonna le guardano sotto l'ombrello.
+
+> Goccia fa un viaggio lungo. Emma lo guarda con la nonna.
+
+- **bo**: Guardiamo il viaggio di Goccia, piano piano.
+- **pilu**: Guarda bene: una figura alla volta.
+- **tango**: Tre figure! Dai! ...Aspetta. Una alla volta.
+
+*Lezione in tre tempi.*
+
+*Insieme:* Indica una figura alla volta e di' solo: "Questa è la nuvola". Poi chiedi: "Dov'è la goccia?". Alla fine indicane una e chiedi: "Come si chiama?". Se tocca un'altra figura, dille il nome di quella e basta.
+
+- ☁️ **la nuvola**: "Questa è la nuvola." / "Dov'è la nuvola?"
+- 💧 **la goccia**: "Questa è la goccia." / "Dov'è la goccia?"
+- 🌼 **il fiore**: "Questo è il fiore." / "Dov'è il fiore?"
+- Terzo tempo: "E questo, come si chiama?"
+- Alla fine: "La nuvola, la goccia, il fiore. È il viaggio di Goccia."
+
+### 5. turn
+
+*Illustrazione:* Una goccia salta su un fiore, poi sale in alto, sempre più piccola, fino a una nuvola. Emma guarda in su.
+
+> Plop! Goccia salta su un fiore. Il fiore beve. Poi Goccia sale su, su, fino alla nuvola.
+
+- **bo**: Goccia vola su! Tornerà con la pioggia?
+- **pilu**: Guarda: Goccia sale fino alla nuvola.
+- **tango**: Su, su, su! Più veloce di me!
+
+### 6. closing
+
+*Illustrazione:* Sul balcone di casa Emma e la nonna mettono una ciotola sotto la pioggia, vicino a una pianta.
+
+> A casa, Emma e la nonna mettono una ciotola sul balcone. "Questa è per la pioggia," dice Emma.
+
+- **bo**: Stasera chiudo il rubinetto, {nome}. A domani.
+- **pilu**: Domani guardo se la ciotola è piena, {nome}. A domani.
+- **tango**: Stasera chiudo il rubinetto, svelto, {nome}! A domani!
 
 ## La storia (5-7 anni)
 
@@ -99,6 +165,7 @@ Da leggere in `content/stories/goccia-ribelle/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

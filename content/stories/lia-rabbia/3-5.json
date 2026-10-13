@@ -1,0 +1,162 @@
+{
+  "ageBand": "3-5",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno seduto su un cuscino accanto a un libro aperto, con un vulcano disegnato sulla copertina.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "companion", "x": 0.38, "y": 0.6, "s": 0.58},
+            {"e": "📖", "x": 0.68, "y": 0.78, "s": 0.18},
+            {"paint": "volcano", "x": 0.7, "y": 0.52, "s": 0.2, "color": "red", "smoke": true}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! C'è un vulcano. Mi tieni la mano?",
+        "pilu": "Ciao {nome}! Hai visto? Lia ha fatto una torre altissima.",
+        "tango": "Ciao {nome}! Dai, guardiamo subito! ...Aspetta. Prima ci sediamo."
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Lia guarda fiera una torre di costruzioni colorata con una bandierina in cima.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.62, "y": 0.55, "s": 0.55},
+            {"e": "👧", "x": 0.3, "y": 0.64, "s": 0.36},
+            {"e": "✨", "x": 0.8, "y": 0.2, "s": 0.1}
+          ]
+        }
+      },
+      "text": "Lia fa una torre alta alta. Un pezzo rosso, uno blu, uno giallo. In cima, la bandierina."
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Teo, il fratellino piccolo, tocca il pezzo in basso; la torre cade e i pezzi volano sul pavimento.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.55, "y": 0.8, "s": 0.46, "variant": "fallen"},
+            {"e": "👧", "x": 0.24, "y": 0.62, "s": 0.34},
+            {"e": "👶", "x": 0.84, "y": 0.74, "s": 0.24, "flip": true}
+          ]
+        }
+      },
+      "text": "Arriva Teo, il fratellino piccolo. Tocca il pezzo in basso. CRASH! La torre cade tutta."
+    },
+    {
+      "n": 4,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Lia con la faccia rossa e i pugni chiusi; dietro di lei, in trasparenza, un vulcano che fuma.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "volcano", "x": 0.62, "y": 0.5, "s": 0.78, "color": "red", "smoke": true, "opacity": 0.45},
+            {"e": "😡", "x": 0.38, "y": 0.56, "s": 0.5}
+          ]
+        }
+      },
+      "text": "Lia sente una cosa calda nella pancia. Le mani si chiudono da sole. La faccia diventa rossa. Lia è arrabbiata.",
+      "companionLines": {
+        "bo": "Io lo sento nelle orecchie. Tu dove lo senti?",
+        "pilu": "Guarda le mani di Lia. Sono chiuse chiuse.",
+        "tango": "Lo conosco! Le zampe si chiudono così!"
+      }
+    },
+    {
+      "n": 5,
+      "kind": "lesson",
+      "illustration": {
+        "alt": "Sul tavolo tre facce disegnate su cartoncini: una arrabbiata, una triste, una contenta. La nonna e Lia sono sedute vicine."
+      },
+      "text": "La nonna si siede vicino a Lia. Disegna tre facce su tre cartoncini.",
+      "companionLines": {
+        "bo": "Guardiamo le facce insieme, piano piano.",
+        "pilu": "Una faccia alla volta. Guarda bene.",
+        "tango": "Tre facce! Dai! ...Aspetta. Una alla volta."
+      },
+      "lesson": {
+        "together": "Indica una faccia alla volta e di' solo: \"Questa faccia è arrabbiata\". Poi chiedi: \"Dov'è la faccia triste?\". Alla fine indicane una e chiedi: \"Com'è questa faccia?\". Se tocca un'altra faccia, dille il nome di quella e basta.",
+        "items": [
+          {
+            "id": "arrabbiata",
+            "e": "😡",
+            "name": "arrabbiata",
+            "this": "Questa faccia è arrabbiata.",
+            "show": "Dov'è la faccia arrabbiata?"
+          },
+          {
+            "id": "triste",
+            "e": "😢",
+            "name": "triste",
+            "this": "Questa faccia è triste.",
+            "show": "Dov'è la faccia triste?"
+          },
+          {
+            "id": "contenta",
+            "e": "😊",
+            "name": "contenta",
+            "this": "Questa faccia è contenta.",
+            "show": "Dov'è la faccia contenta?"
+          }
+        ],
+        "ask": "E questa faccia, com'è?",
+        "done": "Arrabbiata, triste, contenta. Tutte le facce si possono avere."
+      }
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano diventa arancione e la lava scende piano.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "volcano", "x": 0.5, "y": 0.3, "s": 0.42, "color": "orange"},
+            {"e": "👧", "x": 0.34, "y": 0.72, "s": 0.32},
+            {"e": "👵", "x": 0.66, "y": 0.7, "s": 0.36, "flip": true}
+          ]
+        }
+      },
+      "text": "La nonna dice: \"Ci si può arrabbiare. Facciamo il respiro del vulcano.\" Mani sulla pancia. Dentro: uno, due, tre. Fuori: ssssh.",
+      "companionLines": {
+        "bo": "Facciamolo anche noi. Dentro, uno, due, tre. Fuori, ssssh.",
+        "pilu": "Mani sulla pancia. Senti come sale e scende?",
+        "tango": "Dentro, uno, due, tre! Fuori... ssssh. Piano, piano."
+      }
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Lia e Teo costruiscono insieme una torre bassa e larga; sullo sfondo il vulcano è verde, con un fiore in cima.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"paint": "tower", "x": 0.5, "y": 0.64, "s": 0.42, "variant": "wide"},
+            {"e": "👧", "x": 0.24, "y": 0.66, "s": 0.32},
+            {"e": "👶", "x": 0.78, "y": 0.78, "s": 0.22, "flip": true},
+            {"paint": "volcano", "x": 0.82, "y": 0.3, "s": 0.3, "color": "green", "flower": true}
+          ]
+        }
+      },
+      "text": "Il vulcano scende piano piano. Lia e Teo fanno una torre nuova, larga larga.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Il mio vulcano adesso è calmo, {nome}. A domani!",
+        "pilu": "Stasera provo il respiro del vulcano, {nome}. A domani.",
+        "tango": "Domani respiro prima di correre, {nome}. A domani!"
+      }
+    }
+  ]
+}

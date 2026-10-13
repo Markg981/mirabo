@@ -1,0 +1,86 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter unter einem offenen Regenschirm, während die ersten Regentropfen fallen."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Es regnet. Kommst du mit mir unter den Schirm?",
+        "pilu": "Hallo {nome}! Hörst du den Regen an der Scheibe? Tick, tick.",
+        "tango": "Hallo {nome}! Es regnet! Raus, sofort! ...Warte. Die Stiefel."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, mit zwei zerzausten Zöpfen, gelbem Mäntelchen und roten Gummistiefeln, schaut aus dem Fenster in den Regen; Oma hält den Schirm; Pietrolino liegt auf dem Fensterbrett."
+      },
+      "text": "Es regnet. Die Tropfen klopfen an die Scheibe: tick, tick. Emma zieht die roten Stiefel an. Oma nimmt den Schirm."
+    },
+    {
+      "illustration": {
+        "alt": "Im Wald fließt das Wasser in einem Rinnsal davon; ein Tropfen springt heraus zu einer Blume. Emma schaut zu, Oma ist mit dem Schirm in der Nähe."
+      },
+      "text": "Im Wald fließt das Wasser davon. Aber ein Tropfen springt! „Hallo! Ich bin Tropfi. Ich will den Blumen zu trinken geben!“",
+      "companionLines": {
+        "bo": "Ein Tropfen, der spricht! Langsam, sonst werde ich nass.",
+        "pilu": "Hast du gesehen? Tropfi springt zu den Blumen.",
+        "tango": "Er springt wie ich! ...Warte. Wohin geht er?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Drei Bilder in einer Reihe: eine Wolke, ein Tropfen, eine Blume. Emma und Oma schauen sie unter dem Schirm an."
+      },
+      "text": "Tropfi macht eine lange Reise. Emma schaut mit Oma zu.",
+      "companionLines": {
+        "bo": "Wir schauen Tropfis Reise an, ganz langsam.",
+        "pilu": "Schau genau: ein Bild nach dem anderen.",
+        "tango": "Drei Bilder! Los! ...Warte. Eins nach dem anderen."
+      },
+      "lesson": {
+        "together": "Zeig auf ein Bild nach dem anderen und sag nur: „Das ist die Wolke“. Dann frag: „Wo ist der Tropfen?“. Zum Schluss zeig auf eins und frag: „Wie heißt das?“. Wenn dein Kind ein anderes Bild berührt, sag ihm den Namen von diesem, sonst nichts.",
+        "items": [
+          {
+            "name": "die Wolke",
+            "this": "Das ist die Wolke.",
+            "show": "Wo ist die Wolke?"
+          },
+          {
+            "name": "der Tropfen",
+            "this": "Das ist der Tropfen.",
+            "show": "Wo ist der Tropfen?"
+          },
+          {
+            "name": "die Blume",
+            "this": "Das ist die Blume.",
+            "show": "Wo ist die Blume?"
+          }
+        ],
+        "ask": "Und das, wie heißt das?",
+        "done": "Die Wolke, der Tropfen, die Blume. Das ist Tropfis Reise."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Ein Tropfen springt auf eine Blume und steigt dann hoch, immer kleiner, bis zu einer Wolke. Emma schaut nach oben."
+      },
+      "text": "Plopp! Tropfi springt auf eine Blume. Die Blume trinkt. Dann steigt Tropfi hoch, hoch, bis zur Wolke.",
+      "companionLines": {
+        "bo": "Tropfi fliegt hoch! Kommt er mit dem Regen zurück?",
+        "pilu": "Schau: Tropfi steigt bis zur Wolke.",
+        "tango": "Hoch, hoch, hoch! Schneller als ich!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Auf dem Balkon zu Hause stellen Emma und Oma eine Schüssel in den Regen, neben eine Pflanze."
+      },
+      "text": "Zu Hause stellen Emma und Oma eine Schüssel auf den Balkon. „Die ist für den Regen“, sagt Emma.",
+      "companionLines": {
+        "bo": "Heute Abend drehe ich den Wasserhahn zu, {nome}. Bis morgen.",
+        "pilu": "Morgen schaue ich, ob die Schüssel voll ist, {nome}. Bis morgen.",
+        "tango": "Heute Abend drehe ich den Hahn zu, schnell, {nome}! Bis morgen!"
+      }
+    }
+  ]
+}

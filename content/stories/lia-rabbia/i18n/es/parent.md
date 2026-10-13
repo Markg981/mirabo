@@ -12,6 +12,10 @@
 
 Cuando el volcán sube, nombrarlo ("veo que estás muy enfadado") en lugar de frenarlo ("cálmate"); hacer la respiración **juntos**, no ordenarla; hablar de lo que ha pasado solo después, cuando el volcán ha bajado. La reparación (ordenar, rehacer, pedir perdón) viene después, y funciona mejor si la propone el niño.
 
+## La lección en tres tiempos (3–5 años)
+
+La versión para los más pequeños tiene una pausa para poner nombre a tres caras: enfadada, triste, contenta. Es la lección en tres tiempos de Maria Montessori: primero se dice el nombre ("Esta cara está enfadada"), luego se pide reconocerla ("¿Dónde está la cara enfadada?") y solo al final se pregunta el nombre ("¿Cómo está esta cara?"). Si tu hijo se equivoca, no lo corrijas: di el nombre de la que ha señalado y sigue. En casa podéis repetirla con tres caras dibujadas en papel, y con el espejo: "Ponme cara de enfadado".
+
 ## Errores frecuentes
 
 - "No hay motivo para enfadarse": para él sí lo hay, y lo siente.

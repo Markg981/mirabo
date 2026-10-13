@@ -1,0 +1,92 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter sitzt auf einem Kissen neben einem offenen Buch mit einem Vulkan auf dem Umschlag."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Da ist ein Vulkan. Hältst du meine Hand?",
+        "pilu": "Hallo {nome}! Hast du gesehen? Lia hat einen ganz hohen Turm gebaut.",
+        "tango": "Hallo {nome}! Los, wir schauen sofort! ...Warte. Erst setzen wir uns."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia schaut stolz auf einen bunten Turm aus Bausteinen mit einem Fähnchen oben."
+      },
+      "text": "Lia baut einen hohen, hohen Turm. Ein roter Stein, ein blauer, ein gelber. Ganz oben das Fähnchen."
+    },
+    {
+      "illustration": {
+        "alt": "Teo, der kleine Bruder, berührt den untersten Stein; der Turm fällt um und die Steine fliegen über den Boden."
+      },
+      "text": "Da kommt Teo, der kleine Bruder. Er berührt den untersten Stein. KRACH! Der ganze Turm fällt um."
+    },
+    {
+      "illustration": {
+        "alt": "Lia mit rotem Gesicht und geballten Fäusten; hinter ihr, durchsichtig, ein rauchender Vulkan."
+      },
+      "text": "Lia spürt etwas Heißes im Bauch. Die Hände gehen von allein zu. Das Gesicht wird rot. Lia ist wütend.",
+      "companionLines": {
+        "bo": "Ich spüre es in den Ohren. Wo spürst du es?",
+        "pilu": "Schau Lias Hände an. Sie sind ganz fest zu.",
+        "tango": "Das kenne ich! Meine Pfoten gehen genauso zu!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Auf dem Tisch drei Gesichter, auf Kärtchen gemalt: ein wütendes, ein trauriges, ein fröhliches. Oma und Lia sitzen nah beieinander."
+      },
+      "text": "Oma setzt sich neben Lia. Sie malt drei Gesichter auf drei Kärtchen.",
+      "companionLines": {
+        "bo": "Wir schauen die Gesichter zusammen an, ganz langsam.",
+        "pilu": "Ein Gesicht nach dem anderen. Schau genau.",
+        "tango": "Drei Gesichter! Los! ...Warte. Eins nach dem anderen."
+      },
+      "lesson": {
+        "together": "Zeig auf ein Gesicht nach dem anderen und sag nur: „Dieses Gesicht ist wütend“. Dann frag: „Wo ist das traurige Gesicht?“. Zum Schluss zeig auf eins und frag: „Wie ist dieses Gesicht?“. Wenn dein Kind ein anderes Gesicht berührt, sag ihm den Namen von diesem, sonst nichts.",
+        "items": [
+          {
+            "name": "wütend",
+            "this": "Dieses Gesicht ist wütend.",
+            "show": "Wo ist das wütende Gesicht?"
+          },
+          {
+            "name": "traurig",
+            "this": "Dieses Gesicht ist traurig.",
+            "show": "Wo ist das traurige Gesicht?"
+          },
+          {
+            "name": "fröhlich",
+            "this": "Dieses Gesicht ist fröhlich.",
+            "show": "Wo ist das fröhliche Gesicht?"
+          }
+        ],
+        "ask": "Und dieses Gesicht, wie ist es?",
+        "done": "Wütend, traurig, fröhlich. Jedes Gesicht darf sein."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia und Oma mit den Händen auf dem Bauch; über ihnen wird der Vulkan orange und die Lava fließt langsam herunter."
+      },
+      "text": "Oma sagt: „Man darf wütend sein. Machen wir den Vulkan-Atem.“ Hände auf den Bauch. Ein: eins, zwei, drei. Aus: schhhh.",
+      "companionLines": {
+        "bo": "Wir machen auch mit. Ein, eins, zwei, drei. Aus, schhhh.",
+        "pilu": "Hände auf den Bauch. Spürst du, wie er hoch und runter geht?",
+        "tango": "Ein, eins, zwei, drei! Aus... schhhh. Langsam, langsam."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia und Teo bauen zusammen einen niedrigen, breiten Turm; im Hintergrund ist der Vulkan grün, mit einer Blume oben drauf."
+      },
+      "text": "Der Vulkan geht langsam, langsam runter. Lia und Teo bauen einen neuen Turm, breit, breit.",
+      "companionLines": {
+        "bo": "Mein Vulkan ist jetzt ruhig, {nome}. Bis morgen!",
+        "pilu": "Heute Abend probiere ich den Vulkan-Atem, {nome}. Bis morgen.",
+        "tango": "Morgen atme ich, bevor ich renne, {nome}. Bis morgen!"
+      }
+    }
+  ]
+}

@@ -12,6 +12,10 @@
 
 Poned un cubito o un cuenco fuera cuando llueva y usad esa agua para las plantas: el niño ve cuánta cae. Mientras os laváis los dientes juntos, haced una carrera a ver quién se acuerda de cerrar el grifo. Para los más curiosos: un tarro cerrado con un poco de agua al sol muestra las gotitas que "suben".
 
+## La lección en tres tiempos (3–5 años)
+
+La versión para los más pequeños tiene una pausa para poner nombre al viaje de Gota: la nube, la gota, la flor. Es la lección en tres tiempos de Maria Montessori: primero se dice el nombre ("Esta es la nube"), luego se pide reconocerla ("¿Dónde está la gota?") y solo al final se pregunta el nombre ("¿Cómo se llama?"). Si tu hijo se equivoca, no lo corrijas: di el nombre de la que ha señalado y sigue. En casa podéis repetirla mirando por la ventana un día de lluvia, o regando juntos una planta.
+
 ## Errores frecuentes
 
 - Hacer que el niño se sienta responsable de la sequía o de los problemas del planeta.

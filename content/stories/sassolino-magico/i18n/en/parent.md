@@ -12,6 +12,10 @@
 
 Try the "listening minute" together: in the garden, at the park or at the window, eyes closed, everyone counts on their fingers the sounds they hear. Then you tell each other. You don't need a wood: a balcony will do.
 
+## The three-period lesson (ages 3–5)
+
+The version for the youngest has a pause to name three voices of the wood: the stream, the little bird, the leaves. It's Maria Montessori's three-period lesson: first you say the name ("This is the stream: plink, plonk"), then you ask your child to recognise it ("Where is the little bird?"), and only at the end you ask for the name ("What is it called?"). If your child gets it wrong, don't correct: say the name of the one they pointed to and move on. At the park you can do it again with three real things: a leaf, a stone, a twig.
+
 ## Common mistakes
 
 - Explaining straight away "what the story means": let the child get there through the questions.

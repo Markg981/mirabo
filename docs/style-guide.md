@@ -20,8 +20,8 @@ controlla `studio/validate.py`: se cambiano qui, vanno cambiate anche lì.
 
 ### Lunghezza per fascia
 
-Valori indicativi, ricavati dalle storie già scritte. In 3–5 non c'è ancora nessuna storia: sono
-il punto di partenza.
+Valori indicativi, ricavati dalle storie già scritte. In 3–5 le prime varianti sono quelle di
+*Il vulcano di Lia*, *Il Sassolino Magico* e *La Piccola Goccia Ribelle*.
 
 | | 3–5 | 5–7 | 7–10 |
 | --- | --- | --- | --- |
@@ -39,6 +39,8 @@ il punto di partenza.
 2. **Situazione** (`situation`): dove siamo, chi c'è, cosa cambia. Il problema arriva poco a poco.
 3. **Pausa di dialogo** (`dialogue`, al massimo una **[V]**): il protagonista si ferma davanti a una
    scelta. Il testo finisce con una domanda aperta ("E adesso?").
+   In 3–5, al suo posto o accanto, c'è la **lezione in tre tempi** (`lesson`, esattamente una
+   **[V]**), vedi sotto.
 4. **Svolta** (`turn`): il protagonista agisce, spesso con l'aiuto dell'adulto di fiducia. Il
    cambiamento si vede a passi piccoli.
 5. **Chiusura** (`closing`, l'ultima **[V]**): ritorno alla calma e a casa. Il compagno chiama il
@@ -55,6 +57,26 @@ il punto di partenza.
 - `together` è per il genitore: comincia con "Chiedi:" e contiene due domande, una sul
   personaggio e una sul bambino ("E tu, cosa faresti?").
 - In 3–5, se la storia è `togetherOnly`, la pausa non c'è **[V]**.
+
+### Lezione in tre tempi (3–5)
+
+È la lezione di Maria Montessori per dare un nome alle cose: *questo è* (si nomina), *dov'è?* (si
+riconosce), *che cos'è?* (si ricorda). In 3–5 è il momento in cui la storia si ferma e il bambino
+impara tre parole che vengono dalla storia stessa.
+
+- Da 2 a 3 figure **[V]**, concrete e che si distinguono a colpo d'occhio: tre facce, tre voci del
+  bosco, tre tappe di un viaggio. Escono dalla storia, non sono un esercizio a parte.
+- Le figure sono emoji già disponibili e diverse tra loro **[V]**; il nome è quello che il bambino
+  può dire da solo, con l'articolo se serve ("il ruscello").
+- Le frasi sono poche e sempre uguali: `this` è "Questo è…" e contiene il nome **[V]**, `show` è
+  "Dov'è…?", `ask` è una sola domanda per tutte le figure. Niente `{nome}` **[V]**: le frasi sono
+  le stesse per i tre compagni.
+- Non c'è errore. Nessuna frase dice "giusto", "brava", "bene": `done` rimette in fila i nomi e
+  dice una cosa vera sulla storia ("Tutte le facce si possono avere").
+- `together` dice al genitore cosa fare nei tre tempi e chiude con "Se tocca un'altra figura, dille
+  il nome di quella e basta."
+- La scheda genitore ha la sezione "La lezione in tre tempi (3–5 anni)" con un modo di rifarla a
+  casa con cose vere.
 
 ## I compagni
 

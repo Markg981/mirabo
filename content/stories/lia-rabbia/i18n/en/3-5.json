@@ -1,0 +1,92 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion sitting on a cushion next to an open book with a volcano drawn on the cover."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! There's a volcano. Will you hold my hand?",
+        "pilu": "Hi {nome}! Did you see? Lia built a very tall tower.",
+        "tango": "Hi {nome}! Come on, let's look right now! ...Wait. First we sit down."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia proudly looks at a colourful tower of blocks with a little flag on top."
+      },
+      "text": "Lia builds a tall, tall tower. A red block, a blue one, a yellow one. On top, the little flag."
+    },
+    {
+      "illustration": {
+        "alt": "Teo, her little brother, touches the bottom block; the tower falls and the blocks fly across the floor."
+      },
+      "text": "Here comes Teo, her little brother. He touches the bottom block. CRASH! The whole tower falls."
+    },
+    {
+      "illustration": {
+        "alt": "Lia with a red face and clenched fists; behind her, see-through, a smoking volcano."
+      },
+      "text": "Lia feels something hot in her tummy. Her hands close by themselves. Her face turns red. Lia is angry.",
+      "companionLines": {
+        "bo": "I feel it in my ears. Where do you feel it?",
+        "pilu": "Look at Lia's hands. They're shut tight.",
+        "tango": "I know that one! My paws close just like that!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "On the table, three faces drawn on cards: an angry one, a sad one, a happy one. Grandma and Lia sit close together."
+      },
+      "text": "Grandma sits down next to Lia. She draws three faces on three cards.",
+      "companionLines": {
+        "bo": "Let's look at the faces together, slowly.",
+        "pilu": "One face at a time. Look carefully.",
+        "tango": "Three faces! Come on! ...Wait. One at a time."
+      },
+      "lesson": {
+        "together": "Point to one face at a time and just say: \"This face is angry\". Then ask: \"Where is the sad face?\". At the end, point to one and ask: \"How does this face feel?\". If they touch a different face, tell them that face's name, nothing more.",
+        "items": [
+          {
+            "name": "angry",
+            "this": "This face is angry.",
+            "show": "Where is the angry face?"
+          },
+          {
+            "name": "sad",
+            "this": "This face is sad.",
+            "show": "Where is the sad face?"
+          },
+          {
+            "name": "happy",
+            "this": "This face is happy.",
+            "show": "Where is the happy face?"
+          }
+        ],
+        "ask": "And this face, how does it feel?",
+        "done": "Angry, sad, happy. Every face is allowed."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia and Grandma with their hands on their tummies; above them the volcano turns orange and the lava flows down slowly."
+      },
+      "text": "Grandma says: \"It's okay to be angry. Let's do the volcano breath.\" Hands on your tummy. In: one, two, three. Out: shhhh.",
+      "companionLines": {
+        "bo": "Let's do it too. In, one, two, three. Out, shhhh.",
+        "pilu": "Hands on your tummy. Can you feel it go up and down?",
+        "tango": "In, one, two, three! Out... shhhh. Slowly, slowly."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Lia and Teo build a low, wide tower together; in the background the volcano is green, with a flower on top."
+      },
+      "text": "The volcano goes down slowly, slowly. Lia and Teo build a new tower, wide, wide.",
+      "companionLines": {
+        "bo": "My volcano is calm now, {nome}. See you tomorrow!",
+        "pilu": "Tonight I'll try the volcano breath, {nome}. See you tomorrow.",
+        "tango": "Tomorrow I'll breathe before I run, {nome}. See you tomorrow!"
+      }
+    }
+  ]
+}

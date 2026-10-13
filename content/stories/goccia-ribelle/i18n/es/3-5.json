@@ -1,0 +1,86 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero bajo un paraguas abierto, mientras caen las primeras gotas de lluvia."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Llueve. ¿Vienes conmigo bajo el paraguas?",
+        "pilu": "¡Hola, {nome}! ¿Oyes la lluvia en el cristal? Tic, tic.",
+        "tango": "¡Hola, {nome}! ¡Llueve! ¡Afuera, ya! ...Espera. Las botas."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, con dos coletas despeinadas, abrigo amarillo y botas rojas, mira la lluvia por la ventana; la abuela sostiene el paraguas; Pietrolino está en el alféizar."
+      },
+      "text": "Llueve. Las gotas golpean el cristal: tic, tic. Emma se pone las botas rojas. La abuela coge el paraguas."
+    },
+    {
+      "illustration": {
+        "alt": "En el bosque el agua se va por un regato; una gota salta hacia una flor. Emma la mira, la abuela está cerca con el paraguas."
+      },
+      "text": "En el bosque el agua se va corriendo. ¡Pero una gota salta! \"¡Hola! Soy Gota. ¡Quiero dar de beber a las flores!\"",
+      "companionLines": {
+        "bo": "¡Una gota que habla! Despacio, que me mojo.",
+        "pilu": "¿Has visto? Gota salta hacia las flores.",
+        "tango": "¡Salta como yo! ...Espera. ¿Adónde va?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Tres figuras en fila: una nube, una gota, una flor. Emma y la abuela las miran bajo el paraguas."
+      },
+      "text": "Gota hace un viaje largo. Emma lo mira con la abuela.",
+      "companionLines": {
+        "bo": "Miremos el viaje de Gota, despacito.",
+        "pilu": "Mira bien: una figura cada vez.",
+        "tango": "¡Tres figuras! ¡Venga! ...Espera. Una cada vez."
+      },
+      "lesson": {
+        "together": "Señala una figura cada vez y di solo: \"Esta es la nube\". Luego pregunta: \"¿Dónde está la gota?\". Al final señala una y pregunta: \"¿Cómo se llama?\". Si toca otra figura, dile el nombre de esa y nada más.",
+        "items": [
+          {
+            "name": "la nube",
+            "this": "Esta es la nube.",
+            "show": "¿Dónde está la nube?"
+          },
+          {
+            "name": "la gota",
+            "this": "Esta es la gota.",
+            "show": "¿Dónde está la gota?"
+          },
+          {
+            "name": "la flor",
+            "this": "Esta es la flor.",
+            "show": "¿Dónde está la flor?"
+          }
+        ],
+        "ask": "Y esto, ¿cómo se llama?",
+        "done": "La nube, la gota, la flor. Es el viaje de Gota."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Una gota salta sobre una flor y luego sube, cada vez más pequeña, hasta una nube. Emma mira hacia arriba."
+      },
+      "text": "¡Plop! Gota salta sobre una flor. La flor bebe. Luego Gota sube, sube, hasta la nube.",
+      "companionLines": {
+        "bo": "¡Gota vuela hacia arriba! ¿Volverá con la lluvia?",
+        "pilu": "Mira: Gota sube hasta la nube.",
+        "tango": "¡Arriba, arriba, arriba! ¡Más rápida que yo!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "En el balcón de casa Emma y la abuela ponen un cuenco bajo la lluvia, junto a una planta."
+      },
+      "text": "En casa, Emma y la abuela ponen un cuenco en el balcón. \"Este es para la lluvia\", dice Emma.",
+      "companionLines": {
+        "bo": "Esta noche cierro el grifo, {nome}. Hasta mañana.",
+        "pilu": "Mañana miro si el cuenco está lleno, {nome}. Hasta mañana.",
+        "tango": "¡Esta noche cierro el grifo, rapidito, {nome}! ¡Hasta mañana!"
+      }
+    }
+  ]
+}

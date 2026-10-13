@@ -1,0 +1,81 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion on the woodland path, next to a little grey pebble and a flower."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! There's a little voice in the wood. Shall we listen quietly?",
+        "pilu": "Hi {nome}! Can you hear? Someone in the wood is talking very softly.",
+        "tango": "Hi {nome}! Let's run into the wood! ...Wait. First we listen."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, with two messy bunches, a yellow coat and red wellies, walks into the wood with her basket; Grandma sits on a log at the edge."
+      },
+      "text": "Emma has two bunches, red wellies and a little yellow coat. She goes into the wood. Grandma says: \"I'll be right here.\""
+    },
+    {
+      "illustration": {
+        "alt": "At the stream Emma holds a grey, round, smooth pebble that seems to smile; the water makes little splashes."
+      },
+      "text": "At the stream Emma throws pebbles: plink, plonk, plink. Then she finds a round, smooth one. \"Hey! Don't throw me!\" says a little voice.",
+      "companionLines": {
+        "bo": "A little voice! I'm a bit scared. Can you hear it?",
+        "pilu": "Did you hear? Emma stops and listens.",
+        "tango": "Who said that? Let's look, quick! ...Wait. Let's listen."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting on the grass by the stream, with Pietrolino in the palm of her hand; two little birds on the branches."
+      },
+      "text": "\"I'm Pietrolino,\" says the pebble. \"I talk to anyone who stops to listen.\" Emma sits down on the grass."
+    },
+    {
+      "illustration": {
+        "alt": "Three pictures in a row: a water drop for the stream, a little bird, some dry leaves. Emma, beside them, listens with her eyes closed."
+      },
+      "text": "Emma closes her eyes. The wood has lots of voices.",
+      "companionLines": {
+        "bo": "Let's listen too. One voice at a time.",
+        "pilu": "Can you hear how the wood talks? One voice at a time.",
+        "tango": "So many voices! ...Wait. One at a time."
+      },
+      "lesson": {
+        "together": "Point to one picture at a time and just say: \"This is the stream: plink, plonk\". Then ask: \"Where is the little bird?\". At the end, point to one and ask: \"What is it called?\". If they touch a different picture, tell them that one's name, nothing more.",
+        "items": [
+          {
+            "name": "the stream",
+            "this": "This is the stream: plink, plonk.",
+            "show": "Where is the stream?"
+          },
+          {
+            "name": "the little bird",
+            "this": "This is the little bird: tweet, tweet.",
+            "show": "Where is the little bird?"
+          },
+          {
+            "name": "the leaves",
+            "this": "These are the leaves: swish, swish.",
+            "show": "Where are the leaves?"
+          }
+        ],
+        "ask": "And this one, what is it called?",
+        "done": "The stream, the little bird, the leaves. The wood talks softly."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma walks back to Grandma along the path, with her basket; Pietrolino peeks out of her coat pocket."
+      },
+      "text": "Emma puts Pietrolino in her pocket and goes back to Grandma. From the pocket, a little voice: \"Even a tiny pebble makes big circles.\"",
+      "companionLines": {
+        "bo": "Tomorrow I'll listen to the wood with you, {nome}. See you tomorrow.",
+        "pilu": "Tomorrow I'll close my eyes and listen, {nome}. See you tomorrow.",
+        "tango": "Tomorrow I'll stop for a minute and listen, {nome}. See you tomorrow!"
+      }
+    }
+  ]
+}

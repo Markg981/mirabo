@@ -1060,4 +1060,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get translationDraft => 'Übersetzung wird geprüft';
+
+  @override
+  String get lessonNaming => 'Das ist';
+
+  @override
+  String get lessonShow => 'Wo ist es?';
+
+  @override
+  String get lessonTell => 'Wie heißt das?';
 }

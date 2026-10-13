@@ -259,5 +259,9 @@
   "profileMissingName": "Il manque le prénom",
   "profileMissingCompanion": "Il manque le compagnon",
   "profileStart": "On commence",
-  "translationDraft": "Traduction en cours de relecture"
+  "translationDraft": "Traduction en cours de relecture",
+
+  "lessonNaming": "Voici",
+  "lessonShow": "Où est-il ?",
+  "lessonTell": "Comment ça s'appelle ?"
 }

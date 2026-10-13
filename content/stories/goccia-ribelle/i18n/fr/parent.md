@@ -12,6 +12,10 @@
 
 Mettez un petit seau ou un bol dehors quand il pleut et utilisez cette eau pour les plantes : l'enfant voit combien il en tombe. Pendant que vous vous brossez les dents ensemble, faites la course à qui pense à fermer le robinet. Pour les plus curieux : un bocal fermé avec un peu d'eau au soleil montre les gouttelettes qui « montent ».
 
+## La leçon en trois temps (3–5 ans)
+
+La version pour les plus petits contient une pause pour nommer le voyage de Goutte : le nuage, la goutte, la fleur. C'est la leçon en trois temps de Maria Montessori : d'abord on dit le nom (« Voici le nuage »), puis on demande de le reconnaître (« Où est la goutte ? »), et seulement à la fin on demande le nom (« Comment ça s'appelle ? »). Si ton enfant se trompe, ne le corrige pas : dis le nom de ce qu'il a montré et continue. À la maison, vous pouvez la refaire en regardant par la fenêtre un jour de pluie, ou en arrosant une plante ensemble.
+
 ## Erreurs fréquentes
 
 - Faire sentir à l'enfant qu'il est responsable de la sécheresse ou des problèmes de la planète.

@@ -1,0 +1,81 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero en el sendero del bosque, junto a una piedrecita gris y una flor."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! En el bosque hay una vocecita. ¿Escuchamos bajito?",
+        "pilu": "¡Hola, {nome}! ¿Oyes? En el bosque alguien habla muy bajito.",
+        "tango": "¡Hola, {nome}! ¡Corramos al bosque! ...Espera. Primero escuchamos."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, con dos coletas despeinadas, abrigo amarillo y botas rojas, entra en el bosque con su cesta; la abuela está sentada en un tronco a la entrada."
+      },
+      "text": "Emma tiene dos coletas, botas rojas y un abriguito amarillo. Va al bosque. La abuela dice: \"Yo estoy aquí.\""
+    },
+    {
+      "illustration": {
+        "alt": "En el arroyo Emma tiene en la mano una piedrecita gris, redonda y lisa, que parece sonreír; el agua salpica un poco."
+      },
+      "text": "En el arroyo Emma lanza piedrecitas: plin, plon, plin. Luego encuentra una redonda y lisa. \"¡Eh! ¡No me lances!\", dice una vocecita.",
+      "companionLines": {
+        "bo": "¡Una vocecita! Me da un poco de miedo. ¿Tú la oyes?",
+        "pilu": "¿Lo has oído? Emma se para y escucha.",
+        "tango": "¿Quién ha hablado? ¡Miremos, ya! ...Espera. Escuchemos."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sentada en la hierba junto al arroyo, con Pietrolino en la palma de la mano; dos pajaritos en las ramas."
+      },
+      "text": "\"Soy Pietrolino\", dice la piedrecita. \"Hablo con quien se para a escuchar.\" Emma se sienta en la hierba."
+    },
+    {
+      "illustration": {
+        "alt": "Tres figuras en fila: una gota de agua para el arroyo, un pajarito, unas hojas secas. Emma, al lado, escucha con los ojos cerrados."
+      },
+      "text": "Emma cierra los ojos. El bosque tiene muchas voces.",
+      "companionLines": {
+        "bo": "Escuchemos nosotros también. Una voz cada vez.",
+        "pilu": "¿Oyes cómo habla el bosque? Una voz cada vez.",
+        "tango": "¡Cuántas voces! ...Espera. Una cada vez."
+      },
+      "lesson": {
+        "together": "Señala una figura cada vez y di solo: \"Este es el arroyo: plin, plon\". Luego pregunta: \"¿Dónde está el pajarito?\". Al final señala una y pregunta: \"¿Cómo se llama?\". Si toca otra figura, dile el nombre de esa y nada más.",
+        "items": [
+          {
+            "name": "el arroyo",
+            "this": "Este es el arroyo: plin, plon.",
+            "show": "¿Dónde está el arroyo?"
+          },
+          {
+            "name": "el pajarito",
+            "this": "Este es el pajarito: pío, pío.",
+            "show": "¿Dónde está el pajarito?"
+          },
+          {
+            "name": "las hojas",
+            "this": "Estas son las hojas: fru, fru.",
+            "show": "¿Dónde están las hojas?"
+          }
+        ],
+        "ask": "Y esto, ¿cómo se llama?",
+        "done": "El arroyo, el pajarito, las hojas. El bosque habla bajito."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma vuelve con la abuela por el sendero, con su cesta; del bolsillo del abrigo asoma Pietrolino."
+      },
+      "text": "Emma mete a Pietrolino en el bolsillo y vuelve con la abuela. Desde el bolsillo, una vocecita: \"Hasta una piedrecita pequeña hace círculos grandes.\"",
+      "companionLines": {
+        "bo": "Mañana escucho el bosque contigo, {nome}. Hasta mañana.",
+        "pilu": "Mañana cierro los ojos y escucho, {nome}. Hasta mañana.",
+        "tango": "Mañana me paro un minuto y escucho, {nome}. ¡Hasta mañana!"
+      }
+    }
+  ]
+}

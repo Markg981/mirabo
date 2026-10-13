@@ -1,0 +1,81 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon sur le sentier du bois, à côté d'un petit caillou gris et d'une fleur."
+      },
+      "companionLines": {
+        "bo": "Coucou {nome} ! Dans le bois, il y a une petite voix. On écoute doucement ?",
+        "pilu": "Coucou {nome} ! Tu entends ? Dans le bois, quelqu'un parle tout bas.",
+        "tango": "Coucou {nome} ! On court dans le bois ! ...Attends. D'abord on écoute."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, deux couettes en bataille, petit manteau jaune et bottes rouges, entre dans le bois avec son panier ; Mamie est assise sur un tronc à l'entrée."
+      },
+      "text": "Emma a deux couettes, des bottes rouges et un petit manteau jaune. Elle va dans le bois. Mamie dit : « Je reste ici. »"
+    },
+    {
+      "illustration": {
+        "alt": "Au ruisseau, Emma tient un caillou gris, rond et lisse, qui semble sourire ; l'eau fait de petites éclaboussures."
+      },
+      "text": "Au ruisseau, Emma lance des cailloux : plin, plon, plin. Puis elle en trouve un rond et lisse. « Hé ! Ne me lance pas ! » dit une petite voix.",
+      "companionLines": {
+        "bo": "Une petite voix ! J'ai un peu peur. Tu l'entends ?",
+        "pilu": "Tu as entendu ? Emma s'arrête et écoute.",
+        "tango": "Qui a parlé ? On regarde, vite ! ...Attends. On écoute."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise dans l'herbe près du ruisseau, Pietrolino dans le creux de la main ; deux petits oiseaux sur les branches."
+      },
+      "text": "« Je suis Pietrolino », dit le caillou. « Je parle à ceux qui s'arrêtent pour écouter. » Emma s'assoit dans l'herbe."
+    },
+    {
+      "illustration": {
+        "alt": "Trois images en ligne : une goutte d'eau pour le ruisseau, un petit oiseau, des feuilles sèches. Emma, à côté, écoute les yeux fermés."
+      },
+      "text": "Emma ferme les yeux. Le bois a beaucoup de voix.",
+      "companionLines": {
+        "bo": "On écoute nous aussi. Une voix à la fois.",
+        "pilu": "Tu entends comme le bois parle ? Une voix à la fois.",
+        "tango": "Tant de voix ! ...Attends. Une à la fois."
+      },
+      "lesson": {
+        "together": "Montre une image à la fois et dis seulement : « Voici le ruisseau : plin, plon ». Puis demande : « Où est le petit oiseau ? ». À la fin, montres-en une et demande : « Comment ça s'appelle ? ». S'il touche une autre image, dis-lui le nom de celle-là, c'est tout.",
+        "items": [
+          {
+            "name": "le ruisseau",
+            "this": "Voici le ruisseau : plin, plon.",
+            "show": "Où est le ruisseau ?"
+          },
+          {
+            "name": "le petit oiseau",
+            "this": "Voici le petit oiseau : cui, cui.",
+            "show": "Où est le petit oiseau ?"
+          },
+          {
+            "name": "les feuilles",
+            "this": "Voici les feuilles : frou, frou.",
+            "show": "Où sont les feuilles ?"
+          }
+        ],
+        "ask": "Et ça, comment ça s'appelle ?",
+        "done": "Le ruisseau, le petit oiseau, les feuilles. Le bois parle tout bas."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma rejoint Mamie sur le sentier, avec son panier ; Pietrolino dépasse de la poche de son manteau."
+      },
+      "text": "Emma met Pietrolino dans sa poche et retourne vers Mamie. De la poche, une petite voix : « Même un tout petit caillou fait de grands cercles. »",
+      "companionLines": {
+        "bo": "Demain, j'écoute le bois avec toi, {nome}. À demain.",
+        "pilu": "Demain, je ferme les yeux et j'écoute, {nome}. À demain.",
+        "tango": "Demain, je m'arrête une minute et j'écoute, {nome}. À demain !"
+      }
+    }
+  ]
+}

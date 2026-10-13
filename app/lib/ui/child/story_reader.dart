@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -8,13 +10,17 @@ import '../../audio/narration.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
+import '../../models/three_period_lesson.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'companion_widget.dart';
+import 'lesson_board.dart';
 import 'scene_illustration.dart';
 
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
 /// la pausa di dialogo a metà, il saluto alla fine. Nessun "prossima storia".
+/// In fascia 3–5 c'è la lezione in tre tempi (LessonRun): da soli la conduce
+/// il compagno, insieme il genitore.
 ///
 /// Se la schermata ha l'audio registrato, si ascolta quello con il nome del
 /// bambino (TTS di sistema in cache, vedi NameVoice) inserito nei punti
@@ -33,6 +39,10 @@ class _StoryReaderState extends State<StoryReader> {
   int _index = 0;
   String? _dialogueAnswer;
   bool _recorded = false;
+
+  /// Le lezioni avviate, per schermata: tornando indietro non si ricomincia.
+  final Map<int, LessonRun> _lessons = {};
+  Timer? _lessonTimer;
 
   late final AppState _state;
   late final ChildProfile _profile;
@@ -53,6 +63,7 @@ class _StoryReaderState extends State<StoryReader> {
 
   @override
   void dispose() {
+    _lessonTimer?.cancel();
     _tts.stop();
     _player.dispose();
     if (!_recorded) {
@@ -67,6 +78,11 @@ class _StoryReaderState extends State<StoryReader> {
 
   String _withName(String s) => s.replaceAll('{nome}', _profile.name);
 
+  /// Solo da soli: la lezione in tre tempi di questa schermata.
+  LessonRun? get _lessonRun => _screen.lesson != null && _mode == SessionMode.alone
+      ? _lessons.putIfAbsent(_index, () => LessonRun(_screen.lesson!))
+      : null;
+
   /// Solo da soli: la domanda del compagno nella pausa di dialogo.
   String? get _alonePrompt => _screen.kind == ScreenKind.dialogue && _mode == SessionMode.alone
       ? _withName(_screen.dialogue!.alonePrompt.forCompanion(_profile.companion))
@@ -80,6 +96,7 @@ class _StoryReaderState extends State<StoryReader> {
     if (_screen.text != null) parts.add(_screen.text!);
     if (_screen.companionLines != null) parts.add(_withName(_screen.companionLines!.forCompanion(_profile.companion)));
     if (_alonePrompt != null) parts.add(_alonePrompt!);
+    if (_lessonRun != null) parts.add(_lessonRun!.prompt);
     if (parts.isNotEmpty) await _tts.speak(parts.join(' '));
   }
 
@@ -101,13 +118,49 @@ class _StoryReaderState extends State<StoryReader> {
       await _player.setAudioSource(narrationWithName(narration.uri, name?.uri, audio.nameSlots));
       await _player.play();
       // La registrazione non conosce la modalità: la domanda "da solo" la dice il TTS.
-      if (mounted && index == _index && _player.processingState == ProcessingState.completed && _alonePrompt != null) {
-        await _tts.speak(_alonePrompt!);
+      final after = _alonePrompt ?? _lessonRun?.prompt;
+      if (mounted && index == _index && _player.processingState == ProcessingState.completed && after != null) {
+        await _tts.speak(after);
       }
       return true;
     } catch (_) {
       return false;
     }
+  }
+
+  Future<void> _say(String line) async {
+    await _player.stop();
+    await _tts.stop();
+    await _tts.speak(line);
+  }
+
+  void _tapLesson(LessonItem item) {
+    final run = _lessonRun;
+    if (run == null) {
+      // Insieme guida il genitore: la figura dice solo il suo nome.
+      _say(item.naming);
+      return;
+    }
+    _lessonTimer?.cancel();
+    final line = run.tap(item.id);
+    setState(() {});
+    if (line != null) _say(line);
+    // Terzo tempo: il nome resta in vista un momento, poi si passa alla figura dopo.
+    if (run.revealed) {
+      final index = _index;
+      _lessonTimer = Timer(const Duration(seconds: 3), () {
+        if (!mounted || index != _index || !run.revealed) return;
+        final next = run.advance();
+        setState(() {});
+        _say(next);
+      });
+    }
+  }
+
+  void _go(int index) {
+    _lessonTimer?.cancel();
+    setState(() => _index = index);
+    _speakCurrent();
   }
 
   Future<void> _next() async {
@@ -117,8 +170,7 @@ class _StoryReaderState extends State<StoryReader> {
       if (mounted) Navigator.of(context).pop();
       return;
     }
-    setState(() => _index++);
-    _speakCurrent();
+    _go(_index + 1);
   }
 
   Future<void> _choose(DialogueOption option) async {
@@ -133,7 +185,9 @@ class _StoryReaderState extends State<StoryReader> {
     final companion = _state.companionOf(_profile);
     final screen = _screen;
     final isDialogue = screen.kind == ScreenKind.dialogue;
-    final canAdvance = !isDialogue || _mode == SessionMode.together || _dialogueAnswer != null;
+    final lessonRun = _lessonRun;
+    final canAdvance =
+        (!isDialogue || _mode == SessionMode.together || _dialogueAnswer != null) && (lessonRun?.isDone ?? true);
     final world = worldStyle(widget.story.world);
     final tokens = MiraboTokens.of(context);
     final accent = tokens.tint(world.color);
@@ -177,7 +231,15 @@ class _StoryReaderState extends State<StoryReader> {
                       // Illustrazione (segnaposto finché non ci sono i file)
                       Expanded(
                         flex: 5,
-                        child: screen.illustration.scene == null
+                        child: screen.lesson != null
+                            ? LessonBoard(
+                                lesson: screen.lesson!,
+                                run: lessonRun,
+                                alt: screen.illustration.alt,
+                                color: accent,
+                                onTap: _tapLesson,
+                              )
+                            : screen.illustration.scene == null
                             ? _IllustrationPlaceholder(alt: screen.illustration.alt, color: accent, icon: world.icon)
                             : _IllustrationFrame(
                                 alt: screen.illustration.alt,
@@ -231,7 +293,11 @@ class _StoryReaderState extends State<StoryReader> {
                               const SizedBox(height: 14),
                               _buildDialogue(context, screen.dialogue!),
                             ],
-                            if (screen.companionLines != null && !isDialogue) ...[
+                            if (screen.lesson != null) ...[
+                              const SizedBox(height: 14),
+                              _buildLesson(context, screen, lessonRun),
+                            ],
+                            if (screen.companionLines != null && !isDialogue && screen.lesson == null) ...[
                               const SizedBox(height: 14),
                               _CompanionBubble(
                                 companion: companion,
@@ -260,10 +326,7 @@ class _StoryReaderState extends State<StoryReader> {
                         icon: Icons.arrow_back_rounded,
                         tooltip: context.l10n.back,
                         size: 64,
-                        onPressed: () {
-                          setState(() => _index--);
-                          _speakCurrent();
-                        },
+                        onPressed: () => _go(_index - 1),
                       ),
                     const Spacer(),
                     ChunkyButton(
@@ -280,6 +343,46 @@ class _StoryReaderState extends State<StoryReader> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildLesson(BuildContext context, StoryScreen screen, LessonRun? run) {
+    final companion = _state.companionOf(_profile);
+    final intro = screen.companionLines == null ? null : _withName(screen.companionLines!.forCompanion(_profile.companion));
+    if (run == null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SoftPanel(
+            padding: const EdgeInsets.all(18),
+            color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.teal), 0.85),
+            child: Row(
+              children: [
+                const IconBadge(icon: Icons.people_rounded, color: MiraboColors.teal, size: 52),
+                const SizedBox(width: 14),
+                Expanded(child: Text(screen.lesson!.together, style: Theme.of(context).textTheme.bodyMedium)),
+              ],
+            ),
+          ),
+          if (intro != null) ...[
+            const SizedBox(height: 12),
+            _CompanionBubble(companion: companion, stage: _profile.companionStage, text: intro),
+          ],
+        ],
+      );
+    }
+    // All'inizio il compagno presenta la lezione, poi parla solo con le frasi fisse.
+    final first = run.period == LessonPeriod.naming && run.focus == screen.lesson!.items.first;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (!run.isDone) ...[LessonPeriods(period: run.period), const SizedBox(height: 12)],
+        _CompanionBubble(
+          companion: companion,
+          stage: _profile.companionStage,
+          text: first && intro != null ? '$intro ${run.prompt}' : run.prompt,
+        ),
+      ],
     );
   }
 

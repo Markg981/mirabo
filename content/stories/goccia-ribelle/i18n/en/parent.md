@@ -12,6 +12,10 @@
 
 Put a little bucket or bowl outside when it rains and use that water for the plants: the child sees how much falls. While you brush your teeth together, have a race to see who remembers to turn off the tap. For the curious ones: a closed jar with a little water in the sun shows the droplets "going up".
 
+## The three-period lesson (ages 3–5)
+
+The version for the youngest has a pause to name Drop's journey: the cloud, the drop, the flower. It's Maria Montessori's three-period lesson: first you say the name ("This is the cloud"), then you ask your child to recognise it ("Where is the drop?"), and only at the end you ask for the name ("What is it called?"). If your child gets it wrong, don't correct: say the name of the one they pointed to and move on. At home you can do it again looking out of the window on a rainy day, or watering a plant together.
+
 ## Common mistakes
 
 - Making the child feel responsible for droughts or the planet's problems.

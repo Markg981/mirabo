@@ -12,6 +12,10 @@
 
 Fate insieme il "minuto dell'ascolto": in giardino, al parco o alla finestra, occhi chiusi, e ognuno conta con le dita i suoni che sente. Poi ve li raccontate. Non serve un bosco: va bene anche un balcone.
 
+## La lezione in tre tempi (3–5 anni)
+
+Nella versione per i più piccoli c'è una pausa per dare un nome a tre voci del bosco: il ruscello, l'uccellino, le foglie. È la lezione in tre tempi di Maria Montessori: prima si dice il nome ("Questo è il ruscello: plin, plon"), poi si chiede di riconoscerlo ("Dov'è l'uccellino?"), solo alla fine si chiede il nome ("Come si chiama?"). Se il bambino sbaglia non si corregge: si dice il nome di quello che ha indicato e si va avanti. Al parco potete rifarla con tre cose vere: una foglia, un sasso, un rametto.
+
 ## Errori comuni
 
 - Spiegare subito "cosa vuol dire" la storia: lasciate che il bambino ci arrivi con le domande.
