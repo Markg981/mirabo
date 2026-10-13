@@ -76,6 +76,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeOneStory => 'Un cuento';
 
   @override
+  String goodbyeTitle(Object name) {
+    return '¡Por hoy ya está, $name!';
+  }
+
+  @override
+  String get goodbyeBody =>
+      'Ha sido bonito. Llama a un mayor: ¡hasta la próxima!';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Cambiar de niño. Ahora juega $name';
   }

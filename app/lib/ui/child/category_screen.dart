@@ -17,7 +17,7 @@ import 'story_reader.dart';
 
 void openParentArea(BuildContext context) => AdultGate.open(
       context,
-      then: () => Navigator.of(context).push(adultRoute((_) => const ParentArea())),
+      then: () => Navigator.of(context).push(adultRoute((_) => const SessionHold(child: ParentArea()))),
     );
 
 /// Una capacità della mensola: i suoi pochi materiali come carte grandi, la
@@ -56,7 +56,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: worldStyle(story.world).color,
           icon: worldStyle(story.world).icon,
           width: width,
-          onTap: () => _open(StoryReader(story: story)),
+          onTap: () => _open(SessionHold(child: StoryReader(story: story))),
         ),
       GameItem(:final game) => BigCard(
           title: game.title(l),
@@ -75,7 +75,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             if (a.isHome) (Icons.home_rounded, l.badgeAtHome),
             if (!a.isHome && a.togetherSuggested) (Icons.people_rounded, l.badgeTogether),
           ],
-          onTap: () => _open(ActivityPlayer(activity: a)),
+          onTap: () => _open(SessionHold(child: ActivityPlayer(activity: a))),
         ),
       MakeItem(tool: MakeTool.factory) => BigCard(
           title: l.factoryTitle,

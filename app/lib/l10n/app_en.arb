@@ -24,6 +24,8 @@
   "homeHello": "Hi {name}!",
   "homeQuestion": "What shall we do today?",
   "homeOneStory": "A story",
+  "goodbyeTitle": "That's all for today, {name}!",
+  "goodbyeBody": "That was fun. Go and find a grown-up: see you next time!",
   "switchChildA11y": "Change child. {name} is playing now",
 
   "chooseWhoPlays": "Who's playing today?",

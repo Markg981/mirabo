@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """Impacchetta le storie validate in dist/<id>-v<version>.mirabo (zip) con manifest firmato.
 
+Solo le storie con status "published" (revisione pedagogica approvata) vengono
+impacchettate: le altre non devono arrivare ai bambini. Prima di impacchettare,
+i vecchi pacchetti in dist/ vengono rimossi, così non restano bozze di giri precedenti.
+
 Uso:
-  python studio/pack.py            # pacchetti non firmati (solo per sviluppo)
-  python studio/pack.py --sign     # firma con studio/keys/signing.key
+  python studio/pack.py                     # pacchetti non firmati (solo per sviluppo)
+  python studio/pack.py --sign              # firma con studio/keys/signing.key
+  python studio/pack.py --include-drafts    # include anche draft e review (solo per sviluppo)
 
 Il manifest contiene lo sha256 di ogni file e, se firmato, la firma Ed25519
 della rappresentazione canonica del manifest (JSON con chiavi ordinate, senza spazi).
@@ -68,17 +73,32 @@ def pack_story(folder: Path, do_sign: bool, meta_name: str = "story.json", kind:
     return out
 
 
+def is_published(folder: Path) -> bool:
+    meta = json.loads((folder / "story.json").read_text(encoding="utf-8"))
+    return meta.get("status") == "published"
+
+
 def main() -> int:
     do_sign = "--sign" in sys.argv
+    include_drafts = "--include-drafts" in sys.argv
     if validate_main(["validate.py"]) != 0:
         print("\nValidazione fallita: nessun pacchetto prodotto.")
         return 1
+    for old in DIST.glob("*.mirabo"):
+        old.unlink()
+    skipped: list[str] = []
     for folder in sorted(p for p in STORIES.iterdir() if p.is_dir()):
+        if not include_drafts and not is_published(folder):
+            skipped.append(folder.name)
+            continue
         out = pack_story(folder, do_sign)
         print(f"-> {out.relative_to(ROOT)} {'(firmato)' if do_sign else '(NON firmato)'}")
     for folder in sorted(p for p in ACTIVITIES.iterdir() if p.is_dir()):
         out = pack_story(folder, do_sign, meta_name="activity.json", kind="activity")
         print(f"-> {out.relative_to(ROOT)} {'(firmato)' if do_sign else '(NON firmato)'}")
+    if skipped:
+        print(f"\nNon impacchettate perché non pubblicate ({len(skipped)}): {', '.join(skipped)}")
+        print("Per lo sviluppo: --include-drafts")
     return 0
 
 

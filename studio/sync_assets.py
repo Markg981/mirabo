@@ -5,7 +5,9 @@ Flutter non può caricare asset fuori dalla cartella dell'app, quindi i file di
 content/ vengono copiati (non spostati) in app/assets/stories e app/assets/companions.
 app/assets/ è ignorata da git: la fonte di verità resta content/.
 
-Uso: python studio/sync_assets.py   (esegue anche pack.py --sign)
+Uso:
+  python studio/sync_assets.py                    # esegue pack.py --sign (solo storie pubblicate)
+  python studio/sync_assets.py --include-drafts   # anche le storie non ancora revisionate
 """
 from __future__ import annotations
 
@@ -25,7 +27,7 @@ import pack  # noqa: E402
 
 
 def main() -> int:
-    sys.argv = ["pack.py", "--sign"]
+    sys.argv = ["pack.py", "--sign"] + [a for a in sys.argv[1:] if a == "--include-drafts"]
     if pack.main() != 0:
         return 1
     if STORIES_OUT.exists():
