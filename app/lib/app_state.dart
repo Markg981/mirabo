@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 
 import 'audio/name_voice.dart';
@@ -15,9 +17,10 @@ import 'models/story.dart';
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
 /// Volutamente semplice (ChangeNotifier) finché non serve di più.
 class AppState extends ChangeNotifier {
-  AppState({required this.db, required this.repo, CloudBackup? backup, NameVoice? nameVoice})
+  AppState({required this.db, required this.repo, CloudBackup? backup, NameVoice? nameVoice, DateTime Function()? clock})
       : backup = backup ?? CloudBackup(db: db),
-        nameVoice = nameVoice ?? NameVoice();
+        nameVoice = nameVoice ?? NameVoice(),
+        _now = clock ?? DateTime.now;
 
   final LocalDb db;
   final StoryRepository repo;
@@ -37,10 +40,72 @@ class AppState extends ChangeNotifier {
   bool _childChosen = false;
   bool get needsChildChoice => profiles.length > 1 && !_childChosen;
 
+  final DateTime Function() _now;
+
+  /// Sessione "da solo": parte quando la modalità diventa "da solo" e dura i
+  /// minuti scelti dal genitore nel profilo. Allo scadere il compagno saluta,
+  /// ma mai a metà: se una storia o un'attività è aperta ([SessionHold]) il
+  /// saluto aspetta che finisca. Cambiare bambino non la azzera; la chiude
+  /// solo il genitore cambiando modalità.
+  DateTime? _aloneSince;
+  Timer? _aloneTimer;
+  bool _aloneExpired = false;
+  int _holds = 0;
+  bool _goodbye = false;
+
+  /// Il tempo "da solo" è finito e non c'è niente in corso: si saluta.
+  bool get aloneGoodbye => _goodbye;
+
+  void _syncAloneClock() {
+    if (mode != SessionMode.alone || currentProfile == null) {
+      _aloneTimer?.cancel();
+      _aloneTimer = null;
+      _aloneSince = null;
+      _aloneExpired = false;
+      _goodbye = false;
+      return;
+    }
+    _aloneSince ??= _now();
+    if (_aloneExpired) return;
+    // Il genitore può aver cambiato i minuti: si riprogramma sull'inizio di sempre.
+    final left = _aloneSince!.add(Duration(minutes: currentProfile!.aloneSessionMinutes)).difference(_now());
+    _aloneTimer?.cancel();
+    _aloneTimer = Timer(left.isNegative ? Duration.zero : left, _onAloneTimeUp);
+  }
+
+  void _onAloneTimeUp() {
+    _aloneTimer = null;
+    _aloneExpired = true;
+    _sayGoodbyeIfFree();
+  }
+
+  void _sayGoodbyeIfFree() {
+    if (!_aloneExpired || _holds > 0 || _goodbye) return;
+    _goodbye = true;
+    notifyListeners();
+  }
+
+  /// Una storia o un'attività si apre: il saluto aspetta.
+  void holdSession() => _holds++;
+
+  /// La storia o l'attività si chiude: se il tempo è finito, ora si saluta.
+  /// Fuori dal frame, perché arriva dal dispose della pagina.
+  void releaseSession() {
+    _holds--;
+    if (_aloneExpired) scheduleMicrotask(_sayGoodbyeIfFree);
+  }
+
+  @override
+  void dispose() {
+    _aloneTimer?.cancel();
+    super.dispose();
+  }
+
   Future<void> init() async {
     profiles = await db.profiles();
     currentProfile = profiles.isEmpty ? null : profiles.first;
     if (currentProfile != null) mode = currentProfile!.lastMode;
+    _syncAloneClock();
     notifyListeners();
     // Profili nati prima della cache, o ripristinati da Drive su un tablet nuovo.
     for (final p in profiles) {
@@ -105,11 +170,17 @@ class AppState extends ChangeNotifier {
   Future<void> selectProfile(ChildProfile p) async {
     currentProfile = p;
     mode = p.lastMode;
+    _syncAloneClock();
     notifyListeners();
   }
 
+  /// Solo il genitore cambia modalità: chiude la sessione "da solo" in corso
+  /// e, se si torna "da solo", ne apre una nuova.
   Future<void> setMode(SessionMode m) async {
+    mode = SessionMode.together;
+    _syncAloneClock();
     mode = m;
+    _syncAloneClock();
     final p = currentProfile;
     if (p != null) {
       currentProfile = p.copyWith(lastMode: m);
@@ -125,6 +196,7 @@ class AppState extends ChangeNotifier {
     currentProfile = saved;
     _childChosen = true;
     mode = saved.lastMode;
+    _syncAloneClock();
     notifyListeners();
     nameVoice.prepare(saved);
   }
@@ -133,6 +205,7 @@ class AppState extends ChangeNotifier {
     await db.updateProfile(p);
     profiles = await db.profiles();
     if (currentProfile?.id == p.id) currentProfile = p;
+    _syncAloneClock();
     notifyListeners();
     // Se nome e lingua non sono cambiati il file c'è già e non si rigenera.
     nameVoice.prepare(p);
@@ -143,6 +216,7 @@ class AppState extends ChangeNotifier {
     await nameVoice.forget(id);
     profiles = await db.profiles();
     if (currentProfile?.id == id) currentProfile = profiles.isEmpty ? null : profiles.first;
+    _syncAloneClock();
     notifyListeners();
   }
 
@@ -199,6 +273,7 @@ class AppState extends ChangeNotifier {
     await nameVoice.forget();
     profiles = const [];
     currentProfile = null;
+    _syncAloneClock();
     notifyListeners();
   }
 }
@@ -214,4 +289,33 @@ class AppStateScope extends InheritedWidget {
 
   @override
   bool updateShouldNotify(AppStateScope oldWidget) => state != oldWidget.state;
+}
+
+/// Avvolge una pagina che non va interrotta (una storia, un'attività, l'area
+/// genitori): finché è aperta il compagno non saluta.
+class SessionHold extends StatefulWidget {
+  const SessionHold({super.key, required this.child});
+  final Widget child;
+
+  @override
+  State<SessionHold> createState() => _SessionHoldState();
+}
+
+class _SessionHoldState extends State<SessionHold> {
+  late final AppState _state;
+
+  @override
+  void initState() {
+    super.initState();
+    _state = AppStateScope.read(context)..holdSession();
+  }
+
+  @override
+  void dispose() {
+    _state.releaseSession();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }

@@ -230,6 +230,18 @@ abstract class AppLocalizations {
   /// **'Una storia'**
   String get homeOneStory;
 
+  /// No description provided for @goodbyeTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Per oggi basta, {name}!'**
+  String goodbyeTitle(Object name);
+
+  /// No description provided for @goodbyeBody.
+  ///
+  /// In it, this message translates to:
+  /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
+  String get goodbyeBody;
+
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:

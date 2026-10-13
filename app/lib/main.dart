@@ -9,6 +9,7 @@ import 'data/local_db.dart';
 import 'l10n/l10n.dart';
 import 'theme.dart';
 import 'ui/child/choose_child_screen.dart';
+import 'ui/child/goodbye_screen.dart';
 import 'ui/child/home_screen.dart';
 import 'ui/parent/profile_form.dart';
 
@@ -55,9 +56,11 @@ class MiraboApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             home: profile == null
                 ? const ProfileForm(firstRun: true)
-                : state.needsChildChoice
-                    ? const ChooseChildScreen()
-                    : const HomeScreen(),
+                : state.aloneGoodbye
+                    ? const GoodbyeScreen()
+                    : state.needsChildChoice
+                        ? const ChooseChildScreen()
+                        : const HomeScreen(),
           );
         },
       ),
