@@ -196,6 +196,9 @@ Titolo `# Come parlarne: <titolo della storia>`, poi queste sezioni, nell'ordine
 1. **Perché questo tema a *X* anni.** Un paragrafo: cosa succede a quell'età e cosa offre la storia.
 2. `## Tre domande dopo la storia`: una sul fatto, una sul perché, una sulla vita del bambino.
 3. `## Nella vita vera`: due o tre gesti concreti da fare in casa, con il materiale necessario.
+   L'app mostra questa sezione al genitore come "Un'idea per oggi": il titolo va scritto
+   esattamente così (nelle traduzioni: `In real life`, `En la vida real`, `Dans la vraie vie`,
+   `Im echten Leben`) e il testo deve reggersi da solo, senza rimandi alle altre sezioni.
 4. `## Errori comuni`: tre punti, ognuno con il perché in poche parole.
 5. `## Se qualcosa ti preoccupa` (facoltativa, obbligatoria per paure, rabbia, perdita, sicurezza):
    i segnali da non ignorare e a chi rivolgersi (pediatra, insegnanti). Mai una diagnosi.

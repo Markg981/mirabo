@@ -76,9 +76,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeOneStory => 'Une histoire';
 
   @override
-  String get homeLetsPlay => 'On joue';
-
-  @override
   String switchChildA11y(Object name) {
     return 'Changer d\'enfant. C\'est $name qui joue';
   }
@@ -101,13 +98,24 @@ class AppLocalizationsFr extends AppLocalizations {
   String get chooseAddA11y => 'Ajouter un enfant';
 
   @override
-  String get catStories => 'Histoires';
-
-  @override
-  String get catGames => 'Jeux';
-
-  @override
   String get catEmpty => 'Rien ici pour aujourd\'hui.';
+
+  @override
+  String capacityLabel(String capacity) {
+    String _temp0 = intl.Intl.selectLogic(
+      capacity,
+      {
+        'insieme': 'Moi et les autres',
+        'mani': 'Les mains',
+        'sensi': 'Les sens',
+        'parole': 'Les mots',
+        'pensare': 'Compter et penser',
+        'mondo': 'Le monde',
+        'other': '$capacity',
+      },
+    );
+    return '$_temp0';
+  }
 
   @override
   String get badgeAtHome => 'À la maison';
@@ -638,6 +646,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get parentTabGrowth => 'Développement';
 
   @override
+  String get parentTabShelf => 'Étagère';
+
+  @override
   String get parentHowUse => 'Comment utilisez-vous l\'appli en ce moment ?';
 
   @override
@@ -867,6 +878,109 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get ideaTitle => 'Une idée pour aujourd\'hui';
+
+  @override
+  String ideaIntro(String name) {
+    return 'Une petite chose à faire avec $name, loin de l\'écran. Elle change chaque jour.';
+  }
+
+  @override
+  String ideaFromStory(String story) {
+    return 'D\'après l\'histoire « $story »';
+  }
+
+  @override
+  String ideaHome(String title, String area) {
+    return 'Avec les mains : $title ($area)';
+  }
+
+  @override
+  String get ideaHomeHint =>
+      'La présentation pas à pas se trouve dans les activités Montessori.';
+
+  @override
+  String get ideaAnother => 'Une autre idée';
+
+  @override
+  String ideaEmpty(String name) {
+    return 'Quand $name aura fini une histoire, vous trouverez ici une idée à faire ensemble.';
+  }
+
+  @override
+  String weekTitle(String name) {
+    return 'La semaine de $name';
+  }
+
+  @override
+  String get weekIntro =>
+      'Les 7 derniers jours, racontés. Pas de notes : seulement ce qui s\'est passé.';
+
+  @override
+  String weekStories(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'A écouté $count histoires : $titles.',
+      one: 'A écouté une histoire : $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekAllTogether => 'Vous les avez toujours écoutées ensemble.';
+
+  @override
+  String get weekAllAlone =>
+      'Il les a écoutées tout seul : la prochaine, vous pouvez l\'écouter ensemble.';
+
+  @override
+  String weekTogether(int together, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      together,
+      locale: localeName,
+      other: '$together fois sur $total, vous étiez ensemble.',
+      one: 'Une fois sur $total, vous étiez ensemble.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String weekChoice(String story, String answer) {
+    return 'Dans « $story », à la pause, il a choisi : « $answer ».';
+  }
+
+  @override
+  String weekKeyPhrase(String phrase) {
+    return 'Une phrase à répéter ensemble : « $phrase »';
+  }
+
+  @override
+  String weekGestures(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          'Dans la vraie vie, il a fait $count gestes, des histoires $titles.',
+      one: 'Dans la vraie vie, il a fait le geste de $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekNoGestures =>
+      'Aucun geste noté : si vous l\'avez fait, notez-le ci-dessous.';
+
+  @override
+  String weekHome(String titles) {
+    return 'Avec les mains, loin de l\'écran : $titles.';
+  }
+
+  @override
+  String get weekEmpty =>
+      'Aucune histoire ni aucun geste cette semaine. Ce n\'est pas grave : les semaines loin de l\'écran comptent aussi.';
+
+  @override
   String growthTitle(Object name) {
     return 'Comment $name grandit';
   }
@@ -1074,6 +1188,46 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get lessonTell => 'Comment ça s\'appelle ?';
+
+  @override
+  String shelfTitle(Object name) {
+    return 'L\'étagère de $name';
+  }
+
+  @override
+  String shelfHint(String name, int max) {
+    return 'Peu de matériel à la fois, comme sur les étagères d\'une ambiance Montessori : $name choisit librement parmi ce que tu poses ici. $max au plus par capacité ; change-les quand ils ont été explorés.';
+  }
+
+  @override
+  String shelfCount(int count, int max) {
+    return '$count sur $max';
+  }
+
+  @override
+  String get shelfAuto => 'Choix automatique';
+
+  @override
+  String get shelfAutoOn =>
+      'L\'étagère se remplit maintenant toute seule : les premiers matériels adaptés de chaque capacité.';
+
+  @override
+  String get shelfAutoHint =>
+      'L\'étagère se remplit toute seule. Touche un matériel pour les choisir toi-même.';
+
+  @override
+  String shelfFull(int max) {
+    return 'Cette étagère contient déjà $max matériels : retires-en un pour en poser un autre.';
+  }
+
+  @override
+  String get shelfKindStory => 'Histoire';
+
+  @override
+  String get shelfKindGame => 'Jeu';
+
+  @override
+  String get shelfKindActivity => 'Activité';
 
   @override
   String get gesturePause => 'Pause : faisons le geste';
