@@ -1204,8 +1204,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String shelfHint(String name, int max) {
-    return 'Peu de matériel à la fois, comme sur les étagères d\'une ambiance Montessori : $name choisit librement parmi ce que tu poses ici. $max au plus par capacité ; change-les quand ils ont été explorés.';
+  String shelfHint(String name, int max, int per) {
+    return 'Peu de matériel à la fois, comme sur les étagères d\'une ambiance Montessori : $name choisit librement parmi ce que tu poses ici. $max au plus en tout et $per par capacité ; change-les quand ils ont été explorés.';
   }
 
   @override
@@ -1218,16 +1218,32 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get shelfAutoOn =>
-      'L\'étagère se remplit maintenant toute seule : les premiers matériels adaptés de chaque capacité.';
+      'L\'étagère se remplit maintenant toute seule et change une fois par semaine.';
 
   @override
   String get shelfAutoHint =>
-      'L\'étagère se remplit toute seule. Touche un matériel pour les choisir toi-même.';
+      'L\'étagère se remplit toute seule et change une fois par semaine : ce sur quoi l\'enfant travaille reste, le reste laisse la place à autre chose. Touche un matériel pour les choisir toi-même.';
 
   @override
   String shelfFull(int max) {
-    return 'Cette étagère contient déjà $max matériels : retires-en un pour en poser un autre.';
+    return 'L\'étagère contient déjà $max matériels : retires-en un pour en poser un autre.';
   }
+
+  @override
+  String shelfCapacityFull(int max) {
+    return 'Cette capacité a déjà $max matériels : retires-en un pour en poser un autre.';
+  }
+
+  @override
+  String shelfTotal(int count, int max) {
+    return 'Sur l\'étagère : $count sur $max';
+  }
+
+  @override
+  String get shelfRotateNow => 'Changer maintenant';
+
+  @override
+  String get shelfRotated => 'L\'étagère a changé.';
 
   @override
   String get shelfKindStory => 'Histoire';

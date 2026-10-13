@@ -152,8 +152,42 @@ class AppState extends ChangeNotifier {
         for (final t in MakeTool.values) MakeItem(t),
       ];
 
-  /// La mensola che il bambino vede adesso, capacità per capacità.
-  Map<Capacity, List<ShelfItem>> shelfFor(ChildProfile p) => Shelf.arrange(shelfCandidates(p), p.shelf);
+  /// La mensola che il bambino vede adesso, capacità per capacità: quella
+  /// scelta dal genitore o, se non c'è, quella automatica salvata. Se la
+  /// settimana è finita la mensola automatica ruota; quando ha finito arriva
+  /// una notifica e la casa si ridisegna.
+  Map<Capacity, List<ShelfItem>> shelfFor(ChildProfile p, {SessionMode? mode}) {
+    if (p.shelf == null && _shelfDue(p)) scheduleMicrotask(() => rotateShelf(p));
+    return Shelf.arrange(shelfCandidates(p, mode: mode), p.shelf ?? p.shelfAuto, p.ageBand);
+  }
+
+  bool _shelfDue(ChildProfile p) =>
+      p.shelfAuto == null || p.shelfRotatedAt == null || !_now().isBefore(p.shelfRotatedAt!.add(Shelf.rotation));
+
+  Future<void>? _rotating;
+
+  /// Ruota la mensola automatica (vedi [Shelf.rotate]) e la salva. Senza
+  /// [force] solo se la settimana è finita; con [force] è il "Cambia adesso"
+  /// del genitore. La scelta del genitore non si tocca.
+  Future<void> rotateShelf(ChildProfile p, {bool force = false}) =>
+      _rotating ??= _rotateShelf(p, force).whenComplete(() => _rotating = null);
+
+  Future<void> _rotateShelf(ChildProfile p, bool force) async {
+    final fresh = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
+    if (fresh.shelf != null || !(force || _shelfDue(fresh))) return;
+    final now = _now();
+    final current = fresh.shelfAuto ?? const <String>[];
+    final next = Shelf.rotate(
+      available: shelfCandidates(fresh, mode: SessionMode.together),
+      band: fresh.ageBand,
+      current: current,
+      usage: await db.shelfUsage(fresh.id, since: now.subtract(Shelf.rotation)),
+      history: await db.shelfHistory(fresh.id),
+      now: now,
+    );
+    await db.moveShelf(fresh.id, before: current, after: next, at: now);
+    await updateProfile(fresh.withAutoShelf(next, now));
+  }
 
   /// Il genitore cambia la mensola; null la lascia riempire da sola.
   Future<void> setShelf(ChildProfile p, List<String>? keys) => updateProfile(p.withShelf(keys));
@@ -202,6 +236,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> updateProfile(ChildProfile p) async {
+    final before = profiles.where((x) => x.id == p.id).firstOrNull;
     await db.updateProfile(p);
     profiles = await db.profiles();
     if (currentProfile?.id == p.id) currentProfile = p;
@@ -209,6 +244,11 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     // Se nome e lingua non sono cambiati il file c'è già e non si rigenera.
     nameVoice.prepare(p);
+    // Con un'altra fascia o lingua i materiali sono altri: la mensola
+    // automatica si rifà subito, senza aspettare la settimana.
+    if (before != null && p.shelfAuto != null && (before.ageBand != p.ageBand || before.language != p.language)) {
+      await rotateShelf(p, force: true);
+    }
   }
 
   Future<void> deleteProfile(int id) async {

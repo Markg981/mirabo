@@ -22,6 +22,8 @@ class ChildProfile {
     this.stageFloor = 0,
     this.language = 'it',
     this.shelf,
+    this.shelfAuto,
+    this.shelfRotatedAt,
   });
 
   final int id;
@@ -58,6 +60,13 @@ class ChildProfile {
   /// Chiavi dei materiali che il genitore ha messo sulla mensola
   /// (vedi models/shelf.dart); null finché la mensola si riempie da sola.
   final List<String>? shelf;
+
+  /// La mensola automatica salvata: resta uguale per tutta la settimana, così
+  /// il bambino ritrova ciò che ha lasciato. Null finché non è stata riempita.
+  final List<String>? shelfAuto;
+
+  /// Quando la mensola automatica è cambiata l'ultima volta.
+  final DateTime? shelfRotatedAt;
 
   /// Gesti necessari per ogni stadio del compagno (1, 2, 3).
   static const stageThresholds = [3, 6, 12];
@@ -118,10 +127,17 @@ class ChildProfile {
         stageFloor: stageFloor,
         language: language ?? this.language,
         shelf: shelf,
+        shelfAuto: shelfAuto,
+        shelfRotatedAt: shelfRotatedAt,
       );
 
   /// La mensola scelta dal genitore; null torna alla scelta automatica.
-  ChildProfile withShelf(List<String>? keys) => ChildProfile(
+  ChildProfile withShelf(List<String>? keys) => _withShelves(keys == null ? null : List.unmodifiable(keys), shelfAuto, shelfRotatedAt);
+
+  /// La mensola automatica appena riempita o ruotata.
+  ChildProfile withAutoShelf(List<String> keys, DateTime at) => _withShelves(shelf, List.unmodifiable(keys), at);
+
+  ChildProfile _withShelves(List<String>? shelf, List<String>? shelfAuto, DateTime? shelfRotatedAt) => ChildProfile(
         id: id,
         name: name,
         ageBand: ageBand,
@@ -131,12 +147,15 @@ class ChildProfile {
         lastMode: lastMode,
         dyslexiaFont: dyslexiaFont,
         lowStimulation: lowStimulation,
+        readAlong: readAlong,
         aloneSessionMinutes: aloneSessionMinutes,
         storiesCompleted: storiesCompleted,
         gesturesDone: gesturesDone,
         stageFloor: stageFloor,
         language: language,
-        shelf: keys == null ? null : List.unmodifiable(keys),
+        shelf: shelf,
+        shelfAuto: shelfAuto,
+        shelfRotatedAt: shelfRotatedAt,
       );
 
   Map<String, Object?> toRow() => {
@@ -156,6 +175,8 @@ class ChildProfile {
         'stage_floor': stageFloor,
         'language': language,
         'shelf': shelf?.join(','),
+        'shelf_auto': shelfAuto?.join(','),
+        'shelf_rotated_at': shelfRotatedAt?.toIso8601String(),
       };
 
   factory ChildProfile.fromRow(Map<String, Object?> r) => ChildProfile(
@@ -175,6 +196,8 @@ class ChildProfile {
         stageFloor: r['stage_floor'] as int? ?? 0,
         language: r['language'] as String? ?? 'it',
         shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
+        shelfAuto: (r['shelf_auto'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
+        shelfRotatedAt: r['shelf_rotated_at'] == null ? null : DateTime.parse(r['shelf_rotated_at'] as String),
       );
 }
 
