@@ -1,0 +1,48 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon au début d'un sentier qui entre dans le bois, un petit caillou rond à la main."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! Aujourd'hui on rencontre une petite fille, Emma. Et un caillou. Un caillou qui parle ! Moi, j'y crois à moitié.",
+        "pilu": "Bonjour {nome} ! Tu sais que dans le bois il y a des voix qu'on n'entend que si on se tait ? Aujourd'hui on en découvre une.",
+        "tango": "Bonjour {nome} ! Un caillou qui parle ? Allez, on va voir tout de suite !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, avec deux couettes ébouriffées, des bottes rouges et un manteau jaune, court dans le bois avec son panier ; au fond, Mamie assise sur un tronc."
+      },
+      "text": "Emma a six ans, deux couettes ébouriffées, des bottes en caoutchouc rouges et un petit manteau jaune. Chaque après-midi, après sa tartine au miel, elle prend son panier et va dans le bois près de chez elle. Mamie s'assoit sur le tronc à l'entrée. « Moi, je reste ici. Si tu m'appelles, je t'entends. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma au ruisseau va lancer un caillou gris et rond qui a l'air de sourire."
+      },
+      "text": "Au ruisseau, Emma lance des cailloux dans l'eau : plin, plon, plin. Puis elle en trouve un bizarre. Il est gris, rond, lisse, et on dirait presque qu'il sourit. Elle va le lancer quand elle entend une petite voix : « Hé ! Arrête ! Ne me lance pas ! Ça chatouille ! »",
+      "companionLines": {
+        "bo": "Il a parlé ! Le caillou a parlé ! {nome}, tiens-moi la main.",
+        "pilu": "Tu as entendu, {nome} ? Emma s'est arrêtée juste à temps.",
+        "tango": "Moi, je l'aurais déjà lancé ! Heureusement qu'Emma s'est arrêtée, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise en tailleur dans l'herbe, Pietrolino au creux de la main ; autour, des petits oiseaux sur une branche."
+      },
+      "text": "« Je m'appelle Pietrolino », dit le caillou. « Je ne parle qu'à ceux qui s'arrêtent pour écouter. Et toi, tu t'es arrêtée. » Emma s'assoit dans l'herbe. « J'ai vu des papiers dans le ruisseau », dit-elle doucement. « Mais je ne suis qu'une petite fille. » « Même un tout petit caillou fait de grands cercles dans l'eau », répond Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Emma revient vers Mamie avec son panier ; Pietrolino dépasse de la poche de son manteau ; des cercles dans l'eau derrière elles."
+      },
+      "text": "Emma met Pietrolino dans la poche de son manteau et retourne voir Mamie. « Mamie, j'ai trouvé un ami. Demain, on revient dans le bois. » De la poche sort une petite voix : « Le bois a plein de choses à dire. Il suffit d'écouter. »",
+      "companionLines": {
+        "bo": "Un ami caillou. J'en voudrais un aussi, {nome}. Demain je cherche un caillou qui sourit.",
+        "pilu": "Demain, essaie de t'arrêter une minute pour écouter, {nome}. Qui sait ce que tu entendras. À demain.",
+        "tango": "Demain on retourne avec Emma, {nome} ! Et cette fois je m'arrête avant de lancer. Promis !"
+      }
+    }
+  ]
+}

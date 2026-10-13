@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter im Schnee, die Nase in der Luft, schaut den fallenden Schneeflocken zu."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Schnee! Den mag ich sehr, ich bin ja ein Mammut. Aber heute gibt es eine Schneeflocke, die Angst hat. So wie ich manchmal.",
+        "pilu": "Hallo {nome}! Weißt du, dass jede Schneeflocke anders ist als alle anderen? Heute lernen wir eine ganz besondere kennen.",
+        "tango": "Hallo {nome}! Schnee! Schneebälle! Los, wir gehen sofort raus!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma im Schlafanzug am schneeweißen Fenster, mit einem großen Lächeln; Pietrolino auf dem Fensterbrett."
+      },
+      "text": "An einem Wintermorgen wacht Emma mit einem Lächeln auf: Das Fenster ist ganz weiß. „Pietrolino! Es schneit!“ „Ich weiß“, sagt er vom Fensterbrett. „Aber es gibt ein kleines Problem. Da oben ist eine Schneeflocke, die nicht herunterkommen will. Sie hat Angst zu schmelzen.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit Kapuze auf dem kleinen Hügel hinter dem Haus schaut zum Himmel; zwischen den Wolken schaukelt ein leuchtender Punkt, ohne zu fallen; Oma am Fenster."
+      },
+      "text": "Emma zieht ihren Mantel an und steigt auf den kleinen Hügel hinter dem Haus. Oma schaut ihr vom Fenster aus zu. Zwischen den Wolken schaukelt wirklich ein leuchtender Punkt und kommt nicht herunter. „He, kleine Schneeflocke! Komm runter zu den anderen! Hier ist es wunderschön!“ Ein zittriges Stimmchen antwortet: „Und wenn ich falsch lande? Wenn ich in einer Pfütze ende? Wenn ich zu nichts gut bin?“",
+      "companionLines": {
+        "bo": "Ich verstehe die Schneeflocke. Ich habe auch Angst, etwas falsch zu machen. Du nicht, {nome}?",
+        "pilu": "Hast du gehört, {nome}? Die Schneeflocke hat keine Angst vor dem Fallen. Sie hat Angst, etwas falsch zu machen.",
+        "tango": "Ich würde ihr sagen: Komm einfach runter! ...Oh. Vielleicht ist das gar nicht so leicht, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma streckt die Hände wie eine Schale zum Himmel, die Schneeflocke zittert dort oben."
+      },
+      "text": "Emma denkt nach. Die Schneeflocke ist so klein, so leicht. Und sie hat so große Angst. Was kann Emma ihr sagen?",
+      "dialogue": {
+        "together": "Frag: Was würdest du der Schneeflocke sagen, um ihr zu helfen? Und was hilft dir, wenn du Angst hast, etwas falsch zu machen?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du ihr sagen, {nome}?",
+            "pilu": "Was würdest du ihr sagen, {nome}?",
+            "tango": "Was würdest du ihr sagen, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich habe auch manchmal Angst",
+              "reaction": {
+                "bo": "Ja. Wenn man es sagt, fühlt man sich weniger allein. Mal sehen, was Emma sagt.",
+                "pilu": "Wenn uns jemand versteht, wird die Angst kleiner. Hören wir Emma zu.",
+                "tango": "Ich auch, weißt du. Aber nicht weitersagen! Mal sehen."
+              }
+            },
+            {
+              "label": "Komm, ich fang dich",
+              "reaction": {
+                "bo": "Wenn unten jemand ist, der einen auffängt, ist Fallen weniger schlimm.",
+                "pilu": "Hilfe steht bereit. Mal sehen, ob die Schneeflocke Vertrauen hat.",
+                "tango": "Hände bereit! Mal sehen, ob sie runterkommt! Schauen wir."
+              }
+            },
+            {
+              "label": "Du kannst noch ein bisschen warten",
+              "reaction": {
+                "bo": "Warten ist auch in Ordnung. Jeder hat seine Zeit.",
+                "pilu": "Es eilt nicht. Mal sehen, was die Schneeflocke beschließt.",
+                "tango": "Warten? Schwer für mich! Mal sehen, was passiert."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma spricht sanft zum Himmel; die Schneeflocke beginnt herunterzuschweben und dreht sich wie beim Tanzen."
+      },
+      "text": "„Ich habe auch manchmal Angst“, sagt Emma. „Aber nur wenn ich es versuche, merke ich, was ich kann. Du kannst dich auf einen Ast setzen und ihn glitzern lassen. Oder auf eine Hand, und jemanden zum Lächeln bringen.“ Die Schneeflocke bleibt still. Dann fängt sie ganz langsam an zu tanzen. Sie schwebt sachte herunter und dreht sich wie beim Tanzen."
+    },
+    {
+      "illustration": {
+        "alt": "Die Schneeflocke ist auf Emmas Nasenspitze gelandet, und Emma schielt sie an; dann wird sie zu einem leuchtenden Tropfen."
+      },
+      "text": "Die Schneeflocke landet auf Emmas Nasenspitze. Sie ist eiskalt, leicht, und sie glitzert. „Danke“, flüstert sie. „Jetzt weiß ich, dass ich etwas Schönes tun kann, auch nur für einen Augenblick.“ Und sie schmilzt zu einem leuchtenden Tropfen.",
+      "companionLines": {
+        "bo": "Sie hat es geschafft! Sie hatte Angst, aber sie ist trotzdem gekommen. Hast du gesehen, {nome}?",
+        "pilu": "Weißt du, {nome}? Die Schneeflocke ist nicht verschwunden. Sie ist ein Tropfen geworden. Sie hat ihre Form verändert.",
+        "tango": "Auf der Nase! Haha! Ich hätte geniest, {nome}!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma geht nach Hause und hinterlässt Fußspuren im Schnee; Oma wartet an der Tür auf sie."
+      },
+      "text": "„Auch Dinge, die nur kurz dauern, können wunderbar sein, oder?“, fragt Emma. „Ganz genau“, antwortet Pietrolino. „Mut heißt nicht stillhalten, sondern es versuchen.“ Emma geht nach Hause und hinterlässt Fußspuren im Schnee. Oma wartet an der Tür auf sie.",
+      "companionLines": {
+        "bo": "Morgen probiere ich etwas, das mir ein bisschen Angst macht, {nome}. Etwas Kleines. Ich versuch's.",
+        "pilu": "Wenn dir etwas Neues Angst macht, sag einfach „ich versuch's“, {nome}. Wie die Schneeflocke. Bis morgen.",
+        "tango": "Morgen probiere ich etwas Neues, {nome}! Und wenn's schiefgeht, versuche ich es nochmal. Tschüss!"
+      }
+    }
+  ]
+}

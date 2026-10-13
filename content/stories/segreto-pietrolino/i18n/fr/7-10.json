@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon assis dans un pré fleuri de printemps, avec un petit caillou rond à côté."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome}. Aujourd'hui, l'histoire est un peu spéciale. Pietrolino a un secret. On s'assoit tout près, d'accord ?",
+        "pilu": "Bonjour {nome}. C'est le dernier épisode de la saison d'Emma et Pietrolino. Écoutons-le calmement, ensemble.",
+        "tango": "Bonjour {nome} ! Un secret ! J'adore les secrets. Mais aujourd'hui, bizarrement, je vais doucement."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Le bois en plein printemps : des fleurs partout, des abeilles, des oiseaux, des hôtels à insectes accrochés aux arbres ; Emma marche avec Pietrolino dans la main."
+      },
+      "text": "Le printemps est vraiment arrivé : des fleurs partout, des abeilles qui dansent dans l'air, des oiseaux qui chantent chaque matin. Emma et Pietrolino sont désormais inséparables. Dans le bois, ils installent des hôtels à insectes, disent bonjour au chêne, vérifient que le ruisseau chante. Mais un matin, Pietrolino est bizarre. Il ne frétille pas, il ne plaisante pas. Il se tait."
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise dans l'herbe avec Pietrolino au creux de la main, le regarde inquiète ; Mamie pas loin, sur un tronc."
+      },
+      "text": "« Tu es bien silencieux aujourd'hui », dit Emma en s'asseyant dans l'herbe. Pietrolino ne répond pas tout de suite. Puis, d'une toute petite voix : « Emma, je dois te dire quelque chose. Je ne resterai pas pour toujours. » « Qu'est-ce que ça veut dire ? » chuchote-t-elle. « Je suis un morceau de nature. Je suis venu t'aider à apprendre à écouter. Maintenant, tu sais le faire toute seule. Et moi, je dois redevenir un caillou du bois, à ma place. »",
+      "companionLines": {
+        "bo": "Oh. Ça me serre le ventre, {nome}. À toi aussi ?",
+        "pilu": "Pietrolino ne disparaît pas, {nome}. Il retourne à sa place. Écoutons bien.",
+        "tango": "Non ! C'est pas juste ! ...Pardon, {nome}. C'est que moi aussi, je l'aimais bien."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma serre Pietrolino contre sa poitrine, les yeux brillants ; Mamie s'est approchée et lui pose une main sur l'épaule."
+      },
+      "text": "Emma serre Pietrolino très fort. « Mais je ne veux pas te perdre. » Des larmes coulent, et elle ne les retient pas. Mamie arrive doucement, s'assoit à côté d'elle et lui pose une main sur l'épaule. Elle ne dit rien. Elle reste là. « Tu ne me perdras pas », dit Pietrolino, « si tu continues à écouter les arbres, à aider les animaux, à respecter l'eau, la terre et le ciel. C'est ça qui m'a donné une voix. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie assises l'une contre l'autre ; Emma regarde Pietrolino dans sa main, pensive."
+      },
+      "text": "Emma pense à tout ce qu'elle a vécu avec lui : le ruisseau triste, le chêne, les lucioles, le flocon de neige, la chouette. Comment on dit au revoir à un ami comme ça ?",
+      "dialogue": {
+        "together": "Demande : comment te sentirais-tu à la place d'Emma ? Est-ce qu'il t'est déjà arrivé de dire au revoir à quelqu'un ou à quelque chose que tu aimais ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, qu'est-ce que tu ferais à la place d'Emma, {nome} ?",
+            "pilu": "Et toi, qu'est-ce que tu ferais à la place d'Emma, {nome} ?",
+            "tango": "Et toi, qu'est-ce que tu ferais à la place d'Emma, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je pleurerais un peu",
+              "reaction": {
+                "bo": "Moi aussi. Pleurer quand on dit au revoir à quelqu'un, c'est normal.",
+                "pilu": "Les larmes disent combien tu l'aimais. Voyons ce que fait Emma.",
+                "tango": "Moi, je pleure et après je me mouche super fort. Regardons Emma."
+              }
+            },
+            {
+              "label": "Je demanderais un câlin",
+              "reaction": {
+                "bo": "Oui. Un câlin, ça aide beaucoup.",
+                "pilu": "Emma a Mamie tout près, heureusement. Voyons comment ça se passe.",
+                "tango": "Câlin collectif ! Voyons ce que fait Emma."
+              }
+            },
+            {
+              "label": "Je garderais un souvenir",
+              "reaction": {
+                "bo": "Un souvenir à garder près de soi. J'aime bien.",
+                "pilu": "Un souvenir, ça peut être une chose, ou un geste. Voyons ce que choisit Emma.",
+                "tango": "Moi, je garderais tout ! ...Voyons ce que choisit Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma s'essuie les yeux et sourit un peu, Pietrolino au creux de la main ; Mamie lui serre la main."
+      },
+      "text": "Emma pleure encore un peu, avec Mamie tout près. Puis elle s'essuie les yeux. Elle se souvient du courage, de la gentillesse, du silence, du soin. « Alors je t'emporterai toujours avec moi », dit-elle. « Pas dans ma poche. Dans ce que je fais. » Pietrolino sourit. « Alors je serai partout. »",
+      "companionLines": {
+        "bo": "Elle a pleuré et puis elle a souri. On peut faire les deux, {nome}.",
+        "pilu": "Tu as entendu, {nome} ? « Dans ce que je fais ». Pietrolino reste dans les gestes d'Emma.",
+        "tango": "Partout ! Alors ici aussi ? ...J'aime bien le penser, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie au sommet de la plus haute colline ; de là on voit les prés, la rivière et l'école au loin ; Emma pose Pietrolino dans l'herbe à côté d'une pâquerette à peine éclose."
+      },
+      "text": "Emma et Mamie montent jusqu'à la plus haute colline. De là-haut, on voit les prés, la rivière et, au loin, l'école. Emma choisit un endroit spécial, à côté d'une pâquerette à peine éclose, et pose Pietrolino dans l'herbe, doucement, avec les deux mains. « Ici naîtront d'autres histoires. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie descendent la colline main dans la main ; le vent fait bouger l'herbe et la pâquerette ; au loin, le bois, le ruisseau et le chêne."
+      },
+      "text": "Emma et Mamie descendent la colline main dans la main. Le vent fait bouger l'herbe, léger comme une caresse, et semble chuchoter : « Merci, Emma. » Emma ne se retourne pas. Elle sait que Pietrolino est là, à sa place. Et elle sait que demain, dans le bois, elle écoutera encore.",
+      "companionLines": {
+        "bo": "Pietrolino va me manquer, {nome}. Demain, quand je verrai un caillou rond, je lui dirai bonjour.",
+        "pilu": "Ceux qui nous ont appris quelque chose restent avec nous, {nome}. Demain, si tu veux, raconte-moi qui t'a appris quelque chose. À demain.",
+        "tango": "Demain je vais dans le bois pour écouter, {nome}. Comme Emma. Comme ça, Pietrolino sera content. Salut !"
+      }
+    }
+  ]
+}

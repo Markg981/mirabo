@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero con una bufanda, entre hojas rojas y amarillas que caen."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Hace fresquito. Me he puesto la bufanda. Pietrolino dice que hoy el bosque se va a dormir.",
+        "pilu": "¡Hola, {nome}! ¿Sabes que el bosque también se duerme? Hoy vamos a darle las buenas noches.",
+        "tango": "¡Hola, {nome}! ¿Dormir? ¡Yo nunca tengo sueño! ¡Venga, vamos a ver!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con la bufanda y la abuela caminan por el bosque en otoño; las hojas rojas, naranjas y amarillas caen ligeras como plumas."
+      },
+      "text": "El aire está frío y el bosque huele a hojas secas. Emma camina con la bufanda al cuello, Pietrolino en el bolsillo calentito y la abuela al lado. \"¿Adónde vamos hoy?\" \"A despedirnos del bosque\", dice Pietrolino. \"Está a punto de dormirse. Ha trabajado todo el verano. Ahora necesita descansar.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma abraza la gran encina; una hoja le cae en las manos."
+      },
+      "text": "No canta ningún pajarito. El arroyo corre despacio. Llegan a la gran encina, la vieja amiga de Emma. Emma la abraza. \"Buenas noches, encina.\" Una hoja se suelta y le cae en las manos, como un pequeño saludo."
+    },
+    {
+      "illustration": {
+        "alt": "Un erizo con una hoja en el lomo que se mete bajo una raíz; Emma, agachada, lo mira de lejos con las manos en los bolsillos."
+      },
+      "text": "Luego ven un erizo. Camina despacio, con una hoja en el lomo. Emma se agacha, pero no lo toca. \"¿Tienes frío, pequeñín?\" El erizo olfatea el aire, bosteza y se mete bajo una raíz. \"Busca un sitio para dormir\", dice Pietrolino. \"Todos se preparan: las abejas, las semillas bajo tierra, los erizos.\"",
+      "companionLines": {
+        "bo": "¡Ha bostezado! Ahora bostezo yo también. Aaah. ¿Y tú, {nome}?",
+        "pilu": "¿Has visto, {nome}? Emma lo mira pero no lo toca. Así el erizo se fía.",
+        "tango": "¡Yo lo habría cogido en brazos! ...Pero pincha. Y además tiene sueño. Tienes razón, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sentada en la hierba húmeda, pensativa, con la hoja en la mano; la abuela al lado."
+      },
+      "text": "Emma se sienta en la hierba. \"Pero si todo duerme... ¿no es triste?\" \"No\", dice Pietrolino. \"Solo es silencioso. Es como cuando cierras los ojos y creces despacito.\"",
+      "dialogue": {
+        "together": "Pregunta: y tú, cuando estás cansado o cansada, ¿cómo te das cuenta? ¿Qué te ayuda a descansar?",
+        "alone": {
+          "prompt": {
+            "bo": "Y tú, cuando tienes sueño, ¿qué haces, {nome}?",
+            "pilu": "Y tú, cuando necesitas descansar, ¿qué haces, {nome}?",
+            "tango": "Y tú, cuando se te cierran los ojos, ¿qué haces, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Me meto bajo la manta",
+              "reaction": {
+                "bo": "Yo también. Como el erizo bajo las hojas.",
+                "pilu": "Una manta es como una casita. A ver qué hace Emma.",
+                "tango": "¡Una madriguera! ¡Como el erizo! Miremos."
+              }
+            },
+            {
+              "label": "Pido un abrazo",
+              "reaction": {
+                "bo": "Los abrazos me dan un sueño bueno.",
+                "pilu": "Emma también ha abrazado la encina. A ver cómo acaba.",
+                "tango": "¡Abrazo! ¡Yo también quiero! Miremos a Emma."
+              }
+            },
+            {
+              "label": "¡No quiero dormir!",
+              "reaction": {
+                "bo": "A veces yo tampoco. Siempre hay algo que ver.",
+                "pilu": "Pasa. A ver qué descubre Emma sobre pararse.",
+                "tango": "¡Eso! ¡Yo tampoco! ...Pero bostezo. A ver."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con los ojos cerrados, sentada en la nieve recién caída; el primer copo de nieve baja del cielo."
+      },
+      "text": "Emma cierra los ojos. Oye el viento entre las hojas. Oye el bosque que respira despacio. Cuando los vuelve a abrir, un copo de nieve baja del cielo. \"¡Nieva!\" \"Es la almohada del bosque\", dice Pietrolino. \"Ahora puede soñar de verdad.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela vuelven a casa con la primera nieve; Emma sostiene la hoja de la encina entre las manos como una mantita."
+      },
+      "text": "Emma aprieta la hoja entre las manos y se vuelve hacia casa. \"Abuela, esta noche yo también tengo ganas de dormir un poco más.\" \"Muy bien\", dice Pietrolino desde el bolsillo. \"Hasta los corazones valientes saben cuándo pararse.\"",
+      "companionLines": {
+        "bo": "Esta noche me meto bajo la manta como el erizo, {nome}. Buenas noches.",
+        "pilu": "Esta noche, antes de dormir, prueba a respirar despacio tres veces, {nome}. Como el bosque. Hasta mañana.",
+        "tango": "¡Esta noche me duermo prontísimo, {nome}! ...Quizá. Mañana te cuento si lo he conseguido. ¡Adiós!"
+      }
+    }
+  ]
+}

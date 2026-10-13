@@ -1,0 +1,107 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno all'inizio di un sentiero nel bosco, con un sassolino tondo in mano.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.4, "y": 0.68, "s": 0.48},
+            {"paint": "pebble", "x": 0.64, "y": 0.84, "s": 0.08},
+            {"e": "🌼", "x": 0.16, "y": 0.86, "s": 0.08}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! Oggi conosciamo una bambina, Emma. E un sassolino. Un sassolino che parla! Io un po' ci credo e un po' no.",
+        "pilu": "Ciao {nome}! Sai che nel bosco ci sono voci che si sentono solo se stai zitto? Oggi ne scopriamo una.",
+        "tango": "Ciao {nome}! Un sassolino che parla? Dai, andiamo a vedere subito!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma con due codini scompigliati, stivaletti rossi e cappottino giallo, corre nel bosco con il cestino; in fondo la nonna seduta su un tronco.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🏃‍♀️", "x": 0.34, "y": 0.74, "s": 0.34},
+            {"e": "🧺", "x": 0.46, "y": 0.84, "s": 0.12},
+            {"e": "🪵", "x": 0.82, "y": 0.76, "s": 0.18},
+            {"e": "👵", "x": 0.82, "y": 0.63, "s": 0.24, "flip": true},
+            {"e": "🍯", "x": 0.7, "y": 0.86, "s": 0.07}
+          ]
+        }
+      },
+      "text": "Emma ha sei anni, due codini scompigliati, gli stivaletti rossi e un cappottino giallo. Ogni pomeriggio, dopo pane e miele, prende il cestino e va nel bosco vicino a casa. La nonna si siede sul tronco all'ingresso. \"Io sto qui. Se mi chiami, ti sento.\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma al ruscello sta per lanciare un sassolino grigio e tondo che sembra sorridere.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "👧", "x": 0.3, "y": 0.8, "s": 0.32},
+            {"paint": "pebble", "x": 0.42, "y": 0.62, "s": 0.08},
+            {"e": "💦", "x": 0.6, "y": 0.6, "s": 0.07},
+            {"e": "🎵", "x": 0.74, "y": 0.4, "s": 0.08}
+          ]
+        }
+      },
+      "text": "Al ruscello Emma lancia i sassolini nell'acqua: plin, plon, plin. Poi ne trova uno strano. È grigio, tondo, liscio, e sembra quasi sorridere. Sta per lanciarlo, quando sente una vocina: \"Ehi! Ferma! Non lanciarmi! Ho il solletico!\"",
+      "companionLines": {
+        "bo": "Ha parlato! Il sasso ha parlato! {nome}, tienimi la mano.",
+        "pilu": "Hai sentito, {nome}? Emma si è fermata appena in tempo.",
+        "tango": "Io l'avrei già lanciato! Meno male che Emma si è fermata, eh {nome}?"
+      }
+    },
+    {
+      "n": 4,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma seduta sull'erba a gambe incrociate, con Pietrolino sul palmo della mano; intorno uccellini su un ramo.",
+        "scene": {
+          "bg": "stream",
+          "items": [
+            {"e": "🧒", "x": 0.4, "y": 0.8, "s": 0.3},
+            {"paint": "pebble", "x": 0.52, "y": 0.68, "s": 0.08},
+            {"e": "🐦", "x": 0.2, "y": 0.3, "s": 0.08},
+            {"e": "🐦", "x": 0.78, "y": 0.28, "s": 0.07, "flip": true},
+            {"e": "🍃", "x": 0.66, "y": 0.42, "s": 0.06}
+          ]
+        }
+      },
+      "text": "\"Sono Pietrolino,\" dice il sassolino. \"Parlo solo con chi si ferma ad ascoltare. Tu ti sei fermata.\" Emma si siede sull'erba. \"Io ho visto delle cartacce nel ruscello,\" dice piano. \"Ma sono solo una bambina.\" \"Anche un sassolino piccolo fa cerchi grandi nell'acqua,\" risponde Pietrolino."
+    },
+    {
+      "n": 5,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma torna dalla nonna con il cestino; Pietrolino sbuca dal taschino del cappotto; cerchi nell'acqua dietro di loro.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.42, "y": 0.78, "s": 0.28},
+            {"paint": "pebble", "x": 0.47, "y": 0.72, "s": 0.05},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🧺", "x": 0.32, "y": 0.86, "s": 0.1},
+            {"e": "🦋", "x": 0.74, "y": 0.36, "s": 0.09}
+          ]
+        }
+      },
+      "text": "Emma mette Pietrolino nel taschino del cappotto e torna dalla nonna. \"Nonna, ho trovato un amico. Domani torniamo nel bosco.\" Dal taschino arriva una vocina: \"Il bosco ha tante cose da dire. Basta ascoltare.\"",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Un amico sassolino. Anch'io ne vorrei uno, {nome}. Domani cerco un sasso che sorride.",
+        "pilu": "Domani prova a fermarti un minuto e ascoltare, {nome}. Chissà cosa senti. A domani.",
+        "tango": "Domani torniamo con Emma, {nome}! E stavolta mi fermo prima di lanciare. Promesso!"
+      }
+    }
+  ]
+}

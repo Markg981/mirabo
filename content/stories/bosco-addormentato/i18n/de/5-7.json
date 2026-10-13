@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter mit einem Schal zwischen fallenden roten und gelben Blättern."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Es ist ein bisschen kalt. Ich habe meinen Schal umgebunden. Pietrolino sagt, heute geht der Wald schlafen.",
+        "pilu": "Hallo {nome}! Weißt du, dass auch der Wald einschläft? Heute sagen wir ihm gute Nacht.",
+        "tango": "Hallo {nome}! Schlafen? Ich bin nie müde! Los, schauen wir nach!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit Schal und Oma gehen durch den Herbstwald; rote, orange und gelbe Blätter fallen leicht wie Federn."
+      },
+      "text": "Die Luft ist kalt, und der Wald riecht nach trockenem Laub. Emma geht mit dem Schal um den Hals, Pietrolino in der warmen Tasche und Oma neben sich. „Wohin gehen wir heute?“ „Wir verabschieden uns vom Wald“, sagt Pietrolino. „Er schläft bald ein. Er hat den ganzen Sommer gearbeitet. Jetzt braucht er Ruhe.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma umarmt die große Eiche; ein Blatt fällt ihr in die Hände."
+      },
+      "text": "Kein Vogel singt. Der Bach fließt langsam. Sie kommen zur großen Eiche, Emmas alter Freundin. Emma umarmt sie. „Gute Nacht, Eiche.“ Ein Blatt löst sich und fällt ihr in die Hände, wie ein kleiner Gruß."
+    },
+    {
+      "illustration": {
+        "alt": "Ein Igel mit einem Blatt auf dem Rücken schlüpft unter eine Wurzel; Emma hockt da und schaut aus der Entfernung zu, die Hände in den Taschen."
+      },
+      "text": "Dann sehen sie einen Igel. Er läuft langsam, mit einem Blatt auf dem Rücken. Emma hockt sich hin, aber sie fasst ihn nicht an. „Ist dir kalt, Kleiner?“ Der Igel schnuppert, gähnt und schlüpft unter eine Wurzel. „Er sucht einen Platz zum Schlafen“, sagt Pietrolino. „Alle bereiten sich vor: die Bienen, die Samen in der Erde, die Igel.“",
+      "companionLines": {
+        "bo": "Er hat gegähnt! Jetzt gähne ich auch. Aaah. Und du, {nome}?",
+        "pilu": "Hast du gesehen, {nome}? Emma schaut ihn an, aber fasst ihn nicht an. So vertraut ihr der Igel.",
+        "tango": "Ich hätte ihn hochgenommen! ...Aber er piekst. Und er ist müde. Du hast recht, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitzt nachdenklich im feuchten Gras, das Blatt in der Hand; Oma neben ihr."
+      },
+      "text": "Emma setzt sich ins Gras. „Aber wenn alles schläft... ist das nicht traurig?“ „Nein“, sagt Pietrolino. „Es ist nur still. Es ist wie wenn du die Augen zumachst und ganz langsam wächst.“",
+      "dialogue": {
+        "together": "Frag: Und du, wenn du müde bist, woran merkst du das? Was hilft dir, dich auszuruhen?",
+        "alone": {
+          "prompt": {
+            "bo": "Und du, wenn du müde bist, was machst du, {nome}?",
+            "pilu": "Und du, wenn du Ruhe brauchst, was machst du, {nome}?",
+            "tango": "Und du, wenn dir die Augen zufallen, was machst du, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich krieche unter die Decke",
+              "reaction": {
+                "bo": "Ich auch. Wie der Igel unter den Blättern.",
+                "pilu": "Eine Decke ist wie ein kleines Haus. Mal sehen, was Emma macht.",
+                "tango": "Eine Höhle! Wie der Igel! Schauen wir."
+              }
+            },
+            {
+              "label": "Ich will eine Umarmung",
+              "reaction": {
+                "bo": "Umarmungen machen mich schön müde.",
+                "pilu": "Emma hat auch die Eiche umarmt. Mal sehen, wie es ausgeht.",
+                "tango": "Umarmung! Will ich auch! Schauen wir Emma zu."
+              }
+            },
+            {
+              "label": "Ich will nicht schlafen!",
+              "reaction": {
+                "bo": "Manchmal ich auch nicht. Es gibt immer etwas zu sehen.",
+                "pilu": "Das kommt vor. Mal sehen, was Emma übers Innehalten herausfindet.",
+                "tango": "Genau! Ich auch nicht! ...Aber ich gähne. Mal sehen."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitzt mit geschlossenen Augen auf frisch gefallenem Schnee; die erste Schneeflocke fällt vom Himmel."
+      },
+      "text": "Emma schließt die Augen. Sie hört den Wind in den Blättern. Sie hört den Wald langsam atmen. Als sie die Augen wieder öffnet, fällt eine Schneeflocke vom Himmel. „Es schneit!“ „Das ist das Kopfkissen des Waldes“, sagt Pietrolino. „Jetzt kann er richtig träumen.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma gehen im ersten Schnee nach Hause; Emma hält das Eichenblatt in den Händen wie eine kleine Decke."
+      },
+      "text": "Emma hält das Blatt in den Händen und dreht sich nach Hause. „Oma, heute Abend möchte ich auch ein bisschen länger schlafen.“ „Gut so“, sagt Pietrolino aus der Tasche. „Auch mutige Herzen wissen, wann es Zeit ist, innezuhalten.“",
+      "companionLines": {
+        "bo": "Heute Abend krieche ich unter die Decke wie der Igel, {nome}. Gute Nacht.",
+        "pilu": "Probier heute Abend vor dem Schlafen dreimal langsam zu atmen, {nome}. Wie der Wald. Bis morgen.",
+        "tango": "Heute Abend schlafe ich superfrüh, {nome}! ...Vielleicht. Morgen erzähle ich dir, ob es geklappt hat. Tschüss!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion with an ear pressed to a tree trunk, as if listening to it."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! Did you know trees talk? Very softly, with their leaves. But today one has stopped talking. It scares me a bit.",
+        "pilu": "Hi {nome}! Today we're visiting a very old tree. I wonder why it's gone so quiet.",
+        "tango": "Hi {nome}! A talking tree! I'm going to ask its name straight away. Let's go!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma walks through the leaves with Pietrolino in her pocket; Grandma follows with a little backpack."
+      },
+      "text": "The sun shines through the leaves. Emma goes back to the wood with Pietrolino in her pocket and Grandma a little way behind, carrying the backpack. \"Where are we going today?\" asks Emma. \"To see an old friend,\" says Pietrolino. \"An oak tree. She always used to talk. But she's been silent for a while, and nobody knows why.\""
+    },
+    {
+      "illustration": {
+        "alt": "A big oak, bent and dull; leaves are falling even though it isn't autumn; at its foot, bits of plastic and trampled earth with no flowers."
+      },
+      "text": "And there she is. A big, tall oak, but bent and dull. Her branches droop, and her leaves are falling even though it isn't autumn. At her foot there are bits of plastic, broken branches, and a circle of trampled earth where flowers used to grow. \"Hello,\" says Emma softly. \"I'm Emma. I've come to listen to you.\" Silence.",
+      "companionLines": {
+        "bo": "She isn't answering. Maybe she's tired. Or sad. What do you think, {nome}?",
+        "pilu": "Look carefully at her feet, {nome}. What can you see that shouldn't be there?",
+        "tango": "I'd shout really loud! ...But maybe shouting doesn't help, right {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in front of the silent oak, Pietrolino in her hand, Grandma nearby with the backpack open."
+      },
+      "text": "The oak doesn't speak. Emma looks at the plastic, the broken branches, the earth without flowers. What can she do for her?",
+      "dialogue": {
+        "together": "Ask: why do you think the oak stopped talking? And what would you do for her?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do, {nome}?",
+            "pilu": "What would you do, {nome}?",
+            "tango": "What would you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I'll take the plastic away",
+              "reaction": {
+                "bo": "That way it's cleaner around her. Let's see if Emma thinks of it too.",
+                "pilu": "First you take away what hurts. Let's see what Emma does.",
+                "tango": "Plastic, out! Right now! ...Let's see how Emma does it."
+              }
+            },
+            {
+              "label": "I'll stay close to her",
+              "reaction": {
+                "bo": "Staying close is already a lot. I'd want that, if I were sad.",
+                "pilu": "Sometimes when you're sad you need company, not words. Let's watch Emma.",
+                "tango": "Stay still? Hard! But maybe it works. Let's see."
+              }
+            },
+            {
+              "label": "I'll plant some flowers",
+              "reaction": {
+                "bo": "New flowers! Then she won't be alone.",
+                "pilu": "Something growing instead of trampled earth. Let's see what Emma does.",
+                "tango": "Flowers everywhere! Come on, let's see if Emma has any seeds!"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, wearing Grandma's gloves, puts the plastic in the bag and the broken branches in a little pile."
+      },
+      "text": "Grandma gives her the gloves and the bag. Emma picks up the plastic, then puts the broken branches in a little pile. Pietrolino hops onto a root. \"Can you hear anything?\" asks Emma. \"Maybe... a tiny, tiny whisper.\" Emma sits down under the trunk. \"Is it all right if I stay with you a while? I won't leave you alone.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma on her knees plants three little seeds near the roots; Grandma pours a little water from her flask."
+      },
+      "text": "Emma takes three little seeds out of her pocket. \"I found these yesterday. Shall we plant them here?\" Grandma nods. Emma digs with her hands, puts the seeds near the roots, one at a time, and gives them a little water. \"There. Now you'll have some little friends nearby.\"",
+      "companionLines": {
+        "bo": "My hands feel muddy just watching. I like it, {nome}.",
+        "pilu": "You know, {nome}? A seed needs earth, water and time. Time is the longest part.",
+        "tango": "Three seeds! I'd have planted a hundred! ...Maybe three is fine, eh {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "A branch of the oak bends towards Emma like a stroke; Emma, surprised, with her mouth open."
+      },
+      "text": "Silence. Then a soft sound, almost nothing, like the rustle of leaves: \"...Thank... you...\" Emma turns round. \"Did you hear that? Did she really say it?\" Pietrolino glows. \"You woke up her voice, Emma. Not with force. With care.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma on the path home; behind them the oak stands straighter and a small green shoot pokes out of the earth."
+      },
+      "text": "Emma puts Pietrolino back in her pocket. \"I'll come back soon, oak. Promise.\" And as she and Grandma walk home, a small green shoot pokes out of the earth near the roots.",
+      "companionLines": {
+        "bo": "A shoot! Small like me. Tomorrow I'll look for a seed too, {nome}.",
+        "pilu": "See, {nome}? No magic: gloves, seeds, a bit of water and a bit of company. See you tomorrow.",
+        "tango": "Tomorrow I'm planting a seed in a pot, {nome}! And I'll look at it every day. Even if it takes ages!"
+      }
+    }
+  ]
+}

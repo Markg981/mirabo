@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon avec une écharpe, parmi les feuilles rouges et jaunes qui tombent."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! Il fait frisquet. J'ai mis mon écharpe. Pietrolino dit qu'aujourd'hui, le bois va dormir.",
+        "pilu": "Bonjour {nome} ! Tu sais que le bois s'endort, lui aussi ? Aujourd'hui, on va lui dire bonne nuit.",
+        "tango": "Bonjour {nome} ! Dormir ? Moi, je n'ai jamais sommeil ! Allez, on va voir !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma avec son écharpe et Mamie marchent dans le bois d'automne ; les feuilles rouges, orange et jaunes tombent, légères comme des plumes."
+      },
+      "text": "L'air est froid et le bois sent les feuilles sèches. Emma marche avec son écharpe autour du cou, Pietrolino dans sa poche bien au chaud et Mamie à côté. « Où on va aujourd'hui ? » « Dire au revoir au bois », dit Pietrolino. « Il va bientôt s'endormir. Il a travaillé tout l'été. Maintenant, il a besoin de se reposer. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma serre le grand chêne dans ses bras ; une feuille lui tombe dans les mains."
+      },
+      "text": "Aucun oiseau ne chante. Le ruisseau coule doucement. Ils arrivent au grand chêne, le vieil ami d'Emma. Emma le serre dans ses bras. « Bonne nuit, chêne. » Une feuille se détache et lui tombe dans les mains, comme un petit au revoir."
+    },
+    {
+      "illustration": {
+        "alt": "Un hérisson avec une feuille sur le dos se glisse sous une racine ; Emma, accroupie, le regarde de loin, les mains dans les poches."
+      },
+      "text": "Puis ils voient un hérisson. Il marche lentement, avec une feuille sur le dos. Emma s'accroupit, mais elle ne le touche pas. « Tu as froid, mon petit ? » Le hérisson renifle l'air, bâille et se glisse sous une racine. « Il cherche un endroit pour dormir », dit Pietrolino. « Tout le monde se prépare : les abeilles, les graines sous la terre, les hérissons. »",
+      "companionLines": {
+        "bo": "Il a bâillé ! Maintenant je bâille aussi. Aaah. Et toi, {nome} ?",
+        "pilu": "Tu as vu, {nome} ? Emma le regarde mais ne le touche pas. Comme ça, le hérisson a confiance.",
+        "tango": "Moi, je l'aurais pris dans mes bras ! ...Mais il pique. Et il a sommeil. Tu as raison, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise dans l'herbe humide, pensive, la feuille à la main ; Mamie à côté."
+      },
+      "text": "Emma s'assoit dans l'herbe. « Mais si tout dort... ce n'est pas triste ? » « Non », dit Pietrolino. « C'est juste silencieux. C'est comme quand tu fermes les yeux et que tu grandis tout doucement. »",
+      "dialogue": {
+        "together": "Demande : et toi, quand tu es fatigué ou fatiguée, comment tu le sens ? Qu'est-ce qui t'aide à te reposer ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, quand tu as sommeil, qu'est-ce que tu fais, {nome} ?",
+            "pilu": "Et toi, quand tu as besoin de te reposer, qu'est-ce que tu fais, {nome} ?",
+            "tango": "Et toi, quand tes yeux se ferment, qu'est-ce que tu fais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je me mets sous la couverture",
+              "reaction": {
+                "bo": "Moi aussi. Comme le hérisson sous les feuilles.",
+                "pilu": "Une couverture, c'est comme une petite maison. Voyons ce que fait Emma.",
+                "tango": "Une tanière ! Comme le hérisson ! Regardons."
+              }
+            },
+            {
+              "label": "Je demande un câlin",
+              "reaction": {
+                "bo": "Les câlins me donnent un bon sommeil.",
+                "pilu": "Emma aussi a serré le chêne dans ses bras. Voyons comment ça finit.",
+                "tango": "Un câlin ! J'en veux un aussi ! Regardons Emma."
+              }
+            },
+            {
+              "label": "Je ne veux pas dormir !",
+              "reaction": {
+                "bo": "Parfois moi non plus. Il y a toujours quelque chose à voir.",
+                "pilu": "Ça arrive. Voyons ce qu'Emma découvre sur le fait de s'arrêter.",
+                "tango": "Voilà ! Moi non plus ! ...Mais je bâille. Voyons."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise les yeux fermés sur la neige fraîche ; le premier flocon descend du ciel."
+      },
+      "text": "Emma ferme les yeux. Elle entend le vent dans les feuilles. Elle entend le bois qui respire doucement. Quand elle les rouvre, un flocon de neige descend du ciel. « Il neige ! » « C'est l'oreiller du bois », dit Pietrolino. « Maintenant, il peut vraiment rêver. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie rentrent sous la première neige ; Emma tient la feuille du chêne dans ses mains comme une petite couverture."
+      },
+      "text": "Emma serre la feuille dans ses mains et se tourne vers la maison. « Mamie, ce soir moi aussi j'ai envie de dormir un peu plus. » « Bravo », dit Pietrolino depuis la poche. « Même les cœurs courageux savent quand s'arrêter. »",
+      "companionLines": {
+        "bo": "Ce soir, je me mets sous la couverture comme le hérisson, {nome}. Bonne nuit.",
+        "pilu": "Ce soir, avant de dormir, essaie trois respirations lentes, {nome}. Comme le bois. À demain.",
+        "tango": "Ce soir, je dors super tôt, {nome} ! ...Peut-être. Demain je te dis si j'ai réussi. Salut !"
+      }
+    }
+  ]
+}

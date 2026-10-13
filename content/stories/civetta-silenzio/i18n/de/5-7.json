@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter in eine Decke gehüllt unter dem sternklaren Winterhimmel, mit dem Mond."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}. Pssst. Es ist Nacht. Ich spreche ganz leise, ja?",
+        "pilu": "Hallo {nome}! Nachts bin ich hellwach. Heute lernen wir eine entfernte Cousine von mir kennen. Eine ganz besondere Eule.",
+        "tango": "Hallo {nome}! Nachts! Ich mache immer so viel Krach... Heute versuche ich, leise zu sein. Vielleicht."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma liegt mit offenen Augen im Bett, mit ihrer Lieblingsdecke, Pietrolino auf dem Nachttisch; durchs Fenster sieht man den Mond."
+      },
+      "text": "Es ist eine ruhige, eisige Nacht. Der Himmel ist voller Sterne, und der Mond sieht aus wie eine silberne Orangenscheibe. Emma kann nicht schlafen. Sie wälzt sich hin und her. Dann wickelt sie sich in ihre Lieblingsdecke, nimmt Pietrolino und klopft an Omas Tür."
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma, in eine Decke gehüllt, auf der Stufe vor der Haustür, vor dem verschneiten Garten."
+      },
+      "text": "Oma schimpft nicht. Sie zieht ihren Mantel an, wickelt Emma in die Decke, und zusammen setzen sie sich auf die Stufe vor dem verschneiten Garten. „Alles ist so still“, flüstert Emma. „Der Wald schläft noch“, sagt Pietrolino. „Aber nicht alles schläft in der Nacht.“"
+    },
+    {
+      "illustration": {
+        "alt": "Eine weiße Eule mit großen, tiefen Augen sitzt auf einem verschneiten Ast; Emma schaut sie mit offenem Mund an."
+      },
+      "text": "Ein leiser Flügelschlag. Auf einem verschneiten Ast landet eine weiße Eule mit großen, tiefen Augen. „Das ist die Eule der Stille“, sagt Pietrolino. „Sie spricht nur, wenn es nötig ist. Aber sie hört immer zu.“ „Was machst du in der Nacht, Eule?“, fragt Emma leise. „Ich höre zu“, antwortet sie. „Den Ästen, die sich biegen. Den Tieren, die unter dem Schnee schlafen. Den Dingen, die niemand sagt.“",
+      "companionLines": {
+        "bo": "Was für große Augen. Schaut sie mich an? Nein, sie schaut Emma an. Puh, {nome}.",
+        "pilu": "Weißt du, {nome}? Ich höre auch viel zu, bevor ich spreche. Da hört man so allerhand.",
+        "tango": "Ich hätte tausend Fragen gestellt! ...Aber sie hat nur eine gestellt. Schlau, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit geschlossenen Augen neben Oma; die Eule reglos auf dem Ast; alles ist still."
+      },
+      "text": "„Manchmal suchen Kinder die Antworten im Lärm“, sagt die Eule. „Aber die schönsten Antworten findet man in der Stille.“ Emma schließt die Augen. Auch Pietrolino spricht nicht mehr. Was hört man in der Stille?",
+      "dialogue": {
+        "together": "Frag: Probieren wir es auch? Machen wir kurz die Augen zu: Was hörst du?",
+        "alone": {
+          "prompt": {
+            "bo": "Mach du auch die Augen zu. Was hörst du, {nome}?",
+            "pilu": "Mach du auch die Augen zu. Was hörst du, {nome}?",
+            "tango": "Mach du auch die Augen zu. Was hörst du, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Meinen Atem",
+              "reaction": {
+                "bo": "Ein und aus. Ganz langsam. Ich höre meinen auch.",
+                "pilu": "Der Atem ist immer da, aber man hört ihn nur in der Stille. Hören wir Emma zu.",
+                "tango": "Den Atem! Ich atme schnell... jetzt langsamer. Mal sehen."
+              }
+            },
+            {
+              "label": "Viele kleine Geräusche",
+              "reaction": {
+                "bo": "Es gibt immer versteckte Geräusche. Mal sehen, welche Emma hört.",
+                "pilu": "Genau wie die Eule. Mal sehen, was Emma hört.",
+                "tango": "Wie viele? Ich zähle drei! Schauen wir."
+              }
+            },
+            {
+              "label": "Nichts, alles ist still",
+              "reaction": {
+                "bo": "Auch das Nichts ist manchmal schön. Es macht ruhig.",
+                "pilu": "Auch der Stille kann man zuhören. Mal sehen, wie es ausgeht.",
+                "tango": "Still, still. Komisch, was? Schauen wir Emma zu."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Die Eule fliegt in den Sternenhimmel davon; eine weiße Feder schwebt langsam zu Emmas Hand herab."
+      },
+      "text": "Das Rauschen des Windes. Ein Ast, der tropft: tick, tick. Der Atem, ein und aus. Sie sitzen still da und hören zu. Dann fliegt die Eule davon und lässt eine weiße Feder fallen. Emma hebt sie auf. „So leicht. Und doch so voll.“ „Sie ist wie die Stille“, sagt Pietrolino. „Sie macht kein Geräusch, aber sie verändert dich innen drin.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma wieder im Bett, ruhig, die Augen fallen ihr zu; die weiße Feder auf dem Nachttisch neben Pietrolino."
+      },
+      "text": "Oma bringt Emma zurück ins Bett. Emma legt die Feder auf den Nachttisch, neben Pietrolino. Sie atmet langsam, so wie sie es gelernt hat. Und diesmal schläft sie ruhig ein.",
+      "companionLines": {
+        "bo": "Heute Abend höre ich vor dem Schlafen meinem Atem zu, {nome}. Pssst. Gute Nacht.",
+        "pilu": "Probier heute Abend auch eine Minute Stille, {nome}. Hör, was man hört. Bis morgen.",
+        "tango": "Heute Abend versuche ich, eine ganze Minute still zu sein, {nome}! ...Pssst. Tschüss!"
+      }
+    }
+  ]
+}

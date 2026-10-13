@@ -1,0 +1,48 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion at the start of a path into the wood, holding a round little pebble."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! Today we're meeting a girl called Emma. And a pebble. A pebble that talks! I half believe it and half don't.",
+        "pilu": "Hi {nome}! Did you know that in the wood there are voices you can only hear if you're quiet? Today we'll discover one.",
+        "tango": "Hi {nome}! A talking pebble? Come on, let's go and see right now!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, with two messy bunches, red boots and a yellow coat, runs into the wood with her basket; Grandma sits on a log in the background."
+      },
+      "text": "Emma is six. She has two messy bunches, red rubber boots and a little yellow coat. Every afternoon, after bread and honey, she takes her basket and goes to the wood near her house. Grandma sits down on the log at the edge. \"I'll stay here. If you call me, I'll hear you.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma at the stream is about to throw a round grey pebble that seems to be smiling."
+      },
+      "text": "At the stream Emma throws pebbles into the water: plink, plonk, plink. Then she finds a strange one. It's grey, round and smooth, and it almost seems to smile. She's about to throw it when she hears a tiny voice: \"Hey! Stop! Don't throw me! That tickles!\"",
+      "companionLines": {
+        "bo": "It talked! The pebble talked! {nome}, hold my hand.",
+        "pilu": "Did you hear that, {nome}? Emma stopped just in time.",
+        "tango": "I would have thrown it already! Good thing Emma stopped, eh {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting cross-legged on the grass with Pietrolino on the palm of her hand; little birds on a branch around them."
+      },
+      "text": "\"I'm Pietrolino,\" says the pebble. \"I only talk to people who stop to listen. And you stopped.\" Emma sits down on the grass. \"I've seen bits of paper in the stream,\" she says quietly. \"But I'm only a little girl.\" \"Even a tiny pebble makes big circles in the water,\" Pietrolino replies."
+    },
+    {
+      "illustration": {
+        "alt": "Emma goes back to Grandma with her basket; Pietrolino peeks out of her coat pocket; circles in the water behind them."
+      },
+      "text": "Emma puts Pietrolino in her coat pocket and goes back to Grandma. \"Grandma, I've found a friend. Let's come back to the wood tomorrow.\" A tiny voice comes from the pocket: \"The wood has lots of things to say. You just have to listen.\"",
+      "companionLines": {
+        "bo": "A pebble friend. I'd like one too, {nome}. Tomorrow I'll look for a smiling stone.",
+        "pilu": "Tomorrow, try stopping for a minute and listening, {nome}. Who knows what you'll hear. See you tomorrow.",
+        "tango": "Tomorrow we'll go back with Emma, {nome}! And this time I'll stop before I throw. Promise!"
+      }
+    }
+  ]
+}

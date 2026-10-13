@@ -1,0 +1,19 @@
+{
+  "id": "sassolino-magico",
+  "version": 1,
+  "title": "Il Sassolino Magico",
+  "world": "ambiente",
+  "topic": "ascolto",
+  "series": "emma-pietrolino",
+  "episode": 1,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Anche un sassolino piccolo fa cerchi grandi nell'acqua.",
+  "gesture": "Fermarsi un minuto, chiudere gli occhi e contare i suoni che si sentono.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Materiali di educazione all'aperto e all'ascolto della natura per l'infanzia (da verificare)"
+  ],
+  "status": "draft"
+}

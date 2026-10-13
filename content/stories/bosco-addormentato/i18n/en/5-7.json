@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion wearing a scarf, among red and yellow falling leaves."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! It's chilly. I've put my scarf on. Pietrolino says the wood is going to sleep today.",
+        "pilu": "Hi {nome}! Did you know the wood falls asleep too? Today we're going to say goodnight to it.",
+        "tango": "Hi {nome}! Sleep? I'm never sleepy! Come on, let's go and see!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in her scarf and Grandma walk through the autumn wood; red, orange and yellow leaves fall as lightly as feathers."
+      },
+      "text": "The air is cold and the wood smells of dry leaves. Emma walks with her scarf round her neck, Pietrolino in her warm pocket and Grandma beside her. \"Where are we going today?\" \"To say goodbye to the wood,\" says Pietrolino. \"It's about to fall asleep. It worked hard all summer. Now it needs to rest.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma hugs the big oak; a leaf falls into her hands."
+      },
+      "text": "No birds are singing. The stream flows slowly. They reach the big oak, Emma's old friend. Emma hugs her. \"Goodnight, oak.\" A leaf comes loose and falls into her hands, like a little goodbye."
+    },
+    {
+      "illustration": {
+        "alt": "A hedgehog with a leaf on its back slipping under a root; Emma crouches and watches it from a distance, hands in her pockets."
+      },
+      "text": "Then they see a hedgehog. It's walking slowly, with a leaf on its back. Emma crouches down, but she doesn't touch it. \"Are you cold, little one?\" The hedgehog sniffs the air, yawns and slips under a root. \"It's looking for a place to sleep,\" says Pietrolino. \"Everyone's getting ready: the bees, the seeds under the ground, the hedgehogs.\"",
+      "companionLines": {
+        "bo": "It yawned! Now I'm yawning too. Ahhh. What about you, {nome}?",
+        "pilu": "Did you see, {nome}? Emma watches it but doesn't touch it. That way the hedgehog trusts her.",
+        "tango": "I would have picked it up! ...But it's prickly. And it's sleepy. You're right, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting on the damp grass, thoughtful, holding the leaf; Grandma beside her."
+      },
+      "text": "Emma sits down on the grass. \"But if everything's asleep... isn't that sad?\" \"No,\" says Pietrolino. \"It's just quiet. It's like when you close your eyes and grow, slowly, slowly.\"",
+      "dialogue": {
+        "together": "Ask: and you, when you're tired, how do you notice? What helps you rest?",
+        "alone": {
+          "prompt": {
+            "bo": "And you, when you're sleepy, what do you do, {nome}?",
+            "pilu": "And you, when you need to rest, what do you do, {nome}?",
+            "tango": "And you, when your eyes start closing, what do you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I get under the blanket",
+              "reaction": {
+                "bo": "Me too. Like the hedgehog under the leaves.",
+                "pilu": "A blanket is like a little house. Let's see what Emma does.",
+                "tango": "A den! Like the hedgehog! Let's watch."
+              }
+            },
+            {
+              "label": "I ask for a hug",
+              "reaction": {
+                "bo": "Hugs make me nice and sleepy.",
+                "pilu": "Emma hugged the oak too. Let's see how it ends.",
+                "tango": "A hug! I want one too! Let's watch Emma."
+              }
+            },
+            {
+              "label": "I don't want to sleep!",
+              "reaction": {
+                "bo": "Sometimes me neither. There's always something to see.",
+                "pilu": "That happens. Let's see what Emma finds out about stopping.",
+                "tango": "Yes! Me too! ...But I'm yawning. Let's see."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting with her eyes closed on freshly fallen snow; the first snowflake drifts down from the sky."
+      },
+      "text": "Emma closes her eyes. She hears the wind in the leaves. She hears the wood breathing slowly. When she opens them again, a snowflake is falling from the sky. \"It's snowing!\" \"It's the wood's pillow,\" says Pietrolino. \"Now it can really dream.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma walk home in the first snow; Emma holds the oak leaf in her hands like a little blanket."
+      },
+      "text": "Emma holds the leaf in her hands and turns towards home. \"Grandma, tonight I feel like sleeping a bit longer too.\" \"Well done,\" says Pietrolino from her pocket. \"Even brave hearts know when to stop.\"",
+      "companionLines": {
+        "bo": "Tonight I'll get under the blanket like the hedgehog, {nome}. Goodnight.",
+        "pilu": "Tonight, before you sleep, try three slow breaths, {nome}. Like the wood. See you tomorrow.",
+        "tango": "Tonight I'm going to sleep super early, {nome}! ...Maybe. Tomorrow I'll tell you if I managed. Bye!"
+      }
+    }
+  ]
+}

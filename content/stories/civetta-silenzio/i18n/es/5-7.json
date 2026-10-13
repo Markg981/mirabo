@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero envuelto en una manta bajo el cielo estrellado de invierno, con la luna."
+      },
+      "companionLines": {
+        "bo": "Hola, {nome}. Chist. Es de noche. Hablo bajito, bajito, ¿vale?",
+        "pilu": "¡Hola, {nome}! De noche yo estoy despierta. Hoy conocemos a una prima lejana mía. Una lechuza muy especial.",
+        "tango": "¡Hola, {nome}! ¡De noche! Yo siempre hago mucho ruido... Hoy intento estar callada. A lo mejor."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma en la cama con los ojos abiertos, su manta preferida, Pietrolino en la mesilla; por la ventana se ve la luna."
+      },
+      "text": "Es una noche tranquila y helada. El cielo está lleno de estrellas y la luna parece una rodaja de naranja de plata. Emma no puede dormir. Da vueltas y más vueltas. Luego se envuelve en su manta preferida, coge a Pietrolino y va a llamar a la puerta de la abuela."
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela envueltas en una manta en el escalón de la puerta de casa, delante del jardín nevado."
+      },
+      "text": "La abuela no se enfada. Se pone el abrigo, envuelve a Emma en la manta y juntas se sientan en el escalón, delante del jardín nevado. \"Está todo tan silencioso\", susurra Emma. \"El bosque todavía duerme\", dice Pietrolino. \"Pero no todo duerme de noche.\""
+    },
+    {
+      "illustration": {
+        "alt": "Una lechuza blanca con grandes ojos profundos posada en una rama nevada; Emma la mira con la boca abierta."
+      },
+      "text": "Un aleteo suave. En una rama nevada se posa una lechuza blanca, con los ojos grandes y profundos. \"Es la Lechuza del Silencio\", dice Pietrolino. \"Solo habla cuando hace falta. Pero siempre escucha.\" \"¿Qué haces de noche, lechuza?\", pregunta Emma bajito. \"Escucho\", responde ella. \"Las ramas que se doblan. Los animales que duermen bajo la nieve. Las cosas que nadie dice.\"",
+      "companionLines": {
+        "bo": "Qué ojos tan grandes. ¿Me mira a mí? No, mira a Emma. Menos mal, {nome}.",
+        "pilu": "¿Sabes, {nome}? Yo también escucho mucho antes de hablar. Se oyen un montón de cosas.",
+        "tango": "¡Yo habría hecho mil preguntas! ...Pero ella ha hecho solo una. Lista, ¿verdad, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con los ojos cerrados junto a la abuela; la lechuza inmóvil en la rama; todo está quieto."
+      },
+      "text": "\"A veces los niños buscan las respuestas en el ruido\", dice la lechuza. \"Pero las respuestas más bonitas se encuentran en el silencio.\" Emma cierra los ojos. Pietrolino tampoco habla ya. ¿Qué se oye, en el silencio?",
+      "dialogue": {
+        "together": "Pregunta: ¿lo probamos nosotros también? Cerremos los ojos un momento: ¿qué oyes?",
+        "alone": {
+          "prompt": {
+            "bo": "Cierra tú también los ojos. ¿Qué oyes, {nome}?",
+            "pilu": "Cierra tú también los ojos. ¿Qué oyes, {nome}?",
+            "tango": "Cierra tú también los ojos. ¿Qué oyes, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Mi respiración",
+              "reaction": {
+                "bo": "Dentro y fuera. Despacito. Yo también oigo la mía.",
+                "pilu": "La respiración siempre está, pero solo se oye en el silencio. Escuchemos a Emma.",
+                "tango": "¡La respiración! Yo respiro rápido... ahora más despacio. A ver."
+              }
+            },
+            {
+              "label": "Muchos sonidos pequeños",
+              "reaction": {
+                "bo": "Siempre hay sonidos escondidos. A ver cuáles oye Emma.",
+                "pilu": "Igual que la lechuza. A ver qué oye Emma.",
+                "tango": "¿Cuántos? ¡Yo cuento tres! Miremos."
+              }
+            },
+            {
+              "label": "Nada, todo está callado",
+              "reaction": {
+                "bo": "La nada también es bonita, a veces. Hace descansar.",
+                "pilu": "El silencio también se puede escuchar. A ver cómo acaba.",
+                "tango": "Callado, callado. Qué raro, ¿eh? Miremos a Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La lechuza se va volando por el cielo estrellado; una pluma blanca baja despacio hacia la mano de Emma."
+      },
+      "text": "El susurro del viento. Una rama que gotea: tic, tic. La respiración, dentro y fuera. Se quedan allí, en silencio, escuchando. Luego la lechuza se va volando y deja caer una pluma blanca. Emma la recoge. \"Tan ligera. Y tan llena.\" \"Es como el silencio\", dice Pietrolino. \"No hace ruido, pero te cambia por dentro.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma otra vez en la cama, tranquila, con los ojos que se cierran; la pluma blanca en la mesilla, junto a Pietrolino."
+      },
+      "text": "La abuela acompaña a Emma otra vez a la cama. Emma deja la pluma en la mesilla, junto a Pietrolino. Respira despacio, como ha aprendido. Y esta vez se duerme tranquila.",
+      "companionLines": {
+        "bo": "Esta noche escucho mi respiración antes de dormir, {nome}. Chist. Buenas noches.",
+        "pilu": "Esta noche prueba tú también un minuto de silencio, {nome}. Escucha lo que se oye. Hasta mañana.",
+        "tango": "¡Esta noche intento estar callada un minuto entero, {nome}! ...Chist. ¡Adiós!"
+      }
+    }
+  ]
+}

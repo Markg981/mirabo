@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero en un prado al anochecer, con un farolillo encendido y la luna en el cielo."
+      },
+      "companionLines": {
+        "bo": "Hola, {nome}. Es de noche. El bosque está todo oscuro. A mí la oscuridad me da un poco de miedo. ¿Me das la mano?",
+        "pilu": "¡Hola, {nome}! De noche yo abro bien los ojos. ¿Sabes que de noche en el bosque se encienden unas luces?",
+        "tango": "¡Hola, {nome}! ¡Una excursión de noche! ¡Venga, encendemos todas las luces y vamos!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con el farolillo en la mano y la abuela al lado, en el sendero al atardecer; el cielo es rosa y violeta."
+      },
+      "text": "Es una noche de verano. Emma y la abuela entran en el bosque con un farolillo. \"¿De verdad tenemos que venir de noche?\", pregunta Emma, apretando a Pietrolino en la mano. \"Confía en mí\", dice él. \"Algunas cosas solo se ven en la oscuridad.\" El bosque se vuelve misterioso. Emma le da la mano a la abuela."
+    },
+    {
+      "illustration": {
+        "alt": "Un claro oscuro bajo las estrellas; Emma y la abuela sentadas en la hierba alta, con el farolillo encendido entre las dos."
+      },
+      "text": "Llegan a un claro donde los árboles se abren y se ve el cielo. Se sientan en la hierba. Todo está quieto. \"Aquí no hay nada\", dice Emma. \"Espera\", susurra Pietrolino. \"Prueba a apagar el farolillo.\"",
+      "companionLines": {
+        "bo": "¿Apagarlo? ¡Pero entonces estará todo oscuro! {nome}, yo cierro solo un ojo.",
+        "pilu": "Qué raro, ¿verdad, {nome}? Para ver mejor, hay que apagar la luz.",
+        "tango": "¿¡Apagarlo!? ¡Yo lo dejaría encendido! ...Pero tengo curiosidad. ¿Y tú, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con la mano en el farolillo, dudando; la abuela le da la otra mano."
+      },
+      "text": "Emma mira el farolillo. Mira la oscuridad a su alrededor. Mira a la abuela, que le da la mano. Apagar la luz, a oscuras, en el bosque...",
+      "dialogue": {
+        "together": "Pregunta: ¿cómo se siente Emma ahora? ¿Y tú, cuando se apaga la luz, cómo te sientes?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Y tú cómo te sentirías, {nome}?",
+            "pilu": "¿Y tú cómo te sentirías, {nome}?",
+            "tango": "¿Y tú cómo te sentirías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Un poco de miedo",
+              "reaction": {
+                "bo": "Yo también. Mucho. Nos damos la mano fuerte y vemos qué pasa.",
+                "pilu": "Es normal tener miedo a la oscuridad. Emma tiene a la abuela cerca. A ver.",
+                "tango": "Yo también un poco, la verdad. Miremos juntos."
+              }
+            },
+            {
+              "label": "Mucha curiosidad",
+              "reaction": {
+                "bo": "Entonces tienes más valor que yo. A ver qué pasa.",
+                "pilu": "La curiosidad hace abrir bien los ojos. A ver qué descubre Emma.",
+                "tango": "¡Yo también! ¡Muchísima! ¡A ver si Emma lo apaga!"
+              }
+            },
+            {
+              "label": "Quiero una mano que coger",
+              "reaction": {
+                "bo": "Sí. Con una mano que coger, la oscuridad se hace más pequeña.",
+                "pilu": "Emma la tiene: la mano de la abuela. A ver si basta.",
+                "tango": "¡Aquí tienes mi pata! Ahora miremos."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Todo oscuro; delante de Emma y la abuela se encienden las primeras lucecitas doradas."
+      },
+      "text": "Emma apaga el farolillo. La oscuridad la envuelve como una manta. Al principio no ve nada, solo sombras. Pero luego... ¡plim! Una luz pequeñísima se enciende delante de ella. Luego otra. Y otra más. ¡Plim, plim, plim!"
+    },
+    {
+      "illustration": {
+        "alt": "Cientos de luciérnagas bailan en el claro; una se ha posado en la nariz de Emma, que la mira bizqueando."
+      },
+      "text": "¡Las luciérnagas! Muchísimas estrellitas bailan en la oscuridad, se encienden y se apagan como un latido. \"Están contentas de que hayas apagado el farolillo\", dice Pietrolino. \"La luz fuerte las confunde. Se dejan ver por quien espera en silencio.\" Una luciérnaga se posa en la nariz de Emma. \"Hola, pequeñita\", susurra ella.",
+      "companionLines": {
+        "bo": "Ooooh. Ya no tengo miedo. ¡Mira cuántas, {nome}!",
+        "pilu": "¿Sabes, {nome}? Las luciérnagas se hablan con la luz. Encendida, apagada, encendida.",
+        "tango": "¡Una en la nariz! Yo me quedaría quieta quieta. ¿Tú también, {nome}? Chist."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela vuelven a casa de la mano, con el farolillo apagado; algunas luciérnagas las siguen como una pequeña constelación."
+      },
+      "text": "Emma se queda allí mucho rato. No necesita hablar. En el pecho tiene una felicidad ligera, como alas que baten despacio. Luego ella y la abuela vuelven a casa de la mano, con el farolillo apagado, y algunas luciérnagas las siguen como una pequeña constelación.",
+      "companionLines": {
+        "bo": "La oscuridad estaba llena de luces, {nome}. Esta noche apago la luz y miro por la ventana. Contigo.",
+        "pilu": "Esta noche prueba tú también, {nome}: apaga la luz, espera un poco y mira qué se enciende. Hasta mañana.",
+        "tango": "¡Mañana vuelvo a oscuras a contar luciérnagas, {nome}! Pero quieta quieta. ¡Adiós!"
+      }
+    }
+  ]
+}

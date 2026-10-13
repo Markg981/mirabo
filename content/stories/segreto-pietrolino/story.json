@@ -1,0 +1,19 @@
+{
+  "id": "segreto-pietrolino",
+  "version": 1,
+  "title": "Il Segreto di Pietrolino",
+  "world": "emozioni",
+  "topic": "salutarsi",
+  "series": "emma-pietrolino",
+  "episode": 10,
+  "ageBands": { "7-10": "7-10.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": true,
+  "keyPhrase": "Chi ci ha insegnato qualcosa resta con noi, in quello che facciamo.",
+  "gesture": "Scegliere un oggetto o un gesto che ricordi una persona o un amico lontano, e raccontarlo a qualcuno.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Letteratura per l'infanzia e indicazioni psicologiche su separazioni e saluti (da verificare)"
+  ],
+  "status": "draft"
+}

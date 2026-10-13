@@ -90,6 +90,54 @@ class _BackgroundPainter extends CustomPainter {
     c.drawCircle(base + Offset(-6 * k, -82 * k), 9 * k, _p(Colors.white.withValues(alpha: 0.12)));
   }
 
+  /// Cielo notturno blu con luna e stelle.
+  void _nightSky(Canvas c, Size s, double bottom) {
+    final w = s.width, h = s.height;
+    final r = Rect.fromLTWH(0, 0, w, h * bottom);
+    c.drawRect(
+        r,
+        Paint()
+          ..shader = const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF1B2350), Color(0xFF3B4C86)],
+          ).createShader(r));
+    c.drawCircle(Offset(w * 0.8, h * 0.14), h * 0.07, _p(const Color(0xFFFFF4C9)));
+    c.drawCircle(Offset(w * 0.8, h * 0.14), h * 0.1, _p(const Color(0x22FFF4C9)));
+    for (final (x, y) in [(0.08, 0.08), (0.2, 0.2), (0.33, 0.06), (0.45, 0.16), (0.58, 0.05), (0.66, 0.24), (0.92, 0.3), (0.14, 0.34), (0.5, 0.32)]) {
+      c.drawCircle(Offset(w * x, h * y), 1.8, _p(Colors.white.withValues(alpha: 0.85)));
+    }
+  }
+
+  /// Prato innevato con due collinette.
+  void _snowGround(Canvas c, Size s, Color snow, Color shade) {
+    final w = s.width, h = s.height;
+    c.drawOval(Rect.fromLTWH(-w * 0.2, h * 0.44, w * 0.8, h * 0.38), _p(shade));
+    c.drawOval(Rect.fromLTWH(w * 0.4, h * 0.46, w * 0.9, h * 0.38), _p(shade));
+    c.drawRect(Rect.fromLTWH(0, h * 0.6, w, h * 0.4), _p(snow));
+    for (final (x, y) in [(0.14, 0.9), (0.88, 0.86), (0.3, 0.76)]) {
+      c.drawOval(Rect.fromCenter(center: Offset(w * x, h * y), width: h * 0.16, height: h * 0.05), _p(shade.withValues(alpha: 0.5)));
+    }
+  }
+
+  /// Albero d'inverno: tronco e rami spogli con un po' di neve.
+  void _bareTree(Canvas c, Offset base, double k, Color wood) {
+    final stroke = Paint()
+      ..color = wood
+      ..strokeCap = StrokeCap.round;
+    c.drawLine(base, base + Offset(0, -80 * k), stroke..strokeWidth = 10 * k);
+    for (final (y, dx, dy) in [(-40.0, -24.0, -22.0), (-52.0, 22.0, -24.0), (-66.0, -16.0, -20.0), (-74.0, 14.0, -16.0)]) {
+      c.drawLine(base + Offset(0, y * k), base + Offset(dx * k, (y + dy) * k), stroke..strokeWidth = 5 * k);
+      c.drawCircle(base + Offset(dx * k, (y + dy) * k), 4 * k, _p(Colors.white.withValues(alpha: 0.9)));
+    }
+  }
+
+  void _flakes(Canvas c, Size s, Color color) {
+    for (final (x, y) in [(0.1, 0.14), (0.28, 0.3), (0.4, 0.1), (0.55, 0.24), (0.7, 0.12), (0.86, 0.36), (0.18, 0.46), (0.62, 0.44), (0.94, 0.08)]) {
+      c.drawCircle(Offset(s.width * x, s.height * y), 3, _p(color));
+    }
+  }
+
   @override
   void paint(Canvas c, Size s) {
     final w = s.width, h = s.height;
@@ -194,6 +242,40 @@ class _BackgroundPainter extends CustomPainter {
         for (final (x, y, r) in [(0.05, 0.5, 0.03), (0.35, 0.47, 0.022), (0.62, 0.72, 0.028), (0.92, 0.66, 0.03), (0.18, 0.75, 0.025)]) {
           c.drawOval(Rect.fromCenter(center: Offset(w * x, h * y), width: h * r * 2.6, height: h * r * 1.6), _p(const Color(0xFFA9AEB8)));
         }
+      case 'night':
+        _nightSky(c, s, 0.62);
+        c.drawOval(Rect.fromLTWH(-w * 0.2, h * 0.44, w * 0.8, h * 0.38), _p(const Color(0xFF2D4A52)));
+        c.drawOval(Rect.fromLTWH(w * 0.4, h * 0.46, w * 0.9, h * 0.38), _p(const Color(0xFF284450)));
+        c.drawRect(Rect.fromLTWH(0, h * 0.6, w, h * 0.4), _p(const Color(0xFF22413F)));
+        for (final (x, k) in [(0.06, 1.1), (0.2, 0.85), (0.8, 0.9), (0.94, 1.15)]) {
+          _tree(c, Offset(w * x, h * 0.64), h / 330 * k, const Color(0xFF1B3A3A));
+        }
+        for (final (x, y) in [(0.14, 0.9), (0.88, 0.86), (0.3, 0.76)]) {
+          c.drawCircle(Offset(w * x, h * y), h * 0.05, _p(const Color(0xFF1E3B36)));
+        }
+      case 'snow':
+        final sky = Rect.fromLTWH(0, 0, w, h * 0.6);
+        c.drawRect(
+            sky,
+            Paint()
+              ..shader = const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFFB9D7EA), Color(0xFFE8F3FA)],
+              ).createShader(sky));
+        _cloud(c, Offset(w * 0.3, h * 0.12), w / 700);
+        _snowGround(c, s, const Color(0xFFF7FBFF), const Color(0xFFDDE9F3));
+        for (final (x, k) in [(0.07, 1.0), (0.22, 0.8), (0.82, 0.9), (0.95, 1.1)]) {
+          _bareTree(c, Offset(w * x, h * 0.62), h / 330 * k, const Color(0xFF8A6A55));
+        }
+        _flakes(c, s, Colors.white);
+      case 'winter-night':
+        _nightSky(c, s, 0.6);
+        _snowGround(c, s, const Color(0xFFC9D6EA), const Color(0xFFA9BBD6));
+        for (final (x, k) in [(0.07, 1.0), (0.22, 0.8), (0.82, 0.9), (0.95, 1.1)]) {
+          _bareTree(c, Offset(w * x, h * 0.62), h / 330 * k, const Color(0xFF3E3A52));
+        }
+        _flakes(c, s, Colors.white.withValues(alpha: 0.7));
       default: // sky
         _sky(c, s, 1);
         _cloud(c, Offset(w * 0.25, h * 0.2), w / 600);

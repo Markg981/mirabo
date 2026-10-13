@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero con la oreja apoyada en el tronco de un árbol, como si lo escuchara."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! ¿Sabes que los árboles hablan? Muy bajito, con las hojas. Pero hoy uno ya no habla. Me da un poco de miedo.",
+        "pilu": "¡Hola, {nome}! Hoy vamos a ver a un árbol muy viejo. Me pregunto por qué se ha quedado tan callado.",
+        "tango": "¡Hola, {nome}! ¡Un árbol que habla! Yo le pregunto enseguida cómo se llama. ¡Vamos!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma camina entre las hojas con Pietrolino en el bolsillo; la abuela la sigue con una mochila."
+      },
+      "text": "El sol brilla entre las hojas. Emma vuelve al bosque con Pietrolino en el bolsillo y la abuela un poco más atrás, con la mochila. \"¿Adónde vamos hoy?\", pregunta Emma. \"A ver a una vieja amiga\", dice Pietrolino. \"Una encina. Siempre hablaba. Pero desde hace un tiempo está en silencio, y nadie sabe por qué.\""
+    },
+    {
+      "illustration": {
+        "alt": "Una gran encina encorvada y apagada; las hojas caen aunque no es otoño; a sus pies, trozos de plástico y tierra pisoteada sin flores."
+      },
+      "text": "Y ahí está. Una encina grande y alta, pero encorvada y apagada. Tiene las ramas dobladas y se le caen las hojas aunque no es otoño. A sus pies hay trozos de plástico, ramas rotas y un círculo de tierra pisoteada donde antes había flores. \"Hola\", dice Emma bajito. \"Soy Emma. He venido a escucharte.\" Silencio.",
+      "companionLines": {
+        "bo": "No contesta. Quizá está cansada. O triste. ¿Tú qué dices, {nome}?",
+        "pilu": "Mira bien a sus pies, {nome}. ¿Qué ves que no debería estar ahí?",
+        "tango": "¡Yo gritaría muy fuerte! ...Pero quizá gritar no sirve, ¿verdad, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma delante de la encina silenciosa, con Pietrolino en la mano; la abuela cerca, con la mochila abierta."
+      },
+      "text": "La encina no habla. Emma mira el plástico, las ramas rotas, la tierra sin flores. ¿Qué puede hacer por ella?",
+      "dialogue": {
+        "together": "Pregunta: ¿por qué crees que la encina ha dejado de hablar? ¿Y tú qué harías por ella?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué harías, {nome}?",
+            "pilu": "¿Tú qué harías, {nome}?",
+            "tango": "¿Tú qué harías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Quito el plástico",
+              "reaction": {
+                "bo": "Así a sus pies está más limpio. A ver si Emma también lo piensa.",
+                "pilu": "Primero se quita lo que hace daño. A ver qué hace Emma.",
+                "tango": "¡Fuera el plástico! ¡Ya! ...A ver cómo lo hace Emma."
+              }
+            },
+            {
+              "label": "Me quedo a su lado",
+              "reaction": {
+                "bo": "Quedarse al lado ya es mucho. Yo lo querría, si estuviera triste.",
+                "pilu": "A veces quien está triste necesita compañía, no palabras. Miremos a Emma.",
+                "tango": "¿Quedarse quieta? ¡Difícil! Pero a lo mejor funciona. A ver."
+              }
+            },
+            {
+              "label": "Planto flores",
+              "reaction": {
+                "bo": "¡Flores nuevas! Así ya no está sola.",
+                "pilu": "Algo que crece en lugar de tierra pisoteada. A ver qué hace Emma.",
+                "tango": "¡Flores por todas partes! ¡Venga, a ver si Emma tiene semillas!"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, con los guantes de la abuela, mete el plástico en la bolsa y las ramas rotas en un montoncito."
+      },
+      "text": "La abuela le da los guantes y la bolsa. Emma recoge el plástico y luego pone las ramas rotas en un montoncito. Pietrolino salta a una raíz. \"¿Oyes algo?\", pregunta Emma. \"Quizá... un susurro muy, muy pequeño.\" Emma se sienta bajo el tronco. \"¿Te parece bien si me quedo un rato contigo? No te dejo sola.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma de rodillas planta tres semillas cerca de las raíces; la abuela echa un poco de agua de la cantimplora."
+      },
+      "text": "Emma saca tres semillas del bolsillo. \"Las encontré ayer. ¿Las plantamos aquí?\" La abuela asiente. Emma cava con las manos, pone las semillas cerca de las raíces, una a una, y les echa un poco de agua. \"Ya está. Así tendrás amiguitas cerca.\"",
+      "companionLines": {
+        "bo": "Solo de mirar ya tengo las manos llenas de tierra. Me gusta, {nome}.",
+        "pilu": "¿Sabes, {nome}? Una semilla necesita tierra, agua y tiempo. El tiempo es la parte más larga.",
+        "tango": "¡Tres semillas! ¡Yo habría puesto cien! ...Bueno, quizá tres están bien, ¿eh, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Una rama de la encina se inclina hacia Emma como una caricia; Emma, sorprendida, con la boca abierta."
+      },
+      "text": "Silencio. Luego un sonido suave, casi nada, como el susurro de las hojas: \"...Gra...cias...\" Emma se da la vuelta. \"¿Lo has oído? ¿Lo ha dicho de verdad?\" Pietrolino brilla. \"Has despertado su voz, Emma. No con la fuerza. Con el cuidado.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela en el camino de vuelta; detrás, la encina más derecha y un pequeño brote verde que sale de la tierra."
+      },
+      "text": "Emma vuelve a meter a Pietrolino en el bolsillo. \"Volveré pronto, encina. Prometido.\" Y mientras ella y la abuela vuelven a casa, junto a las raíces asoma un pequeño brote verde.",
+      "companionLines": {
+        "bo": "¡Un brote! Pequeño como yo. Mañana yo también busco una semilla, {nome}.",
+        "pilu": "¿Has visto, {nome}? Nada de magia: guantes, semillas, un poco de agua y un poco de compañía. Hasta mañana.",
+        "tango": "¡Mañana planto una semilla en una maceta, {nome}! Y la miro cada día. ¡Aunque tarde mucho!"
+      }
+    }
+  ]
+}

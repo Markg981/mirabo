@@ -1,0 +1,183 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno con una sciarpa, tra le foglie rosse e gialle che cadono.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.42, "y": 0.68, "s": 0.46},
+            {"e": "🧣", "x": 0.6, "y": 0.84, "s": 0.1},
+            {"e": "🍁", "x": 0.2, "y": 0.3, "s": 0.07, "rot": 20},
+            {"e": "🍂", "x": 0.74, "y": 0.4, "s": 0.06},
+            {"e": "🍁", "x": 0.86, "y": 0.2, "s": 0.06, "rot": -30}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! Fa freddino. Mi sono messo la sciarpa. Oggi il bosco va a dormire, dice Pietrolino.",
+        "pilu": "Ciao {nome}! Sai che anche il bosco si addormenta? Oggi andiamo a dargli la buonanotte.",
+        "tango": "Ciao {nome}! Dormire? Io non ho mai sonno! Dai, andiamo a vedere!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma con la sciarpa e la nonna camminano nel bosco d'autunno; le foglie rosse, arancioni e gialle cadono leggere come piume.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.78, "s": 0.3},
+            {"e": "🧣", "x": 0.4, "y": 0.72, "s": 0.06},
+            {"paint": "pebble", "x": 0.46, "y": 0.74, "s": 0.04},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.34, "flip": true},
+            {"e": "🍁", "x": 0.24, "y": 0.4, "s": 0.06, "rot": 30},
+            {"e": "🍂", "x": 0.7, "y": 0.34, "s": 0.06},
+            {"e": "🍁", "x": 0.86, "y": 0.5, "s": 0.05, "rot": -20}
+          ]
+        }
+      },
+      "text": "L'aria è fredda e il bosco profuma di foglie secche. Emma cammina con la sciarpa al collo, Pietrolino nella tasca calda e la nonna accanto. \"Dove andiamo oggi?\" \"A salutare il bosco,\" dice Pietrolino. \"Sta per addormentarsi. Ha lavorato tutta l'estate. Adesso ha bisogno di riposare.\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma abbraccia la grande quercia; una foglia le cade tra le mani.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.6, "y": 0.5, "s": 0.74},
+            {"e": "🧒", "x": 0.46, "y": 0.78, "s": 0.3},
+            {"e": "🍂", "x": 0.4, "y": 0.66, "s": 0.06},
+            {"e": "👵", "x": 0.14, "y": 0.74, "s": 0.32}
+          ]
+        }
+      },
+      "text": "Nessun uccellino canta. Il ruscello scorre piano. Arrivano alla grande quercia, la vecchia amica di Emma. Emma la abbraccia. \"Buonanotte, quercia.\" Una foglia si stacca e le cade tra le mani, come un piccolo saluto."
+    },
+    {
+      "n": 4,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Un riccio con una foglia sulla schiena che si infila sotto una radice; Emma accovacciata lo guarda da lontano, con le mani in tasca.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.3, "y": 0.8, "s": 0.28},
+            {"e": "🦔", "x": 0.66, "y": 0.86, "s": 0.12},
+            {"e": "🍂", "x": 0.66, "y": 0.8, "s": 0.05},
+            {"e": "🌳", "x": 0.82, "y": 0.52, "s": 0.6}
+          ]
+        }
+      },
+      "text": "Poi vedono un riccio. Cammina piano, con una foglia sulla schiena. Emma si abbassa, ma non lo tocca. \"Hai freddo, piccolino?\" Il riccio annusa l'aria, sbadiglia e si infila sotto una radice. \"Cerca un posto per dormire,\" dice Pietrolino. \"Tutti si preparano: le api, i semi sotto terra, i ricci.\"",
+      "companionLines": {
+        "bo": "Ha sbadigliato! Adesso sbadiglio anch'io. Ahhh. A te, {nome}?",
+        "pilu": "Hai visto, {nome}? Emma lo guarda ma non lo tocca. Il riccio si fida così.",
+        "tango": "Io l'avrei preso in braccio! ...Ma punge. E poi lui ha sonno. Hai ragione tu, {nome}."
+      }
+    },
+    {
+      "n": 5,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma seduta sull'erba umida, pensierosa, con la foglia in mano; la nonna accanto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.42, "y": 0.82, "s": 0.26},
+            {"e": "🍂", "x": 0.5, "y": 0.78, "s": 0.05},
+            {"e": "👵", "x": 0.6, "y": 0.76, "s": 0.32, "flip": true}
+          ]
+        }
+      },
+      "text": "Emma si siede sull'erba. \"Ma se tutto dorme... non è triste?\" \"No,\" dice Pietrolino. \"È solo silenzioso. È come quando chiudi gli occhi e cresci piano piano.\"",
+      "dialogue": {
+        "together": "Chiedi: e tu, quando sei stanco o stanca, come te ne accorgi? Cosa ti aiuta a riposare?",
+        "alone": {
+          "prompt": {
+            "bo": "E tu, quando hai sonno, cosa fai, {nome}?",
+            "pilu": "E tu, quando hai bisogno di riposare, cosa fai, {nome}?",
+            "tango": "E tu, quando ti si chiudono gli occhi, cosa fai, {nome}?"
+          },
+          "options": [
+            {
+              "id": "coperta",
+              "icon": "blanket",
+              "label": "Mi metto sotto la coperta",
+              "reaction": {
+                "bo": "Anch'io. Come il riccio sotto le foglie.",
+                "pilu": "Una coperta è come una casa piccola. Vediamo cosa fa Emma.",
+                "tango": "Una tana! Come il riccio! Guardiamo."
+              }
+            },
+            {
+              "id": "abbraccio",
+              "icon": "hug",
+              "label": "Chiedo un abbraccio",
+              "reaction": {
+                "bo": "Gli abbracci mi fanno venire sonno buono.",
+                "pilu": "Anche Emma ha abbracciato la quercia. Vediamo come finisce.",
+                "tango": "Abbraccio! Lo voglio anch'io! Guardiamo Emma."
+              }
+            },
+            {
+              "id": "non-voglio",
+              "icon": "awake",
+              "label": "Non voglio dormire!",
+              "reaction": {
+                "bo": "A volte anche a me. C'è sempre qualcosa da vedere.",
+                "pilu": "Succede. Vediamo cosa scopre Emma sul fermarsi.",
+                "tango": "Ecco! Anch'io! ...Però sbadiglio. Vediamo."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma con gli occhi chiusi seduta sulla neve appena caduta; il primo fiocco di neve scende dal cielo.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "🧒", "x": 0.42, "y": 0.82, "s": 0.26},
+            {"e": "👵", "x": 0.6, "y": 0.76, "s": 0.32, "flip": true},
+            {"e": "❄️", "x": 0.46, "y": 0.42, "s": 0.07}
+          ]
+        }
+      },
+      "text": "Emma chiude gli occhi. Sente il vento tra le foglie. Sente il bosco che respira piano. Quando li riapre, un fiocco di neve scende dal cielo. \"Nevica!\" \"È il cuscino del bosco,\" dice Pietrolino. \"Adesso può sognare davvero.\""
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma e la nonna tornano verso casa nella prima neve; Emma tiene la foglia della quercia tra le mani come una piccola coperta.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "👧", "x": 0.42, "y": 0.78, "s": 0.28},
+            {"e": "🍂", "x": 0.48, "y": 0.76, "s": 0.05},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🏠", "x": 0.84, "y": 0.66, "s": 0.18}
+          ]
+        }
+      },
+      "text": "Emma stringe la foglia tra le mani e si gira verso casa. \"Nonna, anch'io stasera ho voglia di dormire un po' di più.\" \"Brava,\" dice Pietrolino dalla tasca. \"Anche i cuori coraggiosi sanno quando fermarsi.\"",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Stasera mi metto sotto la coperta come il riccio, {nome}. Buonanotte.",
+        "pilu": "Stasera, prima di dormire, prova tre respiri lenti, {nome}. Come il bosco. A domani.",
+        "tango": "Stasera dormo prestissimo, {nome}! ...Forse. Domani ti racconto se ci sono riuscita. Ciao!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero en la nieve, con la nariz hacia arriba, mirando caer los copos."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! ¡Nieve! Me gusta muchísimo, soy un mamut. Pero hoy hay un copo que tiene miedo. Como yo, a veces.",
+        "pilu": "¡Hola, {nome}! ¿Sabes que cada copo de nieve es distinto de todos los demás? Hoy conocemos a uno especial.",
+        "tango": "¡Hola, {nome}! ¡Nieve! ¡Bolas de nieve! ¡Venga, salimos ya!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma en pijama en la ventana blanca de nieve, con una gran sonrisa; Pietrolino en el alféizar."
+      },
+      "text": "Una mañana de invierno, Emma se despierta sonriendo: la ventana está toda blanca. \"¡Pietrolino! ¡Nieva!\" \"Ya lo sé\", dice él desde el alféizar. \"Pero hay un pequeño problema. Allá arriba hay un copo que no quiere bajar. Tiene miedo de derretirse.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma con la capucha en la colina de detrás de casa mira el cielo; entre las nubes, un puntito brillante se balancea sin bajar; la abuela en la ventana."
+      },
+      "text": "Emma se pone el abrigo y sube a la colina de detrás de casa. La abuela la mira desde la ventana. Entre las nubes hay de verdad un puntito brillante que se balancea y no baja. \"¡Eh, copito! ¡Baja con los demás! ¡Aquí se está genial!\" Una vocecita temblorosa responde: \"¿Y si caigo mal? ¿Y si acabo en un charco? ¿Y si no sirvo para nada?\"",
+      "companionLines": {
+        "bo": "Entiendo al copo. Yo también tengo miedo de equivocarme. ¿Tú no, {nome}?",
+        "pilu": "¿Lo has oído, {nome}? Al copo no le da miedo caer. Le da miedo equivocarse.",
+        "tango": "Yo le diría: ¡baja y ya está! ...Oh. A lo mejor no es tan fácil, ¿verdad, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con las manos juntas hacia el cielo, el copo allá arriba, temblando."
+      },
+      "text": "Emma piensa. El copo es tan pequeño, tan ligero. Y tiene tanto miedo. ¿Qué le puede decir?",
+      "dialogue": {
+        "together": "Pregunta: ¿qué le dirías al copo para ayudarlo? ¿Y a ti, cuando tienes miedo de equivocarte, qué te ayuda?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué le dirías, {nome}?",
+            "pilu": "¿Tú qué le dirías, {nome}?",
+            "tango": "¿Tú qué le dirías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Yo también tengo miedo a veces",
+              "reaction": {
+                "bo": "Sí. Decirlo hace sentirse menos solo. A ver qué dice Emma.",
+                "pilu": "Cuando alguien nos entiende, el miedo se hace más pequeño. Escuchemos a Emma.",
+                "tango": "Yo también, ¿eh? ¡Pero no se lo digas a nadie! A ver."
+              }
+            },
+            {
+              "label": "Ven, yo te cojo",
+              "reaction": {
+                "bo": "Con alguien abajo que te coge, caer da menos miedo.",
+                "pilu": "Una ayuda preparada. A ver si el copo se fía.",
+                "tango": "¡Manos listas! ¡A ver si baja! Miremos."
+              }
+            },
+            {
+              "label": "Puedes esperar un poco",
+              "reaction": {
+                "bo": "Esperar también está bien. Cada uno tiene sus tiempos.",
+                "pilu": "No hay prisa. A ver qué decide el copo.",
+                "tango": "¿Esperar? ¡Difícil para mí! A ver qué pasa."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma habla al cielo con dulzura; el copo empieza a bajar girando como en un baile."
+      },
+      "text": "\"Yo también tengo miedo a veces\", dice Emma. \"Pero solo intentándolo descubro lo que sé hacer. Tú puedes posarte en una rama y hacerla brillar. O en una mano, y hacer sonreír a alguien.\" El copo se queda quieto. Luego, poco a poco, empieza a bailar. Baja despacio, girando como en un baile."
+    },
+    {
+      "illustration": {
+        "alt": "El copo se ha posado en la punta de la nariz de Emma, que lo mira bizqueando; luego se convierte en una gota brillante."
+      },
+      "text": "El copo se posa en la punta de la nariz de Emma. Está helado, es ligero y brilla. \"Gracias\", susurra. \"Ahora sé que puedo hacer algo bonito, aunque sea solo un momento.\" Y se derrite en una gota brillante.",
+      "companionLines": {
+        "bo": "¡Lo ha conseguido! Tenía miedo, pero ha bajado igual. ¿Has visto, {nome}?",
+        "pilu": "¿Sabes, {nome}? El copo no ha desaparecido. Se ha convertido en una gota. Ha cambiado de forma.",
+        "tango": "¡En la nariz! ¡Ja, ja! ¡Yo habría estornudado, {nome}!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma vuelve a casa dejando huellas en la nieve; la abuela la espera en la puerta."
+      },
+      "text": "\"Las cosas que duran poco también pueden ser maravillosas, ¿verdad?\", pregunta Emma. \"Justo así\", responde Pietrolino. \"El valor no está en quedarse quieto, sino en intentarlo.\" Emma vuelve a casa dejando huellas en la nieve. La abuela la espera en la puerta.",
+      "companionLines": {
+        "bo": "Mañana intento una cosa que me da un poco de miedo, {nome}. Una cosa pequeña. Lo intento.",
+        "pilu": "Cuando algo nuevo te dé miedo, prueba a decir \"lo intento\", {nome}. Como el copo. Hasta mañana.",
+        "tango": "¡Mañana pruebo a hacer algo nuevo, {nome}! Y si me equivoco, lo vuelvo a intentar. ¡Adiós!"
+      }
+    }
+  ]
+}

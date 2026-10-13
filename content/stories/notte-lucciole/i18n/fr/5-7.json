@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon dans un pré le soir, avec une petite lanterne allumée et la lune dans le ciel."
+      },
+      "companionLines": {
+        "bo": "Bonsoir {nome}. C'est le soir. Le bois est tout noir. Moi, j'ai un peu peur du noir. Tu me tiens la main ?",
+        "pilu": "Bonsoir {nome} ! La nuit, moi, j'ouvre grand les yeux. Tu sais que la nuit, dans le bois, des lumières s'allument ?",
+        "tango": "Bonsoir {nome} ! Une sortie la nuit ! Allez, on allume toutes les lumières et on y va !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, une lanterne à la main, avec Mamie à côté, sur le sentier au coucher du soleil ; le ciel est rose et violet."
+      },
+      "text": "C'est un soir d'été. Emma et Mamie entrent dans le bois avec une petite lanterne. « On doit vraiment venir la nuit ? » demande Emma en serrant Pietrolino dans sa main. « Fais-moi confiance », dit-il. « Certaines choses ne se voient que dans le noir. » Le bois devient mystérieux. Emma tient la main de Mamie."
+    },
+    {
+      "illustration": {
+        "alt": "Une clairière sombre sous les étoiles ; Emma et Mamie assises dans les hautes herbes, la lanterne allumée entre elles."
+      },
+      "text": "Elles arrivent dans une clairière où les arbres s'écartent et où l'on voit le ciel. Elles s'assoient dans l'herbe. Tout est immobile. « Il n'y a rien », dit Emma. « Attends », chuchote Pietrolino. « Essaie d'éteindre la lanterne. »",
+      "companionLines": {
+        "bo": "Éteindre ? Mais après, tout est noir ! {nome}, moi je ferme un seul œil.",
+        "pilu": "Bizarre, non, {nome} ? Pour mieux voir, il faut éteindre la lumière.",
+        "tango": "Éteindre ?! Moi, je la laisserais allumée ! ...Mais je suis curieuse. Et toi, {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, la main sur la lanterne, hésite ; Mamie lui tient l'autre main."
+      },
+      "text": "Emma regarde la lanterne. Elle regarde le noir autour. Elle regarde Mamie, qui lui tient la main. Éteindre la lumière, dans le noir, dans le bois...",
+      "dialogue": {
+        "together": "Demande : comment se sent Emma maintenant ? Et toi, quand la lumière s'éteint, comment tu te sens ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, comment tu te sentirais, {nome} ?",
+            "pilu": "Et toi, comment tu te sentirais, {nome} ?",
+            "tango": "Et toi, comment tu te sentirais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Un peu peur",
+              "reaction": {
+                "bo": "Moi aussi. Très. On se tient fort la main et on regarde ce qui se passe.",
+                "pilu": "C'est normal d'avoir peur du noir. Emma a Mamie tout près. Voyons.",
+                "tango": "Un peu moi aussi, pour être honnête. Regardons ensemble."
+              }
+            },
+            {
+              "label": "Plein de curiosité",
+              "reaction": {
+                "bo": "Alors tu as plus de courage que moi. Voyons ce qui se passe.",
+                "pilu": "La curiosité fait ouvrir grand les yeux. Voyons ce que découvre Emma.",
+                "tango": "Moi aussi ! Super curieuse ! Voyons si Emma éteint !"
+              }
+            },
+            {
+              "label": "Je veux une main à tenir",
+              "reaction": {
+                "bo": "Oui. Avec une main à tenir, le noir devient plus petit.",
+                "pilu": "Emma en a une : la main de Mamie. Voyons si ça suffit.",
+                "tango": "Voilà ma patte ! Maintenant, regardons."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Tout est noir ; devant Emma et Mamie s'allument les premières petites lumières dorées."
+      },
+      "text": "Emma éteint la lanterne. Le noir l'enveloppe comme une couverture. Au début, elle ne voit rien, seulement des ombres. Mais ensuite... plim ! Une toute petite lumière s'allume devant elle. Puis une autre. Et encore une autre. Plim, plim, plim !"
+    },
+    {
+      "illustration": {
+        "alt": "Des centaines de lucioles dansent dans la clairière ; l'une s'est posée sur le nez d'Emma, qui la regarde en louchant."
+      },
+      "text": "Les lucioles ! Des tas de petites étoiles dansent dans le noir, s'allument et s'éteignent comme un battement de cœur. « Elles sont contentes que tu aies éteint la lanterne », dit Pietrolino. « La lumière forte les perturbe. Elles se montrent à ceux qui attendent en silence. » Une luciole se pose sur le nez d'Emma. « Bonjour, toute petite », chuchote-t-elle.",
+      "companionLines": {
+        "bo": "Ooooh. Je n'ai plus peur. Regarde combien il y en a, {nome} !",
+        "pilu": "Tu sais, {nome} ? Les lucioles se parlent avec la lumière. Allumé, éteint, allumé.",
+        "tango": "Une sur son nez ! Moi, je ne bougerais plus du tout. Toi aussi, {nome} ? Chut."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie rentrent main dans la main, lanterne éteinte ; quelques lucioles les suivent comme une petite constellation."
+      },
+      "text": "Emma reste là longtemps. Elle n'a pas besoin de parler. Dans sa poitrine, il y a un bonheur léger, comme des ailes qui battent doucement. Puis elle et Mamie rentrent main dans la main, la lanterne éteinte, et quelques lucioles les suivent comme une petite constellation.",
+      "companionLines": {
+        "bo": "Le noir était plein de lumières, {nome}. Ce soir j'éteins la lumière et je regarde par la fenêtre. Avec toi.",
+        "pilu": "Ce soir, essaie toi aussi, {nome} : éteins la lumière, attends un peu, et regarde ce qui s'allume. À demain.",
+        "tango": "Demain je retourne dans le noir compter les lucioles, {nome} ! Sans bouger, hein. Salut !"
+      }
+    }
+  ]
+}

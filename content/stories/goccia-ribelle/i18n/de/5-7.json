@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter mit einem Regenschirm im Regen, ein Tropfen auf der Nasenspitze."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Es regnet. Bei Regen werde ich ganz nass. Aber heute gehen wir trotzdem raus, mit Emma.",
+        "pilu": "Hallo {nome}! Weißt du, dass jeder Regentropfen eine lange Reise hinter sich hat? Heute lernen wir einen kennen.",
+        "tango": "Hallo {nome}! Regen! Pfützen! Los, wir springen rein!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma am Fenster ihres Zimmers schaut dem Regen zu, der gegen die Scheibe prasselt; Pietrolino auf dem Fensterbrett."
+      },
+      "text": "Es ist ein grauer Tag. Emma schaut aus dem Fenster: Es regnet, und die Tropfen klopfen an die Scheibe, als wollten sie herein. „Heute gehen wir nicht raus, Pietrolino“, seufzt sie. „Natürlich gehen wir raus“, sagt er. „Heute lernen wir Tropfi kennen. Einen Regentropfen, der ein bisschen wild ist.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma in gelber Regenjacke und Stiefeln, Oma mit Regenschirm, an einem Rinnsal im Wald; ein Tropfen springt gegen die Strömung."
+      },
+      "text": "Emma zieht Regenjacke und Stiefel an. Oma nimmt den Regenschirm. Im Wald fließt ein Rinnsal zum Gully. Aber zwischen tausend gleichen Tropfen springt einer gegen die Strömung! „Hallo! Warum springst du so?“, fragt Emma. „Weil ich nicht verschwendet werden will!“, antwortet ein frisches Stimmchen. „Ich will den Blumen zu trinken geben!“",
+      "companionLines": {
+        "bo": "Ein Tropfen, der spricht. Und springt! Das könnte ich nicht, {nome}.",
+        "pilu": "Hast du gehört, {nome}? Tropfi will nicht im Gully landen. Er will zu etwas gut sein.",
+        "tango": "Ein wilder Tropfen! Der gefällt mir! Er springt wie ich, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitzt nachdenklich am Wasser; neben ihr, in einer Gedankenblase, ein offener, tropfender Wasserhahn."
+      },
+      "text": "„Ganz viel Wasser landet in den Rohren“, sagt Tropfi, „ohne dass es jemandem zu trinken gegeben hat.“ Emma wird still. Sie denkt an den Wasserhahn im Bad, wenn sie ihn beim Zähneputzen laufen lässt. Und an all den Regen, der fällt und davonläuft."
+    },
+    {
+      "illustration": {
+        "alt": "Emma schaut Tropfi an der Spitze eines Blattes an; Oma wartet unter dem Regenschirm."
+      },
+      "text": "Tropfi schaut sie von der Spitze eines Blattes an. „Und du, Emma? Was kannst du für uns Tropfen tun?“",
+      "dialogue": {
+        "together": "Frag: Was kann Emma tun, um kein Wasser zu verschwenden? Und was könnten wir zu Hause tun?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du tun, {nome}?",
+            "pilu": "Was würdest du tun, {nome}?",
+            "tango": "Was würdest du tun, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich drehe den Hahn zu",
+              "reaction": {
+                "bo": "Beim Zähneputzen? Das probiere ich auch. Mal sehen, was Emma macht.",
+                "pilu": "Eine kleine Sache für jeden Tag. Mal sehen, ob Emma auch daran denkt.",
+                "tango": "Klick, zu! Einfach! Mal sehen, was Emma sagt."
+              }
+            },
+            {
+              "label": "Ich sammle den Regen",
+              "reaction": {
+                "bo": "In einem Eimerchen? Was für eine schöne Idee. Mal sehen.",
+                "pilu": "Dann läuft der Regen nicht davon. Schauen wir, was Emma macht.",
+                "tango": "Überall Eimer! Los, schauen wir Emma zu."
+              }
+            },
+            {
+              "label": "Ich gieße die Blumen",
+              "reaction": {
+                "bo": "Blumen haben Durst wie ich. Mal sehen, was Emma macht.",
+                "pilu": "Genau das will Tropfi tun. Mal sehen.",
+                "tango": "Nasse Blumen, frohe Blumen! Schauen wir Emma zu."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Tropfi springt von einem Blatt auf einen Stein und dann nach oben, bis er in einer leichten Wolke verschwindet; Emma schaut ihm nach."
+      },
+      "text": "„Ich verspreche dir, dass ich ab heute versuche, besser mit Wasser umzugehen“, sagt Emma. „Auch ein einziges Mädchen kann den Fluss verändern!“, ruft Tropfi. Und mit einem Satz, plopp!, springt er auf ein Blatt, dann auf einen Stein, dann hoch und höher, bis er in einer Wolke verschwindet. „Ist er wirklich da hinauf?“ „Ja“, sagt Pietrolino. „Er kommt als Regen zurück, als Tau oder als Schnee.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma stellen eine Schüssel auf den Balkon, um Regen zu sammeln; daneben die Blumentöpfe."
+      },
+      "text": "Zu Hause stellen Emma und Oma eine Schüssel auf den Balkon. „Die ist für den Regen“, sagt Emma. „Dann kann ich morgen den Blumen zu trinken geben.“ Pietrolino lächelt aus der Tasche. „Du hast einem einzigen Tropfen Wert gegeben. Genau so beginnt jede Veränderung.“",
+      "companionLines": {
+        "bo": "Eine Schüssel für den Regen. Morgen stelle ich auch eine raus, {nome}. Und dann gieße ich die Blumen.",
+        "pilu": "Probier heute Abend beim Zähneputzen, den Hahn zuzudrehen, {nome}. Tropfi würde sich freuen. Bis morgen.",
+        "tango": "Morgen suche ich Tropfi in jeder Pfütze, {nome}! Vielleicht ist er wieder runtergekommen. Tschüss!"
+      }
+    }
+  ]
+}

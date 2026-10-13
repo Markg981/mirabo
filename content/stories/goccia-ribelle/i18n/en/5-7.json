@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion with an umbrella in the rain, a drop on the tip of its nose."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! It's raining. When it rains I get all wet. But today we're going out anyway, with Emma.",
+        "pilu": "Hi {nome}! Did you know every raindrop has been on a long journey? Today we're meeting one.",
+        "tango": "Hi {nome}! Rain! Puddles! Come on, let's jump in!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma at her bedroom window watching the rain beat on the glass; Pietrolino on the windowsill."
+      },
+      "text": "It's a grey day. Emma looks out of the window: it's raining, and the drops tap on the glass as if they were knocking. \"We can't go out today, Pietrolino,\" she sighs. \"Of course we can,\" he says. \"Today we're meeting Drop. A raindrop who's a bit of a rebel.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma in her yellow raincoat and boots, Grandma with an umbrella, by a little runnel in the wood; one drop is jumping against the current."
+      },
+      "text": "Emma puts on her raincoat and boots. Grandma takes the umbrella. In the wood, a little runnel carries the water towards the drain. But among a thousand identical drops, one is jumping against the current! \"Hello! Why are you jumping like that?\" asks Emma. \"Because I don't want to be wasted!\" answers a fresh little voice. \"I want to give the flowers a drink!\"",
+      "companionLines": {
+        "bo": "A drop that talks. And jumps! I couldn't do that, {nome}.",
+        "pilu": "Did you hear, {nome}? Drop doesn't want to end up in the drain. She wants to be useful.",
+        "tango": "A rebel drop! I like her! She jumps like me, right {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting by the water, thoughtful; next to her, in a thought bubble, an open tap dripping."
+      },
+      "text": "\"Lots of water ends up in pipes,\" says Drop, \"without giving anyone a drink.\" Emma goes quiet. She thinks about the bathroom tap, when she leaves it running while she brushes her teeth. And about all the rain that falls and runs away."
+    },
+    {
+      "illustration": {
+        "alt": "Emma looks at Drop on the tip of a leaf; Grandma waits under the umbrella."
+      },
+      "text": "Drop looks at her from the tip of a leaf. \"What about you, Emma? What can you do for us drops?\"",
+      "dialogue": {
+        "together": "Ask: what can Emma do so as not to waste water? And what could we do at home?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do, {nome}?",
+            "pilu": "What would you do, {nome}?",
+            "tango": "What would you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I turn off the tap",
+              "reaction": {
+                "bo": "While you brush your teeth? I'll try too. Let's see what Emma does.",
+                "pilu": "A small thing to do every day. Let's see if Emma thinks of it too.",
+                "tango": "Click, off! Easy! Let's see what Emma says."
+              }
+            },
+            {
+              "label": "I collect the rain",
+              "reaction": {
+                "bo": "In a little bucket? What a nice idea. Let's see.",
+                "pilu": "That way the rain doesn't run away. Let's see what Emma does.",
+                "tango": "Buckets everywhere! Come on, let's watch Emma."
+              }
+            },
+            {
+              "label": "I water the flowers",
+              "reaction": {
+                "bo": "Flowers get thirsty like me. Let's see what Emma does.",
+                "pilu": "That's exactly what Drop wants to do. Let's see.",
+                "tango": "Wet flowers, happy flowers! Let's watch Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Drop jumps from a leaf to a stone and then upwards, until she disappears into a light cloud; Emma follows her with her eyes."
+      },
+      "text": "\"I promise that from today I'll try to use water better,\" says Emma. \"Even one girl can change the river!\" cries Drop. And with a hop, plop!, she jumps onto a leaf, then onto a stone, then up and up, until she disappears into a cloud. \"Did she really go up there?\" \"Yes,\" says Pietrolino. \"She'll come back as rain, or dew, or snow.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma put a bowl on the balcony to collect rain; next to it, the flowerpots."
+      },
+      "text": "At home, Emma and Grandma put a bowl on the balcony. \"This one's for the rain,\" says Emma. \"Then tomorrow I can give the flowers a drink.\" Pietrolino smiles from her pocket. \"You gave value to a single drop. Every change starts just like that.\"",
+      "companionLines": {
+        "bo": "A bowl for the rain. Tomorrow I'll put one outside too, {nome}. And then water the flowers.",
+        "pilu": "Tonight, when you brush your teeth, try turning off the tap, {nome}. Drop would be happy. See you tomorrow.",
+        "tango": "Tomorrow I'll look for Drop in every puddle, {nome}! Maybe she's come back down. Bye!"
+      }
+    }
+  ]
+}

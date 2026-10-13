@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion on a muddy spring path, among the first little leaves and a flower just in bloom."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! The snow is melting. So much mud! But listen. The birds are back.",
+        "pilu": "Hi {nome}! The wood was asleep, remember? Today it's waking up. Let's go and see how it is.",
+        "tango": "Hi {nome}! Spring! Mud! Flowers! Come on, let's run!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma runs along the muddy path in her red boots, Grandma behind her; drops fall from the branches, the first leaves are appearing."
+      },
+      "text": "The ice is melting and the days are getting longer. \"Pietrolino, can you smell that too?\" asks Emma, running along the muddy path. \"I can smell the earth breathing.\" After months of snow the wood is waking up: drops fall from the branches, the first little leaves appear, the birds are singing."
+    },
+    {
+      "illustration": {
+        "alt": "Broken plants, a nest fallen to the ground, and a small hedgehog shivering next to a rusty can; Emma kneels at a distance."
+      },
+      "text": "But something's wrong. There are broken plants, a fallen nest, and a small hedgehog shivering next to a rusty can. \"Oh no,\" says Emma, and kneels down. \"The wood is strong,\" says Pietrolino, \"but the winter was hard. And someone left a can here. Now it needs help.\"",
+      "companionLines": {
+        "bo": "Poor hedgehog. It's shivering like me when I'm scared. What shall we do, {nome}?",
+        "pilu": "Look carefully, {nome}: the can is rusty. It can cut.",
+        "tango": "The hedgehog! I'll pick it up! ...Wait. Maybe not. What do you think, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma stands still looking at the hedgehog and the can; Grandma comes over with gloves and a bag."
+      },
+      "text": "The hedgehog is shivering. The can is right next to it. Emma wants to help straight away. What can she do?",
+      "dialogue": {
+        "together": "Ask: what can Emma do for the hedgehog? And why shouldn't the can be touched with bare hands?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do, {nome}?",
+            "pilu": "What would you do, {nome}?",
+            "tango": "What would you do, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I pick the hedgehog up",
+              "reaction": {
+                "bo": "It's prickly... and maybe it's scared of us. Let's see what Emma does.",
+                "pilu": "Wild animals sometimes get frightened if we touch them. Let's see what Emma does.",
+                "tango": "I thought of that too! But it's prickly. Let's watch Emma."
+              }
+            },
+            {
+              "label": "I call Grandma",
+              "reaction": {
+                "bo": "Grandma knows what can be touched and what can't. It's nice to have her close.",
+                "pilu": "With a rusty can, a grown-up is just what's needed. Let's see.",
+                "tango": "Grandmaaa! ...Here she comes. Let's watch."
+              }
+            },
+            {
+              "label": "I make it a little house of leaves",
+              "reaction": {
+                "bo": "A warm little house. I'd go to sleep in it straight away.",
+                "pilu": "A shelter without touching it. Let's see if Emma thinks of it.",
+                "tango": "Leaves! Lots of leaves! Let's see what Emma does."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Grandma, wearing gloves, puts the can in the bag; Emma piles leaves and twigs under a root; the hedgehog creeps inside."
+      },
+      "text": "Emma calls Grandma. Grandma, wearing gloves, picks up the can and puts it in the bag. Meanwhile Emma gathers dry leaves and twigs and piles them under a root, without touching the hedgehog. Slowly, slowly, the hedgehog creeps inside. \"Every action counts,\" says Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "A red fox peeks out from the bushes, with attentive, kind eyes, and looks at Emma."
+      },
+      "text": "A red fox appears among the bushes. Her eyes are attentive, but kind. \"Emma, you're taking care of the wood. The wood will remember.\" Emma isn't surprised: by now she knows that in the wood, whoever listens is listened to. \"I want to help every year,\" she says. \"That's how you change the world,\" the fox replies. \"Not with huge gestures, but with care that never stops.\"",
+      "companionLines": {
+        "bo": "A talking fox! She's got a tail like Tango's. Did you see, {nome}?",
+        "pilu": "You know, {nome}? Foxes really do live in woods near houses. They're usually shy.",
+        "tango": "A fox! She looks like my cousin! Do I look like her, {nome}? I talk more, though."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma with some schoolmates and the teacher put up hand-made signs along the path: A hedgehog lives here, Respect those who sleep among the leaves."
+      },
+      "text": "The next day Emma comes back with some hand-made signs: \"A hedgehog lives here\", \"Respect those who sleep among the leaves\", \"Take your rubbish home\". At school she talks about it with her teacher and classmates. And that's how the Little Nature Keepers club begins.",
+      "companionLines": {
+        "bo": "Little Keepers! Can I be one too, {nome}? Tomorrow I'll make a pile of leaves for the hedgehogs.",
+        "pilu": "Tomorrow, try drawing a sign for your park too, {nome}. What would you write on it? See you tomorrow.",
+        "tango": "I'm joining the Keepers right now! And so are you, {nome}! Tomorrow we look for hedgehogs. Bye!"
+      }
+    }
+  ]
+}

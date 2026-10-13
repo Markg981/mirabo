@@ -1,0 +1,20 @@
+{
+  "id": "notte-lucciole",
+  "version": 1,
+  "title": "La Notte delle Lucciole",
+  "world": "emozioni",
+  "topic": "meraviglia",
+  "series": "emma-pietrolino",
+  "episode": 4,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Alcune meraviglie si vedono solo quando si spegne la luce e si aspetta.",
+  "gesture": "Spegnere la luce, tenersi per mano e aspettare in silenzio contando fino a venti.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Materiali divulgativi sulle lucciole e l'inquinamento luminoso (da verificare)",
+    "Letteratura sull'educazione allo stupore nella prima infanzia (da verificare)"
+  ],
+  "status": "draft"
+}

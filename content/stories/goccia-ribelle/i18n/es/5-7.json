@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero con un paraguas bajo la lluvia, con una gota en la punta de la nariz."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Llueve. Con la lluvia me pongo todo mojado. Pero hoy salimos igual, con Emma.",
+        "pilu": "¡Hola, {nome}! ¿Sabes que cada gota de lluvia ha hecho un viaje largo? Hoy conocemos a una.",
+        "tango": "¡Hola, {nome}! ¡Lluvia! ¡Charcos! ¡Venga, a saltar dentro!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma en la ventana de su cuarto mira la lluvia que golpea el cristal; Pietrolino en el alféizar."
+      },
+      "text": "Es un día gris. Emma mira por la ventana: llueve, y las gotas golpean el cristal como si llamaran. \"Hoy no se sale, Pietrolino\", suspira. \"Claro que se sale\", dice él. \"Hoy conocemos a Gota. Una gota de lluvia un poco rebelde.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma con el impermeable amarillo y las botas, la abuela con el paraguas, junto a un regato en el bosque; una gota salta a contracorriente."
+      },
+      "text": "Emma se pone el impermeable y las botas. La abuela coge el paraguas. En el bosque, un regato lleva el agua hacia la alcantarilla. Pero entre mil gotas iguales, ¡una salta a contracorriente! \"¡Hola! ¿Por qué saltas así?\", pregunta Emma. \"¡Porque no quiero desperdiciarme!\", responde una vocecita fresca. \"¡Quiero dar de beber a las flores!\"",
+      "companionLines": {
+        "bo": "Una gota que habla. ¡Y que salta! Yo no podría, {nome}.",
+        "pilu": "¿Lo has oído, {nome}? Gota no quiere acabar en la alcantarilla. Quiere servir para algo.",
+        "tango": "¡Una gota rebelde! ¡Me gusta! Salta como yo, ¿verdad, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sentada junto al agua, pensativa; a su lado, en un bocadillo de pensamiento, un grifo abierto que gotea."
+      },
+      "text": "\"Mucha agua acaba en las tuberías\", dice Gota, \"sin haber dado de beber a nadie.\" Emma se queda callada. Piensa en el grifo del baño, cuando lo deja abierto mientras se lava los dientes. Y en toda la lluvia que cae y se escapa."
+    },
+    {
+      "illustration": {
+        "alt": "Emma mira a Gota en la punta de una hoja; la abuela espera bajo el paraguas."
+      },
+      "text": "Gota la mira desde la punta de una hoja. \"¿Y tú, Emma? ¿Qué puedes hacer por nosotras, las gotas?\"",
+      "dialogue": {
+        "together": "Pregunta: ¿qué puede hacer Emma para no desperdiciar el agua? ¿Y nosotros, en casa, qué podríamos hacer?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué harías, {nome}?",
+            "pilu": "¿Tú qué harías, {nome}?",
+            "tango": "¿Tú qué harías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Cierro el grifo",
+              "reaction": {
+                "bo": "¿Mientras te lavas los dientes? Yo también lo intento. A ver qué hace Emma.",
+                "pilu": "Una cosa pequeña, para hacer cada día. A ver si Emma también lo piensa.",
+                "tango": "¡Clic, cerrado! ¡Fácil! A ver qué dice Emma."
+              }
+            },
+            {
+              "label": "Recojo la lluvia",
+              "reaction": {
+                "bo": "¿En un cubito? Qué buena idea. A ver.",
+                "pilu": "Así la lluvia no se escapa. Miremos qué hace Emma.",
+                "tango": "¡Cubos por todas partes! Venga, miremos a Emma."
+              }
+            },
+            {
+              "label": "Riego las flores",
+              "reaction": {
+                "bo": "Las flores tienen sed como yo. A ver qué hace Emma.",
+                "pilu": "Es justo lo que Gota quiere hacer. A ver.",
+                "tango": "¡Flores mojadas, flores contentas! Miremos a Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Gota salta de una hoja a una piedra y luego hacia arriba, hasta desaparecer en una nube ligera; Emma la sigue con la mirada."
+      },
+      "text": "\"Te prometo que desde hoy intentaré usar mejor el agua\", dice Emma. \"¡Hasta una sola niña puede cambiar el río!\", exclama Gota. Y de un salto, ¡plop!, se sube a una hoja, luego a una piedra, luego hacia arriba, hasta desaparecer en una nube. \"¿De verdad se ha ido allá arriba?\" \"Sí\", dice Pietrolino. \"Volverá como lluvia, o rocío, o nieve.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma y la abuela ponen un cuenco en el balcón para recoger la lluvia; al lado, las macetas de flores."
+      },
+      "text": "En casa, Emma y la abuela ponen un cuenco en el balcón. \"Este es para la lluvia\", dice Emma. \"Así mañana doy de beber a las flores.\" Pietrolino sonríe desde el bolsillo. \"Le has dado valor a una sola gota. Todo cambio empieza justo así.\"",
+      "companionLines": {
+        "bo": "Un cuenco para la lluvia. Mañana yo también pongo uno fuera, {nome}. Y luego riego las flores.",
+        "pilu": "Esta noche, cuando te laves los dientes, prueba a cerrar el grifo, {nome}. Gota estaría contenta. Hasta mañana.",
+        "tango": "¡Mañana busco a Gota en cada charco, {nome}! A lo mejor ha vuelto a bajar. ¡Adiós!"
+      }
+    }
+  ]
+}

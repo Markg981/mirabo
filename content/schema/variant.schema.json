@@ -42,7 +42,7 @@
                 "required": ["bg", "items"],
                 "additionalProperties": false,
                 "properties": {
-                  "bg": { "enum": ["room", "forest", "stream", "sky"] },
+                  "bg": { "enum": ["room", "forest", "stream", "sky", "night", "snow", "winter-night"] },
                   "dirty": { "type": "boolean" },
                   "items": {
                     "type": "array",

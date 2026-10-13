@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter auf dem matschigen Frühlingsweg, zwischen den ersten Blättchen und einer gerade aufgeblühten Blume."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Der Schnee schmilzt. So viel Matsch! Aber hör mal. Die Vögel sind zurück.",
+        "pilu": "Hallo {nome}! Der Wald hat geschlafen, weißt du noch? Heute wacht er auf. Schauen wir, wie es ihm geht.",
+        "tango": "Hallo {nome}! Frühling! Matsch! Blumen! Los, wir rennen!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma läuft mit roten Stiefeln über den matschigen Weg, Oma hinter ihr; Tropfen fallen von den Ästen, die ersten Blätter sprießen."
+      },
+      "text": "Das Eis schmilzt, die Tage werden länger. „Pietrolino, riechst du das auch?“, fragt Emma und läuft über den matschigen Weg. „Ich rieche die Erde, die atmet.“ Nach Monaten voller Schnee wacht der Wald auf: Tropfen fallen von den Ästen, die ersten Blättchen sprießen, die Vögel singen."
+    },
+    {
+      "illustration": {
+        "alt": "Abgeknickte Pflanzen, ein heruntergefallenes Nest und ein kleiner Igel, der neben einer rostigen Dose zittert; Emma kniet in einiger Entfernung."
+      },
+      "text": "Aber etwas stimmt nicht. Da sind abgeknickte Pflanzen, ein heruntergefallenes Nest und ein kleiner Igel, der neben einer rostigen Dose zittert. „Oh nein“, sagt Emma und kniet sich hin. „Der Wald ist stark“, sagt Pietrolino, „aber der Winter war hart. Und jemand hat hier eine Dose liegen lassen. Jetzt braucht er Hilfe.“",
+      "companionLines": {
+        "bo": "Armer Igel. Er zittert wie ich, wenn ich Angst habe. Was machen wir, {nome}?",
+        "pilu": "Schau genau hin, {nome}: Die Dose ist rostig. Man kann sich daran schneiden.",
+        "tango": "Der Igel! Ich nehme ihn hoch! ...Warte. Lieber nicht. Was meinst du, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma steht still und schaut den Igel und die Dose an; Oma kommt mit Handschuhen und Beutel dazu."
+      },
+      "text": "Der Igel zittert. Die Dose liegt direkt daneben. Emma würde am liebsten sofort helfen. Was kann sie tun?",
+      "dialogue": {
+        "together": "Frag: Was kann Emma für den Igel tun? Und warum fasst man die Dose nicht mit bloßen Händen an?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du tun, {nome}?",
+            "pilu": "Was würdest du tun, {nome}?",
+            "tango": "Was würdest du tun, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich nehme den Igel auf den Arm",
+              "reaction": {
+                "bo": "Er hat Stacheln... und vielleicht hat er Angst vor uns. Mal sehen, was Emma macht.",
+                "pilu": "Waldtiere erschrecken manchmal, wenn wir sie anfassen. Mal sehen, was Emma macht.",
+                "tango": "Daran hab ich auch gedacht! Aber er piekst. Schauen wir Emma zu."
+              }
+            },
+            {
+              "label": "Ich rufe Oma",
+              "reaction": {
+                "bo": "Oma weiß, was man anfassen darf und was nicht. Schön, dass sie da ist.",
+                "pilu": "Bei einer rostigen Dose braucht es genau einen Erwachsenen. Mal sehen.",
+                "tango": "Omaaa! ...Da kommt sie. Schauen wir."
+              }
+            },
+            {
+              "label": "Ich baue ihm ein Blätterhaus",
+              "reaction": {
+                "bo": "Ein warmes Häuschen. Da würde ich sofort einschlafen.",
+                "pilu": "Ein Unterschlupf, ohne ihn anzufassen. Mal sehen, ob Emma daran denkt.",
+                "tango": "Blätter! Ganz viele Blätter! Mal sehen, was Emma macht."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Oma steckt mit Handschuhen die Dose in den Beutel; Emma häuft Laub und Zweige unter einer Wurzel auf; der Igel kriecht hinein."
+      },
+      "text": "Emma ruft Oma. Oma nimmt mit Handschuhen die Dose und steckt sie in den Beutel. Emma sammelt währenddessen trockenes Laub und Zweige und häuft sie unter einer Wurzel auf, ohne den Igel anzufassen. Ganz langsam kriecht der Igel hinein. „Jede Tat zählt“, sagt Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Eine rote Füchsin schaut aus dem Gebüsch, mit aufmerksamen, freundlichen Augen, und sieht Emma an."
+      },
+      "text": "Zwischen den Büschen erscheint eine rote Füchsin. Ihre Augen sind aufmerksam, aber freundlich. „Emma, du kümmerst dich um den Wald. Der Wald wird sich daran erinnern.“ Emma wundert sich nicht: Sie weiß inzwischen, dass im Wald gehört wird, wer zuhört. „Ich will jedes Jahr helfen“, sagt sie. „So verändert man die Welt“, antwortet die Füchsin. „Nicht mit riesigen Taten, sondern mit Fürsorge, die nie aufhört.“",
+      "companionLines": {
+        "bo": "Eine sprechende Füchsin! Sie hat einen Schwanz wie Tango. Hast du gesehen, {nome}?",
+        "pilu": "Weißt du, {nome}? Füchse leben wirklich in Wäldern nahe bei Häusern. Meistens sind sie scheu.",
+        "tango": "Eine Füchsin! Sieht aus wie meine Cousine! Sehe ich ihr ähnlich, {nome}? Ich rede aber mehr."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit einigen Klassenkameraden und der Lehrerin stellt selbstgemachte Schilder am Weg auf: Hier wohnt ein Igel, Nimm Rücksicht auf die, die im Laub schlafen."
+      },
+      "text": "Am nächsten Tag kommt Emma mit selbstgemachten Schildern zurück: „Hier wohnt ein Igel“, „Nimm Rücksicht auf die, die im Laub schlafen“, „Nimm deinen Müll mit nach Hause“. In der Schule erzählt sie der Lehrerin und den anderen Kindern davon. Und so entsteht der Club der Kleinen Naturhüter.",
+      "companionLines": {
+        "bo": "Kleine Naturhüter! Darf ich auch einer sein, {nome}? Morgen mache ich einen Laubhaufen für die Igel.",
+        "pilu": "Probier morgen, auch ein Schild für deinen Park zu malen, {nome}. Was würdest du draufschreiben? Bis morgen.",
+        "tango": "Ich trete sofort den Naturhütern bei! Und du auch, {nome}! Morgen suchen wir Igel. Tschüss!"
+      }
+    }
+  ]
+}

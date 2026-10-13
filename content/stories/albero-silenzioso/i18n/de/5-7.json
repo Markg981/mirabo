@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter hält das Ohr an einen Baumstamm, als würde er ihm zuhören."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Weißt du, dass Bäume sprechen? Ganz leise, mit ihren Blättern. Aber heute spricht einer nicht mehr. Das macht mir ein bisschen Angst.",
+        "pilu": "Hallo {nome}! Heute besuchen wir einen sehr alten Baum. Ich frage mich, warum er so still geworden ist.",
+        "tango": "Hallo {nome}! Ein sprechender Baum! Ich frag ihn gleich, wie er heißt. Los!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma geht mit Pietrolino in der Tasche durch das Laub; Oma folgt ihr mit einem kleinen Rucksack."
+      },
+      "text": "Die Sonne scheint durch die Blätter. Emma geht wieder in den Wald, mit Pietrolino in der Tasche und Oma ein Stück hinter ihr, mit dem Rucksack. „Wohin gehen wir heute?“, fragt Emma. „Zu einer alten Freundin“, sagt Pietrolino. „Einer Eiche. Sie hat immer gesprochen. Aber seit einer Weile ist sie still, und niemand weiß, warum.“"
+    },
+    {
+      "illustration": {
+        "alt": "Eine große Eiche, gebeugt und matt; Blätter fallen, obwohl kein Herbst ist; an ihrem Fuß Plastikteile und festgetretene Erde ohne Blumen."
+      },
+      "text": "Da ist sie. Eine große, hohe Eiche, aber gebeugt und matt. Ihre Äste hängen herab, ihre Blätter fallen, obwohl gar kein Herbst ist. An ihrem Fuß liegen Plastikteile, abgebrochene Äste und ein Kreis aus festgetretener Erde, wo früher Blumen wuchsen. „Hallo“, sagt Emma leise. „Ich bin Emma. Ich bin gekommen, um dir zuzuhören.“ Stille.",
+      "companionLines": {
+        "bo": "Sie antwortet nicht. Vielleicht ist sie müde. Oder traurig. Was meinst du, {nome}?",
+        "pilu": "Schau dir ihren Fuß genau an, {nome}. Was siehst du, das nicht dahin gehört?",
+        "tango": "Ich würde ganz laut rufen! ...Aber vielleicht hilft Rufen nicht, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma vor der stillen Eiche, Pietrolino in der Hand, Oma in der Nähe mit offenem Rucksack."
+      },
+      "text": "Die Eiche spricht nicht. Emma schaut auf das Plastik, die abgebrochenen Äste, die Erde ohne Blumen. Was kann sie für sie tun?",
+      "dialogue": {
+        "together": "Frag: Warum hat die Eiche wohl aufgehört zu sprechen? Und was würdest du für sie tun?",
+        "alone": {
+          "prompt": {
+            "bo": "Was würdest du tun, {nome}?",
+            "pilu": "Was würdest du tun, {nome}?",
+            "tango": "Was würdest du tun, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ich räume das Plastik weg",
+              "reaction": {
+                "bo": "Dann ist es an ihrem Fuß sauberer. Mal sehen, ob Emma auch daran denkt.",
+                "pilu": "Zuerst nimmt man weg, was wehtut. Mal sehen, was Emma macht.",
+                "tango": "Weg mit dem Plastik! Sofort! ...Mal sehen, wie Emma es macht."
+              }
+            },
+            {
+              "label": "Ich bleibe bei ihr",
+              "reaction": {
+                "bo": "Dableiben ist schon viel. Das würde ich mir wünschen, wenn ich traurig wäre.",
+                "pilu": "Manchmal braucht man, wenn man traurig ist, Gesellschaft und keine Worte. Schauen wir Emma zu.",
+                "tango": "Stillhalten? Schwierig! Aber vielleicht klappt's. Mal sehen."
+              }
+            },
+            {
+              "label": "Ich pflanze Blumen",
+              "reaction": {
+                "bo": "Neue Blumen! Dann ist sie nicht mehr allein.",
+                "pilu": "Etwas, das wächst, statt festgetretener Erde. Mal sehen, was Emma macht.",
+                "tango": "Überall Blumen! Los, mal sehen, ob Emma Samen hat!"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit Omas Handschuhen steckt das Plastik in den Beutel und legt die abgebrochenen Äste auf einen kleinen Haufen."
+      },
+      "text": "Oma gibt ihr die Handschuhe und den Beutel. Emma sammelt das Plastik auf und legt dann die abgebrochenen Äste auf einen kleinen Haufen. Pietrolino hüpft auf eine Wurzel. „Hörst du etwas?“, fragt Emma. „Vielleicht... ein ganz, ganz leises Flüstern.“ Emma setzt sich unter den Stamm. „Ist es in Ordnung, wenn ich ein bisschen bei dir bleibe? Ich lasse dich nicht allein.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma kniet und pflanzt drei kleine Samen nahe den Wurzeln; Oma gießt ein wenig Wasser aus ihrer Flasche."
+      },
+      "text": "Emma holt drei kleine Samen aus der Tasche. „Die habe ich gestern gefunden. Pflanzen wir sie hier ein?“ Oma nickt. Emma gräbt mit den Händen, legt die Samen nahe an die Wurzeln, einen nach dem anderen, und gibt ihnen ein bisschen Wasser. „So. Jetzt hast du kleine Freunde in der Nähe.“",
+      "companionLines": {
+        "bo": "Schon vom Zuschauen habe ich Erde an den Händen. Das gefällt mir, {nome}.",
+        "pilu": "Weißt du, {nome}? Ein Samen braucht Erde, Wasser und Zeit. Die Zeit ist der längste Teil.",
+        "tango": "Drei Samen! Ich hätte hundert gepflanzt! ...Na gut, drei sind vielleicht genug, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Ein Ast der Eiche neigt sich zu Emma wie eine Streicheleinheit; Emma staunt mit offenem Mund."
+      },
+      "text": "Stille. Dann ein leises Geräusch, fast nichts, wie das Rascheln der Blätter: „...Dan...ke...“ Emma dreht sich um. „Hast du das gehört? Hat sie das wirklich gesagt?“ Pietrolino leuchtet. „Du hast ihre Stimme geweckt, Emma. Nicht mit Kraft. Mit Fürsorge.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma auf dem Heimweg; hinter ihnen steht die Eiche aufrechter, und ein kleiner grüner Keim kommt aus der Erde."
+      },
+      "text": "Emma steckt Pietrolino wieder in die Tasche. „Ich komme bald wieder, Eiche. Versprochen.“ Und während sie mit Oma nach Hause geht, schaut bei den Wurzeln ein kleiner grüner Keim aus der Erde.",
+      "companionLines": {
+        "bo": "Ein Keim! Klein wie ich. Morgen suche ich auch einen Samen, {nome}.",
+        "pilu": "Siehst du, {nome}? Keine Zauberei: Handschuhe, Samen, ein bisschen Wasser und ein bisschen Gesellschaft. Bis morgen.",
+        "tango": "Morgen pflanze ich einen Samen in einen Topf, {nome}! Und ich schaue ihn jeden Tag an. Auch wenn es ewig dauert!"
+      }
+    }
+  ]
+}
