@@ -13,7 +13,6 @@ class PatternRound extends RoundWidget {
 
 class _PatternRoundState extends RoundState<PatternRound> {
   List<Map<String, dynamic>> get _rounds => (widget.level['rounds'] as List).cast<Map<String, dynamic>>();
-  int _spokenFor = -1;
 
   @override
   int get roundCount => _rounds.length;
@@ -22,13 +21,10 @@ class _PatternRoundState extends RoundState<PatternRound> {
   Widget buildRound(BuildContext context, int index) {
     final r = _rounds[index];
     final seq = (r['sequence'] as List).cast<String>();
-    final choices = (r['choices'] as List).cast<String>();
     final answerValue = r['answer'] as String;
+    final choices = options((r['choices'] as List).cast<String>(), (c) => c == answerValue);
     final prompt = context.l10n.patternPrompt;
-    if (_spokenFor != index) {
-      _spokenFor = index;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(prompt));
-    }
+    announce(prompt);
     return Column(
       children: [
         PromptBar(text: prompt, onSay: () => widget.ctx.say(prompt)),

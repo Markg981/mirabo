@@ -24,7 +24,8 @@ class ChildProfile {
     this.shelf,
     this.shelfAuto,
     this.shelfRotatedAt,
-  });
+    InteractionProfile? interaction,
+  }) : _interaction = interaction;
 
   final int id;
   final String name;
@@ -68,6 +69,11 @@ class ChildProfile {
   /// Quando la mensola automatica è cambiata l'ultima volta.
   final DateTime? shelfRotatedAt;
 
+  /// Come il bambino usa mani, lettura e autonomia: decide target, testo e
+  /// opzioni. Finché il genitore non lo sposta segue la fascia d'età.
+  InteractionProfile get interaction => _interaction ?? InteractionProfile.forAge(ageBand);
+  final InteractionProfile? _interaction;
+
   /// Gesti necessari per ogni stadio del compagno (1, 2, 3).
   static const stageThresholds = [3, 6, 12];
 
@@ -109,6 +115,7 @@ class ChildProfile {
     int? storiesCompleted,
     int? gesturesDone,
     String? language,
+    InteractionProfile? interaction,
   }) =>
       ChildProfile(
         id: id,
@@ -127,6 +134,7 @@ class ChildProfile {
         stageFloor: stageFloor,
         language: language ?? this.language,
         shelf: shelf,
+        interaction: interaction ?? _interaction,
         shelfAuto: shelfAuto,
         shelfRotatedAt: shelfRotatedAt,
       );
@@ -156,6 +164,7 @@ class ChildProfile {
         shelf: shelf,
         shelfAuto: shelfAuto,
         shelfRotatedAt: shelfRotatedAt,
+        interaction: _interaction,
       );
 
   Map<String, Object?> toRow() => {
@@ -177,6 +186,7 @@ class ChildProfile {
         'shelf': shelf?.join(','),
         'shelf_auto': shelfAuto?.join(','),
         'shelf_rotated_at': shelfRotatedAt?.toIso8601String(),
+        ...interaction.toRow(),
       };
 
   factory ChildProfile.fromRow(Map<String, Object?> r) => ChildProfile(
@@ -198,7 +208,71 @@ class ChildProfile {
         shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
         shelfAuto: (r['shelf_auto'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
         shelfRotatedAt: r['shelf_rotated_at'] == null ? null : DateTime.parse(r['shelf_rotated_at'] as String),
+        interaction: InteractionProfile.fromRow(r),
       );
+}
+
+/// Quanto legge il bambino: decide se e come compare il testo.
+enum ReadingLevel {
+  none,
+  letters,
+  words,
+  fluent;
+
+  /// Il livello salvato, o null se la colonna è vuota (profili di prima).
+  static ReadingLevel? tryByName(String? name) => ReadingLevel.values.where((r) => r.name == name).firstOrNull;
+}
+
+/// Profilo di interazione: cosa sa fare il bambino con le mani, con gli occhi
+/// e da solo. È separato dalla fascia d'età, che decide i contenuti: la fascia
+/// dà solo i valori iniziali, poi ogni asse lo sposta il genitore.
+/// I valori concreti per l'interfaccia stanno in MiraboTokens (ui/design/palette.dart).
+class InteractionProfile {
+  const InteractionProfile({this.hands = 3, this.reading = ReadingLevel.fluent, this.autonomy = 3})
+      : assert(hands >= 1 && hands <= 3),
+        assert(autonomy >= 1 && autonomy <= 3);
+
+  /// Valori iniziali per fascia: i piccoli toccano soltanto, non leggono e
+  /// hanno bisogno di poche scelte e della consegna ripetuta.
+  factory InteractionProfile.forAge(AgeBand band) => switch (band) {
+        AgeBand.b3to5 => const InteractionProfile(hands: 1, reading: ReadingLevel.none, autonomy: 1),
+        AgeBand.b5to7 => const InteractionProfile(hands: 2, reading: ReadingLevel.letters, autonomy: 2),
+        AgeBand.b7to10 => const InteractionProfile(hands: 3, reading: ReadingLevel.words, autonomy: 3),
+      };
+
+  static const maxLevel = 3;
+
+  /// Mani (motorio), da 1 a 3: grandezza dei target e tolleranza dei gesti.
+  final int hands;
+  final ReadingLevel reading;
+
+  /// Autonomia, da 1 a 3: opzioni per round, consegna ripetuta, conferma per uscire.
+  final int autonomy;
+
+  InteractionProfile copyWith({int? hands, ReadingLevel? reading, int? autonomy}) => InteractionProfile(
+        hands: hands ?? this.hands,
+        reading: reading ?? this.reading,
+        autonomy: autonomy ?? this.autonomy,
+      );
+
+  Map<String, Object?> toRow() => {'hands': hands, 'reading': reading.name, 'autonomy': autonomy};
+
+  /// Null se il profilo non ha ancora le colonne (database o backup di prima):
+  /// allora vale la fascia d'età.
+  static InteractionProfile? fromRow(Map<String, Object?> r) {
+    final hands = r['hands'] as int?;
+    final reading = ReadingLevel.tryByName(r['reading'] as String?);
+    final autonomy = r['autonomy'] as int?;
+    if (hands == null || reading == null || autonomy == null) return null;
+    return InteractionProfile(hands: hands.clamp(1, maxLevel), reading: reading, autonomy: autonomy.clamp(1, maxLevel));
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is InteractionProfile && other.hands == hands && other.reading == reading && other.autonomy == autonomy;
+
+  @override
+  int get hashCode => Object.hash(hands, reading, autonomy);
 }
 
 /// Una voce del diario: storia letta, con eventuale risposta alla pausa di dialogo.

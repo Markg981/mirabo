@@ -1716,4 +1716,93 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get pdfSeen => 'Ho visto';
+
+  @override
+  String get exitAsk => 'Vuoi uscire?';
+
+  @override
+  String get exitStay => 'Resto';
+
+  @override
+  String get exitLeave => 'Esco';
+
+  @override
+  String get profileInteraction => 'Come usa l\'app';
+
+  @override
+  String profileInteractionHint(Object name) {
+    return 'Partono dall\'età: spostali se $name fa di più o di meno. L\'app non li cambia da sola.';
+  }
+
+  @override
+  String get profileHands => 'Mani';
+
+  @override
+  String get profileHandsHint =>
+      'Bottoni più grandi e tracciati più larghi per chi è all’inizio.';
+
+  @override
+  String get hands1 => 'Solo tocco';
+
+  @override
+  String get hands2 => 'Trascina';
+
+  @override
+  String get hands3 => 'Preciso';
+
+  @override
+  String get profileReading => 'Lettura';
+
+  @override
+  String get profileReadingHint =>
+      'Niente testo (solo voce), solo la frase-chiave, testo con karaoke o testo pieno.';
+
+  @override
+  String get readingNone => 'Non legge';
+
+  @override
+  String get readingLetters => 'Lettere';
+
+  @override
+  String get readingWords => 'Parole';
+
+  @override
+  String get readingFluent => 'Legge bene';
+
+  @override
+  String get profileAutonomy => 'Autonomia';
+
+  @override
+  String get profileAutonomyHint =>
+      'Quante scelte per volta, consegna ripetuta, conferma prima di uscire.';
+
+  @override
+  String get autonomy1 => 'Con aiuto';
+
+  @override
+  String get autonomy2 => 'Un po’ da solo';
+
+  @override
+  String get autonomy3 => 'Da solo';
+
+  @override
+  String adviceHands(Object name) {
+    return 'Negli ultimi giorni $name traccia le lettere al primo tentativo: vuoi provare i tracciati più fini?';
+  }
+
+  @override
+  String adviceReading(Object name) {
+    return 'Negli ultimi giorni $name compone le parole al primo tentativo: vuoi provare a mostrare più testo?';
+  }
+
+  @override
+  String adviceAutonomy(Object name) {
+    return 'Negli ultimi giorni $name risponde giusto al primo tentativo: vuoi provare con più scelte per volta?';
+  }
+
+  @override
+  String get adviceYes => 'Sì, proviamo';
+
+  @override
+  String get adviceNo => 'Non ora';
 }

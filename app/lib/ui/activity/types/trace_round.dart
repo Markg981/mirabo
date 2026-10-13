@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../l10n/l10n.dart';
+import '../../design/palette.dart';
 import '../activity_player.dart';
 
 /// "Traccia con il dito": la lettera è disegnata come guida tratteggiata; il
 /// bambino la ripassa. Il controllo è volutamente generoso: il tracciato va
-/// bene se copre la maggior parte dei punti-guida entro una tolleranza.
+/// bene se copre la maggior parte dei punti-guida entro una tolleranza, che
+/// dipende dall'asse mani (MiraboTokens.snapTolerance).
 class TraceRound extends RoundWidget {
   const TraceRound({super.key, required super.level, required super.ctx, required super.onRound, required super.onFinished});
   @override
@@ -15,7 +17,6 @@ class TraceRound extends RoundWidget {
 class _TraceRoundState extends RoundState<TraceRound> {
   List<Map<String, dynamic>> get _rounds => (widget.level['rounds'] as List).cast<Map<String, dynamic>>();
   final List<List<Offset>> _strokes = [];
-  int _spokenFor = -1;
 
   @override
   int get roundCount => _rounds.length;
@@ -31,8 +32,8 @@ class _TraceRoundState extends RoundState<TraceRound> {
       .toList();
 
   /// Campiona i segmenti-guida e verifica che quasi tutti i campioni abbiano un
-  /// punto del tracciato del bambino vicino (in coordinate 0–1).
-  bool _coversGuide(List<List<Offset>> guide, Size size) {
+  /// punto del tracciato del bambino entro [tolerance] (in coordinate 0–1).
+  bool _coversGuide(List<List<Offset>> guide, Size size, double tolerance) {
     final drawn = _strokes.expand((s) => s).map((o) => Offset(o.dx / size.width, o.dy / size.height)).toList();
     if (drawn.length < 5) return false;
     var samples = 0, hit = 0;
@@ -41,7 +42,7 @@ class _TraceRoundState extends RoundState<TraceRound> {
         for (var t = 0.0; t <= 1.0; t += 0.1) {
           final p = Offset.lerp(path[i], path[i + 1], t)!;
           samples++;
-          if (drawn.any((d) => (d - p).distance < 0.12)) hit++;
+          if (drawn.any((d) => (d - p).distance < tolerance)) hit++;
         }
       }
     }
@@ -54,11 +55,9 @@ class _TraceRoundState extends RoundState<TraceRound> {
     final label = r['label'] as String;
     final say = r['say'] as String? ?? label;
     final prompt = context.l10n.tracePrompt(label);
-    if (_spokenFor != index) {
-      _spokenFor = index;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say('$prompt. $say'));
-    }
+    announce('$prompt. $say');
     final guide = _guide(index);
+    final tolerance = MiraboTokens.of(context).snapTolerance;
     return Column(
       children: [
         PromptBar(text: prompt, onSay: () => widget.ctx.say('$prompt. $say')),
@@ -79,7 +78,7 @@ class _TraceRoundState extends RoundState<TraceRound> {
                   onPanStart: (d) => setState(() => _strokes.add([d.localPosition])),
                   onPanUpdate: (d) => setState(() => _strokes.last.add(d.localPosition)),
                   onPanEnd: (_) {
-                    if (_coversGuide(guide, size)) {
+                    if (_coversGuide(guide, size, tolerance)) {
                       answer(true);
                     } else if (_strokes.length >= 2) {
                       answer(false);

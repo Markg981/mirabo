@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'audio/name_voice.dart';
 import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
+import 'data/interaction_advice.dart';
 import 'data/local_db.dart';
 import 'games/game.dart';
 import 'models/activity.dart';
@@ -199,6 +200,24 @@ class AppState extends ChangeNotifier {
     if (p == null || results.isEmpty) return;
     await db.addRounds(p.id, activity, before.level, results);
     await db.saveProgress(applyAdaptive(before, results, activity.levels.length));
+  }
+
+  /// Proposte a cui il genitore ha detto "non ora": per questa apertura dell'app
+  /// non tornano.
+  final Set<String> _dismissedAdvice = {};
+
+  /// Se i round dell'ultima settimana dicono che il bambino è pronto, propone
+  /// di spostare un asse del profilo di interazione. Non cambia niente da sola.
+  Future<InteractionAdvice?> interactionAdvice(ChildProfile p, {DateTime? now}) async {
+    final rounds = await db.rounds(p.id, from: (now ?? DateTime.now()).subtract(const Duration(days: 7)), to: now);
+    final types = {for (final a in repo.activities) a.id: a.type};
+    final advice = adviseInteraction(p.interaction, rounds, (id) => types[id]);
+    return advice == null || _dismissedAdvice.contains(advice.key(p.id)) ? null : advice;
+  }
+
+  void dismissAdvice(ChildProfile p, InteractionAdvice advice) {
+    _dismissedAdvice.add(advice.key(p.id));
+    notifyListeners();
   }
 
   Future<void> selectProfile(ChildProfile p) async {

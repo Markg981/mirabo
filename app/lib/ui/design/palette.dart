@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/activity.dart';
+import '../../models/profile.dart';
 import '../../models/story.dart';
 
 /// Colori di Mirabò. Primari pieni e luminosi come i materiali Montessori
@@ -57,13 +58,77 @@ Color areaColor(ActivityArea a) => switch (a) {
       ActivityArea.cultura => MiraboColors.cyan,
     };
 
-/// Valori di design che dipendono dal profilo (bassa stimolazione).
-/// Si legge con `MiraboTokens.of(context)`.
+/// Come compare il testo, dall'asse lettura del profilo di interazione.
+enum TextMode {
+  /// Niente testo: solo la voce. Bottoni e tessere senza scritta.
+  hidden,
+
+  /// Solo la frase-chiave della storia.
+  keyword,
+
+  /// Testo con la parola letta che si illumina, sempre.
+  karaoke,
+
+  /// Testo pieno; il karaoke lo decide il genitore.
+  full;
+
+  bool get showsText => this == karaoke || this == full;
+  bool get showsLabels => this != hidden;
+}
+
+/// Valori di design che dipendono dal profilo: bassa stimolazione e profilo di
+/// interazione (mani, lettura, autonomia). Si legge con `MiraboTokens.of(context)`.
+/// I valori di default sono quelli senza adattamenti (tutti gli assi al massimo).
 @immutable
 class MiraboTokens extends ThemeExtension<MiraboTokens> {
-  const MiraboTokens({required this.lowStimulation});
+  const MiraboTokens({
+    required this.lowStimulation,
+    this.minTarget = 56,
+    this.snapTolerance = 0.08,
+    this.maxOptions = 4,
+    this.textMode = TextMode.full,
+    this.repeatPrompt = false,
+    this.confirmExit = false,
+  });
+
+  factory MiraboTokens.forProfile({required bool lowStimulation, required InteractionProfile interaction}) {
+    final hands = interaction.hands - 1;
+    final autonomy = interaction.autonomy - 1;
+    return MiraboTokens(
+      lowStimulation: lowStimulation,
+      minTarget: const [88.0, 72.0, 56.0][hands],
+      snapTolerance: const [0.16, 0.12, 0.08][hands],
+      maxOptions: const [2, 3, 4][autonomy],
+      textMode: switch (interaction.reading) {
+        ReadingLevel.none => TextMode.hidden,
+        ReadingLevel.letters => TextMode.keyword,
+        ReadingLevel.words => TextMode.karaoke,
+        ReadingLevel.fluent => TextMode.full,
+      },
+      repeatPrompt: interaction.autonomy == 1,
+      confirmExit: interaction.autonomy < 3,
+    );
+  }
 
   final bool lowStimulation;
+
+  /// Lato minimo di ogni cosa da toccare, in dp (mani 1/2/3: 88/72/56).
+  final double minTarget;
+
+  /// Tolleranza dei tracciati, in frazione del riquadro: più larga per chi ha
+  /// la mano meno precisa, stretta per il tracciato preciso.
+  final double snapTolerance;
+
+  /// Opzioni al massimo per round nelle attività (autonomia 1/2/3: 2/3/4).
+  final int maxOptions;
+  final TextMode textMode;
+
+  /// Autonomia 1: la consegna del round si ripete da sola se il bambino non
+  /// tocca niente; altrimenti la ripete solo il tasto "riascolta".
+  final bool repeatPrompt;
+
+  /// Autonomia 1 e 2: uscire da una storia o da un'attività chiede conferma.
+  final bool confirmExit;
 
   static MiraboTokens of(BuildContext context) =>
       Theme.of(context).extension<MiraboTokens>() ?? const MiraboTokens(lowStimulation: false);
@@ -77,8 +142,28 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
 
   bool get animate => !lowStimulation;
 
+  /// Le stesse scelte d'aspetto, ma senza adattamenti: per le pagine dei grandi.
+  MiraboTokens get adult => MiraboTokens(lowStimulation: lowStimulation);
+
   @override
-  MiraboTokens copyWith({bool? lowStimulation}) => MiraboTokens(lowStimulation: lowStimulation ?? this.lowStimulation);
+  MiraboTokens copyWith({
+    bool? lowStimulation,
+    double? minTarget,
+    double? snapTolerance,
+    int? maxOptions,
+    TextMode? textMode,
+    bool? repeatPrompt,
+    bool? confirmExit,
+  }) =>
+      MiraboTokens(
+        lowStimulation: lowStimulation ?? this.lowStimulation,
+        minTarget: minTarget ?? this.minTarget,
+        snapTolerance: snapTolerance ?? this.snapTolerance,
+        maxOptions: maxOptions ?? this.maxOptions,
+        textMode: textMode ?? this.textMode,
+        repeatPrompt: repeatPrompt ?? this.repeatPrompt,
+        confirmExit: confirmExit ?? this.confirmExit,
+      );
 
   @override
   MiraboTokens lerp(MiraboTokens? other, double t) => t < 0.5 ? this : (other ?? this);

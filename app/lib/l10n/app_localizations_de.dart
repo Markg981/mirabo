@@ -1722,4 +1722,93 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pdfSeen => 'Ich habe gesehen';
+
+  @override
+  String get exitAsk => 'Möchtest du raus?';
+
+  @override
+  String get exitStay => 'Bleiben';
+
+  @override
+  String get exitLeave => 'Raus';
+
+  @override
+  String get profileInteraction => 'Wie es die App nutzt';
+
+  @override
+  String profileInteractionHint(Object name) {
+    return 'Startwerte nach Alter: verschieben Sie sie, wenn $name mehr oder weniger kann. Die App ändert sie nie von selbst.';
+  }
+
+  @override
+  String get profileHands => 'Hände';
+
+  @override
+  String get profileHandsHint =>
+      'Größere Knöpfe und breitere Spuren für Anfänger.';
+
+  @override
+  String get hands1 => 'Nur tippen';
+
+  @override
+  String get hands2 => 'Ziehen';
+
+  @override
+  String get hands3 => 'Genau';
+
+  @override
+  String get profileReading => 'Lesen';
+
+  @override
+  String get profileReadingHint =>
+      'Kein Text (nur Stimme), nur der Kernsatz, Text mit Mitlesen oder ganzer Text.';
+
+  @override
+  String get readingNone => 'Liest noch nicht';
+
+  @override
+  String get readingLetters => 'Buchstaben';
+
+  @override
+  String get readingWords => 'Wörter';
+
+  @override
+  String get readingFluent => 'Liest gut';
+
+  @override
+  String get profileAutonomy => 'Selbstständigkeit';
+
+  @override
+  String get profileAutonomyHint =>
+      'Wie viele Auswahlmöglichkeiten, wiederholte Anweisung, Bestätigung vor dem Verlassen.';
+
+  @override
+  String get autonomy1 => 'Mit Hilfe';
+
+  @override
+  String get autonomy2 => 'Etwas allein';
+
+  @override
+  String get autonomy3 => 'Allein';
+
+  @override
+  String adviceHands(Object name) {
+    return 'In den letzten Tagen spurt $name Buchstaben beim ersten Versuch nach: feinere Spuren ausprobieren?';
+  }
+
+  @override
+  String adviceReading(Object name) {
+    return 'In den letzten Tagen legt $name Wörter beim ersten Versuch: mehr Text zeigen?';
+  }
+
+  @override
+  String adviceAutonomy(Object name) {
+    return 'In den letzten Tagen antwortet $name beim ersten Versuch richtig: mehr Auswahl auf einmal ausprobieren?';
+  }
+
+  @override
+  String get adviceYes => 'Ja, probieren wir';
+
+  @override
+  String get adviceNo => 'Nicht jetzt';
 }

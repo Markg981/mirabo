@@ -2155,6 +2155,162 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Ho visto'**
   String get pdfSeen;
+
+  /// No description provided for @exitAsk.
+  ///
+  /// In it, this message translates to:
+  /// **'Vuoi uscire?'**
+  String get exitAsk;
+
+  /// No description provided for @exitStay.
+  ///
+  /// In it, this message translates to:
+  /// **'Resto'**
+  String get exitStay;
+
+  /// No description provided for @exitLeave.
+  ///
+  /// In it, this message translates to:
+  /// **'Esco'**
+  String get exitLeave;
+
+  /// No description provided for @profileInteraction.
+  ///
+  /// In it, this message translates to:
+  /// **'Come usa l\'app'**
+  String get profileInteraction;
+
+  /// No description provided for @profileInteractionHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Partono dall\'età: spostali se {name} fa di più o di meno. L\'app non li cambia da sola.'**
+  String profileInteractionHint(Object name);
+
+  /// No description provided for @profileHands.
+  ///
+  /// In it, this message translates to:
+  /// **'Mani'**
+  String get profileHands;
+
+  /// No description provided for @profileHandsHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Bottoni più grandi e tracciati più larghi per chi è all’inizio.'**
+  String get profileHandsHint;
+
+  /// No description provided for @hands1.
+  ///
+  /// In it, this message translates to:
+  /// **'Solo tocco'**
+  String get hands1;
+
+  /// No description provided for @hands2.
+  ///
+  /// In it, this message translates to:
+  /// **'Trascina'**
+  String get hands2;
+
+  /// No description provided for @hands3.
+  ///
+  /// In it, this message translates to:
+  /// **'Preciso'**
+  String get hands3;
+
+  /// No description provided for @profileReading.
+  ///
+  /// In it, this message translates to:
+  /// **'Lettura'**
+  String get profileReading;
+
+  /// No description provided for @profileReadingHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Niente testo (solo voce), solo la frase-chiave, testo con karaoke o testo pieno.'**
+  String get profileReadingHint;
+
+  /// No description provided for @readingNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Non legge'**
+  String get readingNone;
+
+  /// No description provided for @readingLetters.
+  ///
+  /// In it, this message translates to:
+  /// **'Lettere'**
+  String get readingLetters;
+
+  /// No description provided for @readingWords.
+  ///
+  /// In it, this message translates to:
+  /// **'Parole'**
+  String get readingWords;
+
+  /// No description provided for @readingFluent.
+  ///
+  /// In it, this message translates to:
+  /// **'Legge bene'**
+  String get readingFluent;
+
+  /// No description provided for @profileAutonomy.
+  ///
+  /// In it, this message translates to:
+  /// **'Autonomia'**
+  String get profileAutonomy;
+
+  /// No description provided for @profileAutonomyHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Quante scelte per volta, consegna ripetuta, conferma prima di uscire.'**
+  String get profileAutonomyHint;
+
+  /// No description provided for @autonomy1.
+  ///
+  /// In it, this message translates to:
+  /// **'Con aiuto'**
+  String get autonomy1;
+
+  /// No description provided for @autonomy2.
+  ///
+  /// In it, this message translates to:
+  /// **'Un po’ da solo'**
+  String get autonomy2;
+
+  /// No description provided for @autonomy3.
+  ///
+  /// In it, this message translates to:
+  /// **'Da solo'**
+  String get autonomy3;
+
+  /// No description provided for @adviceHands.
+  ///
+  /// In it, this message translates to:
+  /// **'Negli ultimi giorni {name} traccia le lettere al primo tentativo: vuoi provare i tracciati più fini?'**
+  String adviceHands(Object name);
+
+  /// No description provided for @adviceReading.
+  ///
+  /// In it, this message translates to:
+  /// **'Negli ultimi giorni {name} compone le parole al primo tentativo: vuoi provare a mostrare più testo?'**
+  String adviceReading(Object name);
+
+  /// No description provided for @adviceAutonomy.
+  ///
+  /// In it, this message translates to:
+  /// **'Negli ultimi giorni {name} risponde giusto al primo tentativo: vuoi provare con più scelte per volta?'**
+  String adviceAutonomy(Object name);
+
+  /// No description provided for @adviceYes.
+  ///
+  /// In it, this message translates to:
+  /// **'Sì, proviamo'**
+  String get adviceYes;
+
+  /// No description provided for @adviceNo.
+  ///
+  /// In it, this message translates to:
+  /// **'Non ora'**
+  String get adviceNo;
 }
 
 class _AppLocalizationsDelegate
