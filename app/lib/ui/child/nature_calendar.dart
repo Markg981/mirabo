@@ -47,7 +47,7 @@ class _NatureCalendarState extends State<NatureCalendar> {
     super.dispose();
   }
 
-  String get _tip => context.l10n.natureMonthTip('m${_month.month}');
+  String get _tip => natureTip(context.l10n, _state.hemisphere, month: _month, today: _today);
 
   Future<void> _say(String line) async {
     await _tts.stop();

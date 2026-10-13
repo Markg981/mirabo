@@ -43,12 +43,29 @@ l'emozione si accoglie con un respiro, qualunque sia.
 ## Calendario della natura
 
 Un materiale della mensola, sotto la capacità **mondo** (chiave `make:nature`). Ogni giorno il bambino segna che tempo fa (sole, nuvole, pioggia,
-neve, vento, nebbia) e fino a tre cose viste fuori. Il compagno dà un suggerimento per il mese
-(emisfero nord). Sotto, il riassunto del mese: quanti giorni di sole, quante volte le foglie.
+neve, vento, nebbia) e fino a tre cose viste fuori. Il compagno dà un suggerimento per il mese,
+secondo dove vive la famiglia. Sotto, il riassunto del mese: quanti giorni di sole, quante volte le foglie.
 
 - Si segnano oggi e i giorni passati, mai quelli futuri; si possono guardare i mesi precedenti.
 - Un giorno saltato resta vuoto e basta: nessuna serie da non rompere, nessun rimprovero.
 - Tabella `nature_days`, un giorno per riga; svuotare un giorno lo cancella.
+
+### Emisfero
+
+La lingua non dice dove si vive (lo spagnolo vale per Madrid e per Santiago), quindi l'emisfero è
+un'impostazione della **famiglia**, non del bambino: area genitore, scheda Sessione, "Dove vivete".
+
+- Tre valori: **nord**, **sud**, **vicino all'equatore**. Il valore iniziale viene dalla regione del
+  dispositivo (`PlatformDispatcher.instance.locale.countryCode`), non dalla lingua dell'app: un tablet
+  in inglese con regione AU parte da sud. Senza regione, nord.
+- I 12 testi `natureMonthTip` sono scritti per il nord e parlano solo di natura (niente feste o fatti
+  culturali): al sud si usano spostati di sei mesi, gennaio prende il testo di luglio (`seasonalMonth`).
+  Chi aggiunge o cambia un testo deve mantenerlo così.
+- Vicino all'equatore le quattro stagioni non hanno senso: `natureEquatorTip` ha otto suggerimenti
+  (pioggia e secco, piante, animali) che non dipendono dal mese e cambiano ogni lunedì.
+- Vale anche per il foglio stampabile del calendario (`natureTip` in `nature_day.dart`).
+- Tabella `settings` (chiave `hemisphere`, database v10), inclusa nel backup. Finché il genitore non sceglie
+  non si salva nulla e vale la regione; un backup di prima della v10 si ripristina con nord.
 
 ## Stampabili
 

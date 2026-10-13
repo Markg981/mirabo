@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'dart:ui' show PlatformDispatcher;
+
 import 'package:flutter/widgets.dart';
 
 import 'audio/name_voice.dart';
@@ -18,10 +20,17 @@ import 'models/story.dart';
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
 /// Volutamente semplice (ChangeNotifier) finché non serve di più.
 class AppState extends ChangeNotifier {
-  AppState({required this.db, required this.repo, CloudBackup? backup, NameVoice? nameVoice, DateTime Function()? clock})
-      : backup = backup ?? CloudBackup(db: db),
+  AppState({
+    required this.db,
+    required this.repo,
+    CloudBackup? backup,
+    NameVoice? nameVoice,
+    DateTime Function()? clock,
+    String? Function()? region,
+  })  : backup = backup ?? CloudBackup(db: db),
         nameVoice = nameVoice ?? NameVoice(),
-        _now = clock ?? DateTime.now;
+        _now = clock ?? DateTime.now,
+        _region = region ?? (() => PlatformDispatcher.instance.locale.countryCode);
 
   final LocalDb db;
   final StoryRepository repo;
@@ -42,6 +51,13 @@ class AppState extends ChangeNotifier {
   bool get needsChildChoice => profiles.length > 1 && !_childChosen;
 
   final DateTime Function() _now;
+
+  /// La regione del dispositivo (non la lingua dell'app): da lì l'emisfero iniziale.
+  final String? Function() _region;
+
+  /// Dove vive la famiglia, per i suggerimenti stagionali. Finché il genitore
+  /// non lo sceglie vale quello della regione del dispositivo.
+  Hemisphere hemisphere = Hemisphere.north;
 
   /// Sessione "da solo": parte quando la modalità diventa "da solo" e dura i
   /// minuti scelti dal genitore nel profilo. Allo scadere il compagno saluta,
@@ -104,6 +120,7 @@ class AppState extends ChangeNotifier {
 
   Future<void> init() async {
     profiles = await db.profiles();
+    hemisphere = Hemisphere.byName(await db.setting(LocalDb.hemisphereKey)) ?? Hemisphere.fromRegion(_region());
     currentProfile = profiles.isEmpty ? null : profiles.first;
     if (currentProfile != null) mode = currentProfile!.lastMode;
     _syncAloneClock();
@@ -324,12 +341,20 @@ class AppState extends ChangeNotifier {
     await db.saveNatureDay(day);
   }
 
+  /// Il genitore sceglie dove vive la famiglia: vale per tutti i bambini.
+  Future<void> setHemisphere(Hemisphere h) async {
+    hemisphere = h;
+    notifyListeners();
+    await db.setSetting(LocalDb.hemisphereKey, h.name);
+  }
+
   /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così
   /// resta ripristinabile e un tablet vuoto non lo sovrascrive.
   Future<void> wipeAll() async {
     await db.wipe();
     await backup.forget();
     await nameVoice.forget();
+    hemisphere = Hemisphere.fromRegion(_region());
     profiles = const [];
     currentProfile = null;
     _syncAloneClock();

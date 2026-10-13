@@ -80,7 +80,8 @@ class _PrintablesTabState extends State<PrintablesTab> {
                 _tile(l.printNature, l.printNatureHint(p.name), Icons.wb_sunny_rounded, () async {
                   final month = DateTime.now();
                   final days = await widget.state.natureMonthOf(p, month);
-                  await _print('natura', (c, f) => natureMonthPdf(c, f, p.language, month, days));
+                  await _print('natura',
+                      (c, f) => natureMonthPdf(c, f, p.language, month, days, hemisphere: widget.state.hemisphere, today: month));
                 }),
               ],
             ),

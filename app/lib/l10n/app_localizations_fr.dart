@@ -665,6 +665,27 @@ class AppLocalizationsFr extends AppLocalizations {
       'En mode « ensemble », des pauses de dialogue apparaissent pour vous deux. En mode « tout seul », l\'enfant répond en touchant et les histoires sur la sécurité et le corps restent cachées.';
 
   @override
+  String get parentPlace => 'Où vous vivez';
+
+  @override
+  String get parentPlaceHint =>
+      'Pour le calendrier de la nature : les conseils suivent les saisons de chez vous.';
+
+  @override
+  String hemisphere(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'north': 'Hémisphère nord',
+        'south': 'Hémisphère sud',
+        'equator': 'Près de l\'équateur',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get parentData => 'Où sont les données';
 
   @override
@@ -1656,6 +1677,32 @@ class AppLocalizationsFr extends AppLocalizations {
         'm12':
             'Ce sont les jours les plus courts de l\'année. La forêt se repose, comme dans l\'histoire d\'Emma.',
         'other': '$month',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureEquatorTip(String tip) {
+    String _temp0 = intl.Intl.selectLogic(
+      tip,
+      {
+        'e1': 'Quand la pluie arrive, l\'air change d\'odeur. Tu la sens ?',
+        'e2':
+            'Après une averse, il reste des flaques. Qu\'est-ce que tu vois dedans ?',
+        'e3':
+            'Les jours secs, la terre devient dure et poussiéreuse. Touche-la : comment est-elle aujourd\'hui ?',
+        'e4':
+            'Avec la pluie, les plantes poussent vite. Tu trouves une feuille nouvelle, encore toute claire ?',
+        'e5':
+            'Cherche une feuille immense et une toute petite. En quoi sont-elles différentes ?',
+        'e6':
+            'Y a-t-il un arbre avec des fleurs ou des fruits ? De quelle couleur sont-ils ?',
+        'e7':
+            'Les fourmis marchent en file. Suis-les des yeux : où vont-elles ?',
+        'e8':
+            'Après la pluie, parfois un arc-en-ciel apparaît. Combien de couleurs comptes-tu ?',
+        'other': '$tip',
       },
     );
     return '$_temp0';

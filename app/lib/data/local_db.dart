@@ -24,8 +24,11 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 9;
+  static const _version = 10;
   static const _keyName = 'mirabo_db_key';
+
+  /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
+  static const hemisphereKey = 'hemisphere';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
     // Solo questo dispositivo: la chiave non finisce nei backup iCloud.
@@ -81,6 +84,7 @@ class LocalDb {
         await _createMakeTables(db);
         await _createShelfHistory(db);
         await _createDailyIdeas(db);
+        await _createSettings(db);
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
@@ -116,6 +120,8 @@ class LocalDb {
         }
         // v9: l'idea del giorno si salva, così resta la stessa e non torna per 14 giorni.
         if (from < 9) await _createDailyIdeas(db);
+        // v10: impostazioni della famiglia (per ora l'emisfero del calendario della natura).
+        if (from < 10) await _createSettings(db);
       },
     );
     return LocalDb._(db);
@@ -269,6 +275,11 @@ class LocalDb {
         idea_key TEXT NOT NULL,
         PRIMARY KEY (profile_id, day)
       )''');
+  }
+
+  /// Impostazioni della famiglia, non di un bambino: una riga per chiave.
+  static Future<void> _createSettings(Database db) async {
+    await db.execute('CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
   }
 
   /// Riempie il profilo di interazione mancante con i valori della fascia d'età.
@@ -494,8 +505,18 @@ class LocalDb {
       'daily_ideas', {'profile_id': profileId, 'day': day, 'idea_key': key},
       conflictAlgorithm: ConflictAlgorithm.ignore);
 
-  /// "Elimina tutti i dati": cancella profili e diario.
+  /// Un'impostazione della famiglia; null se non è mai stata scelta.
+  Future<String?> setting(String key) async {
+    final rows = await _db.query('settings', columns: ['value'], where: 'key = ?', whereArgs: [key]);
+    return rows.isEmpty ? null : rows.first['value'] as String;
+  }
+
+  Future<void> setSetting(String key, String value) =>
+      _db.insert('settings', {'key': key, 'value': value}, conflictAlgorithm: ConflictAlgorithm.replace);
+
+  /// "Elimina tutti i dati": cancella profili, diario e impostazioni.
   Future<void> wipe() async {
+    await _db.delete('settings');
     await _db.delete('daily_ideas');
     await _db.delete('shelf_history');
     await _db.delete('nature_days');
@@ -518,6 +539,7 @@ class LocalDb {
     'nature_days',
     'shelf_history',
     'daily_ideas',
+    'settings',
   ];
 
   /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
@@ -546,6 +568,8 @@ class LocalDb {
       if (schema < 4) await tx.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
       // Backup di prima del profilo di interazione: si parte dalla fascia d'età.
       if (schema < 8) await tx.execute(_interactionFromAgeSql);
+      // Backup di prima dell'emisfero: i suggerimenti erano quelli del nord.
+      if (schema < 10) await tx.insert('settings', {'key': hemisphereKey, 'value': 'north'});
     });
   }
 }

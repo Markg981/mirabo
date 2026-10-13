@@ -3,6 +3,8 @@
 /// il calendario è un quaderno di osservazioni, si guarda e se ne parla.
 library;
 
+import '../l10n/app_localizations.dart';
+
 enum Weather {
   sun('☀️'),
   clouds('☁️'),
@@ -103,3 +105,57 @@ class NatureMonth {
 
 /// Quanti giorni ha il mese di [d].
 int daysInMonth(DateTime d) => DateTime(d.year, d.month + 1, 0).day;
+
+/// Dove vive la famiglia: decide quale suggerimento stagionale dare. La lingua
+/// non basta (lo spagnolo vale per Madrid e per Santiago), quindi è
+/// un'impostazione della famiglia, dedotta all'inizio dalla regione del dispositivo.
+enum Hemisphere {
+  north,
+  south,
+  equator;
+
+  /// Paesi (ISO 3166) dove gennaio è estate.
+  static const _south = {
+    'AR', 'AU', 'BO', 'BR', 'BW', 'CL', 'LS', 'MG', 'MW', 'MZ', //
+    'NA', 'NZ', 'PE', 'PY', 'SZ', 'UY', 'ZA', 'ZM', 'ZW', 'AO', 'FK',
+  };
+
+  /// Paesi vicini all'equatore: pioggia e secco invece delle quattro stagioni.
+  static const _equator = {
+    'BI', 'BN', 'CD', 'CF', 'CG', 'CI', 'CM', 'CO', 'CR', 'EC', 'ET', 'GA', 'GF', 'GH', //
+    'GQ', 'GY', 'ID', 'KE', 'KI', 'LK', 'LR', 'MV', 'MY', 'NG', 'NR', 'PA', 'PG', 'PH', //
+    'RW', 'SB', 'SC', 'SG', 'SL', 'SO', 'SR', 'SS', 'ST', 'TG', 'BJ', 'TL', 'TV', 'TZ', 'UG', 'VE',
+  };
+
+  /// Il valore iniziale dalla regione del dispositivo. Senza regione: nord,
+  /// e il genitore può cambiarlo.
+  static Hemisphere fromRegion(String? countryCode) {
+    final c = countryCode?.toUpperCase();
+    if (_south.contains(c)) return south;
+    if (_equator.contains(c)) return equator;
+    return north;
+  }
+
+  static Hemisphere? byName(String? name) => values.asNameMap()[name];
+}
+
+/// Il mese dei suggerimenti stagionali (scritti per il nord): al sud le
+/// stagioni sono spostate di sei mesi, quindi gennaio usa il testo di luglio.
+/// Vicino all'equatore non si usa: vedi [equatorTip].
+int seasonalMonth(int month, Hemisphere h) => h == Hemisphere.south ? (month + 5) % 12 + 1 : month;
+
+/// Quanti suggerimenti ci sono per chi vive vicino all'equatore.
+const equatorTipCount = 8;
+
+/// Il suggerimento per l'equatore (1…[equatorTipCount]): non dipende dal mese,
+/// cambia ogni lunedì.
+int equatorTip(DateTime day) {
+  final days = DateTime.utc(day.year, day.month, day.day).millisecondsSinceEpoch ~/ Duration.millisecondsPerDay;
+  // Il giorno 0 (1/1/1970) era giovedì: +3 fa iniziare la settimana di lunedì.
+  return (days + 3) ~/ 7 % equatorTipCount + 1;
+}
+
+/// Il suggerimento del compagno per il calendario di [month], nell'emisfero
+/// della famiglia. Vicino all'equatore conta la settimana di [today], non il mese.
+String natureTip(AppLocalizations l, Hemisphere h, {required DateTime month, required DateTime today}) =>
+    h == Hemisphere.equator ? l.natureEquatorTip('e${equatorTip(today)}') : l.natureMonthTip('m${seasonalMonth(month.month, h)}');

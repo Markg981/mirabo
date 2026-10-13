@@ -23,6 +23,9 @@ class _FakeDb implements LocalDb {
 
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
+
+  @override
+  Future<String?> setting(String key) async => null;
   @override
   Future<MadeStory> addMadeStory(MadeStory s) async {
     final row = s.toRow()..['id'] = saved.length + 1;

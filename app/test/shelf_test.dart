@@ -286,6 +286,9 @@ class _FakeDb implements LocalDb {
 
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
+
+  @override
+  Future<String?> setting(String key) async => null;
   @override
   Future<void> updateProfile(ChildProfile p) async => profile = p;
   @override
