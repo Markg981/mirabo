@@ -41,10 +41,8 @@ class _SequenceRoundState extends RoundState<SequenceRound> {
 
   @override
   Widget buildRound(BuildContext context, int index) {
-    if (_preparedFor != index) {
-      _prepare(index);
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(_rounds[index]['prompt'] as String));
-    }
+    if (_preparedFor != index) _prepare(index);
+    announce(_rounds[index]['prompt'] as String);
     final r = _rounds[index];
     final cards = (r['cards'] as List).cast<Map<String, dynamic>>();
     final turns = r['turns'] == true;

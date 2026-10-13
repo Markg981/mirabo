@@ -17,7 +17,6 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
   List<Map<String, dynamic>> get _scenes => (widget.level['scenes'] as List).cast<Map<String, dynamic>>();
   int? _chosen;
   String? _firstChoice;
-  int _spokenFor = -1;
 
   @override
   int get roundCount => _scenes.length;
@@ -32,13 +31,12 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
   @override
   Widget buildRound(BuildContext context, int index) {
     final s = _scenes[index];
-    final options = (s['options'] as List).cast<Map<String, dynamic>>();
+    // Nessuna scelta è sbagliata: se sono troppe se ne tengono alcune a caso.
+    final options = this.options((s['options'] as List).cast<Map<String, dynamic>>(), (_) => false);
     final text = s['text'] as String;
     final prompt = s['prompt'] as String;
-    if (_spokenFor != index) {
-      _spokenFor = index;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say('$text $prompt'));
-    }
+    final showsText = MiraboTokens.of(context).textMode.showsText;
+    announce('$text $prompt');
     final chosen = _chosen;
     return Column(
       children: [
@@ -52,8 +50,10 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(text, style: Theme.of(context).textTheme.bodyLarge),
-                    Text(prompt, style: Theme.of(context).textTheme.titleLarge),
+                    if (showsText) ...[
+                      Text(text, style: Theme.of(context).textTheme.bodyLarge),
+                      Text(prompt, style: Theme.of(context).textTheme.titleLarge),
+                    ],
                   ],
                 ),
               ),
@@ -93,7 +93,11 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
               padding: const EdgeInsets.all(18),
               child: Row(
                   children: [
-                    Expanded(child: Text(options[chosen]['outcome'] as String, style: Theme.of(context).textTheme.bodyLarge)),
+                    Expanded(
+                      child: showsText
+                          ? Text(options[chosen]['outcome'] as String, style: Theme.of(context).textTheme.bodyLarge)
+                          : const SizedBox.shrink(),
+                    ),
                     const SizedBox(width: 12),
                     ChunkyButton(
                       color: MiraboColors.leaf,

@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../data/development_stats.dart';
+import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
 import '../../models/profile.dart';
@@ -93,6 +94,7 @@ class _SessionTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
       children: [
+        _InteractionAdviceCard(state: state, profile: profile),
         FormSection(
           icon: Icons.people_rounded,
           color: MiraboColors.sky,
@@ -131,6 +133,62 @@ class _SessionTab extends StatelessWidget {
           children: [BackupSection(state: state)],
         ),
       ],
+    );
+  }
+}
+
+/// "Negli ultimi giorni traccia le lettere al primo tentativo: vuoi provare i
+/// tracciati più fini?". Compare solo quando i dati lo suggeriscono; il passo
+/// lo fa il genitore.
+class _InteractionAdviceCard extends StatelessWidget {
+  const _InteractionAdviceCard({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<InteractionAdvice?>(
+      future: state.interactionAdvice(profile),
+      builder: (context, snap) {
+        final advice = snap.data;
+        if (advice == null) return const SizedBox.shrink();
+        final l = context.l10n;
+        final message = switch (advice.axis) {
+          InteractionAxis.hands => l.adviceHands(profile.name),
+          InteractionAxis.reading => l.adviceReading(profile.name),
+          InteractionAxis.autonomy => l.adviceAutonomy(profile.name),
+        };
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: SoftPanel(
+            padding: const EdgeInsets.all(20),
+            color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.sun), 0.8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const IconBadge(icon: Icons.lightbulb_rounded, color: MiraboColors.sun, size: 48),
+                    const SizedBox(width: 14),
+                    Expanded(child: Text(message, style: Theme.of(context).textTheme.titleMedium)),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 12,
+                  children: [
+                    FilledButton(
+                      onPressed: () => state.updateProfile(profile.copyWith(interaction: advice.next)),
+                      child: Text(l.adviceYes),
+                    ),
+                    TextButton(onPressed: () => state.dismissAdvice(profile, advice), child: Text(l.adviceNo)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

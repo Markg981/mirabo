@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
 import 'app_localizations.dart';
 
 export 'app_localizations.dart';
@@ -9,14 +10,17 @@ extension L10nContext on BuildContext {
 }
 
 /// L'area dei grandi resta nella lingua del tablet, anche se il bambino
-/// usa l'app in un'altra lingua.
+/// usa l'app in un'altra lingua, e non eredita il profilo di interazione del
+/// bambino (bottoni enormi, testo nascosto).
 class AdultLocale extends StatelessWidget {
   const AdultLocale({super.key, required this.child});
   final Widget child;
 
   @override
-  Widget build(BuildContext context) =>
-      Localizations.override(context: context, locale: AppLanguage.ofDevice().locale, child: child);
+  Widget build(BuildContext context) => Theme(
+        data: adultTheme(Theme.of(context)),
+        child: Localizations.override(context: context, locale: AppLanguage.ofDevice().locale, child: child),
+      );
 }
 
 /// Pagina per i grandi, nella lingua del tablet.

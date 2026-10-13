@@ -33,6 +33,20 @@ class _ProfileFormState extends State<ProfileForm> {
   late int _aloneMinutes = widget.existing?.aloneSessionMinutes ?? 20;
   late String _language = widget.existing?.language ?? AppLanguage.ofDevice().code;
 
+  /// Profilo di interazione: segue la fascia d'età finché il genitore non tocca un asse.
+  late InteractionProfile _interaction = widget.existing?.interaction ?? InteractionProfile.forAge(_band);
+  late bool _interactionChosen = widget.existing != null;
+
+  void _setBand(AgeBand b) => setState(() {
+        _band = b;
+        if (!_interactionChosen) _interaction = InteractionProfile.forAge(b);
+      });
+
+  void _setInteraction(InteractionProfile p) => setState(() {
+        _interaction = p;
+        _interactionChosen = true;
+      });
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +71,7 @@ class _ProfileFormState extends State<ProfileForm> {
         readAlong: _readAlong,
         aloneSessionMinutes: _aloneMinutes,
         language: _language,
+        interaction: _interaction,
       ));
     } else {
       await state.updateProfile(existing.copyWith(
@@ -69,6 +84,7 @@ class _ProfileFormState extends State<ProfileForm> {
         readAlong: _readAlong,
         aloneSessionMinutes: _aloneMinutes,
         language: _language,
+        interaction: _interaction,
       ));
     }
     if (mounted && !widget.firstRun) Navigator.of(context).pop();
@@ -130,7 +146,7 @@ class _ProfileFormState extends State<ProfileForm> {
                               label: l.ageBandLabel(_bandKey(b)),
                               years: l.profileYears(b.key),
                               selected: _band == b,
-                              onTap: () => setState(() => _band = b),
+                              onTap: () => _setBand(b),
                             ),
                           ),
                           if (b != AgeBand.values.last) const SizedBox(width: 12),
@@ -216,6 +232,43 @@ class _ProfileFormState extends State<ProfileForm> {
                       title: Text(l.profileSafetyTogether),
                       subtitle: Text(l.profileSafetyTogetherHint),
                       onChanged: (v) => setState(() => _safetyTogetherOnly = v),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                FormSection(
+                  icon: Icons.back_hand_rounded,
+                  color: MiraboColors.teal,
+                  title: l.profileInteraction,
+                  subtitle: l.profileInteractionHint(_name.text.trim().isEmpty ? '…' : _name.text.trim()),
+                  children: [
+                    InteractionAxisPicker<int>(
+                      title: l.profileHands,
+                      hint: l.profileHandsHint,
+                      value: _interaction.hands,
+                      options: {1: l.hands1, 2: l.hands2, 3: l.hands3},
+                      onChanged: (v) => _setInteraction(_interaction.copyWith(hands: v)),
+                    ),
+                    const SizedBox(height: 18),
+                    InteractionAxisPicker<ReadingLevel>(
+                      title: l.profileReading,
+                      hint: l.profileReadingHint,
+                      value: _interaction.reading,
+                      options: {
+                        ReadingLevel.none: l.readingNone,
+                        ReadingLevel.letters: l.readingLetters,
+                        ReadingLevel.words: l.readingWords,
+                        ReadingLevel.fluent: l.readingFluent,
+                      },
+                      onChanged: (v) => _setInteraction(_interaction.copyWith(reading: v)),
+                    ),
+                    const SizedBox(height: 18),
+                    InteractionAxisPicker<int>(
+                      title: l.profileAutonomy,
+                      hint: l.profileAutonomyHint,
+                      value: _interaction.autonomy,
+                      options: {1: l.autonomy1, 2: l.autonomy2, 3: l.autonomy3},
+                      onChanged: (v) => _setInteraction(_interaction.copyWith(autonomy: v)),
                     ),
                   ],
                 ),
@@ -391,6 +444,42 @@ class FormSection extends StatelessWidget {
           ...children,
         ],
       ),
+    );
+  }
+}
+
+/// Un asse del profilo di interazione: titolo, spiegazione, livelli in fila.
+class InteractionAxisPicker<T> extends StatelessWidget {
+  const InteractionAxisPicker({
+    super.key,
+    required this.title,
+    required this.hint,
+    required this.value,
+    required this.options,
+    required this.onChanged,
+  });
+  final String title;
+  final String hint;
+  final T value;
+  final Map<T, String> options;
+  final ValueChanged<T> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(title, style: text.titleSmall),
+        Text(hint, style: text.bodySmall),
+        const SizedBox(height: 10),
+        SegmentedButton<T>(
+          showSelectedIcon: false,
+          segments: [for (final e in options.entries) ButtonSegment(value: e.key, label: Text(e.value))],
+          selected: {value},
+          onSelectionChanged: (s) => onChanged(s.single),
+        ),
+      ],
     );
   }
 }
