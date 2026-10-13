@@ -265,11 +265,30 @@ class _DiaryTabState extends State<_DiaryTab> {
 
   /// Il diario mostra 30 giorni; i gesti vengono da tutte le storie finite;
   /// il racconto della settimana usa anche i round delle attività a casa.
+  /// L'idea per oggi guarda tutti i round e le idee delle ultime due settimane:
+  /// la prima apertura del giorno la sceglie e la salva.
   Future<_DiaryData> _load() async {
-    final db = widget.state.db;
+    final state = widget.state;
+    final db = state.db;
     final id = widget.profile.id;
-    final weekAgo = DateTime.now().subtract(const Duration(days: 7));
-    return (await db.diary(id), await db.diary(id, days: 3650), await db.gestures(id), await db.rounds(id, from: weekAgo));
+    final now = DateTime.now();
+    final lang = AppLanguage.ofDevice().code;
+    final profile = state.profiles.firstWhere((p) => p.id == id, orElse: () => widget.profile);
+    final allEntries = await db.diary(id, days: 3650);
+    final rounds = await db.rounds(id, from: now.subtract(const Duration(days: 3650)));
+    final ideas = ideasFor(
+      now: now,
+      band: profile.ageBand,
+      diary: allEntries,
+      rounds: rounds,
+      history: await db.dailyIdeas(id, since: now.subtract(const Duration(days: 15))),
+      story: (s) => state.repo.byId(s, lang),
+      activities: state.repo.activitiesIn(lang),
+    );
+    if (ideas.isNotEmpty) await db.saveDailyIdea(id, ideaDay(now), ideas.first.key);
+    final weekAgo = now.subtract(const Duration(days: 7)).toIso8601String();
+    final week = [for (final r in rounds) if ((r['at'] as String).compareTo(weekAgo) >= 0) r];
+    return (await db.diary(id), allEntries, await db.gestures(id), week, ideas);
   }
 
   Future<void> _mark(String storyId) async {
@@ -284,7 +303,7 @@ class _DiaryTabState extends State<_DiaryTab> {
       future: _data,
       builder: (context, snap) {
         if (snap.data == null) return const Center(child: CircularProgressIndicator());
-        final (entries, allEntries, gestures, rounds) = snap.data!;
+        final (entries, allEntries, gestures, rounds, ideas) = snap.data!;
         final lang = AppLanguage.ofDevice().code;
         final profile = state.profiles.firstWhere((p) => p.id == widget.profile.id, orElse: () => widget.profile);
         final finished = [
@@ -298,8 +317,7 @@ class _DiaryTabState extends State<_DiaryTab> {
           children: [
             _IdeaSection(
               name: profile.name,
-              ideas: ideasFor(finished: finished, activities: state.repo.activitiesIn(lang), band: profile.ageBand),
-              today: now,
+              ideas: ideas,
             ),
             const SizedBox(height: 20),
             _WeekSection(
@@ -358,16 +376,17 @@ class _DiaryTabState extends State<_DiaryTab> {
   }
 }
 
-/// Diario a 30 giorni, tutto il diario, gesti, round della settimana.
-typedef _DiaryData = (List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>, List<Map<String, Object?>>);
+/// Diario a 30 giorni, tutto il diario, gesti, round della settimana, idee per oggi.
+typedef _DiaryData = (List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>, List<Map<String, Object?>>, List<DailyIdea>);
 
 /// Un'idea per oggi (3.4.3): una cosa concreta da fare fuori dallo schermo,
 /// presa dalla scheda "Come parlarne" di una storia finita o da una presentazione.
+/// Le idee arrivano già in ordine di priorità: la prima è quella di oggi,
+/// "Un'altra idea" passa alla successiva.
 class _IdeaSection extends StatefulWidget {
-  const _IdeaSection({required this.name, required this.ideas, required this.today});
+  const _IdeaSection({required this.name, required this.ideas});
   final String name;
   final List<DailyIdea> ideas;
-  final DateTime today;
 
   @override
   State<_IdeaSection> createState() => _IdeaSectionState();
@@ -378,14 +397,28 @@ class _IdeaSectionState extends State<_IdeaSection> {
 
   @override
   Widget build(BuildContext context) {
-    final idea = ideaForDay(widget.ideas, widget.today, skip: _skip);
+    final idea = widget.ideas.isEmpty ? null : widget.ideas[_skip % widget.ideas.length];
     final text = Theme.of(context).textTheme;
+    final l10n = context.l10n;
+    final reason = switch (idea) {
+      null => null,
+      DailyIdea(reason: IdeaReason.repeat) => l10n.ideaReasonRepeat(widget.name),
+      StoryIdea(:final story) => l10n.ideaReasonStory(widget.name, story.title),
+      DailyIdea(reason: IdeaReason.tryAlone) => l10n.ideaReasonTryAlone,
+      HomeIdea(reason: IdeaReason.capacity, :final capacity) => l10n.ideaReasonCapacity(widget.name, capacity.name),
+      _ => null,
+    };
     return FormSection(
       icon: Icons.lightbulb_rounded,
       color: MiraboColors.sky,
       title: context.l10n.ideaTitle,
       subtitle: context.l10n.ideaIntro(widget.name),
       children: [
+        if (reason != null)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Text(reason, style: text.bodyMedium?.copyWith(fontStyle: FontStyle.italic)),
+          ),
         ...switch (idea) {
           null => [Text(context.l10n.ideaEmpty(widget.name))],
           StoryIdea(:final story, text: final body) => [

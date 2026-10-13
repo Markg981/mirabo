@@ -23,7 +23,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 7;
+  static const _version = 8;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -76,6 +76,7 @@ class LocalDb {
         await _createGesturesTable(db);
         await _createMakeTables(db);
         await _createShelfHistory(db);
+        await _createDailyIdeas(db);
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
@@ -102,6 +103,8 @@ class LocalDb {
           await db.execute('ALTER TABLE profiles ADD COLUMN shelf_rotated_at TEXT');
           await _createShelfHistory(db);
         }
+        // v8: l'idea del giorno si salva, così resta la stessa e non torna per 14 giorni.
+        if (from < 8) await _createDailyIdeas(db);
       },
     );
     return LocalDb._(db);
@@ -244,6 +247,17 @@ class LocalDb {
         to_at TEXT
       )''');
     await db.execute('CREATE INDEX shelf_history_profile ON shelf_history(profile_id, item_key)');
+  }
+
+  /// Le idee per oggi proposte al genitore, una per giorno (3.4.3).
+  static Future<void> _createDailyIdeas(Database db) async {
+    await db.execute('''
+      CREATE TABLE daily_ideas (
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        day TEXT NOT NULL,
+        idea_key TEXT NOT NULL,
+        PRIMARY KEY (profile_id, day)
+      )''');
   }
 
   /// Stadio che il compagno aveva quando cresceva con le storie completate.
@@ -446,8 +460,21 @@ class LocalDb {
     await batch.commit(noResult: true);
   }
 
+  /// Le idee proposte da [since] in poi.
+  Future<List<({String day, String key})>> dailyIdeas(int profileId, {required DateTime since}) async {
+    final rows = await _db.query('daily_ideas',
+        where: 'profile_id = ? AND day >= ?', whereArgs: [profileId, NatureDay.key(since)], orderBy: 'day');
+    return [for (final r in rows) (day: r['day'] as String, key: r['idea_key'] as String)];
+  }
+
+  /// Salva l'idea di [day] solo se quel giorno non ne ha già una.
+  Future<void> saveDailyIdea(int profileId, String day, String key) => _db.insert(
+      'daily_ideas', {'profile_id': profileId, 'day': day, 'idea_key': key},
+      conflictAlgorithm: ConflictAlgorithm.ignore);
+
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
+    await _db.delete('daily_ideas');
     await _db.delete('shelf_history');
     await _db.delete('nature_days');
     await _db.delete('made_stories');
@@ -468,6 +495,7 @@ class LocalDb {
     'made_stories',
     'nature_days',
     'shelf_history',
+    'daily_ideas',
   ];
 
   /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
