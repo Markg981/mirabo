@@ -1,0 +1,46 @@
+{
+  "title": "Wie eine Schule aussieht",
+  "offscreen": "An einem Nachmittag an der echten Schule vorbeigehen und Tor und Hof von außen anschauen.",
+  "levels": [
+    {
+      "scene": "die Schule",
+      "spots": [
+        {
+          "label": "Der Eingang",
+          "say": "Hier kommt man morgens herein. Eine Erzieherin begrüßt dich."
+        },
+        {
+          "label": "Die Garderobe",
+          "say": "Jedes Kind hat seinen Haken mit seinem Namen oder einem Bild."
+        },
+        {
+          "label": "Der Gruppenraum",
+          "say": "Niedrige Tische, kleine Stühle, viele Farben. Hier spielt und lernt man."
+        },
+        {
+          "label": "Das Klo",
+          "say": "Es ist klein, für Kinder gemacht. Du darfst gehen, wenn du musst, sag einfach Bescheid."
+        },
+        {
+          "label": "Der Essraum",
+          "say": "Alle essen zusammen. Wenn dir etwas nicht schmeckt, darfst du das sagen."
+        },
+        {
+          "label": "Der Hof",
+          "say": "Hier rennt und spielt man draußen, wenn es nicht regnet."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

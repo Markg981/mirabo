@@ -1,0 +1,53 @@
+{
+  "title": "Repasa la letra",
+  "offscreen": "Trazar la misma letra con el dedo en harina, en arena o en la espalda de mamá o papá.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "say": "I"
+        },
+        {
+          "say": "L"
+        },
+        {
+          "say": "O"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "M"
+        },
+        {
+          "say": "A"
+        },
+        {
+          "say": "E"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "say": "S"
+        },
+        {
+          "say": "R"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

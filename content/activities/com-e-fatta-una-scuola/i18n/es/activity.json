@@ -1,0 +1,46 @@
+{
+  "title": "Cómo es una escuela",
+  "offscreen": "Pasar una tarde por delante de la escuela de verdad y mirar la puerta y el patio desde fuera.",
+  "levels": [
+    {
+      "scene": "la escuela",
+      "spots": [
+        {
+          "label": "La entrada",
+          "say": "Por aquí se entra por la mañana. Hay una maestra que te saluda."
+        },
+        {
+          "label": "Las perchas",
+          "say": "Cada niño tiene su gancho con su nombre o un dibujo."
+        },
+        {
+          "label": "El aula",
+          "say": "Mesas bajas, sillas pequeñas, muchos colores. Aquí se juega y se aprende."
+        },
+        {
+          "label": "El baño",
+          "say": "Es pequeño, hecho para niños. Se puede ir cuando haga falta, solo hay que decirlo."
+        },
+        {
+          "label": "El comedor",
+          "say": "Se come todos juntos. Si algo no te gusta, se puede decir."
+        },
+        {
+          "label": "El patio",
+          "say": "Aquí se corre y se juega fuera, cuando no llueve."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

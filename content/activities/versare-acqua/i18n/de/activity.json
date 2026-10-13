@@ -1,0 +1,49 @@
+{
+  "title": "Wasser eingießen",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Ein kleines Kännchen mit wenig Wasser"
+        },
+        {
+          "label": "Ein Glas"
+        },
+        {
+          "label": "Ein kleiner Schwamm"
+        },
+        {
+          "label": "Ein Tablett"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Nimm das Kännchen mit einer Hand am Henkel und halt es mit der anderen von unten."
+        },
+        {
+          "text": "Gieß langsam ins Glas und hör einen Finger breit unter dem Rand auf."
+        },
+        {
+          "text": "Wenn ein Tropfen danebengeht, wisch ihn mit dem Schwamm auf und drück ihn über dem Tablett aus."
+        },
+        {
+          "text": "Gieß das Wasser zurück ins Kännchen. Noch einmal."
+        }
+      ],
+      "control": "Tropfen auf dem Tablett und ein zu volles Glas sieht man von selbst.",
+      "observe": "Ob es von selbst vor dem Rand aufhört, ob es aufwischt, ohne dass Sie es sagen."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

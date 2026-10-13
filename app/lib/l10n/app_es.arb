@@ -58,7 +58,7 @@
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{Falta 1 día. {task}} other{Faltan {count} días. {task}}}",
   "@countdownDaysSay": { "placeholders": { "count": { "type": "int" }, "task": { "type": "String" } } },
-  "exploreTap": "{scene}: toca para descubrir",
+  "exploreTap": "Toca para explorar {scene}",
   "exploreSay": "Esto es {scene}. Toca para descubrir.",
   "exploreAllSeen": "¡Lo he visto todo!",
   "exploreEnough": "Por hoy ya basta",
@@ -84,7 +84,7 @@
   "spellSay": "Forma: {word}",
   "spellSentence": "Forma la frase",
   "spellWord": "Forma la palabra",
-  "tracePrompt": "Traza la {label} con el dedo",
+  "tracePrompt": "Repasa con el dedo: {label}",
   "traceRestart": "Empiezo de nuevo",
 
   "gameWellDone": "¡Muy bien, {name}!",

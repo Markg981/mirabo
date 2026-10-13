@@ -1,0 +1,67 @@
+{
+  "title": "The animal cards",
+  "offscreen": "Printed three-part cards: picture, name, picture with name; the child matches them and checks with the control card.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Match the animal to its word",
+          "pairs": [
+            [
+              "🐶",
+              "dog"
+            ],
+            [
+              "🐱",
+              "cat"
+            ],
+            [
+              "🐮",
+              "cow"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Match the animal to its word",
+          "pairs": [
+            [
+              "🐘",
+              "elephant"
+            ],
+            [
+              "🦒",
+              "giraffe"
+            ],
+            [
+              "🐧",
+              "penguin"
+            ],
+            [
+              "🦉",
+              "owl"
+            ],
+            [
+              "🐢",
+              "tortoise"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, the material tells us by itself.",
+    "pilu": "Look carefully, {nome}: I don't need to tell you if it's right here. You can see it yourself.",
+    "tango": "Come on, {nome}! You can make as many mistakes as you like here: you see it straight away and try again."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

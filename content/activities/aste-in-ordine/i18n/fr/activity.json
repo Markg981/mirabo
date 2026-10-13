@@ -1,0 +1,31 @@
+{
+  "title": "Les barres dans l'ordre",
+  "offscreen": "Les mêmes bandes de carton : de la plus longue à la plus courte, comme un escalier.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "De la plus longue à la plus courte"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "De la plus courte à la plus longue"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, le matériel nous le dit tout seul.",
+    "pilu": "Regarde bien, {nome} : ici, pas besoin que je te dise si c'est juste. Tu le vois toi-même.",
+    "tango": "Allez, {nome} ! Ici, on peut se tromper autant qu'on veut : ça se voit tout de suite et on recommence."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. Si tu veux, celle-ci se fait aussi avec de vraies choses.",
+    "pilu": "Bravo, {nome}. La même chose existe avec de vrais objets : demande à un grand.",
+    "tango": "Fini ! {nome}, demain on la fait avec de vraies choses ? J'apporte mes pattes."
+  },
+  "reviewed": true
+}

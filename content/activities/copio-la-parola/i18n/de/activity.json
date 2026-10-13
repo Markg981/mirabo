@@ -1,0 +1,45 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "VULKAN",
+          "extra": "EIT"
+        },
+        {
+          "word": "BACH",
+          "extra": "EIT"
+        },
+        {
+          "word": "WUT",
+          "extra": "EOL"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sentence": "DER VULKAN STEIGT UND SINKT",
+          "extra": "TM"
+        },
+        {
+          "sentence": "EMMA HILFT DEM BACH",
+          "extra": "OP"
+        }
+      ]
+    }
+  ],
+  "title": "Ich schreibe das Wort ab",
+  "offscreen": "Ein liniertes Heft: Jeden Tag ein Wort aus der gelesenen Geschichte, dreimal in Schreibschrift geschrieben.",
+  "intro": {
+    "bo": "{nome}, hier schreibt man ganze Wörter. Ich bringe die Buchstaben durcheinander, du nicht.",
+    "pilu": "Lange Wörter, {nome}: ein Buchstabe nach dem anderen, und der Laut sagt dir, welcher.",
+    "tango": "{nome}, Wörter wie bei den Großen! Los, ein Buchstabe nach dem anderen."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Wenn du magst, geht das auch mit echten Sachen.",
+    "pilu": "Super, {nome}. Das Gleiche gibt es auch mit echten Dingen: Frag einen Erwachsenen.",
+    "tango": "Fertig! {nome}, machen wir es morgen mit echten Sachen? Ich bringe meine Pfoten mit."
+  },
+  "reviewed": true
+}

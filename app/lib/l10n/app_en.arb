@@ -58,7 +58,7 @@
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{1 day to go. {task}} other{{count} days to go. {task}}}",
   "@countdownDaysSay": { "placeholders": { "count": { "type": "int" }, "task": { "type": "String" } } },
-  "exploreTap": "{scene}: tap to find out",
+  "exploreTap": "Tap to explore {scene}",
   "exploreSay": "This is {scene}. Tap to find out.",
   "exploreAllSeen": "I've seen everything!",
   "exploreEnough": "That's enough for today",

@@ -1,0 +1,36 @@
+{
+  "title": "Mañana al cole",
+  "intro": {
+    "bo": "¿Es de noche, {nome}? Entonces preparamos las cosas para mañana. Una a una.",
+    "pilu": "{nome}, antes de dormir comprobamos que todo esté listo para mañana.",
+    "tango": "¡{nome}! ¡Mañana al cole! Lo preparamos todo ahora y mañana por la mañana, ¡a correr!"
+  },
+  "offscreen": "Colgar la misma lista, dibujada, junto a la puerta del cuarto.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "La mochila está lista"
+        },
+        {
+          "label": "La ropa está en la silla"
+        },
+        {
+          "label": "La merienda está en la mochila"
+        },
+        {
+          "label": "Me he lavado los dientes"
+        },
+        {
+          "label": "Mi peluche está en la cama conmigo"
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

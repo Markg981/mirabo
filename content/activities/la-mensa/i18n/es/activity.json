@@ -1,0 +1,57 @@
+{
+  "title": "En el comedor",
+  "offscreen": "Hacer un 'comedor' en casa: bandeja, fila y un sitio en la mesa elegido por el niño.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "En el comedor hay algo que nunca has comido.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Pruebo un trocito",
+              "outcome": "¡No está mal! No te lo terminas, pero lo has probado."
+            },
+            {
+              "label": "Digo no, gracias",
+              "outcome": "Vale. La maestra te da pan. A lo mejor mañana lo pruebas."
+            },
+            {
+              "label": "Pregunto qué es",
+              "outcome": "Es calabaza. La maestra dice que sabe un poco a patata."
+            }
+          ]
+        },
+        {
+          "text": "Se te cae el vaso de agua en la mesa.",
+          "prompt": "¿Qué haces?",
+          "options": [
+            {
+              "label": "Llamo a la maestra",
+              "outcome": "La maestra trae un trapo. Lo secáis juntos."
+            },
+            {
+              "label": "Me entran ganas de llorar",
+              "outcome": "Pasa. El compañero de al lado te ayuda a apartar el plato."
+            },
+            {
+              "label": "Cojo las servilletas",
+              "outcome": "Secas un poco tú y luego llega la maestra con el trapo."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

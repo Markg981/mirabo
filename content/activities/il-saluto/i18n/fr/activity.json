@@ -1,0 +1,39 @@
+{
+  "title": "Notre au revoir",
+  "intro": {
+    "bo": "{nome}, quand maman ou papa te laissent à l'école, comment vous dites-vous au revoir ? Choisissez ensemble.",
+    "pilu": "Un au revoir rien qu'à vous, {nome} : toujours le même, comme ça tu sais qu'ils reviennent.",
+    "tango": "{nome}, inventons un au revoir ! Un secret, que vous seuls connaissez."
+  },
+  "offscreen": "Utiliser le même au revoir chaque matin, court : plus il est long, plus c'est difficile.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Choisissez votre au revoir du matin.",
+          "prompt": "Lequel vous plaît ?",
+          "options": [
+            {
+              "label": "Tape-m'en cinq et c'est parti",
+              "outcome": "Rapide et joyeux. Puis maman ou papa s'en vont, et reviennent plus tard."
+            },
+            {
+              "label": "Un bisou dans la main",
+              "outcome": "Tu le gardes dans ta poche toute la journée. S'ils te manquent, tu le serres."
+            },
+            {
+              "label": "Un coucou par la fenêtre",
+              "outcome": "Tu entres, ils te font coucou derrière la vitre, puis ils s'en vont."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

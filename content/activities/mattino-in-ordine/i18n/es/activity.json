@@ -1,0 +1,62 @@
+{
+  "title": "La mañana en orden",
+  "offscreen": "Hacer fotos al niño en cada paso y colgarlas en orden en el baño.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Ordena la mañana",
+          "cards": [
+            {
+              "label": "me despierto"
+            },
+            {
+              "label": "desayuno"
+            },
+            {
+              "label": "cojo la mochila"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Ordena la mañana",
+          "cards": [
+            {
+              "label": "me despierto"
+            },
+            {
+              "label": "voy al baño"
+            },
+            {
+              "label": "me visto"
+            },
+            {
+              "label": "desayuno"
+            },
+            {
+              "label": "me lavo los dientes"
+            },
+            {
+              "label": "cojo la mochila"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

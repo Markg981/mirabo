@@ -1,0 +1,62 @@
+{
+  "title": "Me visto solo",
+  "offscreen": "Poner la ropa en la silla ya en el orden en que se pone.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "¿Qué me pongo primero?",
+          "cards": [
+            {
+              "label": "calzoncillos"
+            },
+            {
+              "label": "camiseta"
+            },
+            {
+              "label": "chaqueta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "¿Qué me pongo primero?",
+          "cards": [
+            {
+              "label": "calzoncillos"
+            },
+            {
+              "label": "calcetines"
+            },
+            {
+              "label": "pantalones"
+            },
+            {
+              "label": "camiseta"
+            },
+            {
+              "label": "zapatos"
+            },
+            {
+              "label": "chaqueta"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, volvemos a probar.",
+    "pilu": "Mira bien, {nome}. Luego me dices qué te parece.",
+    "tango": "¡Venga, {nome}, hagámoslo! Despacio, eso sí... vale, despacio."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

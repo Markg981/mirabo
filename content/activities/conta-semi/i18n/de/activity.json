@@ -1,0 +1,56 @@
+{
+  "title": "Zähl die Samen",
+  "offscreen": "Beim Tischdecken das Besteck zählen oder die Treppenstufen.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Wie viele Samen geben wir der Pflanze?"
+        },
+        {
+          "prompt": "Wie viele Äpfel?"
+        },
+        {
+          "prompt": "Wie viele Steinchen?"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Wie viele Blumen?"
+        },
+        {
+          "prompt": "Wie viele Sterne?"
+        },
+        {
+          "prompt": "Wie viele Blätter?"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Wie viele Samen?"
+        },
+        {
+          "prompt": "Wie viele Tropfen?"
+        },
+        {
+          "prompt": "Wie viele Schmetterlinge?"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

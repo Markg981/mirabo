@@ -1,0 +1,67 @@
+{
+  "title": "Las tarjetas de animales",
+  "offscreen": "Tarjetas de tres partes impresas: imagen, nombre, imagen con nombre; el niño las une y se corrige con la tarjeta de control.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Une el animal con su palabra",
+          "pairs": [
+            [
+              "🐶",
+              "perro"
+            ],
+            [
+              "🐱",
+              "gato"
+            ],
+            [
+              "🐮",
+              "vaca"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Une el animal con su palabra",
+          "pairs": [
+            [
+              "🐘",
+              "elefante"
+            ],
+            [
+              "🦒",
+              "jirafa"
+            ],
+            [
+              "🐧",
+              "pingüino"
+            ],
+            [
+              "🦉",
+              "lechuza"
+            ],
+            [
+              "🐢",
+              "tortuga"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

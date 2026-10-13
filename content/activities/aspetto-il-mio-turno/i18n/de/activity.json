@@ -1,0 +1,35 @@
+{
+  "title": "Ich warte, bis ich dran bin",
+  "intro": {
+    "bo": "Dieses Spiel spielt man zu zweit, {nome}: du und ein Erwachsener. Man wechselt sich ab. Ich schaue zu.",
+    "pilu": "{nome}, ruf einen Erwachsenen: Hier spielt man abwechselnd, einer tippt und dann wartet er.",
+    "tango": "Abwechselnd, {nome}! Erst du, dann der Erwachsene, dann du. Warten ist schwer, ich weiß."
+  },
+  "offscreen": "Jedes Brettspiel: laut sagen „du bist dran“ und „ich bin dran“.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Abwechselnd: Bring die Geschichte in die richtige Reihenfolge",
+          "cards": [
+            {
+              "label": "das Ei"
+            },
+            {
+              "label": "das Küken"
+            },
+            {
+              "label": "das Huhn"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

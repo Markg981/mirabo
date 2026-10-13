@@ -1,0 +1,57 @@
+{
+  "title": "Der erste Tag",
+  "offscreen": "Dem Kind vom eigenen ersten Schultag erzählen, mit etwas, das Angst gemacht hat, und wie es ausgegangen ist.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Es ist der erste Tag. Vor der Tür fühlt sich dein Bauch ganz eng an.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich sage es Mama oder Papa",
+              "outcome": "Sie sagen dir, dass das normal ist und der Bauch wieder locker wird, wenn du drin bist."
+            },
+            {
+              "label": "Ich drücke mein Kuscheltier",
+              "outcome": "Das Kuscheltier kommt bis zur Garderobe mit und wartet dort auf dich."
+            },
+            {
+              "label": "Ich gehe rein und schaue",
+              "outcome": "Drinnen ist eine Erzieherin, die deinen Namen sagt. Sie kennt dich schon."
+            }
+          ]
+        },
+        {
+          "text": "In der Gruppe kennst du niemanden.",
+          "prompt": "Was machst du?",
+          "options": [
+            {
+              "label": "Ich schaue, was die anderen machen",
+              "outcome": "Du siehst ein Kind mit Bausteinen. Du gehst näher hin."
+            },
+            {
+              "label": "Ich sage jemandem meinen Namen",
+              "outcome": "Sie heißt Sara. Ihr setzt euch nebeneinander."
+            },
+            {
+              "label": "Ich bleibe bei der Erzieherin",
+              "outcome": "Die Erzieherin bringt dich zu einer Gruppe und stellt dich vor."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

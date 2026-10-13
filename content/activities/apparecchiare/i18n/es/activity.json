@@ -1,0 +1,43 @@
+{
+  "title": "Poner mi sitio en la mesa",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Plato, vaso, tenedor, cuchara, servilleta"
+        },
+        {
+          "label": "Un mantel individual con las siluetas dibujadas (hacedlo juntos con un rotulador)"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pon el mantel individual en tu sitio."
+        },
+        {
+          "text": "Lleva una cosa cada vez y apóyala sobre su silueta."
+        },
+        {
+          "text": "Comprueba: ¿cada cosa está sobre su sombra?"
+        },
+        {
+          "text": "Después de comer, llévate una cosa cada vez."
+        }
+      ],
+      "control": "Las siluetas del mantel muestran si falta algo o está en el sitio equivocado.",
+      "observe": "Después de una semana quitad el mantel: ¿recuerda solo los sitios?"
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

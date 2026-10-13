@@ -1,0 +1,56 @@
+{
+  "title": "Count the seeds",
+  "offscreen": "Count the cutlery when laying the table, or the stairs.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "How many seeds shall we give the plant?"
+        },
+        {
+          "prompt": "How many apples?"
+        },
+        {
+          "prompt": "How many pebbles?"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "How many flowers?"
+        },
+        {
+          "prompt": "How many stars?"
+        },
+        {
+          "prompt": "How many leaves?"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "How many seeds?"
+        },
+        {
+          "prompt": "How many drops?"
+        },
+        {
+          "prompt": "How many butterflies?"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, we'll try again.",
+    "pilu": "Look carefully, {nome}. Then tell me what you think.",
+    "tango": "Come on, {nome}, let's do it! Slowly though... all right, slowly."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

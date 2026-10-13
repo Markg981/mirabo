@@ -1,0 +1,35 @@
+{
+  "title": "I wait for my turn",
+  "intro": {
+    "bo": "This game is for two, {nome}: you and a grown-up. You take turns. I'll watch.",
+    "pilu": "{nome}, call a grown-up: here you take turns, one taps and then waits.",
+    "tango": "Taking turns, {nome}! First you, then the grown-up, then you. Waiting is hard, I know."
+  },
+  "offscreen": "Any board game: say out loud 'your turn' and 'my turn'.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Take turns: put the story in order",
+          "cards": [
+            {
+              "label": "the egg"
+            },
+            {
+              "label": "the chick"
+            },
+            {
+              "label": "the hen"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

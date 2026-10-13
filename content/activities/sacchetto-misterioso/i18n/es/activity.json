@@ -1,0 +1,43 @@
+{
+  "title": "La bolsa misteriosa",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Una bolsa de tela"
+        },
+        {
+          "label": "5–6 objetos pequeños y conocidos (cuchara, tapón, piña, llave, pelotita, botón)"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Mirad juntos los objetos y decid su nombre en voz alta, uno a uno. Luego metedlos en la bolsa."
+        },
+        {
+          "text": "Mete la mano sin mirar, toca un objeto y di qué es antes de sacarlo."
+        },
+        {
+          "text": "Sácalo: ¿era eso? Ponlo en la mesa."
+        },
+        {
+          "text": "Sigue hasta vaciar la bolsa."
+        }
+      ],
+      "control": "El objeto que sacas muestra enseguida si la mano había acertado.",
+      "observe": "Después de unos días, objetos más parecidos entre sí (dos cucharas de distinto tamaño)."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

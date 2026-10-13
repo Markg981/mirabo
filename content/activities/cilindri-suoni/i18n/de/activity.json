@@ -1,0 +1,43 @@
+{
+  "title": "Die Geräuschdosen",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "6 gleiche, undurchsichtige Behälter (Überraschungseier, Döschen)"
+        },
+        {
+          "label": "3 verschiedene Füllungen, je zwei Behälter: Reis, kleine Steine, Mehl"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Schüttle einen Behälter neben deinem Ohr. Hör genau hin."
+        },
+        {
+          "text": "Schüttle die anderen nacheinander, bis du den findest, der gleich klingt."
+        },
+        {
+          "text": "Stell sie nebeneinander. Mach mit den anderen weiter."
+        },
+        {
+          "text": "Zum Schluss öffnest du die Paare: Ist das Gleiche drin?"
+        }
+      ],
+      "control": "Beim Öffnen der Behälter sieht man, ob die Paare stimmen.",
+      "observe": "Ob es von selbst die Augen schließt, um besser zu hören."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

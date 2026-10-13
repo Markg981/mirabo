@@ -1,0 +1,39 @@
+{
+  "title": "Our goodbye",
+  "intro": {
+    "bo": "{nome}, when Mum or Dad leave you at school, how do you say goodbye? Choose together.",
+    "pilu": "A goodbye all of your own, {nome}: always the same, so you know they'll come back.",
+    "tango": "{nome}, let's make up a goodbye! A secret one that only you know."
+  },
+  "offscreen": "Use the same goodbye every morning, and keep it short: the longer it is, the harder it gets.",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Choose your morning goodbye.",
+          "prompt": "Which one do you like?",
+          "options": [
+            {
+              "label": "High five and off you go",
+              "outcome": "Quick and cheerful. Then Mum or Dad go, and come back later."
+            },
+            {
+              "label": "A kiss in your hand",
+              "outcome": "You keep it in your pocket all day. If you miss them, you squeeze it."
+            },
+            {
+              "label": "A wave from the window",
+              "outcome": "You go in, they wave to you through the glass, then they go."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "We did it, {nome}. I got a bit scared, but it worked out.",
+    "pilu": "Well done, {nome}, you looked carefully. That's enough for today.",
+    "tango": "Done! {nome}, tomorrow we'll do another one. Now I'm off running."
+  },
+  "reviewed": true
+}

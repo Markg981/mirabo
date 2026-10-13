@@ -1,0 +1,43 @@
+{
+  "title": "Der geheimnisvolle Beutel",
+  "offscreen": "Das ist schon eine Tätigkeit mit den Händen: Wiederholen Sie sie an den nächsten Tagen, ohne sie neu vorzustellen; das Kind wählt sie von selbst.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Ein Stoffbeutel"
+        },
+        {
+          "label": "5–6 kleine, bekannte Gegenstände (Löffel, Deckel, Tannenzapfen, Schlüssel, Bällchen, Knopf)"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Schaut euch die Gegenstände zusammen an und benennt sie laut, einen nach dem anderen. Dann steckt sie in den Beutel."
+        },
+        {
+          "text": "Steck die Hand hinein, ohne hinzuschauen, fühl einen Gegenstand und sag, was es ist, bevor du ihn herausholst."
+        },
+        {
+          "text": "Hol ihn heraus: War es das? Leg ihn auf den Tisch."
+        },
+        {
+          "text": "Mach weiter, bis der Beutel leer ist."
+        }
+      ],
+      "control": "Der herausgeholte Gegenstand zeigt sofort, ob die Hand richtig geraten hat.",
+      "observe": "Nach ein paar Tagen ähnlichere Gegenstände nehmen (zwei Löffel in verschiedener Größe)."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, das macht man mit den Händen, nicht auf dem Tablet. Ruf einen Erwachsenen, und ich schaue euch zu.",
+    "pilu": "{nome}, dafür braucht man echte Dinge. Ein Erwachsener zeigt es dir einmal, dann bist du dran.",
+    "tango": "{nome}! Echte Arbeit! Ruf einen Erwachsenen: Erst schaust du zu, dann machst du es. Ich fasse nichts an, versprochen."
+  },
+  "outro": {
+    "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+  },
+  "reviewed": true
+}

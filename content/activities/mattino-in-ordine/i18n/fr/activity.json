@@ -1,0 +1,62 @@
+{
+  "title": "Le matin dans l'ordre",
+  "offscreen": "Photographier l'enfant à chaque étape et accrocher les photos dans l'ordre dans la salle de bain.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Remets le matin dans l'ordre",
+          "cards": [
+            {
+              "label": "je me réveille"
+            },
+            {
+              "label": "je prends le petit-déjeuner"
+            },
+            {
+              "label": "je prends mon cartable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Remets le matin dans l'ordre",
+          "cards": [
+            {
+              "label": "je me réveille"
+            },
+            {
+              "label": "je vais aux toilettes"
+            },
+            {
+              "label": "je m'habille"
+            },
+            {
+              "label": "je prends le petit-déjeuner"
+            },
+            {
+              "label": "je me brosse les dents"
+            },
+            {
+              "label": "je prends mon cartable"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "On essaie ensemble, {nome} ? Si on se trompe, on recommence.",
+    "pilu": "Regarde bien, {nome}. Ensuite, tu me dis ce que tu en penses.",
+    "tango": "Allez, {nome}, on y va ! Doucement quand même... d'accord, doucement."
+  },
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

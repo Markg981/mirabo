@@ -1,0 +1,57 @@
+{
+  "title": "Je change d'école",
+  "intro": {
+    "bo": "{nome}, une nouvelle école, ça fait un peu peur même aux grands. Voyons ce qu'on peut faire.",
+    "pilu": "Changer d'école, {nome} : tout est nouveau, mais toi, tu es toujours toi. Regardons les situations.",
+    "tango": "Nouvelle école, {nome} ! Moi, j'entrerais en courant, c'est tout. Mais il y a peut-être une meilleure façon."
+  },
+  "offscreen": "Faire ensemble une liste de trois choses qui restent pareilles (les amis d'avant, le sport, la maison).",
+  "levels": [
+    {
+      "scenes": [
+        {
+          "text": "Nouvelle école. Tout le monde se connaît déjà, sauf toi.",
+          "prompt": "Que fais-tu ?",
+          "options": [
+            {
+              "label": "Je me présente à mon voisin",
+              "outcome": "Ton voisin de table t'explique où sont les choses."
+            },
+            {
+              "label": "J'attends quelques jours",
+              "outcome": "C'est bien aussi : après trois jours, tu sais déjà qui joue à quoi."
+            },
+            {
+              "label": "Je demande à la maîtresse de me présenter",
+              "outcome": "La maîtresse le fait et te donne un camarade-guide."
+            }
+          ]
+        },
+        {
+          "text": "Ici, on fait une chose que vous ne faisiez pas dans ton école.",
+          "prompt": "Que fais-tu ?",
+          "options": [
+            {
+              "label": "Je dis que je ne l'ai jamais fait",
+              "outcome": "La maîtresse dit : pas de problème, je vais t'expliquer."
+            },
+            {
+              "label": "Je copie les autres",
+              "outcome": "Ça marche à moitié. À la fin, tu demandes."
+            },
+            {
+              "label": "Je le dis à la maison",
+              "outcome": "À la maison, vous en parlez, et le lendemain tu demandes plus calmement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "On a réussi, {nome}. J'ai eu un peu peur, mais ça s'est bien passé.",
+    "pilu": "Bravo, {nome}, tu as bien regardé. Ça suffit pour aujourd'hui.",
+    "tango": "Fini ! {nome}, demain on en fait une autre. Maintenant, je file."
+  },
+  "reviewed": true
+}

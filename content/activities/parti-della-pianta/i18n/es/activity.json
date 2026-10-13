@@ -1,0 +1,42 @@
+{
+  "title": "Las partes de la planta",
+  "offscreen": "Una planta de verdad arrancada (una planta de alubia crecida en algodón): tocar y nombrar raíces, tallo, hojas y flor.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Une la parte con su nombre",
+          "pairs": [
+            [
+              "🌱",
+              "tallo"
+            ],
+            [
+              "🍃",
+              "hoja"
+            ],
+            [
+              "🌸",
+              "flor"
+            ],
+            [
+              "🥕",
+              "raíz"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

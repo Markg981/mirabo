@@ -1,0 +1,35 @@
+{
+  "title": "Espero mi turno",
+  "intro": {
+    "bo": "Este juego es de dos, {nome}: tú y un adulto. Se juega por turnos. Yo miro.",
+    "pilu": "{nome}, llama a un adulto: aquí se juega por turnos, uno toca y luego espera.",
+    "tango": "¡Por turnos, {nome}! Primero tú, luego el adulto, luego tú. Esperar es difícil, lo sé."
+  },
+  "offscreen": "Cualquier juego de mesa: decir en voz alta 'te toca' y 'me toca'.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Por turnos: ordena la historia",
+          "cards": [
+            {
+              "label": "el huevo"
+            },
+            {
+              "label": "el pollito"
+            },
+            {
+              "label": "la gallina"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Yo me he asustado un poco, pero ha salido bien.",
+    "pilu": "Muy bien, {nome}, has mirado con atención. Por hoy ya está.",
+    "tango": "¡Hecho! {nome}, mañana hacemos otra. Ahora me voy corriendo."
+  },
+  "reviewed": true
+}

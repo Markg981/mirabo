@@ -1,0 +1,43 @@
+{
+  "title": "Laying my place at the table",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Plate, glass, fork, spoon, napkin"
+        },
+        {
+          "label": "A placemat with the outlines drawn on it (make it together with a felt-tip pen)"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Put the placemat at your place."
+        },
+        {
+          "text": "Carry one thing at a time and put it on its outline."
+        },
+        {
+          "text": "Check: is everything on its shadow?"
+        },
+        {
+          "text": "After the meal, take things away one at a time."
+        }
+      ],
+      "control": "The outlines on the placemat show if something is missing or in the wrong place.",
+      "observe": "After a week, take the placemat away: do they remember the places on their own?"
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Der Morgen der Reihe nach",
+  "offscreen": "Das Kind bei jedem Schritt fotografieren und die Fotos der Reihe nach im Bad aufhängen.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Bring den Morgen in die richtige Reihenfolge",
+          "cards": [
+            {
+              "label": "ich wache auf"
+            },
+            {
+              "label": "ich frühstücke"
+            },
+            {
+              "label": "ich nehme den Rucksack"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Bring den Morgen in die richtige Reihenfolge",
+          "cards": [
+            {
+              "label": "ich wache auf"
+            },
+            {
+              "label": "ich gehe aufs Klo"
+            },
+            {
+              "label": "ich ziehe mich an"
+            },
+            {
+              "label": "ich frühstücke"
+            },
+            {
+              "label": "ich putze Zähne"
+            },
+            {
+              "label": "ich nehme den Rucksack"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

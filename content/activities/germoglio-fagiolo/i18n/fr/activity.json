@@ -1,0 +1,49 @@
+{
+  "title": "Le haricot dans le coton",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Un bocal en verre"
+        },
+        {
+          "label": "Du coton"
+        },
+        {
+          "label": "Deux ou trois haricots secs"
+        },
+        {
+          "label": "De l'eau"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Remplis le bocal de coton et mouille-le : humide, pas trempé."
+        },
+        {
+          "text": "Glisse les haricots entre le coton et le verre, comme ça tu les vois."
+        },
+        {
+          "text": "Mets-le près d'une fenêtre. Chaque jour, vérifie que le coton est humide."
+        },
+        {
+          "text": "Chaque jour, dessine ce que tu vois : d'abord rien, puis la racine, puis la pousse."
+        }
+      ],
+      "control": "Le haricot lui-même : s'il germe, les soins étaient bons ; s'il pourrit, il y avait trop d'eau.",
+      "observe": "Après deux semaines, mettez-le en terre : il devient la plante de « Prendre soin d'une plante »."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

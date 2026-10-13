@@ -1,0 +1,49 @@
+{
+  "title": "Trasvasar alubias",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Dos cuencos iguales"
+        },
+        {
+          "label": "Un puñado de alubias o garbanzos"
+        },
+        {
+          "label": "Una bandeja"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Lleva la bandeja a la mesa con las dos manos, despacio."
+        },
+        {
+          "text": "Coge el cuenco lleno con las dos manos y vierte en el otro, despacio, sin hablar."
+        },
+        {
+          "text": "Mira: ¿se ha caído alguna alubia? Cógela con dos dedos y ponla en el cuenco."
+        },
+        {
+          "text": "Ahora vuelve a echar las alubias en el primer cuenco. Repite las veces que quieras."
+        },
+        {
+          "text": "Devuelve la bandeja a donde la cogiste."
+        }
+      ],
+      "control": "Las alubias caídas en la bandeja dicen solas si el trasvase ha salido bien: no hace falta que lo diga el adulto.",
+      "observe": "Cuántas veces lo repite, si usa las dos manos, si recoge las alubias caídas sin que se lo pidáis."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

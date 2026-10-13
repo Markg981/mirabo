@@ -1,0 +1,46 @@
+{
+  "title": "Las perlas de las decenas",
+  "offscreen": "Ya es una actividad con las manos: repítela los días siguientes sin volver a presentarla, el niño la elige solo.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Cuentas o pasta para ensartar en hilos de 10 (haced al menos 5)"
+        },
+        {
+          "label": "Cuentas sueltas para las unidades"
+        },
+        {
+          "label": "Tarjetas con los números 10, 20, 30... y 1–9"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cuenta las cuentas de un hilo: diez. Un hilo es una decena."
+        },
+        {
+          "text": "Pon los hilos en fila: 10, 20, 30... y coloca la tarjeta correcta."
+        },
+        {
+          "text": "Añade cuentas sueltas a un hilo: 10 y 3 son 13. Busca la tarjeta."
+        },
+        {
+          "text": "Ahora el adulto dice un número (24) y tú lo construyes con hilos y cuentas."
+        }
+      ],
+      "control": "Contando las cuentas se ve si el número construido es el que se ha dicho.",
+      "observe": "Si pasa de contar de uno en uno a contar por decenas."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, esto se hace con las manos, no en la tableta. Llama a un adulto y yo os miro.",
+    "pilu": "{nome}, para esto hacen falta objetos de verdad. Un adulto te lo enseña una vez y luego te toca a ti.",
+    "tango": "¡{nome}! ¡Trabajo de verdad! Llama a un adulto: primero miras y luego lo haces tú. Yo no toco nada, prometido."
+  },
+  "outro": {
+    "bo": "Has trabajado solo, {nome}. Vamos a ordenarlo todo, así mañana lo encuentras.",
+    "pilu": "Cada cosa vuelve a su sitio, {nome}: es parte del trabajo. Hasta mañana.",
+    "tango": "¡Hecho! {nome}, ¿lo ordenamos todo? Yo... yo miro. ¡Hasta mañana!"
+  },
+  "reviewed": true
+}

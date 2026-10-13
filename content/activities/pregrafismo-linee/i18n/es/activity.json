@@ -1,0 +1,61 @@
+{
+  "title": "Líneas y olas",
+  "offscreen": "Las mismas líneas con el dedo en arena o harina sobre una bandeja, y luego con un rotulador gordo en una hoja grande.",
+  "levels": [
+    {
+      "rounds": [
+        {
+          "label": "línea hacia abajo",
+          "say": "de arriba abajo"
+        },
+        {
+          "label": "línea de lado",
+          "say": "de izquierda a derecha"
+        },
+        {
+          "label": "círculo",
+          "say": "todo alrededor"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "olas",
+          "say": "arriba y abajo como el mar"
+        },
+        {
+          "label": "zigzag",
+          "say": "en punta"
+        },
+        {
+          "label": "puentes",
+          "say": "un puente, otro puente"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "label": "espiral",
+          "say": "vueltas y vueltas hasta el centro"
+        },
+        {
+          "label": "rizos",
+          "say": "como los rizos del pelo"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "¿Lo intentamos juntos, {nome}? Si nos equivocamos, el material nos lo dice solo.",
+    "pilu": "Mira bien, {nome}: aquí no hace falta que yo te diga si está bien. Lo ves tú.",
+    "tango": "¡Venga, {nome}! Aquí puedes equivocarte todo lo que quieras: se ve enseguida y se vuelve a probar."
+  },
+  "outro": {
+    "bo": "Lo hemos conseguido, {nome}. Si quieres, esto también se hace con cosas de verdad.",
+    "pilu": "Muy bien, {nome}. Lo mismo existe con objetos de verdad: pregúntale a un adulto.",
+    "tango": "¡Hecho! {nome}, ¿mañana lo hacemos con cosas de verdad? Yo pongo las patas."
+  },
+  "reviewed": true
+}

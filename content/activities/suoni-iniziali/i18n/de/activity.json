@@ -1,0 +1,186 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "prompt": "Tippe auf das, was mit M anfängt",
+          "say": "mmm, M",
+          "options": [
+            {
+              "emoji": "🐭",
+              "label": "Maus",
+              "correct": true
+            },
+            {
+              "emoji": "🚗",
+              "label": "Auto",
+              "correct": false
+            },
+            {
+              "emoji": "🐘",
+              "label": "Elefant",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Tippe auf das, was mit S anfängt",
+          "say": "sss, S",
+          "options": [
+            {
+              "emoji": "☀️",
+              "label": "Sonne",
+              "correct": true
+            },
+            {
+              "emoji": "🐱",
+              "label": "Katze",
+              "correct": false
+            },
+            {
+              "emoji": "🍌",
+              "label": "Banane",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Tippe auf das, was mit P anfängt",
+          "say": "p, P",
+          "options": [
+            {
+              "emoji": "🍕",
+              "label": "Pizza",
+              "correct": true
+            },
+            {
+              "emoji": "🌙",
+              "label": "Mond",
+              "correct": false
+            },
+            {
+              "emoji": "🐧",
+              "label": "Pinguin",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Tippe auf alle, die mit B anfangen",
+          "say": "b, B",
+          "options": [
+            {
+              "emoji": "🍌",
+              "label": "Banane",
+              "correct": true
+            },
+            {
+              "emoji": "🌳",
+              "label": "Baum",
+              "correct": true
+            },
+            {
+              "emoji": "🐶",
+              "label": "Hund",
+              "correct": false
+            },
+            {
+              "emoji": "📚",
+              "label": "Buch",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "prompt": "Tippe auf alle, die mit L anfangen",
+          "say": "l, L",
+          "options": [
+            {
+              "emoji": "🦁",
+              "label": "Löwe",
+              "correct": true
+            },
+            {
+              "emoji": "🪜",
+              "label": "Leiter",
+              "correct": true
+            },
+            {
+              "emoji": "🐟",
+              "label": "Fisch",
+              "correct": false
+            },
+            {
+              "emoji": "🥄",
+              "label": "Löffel",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "prompt": "Tippe auf das, was mit A aufhört",
+          "say": "...a",
+          "options": [
+            {
+              "emoji": "🦙",
+              "label": "Lama",
+              "correct": true
+            },
+            {
+              "emoji": "🐘",
+              "label": "Elefant",
+              "correct": false
+            },
+            {
+              "emoji": "☀️",
+              "label": "Sonne",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "prompt": "Tippe auf das, was sich auf Maus reimt",
+          "say": "Maus... Haus",
+          "options": [
+            {
+              "emoji": "🏠",
+              "label": "Haus",
+              "correct": true
+            },
+            {
+              "emoji": "🍎",
+              "label": "Apfel",
+              "correct": false
+            },
+            {
+              "emoji": "🚗",
+              "label": "Auto",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Hör den Laut",
+  "offscreen": "„Ich sehe was, was du nicht siehst“: „...und das fängt mit mmm an“ – in der Küche oder im Auto.",
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

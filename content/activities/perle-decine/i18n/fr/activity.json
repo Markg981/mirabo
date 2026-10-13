@@ -1,0 +1,46 @@
+{
+  "title": "Les perles des dizaines",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Des perles ou des pâtes à enfiler par 10 (faites-en au moins 5)"
+        },
+        {
+          "label": "Des perles en vrac pour les unités"
+        },
+        {
+          "label": "Des étiquettes avec les nombres 10, 20, 30... et 1 à 9"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Compte les perles d'un fil : dix. Un fil, c'est une dizaine."
+        },
+        {
+          "text": "Mets les fils en rang : 10, 20, 30... et pose la bonne étiquette."
+        },
+        {
+          "text": "Ajoute des perles en vrac à un fil : 10 et 3 font 13. Cherche l'étiquette."
+        },
+        {
+          "text": "Maintenant, le grand dit un nombre (24) et tu le construis avec des fils et des perles."
+        }
+      ],
+      "control": "En comptant les perles, on voit si le nombre construit est celui qui a été dit.",
+      "observe": "S'il passe du comptage un par un au comptage par dizaines."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

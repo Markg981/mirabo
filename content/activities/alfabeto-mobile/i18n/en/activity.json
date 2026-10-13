@@ -1,0 +1,73 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "SUN",
+          "extra": "AMR"
+        },
+        {
+          "word": "APPLE",
+          "extra": "OST"
+        },
+        {
+          "word": "MOON",
+          "extra": "EIS"
+        },
+        {
+          "word": "CAT",
+          "extra": "LEI"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "ELEPHANT",
+          "extra": "OMI"
+        },
+        {
+          "word": "BUTTERFLY",
+          "extra": "OAS"
+        },
+        {
+          "word": "SCHOOL",
+          "extra": "AEN"
+        },
+        {
+          "word": "BEAN",
+          "extra": "TRO"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "word": "FROG",
+          "extra": "ELT"
+        },
+        {
+          "word": "BACKPACK",
+          "extra": "OIR"
+        },
+        {
+          "word": "RAIN",
+          "extra": "EST"
+        }
+      ]
+    }
+  ],
+  "title": "The moveable alphabet",
+  "offscreen": "Wooden or card letters (vowels blue, consonants red): the child builds any words they like, without writing.",
+  "intro": {
+    "bo": "Shall we try together, {nome}? If we get it wrong, the material tells us by itself.",
+    "pilu": "Look carefully, {nome}: I don't need to tell you if it's right here. You can see it yourself.",
+    "tango": "Come on, {nome}! You can make as many mistakes as you like here: you see it straight away and try again."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

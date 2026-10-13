@@ -1,0 +1,49 @@
+{
+  "title": "Verser de l'eau",
+  "offscreen": "C'est déjà une activité avec les mains : répétez-la les jours suivants sans la présenter de nouveau, l'enfant la choisit seul.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Un petit pichet avec un peu d'eau"
+        },
+        {
+          "label": "Un verre"
+        },
+        {
+          "label": "Une petite éponge"
+        },
+        {
+          "label": "Un plateau"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Prends le pichet par l'anse avec une main et tiens-le par-dessous avec l'autre."
+        },
+        {
+          "text": "Verse doucement dans le verre et arrête-toi un doigt avant le bord."
+        },
+        {
+          "text": "Si une goutte tombe, essuie-la avec l'éponge et essore-la dans le plateau."
+        },
+        {
+          "text": "Reverse l'eau dans le pichet. Recommence."
+        }
+      ],
+      "control": "Les gouttes sur le plateau et le verre trop plein se voient tout seuls.",
+      "observe": "S'il s'arrête avant le bord tout seul, s'il essuie sans qu'on le lui dise."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, celle-ci se fait avec les mains, pas sur la tablette. Appelle un grand et je vous regarde.",
+    "pilu": "{nome}, pour celle-ci il faut de vrais objets. Un grand te montre une fois, puis c'est ton tour.",
+    "tango": "{nome} ! Du vrai travail ! Appelle un grand : d'abord tu regardes, puis tu fais. Moi, je ne touche à rien, promis."
+  },
+  "outro": {
+    "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+  },
+  "reviewed": true
+}

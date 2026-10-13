@@ -1,0 +1,45 @@
+{
+  "levels": [
+    {
+      "rounds": [
+        {
+          "word": "VOLCANO",
+          "extra": "EIT"
+        },
+        {
+          "word": "STREAM",
+          "extra": "OIL"
+        },
+        {
+          "word": "ANGER",
+          "extra": "OLT"
+        }
+      ]
+    },
+    {
+      "rounds": [
+        {
+          "sentence": "THE VOLCANO GOES UP AND THEN DOWN",
+          "extra": "TM"
+        },
+        {
+          "sentence": "EMMA HELPS THE STREAM",
+          "extra": "OP"
+        }
+      ]
+    }
+  ],
+  "title": "Copy the word",
+  "offscreen": "A lined exercise book: every day a word from the story you read, written three times in joined-up writing.",
+  "intro": {
+    "bo": "{nome}, here we write whole words. I mix up my letters, but you don't.",
+    "pilu": "Long words, {nome}: one letter at a time, and the sound tells you which one.",
+    "tango": "{nome}, grown-up words! Come on, one letter at a time."
+  },
+  "outro": {
+    "bo": "We did it, {nome}. If you like, you can do this one with real things too.",
+    "pilu": "Well done, {nome}. The same thing exists with real objects: ask a grown-up.",
+    "tango": "Done! {nome}, shall we do it with real things tomorrow? I'll bring my paws."
+  },
+  "reviewed": true
+}

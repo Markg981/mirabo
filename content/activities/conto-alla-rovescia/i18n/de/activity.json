@@ -1,0 +1,36 @@
+{
+  "title": "Countdown",
+  "offscreen": "Ein Papierkalender am Kühlschrank: Jeden Abend wird ein Tag angemalt.",
+  "levels": [
+    {
+      "event": "den ersten Schultag",
+      "daily": [
+        "Heute suchen wir den Rucksack aus",
+        "Heute schreiben wir deinen Namen auf deine Sachen",
+        "Heute gehen wir an der Schule vorbei",
+        "Heute versuchen wir, uns allein anzuziehen",
+        "Heute machen wir unseren Abschiedsgruß",
+        "Heute lesen wir eine Geschichte über die Schule",
+        "Heute machen wir eine Brotzeit wie in der Schule",
+        "Heute bitten wir jemanden bei einer Sache um Hilfe",
+        "Heute spielen wir abwechselnd",
+        "Heute suchen wir die Kleider für den ersten Tag aus",
+        "Heute gehen wir etwas früher ins Bett",
+        "Heute spielen wir Mittagessen in der Schule",
+        "Heute packen wir den Rucksack richtig",
+        "Morgen geht's los! Heute Abend der Abschiedsgruß, morgen die Schule"
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "Probieren wir es zusammen, {nome}? Wenn es nicht klappt, versuchen wir es noch mal.",
+    "pilu": "Schau genau hin, {nome}. Dann sagst du mir, was du denkst.",
+    "tango": "Los, {nome}, machen wir es! Aber langsam... na gut, langsam."
+  },
+  "outro": {
+    "bo": "Geschafft, {nome}. Ich hatte ein bisschen Angst, aber es hat geklappt.",
+    "pilu": "Super, {nome}, du hast gut hingeschaut. Für heute reicht es.",
+    "tango": "Fertig! {nome}, morgen machen wir noch eine. Jetzt renne ich los."
+  },
+  "reviewed": true
+}

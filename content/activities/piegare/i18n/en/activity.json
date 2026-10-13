@@ -1,0 +1,40 @@
+{
+  "title": "Folding napkins",
+  "offscreen": "It's already a hands-on activity: repeat it over the following days without presenting it again; the child chooses it on their own.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Three cloth napkins with a line sewn or drawn across the middle"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Spread the napkin out with the line in front of you."
+        },
+        {
+          "text": "Take the two bottom corners and bring them up to the top corners, following the line."
+        },
+        {
+          "text": "Run your hand along the fold to press it flat."
+        },
+        {
+          "text": "Do the same with the other two. Then open them and start again."
+        }
+      ],
+      "control": "If the corners don't meet, the line isn't covered: they can see it for themselves.",
+      "observe": "How exactly the corners meet and how carefully they press the fold."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, this one is done with your hands, not on the tablet. Call a grown-up and I'll watch you.",
+    "pilu": "{nome}, you need real objects for this one. A grown-up shows you once, then it's your turn.",
+    "tango": "{nome}! Real work! Call a grown-up: first you watch, then you do it. I won't touch anything, promise."
+  },
+  "outro": {
+    "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+  },
+  "reviewed": true
+}
