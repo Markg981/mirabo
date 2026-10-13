@@ -662,6 +662,27 @@ class AppLocalizationsIt extends AppLocalizations {
       'In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.';
 
   @override
+  String get parentPlace => 'Dove vivete';
+
+  @override
+  String get parentPlaceHint =>
+      'Serve al calendario della natura: i suggerimenti seguono le stagioni di casa vostra.';
+
+  @override
+  String hemisphere(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'north': 'Emisfero nord',
+        'south': 'Emisfero sud',
+        'equator': 'Vicino all\'equatore',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get parentData => 'Dove vivono i dati';
 
   @override
@@ -1613,6 +1634,31 @@ class AppLocalizationsIt extends AppLocalizations {
         'm12':
             'Sono i giorni più corti dell\'anno. Il bosco riposa, come nella storia di Emma.',
         'other': '$month',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureEquatorTip(String tip) {
+    String _temp0 = intl.Intl.selectLogic(
+      tip,
+      {
+        'e1': 'Quando sta per piovere, l\'aria cambia profumo. Lo senti?',
+        'e2':
+            'Dopo un acquazzone restano le pozzanghere. Cosa ci vedi riflesso?',
+        'e3':
+            'Nei giorni secchi la terra diventa dura e polverosa. Toccala: com\'è oggi?',
+        'e4':
+            'Con la pioggia le piante crescono in fretta. Trovi una foglia nuova, ancora chiara?',
+        'e5':
+            'Cerca una foglia grandissima e una piccolissima. Quanto sono diverse?',
+        'e6': 'C\'è un albero con i fiori o con i frutti? Di che colore sono?',
+        'e7':
+            'Le formiche camminano in fila. Seguile con gli occhi: dove vanno?',
+        'e8':
+            'Dopo la pioggia a volte spunta l\'arcobaleno. Quanti colori riesci a contare?',
+        'other': '$tip',
       },
     );
     return '$_temp0';

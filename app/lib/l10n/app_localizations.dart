@@ -968,6 +968,24 @@ abstract class AppLocalizations {
   /// **'In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.'**
   String get parentHowUseHint;
 
+  /// No description provided for @parentPlace.
+  ///
+  /// In it, this message translates to:
+  /// **'Dove vivete'**
+  String get parentPlace;
+
+  /// No description provided for @parentPlaceHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Serve al calendario della natura: i suggerimenti seguono le stagioni di casa vostra.'**
+  String get parentPlaceHint;
+
+  /// No description provided for @hemisphere.
+  ///
+  /// In it, this message translates to:
+  /// **'{place, select, north{Emisfero nord} south{Emisfero sud} equator{Vicino all\'equatore} other{{place}}}'**
+  String hemisphere(String place);
+
   /// No description provided for @parentData.
   ///
   /// In it, this message translates to:
@@ -1999,6 +2017,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'{month, select, m1{Fa freddo e tanti alberi sono spogli. Riesci a vedere i nidi tra i rami?} m2{Le giornate si allungano un pochino. Cerca le prime gemme sui rami.} m3{Arriva la primavera: spuntano i primi fiori. Di che colore sono?} m4{Gli uccellini costruiscono i nidi. Ascolta: quanti canti diversi senti?} m5{Il prato è pieno di fiori e di api. Guardale da lontano: lavorano tanto!} m6{Sono i giorni più lunghi dell\'anno. Cosa vedi la sera, quando c\'è ancora luce?} m7{Fa caldo: cerca l\'ombra degli alberi. Senti le cicale?} m8{Di notte, se il cielo è limpido, a volte cade una stella. Esprimi un desiderio!} m9{Maturano tanti frutti: uva, mele, fichi. Quali conosci?} m10{Le foglie cambiano colore e cadono. Quanti colori diversi trovi?} m11{Nel bosco spuntano i funghi. Si guardano, ma non si toccano!} m12{Sono i giorni più corti dell\'anno. Il bosco riposa, come nella storia di Emma.} other{{month}}}'**
   String natureMonthTip(String month);
+
+  /// No description provided for @natureEquatorTip.
+  ///
+  /// In it, this message translates to:
+  /// **'{tip, select, e1{Quando sta per piovere, l\'aria cambia profumo. Lo senti?} e2{Dopo un acquazzone restano le pozzanghere. Cosa ci vedi riflesso?} e3{Nei giorni secchi la terra diventa dura e polverosa. Toccala: com\'è oggi?} e4{Con la pioggia le piante crescono in fretta. Trovi una foglia nuova, ancora chiara?} e5{Cerca una foglia grandissima e una piccolissima. Quanto sono diverse?} e6{C\'è un albero con i fiori o con i frutti? Di che colore sono?} e7{Le formiche camminano in fila. Seguile con gli occhi: dove vanno?} e8{Dopo la pioggia a volte spunta l\'arcobaleno. Quanti colori riesci a contare?} other{{tip}}}'**
+  String natureEquatorTip(String tip);
 
   /// No description provided for @natureThisMonth.
   ///

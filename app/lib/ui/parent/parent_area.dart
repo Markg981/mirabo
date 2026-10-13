@@ -7,6 +7,7 @@ import '../../data/development_stats.dart';
 import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
+import '../../models/nature_day.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
 import '../design/palette.dart';
@@ -108,6 +109,22 @@ class _SessionTab extends StatelessWidget {
               ],
               selected: {state.mode},
               onSelectionChanged: (s) => state.setMode(s.first),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        FormSection(
+          icon: Icons.public_rounded,
+          color: MiraboColors.teal,
+          title: context.l10n.parentPlace,
+          subtitle: context.l10n.parentPlaceHint,
+          children: [
+            SegmentedButton<Hemisphere>(
+              segments: [
+                for (final h in Hemisphere.values) ButtonSegment(value: h, label: Text(context.l10n.hemisphere(h.name))),
+              ],
+              selected: {state.hemisphere},
+              onSelectionChanged: (s) => state.setHemisphere(s.first),
             ),
           ],
         ),

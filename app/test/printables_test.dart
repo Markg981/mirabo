@@ -59,7 +59,8 @@ void main() {
         NatureDay(profileId: 1, day: DateTime(2026, 10, 1), weather: Weather.sun, seen: const {NatureThing.leaf}),
         NatureDay(profileId: 1, day: DateTime(2026, 10, 31), weather: Weather.fog),
       ];
-      _isPdf(await natureMonthPdf(l, fonts, lang.code, DateTime(2026, 10), days), pages: 1);
+      _isPdf(await natureMonthPdf(l, fonts, lang.code, DateTime(2026, 10), days,
+          hemisphere: Hemisphere.south, today: DateTime(2026, 10, 13)), pages: 1);
     });
 
     test('[$lang] libretto della storia inventata: copertina, cinque pagine, fine', () async {

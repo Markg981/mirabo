@@ -663,6 +663,27 @@ class AppLocalizationsDe extends AppLocalizations {
       'Im Modus „zusammen“ erscheinen Gesprächspausen für euch beide. Im Modus „allein“ antwortet das Kind durch Tippen, und Geschichten über Sicherheit und Körper bleiben verborgen.';
 
   @override
+  String get parentPlace => 'Wo ihr wohnt';
+
+  @override
+  String get parentPlaceHint =>
+      'Für den Naturkalender: Die Tipps folgen den Jahreszeiten bei euch zu Hause.';
+
+  @override
+  String hemisphere(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'north': 'Nordhalbkugel',
+        'south': 'Südhalbkugel',
+        'equator': 'In der Nähe des Äquators',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get parentData => 'Wo die Daten liegen';
 
   @override
@@ -1618,6 +1639,32 @@ class AppLocalizationsDe extends AppLocalizations {
         'm12':
             'Das sind die kürzesten Tage des Jahres. Der Wald ruht sich aus, wie in Emmas Geschichte.',
         'other': '$month',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureEquatorTip(String tip) {
+    String _temp0 = intl.Intl.selectLogic(
+      tip,
+      {
+        'e1': 'Wenn Regen kommt, riecht die Luft anders. Riechst du es?',
+        'e2':
+            'Nach einem Regenguss bleiben Pfützen. Was siehst du darin gespiegelt?',
+        'e3':
+            'An trockenen Tagen wird die Erde hart und staubig. Fass sie an: Wie fühlt sie sich heute an?',
+        'e4':
+            'Mit dem Regen wachsen die Pflanzen schnell. Findest du ein neues Blatt, noch ganz hell?',
+        'e5':
+            'Such ein riesiges Blatt und ein winziges. Wie verschieden sind sie?',
+        'e6':
+            'Gibt es einen Baum mit Blüten oder Früchten? Welche Farbe haben sie?',
+        'e7':
+            'Ameisen laufen in einer Reihe. Folge ihnen mit den Augen: Wohin gehen sie?',
+        'e8':
+            'Nach dem Regen erscheint manchmal ein Regenbogen. Wie viele Farben kannst du zählen?',
+        'other': '$tip',
       },
     );
     return '$_temp0';

@@ -160,7 +160,8 @@ List<String> _weekdays(String lang) {
 
 /// Il calendario della natura del mese, in orizzontale: le caselle vuote da
 /// riempire a mano e, dove il bambino ha già segnato qualcosa, le parole.
-Future<Uint8List> natureMonthPdf(AppLocalizations l, PrintFonts f, String lang, DateTime month, List<NatureDay> days) {
+Future<Uint8List> natureMonthPdf(AppLocalizations l, PrintFonts f, String lang, DateTime month, List<NatureDay> days,
+    {required Hemisphere hemisphere, required DateTime today}) {
   final doc = _doc(f);
   final byDay = {for (final d in days) d.day.day: d};
   final count = daysInMonth(month);
@@ -200,7 +201,7 @@ Future<Uint8List> natureMonthPdf(AppLocalizations l, PrintFonts f, String lang, 
           pw.Text(_monthLabel(lang, month), style: pw.TextStyle(font: f.title, fontSize: 20, color: _ink)),
         ]),
         pw.SizedBox(height: 4),
-        pw.Text(l.natureMonthTip('m${month.month}'), style: const pw.TextStyle(fontSize: 11, color: _ink)),
+        pw.Text(natureTip(l, hemisphere, month: month, today: today), style: const pw.TextStyle(fontSize: 11, color: _ink)),
         pw.SizedBox(height: 8),
         pw.Row(children: [
           for (final w in weekdays)
