@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -230,12 +230,6 @@ abstract class AppLocalizations {
   /// **'Una storia'**
   String get homeOneStory;
 
-  /// No description provided for @homeLetsPlay.
-  ///
-  /// In it, this message translates to:
-  /// **'Giochiamo'**
-  String get homeLetsPlay;
-
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:
@@ -272,23 +266,17 @@ abstract class AppLocalizations {
   /// **'Aggiungi un bambino'**
   String get chooseAddA11y;
 
-  /// No description provided for @catStories.
-  ///
-  /// In it, this message translates to:
-  /// **'Le storie'**
-  String get catStories;
-
-  /// No description provided for @catGames.
-  ///
-  /// In it, this message translates to:
-  /// **'Giochi'**
-  String get catGames;
-
   /// No description provided for @catEmpty.
   ///
   /// In it, this message translates to:
   /// **'Qui non c\'è niente per oggi.'**
   String get catEmpty;
+
+  /// No description provided for @capacityLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{capacity, select, insieme{Io e gli altri} mani{Le mani} sensi{I sensi} parole{Le parole} pensare{Contare e pensare} mondo{Il mondo} other{{capacity}}}'**
+  String capacityLabel(String capacity);
 
   /// No description provided for @badgeAtHome.
   ///
@@ -949,6 +937,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Sviluppo'**
   String get parentTabGrowth;
+
+  /// No description provided for @parentTabShelf.
+  ///
+  /// In it, this message translates to:
+  /// **'Mensola'**
+  String get parentTabShelf;
 
   /// No description provided for @parentHowUse.
   ///
@@ -1669,6 +1663,66 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come si chiama?'**
   String get lessonTell;
+
+  /// No description provided for @shelfTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola di {name}'**
+  String shelfTitle(Object name);
+
+  /// No description provided for @shelfHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} per capacità; cambiali quando li ha esplorati.'**
+  String shelfHint(String name, int max);
+
+  /// No description provided for @shelfCount.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} di {max}'**
+  String shelfCount(int count, int max);
+
+  /// No description provided for @shelfAuto.
+  ///
+  /// In it, this message translates to:
+  /// **'Scelta automatica'**
+  String get shelfAuto;
+
+  /// No description provided for @shelfAutoOn.
+  ///
+  /// In it, this message translates to:
+  /// **'Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.'**
+  String get shelfAutoOn;
+
+  /// No description provided for @shelfAutoHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola si riempie da sola. Tocca un materiale per sceglierli tu.'**
+  String get shelfAutoHint;
+
+  /// No description provided for @shelfFull.
+  ///
+  /// In it, this message translates to:
+  /// **'Su questa mensola ci sono già {max} materiali: togline uno per metterne un altro.'**
+  String shelfFull(int max);
+
+  /// No description provided for @shelfKindStory.
+  ///
+  /// In it, this message translates to:
+  /// **'Storia'**
+  String get shelfKindStory;
+
+  /// No description provided for @shelfKindGame.
+  ///
+  /// In it, this message translates to:
+  /// **'Gioco'**
+  String get shelfKindGame;
+
+  /// No description provided for @shelfKindActivity.
+  ///
+  /// In it, this message translates to:
+  /// **'Attività'**
+  String get shelfKindActivity;
 }
 
 class _AppLocalizationsDelegate
@@ -1704,8 +1758,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

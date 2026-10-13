@@ -24,7 +24,6 @@
   "homeHello": "Coucou {name} !",
   "homeQuestion": "Qu'est-ce qu'on fait aujourd'hui ?",
   "homeOneStory": "Une histoire",
-  "homeLetsPlay": "On joue",
   "switchChildA11y": "Changer d'enfant. C'est {name} qui joue",
 
   "chooseWhoPlays": "Qui joue aujourd'hui ?",
@@ -33,9 +32,8 @@
   "chooseAddHint": "pour les grands",
   "chooseAddA11y": "Ajouter un enfant",
 
-  "catStories": "Histoires",
-  "catGames": "Jeux",
   "catEmpty": "Rien ici pour aujourd'hui.",
+  "capacityLabel": "{capacity, select, insieme{Moi et les autres} mani{Les mains} sensi{Les sens} parole{Les mots} pensare{Compter et penser} mondo{Le monde} other{{capacity}}}",
   "badgeAtHome": "À la maison",
   "badgeTogether": "Ensemble",
   "areaLabel": "{area, select, cognitivo{Se préparer} autonomia{Autonomie} sociale{En classe} paure{Premier jour} vitaPratica{Vie pratique} sensoriale{Sensoriel} linguaggio{Langage et écriture} matematica{Maths} cultura{Culture} other{{area}}}",
@@ -160,6 +158,7 @@
   "parentTabCards": "En parler",
   "parentTabDiary": "Journal",
   "parentTabGrowth": "Développement",
+  "parentTabShelf": "Étagère",
   "parentHowUse": "Comment utilisez-vous l'appli en ce moment ?",
   "parentHowUseHint": "En mode « ensemble », des pauses de dialogue apparaissent pour vous deux. En mode « tout seul », l'enfant répond en touchant et les histoires sur la sécurité et le corps restent cachées.",
   "parentData": "Où sont les données",
@@ -282,5 +281,16 @@
 
   "lessonNaming": "Voici",
   "lessonShow": "Où est-il ?",
-  "lessonTell": "Comment ça s'appelle ?"
+  "lessonTell": "Comment ça s'appelle ?",
+
+  "shelfTitle": "L'étagère de {name}",
+  "shelfHint": "Peu de matériel à la fois, comme sur les étagères d'une ambiance Montessori : {name} choisit librement parmi ce que tu poses ici. {max} au plus par capacité ; change-les quand ils ont été explorés.",
+  "shelfCount": "{count} sur {max}",
+  "shelfAuto": "Choix automatique",
+  "shelfAutoOn": "L'étagère se remplit maintenant toute seule : les premiers matériels adaptés de chaque capacité.",
+  "shelfAutoHint": "L'étagère se remplit toute seule. Touche un matériel pour les choisir toi-même.",
+  "shelfFull": "Cette étagère contient déjà {max} matériels : retires-en un pour en poser un autre.",
+  "shelfKindStory": "Histoire",
+  "shelfKindGame": "Jeu",
+  "shelfKindActivity": "Activité"
 }

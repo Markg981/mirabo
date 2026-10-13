@@ -24,7 +24,6 @@
   "homeHello": "Hi {name}!",
   "homeQuestion": "What shall we do today?",
   "homeOneStory": "A story",
-  "homeLetsPlay": "Let's play",
   "switchChildA11y": "Change child. {name} is playing now",
 
   "chooseWhoPlays": "Who's playing today?",
@@ -33,9 +32,8 @@
   "chooseAddHint": "for grown-ups",
   "chooseAddA11y": "Add a child",
 
-  "catStories": "Stories",
-  "catGames": "Games",
   "catEmpty": "Nothing here for today.",
+  "capacityLabel": "{capacity, select, insieme{Me and others} mani{Hands} sensi{Senses} parole{Words} pensare{Counting and thinking} mondo{The world} other{{capacity}}}",
   "badgeAtHome": "At home",
   "badgeTogether": "Together",
   "areaLabel": "{area, select, cognitivo{Getting ready} autonomia{Independence} sociale{In class} paure{First day} vitaPratica{Practical life} sensoriale{Sensorial} linguaggio{Language and writing} matematica{Maths} cultura{Culture} other{{area}}}",
@@ -160,6 +158,7 @@
   "parentTabCards": "Talking about it",
   "parentTabDiary": "Diary",
   "parentTabGrowth": "Growth",
+  "parentTabShelf": "Shelf",
   "parentHowUse": "How are you using the app right now?",
   "parentHowUseHint": "In \"together\" mode, dialogue pauses appear for the two of you. In \"on my own\" mode, your child answers by tapping and stories about safety and the body stay hidden.",
   "parentData": "Where the data lives",
@@ -282,5 +281,16 @@
 
   "lessonNaming": "This is",
   "lessonShow": "Where is it?",
-  "lessonTell": "What is it called?"
+  "lessonTell": "What is it called?",
+
+  "shelfTitle": "{name}'s shelf",
+  "shelfHint": "A few materials at a time, like the shelves of a Montessori environment: {name} freely chooses among the ones you put here. At most {max} per ability; change them once they've been explored.",
+  "shelfCount": "{count} of {max}",
+  "shelfAuto": "Automatic choice",
+  "shelfAutoOn": "The shelf now fills itself: the first suitable materials for each ability.",
+  "shelfAutoHint": "The shelf fills itself. Tap a material to choose them yourself.",
+  "shelfFull": "This shelf already holds {max} materials: take one off to put another on.",
+  "shelfKindStory": "Story",
+  "shelfKindGame": "Game",
+  "shelfKindActivity": "Activity"
 }
