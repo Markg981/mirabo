@@ -93,7 +93,8 @@ void main() {
         stories++;
       }
     }
-    expect(stories, greaterThan(0));
+    // Le storie ci sono solo se pubblicate (o con --include-drafts): zero è un esito valido.
+    expect(stories + activities, files.length);
     expect(activities, greaterThan(0));
     final pkgFile = files.first;
 

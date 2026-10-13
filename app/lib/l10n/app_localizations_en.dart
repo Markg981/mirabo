@@ -76,6 +76,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeOneStory => 'A story';
 
   @override
+  String goodbyeTitle(Object name) {
+    return 'That\'s all for today, $name!';
+  }
+
+  @override
+  String get goodbyeBody =>
+      'That was fun. Go and find a grown-up: see you next time!';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Change child. $name is playing now';
   }
@@ -1185,8 +1194,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String shelfHint(String name, int max) {
-    return 'A few materials at a time, like the shelves of a Montessori environment: $name freely chooses among the ones you put here. At most $max per ability; change them once they\'ve been explored.';
+  String shelfHint(String name, int max, int per) {
+    return 'A few materials at a time, like the shelves of a Montessori environment: $name freely chooses among the ones you put here. At most $max in all and $per per ability; change them once they\'ve been explored.';
   }
 
   @override
@@ -1199,16 +1208,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shelfAutoOn =>
-      'The shelf now fills itself: the first suitable materials for each ability.';
+      'The shelf now fills itself and changes once a week.';
 
   @override
   String get shelfAutoHint =>
-      'The shelf fills itself. Tap a material to choose them yourself.';
+      'The shelf fills itself and changes once a week: what the child is working on stays, the rest makes room for something else. Tap a material to choose them yourself.';
 
   @override
   String shelfFull(int max) {
-    return 'This shelf already holds $max materials: take one off to put another on.';
+    return 'The shelf already holds $max materials: take one off to put another on.';
   }
+
+  @override
+  String shelfCapacityFull(int max) {
+    return 'This ability already has $max materials: take one off to put another on.';
+  }
+
+  @override
+  String shelfTotal(int count, int max) {
+    return 'On the shelf: $count of $max';
+  }
+
+  @override
+  String get shelfRotateNow => 'Change now';
+
+  @override
+  String get shelfRotated => 'The shelf has changed.';
 
   @override
   String get shelfKindStory => 'Story';

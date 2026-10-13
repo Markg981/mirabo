@@ -19,6 +19,10 @@ e guarda quello che una regola non vede.
 "(da verificare)", in `sources` o nella scheda genitore. Le storie non ancora pubblicate compaiono
 in fondo all'output come "in attesa di revisione pedagogica".
 
+`pack.py` impacchetta e firma solo le storie `published`: una storia in `draft` o `review` non
+arriva ai bambini. Per provarla nell'app durante lo sviluppo: `pack.py --include-drafts` (o
+`sync_assets.py --include-drafts`).
+
 ## Il giro
 
 1. **Pre-revisione.** `python studio/review.py` mostra lo stato di tutte le storie e quanti avvisi

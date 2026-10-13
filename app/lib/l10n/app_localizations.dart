@@ -230,6 +230,18 @@ abstract class AppLocalizations {
   /// **'Una storia'**
   String get homeOneStory;
 
+  /// No description provided for @goodbyeTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Per oggi basta, {name}!'**
+  String goodbyeTitle(Object name);
+
+  /// No description provided for @goodbyeBody.
+  ///
+  /// In it, this message translates to:
+  /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
+  String get goodbyeBody;
+
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:
@@ -1673,8 +1685,8 @@ abstract class AppLocalizations {
   /// No description provided for @shelfHint.
   ///
   /// In it, this message translates to:
-  /// **'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} per capacità; cambiali quando li ha esplorati.'**
-  String shelfHint(String name, int max);
+  /// **'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} in tutto e {per} per capacità; cambiali quando li ha esplorati.'**
+  String shelfHint(String name, int max, int per);
 
   /// No description provided for @shelfCount.
   ///
@@ -1691,20 +1703,44 @@ abstract class AppLocalizations {
   /// No description provided for @shelfAutoOn.
   ///
   /// In it, this message translates to:
-  /// **'Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.'**
+  /// **'Ora la mensola si riempie da sola e cambia una volta a settimana.'**
   String get shelfAutoOn;
 
   /// No description provided for @shelfAutoHint.
   ///
   /// In it, this message translates to:
-  /// **'La mensola si riempie da sola. Tocca un materiale per sceglierli tu.'**
+  /// **'La mensola si riempie da sola e cambia una volta a settimana: resta ciò su cui il bambino lavora, il resto lascia il posto ad altro. Tocca un materiale per sceglierli tu.'**
   String get shelfAutoHint;
 
   /// No description provided for @shelfFull.
   ///
   /// In it, this message translates to:
-  /// **'Su questa mensola ci sono già {max} materiali: togline uno per metterne un altro.'**
+  /// **'Sulla mensola ci sono già {max} materiali: togline uno per metterne un altro.'**
   String shelfFull(int max);
+
+  /// No description provided for @shelfCapacityFull.
+  ///
+  /// In it, this message translates to:
+  /// **'Per questa capacità ci sono già {max} materiali: togline uno per metterne un altro.'**
+  String shelfCapacityFull(int max);
+
+  /// No description provided for @shelfTotal.
+  ///
+  /// In it, this message translates to:
+  /// **'Sulla mensola: {count} di {max}'**
+  String shelfTotal(int count, int max);
+
+  /// No description provided for @shelfRotateNow.
+  ///
+  /// In it, this message translates to:
+  /// **'Cambia adesso'**
+  String get shelfRotateNow;
+
+  /// No description provided for @shelfRotated.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola è cambiata.'**
+  String get shelfRotated;
 
   /// No description provided for @shelfKindStory.
   ///

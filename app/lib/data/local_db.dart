@@ -11,6 +11,7 @@ import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
 import '../models/profile.dart';
+import '../models/shelf.dart';
 import '../models/story.dart' show AgeBand;
 
 /// Database locale: profili (con la loro mensola), diario, gesti fatti nella
@@ -23,7 +24,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 7;
+  static const _version = 8;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -58,6 +59,8 @@ class LocalDb {
             stage_floor INTEGER NOT NULL DEFAULT 0,
             shelf TEXT,
             read_along INTEGER NOT NULL DEFAULT 1,
+            shelf_auto TEXT,
+            shelf_rotated_at TEXT,
             hands INTEGER,
             reading TEXT,
             autonomy INTEGER
@@ -76,6 +79,7 @@ class LocalDb {
         await _createActivityTables(db);
         await _createGesturesTable(db);
         await _createMakeTables(db);
+        await _createShelfHistory(db);
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
@@ -96,8 +100,14 @@ class LocalDb {
           await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
           await _createMakeTables(db);
         }
-        // v7: profilo di interazione (mani, lettura, autonomia), dalla fascia d'età.
+        // v7: la mensola automatica si salva e ruota una volta a settimana.
         if (from < 7) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN shelf_auto TEXT');
+          await db.execute('ALTER TABLE profiles ADD COLUMN shelf_rotated_at TEXT');
+          await _createShelfHistory(db);
+        }
+        // v8: profilo di interazione (mani, lettura, autonomia), dalla fascia d'età.
+        if (from < 8) {
           await db.execute('ALTER TABLE profiles ADD COLUMN hands INTEGER');
           await db.execute('ALTER TABLE profiles ADD COLUMN reading TEXT');
           await db.execute('ALTER TABLE profiles ADD COLUMN autonomy INTEGER');
@@ -232,6 +242,19 @@ class LocalDb {
         seen TEXT NOT NULL DEFAULT '',
         PRIMARY KEY (profile_id, day)
       )''');
+  }
+
+  /// Quando un materiale è stato sulla mensola automatica: chi manca da più
+  /// tempo entra per primo alla rotazione.
+  static Future<void> _createShelfHistory(Database db) async {
+    await db.execute('''
+      CREATE TABLE shelf_history (
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        item_key TEXT NOT NULL,
+        from_at TEXT NOT NULL,
+        to_at TEXT
+      )''');
+    await db.execute('CREATE INDEX shelf_history_profile ON shelf_history(profile_id, item_key)');
   }
 
   /// Riempie il profilo di interazione mancante con i valori della fascia d'età.
@@ -397,8 +420,57 @@ class LocalDb {
     return rows.map(NatureDay.fromRow).toList();
   }
 
+  /// Gli usi dei materiali da [since]: storie lette, sessioni di attività
+  /// (i round di una sessione hanno lo stesso istante), storie inventate e
+  /// giorni del calendario della natura. I giochi non lasciano traccia.
+  Future<List<ShelfUse>> shelfUsage(int profileId, {required DateTime since}) async {
+    final from = since.toIso8601String();
+    final stories = await _db.query('diary',
+        columns: ['story_id', 'at'], where: 'profile_id = ? AND at >= ?', whereArgs: [profileId, from]);
+    final sessions = await _db.rawQuery(
+        "SELECT activity_id, at, MAX(choice = 'presentation=repeat') AS rep FROM activity_rounds "
+        'WHERE profile_id = ? AND at >= ? GROUP BY activity_id, at',
+        [profileId, from]);
+    final made = await _db.query('made_stories',
+        columns: ['at'], where: 'profile_id = ? AND at >= ?', whereArgs: [profileId, from]);
+    final nature = await _db.query('nature_days',
+        columns: ['day'], where: 'profile_id = ? AND day >= ?', whereArgs: [profileId, NatureDay.key(since)]);
+    return [
+      for (final r in stories) ShelfUse('story:${r['story_id']}', DateTime.parse(r['at'] as String)),
+      for (final r in sessions)
+        ShelfUse('activity:${r['activity_id']}', DateTime.parse(r['at'] as String), repeat: r['rep'] == 1),
+      for (final r in made) ShelfUse(const MakeItem(MakeTool.factory).key, DateTime.parse(r['at'] as String)),
+      for (final r in nature) ShelfUse(const MakeItem(MakeTool.nature).key, DateTime.parse(r['day'] as String)),
+    ];
+  }
+
+  Future<List<ShelfStint>> shelfHistory(int profileId) async {
+    final rows = await _db.query('shelf_history', where: 'profile_id = ?', whereArgs: [profileId]);
+    return [
+      for (final r in rows)
+        ShelfStint(r['item_key'] as String, DateTime.parse(r['from_at'] as String),
+            r['to_at'] == null ? null : DateTime.parse(r['to_at'] as String)),
+    ];
+  }
+
+  /// Registra il cambio della mensola automatica da [before] ad [after]:
+  /// chi esce chiude il suo periodo, chi entra ne apre uno.
+  Future<void> moveShelf(int profileId, {required List<String> before, required List<String> after, required DateTime at}) async {
+    final when = at.toIso8601String();
+    final batch = _db.batch();
+    for (final k in before.where((k) => !after.contains(k))) {
+      batch.update('shelf_history', {'to_at': when},
+          where: 'profile_id = ? AND item_key = ? AND to_at IS NULL', whereArgs: [profileId, k]);
+    }
+    for (final k in after.where((k) => !before.contains(k))) {
+      batch.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
+    }
+    await batch.commit(noResult: true);
+  }
+
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
+    await _db.delete('shelf_history');
     await _db.delete('nature_days');
     await _db.delete('made_stories');
     await _db.delete('gestures');
@@ -417,6 +489,7 @@ class LocalDb {
     'gestures',
     'made_stories',
     'nature_days',
+    'shelf_history',
   ];
 
   /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
@@ -444,7 +517,7 @@ class LocalDb {
       // Come nella migrazione v4: chi era cresciuto con le storie non torna indietro.
       if (schema < 4) await tx.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
       // Backup di prima del profilo di interazione: si parte dalla fascia d'età.
-      if (schema < 7) await tx.execute(_interactionFromAgeSql);
+      if (schema < 8) await tx.execute(_interactionFromAgeSql);
     });
   }
 }

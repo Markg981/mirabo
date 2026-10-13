@@ -70,7 +70,7 @@ class _StoryFactoryScreenState extends State<StoryFactoryScreen> {
                       label: l.factoryNew,
                       icon: Icons.auto_fix_high_rounded,
                       color: MiraboColors.plum,
-                      onPressed: () => _open(const _FactoryBuilder()),
+                      onPressed: () => _open(const SessionHold(child: _FactoryBuilder())),
                     ),
                   ],
                 ),
@@ -95,7 +95,7 @@ class _StoryFactoryScreenState extends State<StoryFactoryScreen> {
                         separatorBuilder: (_, __) => const SizedBox(width: 16),
                         itemBuilder: (_, i) => _MadeStoryCard(
                           story: mine[i],
-                          onTap: () => _open(MadeStoryReader(story: mine[i])),
+                          onTap: () => _open(SessionHold(child: MadeStoryReader(story: mine[i]))),
                         ),
                       );
                     },
@@ -239,7 +239,7 @@ class _FactoryBuilderState extends State<_FactoryBuilder> {
     if (!mounted) return;
     await _tts.stop();
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => MadeStoryReader(story: saved, justMade: true)));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => SessionHold(child: MadeStoryReader(story: saved, justMade: true))));
   }
 
   @override

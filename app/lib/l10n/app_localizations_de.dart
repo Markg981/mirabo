@@ -76,6 +76,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get homeOneStory => 'Eine Geschichte';
 
   @override
+  String goodbyeTitle(Object name) {
+    return 'Für heute ist Schluss, $name!';
+  }
+
+  @override
+  String get goodbyeBody =>
+      'Das war schön. Hol einen Erwachsenen: bis zum nächsten Mal!';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Kind wechseln. Jetzt spielt $name';
   }
@@ -1189,8 +1198,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String shelfHint(String name, int max) {
-    return 'Wenige Materialien auf einmal, wie in den Regalen einer Montessori-Umgebung: $name wählt frei unter denen, die du hier hinstellst. Höchstens $max pro Fähigkeit; tausche sie aus, wenn sie erkundet sind.';
+  String shelfHint(String name, int max, int per) {
+    return 'Wenige Materialien auf einmal, wie in den Regalen einer Montessori-Umgebung: $name wählt frei unter denen, die du hier hinstellst. Höchstens $max insgesamt und $per pro Fähigkeit; tausche sie aus, wenn sie erkundet sind.';
   }
 
   @override
@@ -1203,16 +1212,32 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get shelfAutoOn =>
-      'Das Regal füllt sich jetzt von selbst: die ersten passenden Materialien jeder Fähigkeit.';
+      'Das Regal füllt sich jetzt von selbst und wechselt einmal pro Woche.';
 
   @override
   String get shelfAutoHint =>
-      'Das Regal füllt sich von selbst. Tippe auf ein Material, um selbst auszuwählen.';
+      'Das Regal füllt sich von selbst und wechselt einmal pro Woche: Woran das Kind arbeitet, bleibt, der Rest macht Platz für anderes. Tippe auf ein Material, um selbst auszuwählen.';
 
   @override
   String shelfFull(int max) {
-    return 'In diesem Regal stehen schon $max Materialien: nimm eins weg, um ein anderes hinzustellen.';
+    return 'Im Regal stehen schon $max Materialien: nimm eins weg, um ein anderes hinzustellen.';
   }
+
+  @override
+  String shelfCapacityFull(int max) {
+    return 'Für diese Fähigkeit stehen schon $max Materialien da: nimm eins weg, um ein anderes hinzustellen.';
+  }
+
+  @override
+  String shelfTotal(int count, int max) {
+    return 'Im Regal: $count von $max';
+  }
+
+  @override
+  String get shelfRotateNow => 'Jetzt wechseln';
+
+  @override
+  String get shelfRotated => 'Das Regal hat gewechselt.';
 
   @override
   String get shelfKindStory => 'Geschichte';

@@ -76,6 +76,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeOneStory => 'Un cuento';
 
   @override
+  String goodbyeTitle(Object name) {
+    return '¡Por hoy ya está, $name!';
+  }
+
+  @override
+  String get goodbyeBody =>
+      'Ha sido bonito. Llama a un mayor: ¡hasta la próxima!';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Cambiar de niño. Ahora juega $name';
   }
@@ -1190,8 +1199,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String shelfHint(String name, int max) {
-    return 'Pocos materiales a la vez, como en los estantes de un ambiente Montessori: $name elige libremente entre los que pongas aquí. Como máximo $max por capacidad; cámbialos cuando los haya explorado.';
+  String shelfHint(String name, int max, int per) {
+    return 'Pocos materiales a la vez, como en los estantes de un ambiente Montessori: $name elige libremente entre los que pongas aquí. Como máximo $max en total y $per por capacidad; cámbialos cuando los haya explorado.';
   }
 
   @override
@@ -1204,16 +1213,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get shelfAutoOn =>
-      'Ahora el estante se llena solo: los primeros materiales adecuados de cada capacidad.';
+      'Ahora el estante se llena solo y cambia una vez por semana.';
 
   @override
   String get shelfAutoHint =>
-      'El estante se llena solo. Toca un material para elegirlos tú.';
+      'El estante se llena solo y cambia una vez por semana: se queda aquello con lo que el niño trabaja, el resto deja sitio a otra cosa. Toca un material para elegirlos tú.';
 
   @override
   String shelfFull(int max) {
-    return 'En este estante ya hay $max materiales: quita uno para poner otro.';
+    return 'En el estante ya hay $max materiales: quita uno para poner otro.';
   }
+
+  @override
+  String shelfCapacityFull(int max) {
+    return 'Para esta capacidad ya hay $max materiales: quita uno para poner otro.';
+  }
+
+  @override
+  String shelfTotal(int count, int max) {
+    return 'En el estante: $count de $max';
+  }
+
+  @override
+  String get shelfRotateNow => 'Cambiar ahora';
+
+  @override
+  String get shelfRotated => 'El estante ha cambiado.';
 
   @override
   String get shelfKindStory => 'Cuento';
