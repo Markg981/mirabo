@@ -83,6 +83,7 @@ class LocalDb {
         await _createGesturesTable(db);
         await _createMakeTables(db);
         await _createShelfHistory(db);
+        await _createDailyIdeas(db);
         await _createSettings(db);
       },
       onUpgrade: (db, from, to) async {
@@ -117,6 +118,8 @@ class LocalDb {
           await db.execute('ALTER TABLE profiles ADD COLUMN autonomy INTEGER');
           await db.execute(_interactionFromAgeSql);
         }
+        // v9: l'idea del giorno si salva, così resta la stessa e non torna per 14 giorni.
+        if (from < 9) await _createDailyIdeas(db);
         // v10: impostazioni della famiglia (per ora l'emisfero del calendario della natura).
         if (from < 10) await _createSettings(db);
       },
@@ -261,6 +264,17 @@ class LocalDb {
         to_at TEXT
       )''');
     await db.execute('CREATE INDEX shelf_history_profile ON shelf_history(profile_id, item_key)');
+  }
+
+  /// Le idee per oggi proposte al genitore, una per giorno (3.4.3).
+  static Future<void> _createDailyIdeas(Database db) async {
+    await db.execute('''
+      CREATE TABLE daily_ideas (
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        day TEXT NOT NULL,
+        idea_key TEXT NOT NULL,
+        PRIMARY KEY (profile_id, day)
+      )''');
   }
 
   /// Impostazioni della famiglia, non di un bambino: una riga per chiave.
@@ -479,6 +493,18 @@ class LocalDb {
     await batch.commit(noResult: true);
   }
 
+  /// Le idee proposte da [since] in poi.
+  Future<List<({String day, String key})>> dailyIdeas(int profileId, {required DateTime since}) async {
+    final rows = await _db.query('daily_ideas',
+        where: 'profile_id = ? AND day >= ?', whereArgs: [profileId, NatureDay.key(since)], orderBy: 'day');
+    return [for (final r in rows) (day: r['day'] as String, key: r['idea_key'] as String)];
+  }
+
+  /// Salva l'idea di [day] solo se quel giorno non ne ha già una.
+  Future<void> saveDailyIdea(int profileId, String day, String key) => _db.insert(
+      'daily_ideas', {'profile_id': profileId, 'day': day, 'idea_key': key},
+      conflictAlgorithm: ConflictAlgorithm.ignore);
+
   /// Un'impostazione della famiglia; null se non è mai stata scelta.
   Future<String?> setting(String key) async {
     final rows = await _db.query('settings', columns: ['value'], where: 'key = ?', whereArgs: [key]);
@@ -491,6 +517,7 @@ class LocalDb {
   /// "Elimina tutti i dati": cancella profili, diario e impostazioni.
   Future<void> wipe() async {
     await _db.delete('settings');
+    await _db.delete('daily_ideas');
     await _db.delete('shelf_history');
     await _db.delete('nature_days');
     await _db.delete('made_stories');
@@ -511,6 +538,7 @@ class LocalDb {
     'made_stories',
     'nature_days',
     'shelf_history',
+    'daily_ideas',
     'settings',
   ];
 

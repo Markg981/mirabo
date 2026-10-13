@@ -922,6 +922,37 @@ class AppLocalizationsEn extends AppLocalizations {
       'The step-by-step presentation is in the Montessori activities.';
 
   @override
+  String ideaReasonRepeat(String name) {
+    return '$name asked to do it again';
+  }
+
+  @override
+  String ideaReasonStory(String name, String story) {
+    return '$name listened to “$story”';
+  }
+
+  @override
+  String get ideaReasonTryAlone =>
+      'You did it together: next time they can try it on their own';
+
+  @override
+  String ideaReasonCapacity(String name, String capacity) {
+    String _temp0 = intl.Intl.selectLogic(
+      capacity,
+      {
+        'insieme': '$name loves being with others',
+        'mani': '$name loves working with their hands',
+        'sensi': '$name loves exploring with the senses',
+        'parole': '$name loves playing with words',
+        'pensare': '$name loves counting and reasoning',
+        'mondo': '$name loves discovering the world',
+        'other': '$name often chooses this',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get ideaAnother => 'Another idea';
 
   @override

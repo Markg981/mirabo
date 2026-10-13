@@ -1352,6 +1352,30 @@ abstract class AppLocalizations {
   /// **'La presentazione passo per passo è tra le attività Montessori.'**
   String get ideaHomeHint;
 
+  /// No description provided for @ideaReasonRepeat.
+  ///
+  /// In it, this message translates to:
+  /// **'{name} ha chiesto di rifarla'**
+  String ideaReasonRepeat(String name);
+
+  /// No description provided for @ideaReasonStory.
+  ///
+  /// In it, this message translates to:
+  /// **'{name} ha ascoltato «{story}»'**
+  String ideaReasonStory(String name, String story);
+
+  /// No description provided for @ideaReasonTryAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ha fatta con te: la prossima volta può provarci in autonomia'**
+  String get ideaReasonTryAlone;
+
+  /// No description provided for @ideaReasonCapacity.
+  ///
+  /// In it, this message translates to:
+  /// **'{capacity, select, insieme{{name} ama stare con gli altri} mani{{name} ama lavorare con le mani} sensi{{name} ama esplorare con i sensi} parole{{name} ama giocare con le parole} pensare{{name} ama contare e ragionare} mondo{{name} ama scoprire il mondo} other{{name} lo sceglie spesso}}'**
+  String ideaReasonCapacity(String name, String capacity);
+
   /// No description provided for @ideaAnother.
   ///
   /// In it, this message translates to:
