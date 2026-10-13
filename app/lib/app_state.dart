@@ -71,15 +71,13 @@ class AppState extends ChangeNotifier {
       .where((a) => a.supports(p.ageBand) && (module == null || a.module == module))
       .toList();
 
-  /// Chiude una sessione di attività: salva i round, applica l'adattività,
-  /// e conta la sessione come "storia completata" ai fini della crescita del compagno
-  /// solo se almeno un round è stato fatto.
+  /// Chiude una sessione di attività: salva i round e applica l'adattività.
+  /// Il compagno non cresce: cresce solo con i gesti fatti davvero.
   Future<void> recordActivity(Activity activity, ActivityProgress before, List<RoundResult> results) async {
     final p = currentProfile;
     if (p == null || results.isEmpty) return;
     await db.addRounds(p.id, activity, before.level, results);
     await db.saveProgress(applyAdaptive(before, results, activity.levels.length));
-    await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
   }
 
   Future<void> selectProfile(ChildProfile p) async {
@@ -126,7 +124,8 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Registra una storia nel diario; se completata, fa crescere il compagno.
+  /// Registra una storia nel diario. Il compagno non cresce: leggere non basta,
+  /// serve il gesto della storia fatto nella vita vera ([recordGesture]).
   Future<void> recordStory(Story story, {required bool completed, String? dialogueAnswer}) async {
     final p = currentProfile;
     if (p == null) return;
@@ -139,6 +138,20 @@ class AppState extends ChangeNotifier {
       when: DateTime.now(),
     ));
     if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+  }
+
+  /// Il genitore segna che il bambino ha fatto il gesto di una storia: è l'unica
+  /// cosa che fa crescere il compagno. Lo stesso gesto conta una volta al giorno,
+  /// così ripeterlo nei giorni (annaffiare il seme) vale, toccare due volte no.
+  /// Restituisce false se oggi era già segnato.
+  Future<bool> recordGesture(ChildProfile p, String storyId, {DateTime? now}) async {
+    final when = now ?? DateTime.now();
+    final done = await db.gestures(p.id);
+    if (done.any((g) => g.storyId == storyId && g.when.year == when.year && g.when.month == when.month && g.when.day == when.day)) return false;
+    await db.addGesture(GestureEntry(profileId: p.id, storyId: storyId, when: when));
+    final fresh = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
+    await updateProfile(fresh.copyWith(gesturesDone: fresh.gesturesDone + 1));
+    return true;
   }
 
   /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così

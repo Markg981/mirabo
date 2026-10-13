@@ -1250,6 +1250,54 @@ abstract class AppLocalizations {
   /// **'alla pausa ha scelto: \"{answer}\"'**
   String diaryChose(Object answer);
 
+  /// No description provided for @gesturesTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Gesti nella vita vera'**
+  String get gesturesTitle;
+
+  /// No description provided for @gesturesIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'{companion} cresce solo quando {name} fa davvero il gesto di una storia, non con il tempo passato sull\'app. Quando l\'avete fatto, segnalo qui.'**
+  String gesturesIntro(String companion, String name);
+
+  /// No description provided for @gesturesNext.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Manca 1 gesto} other{Mancano {count} gesti}} alla prossima tappa di {companion}.'**
+  String gesturesNext(int count, String companion);
+
+  /// No description provided for @gesturesAllGrown.
+  ///
+  /// In it, this message translates to:
+  /// **'{companion} ha raggiunto l\'ultima tappa: i gesti restano belli da fare.'**
+  String gesturesAllGrown(String companion);
+
+  /// No description provided for @gesturesEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Qui compaiono i gesti delle storie che {name} ha finito.'**
+  String gesturesEmpty(String name);
+
+  /// No description provided for @gestureMark.
+  ///
+  /// In it, this message translates to:
+  /// **'Fatto oggi'**
+  String get gestureMark;
+
+  /// No description provided for @gestureMarked.
+  ///
+  /// In it, this message translates to:
+  /// **'Segnato oggi'**
+  String get gestureMarked;
+
+  /// No description provided for @gestureTimes.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =0{non ancora fatto} =1{fatto 1 volta} other{fatto {count} volte}}'**
+  String gestureTimes(int count);
+
   /// No description provided for @growthTitle.
   ///
   /// In it, this message translates to:

@@ -17,6 +17,8 @@ class ChildProfile {
     this.lowStimulation = false,
     this.aloneSessionMinutes = 20,
     this.storiesCompleted = 0,
+    this.gesturesDone = 0,
+    this.stageFloor = 0,
     this.language = 'it',
   });
 
@@ -33,18 +35,37 @@ class ChildProfile {
   final bool lowStimulation;
   final int aloneSessionMinutes;
 
-  /// Storie completate: guida la crescita del compagno (progressione narrativa).
+  /// Storie completate: solo un dato per il genitore, non fa crescere il compagno.
   final int storiesCompleted;
+
+  /// Gesti delle storie fatti nella vita vera, confermati dal genitore: sono
+  /// l'unica cosa che fa crescere il compagno. Il tempo sullo schermo non conta.
+  final int gesturesDone;
+
+  /// Stadio già raggiunto prima che la crescita passasse ai gesti: il compagno
+  /// non torna indietro.
+  final int stageFloor;
 
   /// Codice della lingua del bambino (it, en, es, fr, de): interfaccia lato
   /// bambino, contenuti e voce del compagno.
   final String language;
 
+  /// Gesti necessari per ogni stadio del compagno (1, 2, 3).
+  static const stageThresholds = [3, 6, 12];
+
+  static int stageFor(int count) => stageThresholds.where((t) => count >= t).length;
+
   int get companionStage {
-    if (storiesCompleted >= 12) return 3;
-    if (storiesCompleted >= 6) return 2;
-    if (storiesCompleted >= 3) return 1;
-    return 0;
+    final s = stageFor(gesturesDone);
+    return s > stageFloor ? s : stageFloor;
+  }
+
+  /// Quanti gesti mancano al prossimo stadio; null se il compagno è già grande.
+  int? get gesturesToNextStage {
+    for (final t in stageThresholds) {
+      if (stageFor(t) > companionStage) return t - gesturesDone;
+    }
+    return null;
   }
 
   bool canOpen(Story story, SessionMode mode) {
@@ -67,6 +88,7 @@ class ChildProfile {
     bool? lowStimulation,
     int? aloneSessionMinutes,
     int? storiesCompleted,
+    int? gesturesDone,
     String? language,
   }) =>
       ChildProfile(
@@ -81,6 +103,8 @@ class ChildProfile {
         lowStimulation: lowStimulation ?? this.lowStimulation,
         aloneSessionMinutes: aloneSessionMinutes ?? this.aloneSessionMinutes,
         storiesCompleted: storiesCompleted ?? this.storiesCompleted,
+        gesturesDone: gesturesDone ?? this.gesturesDone,
+        stageFloor: stageFloor,
         language: language ?? this.language,
       );
 
@@ -96,6 +120,8 @@ class ChildProfile {
         'low_stimulation': lowStimulation ? 1 : 0,
         'alone_minutes': aloneSessionMinutes,
         'stories_completed': storiesCompleted,
+        'gestures_done': gesturesDone,
+        'stage_floor': stageFloor,
         'language': language,
       };
 
@@ -111,6 +137,8 @@ class ChildProfile {
         lowStimulation: (r['low_stimulation'] as int) == 1,
         aloneSessionMinutes: r['alone_minutes'] as int,
         storiesCompleted: r['stories_completed'] as int,
+        gesturesDone: r['gestures_done'] as int? ?? 0,
+        stageFloor: r['stage_floor'] as int? ?? 0,
         language: r['language'] as String? ?? 'it',
       );
 }
@@ -132,4 +160,13 @@ class DiaryEntry {
   final bool completed;
   final DateTime when;
   final String? dialogueAnswer;
+}
+
+/// Un gesto di una storia fatto davvero, segnato dal genitore nel diario.
+class GestureEntry {
+  const GestureEntry({required this.profileId, required this.storyId, required this.when});
+
+  final int profileId;
+  final String storyId;
+  final DateTime when;
 }

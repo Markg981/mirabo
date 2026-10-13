@@ -65,11 +65,11 @@ void main() {
     expect(p.canOpen(safety, SessionMode.alone), isFalse);
   });
 
-  test('il compagno cresce con le storie completate', () {
+  test('il compagno cresce con i gesti fatti davvero', () {
     const p = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b3to5, companion: CompanionId.pilu);
     expect(p.companionStage, 0);
-    expect(p.copyWith(storiesCompleted: 3).companionStage, 1);
-    expect(p.copyWith(storiesCompleted: 12).companionStage, 3);
+    expect(p.copyWith(gesturesDone: 3).companionStage, 1);
+    expect(p.copyWith(gesturesDone: 12).companionStage, 3);
   });
 
   test('un pacchetto firmato dallo studio viene accettato, uno manomesso no', () async {

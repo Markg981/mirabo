@@ -71,7 +71,9 @@ Tre compagni, uno per bambino, scelto all'inizio e non sostituibile. In ogni sch
 | Come cresce | Sciarpa rossa, uccellino, casa nel ghiaccio che si scalda | Occhi aperti di notte, primo volo, nido più grande | La tana si riempie di cose trovate nelle storie |
 
 Le tappe di crescita sono in `content/companions/companions.json`: le storie non le nominano, la
-crescita si vede solo nella casa del compagno.
+crescita si vede solo nella casa del compagno. Il compagno cresce solo quando il bambino fa davvero il
+`gesture` di una storia e il genitore lo segna nel diario: leggere o giocare di più non lo fa
+crescere. Per questo ogni storia dovrebbe avere un gesto semplice, ripetibile e senza schermo.
 
 ### Regole comuni
 

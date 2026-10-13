@@ -240,40 +240,76 @@ class _ParentCardPage extends StatelessWidget {
   }
 }
 
-class _DiaryTab extends StatelessWidget {
+class _DiaryTab extends StatefulWidget {
   const _DiaryTab({required this.state, required this.profile});
   final AppState state;
   final ChildProfile profile;
 
   @override
+  State<_DiaryTab> createState() => _DiaryTabState();
+}
+
+class _DiaryTabState extends State<_DiaryTab> {
+  late Future<(List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>)> _data = _load();
+
+  /// Il diario mostra 30 giorni; i gesti vengono da tutte le storie finite.
+  Future<(List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>)> _load() async {
+    final db = widget.state.db;
+    final id = widget.profile.id;
+    return (await db.diary(id), await db.diary(id, days: 3650), await db.gestures(id));
+  }
+
+  Future<void> _mark(String storyId) async {
+    await widget.state.recordGesture(widget.profile, storyId);
+    setState(() => _data = _load());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<DiaryEntry>>(
-      future: state.db.diary(profile.id),
+    final state = widget.state;
+    return FutureBuilder(
+      future: _data,
       builder: (context, snap) {
-        final entries = snap.data ?? const [];
-        if (entries.isEmpty) {
-          return Center(child: Padding(padding: const EdgeInsets.all(24), child: Text(context.l10n.diaryEmpty)));
-        }
-        return ListView.builder(
+        if (snap.data == null) return const Center(child: CircularProgressIndicator());
+        final (entries, allEntries, gestures) = snap.data!;
+        final lang = AppLanguage.ofDevice().code;
+        final finished = <String>{for (final e in allEntries) if (e.completed) e.storyId};
+        final withGesture = [
+          for (final id in finished)
+            if (state.repo.byId(id, lang) case final story? when story.gesture != null) story,
+        ];
+        return ListView(
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
-          itemCount: entries.length,
-          itemBuilder: (context, i) {
-            final e = entries[i];
-            final story = state.repo.byId(e.storyId, AppLanguage.ofDevice().code);
-            final answer = _answerLabel(story, e.dialogueAnswer);
-            return _carded(ListTile(
-              leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
-              title: Text(story?.title ?? e.storyId),
-              subtitle: Text([
-                '${e.when.day}/${e.when.month}/${e.when.year}',
-                e.mode == SessionMode.together ? context.l10n.diaryTogether : context.l10n.diaryAlone,
-                if (answer != null) context.l10n.diaryChose(answer),
-              ].join(' · ')),
-            ));
-          },
+          children: [
+            _GesturesSection(
+              profile: state.profiles.firstWhere((p) => p.id == widget.profile.id, orElse: () => widget.profile),
+              companion: state.companionOf(widget.profile).name,
+              stories: withGesture,
+              gestures: gestures,
+              onMark: _mark,
+            ),
+            const SizedBox(height: 20),
+            if (entries.isEmpty)
+              Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(context.l10n.diaryEmpty)))
+            else
+              for (final e in entries) _entryTile(context, e, state.repo.byId(e.storyId, lang)),
+          ],
         );
       },
     );
+  }
+
+  Widget _entryTile(BuildContext context, DiaryEntry e, Story? story) {
+    final answer = _answerLabel(story, e.dialogueAnswer);
+    return _carded(ListTile(
+      leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
+      title: Text(story?.title ?? e.storyId),
+      subtitle: Text([
+        '${e.when.day}/${e.when.month}/${e.when.year}',
+        e.mode == SessionMode.together ? context.l10n.diaryTogether : context.l10n.diaryAlone,
+        if (answer != null) context.l10n.diaryChose(answer),
+      ].join(' · ')),
+    ));
   }
 
   String? _answerLabel(Story? story, String? answerId) {
@@ -286,6 +322,69 @@ class _DiaryTab extends StatelessWidget {
       }
     }
     return answerId;
+  }
+}
+
+/// Il compagno cresce solo con i gesti delle storie fatti davvero: qui il
+/// genitore li segna. Il bambino non ha questo pulsante.
+class _GesturesSection extends StatelessWidget {
+  const _GesturesSection({
+    required this.profile,
+    required this.companion,
+    required this.stories,
+    required this.gestures,
+    required this.onMark,
+  });
+  final ChildProfile profile;
+  final String companion;
+  final List<Story> stories;
+  final List<GestureEntry> gestures;
+  final Future<void> Function(String storyId) onMark;
+
+  @override
+  Widget build(BuildContext context) {
+    final now = DateTime.now();
+    final toNext = profile.gesturesToNextStage;
+    return FormSection(
+      icon: Icons.spa_rounded,
+      color: MiraboColors.teal,
+      title: context.l10n.gesturesTitle,
+      subtitle: context.l10n.gesturesIntro(companion, profile.name),
+      children: [
+        Text(toNext == null ? context.l10n.gesturesAllGrown(companion) : context.l10n.gesturesNext(toNext, companion),
+            style: Theme.of(context).textTheme.bodyLarge),
+        const SizedBox(height: 8),
+        if (stories.isEmpty)
+          Text(context.l10n.gesturesEmpty(profile.name))
+        else
+          for (final s in stories) _row(context, s, now),
+      ],
+    );
+  }
+
+  Widget _row(BuildContext context, Story story, DateTime now) {
+    final mine = gestures.where((g) => g.storyId == story.id);
+    final today = mine.any((g) => g.when.year == now.year && g.when.month == now.month && g.when.day == now.day);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(story.gesture!, style: Theme.of(context).textTheme.bodyLarge),
+                Text('${story.title} · ${context.l10n.gestureTimes(mine.length)}', style: Theme.of(context).textTheme.bodySmall),
+              ],
+            ),
+          ),
+          const SizedBox(width: 12),
+          today
+              ? Chip(avatar: const Icon(Icons.check_rounded, size: 18), label: Text(context.l10n.gestureMarked))
+              : FilledButton.tonal(onPressed: () => onMark(story.id), child: Text(context.l10n.gestureMark)),
+        ],
+      ),
+    );
   }
 }
 
