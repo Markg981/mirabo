@@ -5,6 +5,7 @@ library;
 
 import '../models/activity.dart';
 import '../models/profile.dart';
+import '../models/shelf.dart';
 import '../models/story.dart';
 
 /// Gli ultimi sette giorni di un bambino, pronti da raccontare.
@@ -93,22 +94,53 @@ class WeekDigest {
   }
 }
 
+/// Perché quell'idea oggi, dal segnale più forte al più debole (3.4.3).
+/// Il testo mostrato al genitore è tradotto nell'interfaccia.
+enum IdeaReason {
+  /// Presentazione segnata "vuole rifarla" negli ultimi 7 giorni.
+  repeat,
+
+  /// Storia finita negli ultimi 3 giorni.
+  recentStory,
+
+  /// Presentazione fatta con l'adulto ma mai da solo.
+  tryAlone,
+
+  /// Presentazione nuova nella capacità che il bambino sceglie più spesso.
+  capacity,
+
+  /// Una presentazione della fascia, senza un motivo particolare.
+  none,
+}
+
 /// Un'idea concreta da fare oggi, fuori dallo schermo.
 sealed class DailyIdea {
-  const DailyIdea();
+  const DailyIdea(this.reason);
+  final IdeaReason reason;
+
+  /// La chiave salvata nello storico delle idee ("story:…", "activity:…").
+  String get key;
 }
 
 /// Dalla sezione "Nella vita vera" della scheda genitore di una storia finita.
 class StoryIdea extends DailyIdea {
-  const StoryIdea(this.story, this.text);
+  const StoryIdea(this.story, this.text, {IdeaReason reason = IdeaReason.recentStory}) : super(reason);
   final Story story;
   final String text;
+
+  @override
+  String get key => 'story:${story.id}';
 }
 
 /// Una presentazione Montessori da fare a casa.
 class HomeIdea extends DailyIdea {
-  const HomeIdea(this.activity);
+  const HomeIdea(this.activity, {IdeaReason reason = IdeaReason.none}) : super(reason);
   final Activity activity;
+
+  @override
+  String get key => 'activity:${activity.id}';
+
+  Capacity get capacity => capacityOfActivity(activity);
 
   /// "Cosa serve" del primo livello.
   List<String> get materials => [
@@ -116,6 +148,13 @@ class HomeIdea extends DailyIdea {
           if (m is Map && m['label'] is String) '${m['emoji'] ?? ''} ${m['label']}'.trim(),
       ];
 }
+
+/// Un'idea proposta in un giorno ("2026-10-13"): la tabella daily_ideas.
+typedef ProposedIdea = ({String day, String key});
+
+/// Il giorno come chiave dello storico delle idee.
+String ideaDay(DateTime d) =>
+    '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
 /// Titolo della sezione "Nella vita vera" nelle lingue della scheda genitore.
 const _realLifeHeadings = {'nella vita vera', 'in real life', 'dans la vraie vie', 'en la vida real', 'im echten leben'};
@@ -136,20 +175,116 @@ String? realLifeSection(String markdown) {
   return text.isEmpty ? null : text;
 }
 
-/// Le idee possibili per un bambino: prima le storie finite (dalla più recente),
-/// poi le presentazioni adatte alla sua fascia d'età.
-List<DailyIdea> ideasFor({required List<Story> finished, required List<Activity> activities, required AgeBand band}) => [
-      for (final s in finished)
-        if (s.parentCard case final card?)
-          if (realLifeSection(card) case final text?) StoryIdea(s, text),
-      for (final a in activities)
-        if (a.isHome && a.supports(band)) HomeIdea(a),
-    ];
+/// Le idee per un bambino, già in ordine di priorità (3.4.3):
+/// 1. presentazione segnata "vuole rifarla" negli ultimi 7 giorni;
+/// 2. storia finita negli ultimi 3 giorni, con la sezione "Nella vita vera";
+/// 3. presentazione fatta con l'adulto ma mai da solo;
+/// 4. presentazione nuova nella capacità che sceglie più spesso;
+/// 5. qualsiasi presentazione della sua fascia.
+///
+/// Un'idea proposta negli ultimi 14 giorni ([history]) non torna, a meno che
+/// dopo quel giorno il bambino non abbia chiesto di rifarla. L'idea già scelta
+/// oggi resta la prima: così non cambia riaprendo l'area genitore, anche se
+/// nel frattempo cambiano i dati. Se sono state proposte tutte, si ricomincia.
+List<DailyIdea> ideasFor({
+  required DateTime now,
+  required AgeBand band,
+  required List<DiaryEntry> diary,
+  required List<Map<String, Object?>> rounds,
+  required List<ProposedIdea> history,
+  required Story? Function(String id) story,
+  required List<Activity> activities,
+}) {
+  final home = [for (final a in activities) if (a.isHome && a.supports(band)) a];
+  final byId = {for (final a in activities) a.id: a};
+  final sorted = [...rounds]..sort((a, b) => (b['at'] as String).compareTo(a['at'] as String));
+  DateTime at(Map<String, Object?> r) => DateTime.parse(r['at'] as String);
+  bool chose(String activityId, String choice) =>
+      rounds.any((r) => r['activity_id'] == activityId && r['choice'] == 'presentation=$choice');
 
-/// L'idea del giorno: cambia ogni giorno e resta la stessa per tutta la giornata.
-/// [skip] scorre alle idee successive ("Un'altra idea").
-DailyIdea? ideaForDay(List<DailyIdea> ideas, DateTime day, {int skip = 0}) {
-  if (ideas.isEmpty) return null;
-  final dayNumber = DateTime.utc(day.year, day.month, day.day).millisecondsSinceEpoch ~/ Duration.millisecondsPerDay;
-  return ideas[(dayNumber + skip) % ideas.length];
+  final all = <DailyIdea>[];
+  final lastRepeat = <String, DateTime>{};
+  void add(DailyIdea idea) {
+    if (!all.any((x) => x.key == idea.key)) all.add(idea);
+  }
+
+  // 1. Ha chiesto di rifarla.
+  final weekAgo = now.subtract(const Duration(days: 7));
+  for (final r in sorted) {
+    final a = byId[r['activity_id']];
+    if (r['choice'] != 'presentation=repeat' || a == null || !home.contains(a) || !at(r).isAfter(weekAgo)) continue;
+    lastRepeat.putIfAbsent('activity:${a.id}', () => at(r));
+    add(HomeIdea(a, reason: IdeaReason.repeat));
+  }
+
+  // 2. Storie finite negli ultimi 3 giorni, dalla più recente.
+  final threeDaysAgo = now.subtract(const Duration(days: 3));
+  final recent = [for (final e in diary) if (e.completed && e.when.isAfter(threeDaysAgo)) e]
+    ..sort((a, b) => b.when.compareTo(a.when));
+  for (final e in recent) {
+    final s = story(e.storyId);
+    if (s?.parentCard case final card?) {
+      if (realLifeSection(card) case final text?) add(StoryIdea(s!, text));
+    }
+  }
+
+  // 3. Fatta con l'adulto, mai da solo: dalla più recente.
+  for (final r in sorted) {
+    final a = byId[r['activity_id']];
+    if (r['choice'] != 'presentation=done' || a == null || !home.contains(a) || chose(a.id, 'alone')) continue;
+    add(HomeIdea(a, reason: IdeaReason.tryAlone));
+  }
+
+  // 4. Nuova, nella capacità scelta più spesso (una sessione = stessi attività e istante).
+  final sessions = <Capacity, Set<String>>{};
+  for (final r in rounds) {
+    final a = byId[r['activity_id']];
+    if (a != null) sessions.putIfAbsent(capacityOfActivity(a), () => {}).add('${a.id}@${r['at']}');
+  }
+  if (sessions.isNotEmpty) {
+    final favourite = Capacity.values
+        .where(sessions.containsKey)
+        .reduce((a, b) => sessions[b]!.length > sessions[a]!.length ? b : a);
+    for (final a in home) {
+      if (capacityOfActivity(a) == favourite && !rounds.any((r) => r['activity_id'] == a.id)) {
+        add(HomeIdea(a, reason: IdeaReason.capacity));
+      }
+    }
+  }
+
+  // 5. Tutte le altre della fascia.
+  for (final a in home) {
+    add(HomeIdea(a));
+  }
+
+  final today = ideaDay(now);
+  final twoWeeksAgo = ideaDay(now.subtract(const Duration(days: 14)));
+  final lastProposed = <String, String>{};
+  for (final p in history) {
+    if (p.day == today || p.day.compareTo(twoWeeksAgo) <= 0) continue;
+    if (p.day.compareTo(lastProposed[p.key] ?? '') > 0) lastProposed[p.key] = p.day;
+  }
+  bool fresh(DailyIdea i) {
+    final day = lastProposed[i.key];
+    if (day == null) return true;
+    final repeat = lastRepeat[i.key];
+    return repeat != null && !repeat.isBefore(DateTime.parse(day));
+  }
+
+  final chosen = [for (final p in history) if (p.day == today) p.key];
+  // L'idea di oggi resta anche se nel frattempo è uscita dalle regole
+  // (per esempio la storia ha superato i 3 giorni).
+  for (final key in chosen) {
+    if (all.any((i) => i.key == key)) continue;
+    final a = key.startsWith('activity:') ? byId[key.substring(9)] : null;
+    final s = key.startsWith('story:') ? story(key.substring(6)) : null;
+    if (a != null) all.insert(0, HomeIdea(a));
+    if (s?.parentCard case final card?) {
+      if (realLifeSection(card) case final text?) all.insert(0, StoryIdea(s!, text));
+    }
+  }
+
+  final first = [for (final i in all) if (chosen.contains(i.key)) i];
+  final rest = [for (final i in all) if (!chosen.contains(i.key) && fresh(i)) i];
+  return [...first, ...(rest.isEmpty && first.isEmpty ? all : rest)];
 }
