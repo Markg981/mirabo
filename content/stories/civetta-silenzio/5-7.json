@@ -1,0 +1,178 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno avvolto in una coperta sotto il cielo stellato d'inverno, con la luna.",
+        "scene": {
+          "bg": "winter-night",
+          "items": [
+            {"paint": "companion", "x": 0.42, "y": 0.68, "s": 0.46},
+            {"e": "⭐", "x": 0.24, "y": 0.16, "s": 0.05}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}. Shhh. È notte. Io parlo pianissimo, va bene?",
+        "pilu": "Ciao {nome}! Di notte io sono sveglia. Oggi conosciamo una mia lontana cugina. Una civetta molto speciale.",
+        "tango": "Ciao {nome}! Di notte! Io faccio sempre rumore... Oggi provo a stare zitta. Forse."
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma nel letto con gli occhi aperti, la coperta preferita, Pietrolino sul comodino; dalla finestra si vede la luna.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"e": "🛏️", "x": 0.56, "y": 0.8, "s": 0.34},
+            {"e": "👧", "x": 0.54, "y": 0.7, "s": 0.18},
+            {"paint": "pebble", "x": 0.82, "y": 0.78, "s": 0.05},
+            {"e": "🌙", "x": 0.18, "y": 0.24, "s": 0.1}
+          ]
+        }
+      },
+      "text": "È una notte calma e gelata. Il cielo è pieno di stelle e la luna sembra una fetta d'arancia d'argento. Emma non riesce a dormire. Si gira e si rigira. Poi si avvolge nella coperta preferita, prende Pietrolino e va a bussare alla porta della nonna."
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma e la nonna avvolte in una coperta sul gradino della porta di casa, davanti al giardino innevato.",
+        "scene": {
+          "bg": "winter-night",
+          "items": [
+            {"e": "🧒", "x": 0.42, "y": 0.8, "s": 0.26},
+            {"e": "👵", "x": 0.58, "y": 0.78, "s": 0.3, "flip": true},
+            {"paint": "pebble", "x": 0.48, "y": 0.84, "s": 0.04},
+            {"e": "🌲", "x": 0.82, "y": 0.6, "s": 0.32}
+          ]
+        }
+      },
+      "text": "La nonna non si arrabbia. Si mette il cappotto, avvolge Emma nella coperta, e insieme si siedono sul gradino davanti al giardino innevato. \"È tutto così silenzioso,\" sussurra Emma. \"Il bosco dorme ancora,\" dice Pietrolino. \"Ma non tutto dorme, di notte.\""
+    },
+    {
+      "n": 4,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Una civetta bianca con grandi occhi profondi posata su un ramo innevato; Emma la guarda a bocca aperta.",
+        "scene": {
+          "bg": "winter-night",
+          "items": [
+            {"e": "🦉", "x": 0.68, "y": 0.4, "s": 0.18},
+            {"e": "🧒", "x": 0.34, "y": 0.8, "s": 0.26},
+            {"e": "👵", "x": 0.18, "y": 0.78, "s": 0.3}
+          ]
+        }
+      },
+      "text": "Un battito d'ali leggero. Su un ramo innevato si posa una civetta bianca, con gli occhi grandi e profondi. \"È la Civetta del Silenzio,\" dice Pietrolino. \"Parla solo quando serve. Ma ascolta sempre.\" \"Cosa fai di notte, civetta?\" chiede Emma piano. \"Ascolto,\" risponde lei. \"I rami che si piegano. Gli animali che dormono sotto la neve. Le cose che nessuno dice.\"",
+      "companionLines": {
+        "bo": "Che occhi grandi. Mi guarda? No, guarda Emma. Meno male, {nome}.",
+        "pilu": "Sai, {nome}? Anch'io ascolto tanto, prima di parlare. Si sentono un sacco di cose.",
+        "tango": "Io avrei fatto mille domande! ...Ma lei ne ha fatta una sola. Furba, vero {nome}?"
+      }
+    },
+    {
+      "n": 5,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma con gli occhi chiusi accanto alla nonna; la civetta immobile sul ramo; tutto è fermo.",
+        "scene": {
+          "bg": "winter-night",
+          "items": [
+            {"e": "🧒", "x": 0.4, "y": 0.8, "s": 0.26},
+            {"e": "👵", "x": 0.56, "y": 0.78, "s": 0.3, "flip": true},
+            {"e": "🦉", "x": 0.76, "y": 0.4, "s": 0.14}
+          ]
+        }
+      },
+      "text": "\"A volte i bambini cercano le risposte nel rumore,\" dice la civetta. \"Ma le risposte più belle si trovano nel silenzio.\" Emma chiude gli occhi. Anche Pietrolino non parla più. Cosa si sente, nel silenzio?",
+      "dialogue": {
+        "together": "Chiedi: proviamo anche noi? Chiudiamo gli occhi un momento: cosa senti?",
+        "alone": {
+          "prompt": {
+            "bo": "Chiudi gli occhi anche tu. Cosa senti, {nome}?",
+            "pilu": "Chiudi gli occhi anche tu. Cosa senti, {nome}?",
+            "tango": "Chiudi gli occhi anche tu. Cosa senti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "respiro",
+              "icon": "breathe",
+              "label": "Il mio respiro",
+              "reaction": {
+                "bo": "Dentro e fuori. Piano piano. Lo sento anch'io il mio.",
+                "pilu": "Il respiro c'è sempre, ma lo si sente solo nel silenzio. Ascoltiamo Emma.",
+                "tango": "Il respiro! Io respiro veloce... ora più piano. Vediamo."
+              }
+            },
+            {
+              "id": "suoni",
+              "icon": "listen",
+              "label": "Tanti piccoli suoni",
+              "reaction": {
+                "bo": "Ci sono sempre suoni nascosti. Vediamo quali sente Emma.",
+                "pilu": "Proprio come la civetta. Vediamo cosa sente Emma.",
+                "tango": "Quanti? Io ne conto tre! Guardiamo."
+              }
+            },
+            {
+              "id": "niente",
+              "icon": "quiet",
+              "label": "Niente, è tutto zitto",
+              "reaction": {
+                "bo": "Anche il niente è bello, a volte. Fa riposare.",
+                "pilu": "Anche il silenzio si può ascoltare. Vediamo come finisce.",
+                "tango": "Zitto zitto. Strano, eh? Guardiamo Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "La civetta vola via nel cielo stellato; una piuma bianca scende lenta verso la mano di Emma.",
+        "scene": {
+          "bg": "winter-night",
+          "items": [
+            {"e": "🦉", "x": 0.76, "y": 0.18, "s": 0.12},
+            {"e": "🪶", "x": 0.48, "y": 0.58, "s": 0.08, "rot": 30},
+            {"e": "🧒", "x": 0.42, "y": 0.8, "s": 0.26},
+            {"e": "👵", "x": 0.58, "y": 0.78, "s": 0.3, "flip": true}
+          ]
+        }
+      },
+      "text": "Il fruscio del vento. Un ramo che gocciola: tic, tic. Il respiro, dentro e fuori. Stanno lì, in silenzio, ad ascoltare. Poi la civetta vola via e lascia cadere una piuma bianca. Emma la raccoglie. \"Così leggera. Eppure così piena.\" \"È come il silenzio,\" dice Pietrolino. \"Non fa rumore, ma ti cambia dentro.\""
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma di nuovo a letto, tranquilla, con gli occhi che si chiudono; la piuma bianca sul comodino accanto a Pietrolino.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"e": "🛏️", "x": 0.56, "y": 0.8, "s": 0.34},
+            {"e": "😴", "x": 0.54, "y": 0.7, "s": 0.12},
+            {"e": "🪶", "x": 0.82, "y": 0.74, "s": 0.06},
+            {"paint": "pebble", "x": 0.88, "y": 0.79, "s": 0.04},
+            {"e": "🌙", "x": 0.18, "y": 0.24, "s": 0.1}
+          ]
+        }
+      },
+      "text": "La nonna riaccompagna Emma a letto. Emma mette la piuma sul comodino, vicino a Pietrolino. Respira piano, come ha imparato. E stavolta si addormenta tranquilla.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Stasera ascolto il mio respiro prima di dormire, {nome}. Shhh. Buonanotte.",
+        "pilu": "Stasera prova anche tu un minuto di silenzio, {nome}. Ascolta cosa si sente. A domani.",
+        "tango": "Stasera provo a stare zitta un minuto intero, {nome}! ...Shhh. Ciao!"
+      }
+    }
+  ]
+}

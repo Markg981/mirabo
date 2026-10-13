@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon enveloppé dans une couverture sous le ciel étoilé d'hiver, avec la lune."
+      },
+      "companionLines": {
+        "bo": "Bonsoir {nome}. Chut. C'est la nuit. Je parle tout doucement, d'accord ?",
+        "pilu": "Bonsoir {nome} ! La nuit, moi, je suis réveillée. Aujourd'hui, on rencontre une cousine éloignée. Une chouette très spéciale.",
+        "tango": "Bonsoir {nome} ! La nuit ! Moi, je fais toujours du bruit... Aujourd'hui, j'essaie de me taire. Peut-être."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma dans son lit, les yeux ouverts, avec sa couverture préférée, Pietrolino sur la table de nuit ; par la fenêtre on voit la lune."
+      },
+      "text": "C'est une nuit calme et glacée. Le ciel est plein d'étoiles et la lune ressemble à une tranche d'orange en argent. Emma n'arrive pas à dormir. Elle se tourne et se retourne. Puis elle s'enroule dans sa couverture préférée, prend Pietrolino et va frapper à la porte de Mamie."
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie enveloppées dans une couverture sur la marche devant la maison, face au jardin enneigé."
+      },
+      "text": "Mamie ne se fâche pas. Elle met son manteau, enveloppe Emma dans la couverture, et elles s'assoient ensemble sur la marche, face au jardin enneigé. « Tout est si silencieux », chuchote Emma. « Le bois dort encore », dit Pietrolino. « Mais tout ne dort pas, la nuit. »"
+    },
+    {
+      "illustration": {
+        "alt": "Une chouette blanche aux grands yeux profonds perchée sur une branche enneigée ; Emma la regarde bouche bée."
+      },
+      "text": "Un léger battement d'ailes. Sur une branche enneigée se pose une chouette blanche aux grands yeux profonds. « C'est la Chouette du Silence », dit Pietrolino. « Elle ne parle que quand il le faut. Mais elle écoute toujours. » « Qu'est-ce que tu fais la nuit, chouette ? » demande Emma doucement. « J'écoute », répond-elle. « Les branches qui ploient. Les animaux qui dorment sous la neige. Les choses que personne ne dit. »",
+      "companionLines": {
+        "bo": "Quels grands yeux. Elle me regarde ? Non, elle regarde Emma. Ouf, {nome}.",
+        "pilu": "Tu sais, {nome} ? Moi aussi j'écoute beaucoup avant de parler. On entend plein de choses.",
+        "tango": "Moi, j'aurais posé mille questions ! ...Mais elle, elle n'en a posé qu'une. Maligne, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma les yeux fermés à côté de Mamie ; la chouette immobile sur la branche ; tout est immobile."
+      },
+      "text": "« Parfois, les enfants cherchent les réponses dans le bruit », dit la chouette. « Mais les plus belles réponses se trouvent dans le silence. » Emma ferme les yeux. Pietrolino ne parle plus non plus. Qu'est-ce qu'on entend, dans le silence ?",
+      "dialogue": {
+        "together": "Demande : on essaie nous aussi ? Fermons les yeux un moment : qu'est-ce que tu entends ?",
+        "alone": {
+          "prompt": {
+            "bo": "Ferme les yeux toi aussi. Qu'est-ce que tu entends, {nome} ?",
+            "pilu": "Ferme les yeux toi aussi. Qu'est-ce que tu entends, {nome} ?",
+            "tango": "Ferme les yeux toi aussi. Qu'est-ce que tu entends, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Ma respiration",
+              "reaction": {
+                "bo": "Dedans, dehors. Tout doucement. J'entends la mienne aussi.",
+                "pilu": "La respiration est toujours là, mais on ne l'entend que dans le silence. Écoutons Emma.",
+                "tango": "La respiration ! Moi je respire vite... maintenant plus lentement. Voyons."
+              }
+            },
+            {
+              "label": "Plein de petits bruits",
+              "reaction": {
+                "bo": "Il y a toujours des bruits cachés. Voyons lesquels Emma entend.",
+                "pilu": "Comme la chouette. Voyons ce qu'Emma entend.",
+                "tango": "Combien ? Moi j'en compte trois ! Regardons."
+              }
+            },
+            {
+              "label": "Rien, tout se tait",
+              "reaction": {
+                "bo": "Le rien, c'est beau aussi, parfois. Ça repose.",
+                "pilu": "Le silence aussi, ça s'écoute. Voyons comment ça finit.",
+                "tango": "Silence, silence. Bizarre, hein ? Regardons Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La chouette s'envole dans le ciel étoilé ; une plume blanche descend lentement vers la main d'Emma."
+      },
+      "text": "Le souffle du vent. Une branche qui goutte : tic, tic. La respiration, dedans, dehors. Elles restent là, en silence, à écouter. Puis la chouette s'envole et laisse tomber une plume blanche. Emma la ramasse. « Si légère. Et pourtant si pleine. » « C'est comme le silence », dit Pietrolino. « Il ne fait pas de bruit, mais il te change à l'intérieur. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma de nouveau au lit, tranquille, les yeux qui se ferment ; la plume blanche sur la table de nuit à côté de Pietrolino."
+      },
+      "text": "Mamie raccompagne Emma au lit. Emma pose la plume sur la table de nuit, à côté de Pietrolino. Elle respire lentement, comme elle l'a appris. Et cette fois, elle s'endort tranquille.",
+      "companionLines": {
+        "bo": "Ce soir, j'écoute ma respiration avant de dormir, {nome}. Chut. Bonne nuit.",
+        "pilu": "Ce soir, essaie toi aussi une minute de silence, {nome}. Écoute ce qu'on entend. À demain.",
+        "tango": "Ce soir, j'essaie de me taire une minute entière, {nome} ! ...Chut. Salut !"
+      }
+    }
+  ]
+}

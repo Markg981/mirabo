@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon sur le sentier boueux du printemps, parmi les premières petites feuilles et une fleur à peine éclose."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! La neige fond. Que de boue ! Mais écoute. Les oiseaux sont revenus.",
+        "pilu": "Bonjour {nome} ! Le bois dormait, tu te souviens ? Aujourd'hui il se réveille. Allons voir comment il va.",
+        "tango": "Bonjour {nome} ! Le printemps ! La boue ! Les fleurs ! Allez, on court !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma court sur le sentier boueux avec ses bottes rouges, Mamie derrière ; des gouttes tombent des branches, les premières feuilles apparaissent."
+      },
+      "text": "La glace fond, les journées s'allongent. « Pietrolino, tu sens cette odeur, toi aussi ? » demande Emma en courant sur le sentier boueux. « Je sens la terre qui respire. » Après des mois de neige, le bois se réveille : des gouttes tombent des branches, les premières petites feuilles pointent, les oiseaux chantent."
+    },
+    {
+      "illustration": {
+        "alt": "Des plantes cassées, un nid tombé par terre et un petit hérisson qui tremble à côté d'une canette rouillée ; Emma à genoux, à distance."
+      },
+      "text": "Mais quelque chose ne va pas. Il y a des plantes cassées, un nid tombé, et un petit hérisson qui tremble à côté d'une canette rouillée. « Oh non », dit Emma en s'agenouillant. « Le bois est fort », dit Pietrolino, « mais l'hiver a été dur. Et quelqu'un a laissé une canette ici. Maintenant, il a besoin d'aide. »",
+      "companionLines": {
+        "bo": "Pauvre hérisson. Il tremble comme moi quand j'ai peur. Qu'est-ce qu'on fait, {nome} ?",
+        "pilu": "Regarde bien, {nome} : la canette est rouillée. Elle peut couper.",
+        "tango": "Le hérisson ! Je le prends ! ...Attends. Peut-être pas. Qu'est-ce que tu en dis, {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma immobile regarde le hérisson et la canette ; Mamie s'approche avec des gants et un sac."
+      },
+      "text": "Le hérisson tremble. La canette est juste à côté. Emma voudrait aider tout de suite. Qu'est-ce qu'elle peut faire ?",
+      "dialogue": {
+        "together": "Demande : que peut faire Emma pour le hérisson ? Et pourquoi on ne touche pas la canette à mains nues ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "pilu": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "tango": "Et toi, qu'est-ce que tu ferais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je prends le hérisson dans mes bras",
+              "reaction": {
+                "bo": "Il a des piquants... et il a peut-être peur de nous. Voyons ce que fait Emma.",
+                "pilu": "Les animaux du bois ont parfois peur si on les touche. Voyons ce que fait Emma.",
+                "tango": "J'y avais pensé aussi ! Mais il pique. Regardons Emma."
+              }
+            },
+            {
+              "label": "J'appelle Mamie",
+              "reaction": {
+                "bo": "Mamie sait ce qu'on touche et ce qu'on ne touche pas. C'est bien de l'avoir tout près.",
+                "pilu": "Avec une canette rouillée, il faut justement un grand. Voyons.",
+                "tango": "Mamieee ! ...La voilà. Regardons."
+              }
+            },
+            {
+              "label": "Je lui fais une maison de feuilles",
+              "reaction": {
+                "bo": "Une petite maison bien chaude. Moi, je m'y endormirais tout de suite.",
+                "pilu": "Un abri sans le toucher. Voyons si Emma y pense.",
+                "tango": "Des feuilles ! Plein de feuilles ! Voyons ce que fait Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Mamie, avec des gants, met la canette dans le sac ; Emma entasse des feuilles et des brindilles sous une racine ; le hérisson s'y glisse."
+      },
+      "text": "Emma appelle Mamie. Mamie, avec ses gants, prend la canette et la met dans le sac. Pendant ce temps, Emma ramasse des feuilles sèches et des brindilles et les entasse sous une racine, sans toucher le hérisson. Tout doucement, le hérisson se glisse dedans. « Chaque geste compte », dit Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Une renarde rousse sort des buissons, avec des yeux attentifs et doux, et regarde Emma."
+      },
+      "text": "Entre les buissons apparaît une renarde rousse. Elle a les yeux attentifs, mais doux. « Emma, tu prends soin du bois. Le bois s'en souviendra. » Emma n'est pas étonnée : maintenant elle sait que dans le bois, celui qui écoute est écouté. « Je veux aider tous les ans », dit-elle. « C'est comme ça qu'on change le monde », répond la renarde. « Pas avec des gestes énormes, mais avec un soin de tous les jours. »",
+      "companionLines": {
+        "bo": "Une renarde qui parle ! Elle a la queue comme Tango. Tu as vu, {nome} ?",
+        "pilu": "Tu sais, {nome} ? Les renards vivent vraiment dans les bois près des maisons. D'habitude, ils sont timides.",
+        "tango": "Une renarde ! On dirait ma cousine ! Je lui ressemble, {nome} ? Moi, je parle plus, quand même."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma avec quelques camarades de classe et la maîtresse installent des pancartes faites main le long du sentier : Ici vit un hérisson, Respecte ceux qui dorment dans les feuilles."
+      },
+      "text": "Le lendemain, Emma revient avec des pancartes faites main : « Ici vit un hérisson », « Respecte ceux qui dorment dans les feuilles », « Rapporte tes déchets chez toi ». À l'école, elle en parle à la maîtresse et à ses camarades. Et c'est ainsi que naît le Club des Petits Gardiens de la Nature.",
+      "companionLines": {
+        "bo": "Les Petits Gardiens ! Je peux en être aussi, {nome} ? Demain je fais un tas de feuilles pour les hérissons.",
+        "pilu": "Demain, essaie de dessiner toi aussi une pancarte pour ton parc, {nome}. Qu'est-ce que tu écrirais ? À demain.",
+        "tango": "Je m'inscris tout de suite chez les Gardiens ! Et toi aussi, {nome} ! Demain on cherche des hérissons. Salut !"
+      }
+    }
+  ]
+}

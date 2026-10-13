@@ -1,0 +1,19 @@
+{
+  "id": "fiocco-coraggioso",
+  "version": 1,
+  "title": "Il Fiocco che Non Voleva Cadere",
+  "world": "emozioni",
+  "topic": "paura-di-sbagliare",
+  "series": "emma-pietrolino",
+  "episode": 7,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Il coraggio non sta nel restare fermi, ma nel provarci.",
+  "gesture": "Quando una cosa nuova fa paura, dire ad alta voce \"ci provo\" e farne solo il primo pezzetto.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Letteratura sulla mentalità di crescita e la paura dell'errore nei bambini (da verificare)"
+  ],
+  "status": "draft"
+}

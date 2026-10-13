@@ -1,0 +1,185 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno nella neve, con il naso all'insù a guardare i fiocchi che scendono.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"paint": "companion", "x": 0.42, "y": 0.68, "s": 0.46},
+            {"e": "❄️", "x": 0.3, "y": 0.24, "s": 0.06},
+            {"e": "❄️", "x": 0.6, "y": 0.16, "s": 0.05},
+            {"e": "❄️", "x": 0.76, "y": 0.34, "s": 0.06}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! Neve! A me piace tanto, sono un mammut. Ma oggi c'è un fiocco che ha paura. Come me, a volte.",
+        "pilu": "Ciao {nome}! Sai che ogni fiocco di neve è diverso da tutti gli altri? Oggi ne conosciamo uno speciale.",
+        "tango": "Ciao {nome}! Neve! Palle di neve! Dai, usciamo subito!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma in pigiama alla finestra bianca di neve, con un grande sorriso; Pietrolino sul davanzale.",
+        "scene": {
+          "bg": "room",
+          "items": [
+            {"e": "👧", "x": 0.44, "y": 0.72, "s": 0.34},
+            {"paint": "pebble", "x": 0.2, "y": 0.46, "s": 0.06},
+            {"e": "❄️", "x": 0.14, "y": 0.2, "s": 0.06},
+            {"e": "❄️", "x": 0.24, "y": 0.3, "s": 0.05}
+          ]
+        }
+      },
+      "text": "Una mattina d'inverno Emma si sveglia con un sorriso: la finestra è tutta bianca. \"Pietrolino! Nevica!\" \"Lo so,\" dice lui dal davanzale. \"Ma c'è un piccolo problema. Lassù c'è un fiocco che non vuole scendere. Ha paura di sciogliersi.\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma con il cappuccio sulla collinetta dietro casa guarda il cielo; tra le nuvole un puntino luminoso ondeggia senza scendere; la nonna alla finestra.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "👧", "x": 0.42, "y": 0.78, "s": 0.3},
+            {"paint": "pebble", "x": 0.46, "y": 0.66, "s": 0.04},
+            {"e": "☁️", "x": 0.6, "y": 0.14, "s": 0.16},
+            {"e": "❄️", "x": 0.6, "y": 0.26, "s": 0.05},
+            {"e": "🏠", "x": 0.84, "y": 0.62, "s": 0.2},
+            {"e": "👵", "x": 0.84, "y": 0.62, "s": 0.07}
+          ]
+        }
+      },
+      "text": "Emma si mette il cappotto e sale sulla collinetta dietro casa. La nonna la guarda dalla finestra. Tra le nuvole c'è davvero un puntino luminoso che ondeggia e non scende. \"Ehi, piccolo fiocco! Scendi con gli altri! È bellissimo qui!\" Una vocina tremolante risponde: \"E se cado male? E se finisco in una pozzanghera? E se non servo a niente?\"",
+      "companionLines": {
+        "bo": "Lo capisco, il fiocco. Anch'io ho paura di sbagliare. Tu no, {nome}?",
+        "pilu": "Hai sentito, {nome}? Il fiocco non ha paura di cadere. Ha paura di sbagliare.",
+        "tango": "Io gli direi: scendi e basta! ...Oh. Forse non è così facile, vero {nome}?"
+      }
+    },
+    {
+      "n": 4,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma con le mani a coppa verso il cielo, il fiocco lassù che trema.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "🙋‍♀️", "x": 0.42, "y": 0.76, "s": 0.32},
+            {"e": "❄️", "x": 0.56, "y": 0.22, "s": 0.06, "rot": 15}
+          ]
+        }
+      },
+      "text": "Emma pensa. Il fiocco è così piccolo, così leggero. E ha tanta paura. Cosa gli può dire?",
+      "dialogue": {
+        "together": "Chiedi: cosa diresti al fiocco per aiutarlo? E a te, quando hai paura di sbagliare, cosa aiuta?",
+        "alone": {
+          "prompt": {
+            "bo": "Tu cosa gli diresti, {nome}?",
+            "pilu": "Tu cosa gli diresti, {nome}?",
+            "tango": "Tu cosa gli diresti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "anche-io",
+              "icon": "me-too",
+              "label": "Anch'io a volte ho paura",
+              "reaction": {
+                "bo": "Sì. Dirlo fa sentire meno soli. Vediamo cosa dice Emma.",
+                "pilu": "Quando qualcuno ci capisce, la paura diventa più piccola. Ascoltiamo Emma.",
+                "tango": "Anch'io, eh. Ma non dirlo a nessuno! Vediamo."
+              }
+            },
+            {
+              "id": "ti-prendo",
+              "icon": "catch",
+              "label": "Vieni, ti prendo io",
+              "reaction": {
+                "bo": "Con qualcuno sotto che ti prende, cadere fa meno paura.",
+                "pilu": "Un aiuto pronto. Vediamo se il fiocco si fida.",
+                "tango": "Mani pronte! Vediamo se scende! Guardiamo."
+              }
+            },
+            {
+              "id": "aspetta",
+              "icon": "wait",
+              "label": "Puoi aspettare un po'",
+              "reaction": {
+                "bo": "Anche aspettare va bene. Ognuno ha i suoi tempi.",
+                "pilu": "Non c'è fretta. Vediamo cosa decide il fiocco.",
+                "tango": "Aspettare? Difficile per me! Vediamo cosa succede."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma parla al cielo con dolcezza; il fiocco comincia a scendere girando come in un ballo.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "👧", "x": 0.38, "y": 0.78, "s": 0.3},
+            {"e": "❄️", "x": 0.56, "y": 0.3, "s": 0.06, "rot": 20},
+            {"e": "❄️", "x": 0.5, "y": 0.42, "s": 0.06, "rot": -20, "opacity": 0.5}
+          ]
+        }
+      },
+      "text": "\"Anch'io a volte ho paura,\" dice Emma. \"Ma solo provando scopro cosa so fare. Tu puoi posarti su un ramo e farlo brillare. O su una mano, e far sorridere qualcuno.\" Il fiocco resta fermo. Poi, piano piano, comincia a danzare. Scende lento, girando come in un ballo."
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Il fiocco atterrato sulla punta del naso di Emma, che lo guarda con gli occhi incrociati; poi diventa una goccia luminosa.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "👧", "x": 0.44, "y": 0.72, "s": 0.4},
+            {"e": "❄️", "x": 0.44, "y": 0.58, "s": 0.05},
+            {"e": "✨", "x": 0.52, "y": 0.54, "s": 0.04}
+          ]
+        }
+      },
+      "text": "Il fiocco atterra sulla punta del naso di Emma. È gelido, leggero, e scintilla. \"Grazie,\" sussurra. \"Adesso so che posso fare qualcosa di bello, anche solo per un attimo.\" E si scioglie in una goccia luminosa.",
+      "companionLines": {
+        "bo": "Ce l'ha fatta! Ha avuto paura, ma è sceso lo stesso. Hai visto, {nome}?",
+        "pilu": "Sai, {nome}? Il fiocco non è sparito. È diventato una goccia. Ha cambiato forma.",
+        "tango": "Sul naso! Ahah! Io avrei starnutito, {nome}!"
+      }
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma torna verso casa lasciando impronte nella neve; la nonna l'aspetta sulla porta.",
+        "scene": {
+          "bg": "snow",
+          "items": [
+            {"e": "👧", "x": 0.5, "y": 0.78, "s": 0.28},
+            {"e": "👣", "x": 0.36, "y": 0.9, "s": 0.06},
+            {"e": "👣", "x": 0.24, "y": 0.92, "s": 0.06},
+            {"e": "🏠", "x": 0.82, "y": 0.64, "s": 0.22},
+            {"e": "👵", "x": 0.72, "y": 0.74, "s": 0.3, "flip": true}
+          ]
+        }
+      },
+      "text": "\"Anche le cose che durano poco possono essere meravigliose, vero?\" chiede Emma. \"Proprio così,\" risponde Pietrolino. \"Il coraggio non sta nel restare fermi, ma nel provarci.\" Emma torna a casa, lasciando le impronte nella neve. La nonna l'aspetta sulla porta.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Domani provo una cosa che mi fa un po' paura, {nome}. Una cosa piccola. Ci provo.",
+        "pilu": "Quando una cosa nuova ti fa paura, prova a dire \"ci provo\", {nome}. Come il fiocco. A domani.",
+        "tango": "Domani provo a fare una cosa nuova, {nome}! E se sbaglio, riprovo. Ciao!"
+      }
+    }
+  ]
+}

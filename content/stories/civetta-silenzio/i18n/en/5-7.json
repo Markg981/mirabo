@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion wrapped in a blanket under the starry winter sky, with the moon."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}. Shhh. It's night-time. I'll talk very quietly, OK?",
+        "pilu": "Hi {nome}! At night I'm wide awake. Today we're meeting a distant cousin of mine. A very special owl.",
+        "tango": "Hi {nome}! At night! I always make a lot of noise... Today I'll try to be quiet. Maybe."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in bed with her eyes open, her favourite blanket, Pietrolino on the bedside table; the moon can be seen through the window."
+      },
+      "text": "It's a calm, frosty night. The sky is full of stars and the moon looks like a silver slice of orange. Emma can't sleep. She tosses and turns. Then she wraps herself in her favourite blanket, takes Pietrolino and goes to knock on Grandma's door."
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma wrapped in a blanket on the doorstep, in front of the snowy garden."
+      },
+      "text": "Grandma doesn't get cross. She puts on her coat, wraps Emma in the blanket, and together they sit on the step in front of the snowy garden. \"Everything's so quiet,\" whispers Emma. \"The wood is still asleep,\" says Pietrolino. \"But not everything sleeps at night.\""
+    },
+    {
+      "illustration": {
+        "alt": "A white owl with big, deep eyes perched on a snowy branch; Emma looks at it with her mouth open."
+      },
+      "text": "A soft flutter of wings. A white owl with big, deep eyes lands on a snowy branch. \"That's the Owl of Silence,\" says Pietrolino. \"She only speaks when it's needed. But she always listens.\" \"What do you do at night, owl?\" asks Emma softly. \"I listen,\" she answers. \"To the branches bending. To the animals sleeping under the snow. To the things nobody says.\"",
+      "companionLines": {
+        "bo": "What big eyes. Is she looking at me? No, she's looking at Emma. Phew, {nome}.",
+        "pilu": "You know, {nome}? I listen a lot too, before I speak. You hear all sorts of things.",
+        "tango": "I would have asked a thousand questions! ...But she only asked one. Clever, isn't she, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma with her eyes closed next to Grandma; the owl motionless on the branch; everything is still."
+      },
+      "text": "\"Sometimes children look for answers in noise,\" says the owl. \"But the best answers are found in silence.\" Emma closes her eyes. Pietrolino stops talking too. What can you hear, in the silence?",
+      "dialogue": {
+        "together": "Ask: shall we try too? Let's close our eyes for a moment: what can you hear?",
+        "alone": {
+          "prompt": {
+            "bo": "Close your eyes too. What can you hear, {nome}?",
+            "pilu": "Close your eyes too. What can you hear, {nome}?",
+            "tango": "Close your eyes too. What can you hear, {nome}?"
+          },
+          "options": [
+            {
+              "label": "My breathing",
+              "reaction": {
+                "bo": "In and out. Slowly, slowly. I can hear mine too.",
+                "pilu": "Your breath is always there, but you only hear it in silence. Let's listen to Emma.",
+                "tango": "Breathing! I breathe fast... now slower. Let's see."
+              }
+            },
+            {
+              "label": "Lots of little sounds",
+              "reaction": {
+                "bo": "There are always hidden sounds. Let's see which ones Emma hears.",
+                "pilu": "Just like the owl. Let's see what Emma hears.",
+                "tango": "How many? I count three! Let's watch."
+              }
+            },
+            {
+              "label": "Nothing, it's all quiet",
+              "reaction": {
+                "bo": "Nothing can be nice too, sometimes. It's restful.",
+                "pilu": "You can listen to silence too. Let's see how it ends.",
+                "tango": "Quiet, quiet. Funny, eh? Let's watch Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "The owl flies away into the starry sky; a white feather drifts slowly down towards Emma's hand."
+      },
+      "text": "The rustle of the wind. A branch dripping: tick, tick. Breathing, in and out. They sit there in silence, listening. Then the owl flies away and lets a white feather fall. Emma picks it up. \"So light. And yet so full.\" \"It's like silence,\" says Pietrolino. \"It doesn't make a sound, but it changes you inside.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma back in bed, calm, her eyes closing; the white feather on the bedside table next to Pietrolino."
+      },
+      "text": "Grandma takes Emma back to bed. Emma puts the feather on the bedside table, next to Pietrolino. She breathes slowly, the way she has learned. And this time she falls asleep peacefully.",
+      "companionLines": {
+        "bo": "Tonight I'll listen to my breathing before I sleep, {nome}. Shhh. Goodnight.",
+        "pilu": "Tonight you try a minute of silence too, {nome}. Listen to what you can hear. See you tomorrow.",
+        "tango": "Tonight I'll try to be quiet for a whole minute, {nome}! ...Shhh. Bye!"
+      }
+    }
+  ]
+}

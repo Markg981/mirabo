@@ -1,0 +1,20 @@
+{
+  "id": "goccia-ribelle",
+  "version": 1,
+  "title": "La Piccola Goccia Ribelle",
+  "world": "ambiente",
+  "topic": "acqua",
+  "series": "emma-pietrolino",
+  "episode": 5,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Ogni cambiamento comincia da una goccia.",
+  "gesture": "Chiudere il rubinetto mentre ci si lava i denti; raccogliere la pioggia in una ciotola per le piante.",
+  "parentCard": "parent.md",
+  "sources": [
+    "WWF Italia, materiali sul risparmio idrico per la scuola (da verificare)",
+    "Materiali didattici sul ciclo dell'acqua per la primaria (da verificare)"
+  ],
+  "status": "draft"
+}

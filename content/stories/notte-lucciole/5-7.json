@@ -1,0 +1,193 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno nel prato di sera, con una piccola lanterna accesa e la luna in cielo.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"paint": "companion", "x": 0.42, "y": 0.7, "s": 0.46},
+            {"e": "🏮", "x": 0.64, "y": 0.8, "s": 0.12}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}. È sera. Il bosco è tutto scuro. Io col buio ho un po' paura. Mi tieni la mano?",
+        "pilu": "Ciao {nome}! Io la notte apro bene gli occhi. Sai che di notte nel bosco si accendono delle luci?",
+        "tango": "Ciao {nome}! Una gita di notte! Dai, accendiamo tutte le luci e andiamo!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma con la lanterna in mano e la nonna accanto, sul sentiero al tramonto; il cielo è rosa e viola.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "👧", "x": 0.38, "y": 0.78, "s": 0.3},
+            {"e": "🏮", "x": 0.3, "y": 0.74, "s": 0.08},
+            {"paint": "pebble", "x": 0.44, "y": 0.72, "s": 0.05},
+            {"e": "👵", "x": 0.56, "y": 0.74, "s": 0.34, "flip": true}
+          ]
+        }
+      },
+      "text": "È una sera d'estate. Emma e la nonna entrano nel bosco con una piccola lanterna. \"Proprio di notte dobbiamo venire?\" chiede Emma, e stringe Pietrolino nella mano. \"Fidati,\" dice lui. \"Alcune cose si vedono solo al buio.\" Il bosco diventa misterioso. Emma tiene la mano della nonna."
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Una radura buia sotto le stelle; Emma e la nonna sedute sull'erba alta, la lanterna accesa tra loro.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "🧒", "x": 0.4, "y": 0.8, "s": 0.26},
+            {"e": "👵", "x": 0.58, "y": 0.78, "s": 0.3, "flip": true},
+            {"e": "🏮", "x": 0.49, "y": 0.86, "s": 0.08},
+            {"e": "🌾", "x": 0.2, "y": 0.86, "s": 0.12},
+            {"e": "🌾", "x": 0.8, "y": 0.88, "s": 0.12}
+          ]
+        }
+      },
+      "text": "Arrivano in una radura dove gli alberi si aprono e si vede il cielo. Si siedono sull'erba. Tutto è fermo. \"Non c'è niente,\" dice Emma. \"Aspetta,\" sussurra Pietrolino. \"Prova a spegnere la lanterna.\"",
+      "companionLines": {
+        "bo": "Spegnere? Ma poi è tutto buio! {nome}, io chiudo un occhio solo.",
+        "pilu": "Strano, vero {nome}? Per vedere meglio, bisogna spegnere la luce.",
+        "tango": "Spegnere?! Io la lascerei accesa! ...Però sono curiosa. Tu, {nome}?"
+      }
+    },
+    {
+      "n": 4,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma con la mano sulla lanterna, indecisa; la nonna le tiene l'altra mano.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.78, "s": 0.3},
+            {"e": "🏮", "x": 0.3, "y": 0.8, "s": 0.09},
+            {"e": "👵", "x": 0.56, "y": 0.76, "s": 0.32, "flip": true}
+          ]
+        }
+      },
+      "text": "Emma guarda la lanterna. Guarda il buio intorno. Guarda la nonna, che le tiene la mano. Spegnere la luce, al buio, nel bosco...",
+      "dialogue": {
+        "together": "Chiedi: come si sente Emma adesso? E tu, quando la luce si spegne, come ti senti?",
+        "alone": {
+          "prompt": {
+            "bo": "E tu come ti sentiresti, {nome}?",
+            "pilu": "E tu come ti sentiresti, {nome}?",
+            "tango": "E tu come ti sentiresti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "paura",
+              "icon": "scared",
+              "label": "Un po' di paura",
+              "reaction": {
+                "bo": "Anch'io. Tanto. Stringiamo forte la mano e vediamo cosa succede.",
+                "pilu": "È normale avere paura del buio. Emma ha la nonna vicino. Vediamo.",
+                "tango": "Un po' anch'io, a dire il vero. Guardiamo insieme."
+              }
+            },
+            {
+              "id": "curiosita",
+              "icon": "curious",
+              "label": "Tanta curiosità",
+              "reaction": {
+                "bo": "Allora hai più coraggio di me. Guardiamo cosa succede.",
+                "pilu": "La curiosità fa aprire bene gli occhi. Vediamo cosa scopre Emma.",
+                "tango": "Anch'io! Curiosissima! Vediamo se Emma spegne!"
+              }
+            },
+            {
+              "id": "mano",
+              "icon": "hold-hand",
+              "label": "Voglio una mano da tenere",
+              "reaction": {
+                "bo": "Sì. Con una mano da tenere il buio è più piccolo.",
+                "pilu": "Emma ce l'ha, la mano della nonna. Vediamo se basta.",
+                "tango": "Ecco la mia zampa! Ora guardiamo."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Tutto buio; davanti a Emma e alla nonna si accendono le prime piccole luci dorate.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.8, "s": 0.26, "opacity": 0.7},
+            {"e": "👵", "x": 0.58, "y": 0.78, "s": 0.3, "flip": true, "opacity": 0.7},
+            {"e": "✨", "x": 0.3, "y": 0.5, "s": 0.05},
+            {"e": "✨", "x": 0.62, "y": 0.44, "s": 0.04},
+            {"e": "✨", "x": 0.76, "y": 0.56, "s": 0.05}
+          ]
+        }
+      },
+      "text": "Emma spegne la lanterna. Il buio la avvolge come una coperta. All'inizio non vede niente, solo ombre. Ma poi... plim! Una luce piccolissima si accende davanti a lei. Poi un'altra. E un'altra ancora. Plim, plim, plim!"
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Centinaia di lucciole danzano nella radura; una si è posata sul naso di Emma, che la guarda con gli occhi incrociati.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "👧", "x": 0.42, "y": 0.78, "s": 0.32},
+            {"e": "👵", "x": 0.62, "y": 0.78, "s": 0.3, "flip": true},
+            {"e": "✨", "x": 0.43, "y": 0.66, "s": 0.04},
+            {"e": "✨", "x": 0.2, "y": 0.46, "s": 0.05},
+            {"e": "✨", "x": 0.32, "y": 0.36, "s": 0.04},
+            {"e": "✨", "x": 0.56, "y": 0.42, "s": 0.05},
+            {"e": "✨", "x": 0.7, "y": 0.5, "s": 0.04},
+            {"e": "✨", "x": 0.84, "y": 0.4, "s": 0.05},
+            {"e": "✨", "x": 0.12, "y": 0.62, "s": 0.04},
+            {"e": "✨", "x": 0.9, "y": 0.6, "s": 0.04}
+          ]
+        }
+      },
+      "text": "Le lucciole! Tantissime piccole stelle danzano nel buio, si accendono e si spengono come un battito del cuore. \"Sono felici che hai spento la lanterna,\" dice Pietrolino. \"La luce forte le confonde. Si fanno vedere da chi aspetta in silenzio.\" Una lucciola si posa sul naso di Emma. \"Ciao, piccolina,\" sussurra lei.",
+      "companionLines": {
+        "bo": "Oooh. Non ho più paura. Guarda quante, {nome}!",
+        "pilu": "Sai, {nome}? Le lucciole si parlano con la luce. Accesa, spenta, accesa.",
+        "tango": "Una sul naso! Io starei ferma ferma. Anche tu, {nome}? Shhh."
+      }
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma e la nonna tornano verso casa per mano, con la lanterna spenta; alcune lucciole le seguono come una piccola costellazione.",
+        "scene": {
+          "bg": "night",
+          "items": [
+            {"e": "👧", "x": 0.44, "y": 0.78, "s": 0.28},
+            {"e": "👵", "x": 0.58, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🏮", "x": 0.36, "y": 0.84, "s": 0.07, "opacity": 0.6},
+            {"e": "✨", "x": 0.24, "y": 0.5, "s": 0.04},
+            {"e": "✨", "x": 0.3, "y": 0.42, "s": 0.04},
+            {"e": "✨", "x": 0.18, "y": 0.38, "s": 0.04}
+          ]
+        }
+      },
+      "text": "Emma resta lì a lungo. Non ha bisogno di parlare. Nel petto ha una felicità leggera, come ali che battono piano. Poi lei e la nonna tornano a casa per mano, con la lanterna spenta, e alcune lucciole le seguono come una piccola costellazione.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Il buio era pieno di luci, {nome}. Stasera spengo la luce e guardo fuori dalla finestra. Con te.",
+        "pilu": "Stasera prova anche tu, {nome}: spegni la luce, aspetta un po', e guarda cosa si accende. A domani.",
+        "tango": "Domani torno al buio a contare le lucciole, {nome}! Ferma ferma, però. Ciao!"
+      }
+    }
+  ]
+}

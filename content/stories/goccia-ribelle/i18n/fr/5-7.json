@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon avec un parapluie sous la pluie, une goutte sur le bout du nez."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! Il pleut. Avec la pluie, je suis tout mouillé. Mais aujourd'hui on sort quand même, avec Emma.",
+        "pilu": "Bonjour {nome} ! Tu sais que chaque goutte de pluie a fait un long voyage ? Aujourd'hui on en rencontre une.",
+        "tango": "Bonjour {nome} ! De la pluie ! Des flaques ! Allez, on saute dedans !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma à la fenêtre de sa chambre regarde la pluie qui tape sur la vitre ; Pietrolino sur le rebord."
+      },
+      "text": "C'est un jour gris. Emma regarde par la fenêtre : il pleut, et les gouttes tapent sur la vitre comme si elles frappaient à la porte. « Aujourd'hui, on ne sort pas, Pietrolino », soupire-t-elle. « Bien sûr que si », dit-il. « Aujourd'hui, on rencontre Goutte. Une goutte de pluie un peu rebelle. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma en ciré jaune et bottes, Mamie avec le parapluie, près d'une rigole dans le bois ; une goutte saute à contre-courant."
+      },
+      "text": "Emma met son ciré et ses bottes. Mamie prend le parapluie. Dans le bois, une rigole emporte l'eau vers la bouche d'égout. Mais parmi mille gouttes toutes pareilles, une saute à contre-courant ! « Bonjour ! Pourquoi tu sautes comme ça ? » demande Emma. « Parce que je ne veux pas être gaspillée ! » répond une petite voix fraîche. « Je veux donner à boire aux fleurs ! »",
+      "companionLines": {
+        "bo": "Une goutte qui parle. Et qui saute ! Moi, je n'y arriverais pas, {nome}.",
+        "pilu": "Tu as entendu, {nome} ? Goutte ne veut pas finir dans l'égout. Elle veut servir à quelque chose.",
+        "tango": "Une goutte rebelle ! Elle me plaît ! Elle saute comme moi, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma assise près de l'eau, pensive ; à côté, dans une bulle de pensée, un robinet ouvert qui goutte."
+      },
+      "text": "« Beaucoup d'eau finit dans les tuyaux », dit Goutte, « sans avoir donné à boire à personne. » Emma se tait. Elle pense au robinet de la salle de bains, quand elle le laisse couler pendant qu'elle se brosse les dents. Et à toute la pluie qui tombe et s'en va."
+    },
+    {
+      "illustration": {
+        "alt": "Emma regarde Goutte au bout d'une feuille ; Mamie attend sous le parapluie."
+      },
+      "text": "Goutte la regarde du bout d'une feuille. « Et toi, Emma ? Qu'est-ce que tu peux faire pour nous, les gouttes ? »",
+      "dialogue": {
+        "together": "Demande : que peut faire Emma pour ne pas gaspiller l'eau ? Et nous, à la maison, que pourrions-nous faire ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "pilu": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "tango": "Et toi, qu'est-ce que tu ferais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Je ferme le robinet",
+              "reaction": {
+                "bo": "Pendant que tu te brosses les dents ? Moi aussi, j'essaie. Voyons ce que fait Emma.",
+                "pilu": "Une petite chose à faire chaque jour. Voyons si Emma y pense aussi.",
+                "tango": "Clic, fermé ! Facile ! Voyons ce que dit Emma."
+              }
+            },
+            {
+              "label": "Je récupère la pluie",
+              "reaction": {
+                "bo": "Dans un petit seau ? Quelle bonne idée. Voyons.",
+                "pilu": "Comme ça, la pluie ne s'en va pas. Regardons ce que fait Emma.",
+                "tango": "Des seaux partout ! Allez, regardons Emma."
+              }
+            },
+            {
+              "label": "J'arrose les fleurs",
+              "reaction": {
+                "bo": "Les fleurs ont soif comme moi. Voyons ce que fait Emma.",
+                "pilu": "C'est justement ce que Goutte veut faire. Voyons.",
+                "tango": "Fleurs mouillées, fleurs contentes ! Regardons Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Goutte saute d'une feuille à une pierre puis vers le haut, jusqu'à disparaître dans un nuage léger ; Emma la suit des yeux."
+      },
+      "text": "« Je te promets qu'à partir d'aujourd'hui, j'essaierai de mieux utiliser l'eau », dit Emma. « Même une seule petite fille peut changer la rivière ! » s'écrie Goutte. Et d'un bond, plop !, elle saute sur une feuille, puis sur une pierre, puis vers le haut, jusqu'à disparaître dans un nuage. « Elle est vraiment montée là-haut ? » « Oui », dit Pietrolino. « Elle reviendra en pluie, en rosée ou en neige. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie posent un bol sur le balcon pour récupérer la pluie ; à côté, les pots de fleurs."
+      },
+      "text": "À la maison, Emma et Mamie posent un bol sur le balcon. « Celui-là, c'est pour la pluie », dit Emma. « Comme ça, demain je donne à boire aux fleurs. » Pietrolino sourit depuis la poche. « Tu as donné de la valeur à une seule goutte. Chaque changement commence justement comme ça. »",
+      "companionLines": {
+        "bo": "Un bol pour la pluie. Demain j'en mets un dehors moi aussi, {nome}. Et après j'arrose les fleurs.",
+        "pilu": "Ce soir, quand tu te brosses les dents, essaie de fermer le robinet, {nome}. Goutte serait contente. À demain.",
+        "tango": "Demain je cherche Goutte dans toutes les flaques, {nome} ! Elle est peut-être redescendue. Salut !"
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter am Anfang eines Wegs in den Wald, mit einem kleinen runden Kiesel in der Hand."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}! Heute lernen wir ein Mädchen kennen, Emma. Und einen Kiesel. Einen Kiesel, der spricht! Ich glaube es halb und halb nicht.",
+        "pilu": "Hallo {nome}! Weißt du, dass es im Wald Stimmen gibt, die man nur hört, wenn man still ist? Heute entdecken wir eine.",
+        "tango": "Hallo {nome}! Ein sprechender Kiesel? Los, den schauen wir uns sofort an!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit zwei zerzausten Zöpfchen, roten Stiefeln und gelbem Mantel läuft mit ihrem Korb in den Wald; hinten sitzt Oma auf einem Baumstamm."
+      },
+      "text": "Emma ist sechs. Sie hat zwei zerzauste Zöpfchen, rote Gummistiefel und ein gelbes Mäntelchen. Jeden Nachmittag, nach dem Honigbrot, nimmt sie ihren Korb und geht in den Wald neben ihrem Haus. Oma setzt sich auf den Baumstamm am Waldrand. „Ich bleibe hier. Wenn du mich rufst, höre ich dich.“"
+    },
+    {
+      "illustration": {
+        "alt": "Emma am Bach will gerade einen grauen, runden Kiesel werfen, der zu lächeln scheint."
+      },
+      "text": "Am Bach wirft Emma Kiesel ins Wasser: plin, plon, plin. Dann findet sie einen seltsamen. Er ist grau, rund und glatt, und er scheint fast zu lächeln. Sie will ihn gerade werfen, da hört sie ein feines Stimmchen: „He! Halt! Wirf mich nicht! Das kitzelt!“",
+      "companionLines": {
+        "bo": "Er hat gesprochen! Der Stein hat gesprochen! {nome}, halt meine Hand.",
+        "pilu": "Hast du das gehört, {nome}? Emma hat gerade noch rechtzeitig angehalten.",
+        "tango": "Ich hätte ihn schon geworfen! Gut, dass Emma angehalten hat, oder {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitzt im Schneidersitz im Gras, Pietrolino auf der Handfläche; rundherum kleine Vögel auf einem Ast."
+      },
+      "text": "„Ich bin Pietrolino“, sagt der Kiesel. „Ich spreche nur mit denen, die stehen bleiben und zuhören. Und du bist stehen geblieben.“ Emma setzt sich ins Gras. „Ich habe Papierfetzen im Bach gesehen“, sagt sie leise. „Aber ich bin doch nur ein kleines Mädchen.“ „Auch ein kleiner Kiesel macht große Kreise im Wasser“, antwortet Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Emma geht mit ihrem Korb zurück zu Oma; Pietrolino lugt aus der Manteltasche; hinter ihnen Kreise im Wasser."
+      },
+      "text": "Emma steckt Pietrolino in ihre Manteltasche und geht zurück zu Oma. „Oma, ich habe einen Freund gefunden. Morgen gehen wir wieder in den Wald.“ Aus der Tasche kommt ein Stimmchen: „Der Wald hat viel zu erzählen. Man muss nur zuhören.“",
+      "companionLines": {
+        "bo": "Ein Kieselfreund. So einen hätte ich auch gern, {nome}. Morgen suche ich einen Stein, der lächelt.",
+        "pilu": "Morgen versuch mal, eine Minute stehen zu bleiben und zuzuhören, {nome}. Mal sehen, was du hörst. Bis morgen.",
+        "tango": "Morgen gehen wir wieder zu Emma, {nome}! Und diesmal halte ich an, bevor ich werfe. Versprochen!"
+      }
+    }
+  ]
+}

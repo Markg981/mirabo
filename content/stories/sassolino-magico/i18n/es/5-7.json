@@ -1,0 +1,48 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero al principio de un sendero que entra en el bosque, con una piedrecita redonda en la mano."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! Hoy conocemos a una niña, Emma. Y a una piedrecita. ¡Una piedrecita que habla! Yo un poco me lo creo y un poco no.",
+        "pilu": "¡Hola, {nome}! ¿Sabes que en el bosque hay voces que solo se oyen si estás en silencio? Hoy descubrimos una.",
+        "tango": "¡Hola, {nome}! ¿Una piedrecita que habla? ¡Venga, vamos a verla ya!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, con dos coletas despeinadas, botas rojas y abrigo amarillo, corre por el bosque con la cesta; al fondo, la abuela sentada en un tronco."
+      },
+      "text": "Emma tiene seis años, dos coletas despeinadas, botas de agua rojas y un abriguito amarillo. Cada tarde, después del pan con miel, coge la cesta y va al bosque que hay cerca de casa. La abuela se sienta en el tronco de la entrada. \"Yo me quedo aquí. Si me llamas, te oigo.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma en el arroyo está a punto de lanzar una piedrecita gris y redonda que parece sonreír."
+      },
+      "text": "En el arroyo, Emma lanza piedrecitas al agua: plin, plon, plin. Luego encuentra una rara. Es gris, redonda, lisa, y casi parece sonreír. Está a punto de lanzarla cuando oye una vocecita: \"¡Eh! ¡Para! ¡No me lances! ¡Me haces cosquillas!\"",
+      "companionLines": {
+        "bo": "¡Ha hablado! ¡La piedra ha hablado! {nome}, dame la mano.",
+        "pilu": "¿Lo has oído, {nome}? Emma se ha parado justo a tiempo.",
+        "tango": "¡Yo ya la habría lanzado! Menos mal que Emma se ha parado, ¿eh, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma sentada en la hierba con las piernas cruzadas, con Pietrolino en la palma de la mano; alrededor, pajaritos en una rama."
+      },
+      "text": "\"Soy Pietrolino\", dice la piedrecita. \"Solo hablo con quien se para a escuchar. Y tú te has parado.\" Emma se sienta en la hierba. \"He visto papeles en el arroyo\", dice bajito. \"Pero solo soy una niña.\" \"Hasta una piedrecita pequeña hace círculos grandes en el agua\", responde Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Emma vuelve con la abuela con su cesta; Pietrolino asoma por el bolsillo del abrigo; círculos en el agua detrás de ellas."
+      },
+      "text": "Emma mete a Pietrolino en el bolsillo del abrigo y vuelve con la abuela. \"Abuela, he encontrado un amigo. Mañana volvemos al bosque.\" Desde el bolsillo llega una vocecita: \"El bosque tiene muchas cosas que decir. Basta con escuchar.\"",
+      "companionLines": {
+        "bo": "Un amigo piedrecita. Yo también quiero uno, {nome}. Mañana busco una piedra que sonría.",
+        "pilu": "Mañana intenta pararte un minuto a escuchar, {nome}. A ver qué oyes. Hasta mañana.",
+        "tango": "¡Mañana volvemos con Emma, {nome}! Y esta vez me paro antes de lanzar. ¡Prometido!"
+      }
+    }
+  ]
+}

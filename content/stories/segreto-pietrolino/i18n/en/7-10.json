@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion sitting in a flowery spring meadow, with a round little pebble beside it."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}. Today's story is a bit special. Pietrolino has a secret. Let's sit close together, OK?",
+        "pilu": "Hi {nome}. This is the last episode of Emma and Pietrolino's season. Let's listen to it calmly, together.",
+        "tango": "Hi {nome}! A secret! I love secrets. But today, strangely, I'm going slowly."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "The wood in full spring: flowers everywhere, bees, birds, insect houses hanging on the trees; Emma walks with Pietrolino in her hand."
+      },
+      "text": "Spring has really arrived: flowers everywhere, bees dancing in the air, birds singing every morning. Emma and Pietrolino are inseparable by now. In the wood they put up insect houses, say hello to the oak, check that the stream is singing. But one morning Pietrolino is strange. He doesn't wriggle, he doesn't joke. He's silent."
+    },
+    {
+      "illustration": {
+        "alt": "Emma sitting on the grass with Pietrolino on her palm, looking at him worriedly; Grandma not far away on a log."
+      },
+      "text": "\"You're quiet today,\" says Emma, sitting down on the grass. Pietrolino doesn't answer straight away. Then, in a very low voice: \"Emma, I need to tell you something. I won't stay forever.\" \"What do you mean?\" she whispers. \"I'm a piece of nature. I came to help you learn to listen. Now you can do it on your own. And I have to go back to being a pebble of the wood, in my own place.\"",
+      "companionLines": {
+        "bo": "Oh. That gives me a tight feeling in my tummy, {nome}. You too?",
+        "pilu": "Pietrolino isn't disappearing, {nome}. He's going back to his place. Let's listen carefully.",
+        "tango": "No! That's not fair! ...Sorry, {nome}. It's just that I cared too."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma hugs Pietrolino to her chest, her eyes shining with tears; Grandma has come over and has a hand on her shoulder."
+      },
+      "text": "Emma holds Pietrolino tight. \"But I don't want to lose you.\" Tears roll down her cheeks, and she doesn't stop them. Grandma comes quietly, sits down beside her and puts a hand on her shoulder. She doesn't say anything. She just stays. \"You won't lose me,\" says Pietrolino, \"if you keep listening to the trees, helping the animals, respecting the water, the earth and the sky. That's what gave me my voice.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma sitting close together; Emma looks at Pietrolino in her hand, thoughtful."
+      },
+      "text": "Emma thinks of everything she's lived through with him: the sad stream, the oak, the fireflies, the snowflake, the owl. How do you say goodbye to a friend like that?",
+      "dialogue": {
+        "together": "Ask: how would you feel in Emma's place? Have you ever had to say goodbye to someone or something you loved?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you do in Emma's place, {nome}?",
+            "pilu": "What would you do in Emma's place, {nome}?",
+            "tango": "What would you do in Emma's place, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I'd cry a bit",
+              "reaction": {
+                "bo": "Me too. Crying when you say goodbye to someone is normal.",
+                "pilu": "Tears show how much you loved him. Let's see what Emma does.",
+                "tango": "I'd cry and then blow my nose really loudly. Let's watch Emma."
+              }
+            },
+            {
+              "label": "I'd ask for a hug",
+              "reaction": {
+                "bo": "Yes. A hug helps a lot.",
+                "pilu": "Emma has Grandma close by, luckily. Let's see how it goes.",
+                "tango": "Group hug! Let's see what Emma does."
+              }
+            },
+            {
+              "label": "I'd keep a memory",
+              "reaction": {
+                "bo": "A memory to keep close. I like that.",
+                "pilu": "A memory can be a thing, or a gesture. Let's see what Emma chooses.",
+                "tango": "I'd keep everything! ...Let's see what Emma chooses."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma dries her eyes and smiles a little, with Pietrolino on her palm; Grandma squeezes her hand."
+      },
+      "text": "Emma cries a little more, with Grandma close by. Then she dries her eyes. She remembers courage, kindness, silence, care. \"Then I'll always carry you with me,\" she says. \"Not in my pocket. In what I do.\" Pietrolino smiles. \"Then I'll be everywhere.\"",
+      "companionLines": {
+        "bo": "She cried and then she smiled. You can do both, {nome}.",
+        "pilu": "Did you hear, {nome}? \"In what I do\". Pietrolino stays in what Emma does.",
+        "tango": "Everywhere! So here too? ...I like thinking that, {nome}."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma at the top of the highest hill; from there you can see the meadows, the river and the school far away; Emma places Pietrolino in the grass next to a daisy that has just opened."
+      },
+      "text": "Emma and Grandma climb up to the highest hill. From up there you can see the meadows, the river and, far away, the school. Emma chooses a special spot, next to a daisy that has just opened, and places Pietrolino in the grass, gently, with both hands. \"New stories will begin here.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma walk down the hill hand in hand; the wind moves the grass and the daisy; in the distance, the wood, the stream and the oak."
+      },
+      "text": "Emma and Grandma walk down the hill hand in hand. The wind moves the grass, light as a stroke, and seems to whisper: \"Thank you, Emma.\" Emma doesn't turn round. She knows Pietrolino is there, in his place. And she knows that tomorrow, in the wood, she'll listen again.",
+      "companionLines": {
+        "bo": "I'll miss Pietrolino, {nome}. Tomorrow, when I see a round stone, I'll say hello to it.",
+        "pilu": "Whoever taught us something stays with us, {nome}. Tomorrow, if you like, tell me who taught you something. See you tomorrow.",
+        "tango": "Tomorrow I'll go to the wood to listen, {nome}. Like Emma. Then Pietrolino will be happy. Bye!"
+      }
+    }
+  ]
+}

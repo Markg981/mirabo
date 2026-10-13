@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion in a meadow in the evening, with a small lit lantern and the moon in the sky."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}. It's evening. The wood is all dark. I'm a bit scared of the dark. Will you hold my hand?",
+        "pilu": "Hi {nome}! At night I open my eyes wide. Did you know that at night some lights switch on in the wood?",
+        "tango": "Hi {nome}! A night-time trip! Come on, let's switch on all the lights and go!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma holding a lantern with Grandma beside her, on the path at sunset; the sky is pink and purple."
+      },
+      "text": "It's a summer evening. Emma and Grandma go into the wood with a small lantern. \"Do we really have to come at night?\" asks Emma, squeezing Pietrolino in her hand. \"Trust me,\" he says. \"Some things can only be seen in the dark.\" The wood becomes mysterious. Emma holds Grandma's hand."
+    },
+    {
+      "illustration": {
+        "alt": "A dark clearing under the stars; Emma and Grandma sitting in the tall grass, the lit lantern between them."
+      },
+      "text": "They reach a clearing where the trees open up and you can see the sky. They sit down in the grass. Everything is still. \"There's nothing here,\" says Emma. \"Wait,\" whispers Pietrolino. \"Try turning off the lantern.\"",
+      "companionLines": {
+        "bo": "Turn it off? But then it's all dark! {nome}, I'm closing just one eye.",
+        "pilu": "Strange, isn't it, {nome}? To see better, you have to turn off the light.",
+        "tango": "Turn it off?! I'd leave it on! ...But I'm curious. What about you, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma with her hand on the lantern, unsure; Grandma holds her other hand."
+      },
+      "text": "Emma looks at the lantern. She looks at the darkness around her. She looks at Grandma, who is holding her hand. Turning off the light, in the dark, in the wood...",
+      "dialogue": {
+        "together": "Ask: how is Emma feeling now? And you, when the light goes off, how do you feel?",
+        "alone": {
+          "prompt": {
+            "bo": "And how would you feel, {nome}?",
+            "pilu": "And how would you feel, {nome}?",
+            "tango": "And how would you feel, {nome}?"
+          },
+          "options": [
+            {
+              "label": "A bit scared",
+              "reaction": {
+                "bo": "Me too. Very. Let's hold hands tight and see what happens.",
+                "pilu": "It's normal to be scared of the dark. Emma has Grandma close by. Let's see.",
+                "tango": "A little bit me too, to be honest. Let's watch together."
+              }
+            },
+            {
+              "label": "Really curious",
+              "reaction": {
+                "bo": "Then you're braver than me. Let's see what happens.",
+                "pilu": "Curiosity makes you open your eyes wide. Let's see what Emma discovers.",
+                "tango": "Me too! Super curious! Let's see if Emma turns it off!"
+              }
+            },
+            {
+              "label": "I want a hand to hold",
+              "reaction": {
+                "bo": "Yes. With a hand to hold, the dark gets smaller.",
+                "pilu": "Emma has one: Grandma's hand. Let's see if it's enough.",
+                "tango": "Here's my paw! Now let's watch."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "All dark; the first tiny golden lights switch on in front of Emma and Grandma."
+      },
+      "text": "Emma turns off the lantern. The dark wraps around her like a blanket. At first she can't see anything, only shadows. But then... plim! A tiny light switches on in front of her. Then another. And another. Plim, plim, plim!"
+    },
+    {
+      "illustration": {
+        "alt": "Hundreds of fireflies dance in the clearing; one has landed on Emma's nose, and she looks at it cross-eyed."
+      },
+      "text": "Fireflies! Lots and lots of little stars dance in the dark, switching on and off like a heartbeat. \"They're happy you turned off the lantern,\" says Pietrolino. \"Strong light confuses them. They show themselves to people who wait quietly.\" A firefly lands on Emma's nose. \"Hello, little one,\" she whispers.",
+      "companionLines": {
+        "bo": "Oooh. I'm not scared any more. Look how many, {nome}!",
+        "pilu": "You know, {nome}? Fireflies talk to each other with light. On, off, on.",
+        "tango": "One on her nose! I'd keep really, really still. You too, {nome}? Shhh."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma and Grandma walk home hand in hand with the lantern off; a few fireflies follow them like a little constellation."
+      },
+      "text": "Emma stays there for a long time. She doesn't need to talk. In her chest there's a light happiness, like wings beating softly. Then she and Grandma walk home hand in hand, with the lantern off, and a few fireflies follow them like a little constellation.",
+      "companionLines": {
+        "bo": "The dark was full of lights, {nome}. Tonight I'll turn off the light and look out of the window. With you.",
+        "pilu": "Tonight you try too, {nome}: turn off the light, wait a bit, and see what lights up. See you tomorrow.",
+        "tango": "Tomorrow I'll go back in the dark to count fireflies, {nome}! Really still, though. Bye!"
+      }
+    }
+  ]
+}

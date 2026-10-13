@@ -1,0 +1,193 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno sul sentiero fangoso di primavera, tra le prime foglioline e un fiore appena sbocciato.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.42, "y": 0.68, "s": 0.46},
+            {"e": "🌱", "x": 0.66, "y": 0.88, "s": 0.08},
+            {"e": "🌷", "x": 0.18, "y": 0.86, "s": 0.09},
+            {"e": "🐦", "x": 0.76, "y": 0.3, "s": 0.07, "flip": true}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! La neve si scioglie. Che fango! Ma senti? Gli uccellini sono tornati.",
+        "pilu": "Ciao {nome}! Il bosco dormiva, ti ricordi? Oggi si sveglia. Andiamo a vedere come sta.",
+        "tango": "Ciao {nome}! Primavera! Fango! Fiori! Dai, corriamo!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma corre sul sentiero fangoso con gli stivaletti rossi, la nonna dietro; dai rami cadono gocce, spuntano le prime foglie.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🏃‍♀️", "x": 0.36, "y": 0.76, "s": 0.32, "flip": true},
+            {"paint": "pebble", "x": 0.4, "y": 0.68, "s": 0.04},
+            {"e": "👵", "x": 0.62, "y": 0.74, "s": 0.34, "flip": true},
+            {"e": "💧", "x": 0.14, "y": 0.42, "s": 0.04},
+            {"e": "🌿", "x": 0.86, "y": 0.86, "s": 0.09}
+          ]
+        }
+      },
+      "text": "Il ghiaccio si scioglie, le giornate si allungano. \"Pietrolino, senti anche tu questo profumo?\" chiede Emma, correndo sul sentiero fangoso. \"Sento la terra che respira.\" Dopo mesi di neve il bosco si sveglia: gocce cadono dai rami, spuntano le prime foglioline, gli uccellini cantano."
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Piante spezzate, un nido caduto a terra, e un piccolo riccio che trema vicino a una lattina arrugginita; Emma inginocchiata a distanza.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.26, "y": 0.8, "s": 0.28},
+            {"e": "🦔", "x": 0.62, "y": 0.88, "s": 0.1},
+            {"e": "🥫", "x": 0.74, "y": 0.88, "s": 0.07, "rot": 80},
+            {"e": "🪹", "x": 0.86, "y": 0.8, "s": 0.08},
+            {"e": "🪵", "x": 0.46, "y": 0.9, "s": 0.08, "rot": 30}
+          ]
+        }
+      },
+      "text": "Ma qualcosa non va. Ci sono piante spezzate, un nido caduto, e un piccolo riccio che trema vicino a una lattina arrugginita. \"Oh no,\" dice Emma, e si inginocchia. \"Il bosco è forte,\" dice Pietrolino, \"ma l'inverno è stato duro. E qualcuno ha lasciato qui una lattina. Adesso ha bisogno d'aiuto.\"",
+      "companionLines": {
+        "bo": "Povero riccio. Trema come me quando ho paura. Cosa facciamo, {nome}?",
+        "pilu": "Guarda bene, {nome}: la lattina è arrugginita. Può tagliare.",
+        "tango": "Il riccio! Lo prendo io! ...Aspetta. Forse no. Tu che dici, {nome}?"
+      }
+    },
+    {
+      "n": 4,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma ferma a guardare il riccio e la lattina; la nonna si avvicina con guanti e sacchetto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.3, "y": 0.8, "s": 0.28},
+            {"e": "🦔", "x": 0.6, "y": 0.88, "s": 0.1},
+            {"e": "🥫", "x": 0.72, "y": 0.88, "s": 0.07, "rot": 80},
+            {"e": "👵", "x": 0.12, "y": 0.74, "s": 0.32},
+            {"e": "🧤", "x": 0.2, "y": 0.8, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Il riccio trema. La lattina è lì accanto. Emma vorrebbe aiutare subito. Cosa può fare?",
+      "dialogue": {
+        "together": "Chiedi: cosa può fare Emma per il riccio? E perché la lattina non si tocca a mani nude?",
+        "alone": {
+          "prompt": {
+            "bo": "Tu cosa faresti, {nome}?",
+            "pilu": "Tu cosa faresti, {nome}?",
+            "tango": "Tu cosa faresti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "in-braccio",
+              "icon": "hold",
+              "label": "Prendo il riccio in braccio",
+              "reaction": {
+                "bo": "Ha gli aculei... e forse ha paura di noi. Vediamo cosa fa Emma.",
+                "pilu": "Gli animali del bosco a volte si spaventano se li tocchiamo. Vediamo cosa fa Emma.",
+                "tango": "Anch'io ci avevo pensato! Ma punge. Vediamo Emma."
+              }
+            },
+            {
+              "id": "chiamo-nonna",
+              "icon": "call-adult",
+              "label": "Chiamo la nonna",
+              "reaction": {
+                "bo": "La nonna sa cosa si tocca e cosa no. Bello averla vicino.",
+                "pilu": "Con la lattina arrugginita, un grande serve proprio. Vediamo.",
+                "tango": "Nonnaaa! ...Eccola che arriva. Guardiamo."
+              }
+            },
+            {
+              "id": "rifugio",
+              "icon": "leaves",
+              "label": "Gli faccio una casetta di foglie",
+              "reaction": {
+                "bo": "Una casetta calda. Io ci dormirei subito.",
+                "pilu": "Un rifugio senza toccarlo. Vediamo se Emma ci pensa.",
+                "tango": "Foglie! Tante foglie! Vediamo cosa fa Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "kind": "turn",
+      "illustration": {
+        "alt": "La nonna mette la lattina nel sacchetto con i guanti; Emma ammucchia foglie e rametti sotto una radice; il riccio ci si infila.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👵", "x": 0.7, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🛍️", "x": 0.82, "y": 0.86, "s": 0.1},
+            {"e": "🧒", "x": 0.32, "y": 0.8, "s": 0.28},
+            {"e": "🍂", "x": 0.5, "y": 0.9, "s": 0.08},
+            {"e": "🍂", "x": 0.55, "y": 0.88, "s": 0.07},
+            {"e": "🦔", "x": 0.52, "y": 0.86, "s": 0.07}
+          ]
+        }
+      },
+      "text": "Emma chiama la nonna. La nonna, con i guanti, prende la lattina e la mette nel sacchetto. Emma intanto raccoglie foglie secche e rametti e li ammucchia sotto una radice, senza toccare il riccio. Piano piano, il riccio ci si infila dentro. \"Ogni gesto conta,\" dice Pietrolino."
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Una volpe rossa sbuca tra i cespugli, con occhi attenti e gentili, e guarda Emma.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🦊", "x": 0.72, "y": 0.8, "s": 0.18, "flip": true},
+            {"e": "🌿", "x": 0.84, "y": 0.84, "s": 0.12},
+            {"e": "🧒", "x": 0.34, "y": 0.8, "s": 0.28},
+            {"paint": "pebble", "x": 0.42, "y": 0.84, "s": 0.04}
+          ]
+        }
+      },
+      "text": "Tra i cespugli compare una volpe rossa. Ha gli occhi attenti, ma gentili. \"Emma, tu ti prendi cura del bosco. Il bosco se ne ricorderà.\" Emma non si stupisce: ormai sa che nel bosco chi ascolta viene ascoltato. \"Voglio aiutare ogni anno,\" dice. \"Così si cambia il mondo,\" risponde la volpe. \"Non con gesti enormi, ma con cura continua.\"",
+      "companionLines": {
+        "bo": "Una volpe che parla! Ha la coda come Tango. Hai visto, {nome}?",
+        "pilu": "Sai, {nome}? Le volpi vivono davvero nei boschi vicino alle case. Di solito sono timide.",
+        "tango": "Una volpe! Sembra mia cugina! Le somiglio, {nome}? Io però parlo di più."
+      }
+    },
+    {
+      "n": 7,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma con alcuni compagni di scuola e la maestra mettono cartelli fatti a mano lungo il sentiero: Qui vive un riccio, Rispetta chi dorme tra le foglie.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.3, "y": 0.78, "s": 0.28},
+            {"e": "👦", "x": 0.44, "y": 0.8, "s": 0.26},
+            {"e": "🧒", "x": 0.56, "y": 0.8, "s": 0.24},
+            {"e": "👩‍🏫", "x": 0.72, "y": 0.74, "s": 0.34, "flip": true},
+            {"e": "🪧", "x": 0.88, "y": 0.8, "s": 0.16},
+            {"e": "🦔", "x": 0.88, "y": 0.92, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Il giorno dopo Emma torna con dei cartelli fatti a mano: \"Qui vive un riccio\", \"Rispetta chi dorme tra le foglie\", \"Porta a casa i tuoi rifiuti\". A scuola ne parla con la maestra e i compagni. E così nasce il Gruppo dei Piccoli Custodi della Natura.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Piccoli Custodi! Posso esserlo anch'io, {nome}? Domani faccio un mucchio di foglie per i ricci.",
+        "pilu": "Domani prova a disegnare anche tu un cartello per il tuo parco, {nome}. Cosa ci scriveresti? A domani.",
+        "tango": "Io mi iscrivo subito ai Custodi! E anche tu, {nome}! Domani cerchiamo ricci. Ciao!"
+      }
+    }
+  ]
+}

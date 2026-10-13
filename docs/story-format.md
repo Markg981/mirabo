@@ -96,7 +96,7 @@ alcune figure posizionate, come in un libro illustrato.
 
 | Campo | Valori |
 | --- | --- |
-| `bg` | `room` (cameretta), `forest` (sentiero nel bosco), `stream` (ruscello; `"dirty": true` per l'acqua torbida), `sky` |
+| `bg` | `room` (cameretta), `forest` (sentiero nel bosco), `stream` (ruscello; `"dirty": true` per l'acqua torbida), `sky`, `night` (prato nel bosco di notte, luna e stelle), `snow` (prato innevato, alberi spogli), `winter-night` (neve di notte) |
 | `e` | un'emoji (persone, oggetti, animali) |
 | `paint` | `companion` (il compagno del bambino), `volcano` (`color`: `red`/`orange`/`pink`/`green`, `smoke`, `flower`), `tower` (`variant`: `tall`/`leaning`/`fallen`/`wide`, `flag`), `pebble` (Pietrolino) |
 | `x`, `y` | centro della figura, in frazioni del riquadro (0–1) |

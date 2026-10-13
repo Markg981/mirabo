@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "El compañero en el sendero embarrado de primavera, entre las primeras hojitas y una flor recién abierta."
+      },
+      "companionLines": {
+        "bo": "¡Hola, {nome}! La nieve se derrite. ¡Cuánto barro! Pero escucha. Han vuelto los pajaritos.",
+        "pilu": "¡Hola, {nome}! El bosque dormía, ¿te acuerdas? Hoy se despierta. Vamos a ver cómo está.",
+        "tango": "¡Hola, {nome}! ¡Primavera! ¡Barro! ¡Flores! ¡Venga, a correr!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma corre por el sendero embarrado con las botas rojas, la abuela detrás; de las ramas caen gotas, asoman las primeras hojas."
+      },
+      "text": "El hielo se derrite y los días se alargan. \"Pietrolino, ¿tú también notas este olor?\", pregunta Emma, corriendo por el sendero embarrado. \"Noto la tierra que respira.\" Después de meses de nieve, el bosque se despierta: caen gotas de las ramas, asoman las primeras hojitas, cantan los pajaritos."
+    },
+    {
+      "illustration": {
+        "alt": "Plantas rotas, un nido caído en el suelo y un pequeño erizo que tiembla junto a una lata oxidada; Emma, de rodillas, a distancia."
+      },
+      "text": "Pero algo no va bien. Hay plantas rotas, un nido caído y un pequeño erizo que tiembla junto a una lata oxidada. \"Oh, no\", dice Emma, y se arrodilla. \"El bosque es fuerte\", dice Pietrolino, \"pero el invierno ha sido duro. Y alguien ha dejado aquí una lata. Ahora necesita ayuda.\"",
+      "companionLines": {
+        "bo": "Pobre erizo. Tiembla como yo cuando tengo miedo. ¿Qué hacemos, {nome}?",
+        "pilu": "Mira bien, {nome}: la lata está oxidada. Puede cortar.",
+        "tango": "¡El erizo! ¡Lo cojo yo! ...Espera. Mejor no. ¿Tú qué dices, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma quieta mirando el erizo y la lata; la abuela se acerca con guantes y bolsa."
+      },
+      "text": "El erizo tiembla. La lata está justo al lado. Emma querría ayudar enseguida. ¿Qué puede hacer?",
+      "dialogue": {
+        "together": "Pregunta: ¿qué puede hacer Emma por el erizo? ¿Y por qué la lata no se toca con las manos desnudas?",
+        "alone": {
+          "prompt": {
+            "bo": "¿Tú qué harías, {nome}?",
+            "pilu": "¿Tú qué harías, {nome}?",
+            "tango": "¿Tú qué harías, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Cojo el erizo en brazos",
+              "reaction": {
+                "bo": "Tiene púas... y quizá nos tiene miedo. A ver qué hace Emma.",
+                "pilu": "Los animales del bosque a veces se asustan si los tocamos. A ver qué hace Emma.",
+                "tango": "¡Yo también lo había pensado! Pero pincha. Miremos a Emma."
+              }
+            },
+            {
+              "label": "Llamo a la abuela",
+              "reaction": {
+                "bo": "La abuela sabe qué se toca y qué no. Qué bien tenerla cerca.",
+                "pilu": "Con una lata oxidada hace falta un mayor. A ver.",
+                "tango": "¡Abuelaaa! ...Ahí viene. Miremos."
+              }
+            },
+            {
+              "label": "Le hago una casita de hojas",
+              "reaction": {
+                "bo": "Una casita calentita. Yo me dormiría enseguida.",
+                "pilu": "Un refugio sin tocarlo. A ver si Emma lo piensa.",
+                "tango": "¡Hojas! ¡Muchas hojas! A ver qué hace Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "La abuela, con guantes, mete la lata en la bolsa; Emma amontona hojas y ramitas bajo una raíz; el erizo se mete dentro."
+      },
+      "text": "Emma llama a la abuela. La abuela, con los guantes, coge la lata y la mete en la bolsa. Mientras tanto, Emma recoge hojas secas y ramitas y las amontona bajo una raíz, sin tocar al erizo. Poco a poco, el erizo se mete dentro. \"Cada gesto cuenta\", dice Pietrolino."
+    },
+    {
+      "illustration": {
+        "alt": "Una zorra roja asoma entre los arbustos, con ojos atentos y amables, y mira a Emma."
+      },
+      "text": "Entre los arbustos aparece una zorra roja. Tiene los ojos atentos, pero amables. \"Emma, tú cuidas del bosque. El bosque se acordará.\" Emma no se sorprende: ya sabe que en el bosque quien escucha es escuchado. \"Quiero ayudar todos los años\", dice. \"Así se cambia el mundo\", responde la zorra. \"No con gestos enormes, sino con un cuidado constante.\"",
+      "companionLines": {
+        "bo": "¡Una zorra que habla! Tiene la cola como Tango. ¿Has visto, {nome}?",
+        "pilu": "¿Sabes, {nome}? Los zorros viven de verdad en los bosques cerca de las casas. Suelen ser tímidos.",
+        "tango": "¡Una zorra! ¡Parece mi prima! ¿Me parezco a ella, {nome}? Yo hablo más, eso sí."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma con algunos compañeros de clase y la maestra colocan carteles hechos a mano a lo largo del sendero: Aquí vive un erizo, Respeta a quien duerme entre las hojas."
+      },
+      "text": "Al día siguiente, Emma vuelve con unos carteles hechos a mano: \"Aquí vive un erizo\", \"Respeta a quien duerme entre las hojas\", \"Llévate tu basura a casa\". En el colegio lo cuenta a la maestra y a sus compañeros. Y así nace el Grupo de los Pequeños Guardianes de la Naturaleza.",
+      "companionLines": {
+        "bo": "¡Pequeños Guardianes! ¿Puedo serlo yo también, {nome}? Mañana hago un montón de hojas para los erizos.",
+        "pilu": "Mañana prueba a dibujar tú también un cartel para tu parque, {nome}. ¿Qué escribirías? Hasta mañana.",
+        "tango": "¡Yo me apunto ya a los Guardianes! ¡Y tú también, {nome}! Mañana buscamos erizos. ¡Adiós!"
+      }
+    }
+  ]
+}

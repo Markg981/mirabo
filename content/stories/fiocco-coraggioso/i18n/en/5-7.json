@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "The companion in the snow, nose in the air, watching the falling snowflakes."
+      },
+      "companionLines": {
+        "bo": "Hi {nome}! Snow! I love it, I'm a mammoth. But today there's a snowflake who's scared. Like me, sometimes.",
+        "pilu": "Hi {nome}! Did you know every snowflake is different from all the others? Today we're meeting a special one.",
+        "tango": "Hi {nome}! Snow! Snowballs! Come on, let's go out right now!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma in pyjamas at the window, white with snow, with a big smile; Pietrolino on the windowsill."
+      },
+      "text": "One winter morning Emma wakes up smiling: the window is all white. \"Pietrolino! It's snowing!\" \"I know,\" he says from the windowsill. \"But there's a little problem. Up there there's a snowflake that doesn't want to come down. It's afraid of melting.\""
+    },
+    {
+      "illustration": {
+        "alt": "Emma in her hood on the little hill behind the house, looking at the sky; among the clouds a bright dot sways without falling; Grandma at the window."
+      },
+      "text": "Emma puts on her coat and climbs the little hill behind the house. Grandma watches her from the window. Among the clouds there really is a bright dot swaying, not coming down. \"Hey, little snowflake! Come down with the others! It's lovely here!\" A trembling little voice answers: \"What if I land badly? What if I end up in a puddle? What if I'm no good for anything?\"",
+      "companionLines": {
+        "bo": "I understand the snowflake. I'm scared of getting things wrong too. Aren't you, {nome}?",
+        "pilu": "Did you hear, {nome}? The snowflake isn't scared of falling. It's scared of getting it wrong.",
+        "tango": "I'd tell it: just come down! ...Oh. Maybe it's not that easy, is it {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma with her hands cupped towards the sky, the snowflake up there, trembling."
+      },
+      "text": "Emma thinks. The snowflake is so small, so light. And so scared. What can she say to it?",
+      "dialogue": {
+        "together": "Ask: what would you say to the snowflake to help it? And when you're scared of getting something wrong, what helps you?",
+        "alone": {
+          "prompt": {
+            "bo": "What would you say to it, {nome}?",
+            "pilu": "What would you say to it, {nome}?",
+            "tango": "What would you say to it, {nome}?"
+          },
+          "options": [
+            {
+              "label": "I get scared sometimes too",
+              "reaction": {
+                "bo": "Yes. Saying it makes you feel less alone. Let's see what Emma says.",
+                "pilu": "When someone understands us, fear gets smaller. Let's listen to Emma.",
+                "tango": "Me too, you know. But don't tell anyone! Let's see."
+              }
+            },
+            {
+              "label": "Come on, I'll catch you",
+              "reaction": {
+                "bo": "With someone underneath to catch you, falling is less scary.",
+                "pilu": "Help ready and waiting. Let's see if the snowflake trusts her.",
+                "tango": "Hands ready! Let's see if it comes down! Let's watch."
+              }
+            },
+            {
+              "label": "You can wait a bit",
+              "reaction": {
+                "bo": "Waiting is OK too. Everyone has their own time.",
+                "pilu": "There's no hurry. Let's see what the snowflake decides.",
+                "tango": "Waiting? Hard for me! Let's see what happens."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma talks gently to the sky; the snowflake starts to come down, turning as if dancing."
+      },
+      "text": "\"I get scared sometimes too,\" says Emma. \"But only by trying do I find out what I can do. You could land on a branch and make it sparkle. Or on a hand, and make someone smile.\" The snowflake stays still. Then, slowly, slowly, it starts to dance. It comes down gently, turning round and round."
+    },
+    {
+      "illustration": {
+        "alt": "The snowflake has landed on the tip of Emma's nose and she looks at it cross-eyed; then it becomes a shining drop."
+      },
+      "text": "The snowflake lands on the tip of Emma's nose. It's icy, light, and it sparkles. \"Thank you,\" it whispers. \"Now I know I can do something beautiful, even just for a moment.\" And it melts into a shining drop.",
+      "companionLines": {
+        "bo": "It did it! It was scared, but it came down anyway. Did you see, {nome}?",
+        "pilu": "You know, {nome}? The snowflake hasn't disappeared. It's become a drop. It's changed shape.",
+        "tango": "On her nose! Ha ha! I would have sneezed, {nome}!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma walks home leaving footprints in the snow; Grandma waits for her at the door."
+      },
+      "text": "\"Things that don't last long can be wonderful too, can't they?\" asks Emma. \"Exactly,\" Pietrolino answers. \"Courage isn't staying still, it's having a go.\" Emma walks home, leaving footprints in the snow. Grandma is waiting for her at the door.",
+      "companionLines": {
+        "bo": "Tomorrow I'll try something that scares me a bit, {nome}. Something small. I'll have a go.",
+        "pilu": "When something new scares you, try saying \"I'll have a go\", {nome}. Like the snowflake. See you tomorrow.",
+        "tango": "Tomorrow I'll try something new, {nome}! And if I get it wrong, I'll try again. Bye!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon, l'oreille collée au tronc d'un arbre, comme pour l'écouter."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! Tu sais que les arbres parlent ? Tout doucement, avec leurs feuilles. Mais aujourd'hui, il y en a un qui ne parle plus. Ça me fait un peu peur.",
+        "pilu": "Bonjour {nome} ! Aujourd'hui on va voir un très vieil arbre. Je me demande pourquoi il est devenu si silencieux.",
+        "tango": "Bonjour {nome} ! Un arbre qui parle ! Moi, je lui demande tout de suite son nom. On y va !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma marche dans les feuilles avec Pietrolino dans sa poche ; Mamie la suit avec un petit sac à dos."
+      },
+      "text": "Le soleil brille entre les feuilles. Emma retourne dans le bois avec Pietrolino dans sa poche et Mamie un peu derrière, avec le sac à dos. « Où on va aujourd'hui ? » demande Emma. « Voir une vieille amie », dit Pietrolino. « Un chêne. Il parlait tout le temps. Mais depuis quelque temps, il se tait, et personne ne sait pourquoi. »"
+    },
+    {
+      "illustration": {
+        "alt": "Un grand chêne courbé et éteint ; les feuilles tombent alors que ce n'est pas l'automne ; à son pied, des morceaux de plastique et de la terre piétinée sans fleurs."
+      },
+      "text": "Le voilà. Un chêne grand et haut, mais courbé et éteint. Ses branches pendent, ses feuilles tombent alors que ce n'est pas l'automne. À son pied, il y a des morceaux de plastique, des branches cassées et un cercle de terre piétinée là où poussaient des fleurs. « Bonjour », dit Emma doucement. « Je suis Emma. Je suis venue t'écouter. » Silence.",
+      "companionLines": {
+        "bo": "Il ne répond pas. Il est peut-être fatigué. Ou triste. Qu'est-ce que tu en penses, {nome} ?",
+        "pilu": "Regarde bien à son pied, {nome}. Qu'est-ce que tu vois qui ne devrait pas être là ?",
+        "tango": "Moi, je crierais très fort ! ...Mais crier ne sert peut-être à rien, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma devant le chêne silencieux, Pietrolino dans la main, Mamie pas loin avec le sac à dos ouvert."
+      },
+      "text": "Le chêne ne parle pas. Emma regarde le plastique, les branches cassées, la terre sans fleurs. Qu'est-ce qu'elle peut faire pour lui ?",
+      "dialogue": {
+        "together": "Demande : à ton avis, pourquoi le chêne a-t-il arrêté de parler ? Et toi, qu'est-ce que tu ferais pour lui ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "pilu": "Et toi, qu'est-ce que tu ferais, {nome} ?",
+            "tango": "Et toi, qu'est-ce que tu ferais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "J'enlève le plastique",
+              "reaction": {
+                "bo": "Comme ça, c'est plus propre à son pied. Voyons si Emma y pense aussi.",
+                "pilu": "D'abord on enlève ce qui fait mal. Voyons ce que fait Emma.",
+                "tango": "Dehors, le plastique ! Tout de suite ! ...Voyons comment fait Emma."
+              }
+            },
+            {
+              "label": "Je reste près de lui",
+              "reaction": {
+                "bo": "Rester près, c'est déjà beaucoup. Moi, je le voudrais, si j'étais triste.",
+                "pilu": "Parfois, quand on est triste, on a besoin de compagnie, pas de mots. Regardons Emma.",
+                "tango": "Rester immobile ? Difficile ! Mais ça marche peut-être. Voyons."
+              }
+            },
+            {
+              "label": "Je plante des fleurs",
+              "reaction": {
+                "bo": "Des fleurs nouvelles ! Comme ça, il n'est plus seul.",
+                "pilu": "Quelque chose qui pousse à la place de la terre piétinée. Voyons ce que fait Emma.",
+                "tango": "Des fleurs partout ! Allez, voyons si Emma a des graines !"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, avec les gants de Mamie, met le plastique dans le sac et les branches cassées en petit tas."
+      },
+      "text": "Mamie lui donne les gants et le sac. Emma ramasse le plastique, puis met les branches cassées en petit tas. Pietrolino saute sur une racine. « Tu entends quelque chose ? » demande Emma. « Peut-être... un tout petit murmure. » Emma s'assoit sous le tronc. « Ça va si je reste un peu avec toi ? Je ne te laisse pas seul. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma à genoux plante trois petites graines près des racines ; Mamie verse un peu d'eau de sa gourde."
+      },
+      "text": "Emma sort trois petites graines de sa poche. « Je les ai trouvées hier. On les plante ici ? » Mamie fait oui de la tête. Emma creuse avec ses mains, met les graines près des racines, une à une, et leur donne un peu d'eau. « Voilà. Comme ça, tu auras des petits amis à côté. »",
+      "companionLines": {
+        "bo": "Rien qu'à regarder, j'ai les mains pleines de terre. J'aime bien, {nome}.",
+        "pilu": "Tu sais, {nome} ? Une graine a besoin de terre, d'eau et de temps. Le temps, c'est le plus long.",
+        "tango": "Trois graines ! Moi, j'en aurais mis cent ! ...Bon, trois, c'est peut-être bien, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Une branche du chêne se penche vers Emma comme une caresse ; Emma, surprise, la bouche ouverte."
+      },
+      "text": "Silence. Puis un son léger, presque rien, comme le froissement des feuilles : « ...Mer...ci... » Emma se retourne. « Tu as entendu ? Il l'a vraiment dit ? » Pietrolino brille. « Tu as réveillé sa voix, Emma. Pas avec la force. Avec le soin. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma et Mamie sur le chemin du retour ; derrière, le chêne plus droit et une petite pousse verte qui sort de terre."
+      },
+      "text": "Emma remet Pietrolino dans sa poche. « Je reviens bientôt, chêne. Promis. » Et pendant qu'elle rentre avec Mamie, près des racines, une petite pousse verte sort de terre.",
+      "companionLines": {
+        "bo": "Une pousse ! Petite comme moi. Demain, moi aussi je cherche une graine, {nome}.",
+        "pilu": "Tu as vu, {nome} ? Pas de magie : des gants, des graines, un peu d'eau et un peu de compagnie. À demain.",
+        "tango": "Demain je plante une graine dans un pot, {nome} ! Et je la regarde tous les jours. Même si c'est long !"
+      }
+    }
+  ]
+}

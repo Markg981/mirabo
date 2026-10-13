@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Der Begleiter am Abend auf einer Wiese, mit einer kleinen brennenden Laterne und dem Mond am Himmel."
+      },
+      "companionLines": {
+        "bo": "Hallo {nome}. Es ist Abend. Der Wald ist ganz dunkel. Ich habe ein bisschen Angst im Dunkeln. Hältst du meine Hand?",
+        "pilu": "Hallo {nome}! Nachts mache ich die Augen ganz weit auf. Weißt du, dass nachts im Wald Lichter angehen?",
+        "tango": "Hallo {nome}! Ein Ausflug in der Nacht! Los, wir machen alle Lichter an und gehen!"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit einer Laterne in der Hand und Oma neben ihr auf dem Weg bei Sonnenuntergang; der Himmel ist rosa und lila."
+      },
+      "text": "Es ist ein Sommerabend. Emma und Oma gehen mit einer kleinen Laterne in den Wald. „Müssen wir wirklich nachts kommen?“, fragt Emma und drückt Pietrolino in ihrer Hand. „Vertrau mir“, sagt er. „Manche Dinge sieht man nur im Dunkeln.“ Der Wald wird geheimnisvoll. Emma hält Omas Hand."
+    },
+    {
+      "illustration": {
+        "alt": "Eine dunkle Lichtung unter den Sternen; Emma und Oma sitzen im hohen Gras, die brennende Laterne zwischen ihnen."
+      },
+      "text": "Sie kommen zu einer Lichtung, wo die Bäume sich öffnen und man den Himmel sieht. Sie setzen sich ins Gras. Alles ist still. „Hier ist nichts“, sagt Emma. „Warte“, flüstert Pietrolino. „Mach mal die Laterne aus.“",
+      "companionLines": {
+        "bo": "Ausmachen? Aber dann ist alles dunkel! {nome}, ich mache nur ein Auge zu.",
+        "pilu": "Seltsam, oder {nome}? Um besser zu sehen, muss man das Licht ausmachen.",
+        "tango": "Ausmachen?! Ich würde sie anlassen! ...Aber ich bin neugierig. Und du, {nome}?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma mit der Hand an der Laterne, unentschlossen; Oma hält ihre andere Hand."
+      },
+      "text": "Emma schaut die Laterne an. Sie schaut in die Dunkelheit ringsum. Sie schaut Oma an, die ihre Hand hält. Das Licht ausmachen, im Dunkeln, im Wald...",
+      "dialogue": {
+        "together": "Frag: Wie fühlt sich Emma jetzt? Und du, wie fühlst du dich, wenn das Licht ausgeht?",
+        "alone": {
+          "prompt": {
+            "bo": "Und wie würdest du dich fühlen, {nome}?",
+            "pilu": "Und wie würdest du dich fühlen, {nome}?",
+            "tango": "Und wie würdest du dich fühlen, {nome}?"
+          },
+          "options": [
+            {
+              "label": "Ein bisschen Angst",
+              "reaction": {
+                "bo": "Ich auch. Sehr. Wir halten uns fest an der Hand und schauen, was passiert.",
+                "pilu": "Es ist normal, im Dunkeln Angst zu haben. Emma hat Oma ganz nah. Mal sehen.",
+                "tango": "Ehrlich gesagt ich auch ein bisschen. Schauen wir zusammen."
+              }
+            },
+            {
+              "label": "Ganz viel Neugier",
+              "reaction": {
+                "bo": "Dann bist du mutiger als ich. Mal sehen, was passiert.",
+                "pilu": "Neugier macht die Augen weit auf. Mal sehen, was Emma entdeckt.",
+                "tango": "Ich auch! Superneugierig! Mal sehen, ob Emma sie ausmacht!"
+              }
+            },
+            {
+              "label": "Ich will eine Hand zum Halten",
+              "reaction": {
+                "bo": "Ja. Mit einer Hand zum Halten wird das Dunkel kleiner.",
+                "pilu": "Emma hat eine: Omas Hand. Mal sehen, ob das reicht.",
+                "tango": "Hier ist meine Pfote! Jetzt schauen wir."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Alles dunkel; vor Emma und Oma gehen die ersten kleinen goldenen Lichter an."
+      },
+      "text": "Emma macht die Laterne aus. Die Dunkelheit hüllt sie ein wie eine Decke. Zuerst sieht sie nichts, nur Schatten. Aber dann... plim! Ein winziges Licht geht vor ihr an. Dann noch eins. Und noch eins. Plim, plim, plim!"
+    },
+    {
+      "illustration": {
+        "alt": "Hunderte Glühwürmchen tanzen auf der Lichtung; eins hat sich auf Emmas Nase gesetzt, und sie schielt es an."
+      },
+      "text": "Glühwürmchen! Ganz viele kleine Sterne tanzen im Dunkeln, gehen an und aus wie ein Herzschlag. „Sie freuen sich, dass du die Laterne ausgemacht hast“, sagt Pietrolino. „Helles Licht bringt sie durcheinander. Sie zeigen sich denen, die still warten.“ Ein Glühwürmchen setzt sich auf Emmas Nase. „Hallo, du Kleines“, flüstert sie.",
+      "companionLines": {
+        "bo": "Oooh. Ich habe keine Angst mehr. Schau mal, wie viele, {nome}!",
+        "pilu": "Weißt du, {nome}? Glühwürmchen sprechen mit Licht miteinander. An, aus, an.",
+        "tango": "Eins auf der Nase! Ich würde mich gar nicht mehr bewegen. Du auch, {nome}? Pssst."
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma und Oma gehen Hand in Hand nach Hause, die Laterne aus; ein paar Glühwürmchen folgen ihnen wie ein kleines Sternbild."
+      },
+      "text": "Emma bleibt lange dort. Sie muss nicht reden. In ihrer Brust ist ein leichtes Glück, wie Flügel, die sanft schlagen. Dann gehen sie und Oma Hand in Hand nach Hause, mit ausgeschalteter Laterne, und ein paar Glühwürmchen folgen ihnen wie ein kleines Sternbild.",
+      "companionLines": {
+        "bo": "Die Dunkelheit war voller Lichter, {nome}. Heute Abend mache ich das Licht aus und schaue aus dem Fenster. Mit dir.",
+        "pilu": "Probier es heute Abend auch, {nome}: Mach das Licht aus, warte ein bisschen und schau, was aufleuchtet. Bis morgen.",
+        "tango": "Morgen gehe ich wieder ins Dunkle und zähle Glühwürmchen, {nome}! Aber ganz still. Tschüss!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "civetta-silenzio",
+  "version": 1,
+  "title": "La Civetta del Silenzio",
+  "world": "emozioni",
+  "topic": "silenzio",
+  "series": "emma-pietrolino",
+  "episode": 8,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Le risposte più belle si trovano nel silenzio.",
+  "gesture": "Stare un minuto in silenzio, occhi chiusi, e ascoltare il proprio respiro.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Pratiche di silenzio e ascolto nella scuola dell'infanzia, anche di ispirazione montessoriana (da verificare)"
+  ],
+  "status": "draft"
+}

@@ -1,0 +1,101 @@
+{
+  "screens": [
+    {
+      "illustration": {
+        "alt": "Le compagnon dans la neige, le nez en l'air, regarde tomber les flocons."
+      },
+      "companionLines": {
+        "bo": "Bonjour {nome} ! De la neige ! J'adore ça, je suis un mammouth. Mais aujourd'hui, il y a un flocon qui a peur. Comme moi, parfois.",
+        "pilu": "Bonjour {nome} ! Tu sais que chaque flocon de neige est différent de tous les autres ? Aujourd'hui, on en rencontre un très spécial.",
+        "tango": "Bonjour {nome} ! De la neige ! Des boules de neige ! Allez, on sort tout de suite !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma en pyjama à la fenêtre blanche de neige, avec un grand sourire ; Pietrolino sur le rebord."
+      },
+      "text": "Un matin d'hiver, Emma se réveille avec le sourire : la fenêtre est toute blanche. « Pietrolino ! Il neige ! » « Je sais », dit-il depuis le rebord. « Mais il y a un petit problème. Là-haut, il y a un flocon qui ne veut pas descendre. Il a peur de fondre. »"
+    },
+    {
+      "illustration": {
+        "alt": "Emma avec sa capuche sur la petite colline derrière la maison regarde le ciel ; entre les nuages, un point lumineux se balance sans descendre ; Mamie à la fenêtre."
+      },
+      "text": "Emma met son manteau et monte sur la petite colline derrière la maison. Mamie la regarde par la fenêtre. Entre les nuages, il y a vraiment un point lumineux qui se balance et ne descend pas. « Hé, petit flocon ! Descends avec les autres ! C'est super ici ! » Une petite voix tremblante répond : « Et si je tombe mal ? Et si je finis dans une flaque ? Et si je ne sers à rien ? »",
+      "companionLines": {
+        "bo": "Je comprends le flocon. Moi aussi j'ai peur de me tromper. Pas toi, {nome} ?",
+        "pilu": "Tu as entendu, {nome} ? Le flocon n'a pas peur de tomber. Il a peur de se tromper.",
+        "tango": "Moi, je lui dirais : descends, c'est tout ! ...Oh. Ce n'est peut-être pas si facile, hein {nome} ?"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma, les mains en coupe vers le ciel, et le flocon là-haut qui tremble."
+      },
+      "text": "Emma réfléchit. Le flocon est si petit, si léger. Et il a tellement peur. Qu'est-ce qu'elle peut lui dire ?",
+      "dialogue": {
+        "together": "Demande : qu'est-ce que tu dirais au flocon pour l'aider ? Et toi, quand tu as peur de te tromper, qu'est-ce qui t'aide ?",
+        "alone": {
+          "prompt": {
+            "bo": "Et toi, qu'est-ce que tu lui dirais, {nome} ?",
+            "pilu": "Et toi, qu'est-ce que tu lui dirais, {nome} ?",
+            "tango": "Et toi, qu'est-ce que tu lui dirais, {nome} ?"
+          },
+          "options": [
+            {
+              "label": "Moi aussi, j'ai peur parfois",
+              "reaction": {
+                "bo": "Oui. Le dire, ça fait se sentir moins seul. Voyons ce que dit Emma.",
+                "pilu": "Quand quelqu'un nous comprend, la peur devient plus petite. Écoutons Emma.",
+                "tango": "Moi aussi, hein. Mais ne le dis à personne ! Voyons."
+              }
+            },
+            {
+              "label": "Viens, je t'attrape",
+              "reaction": {
+                "bo": "Avec quelqu'un en dessous pour t'attraper, tomber fait moins peur.",
+                "pilu": "Une aide toute prête. Voyons si le flocon a confiance.",
+                "tango": "Mains prêtes ! Voyons s'il descend ! Regardons."
+              }
+            },
+            {
+              "label": "Tu peux attendre un peu",
+              "reaction": {
+                "bo": "Attendre, c'est bien aussi. Chacun a son rythme.",
+                "pilu": "Rien ne presse. Voyons ce que décide le flocon.",
+                "tango": "Attendre ? Difficile pour moi ! Voyons ce qui se passe."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma parle doucement au ciel ; le flocon commence à descendre en tournant comme dans une danse."
+      },
+      "text": "« Moi aussi, j'ai peur parfois », dit Emma. « Mais c'est seulement en essayant que je découvre ce que je sais faire. Tu peux te poser sur une branche et la faire briller. Ou sur une main, et faire sourire quelqu'un. » Le flocon reste immobile. Puis, tout doucement, il commence à danser. Il descend lentement, en tournant comme dans une danse."
+    },
+    {
+      "illustration": {
+        "alt": "Le flocon s'est posé sur le bout du nez d'Emma, qui le regarde en louchant ; puis il devient une goutte brillante."
+      },
+      "text": "Le flocon se pose sur le bout du nez d'Emma. Il est glacé, léger, et il scintille. « Merci », chuchote-t-il. « Maintenant je sais que je peux faire quelque chose de beau, même juste un instant. » Et il fond en une goutte brillante.",
+      "companionLines": {
+        "bo": "Il a réussi ! Il avait peur, mais il est descendu quand même. Tu as vu, {nome} ?",
+        "pilu": "Tu sais, {nome} ? Le flocon n'a pas disparu. Il est devenu une goutte. Il a changé de forme.",
+        "tango": "Sur son nez ! Ha ha ! Moi, j'aurais éternué, {nome} !"
+      }
+    },
+    {
+      "illustration": {
+        "alt": "Emma rentre en laissant des traces de pas dans la neige ; Mamie l'attend à la porte."
+      },
+      "text": "« Les choses qui durent peu peuvent être merveilleuses aussi, hein ? » demande Emma. « Exactement », répond Pietrolino. « Le courage, ce n'est pas rester immobile, c'est essayer. » Emma rentre à la maison en laissant des traces de pas dans la neige. Mamie l'attend à la porte.",
+      "companionLines": {
+        "bo": "Demain j'essaie une chose qui me fait un peu peur, {nome}. Une petite chose. J'essaie.",
+        "pilu": "Quand une chose nouvelle te fait peur, essaie de dire « j'essaie », {nome}. Comme le flocon. À demain.",
+        "tango": "Demain j'essaie une chose nouvelle, {nome} ! Et si je me trompe, je recommence. Salut !"
+      }
+    }
+  ]
+}

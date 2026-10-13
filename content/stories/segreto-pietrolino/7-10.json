@@ -1,0 +1,207 @@
+{
+  "ageBand": "7-10",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno seduto in un prato fiorito di primavera, con un sassolino tondo accanto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"paint": "companion", "x": 0.4, "y": 0.68, "s": 0.46},
+            {"paint": "pebble", "x": 0.62, "y": 0.86, "s": 0.07},
+            {"e": "🌼", "x": 0.7, "y": 0.86, "s": 0.07},
+            {"e": "🐝", "x": 0.8, "y": 0.34, "s": 0.06}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}. Oggi la storia è un po' speciale. Pietrolino ha un segreto. Sediamoci vicini, va bene?",
+        "pilu": "Ciao {nome}. Questo è l'ultimo episodio della stagione di Emma e Pietrolino. Ascoltiamolo con calma, insieme.",
+        "tango": "Ciao {nome}! Un segreto! Io i segreti li adoro. Però oggi, stranamente, vado piano."
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Il bosco in piena primavera: fiori ovunque, api, uccellini, casette per gli insetti appese agli alberi; Emma cammina con Pietrolino in mano.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.78, "s": 0.3},
+            {"paint": "pebble", "x": 0.48, "y": 0.72, "s": 0.05},
+            {"e": "🏠", "x": 0.9, "y": 0.4, "s": 0.08},
+            {"e": "🐝", "x": 0.7, "y": 0.3, "s": 0.05},
+            {"e": "🌸", "x": 0.16, "y": 0.86, "s": 0.08},
+            {"e": "🌼", "x": 0.66, "y": 0.88, "s": 0.07},
+            {"e": "🐦", "x": 0.24, "y": 0.26, "s": 0.06}
+          ]
+        }
+      },
+      "text": "La primavera è arrivata davvero: fiori dappertutto, api che danzano nell'aria, uccellini che cantano ogni mattina. Emma e Pietrolino ormai sono inseparabili. Nel bosco sistemano casette per gli insetti, salutano la quercia, controllano che il ruscello canti. Ma una mattina Pietrolino è strano. Non vibra, non scherza. Sta zitto."
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma seduta sull'erba con Pietrolino sul palmo della mano, lo guarda preoccupata; la nonna poco lontano su un tronco.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.4, "y": 0.8, "s": 0.28},
+            {"paint": "pebble", "x": 0.5, "y": 0.72, "s": 0.06},
+            {"e": "🪵", "x": 0.84, "y": 0.78, "s": 0.16},
+            {"e": "👵", "x": 0.84, "y": 0.66, "s": 0.22, "flip": true}
+          ]
+        }
+      },
+      "text": "\"Sei silenzioso, oggi,\" dice Emma, sedendosi sull'erba. Pietrolino non risponde subito. Poi, con una voce bassa bassa: \"Emma, devo dirti una cosa. Io non resterò per sempre.\" \"Cosa vuol dire?\" sussurra lei. \"Sono un pezzo di natura. Sono venuto per aiutarti a imparare ad ascoltare. Adesso tu sai farlo da sola. E io devo tornare a essere un sassolino del bosco, nel mio posto.\"",
+      "companionLines": {
+        "bo": "Oh. Questo mi stringe la pancia, {nome}. Anche a te?",
+        "pilu": "Pietrolino non sparisce, {nome}. Torna al suo posto. Ascoltiamo bene.",
+        "tango": "Ma no! Non vale! ...Scusa, {nome}. È che anch'io ci tenevo."
+      }
+    },
+    {
+      "n": 4,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma stringe Pietrolino al petto, con gli occhi lucidi; la nonna si è avvicinata e le tiene una mano sulla spalla.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "😢", "x": 0.42, "y": 0.82, "s": 0.22},
+            {"paint": "pebble", "x": 0.47, "y": 0.9, "s": 0.04},
+            {"e": "👵", "x": 0.58, "y": 0.76, "s": 0.32, "flip": true}
+          ]
+        }
+      },
+      "text": "Emma stringe Pietrolino forte. \"Ma io non voglio perderti.\" Le scendono le lacrime, e non le ferma. La nonna arriva piano, si siede accanto a lei e le mette una mano sulla spalla. Non dice niente. Resta lì. \"Non mi perderai,\" dice Pietrolino, \"se continuerai ad ascoltare gli alberi, ad aiutare gli animali, a rispettare l'acqua, la terra e il cielo. È questo che mi ha dato voce.\""
+    },
+    {
+      "n": 5,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma e la nonna sedute vicine; Emma guarda Pietrolino nella mano, pensierosa.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.42, "y": 0.82, "s": 0.26},
+            {"paint": "pebble", "x": 0.48, "y": 0.74, "s": 0.05},
+            {"e": "👵", "x": 0.58, "y": 0.76, "s": 0.32, "flip": true}
+          ]
+        }
+      },
+      "text": "Emma pensa a tutto quello che ha vissuto con lui: il ruscello triste, la quercia, le lucciole, il fiocco di neve, la civetta. Come si fa a salutare un amico così?",
+      "dialogue": {
+        "together": "Chiedi: tu come ti sentiresti al posto di Emma? Ti è mai successo di dover salutare qualcuno o qualcosa a cui volevi bene?",
+        "alone": {
+          "prompt": {
+            "bo": "Tu cosa faresti al posto di Emma, {nome}?",
+            "pilu": "Tu cosa faresti al posto di Emma, {nome}?",
+            "tango": "Tu cosa faresti al posto di Emma, {nome}?"
+          },
+          "options": [
+            {
+              "id": "piango",
+              "icon": "cry",
+              "label": "Piango un po'",
+              "reaction": {
+                "bo": "Anch'io. Piangere quando si saluta qualcuno è normale.",
+                "pilu": "Le lacrime dicono quanto gli volevi bene. Vediamo cosa fa Emma.",
+                "tango": "Io piango e poi soffio il naso fortissimo. Vediamo Emma."
+              }
+            },
+            {
+              "id": "abbraccio",
+              "icon": "hug",
+              "label": "Chiedo un abbraccio",
+              "reaction": {
+                "bo": "Sì. Un abbraccio aiuta tanto.",
+                "pilu": "Emma ha la nonna vicino, per fortuna. Vediamo come va.",
+                "tango": "Abbraccio di gruppo! Vediamo cosa fa Emma."
+              }
+            },
+            {
+              "id": "ricordo",
+              "icon": "keep",
+              "label": "Mi tengo un ricordo",
+              "reaction": {
+                "bo": "Un ricordo da tenere vicino. Mi piace.",
+                "pilu": "Un ricordo può essere una cosa, o un gesto. Vediamo cosa sceglie Emma.",
+                "tango": "Io mi terrei tutto! ...Vediamo cosa sceglie Emma."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma si asciuga gli occhi e sorride appena, con Pietrolino sul palmo; la nonna le stringe la mano.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🧒", "x": 0.42, "y": 0.82, "s": 0.26},
+            {"paint": "pebble", "x": 0.48, "y": 0.72, "s": 0.06},
+            {"e": "👵", "x": 0.58, "y": 0.76, "s": 0.32, "flip": true},
+            {"e": "🤝", "x": 0.5, "y": 0.86, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Emma piange ancora un po', con la nonna vicino. Poi si asciuga gli occhi. Ricorda il coraggio, la gentilezza, il silenzio, la cura. \"Allora ti porterò sempre con me,\" dice. \"Non nella tasca. In quello che faccio.\" Pietrolino sorride. \"Allora sarò dappertutto.\"",
+      "companionLines": {
+        "bo": "Ha pianto e poi ha sorriso. Si possono fare tutte e due le cose, {nome}.",
+        "pilu": "Hai sentito, {nome}? \"In quello che faccio\". Pietrolino resta nei gesti di Emma.",
+        "tango": "Dappertutto! Allora anche qui? ...Mi piace pensarlo, {nome}."
+      }
+    },
+    {
+      "n": 7,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma e la nonna in cima alla collina più alta; da lì si vedono i prati, il fiume e la scuola lontana; Emma posa Pietrolino nell'erba accanto a una margherita appena sbocciata.",
+        "scene": {
+          "bg": "sky",
+          "items": [
+            {"e": "🧒", "x": 0.38, "y": 0.82, "s": 0.26},
+            {"e": "👵", "x": 0.56, "y": 0.78, "s": 0.3, "flip": true},
+            {"paint": "pebble", "x": 0.7, "y": 0.9, "s": 0.05},
+            {"e": "🌼", "x": 0.76, "y": 0.88, "s": 0.07},
+            {"e": "🏫", "x": 0.88, "y": 0.66, "s": 0.08}
+          ]
+        }
+      },
+      "text": "Emma e la nonna salgono fino alla collina più alta. Da lassù si vedono i prati, il fiume e, lontana, la scuola. Emma sceglie un posto speciale, accanto a una margherita appena sbocciata, e posa Pietrolino nell'erba, piano, con tutte e due le mani. \"Qui nasceranno altre storie.\""
+    },
+    {
+      "n": 8,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma e la nonna scendono dalla collina per mano; il vento muove l'erba e la margherita; in lontananza il bosco, il ruscello e la quercia.",
+        "scene": {
+          "bg": "sky",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.8, "s": 0.28},
+            {"e": "👵", "x": 0.54, "y": 0.76, "s": 0.32, "flip": true},
+            {"e": "🌼", "x": 0.84, "y": 0.88, "s": 0.06},
+            {"e": "🍃", "x": 0.7, "y": 0.5, "s": 0.06},
+            {"e": "🍃", "x": 0.78, "y": 0.42, "s": 0.05},
+            {"e": "🌳", "x": 0.14, "y": 0.66, "s": 0.2}
+          ]
+        }
+      },
+      "text": "Emma e la nonna scendono dalla collina tenendosi per mano. Il vento muove l'erba, leggero come una carezza, e sembra sussurrare: \"Grazie, Emma.\" Emma non si gira. Sa che Pietrolino è lì, al suo posto. E sa che domani, nel bosco, ascolterà ancora.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Mi mancherà Pietrolino, {nome}. Domani, quando vedo un sasso tondo, lo saluto.",
+        "pilu": "Chi ci ha insegnato qualcosa resta con noi, {nome}. Domani, se vuoi, raccontami chi ti ha insegnato qualcosa. A domani.",
+        "tango": "Domani vado nel bosco ad ascoltare, {nome}. Come Emma. Così Pietrolino è contento. Ciao!"
+      }
+    }
+  ]
+}

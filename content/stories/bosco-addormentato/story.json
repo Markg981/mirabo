@@ -1,0 +1,20 @@
+{
+  "id": "bosco-addormentato",
+  "version": 1,
+  "title": "Il Bosco Addormentato",
+  "world": "emozioni",
+  "topic": "riposo",
+  "series": "emma-pietrolino",
+  "episode": 6,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Anche i cuori coraggiosi sanno quando fermarsi.",
+  "gesture": "Prima di dormire, chiudere gli occhi e fare tre respiri lenti, come il bosco che si addormenta.",
+  "parentCard": "parent.md",
+  "sources": [
+    "Raccomandazioni pediatriche sul sonno nell'età prescolare e scolare (da verificare)",
+    "Materiali divulgativi sul letargo degli animali (da verificare)"
+  ],
+  "status": "draft"
+}

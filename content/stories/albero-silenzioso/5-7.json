@@ -1,0 +1,212 @@
+{
+  "ageBand": "5-7",
+  "screens": [
+    {
+      "n": 1,
+      "kind": "hook",
+      "illustration": {
+        "alt": "Il compagno con l'orecchio appoggiato al tronco di un albero, come per ascoltarlo.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.66, "y": 0.52, "s": 0.7},
+            {"paint": "companion", "x": 0.36, "y": 0.7, "s": 0.44},
+            {"e": "🍄", "x": 0.86, "y": 0.88, "s": 0.07}
+          ]
+        }
+      },
+      "companionLines": {
+        "bo": "Ciao {nome}! Sai che gli alberi parlano? Piano piano, con le foglie. Oggi però uno non parla più. Mi fa un po' paura.",
+        "pilu": "Ciao {nome}! Oggi andiamo da un albero molto vecchio. Chissà perché è diventato così silenzioso.",
+        "tango": "Ciao {nome}! Un albero che parla! Io gli chiedo subito come si chiama. Andiamo!"
+      }
+    },
+    {
+      "n": 2,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Emma cammina tra le foglie con Pietrolino nel taschino; la nonna la segue con uno zainetto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.76, "s": 0.32},
+            {"paint": "pebble", "x": 0.45, "y": 0.68, "s": 0.05},
+            {"e": "👵", "x": 0.62, "y": 0.72, "s": 0.34, "flip": true},
+            {"e": "🎒", "x": 0.7, "y": 0.82, "s": 0.09},
+            {"e": "🍂", "x": 0.2, "y": 0.5, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Il sole brilla tra le foglie. Emma torna nel bosco con Pietrolino nel taschino e la nonna un po' più indietro, con lo zainetto. \"Dove andiamo oggi?\" chiede Emma. \"Da un vecchio amico,\" dice Pietrolino. \"Una quercia. Parlava sempre. Ma da un po' è in silenzio, e nessuno sa perché.\""
+    },
+    {
+      "n": 3,
+      "kind": "situation",
+      "illustration": {
+        "alt": "Una grande quercia curva e spenta; le foglie cadono anche se non è autunno; ai piedi pezzi di plastica e terra calpestata senza fiori.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.58, "y": 0.5, "s": 0.74, "opacity": 0.75, "rot": -6},
+            {"e": "🍂", "x": 0.4, "y": 0.4, "s": 0.06, "rot": 30},
+            {"e": "🍂", "x": 0.74, "y": 0.56, "s": 0.05, "rot": -40},
+            {"e": "🍂", "x": 0.5, "y": 0.66, "s": 0.05},
+            {"e": "🛍️", "x": 0.42, "y": 0.88, "s": 0.07, "rot": 20},
+            {"e": "🧃", "x": 0.72, "y": 0.9, "s": 0.06, "rot": 80},
+            {"e": "👧", "x": 0.2, "y": 0.8, "s": 0.3}
+          ]
+        }
+      },
+      "text": "Ed eccola. Una quercia grande e alta, ma curva e spenta. I rami sono piegati, le foglie cadono anche se non è autunno. Ai piedi ci sono pezzi di plastica, rami rotti, e un cerchio di terra calpestata dove prima c'erano i fiori. \"Ciao,\" dice Emma piano. \"Sono Emma. Sono venuta ad ascoltarti.\" Silenzio.",
+      "companionLines": {
+        "bo": "Non risponde. Forse è stanca. O triste. Tu che dici, {nome}?",
+        "pilu": "Guarda bene ai suoi piedi, {nome}. Cosa vedi che non dovrebbe esserci?",
+        "tango": "Io urlerei forte forte! ...Ma forse urlare non serve, vero {nome}?"
+      }
+    },
+    {
+      "n": 4,
+      "kind": "dialogue",
+      "illustration": {
+        "alt": "Emma davanti alla quercia silenziosa, Pietrolino nella mano, la nonna poco lontano con lo zainetto aperto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.62, "y": 0.5, "s": 0.72, "opacity": 0.75, "rot": -6},
+            {"e": "👧", "x": 0.3, "y": 0.78, "s": 0.32},
+            {"paint": "pebble", "x": 0.38, "y": 0.72, "s": 0.05},
+            {"e": "👵", "x": 0.12, "y": 0.74, "s": 0.3},
+            {"e": "🎒", "x": 0.2, "y": 0.86, "s": 0.08}
+          ]
+        }
+      },
+      "text": "La quercia non parla. Emma guarda la plastica, i rami rotti, la terra senza fiori. Che cosa può fare per lei?",
+      "dialogue": {
+        "together": "Chiedi: secondo te perché la quercia ha smesso di parlare? E tu cosa faresti per lei?",
+        "alone": {
+          "prompt": {
+            "bo": "Tu cosa faresti, {nome}?",
+            "pilu": "Tu cosa faresti, {nome}?",
+            "tango": "Tu cosa faresti, {nome}?"
+          },
+          "options": [
+            {
+              "id": "pulisco",
+              "icon": "pick-up",
+              "label": "Tolgo la plastica",
+              "reaction": {
+                "bo": "Così ai piedi è più pulito. Vediamo se ci pensa anche Emma.",
+                "pilu": "Prima si toglie quello che fa male. Vediamo cosa fa Emma.",
+                "tango": "Via la plastica! Subito! ...Vediamo come fa Emma."
+              }
+            },
+            {
+              "id": "resto-vicino",
+              "icon": "sit-close",
+              "label": "Le sto vicino",
+              "reaction": {
+                "bo": "Stare vicino è già tanto. Anch'io lo vorrei, se fossi triste.",
+                "pilu": "A volte chi è triste ha bisogno di compagnia, non di parole. Guardiamo Emma.",
+                "tango": "Stare fermi? Difficile! Ma forse funziona. Vediamo."
+              }
+            },
+            {
+              "id": "pianto",
+              "icon": "plant",
+              "label": "Pianto dei fiori",
+              "reaction": {
+                "bo": "Dei fiori nuovi! Così non è più sola.",
+                "pilu": "Al posto della terra calpestata, qualcosa che cresce. Vediamo cosa fa Emma.",
+                "tango": "Fiori dappertutto! Dai, vediamo se Emma ha dei semi!"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma con i guanti della nonna mette la plastica nel sacchetto e i rami rotti in un mucchietto.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.7, "y": 0.5, "s": 0.7, "opacity": 0.8, "rot": -4},
+            {"e": "👧", "x": 0.34, "y": 0.78, "s": 0.32},
+            {"e": "🧤", "x": 0.44, "y": 0.72, "s": 0.08},
+            {"e": "🛍️", "x": 0.52, "y": 0.86, "s": 0.12},
+            {"e": "🪵", "x": 0.16, "y": 0.88, "s": 0.1}
+          ]
+        }
+      },
+      "text": "La nonna le dà i guanti e il sacchetto. Emma raccoglie la plastica, poi mette i rami rotti in un mucchietto. Pietrolino salta sulla radice. \"Senti qualcosa?\" chiede Emma. \"Forse... un sussurro piccolo piccolo.\" Emma si siede sotto il tronco. \"Va bene se resto un po' con te? Non ti lascio sola.\""
+    },
+    {
+      "n": 6,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Emma in ginocchio pianta tre semini vicino alle radici; la nonna versa un po' d'acqua dalla borraccia.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.72, "y": 0.5, "s": 0.7, "opacity": 0.85},
+            {"e": "🧒", "x": 0.38, "y": 0.8, "s": 0.28},
+            {"e": "🌰", "x": 0.52, "y": 0.9, "s": 0.04},
+            {"e": "🌰", "x": 0.57, "y": 0.91, "s": 0.04},
+            {"e": "🌰", "x": 0.62, "y": 0.9, "s": 0.04},
+            {"e": "👵", "x": 0.16, "y": 0.72, "s": 0.32},
+            {"e": "💧", "x": 0.3, "y": 0.78, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Emma tira fuori dalla tasca tre semini. \"Li ho trovati ieri. Li piantiamo qui?\" La nonna annuisce. Emma scava con le mani, mette i semini vicino alle radici, uno alla volta, e li bagna con un po' d'acqua. \"Ecco. Così avrai dei piccoli amici vicino.\"",
+      "companionLines": {
+        "bo": "Ho le mani sporche di terra solo a guardare. Mi piace, {nome}.",
+        "pilu": "Sai, {nome}? Un seme ha bisogno di terra, acqua e tempo. Il tempo è la parte più lunga.",
+        "tango": "Tre semi! Io ne avrei messi cento! ...Forse tre vanno bene, eh {nome}?"
+      }
+    },
+    {
+      "n": 7,
+      "kind": "turn",
+      "illustration": {
+        "alt": "Un ramo della quercia si piega verso Emma come una carezza; Emma sorpresa con la bocca aperta.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "🌳", "x": 0.66, "y": 0.5, "s": 0.74},
+            {"e": "👧", "x": 0.32, "y": 0.78, "s": 0.32},
+            {"paint": "pebble", "x": 0.42, "y": 0.9, "s": 0.05},
+            {"e": "🍃", "x": 0.44, "y": 0.42, "s": 0.07},
+            {"e": "🍃", "x": 0.52, "y": 0.34, "s": 0.06}
+          ]
+        }
+      },
+      "text": "Silenzio. Poi un suono leggero, quasi niente, come il fruscio delle foglie: \"...Gra...zie...\" Emma si gira. \"L'hai sentito? L'ha detto davvero?\" Pietrolino brilla. \"Hai risvegliato la sua voce, Emma. Non con la forza. Con la cura.\""
+    },
+    {
+      "n": 8,
+      "kind": "closing",
+      "illustration": {
+        "alt": "Emma e la nonna sul sentiero del ritorno; dietro, la quercia più dritta e un piccolo germoglio verde che spunta dalla terra.",
+        "scene": {
+          "bg": "forest",
+          "items": [
+            {"e": "👧", "x": 0.4, "y": 0.78, "s": 0.28},
+            {"e": "👵", "x": 0.54, "y": 0.74, "s": 0.32, "flip": true},
+            {"e": "🌳", "x": 0.86, "y": 0.46, "s": 0.5},
+            {"e": "🌱", "x": 0.78, "y": 0.86, "s": 0.08}
+          ]
+        }
+      },
+      "text": "Emma rimette Pietrolino nel taschino. \"Torno presto, quercia. Promesso.\" E mentre lei e la nonna tornano a casa, vicino alle radici spunta un piccolo germoglio verde.",
+      "keyPhrase": true,
+      "companionLines": {
+        "bo": "Un germoglio! Piccolo come me. Domani cerco un seme anch'io, {nome}.",
+        "pilu": "Hai visto, {nome}? Nessuna magia: guanti, semi, un po' d'acqua e un po' di compagnia. A domani.",
+        "tango": "Domani pianto un seme in un vaso, {nome}! E lo guardo ogni giorno. Anche se ci mette tanto!"
+      }
+    }
+  ]
+}

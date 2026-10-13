@@ -1,0 +1,20 @@
+{
+  "id": "risveglio-bosco",
+  "version": 1,
+  "title": "Il Risveglio del Bosco",
+  "world": "ambiente",
+  "topic": "cura-del-bosco",
+  "series": "emma-pietrolino",
+  "episode": 9,
+  "ageBands": { "5-7": "5-7.json" },
+  "formats": ["illustrated", "audio"],
+  "togetherOnly": false,
+  "keyPhrase": "Il mondo non si cambia con gesti enormi, ma con cura continua.",
+  "gesture": "Lasciare in un angolo del giardino un mucchio di foglie e rametti: un rifugio per i ricci.",
+  "parentCard": "parent.md",
+  "sources": [
+    "LIPU e WWF Italia, indicazioni per giardini amici della fauna (da verificare)",
+    "Legambiente, materiali di educazione ambientale per la primaria (da verificare)"
+  ],
+  "status": "draft"
+}
