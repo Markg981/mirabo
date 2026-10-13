@@ -5,6 +5,8 @@
   "appTagline": "Stories and little steps for growing up.",
 
   "close": "Close",
+  "companionGrew": "Look what changed! It's thanks to everything we did together.",
+  "companionGrewOk": "How lovely!",
   "back": "Back",
   "next": "Next",
   "done": "Done",
@@ -207,6 +209,7 @@
   "parentNewProfile": "New profile",
   "parentProfileLine": "{age} · companion {companion} · {count, plural, =1{1 story} other{{count} stories}}",
   "@parentProfileLine": { "placeholders": { "age": { "type": "String" }, "companion": { "type": "String" }, "count": { "type": "int" } } },
+  "parentCompanionGrowth": "{stage} · {count, plural, =0{last step reached} =1{1 session to the next step} other{{count} sessions to the next step}}",
   "diaryEmpty": "No stories in the last 30 days.",
   "diaryTogether": "together",
   "diaryAlone": "on their own",

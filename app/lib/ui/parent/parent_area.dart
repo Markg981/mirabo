@@ -171,7 +171,11 @@ class _ProfilesTab extends StatelessWidget {
           _carded(ListTile(
             leading: Icon(p.id == state.currentProfile?.id ? Icons.check_circle_rounded : Icons.circle_outlined),
             title: Text(p.name),
-            subtitle: Text(context.l10n.parentProfileLine(context.l10n.ageBandLabel(_bandKey(p.ageBand)), state.companionOf(p).name, p.storiesCompleted)),
+            subtitle: Text([
+              context.l10n.parentProfileLine(context.l10n.ageBandLabel(_bandKey(p.ageBand)), state.companionOf(p).name, p.storiesCompleted),
+              context.l10n.parentCompanionGrowth(state.companionOf(p).stageLabel(p.companionStage), p.storiesToNextStage ?? 0),
+            ].join('\n')),
+            isThreeLine: true,
             onTap: () => state.selectProfile(p),
             trailing: IconButton(
               icon: const Icon(Icons.edit_rounded),

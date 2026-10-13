@@ -18,6 +18,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get close => 'Chiudi';
 
   @override
+  String get companionGrew =>
+      'Guarda cosa è cambiato! È merito di tutto quello che abbiamo fatto insieme.';
+
+  @override
+  String get companionGrewOk => 'Che bello!';
+
+  @override
   String get back => 'Indietro';
 
   @override
@@ -797,6 +804,18 @@ class AppLocalizationsIt extends AppLocalizations {
       one: '1 storia',
     );
     return '$age · compagno $companion · $_temp0';
+  }
+
+  @override
+  String parentCompanionGrowth(String stage, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'mancano $count sessioni al prossimo passo',
+      one: 'manca 1 sessione al prossimo passo',
+      zero: 'ultimo passo raggiunto',
+    );
+    return '$stage · $_temp0';
   }
 
   @override

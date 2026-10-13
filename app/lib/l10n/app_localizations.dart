@@ -122,6 +122,18 @@ abstract class AppLocalizations {
   /// **'Chiudi'**
   String get close;
 
+  /// No description provided for @companionGrew.
+  ///
+  /// In it, this message translates to:
+  /// **'Guarda cosa è cambiato! È merito di tutto quello che abbiamo fatto insieme.'**
+  String get companionGrew;
+
+  /// No description provided for @companionGrewOk.
+  ///
+  /// In it, this message translates to:
+  /// **'Che bello!'**
+  String get companionGrewOk;
+
   /// No description provided for @back.
   ///
   /// In it, this message translates to:
@@ -1225,6 +1237,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'{age} · compagno {companion} · {count, plural, =1{1 storia} other{{count} storie}}'**
   String parentProfileLine(String age, String companion, int count);
+
+  /// No description provided for @parentCompanionGrowth.
+  ///
+  /// In it, this message translates to:
+  /// **'{stage} · {count, plural, =0{ultimo passo raggiunto} =1{manca 1 sessione al prossimo passo} other{mancano {count} sessioni al prossimo passo}}'**
+  String parentCompanionGrowth(String stage, int count);
 
   /// No description provided for @diaryEmpty.
   ///
