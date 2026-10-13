@@ -5,6 +5,8 @@ import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
 import 'data/local_db.dart';
 import 'models/activity.dart';
+import 'models/made_story.dart';
+import 'models/nature_day.dart';
 import 'models/profile.dart';
 import 'models/story.dart';
 
@@ -152,6 +154,21 @@ class AppState extends ChangeNotifier {
     final fresh = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
     await updateProfile(fresh.copyWith(gesturesDone: fresh.gesturesDone + 1));
     return true;
+  }
+
+  /// Salva una storia della fabbrica. Come le altre storie, non fa crescere il compagno.
+  Future<MadeStory> saveMadeStory(MadeStory story) => db.addMadeStory(story);
+
+  Future<List<MadeStory>> madeStoriesOf(ChildProfile p) => db.madeStories(p.id);
+
+  Future<List<NatureDay>> natureMonthOf(ChildProfile p, DateTime month) => db.natureMonth(p.id, month);
+
+  /// Un giorno del calendario della natura. Solo oggi e i giorni passati:
+  /// si segna quello che si è visto, non quello che si vedrà.
+  Future<void> saveNatureDay(NatureDay day, {DateTime? now}) async {
+    final today = NatureDay.dateOnly(now ?? DateTime.now());
+    if (NatureDay.dateOnly(day.day).isAfter(today)) throw ArgumentError('Giorno futuro: ${NatureDay.key(day.day)}');
+    await db.saveNatureDay(day);
   }
 
   /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così

@@ -1555,6 +1555,366 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come si chiama?'**
   String get lessonTell;
+
+  /// No description provided for @catMake.
+  ///
+  /// In it, this message translates to:
+  /// **'Creo e scopro'**
+  String get catMake;
+
+  /// No description provided for @factoryTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Fabbrica di storie'**
+  String get factoryTitle;
+
+  /// No description provided for @natureTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Calendario della natura'**
+  String get natureTitle;
+
+  /// No description provided for @factoryAsk.
+  ///
+  /// In it, this message translates to:
+  /// **'{step, select, who{Chi è il protagonista?} place{Dove vive?} problem{Un giorno, cosa succede?} feeling{Come si sente?} helper{Chi arriva ad aiutare?} ending{Come finisce?} other{{step}}}'**
+  String factoryAsk(String step);
+
+  /// No description provided for @factoryNameIt.
+  ///
+  /// In it, this message translates to:
+  /// **'Che titolo diamo alla storia?'**
+  String get factoryNameIt;
+
+  /// No description provided for @factoryRead.
+  ///
+  /// In it, this message translates to:
+  /// **'Leggiamo la storia!'**
+  String get factoryRead;
+
+  /// No description provided for @factoryMine.
+  ///
+  /// In it, this message translates to:
+  /// **'Le mie storie'**
+  String get factoryMine;
+
+  /// No description provided for @factoryNew.
+  ///
+  /// In it, this message translates to:
+  /// **'Inventane una'**
+  String get factoryNew;
+
+  /// No description provided for @factoryBy.
+  ///
+  /// In it, this message translates to:
+  /// **'Una storia inventata da {name}'**
+  String factoryBy(Object name);
+
+  /// No description provided for @factoryEnd.
+  ///
+  /// In it, this message translates to:
+  /// **'Fine'**
+  String get factoryEnd;
+
+  /// No description provided for @factoryDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Che bella storia, {name}! La metto tra le tue storie.'**
+  String factoryDone(Object name);
+
+  /// No description provided for @factoryMineEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Qui troverai le storie che inventi.'**
+  String get factoryMineEmpty;
+
+  /// No description provided for @factoryWhoA.
+  ///
+  /// In it, this message translates to:
+  /// **'{who, select, dragon{un piccolo drago} bunny{un coniglietto} robot{un robot gentile} penguin{un pinguino} unicorn{un unicorno} kitten{un gattino} other{{who}}}'**
+  String factoryWhoA(String who);
+
+  /// No description provided for @factoryWhoThe.
+  ///
+  /// In it, this message translates to:
+  /// **'{who, select, dragon{il piccolo drago} bunny{il coniglietto} robot{il robot gentile} penguin{il pinguino} unicorn{l\'unicorno} kitten{il gattino} other{{who}}}'**
+  String factoryWhoThe(String who);
+
+  /// No description provided for @factoryPlaceName.
+  ///
+  /// In it, this message translates to:
+  /// **'{place, select, forest{il bosco} room{la cameretta} stream{il ruscello} sky{le nuvole} snow{la neve} night{la notte} other{{place}}}'**
+  String factoryPlaceName(String place);
+
+  /// No description provided for @factoryPlaceIn.
+  ///
+  /// In it, this message translates to:
+  /// **'{place, select, forest{in un bosco pieno di alberi} room{in una cameretta piena di giochi} stream{vicino a un ruscello} sky{su una nuvola soffice} snow{in un prato pieno di neve} night{in un prato sotto le stelle} other{{place}}}'**
+  String factoryPlaceIn(String place);
+
+  /// No description provided for @factoryProblemName.
+  ///
+  /// In it, this message translates to:
+  /// **'{problem, select, storm{il temporale} star{la stellina caduta} sadFriend{un amico triste} litter{i rifiuti} lost{la strada persa} other{{problem}}}'**
+  String factoryProblemName(String problem);
+
+  /// No description provided for @factoryProblem.
+  ///
+  /// In it, this message translates to:
+  /// **'{problem, select, storm{arrivò un temporale fortissimo} star{una stellina cadde dal cielo e non sapeva tornare a casa} sadFriend{arrivò un amico tutto triste che non voleva parlare} litter{qualcuno lasciò tanti rifiuti per terra} lost{la nebbia nascose la strada di casa} other{{problem}}}'**
+  String factoryProblem(String problem);
+
+  /// No description provided for @factorySolution.
+  ///
+  /// In it, this message translates to:
+  /// **'{problem, select, storm{trovarono un riparo asciutto e aspettarono che il temporale passasse} star{costruirono una scala altissima e riportarono la stellina in cielo} sadFriend{si sedettero vicino all\'amico e lo ascoltarono, finché tornò a sorridere} litter{raccolsero i rifiuti con i guanti e li misero nei bidoni giusti} lost{seguirono le impronte sul sentiero e ritrovarono la strada di casa} other{{problem}}}'**
+  String factorySolution(String problem);
+
+  /// No description provided for @factoryFeelingName.
+  ///
+  /// In it, this message translates to:
+  /// **'{feeling, select, fear{la paura} sadness{la tristezza} anger{la rabbia} curiosity{la curiosità} courage{il coraggio} other{{feeling}}}'**
+  String factoryFeelingName(String feeling);
+
+  /// No description provided for @factoryFeeling.
+  ///
+  /// In it, this message translates to:
+  /// **'{feeling, select, fear{un po\' di paura} sadness{un po\' di tristezza} anger{un po\' di rabbia} curiosity{tanta curiosità} courage{tanto coraggio} other{{feeling}}}'**
+  String factoryFeeling(String feeling);
+
+  /// No description provided for @factoryHelperA.
+  ///
+  /// In it, this message translates to:
+  /// **'{helper, select, turtle{una tartaruga saggia} owl{un gufo che sa tante cose} bear{un orso gentile} bee{un\'ape velocissima} other{{helper}}}'**
+  String factoryHelperA(String helper);
+
+  /// No description provided for @factoryEndingName.
+  ///
+  /// In it, this message translates to:
+  /// **'{ending, select, party{una festa} sleep{la nanna} hug{un abbraccio} snack{una merenda} other{{ending}}}'**
+  String factoryEndingName(String ending);
+
+  /// No description provided for @factoryPageStart.
+  ///
+  /// In it, this message translates to:
+  /// **'C\'era una volta {who}, che viveva {place}.'**
+  String factoryPageStart(Object who, Object place);
+
+  /// No description provided for @factoryPageProblem.
+  ///
+  /// In it, this message translates to:
+  /// **'Un giorno {problem}.'**
+  String factoryPageProblem(Object problem);
+
+  /// No description provided for @factoryPageFeeling.
+  ///
+  /// In it, this message translates to:
+  /// **'{who} sentì {feeling} e fece un bel respiro.'**
+  String factoryPageFeeling(Object who, Object feeling);
+
+  /// No description provided for @factoryPageHelp.
+  ///
+  /// In it, this message translates to:
+  /// **'Per fortuna arrivò {helper}. Insieme {solution}.'**
+  String factoryPageHelp(Object helper, Object solution);
+
+  /// No description provided for @factoryEnding.
+  ///
+  /// In it, this message translates to:
+  /// **'{ending, select, party{E quella sera {who} fece una grande festa con tutti gli amici.} sleep{E quella sera {who} si addormentò felice, sotto una coperta calda.} hug{E alla fine {who} abbracciò forte il suo nuovo amico.} snack{E alla fine {who} fece merenda con tutti, sotto il sole.} other{{ending}}}'**
+  String factoryEnding(String ending, Object who);
+
+  /// No description provided for @natureAskWeather.
+  ///
+  /// In it, this message translates to:
+  /// **'Che tempo fa?'**
+  String get natureAskWeather;
+
+  /// No description provided for @natureAskSeen.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa hai visto fuori?'**
+  String get natureAskSeen;
+
+  /// No description provided for @natureUpTo.
+  ///
+  /// In it, this message translates to:
+  /// **'Puoi sceglierne fino a tre.'**
+  String get natureUpTo;
+
+  /// No description provided for @natureWeather.
+  ///
+  /// In it, this message translates to:
+  /// **'{weather, select, sun{Sole} clouds{Nuvole} rain{Pioggia} snow{Neve} wind{Vento} fog{Nebbia} other{{weather}}}'**
+  String natureWeather(String weather);
+
+  /// No description provided for @natureThing.
+  ///
+  /// In it, this message translates to:
+  /// **'{thing, select, leaf{Foglie} flower{Fiori} bird{Uccellini} bug{Coccinelle e insetti} snail{Lumache} fruit{Frutti} mushroom{Funghi} rainbow{L\'arcobaleno} moon{La luna} other{{thing}}}'**
+  String natureThing(String thing);
+
+  /// No description provided for @natureMonthTip.
+  ///
+  /// In it, this message translates to:
+  /// **'{month, select, m1{Fa freddo e tanti alberi sono spogli. Riesci a vedere i nidi tra i rami?} m2{Le giornate si allungano un pochino. Cerca le prime gemme sui rami.} m3{Arriva la primavera: spuntano i primi fiori. Di che colore sono?} m4{Gli uccellini costruiscono i nidi. Ascolta: quanti canti diversi senti?} m5{Il prato è pieno di fiori e di api. Guardale da lontano: lavorano tanto!} m6{Sono i giorni più lunghi dell\'anno. Cosa vedi la sera, quando c\'è ancora luce?} m7{Fa caldo: cerca l\'ombra degli alberi. Senti le cicale?} m8{Di notte, se il cielo è limpido, a volte cade una stella. Esprimi un desiderio!} m9{Maturano tanti frutti: uva, mele, fichi. Quali conosci?} m10{Le foglie cambiano colore e cadono. Quanti colori diversi trovi?} m11{Nel bosco spuntano i funghi. Si guardano, ma non si toccano!} m12{Sono i giorni più corti dell\'anno. Il bosco riposa, come nella storia di Emma.} other{{month}}}'**
+  String natureMonthTip(String month);
+
+  /// No description provided for @natureThisMonth.
+  ///
+  /// In it, this message translates to:
+  /// **'Questo mese'**
+  String get natureThisMonth;
+
+  /// No description provided for @natureDays.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{1 giorno} other{{count} giorni}}'**
+  String natureDays(int count);
+
+  /// No description provided for @natureEmptyMonth.
+  ///
+  /// In it, this message translates to:
+  /// **'Questo mese il calendario è ancora vuoto.'**
+  String get natureEmptyMonth;
+
+  /// No description provided for @natureToday.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi'**
+  String get natureToday;
+
+  /// No description provided for @readWord.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca una parola per riascoltarla'**
+  String get readWord;
+
+  /// No description provided for @profileReadAlong.
+  ///
+  /// In it, this message translates to:
+  /// **'Lettura karaoke'**
+  String get profileReadAlong;
+
+  /// No description provided for @profileReadAlongHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Mentre la voce legge, la parola si illumina; toccandola si riascolta.'**
+  String get profileReadAlongHint;
+
+  /// No description provided for @parentTabPrint.
+  ///
+  /// In it, this message translates to:
+  /// **'Stampabili'**
+  String get parentTabPrint;
+
+  /// No description provided for @printIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Fogli da stampare e usare lontano dallo schermo, nella lingua di {name}.'**
+  String printIntro(Object name);
+
+  /// No description provided for @printEveryday.
+  ///
+  /// In it, this message translates to:
+  /// **'Per tutti i giorni'**
+  String get printEveryday;
+
+  /// No description provided for @printNameTrace.
+  ///
+  /// In it, this message translates to:
+  /// **'Ricalco il mio nome'**
+  String get printNameTrace;
+
+  /// No description provided for @printNameTraceHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il nome di {name} da ripassare con la matita.'**
+  String printNameTraceHint(Object name);
+
+  /// No description provided for @printNature.
+  ///
+  /// In it, this message translates to:
+  /// **'Calendario della natura del mese'**
+  String get printNature;
+
+  /// No description provided for @printNatureHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La griglia del mese da riempire a mano, con quello che {name} ha già segnato.'**
+  String printNatureHint(Object name);
+
+  /// No description provided for @printGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'Gesti delle storie'**
+  String get printGestures;
+
+  /// No description provided for @printGestureHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il gesto, due settimane da colorare e lo spazio per disegnarlo.'**
+  String get printGestureHint;
+
+  /// No description provided for @printGesturesEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Qui compariranno i gesti delle storie che {name} ha finito.'**
+  String printGesturesEmpty(Object name);
+
+  /// No description provided for @printMade.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie inventate'**
+  String get printMade;
+
+  /// No description provided for @printMadeHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il libretto della storia, con lo spazio per i disegni.'**
+  String get printMadeHint;
+
+  /// No description provided for @printMadeEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Qui compariranno le storie che {name} inventa nella fabbrica.'**
+  String printMadeEmpty(Object name);
+
+  /// No description provided for @printButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Stampa'**
+  String get printButton;
+
+  /// No description provided for @pdfDrawHere.
+  ///
+  /// In it, this message translates to:
+  /// **'Disegna qui'**
+  String get pdfDrawHere;
+
+  /// No description provided for @pdfGestureTimes.
+  ///
+  /// In it, this message translates to:
+  /// **'Ogni volta che lo fai, colora un cerchio.'**
+  String get pdfGestureTimes;
+
+  /// No description provided for @pdfTraceName.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripassa il tuo nome'**
+  String get pdfTraceName;
+
+  /// No description provided for @pdfWeather.
+  ///
+  /// In it, this message translates to:
+  /// **'Tempo'**
+  String get pdfWeather;
+
+  /// No description provided for @pdfSeen.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho visto'**
+  String get pdfSeen;
 }
 
 class _AppLocalizationsDelegate

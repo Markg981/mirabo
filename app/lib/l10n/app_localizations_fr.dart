@@ -1074,4 +1074,460 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get lessonTell => 'Comment ça s\'appelle ?';
+
+  @override
+  String get catMake => 'Je crée, je découvre';
+
+  @override
+  String get factoryTitle => 'Fabrique à histoires';
+
+  @override
+  String get natureTitle => 'Calendrier de la nature';
+
+  @override
+  String factoryAsk(String step) {
+    String _temp0 = intl.Intl.selectLogic(
+      step,
+      {
+        'who': 'Qui est le héros ?',
+        'place': 'Où vit-il ?',
+        'problem': 'Un jour, que se passe-t-il ?',
+        'feeling': 'Que ressent-il ?',
+        'helper': 'Qui vient aider ?',
+        'ending': 'Comment ça finit ?',
+        'other': '$step',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get factoryNameIt => 'Quel titre donne-t-on à l\'histoire ?';
+
+  @override
+  String get factoryRead => 'Lisons l\'histoire !';
+
+  @override
+  String get factoryMine => 'Mes histoires';
+
+  @override
+  String get factoryNew => 'Invente une histoire';
+
+  @override
+  String factoryBy(Object name) {
+    return 'Une histoire inventée par $name';
+  }
+
+  @override
+  String get factoryEnd => 'Fin';
+
+  @override
+  String factoryDone(Object name) {
+    return 'Quelle belle histoire, $name ! Je la range avec tes histoires.';
+  }
+
+  @override
+  String get factoryMineEmpty =>
+      'Tu trouveras ici les histoires que tu inventes.';
+
+  @override
+  String factoryWhoA(String who) {
+    String _temp0 = intl.Intl.selectLogic(
+      who,
+      {
+        'dragon': 'un petit dragon',
+        'bunny': 'un petit lapin',
+        'robot': 'un gentil robot',
+        'penguin': 'un pingouin',
+        'unicorn': 'une licorne',
+        'kitten': 'un chaton',
+        'other': '$who',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryWhoThe(String who) {
+    String _temp0 = intl.Intl.selectLogic(
+      who,
+      {
+        'dragon': 'le petit dragon',
+        'bunny': 'le petit lapin',
+        'robot': 'le gentil robot',
+        'penguin': 'le pingouin',
+        'unicorn': 'la licorne',
+        'kitten': 'le chaton',
+        'other': '$who',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPlaceName(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'forest': 'la forêt',
+        'room': 'la chambre',
+        'stream': 'le ruisseau',
+        'sky': 'les nuages',
+        'snow': 'la neige',
+        'night': 'la nuit',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPlaceIn(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'forest': 'dans une forêt pleine d\'arbres',
+        'room': 'dans une chambre pleine de jouets',
+        'stream': 'près d\'un petit ruisseau',
+        'sky': 'sur un nuage tout doux',
+        'snow': 'dans un pré plein de neige',
+        'night': 'dans un pré sous les étoiles',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryProblemName(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm': 'l\'orage',
+        'star': 'la petite étoile tombée',
+        'sadFriend': 'un ami triste',
+        'litter': 'les déchets',
+        'lost': 'le chemin perdu',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryProblem(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm': 'un gros orage arriva',
+        'star':
+            'une petite étoile tomba du ciel et ne savait plus rentrer chez elle',
+        'sadFriend': 'un ami arriva, tout triste, et ne voulait pas parler',
+        'litter': 'quelqu\'un laissa plein de déchets par terre',
+        'lost': 'le brouillard cacha le chemin de la maison',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factorySolution(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm':
+            'ils trouvèrent un abri au sec et attendirent la fin de l\'orage',
+        'star':
+            'ils construisirent une très haute échelle et ramenèrent la petite étoile dans le ciel',
+        'sadFriend':
+            'ils s\'assirent près de leur ami et l\'écoutèrent, jusqu\'à ce qu\'il sourie de nouveau',
+        'litter':
+            'ils ramassèrent les déchets avec des gants et les mirent dans les bonnes poubelles',
+        'lost':
+            'ils suivirent les traces sur le sentier et retrouvèrent le chemin de la maison',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryFeelingName(String feeling) {
+    String _temp0 = intl.Intl.selectLogic(
+      feeling,
+      {
+        'fear': 'la peur',
+        'sadness': 'la tristesse',
+        'anger': 'la colère',
+        'curiosity': 'la curiosité',
+        'courage': 'le courage',
+        'other': '$feeling',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryFeeling(String feeling) {
+    String _temp0 = intl.Intl.selectLogic(
+      feeling,
+      {
+        'fear': 'un peu de peur',
+        'sadness': 'un peu de tristesse',
+        'anger': 'un peu de colère',
+        'curiosity': 'beaucoup de curiosité',
+        'courage': 'beaucoup de courage',
+        'other': '$feeling',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryHelperA(String helper) {
+    String _temp0 = intl.Intl.selectLogic(
+      helper,
+      {
+        'turtle': 'une tortue sage',
+        'owl': 'un hibou qui sait plein de choses',
+        'bear': 'un ours gentil',
+        'bee': 'une abeille très rapide',
+        'other': '$helper',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryEndingName(String ending) {
+    String _temp0 = intl.Intl.selectLogic(
+      ending,
+      {
+        'party': 'une fête',
+        'sleep': 'au lit',
+        'hug': 'un câlin',
+        'snack': 'un goûter',
+        'other': '$ending',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPageStart(Object who, Object place) {
+    return 'Il était une fois $who qui vivait $place.';
+  }
+
+  @override
+  String factoryPageProblem(Object problem) {
+    return 'Un jour, $problem.';
+  }
+
+  @override
+  String factoryPageFeeling(Object who, Object feeling) {
+    return '$who ressentit $feeling et prit une grande inspiration.';
+  }
+
+  @override
+  String factoryPageHelp(Object helper, Object solution) {
+    return 'Heureusement, $helper arriva. Ensemble, $solution.';
+  }
+
+  @override
+  String factoryEnding(String ending, Object who) {
+    String _temp0 = intl.Intl.selectLogic(
+      ending,
+      {
+        'party': 'Et ce soir-là, $who fit une grande fête avec tous ses amis.',
+        'sleep':
+            'Et ce soir-là, $who s\'endormit avec le sourire, sous une couverture bien chaude.',
+        'hug': 'Et à la fin, $who fit un gros câlin à son nouvel ami.',
+        'snack':
+            'Et à la fin, $who partagea un goûter avec tout le monde, au soleil.',
+        'other': '$ending',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureAskWeather => 'Quel temps fait-il ?';
+
+  @override
+  String get natureAskSeen => 'Qu\'as-tu vu dehors ?';
+
+  @override
+  String get natureUpTo => 'Tu peux en choisir jusqu\'à trois.';
+
+  @override
+  String natureWeather(String weather) {
+    String _temp0 = intl.Intl.selectLogic(
+      weather,
+      {
+        'sun': 'Soleil',
+        'clouds': 'Nuages',
+        'rain': 'Pluie',
+        'snow': 'Neige',
+        'wind': 'Vent',
+        'fog': 'Brouillard',
+        'other': '$weather',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureThing(String thing) {
+    String _temp0 = intl.Intl.selectLogic(
+      thing,
+      {
+        'leaf': 'Feuilles',
+        'flower': 'Fleurs',
+        'bird': 'Oiseaux',
+        'bug': 'Coccinelles et insectes',
+        'snail': 'Escargots',
+        'fruit': 'Fruits',
+        'mushroom': 'Champignons',
+        'rainbow': 'Un arc-en-ciel',
+        'moon': 'La lune',
+        'other': '$thing',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureMonthTip(String month) {
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        'm1':
+            'Il fait froid et beaucoup d\'arbres sont nus. Vois-tu des nids dans les branches ?',
+        'm2':
+            'Les jours rallongent un tout petit peu. Cherche les premiers bourgeons sur les branches.',
+        'm3':
+            'Le printemps arrive : les premières fleurs sortent. De quelle couleur sont-elles ?',
+        'm4':
+            'Les oiseaux construisent leurs nids. Écoute : combien de chants différents entends-tu ?',
+        'm5':
+            'Le pré est plein de fleurs et d\'abeilles. Regarde-les de loin : elles travaillent beaucoup !',
+        'm6':
+            'Ce sont les jours les plus longs de l\'année. Que vois-tu le soir, quand il fait encore clair ?',
+        'm7':
+            'Il fait chaud : cherche l\'ombre des arbres. Entends-tu les cigales ?',
+        'm8':
+            'La nuit, si le ciel est dégagé, on voit parfois une étoile filante. Fais un vœu !',
+        'm9':
+            'Beaucoup de fruits mûrissent : raisins, pommes, figues. Lesquels connais-tu ?',
+        'm10':
+            'Les feuilles changent de couleur et tombent. Combien de couleurs différentes trouves-tu ?',
+        'm11':
+            'Dans la forêt, les champignons poussent. On les regarde, mais on ne les touche pas !',
+        'm12':
+            'Ce sont les jours les plus courts de l\'année. La forêt se repose, comme dans l\'histoire d\'Emma.',
+        'other': '$month',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureThisMonth => 'Ce mois-ci';
+
+  @override
+  String natureDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count jours',
+      one: '1 jour',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureEmptyMonth => 'Ce mois-ci, le calendrier est encore vide.';
+
+  @override
+  String get natureToday => 'Aujourd\'hui';
+
+  @override
+  String get readWord => 'Touche un mot pour le réécouter';
+
+  @override
+  String get profileReadAlong => 'Lecture karaoké';
+
+  @override
+  String get profileReadAlongHint =>
+      'Pendant que la voix lit, le mot s\'allume ; en le touchant, on le réécoute.';
+
+  @override
+  String get parentTabPrint => 'À imprimer';
+
+  @override
+  String printIntro(Object name) {
+    return 'Des fiches à imprimer et à utiliser loin de l\'écran, dans la langue de $name.';
+  }
+
+  @override
+  String get printEveryday => 'Pour tous les jours';
+
+  @override
+  String get printNameTrace => 'J\'écris mon prénom';
+
+  @override
+  String printNameTraceHint(Object name) {
+    return 'Le prénom de $name à repasser au crayon.';
+  }
+
+  @override
+  String get printNature => 'Calendrier de la nature du mois';
+
+  @override
+  String printNatureHint(Object name) {
+    return 'La grille du mois à remplir à la main, avec ce que $name a déjà noté.';
+  }
+
+  @override
+  String get printGestures => 'Gestes des histoires';
+
+  @override
+  String get printGestureHint =>
+      'Le geste, deux semaines de ronds à colorier et un espace pour le dessiner.';
+
+  @override
+  String printGesturesEmpty(Object name) {
+    return 'Les gestes des histoires que $name a terminées apparaîtront ici.';
+  }
+
+  @override
+  String get printMade => 'Histoires inventées';
+
+  @override
+  String get printMadeHint =>
+      'L\'histoire en petit livre, avec de la place pour les dessins.';
+
+  @override
+  String printMadeEmpty(Object name) {
+    return 'Les histoires que $name invente dans la fabrique apparaîtront ici.';
+  }
+
+  @override
+  String get printButton => 'Imprimer';
+
+  @override
+  String get pdfDrawHere => 'Dessine ici';
+
+  @override
+  String get pdfGestureTimes => 'Chaque fois que tu le fais, colorie un rond.';
+
+  @override
+  String get pdfTraceName => 'Repasse ton prénom';
+
+  @override
+  String get pdfWeather => 'Temps';
+
+  @override
+  String get pdfSeen => 'J\'ai vu';
 }

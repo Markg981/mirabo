@@ -12,6 +12,8 @@ import '../parent/adult_gate.dart';
 import '../parent/parent_area.dart';
 import 'categories.dart';
 import 'category_widgets.dart';
+import 'nature_calendar.dart';
+import 'story_factory.dart';
 import 'story_reader.dart';
 
 /// Le categorie che hanno almeno un contenuto per questo profilo.
@@ -22,6 +24,7 @@ List<ChildCategory> visibleCategories(AppState state, ChildProfile profile) {
       if (switch (c.kind) {
         CategoryKind.stories => state.storiesFor(profile).isNotEmpty,
         CategoryKind.games => gamesFor(profile.ageBand).isNotEmpty,
+        CategoryKind.make => true,
         CategoryKind.area => activities.any((a) => a.area == c.area),
       })
         c,
@@ -85,6 +88,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
               width: width,
               onTap: () => _open(GameShell(game: g)),
             ),
+        ];
+      case CategoryKind.make:
+        return [
+          BigCard(
+            title: l.factoryTitle,
+            color: MiraboColors.plum,
+            emojis: const ['🐉', '✨', '📖'],
+            width: width,
+            onTap: () => _open(const StoryFactoryScreen()),
+          ),
+          BigCard(
+            title: l.natureTitle,
+            color: MiraboColors.leaf,
+            emojis: const ['☀️', '🍂', '🐞'],
+            width: width,
+            onTap: () => _open(const NatureCalendar()),
+          ),
         ];
       case CategoryKind.area:
         return [

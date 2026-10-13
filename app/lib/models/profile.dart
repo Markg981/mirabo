@@ -15,6 +15,7 @@ class ChildProfile {
     this.lastMode = SessionMode.together,
     this.dyslexiaFont = false,
     this.lowStimulation = false,
+    this.readAlong = true,
     this.aloneSessionMinutes = 20,
     this.storiesCompleted = 0,
     this.gesturesDone = 0,
@@ -33,6 +34,9 @@ class ChildProfile {
   final SessionMode lastMode;
   final bool dyslexiaFont;
   final bool lowStimulation;
+
+  /// Lettura karaoke: la parola che la voce legge si illumina nel testo.
+  final bool readAlong;
   final int aloneSessionMinutes;
 
   /// Storie completate: solo un dato per il genitore, non fa crescere il compagno.
@@ -86,6 +90,7 @@ class ChildProfile {
     SessionMode? lastMode,
     bool? dyslexiaFont,
     bool? lowStimulation,
+    bool? readAlong,
     int? aloneSessionMinutes,
     int? storiesCompleted,
     int? gesturesDone,
@@ -101,6 +106,7 @@ class ChildProfile {
         lastMode: lastMode ?? this.lastMode,
         dyslexiaFont: dyslexiaFont ?? this.dyslexiaFont,
         lowStimulation: lowStimulation ?? this.lowStimulation,
+        readAlong: readAlong ?? this.readAlong,
         aloneSessionMinutes: aloneSessionMinutes ?? this.aloneSessionMinutes,
         storiesCompleted: storiesCompleted ?? this.storiesCompleted,
         gesturesDone: gesturesDone ?? this.gesturesDone,
@@ -118,6 +124,7 @@ class ChildProfile {
         'last_mode': lastMode.name,
         'dyslexia_font': dyslexiaFont ? 1 : 0,
         'low_stimulation': lowStimulation ? 1 : 0,
+        'read_along': readAlong ? 1 : 0,
         'alone_minutes': aloneSessionMinutes,
         'stories_completed': storiesCompleted,
         'gestures_done': gesturesDone,
@@ -135,6 +142,7 @@ class ChildProfile {
         lastMode: SessionMode.values.byName(r['last_mode'] as String),
         dyslexiaFont: (r['dyslexia_font'] as int) == 1,
         lowStimulation: (r['low_stimulation'] as int) == 1,
+        readAlong: (r['read_along'] as int? ?? 1) == 1,
         aloneSessionMinutes: r['alone_minutes'] as int,
         storiesCompleted: r['stories_completed'] as int,
         gesturesDone: r['gestures_done'] as int? ?? 0,

@@ -4,9 +4,10 @@ import '../../l10n/l10n.dart';
 import '../../models/activity.dart';
 import '../design/palette.dart';
 
-enum CategoryKind { stories, games, area }
+enum CategoryKind { stories, games, make, area }
 
-/// Una voce della barra in basso: le storie, i giochi o un'area di attività.
+/// Una voce della barra in basso: le storie, i giochi, "Creo e scopro"
+/// (fabbrica di storie e calendario della natura) o un'area di attività.
 /// Il bambino la riconosce dall'emoji e dal colore, non dal nome.
 @immutable
 class ChildCategory {
@@ -19,12 +20,14 @@ class ChildCategory {
 
   static const stories = ChildCategory._(CategoryKind.stories, '📚', MiraboColors.rose);
   static const games = ChildCategory._(CategoryKind.games, '🎈', MiraboColors.apricot);
+  static const make = ChildCategory._(CategoryKind.make, '🌻', MiraboColors.teal);
 
   static ChildCategory forArea(ActivityArea a) => ChildCategory._(CategoryKind.area, _areaEmoji[a]!, areaColor(a), a);
 
   String label(AppLocalizations l) => switch (kind) {
         CategoryKind.stories => l.catStories,
         CategoryKind.games => l.catGames,
+        CategoryKind.make => l.catMake,
         CategoryKind.area => l.areaLabel(area!.name),
       };
 
@@ -40,8 +43,8 @@ class ChildCategory {
     ActivityArea.cultura: '🌍',
   };
 
-  /// Storie, giochi, poi le aree nell'ordine del modello (scuola, poi Montessori).
-  static List<ChildCategory> all() => [stories, games, for (final a in ActivityArea.values) forArea(a)];
+  /// Storie, giochi, creo e scopro, poi le aree nell'ordine del modello (scuola, poi Montessori).
+  static List<ChildCategory> all() => [stories, games, make, for (final a in ActivityArea.values) forArea(a)];
 
   @override
   bool operator ==(Object other) => other is ChildCategory && other.kind == kind && other.area == area;
