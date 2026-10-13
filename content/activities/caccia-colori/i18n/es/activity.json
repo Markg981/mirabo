@@ -1,0 +1,69 @@
+{
+  "title": "Búsqueda de colores",
+  "offscreen": "Los días siguientes, jugad sin la tableta: \"Veo, veo una cosa... amarilla\". Por turnos: el niño también elige el color.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Una cosa roja",
+          "say": "Busca por casa una cosa roja y tráela aquí."
+        },
+        {
+          "label": "Una cosa azul",
+          "say": "Ahora una cosa azul. Busca bien."
+        },
+        {
+          "label": "Una cosa amarilla",
+          "say": "Y ahora una cosa amarilla, como el sol."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Una cosa verde",
+          "say": "Busca una cosa verde y tráela aquí."
+        },
+        {
+          "label": "Una cosa blanca",
+          "say": "Ahora una cosa blanca."
+        },
+        {
+          "label": "Una cosa naranja",
+          "say": "Una cosa naranja: es difícil, mira bien."
+        },
+        {
+          "label": "Una cosa negra",
+          "say": "Y para terminar, una cosa negra."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Una cosa marrón",
+          "say": "Busca una cosa marrón, como la madera."
+        },
+        {
+          "label": "Una cosa morada",
+          "say": "Ahora una cosa morada. ¿Hay alguna en casa?"
+        },
+        {
+          "label": "Una cosa de muchos colores",
+          "say": "Y ahora una cosa con muchos colores juntos."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

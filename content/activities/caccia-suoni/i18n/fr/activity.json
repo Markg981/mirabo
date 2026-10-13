@@ -1,0 +1,49 @@
+{
+  "title": "Chasse aux sons",
+  "offscreen": "C'est le jeu du son de toujours : « Je vois une chose qui commence par mmm ». Dites le son, pas le nom de la lettre.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Commence par mmm",
+          "say": "Cherche une chose qui commence par mmm, comme maison."
+        },
+        {
+          "label": "Commence par sss",
+          "say": "Maintenant une chose qui commence par sss, comme soleil."
+        },
+        {
+          "label": "Commence par p",
+          "say": "Et une chose qui commence par p, comme pomme."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Commence par lll",
+          "say": "Cherche une chose qui commence par lll, comme lune."
+        },
+        {
+          "label": "Commence par t",
+          "say": "Maintenant une chose qui commence par t, comme table."
+        },
+        {
+          "label": "Commence par fff",
+          "say": "Et une chose qui commence par fff, comme feuille."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}

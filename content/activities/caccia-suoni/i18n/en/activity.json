@@ -1,0 +1,49 @@
+{
+  "title": "Sound hunt",
+  "offscreen": "It's the classic sound game: \"I spy something that starts with mmm\". Say the sound, not the name of the letter.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Starts with mmm",
+          "say": "Look for something that starts with mmm, like moon."
+        },
+        {
+          "label": "Starts with sss",
+          "say": "Now something that starts with sss, like sun."
+        },
+        {
+          "label": "Starts with p",
+          "say": "And something that starts with p, like pear."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Starts with lll",
+          "say": "Look for something that starts with lll, like lamp."
+        },
+        {
+          "label": "Starts with t",
+          "say": "Now something that starts with t, like table."
+        },
+        {
+          "label": "Starts with fff",
+          "say": "And something that starts with fff, like fish."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

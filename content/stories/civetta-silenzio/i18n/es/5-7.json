@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "La lechuza se va volando por el cielo estrellado; una pluma blanca baja despacio hacia la mano de Emma."
       },
-      "text": "El susurro del viento. Una rama que gotea: tic, tic. La respiración, dentro y fuera. Se quedan allí, en silencio, escuchando. Luego la lechuza se va volando y deja caer una pluma blanca. Emma la recoge. \"Tan ligera. Y tan llena.\" \"Es como el silencio\", dice Pietrolino. \"No hace ruido, pero te cambia por dentro.\""
+      "text": "El susurro del viento. Una rama que gotea: tic, tic. La respiración, dentro y fuera. Se quedan allí, en silencio, escuchando. Luego la lechuza se va volando y deja caer una pluma blanca. Emma la recoge. \"Tan ligera. Y tan llena.\" \"Es como el silencio\", dice Pietrolino. \"No hace ruido, pero te cambia por dentro.\"",
+      "companionLines": {
+        "bo": "¿Probamos nosotros también, {nome}? Ojos cerrados y calladitos. A oscuras me da un poco de miedo: ¿me das la mano?",
+        "pilu": "Cierra los ojos conmigo, {nome}. Escucha: ¿cuántos sonidos oyes? Yo los cuento en silencio.",
+        "tango": "¡Silencio también nosotros, {nome}! ¡Ya! ...Espera. El silencio no se hace con prisa. Ojos cerrados, y a escuchar."
+      },
+      "gesture": {
+        "together": "Cerrad los ojos juntos y quedaos en silencio medio minuto. Después decid por turnos un sonido que hayáis oído.",
+        "back": {
+          "bo": "He oído mi respiración, {nome}. ¿Y tú?",
+          "pilu": "¿Qué sonidos has oído, {nome}? Yo, un zumbido muy pequeñito.",
+          "tango": "¡Me he quedado callado de verdad! He oído un tic tic. ¿Y tú, {nome}?"
+        }
+      }
     },
     {
       "illustration": {

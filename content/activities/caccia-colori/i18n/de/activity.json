@@ -1,0 +1,69 @@
+{
+  "title": "Farbensuche",
+  "offscreen": "In den nächsten Tagen spielt ohne Tablet: „Ich sehe was, was du nicht siehst, und das ist... gelb“. Abwechselnd: Auch das Kind wählt die Farbe.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Etwas Rotes",
+          "say": "Such im Haus etwas Rotes und bring es her."
+        },
+        {
+          "label": "Etwas Blaues",
+          "say": "Jetzt etwas Blaues. Schau genau."
+        },
+        {
+          "label": "Etwas Gelbes",
+          "say": "Und jetzt etwas Gelbes, wie die Sonne."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Etwas Grünes",
+          "say": "Such etwas Grünes und bring es her."
+        },
+        {
+          "label": "Etwas Weißes",
+          "say": "Jetzt etwas Weißes."
+        },
+        {
+          "label": "Etwas Oranges",
+          "say": "Etwas Oranges: Das ist schwierig, schau genau."
+        },
+        {
+          "label": "Etwas Schwarzes",
+          "say": "Und zum Schluss etwas Schwarzes."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Etwas Braunes",
+          "say": "Such etwas Braunes, wie Holz."
+        },
+        {
+          "label": "Etwas Lila",
+          "say": "Jetzt etwas Lila. Gibt es so etwas im Haus?"
+        },
+        {
+          "label": "Etwas ganz Buntes",
+          "say": "Und jetzt etwas mit vielen Farben auf einmal."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

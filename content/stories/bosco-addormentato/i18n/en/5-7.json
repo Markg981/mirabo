@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "Emma sitting with her eyes closed on freshly fallen snow; the first snowflake drifts down from the sky."
       },
-      "text": "Emma closes her eyes. She hears the wind in the leaves. She hears the wood breathing slowly. When she opens them again, a snowflake is falling from the sky. \"It's snowing!\" \"It's the wood's pillow,\" says Pietrolino. \"Now it can really dream.\""
+      "text": "Emma closes her eyes. She hears the wind in the leaves. She hears the wood breathing slowly. When she opens them again, a snowflake is falling from the sky. \"It's snowing!\" \"It's the wood's pillow,\" says Pietrolino. \"Now it can really dream.\"",
+      "companionLines": {
+        "bo": "Let's close our eyes too, {nome}. Three slow breaths, like the wood falling asleep.",
+        "pilu": "Let's do what Emma does, {nome}: eyes closed and three slow breaths. Can you feel the wood?",
+        "tango": "Eyes closed, {nome}! And three breaths... slow ones. Slow! It's not easy for a fox."
+      },
+      "gesture": {
+        "together": "Close your eyes and take three slow breaths together, like the wood falling asleep. Then open your eyes slowly.",
+        "back": {
+          "bo": "So peaceful, {nome}. I'm almost sleepy.",
+          "pilu": "The wood breathes like that too, {nome}. Slowly, slowly.",
+          "tango": "Three breaths! Super slow! Now let's see Emma, {nome}."
+        }
+      }
     },
     {
       "illustration": {

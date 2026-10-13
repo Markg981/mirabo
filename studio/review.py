@@ -100,6 +100,13 @@ def prereview(folder: Path) -> list[str]:
                         notes.append(f"{band} #{n} lezione: \"{line}\" ha {words(line)} parole, oltre {lim['companion']}")
                     for t in has_any(line, JUDGEMENTS + REWARDS):
                         notes.append(f"{band} #{n} lezione: \"{t}\" giudica o premia: nel secondo tempo non c'è errore")
+            g = s.get("gesture")
+            if g:
+                for c, line in g.get("back", {}).items():
+                    if words(line) > lim["companion"]:
+                        notes.append(f"{band} #{n} {c}: battuta di ritorno di {words(line)} parole, oltre {lim['companion']}")
+                    for t in has_any(line, JUDGEMENTS + REWARDS):
+                        notes.append(f"{band} #{n} {c}: \"{t}\" giudica o premia il gesto: il compagno dice com'è stato, non com'è andato")
             d = s.get("dialogue")
             if d:
                 together = d.get("together", "")
@@ -169,6 +176,7 @@ def sheet(folder: Path) -> str:
     out += ["## Avvisi della pre-revisione automatica", ""]
     out += [f"- {n}" for n in notes] or ["Nessuno."]
     out += [""]
+    has_gesture = False
     for band, file in meta["ageBands"].items():
         out += [f"## La storia ({band} anni)", ""]
         for s in read_json(folder / file)["screens"]:
@@ -193,6 +201,12 @@ def sheet(folder: Path) -> str:
                 out += ["*Lezione in tre tempi.*", "", f"*Insieme:* {les['together']}", ""]
                 out += [f"- {i['e']} **{i['name']}**: \"{i['this']}\" / \"{i['show']}\"" for i in les["items"]]
                 out += [f"- Terzo tempo: \"{les['ask']}\"", f"- Alla fine: \"{les['done']}\"", ""]
+            g = s.get("gesture")
+            if g:
+                has_gesture = True
+                out += [f"*Pausa di gesto* {g['e']}, {g['seconds']} secondi.", "", f"*Insieme:* {g['together']}", ""]
+                out += [f"- **{c}** al ritorno: {line}" for c, line in g["back"].items()]
+                out += [""]
     out += [
         "## Scheda genitore",
         "",
@@ -209,6 +223,10 @@ def sheet(folder: Path) -> str:
         "- [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.",
         "- [ ] Le opzioni della pausa di dialogo sono tutte legittime, \"non so\" compreso.",
         "- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.",
+    ]
+    if has_gesture:
+        out += ["- [ ] La pausa di gesto si fa sul posto e senza oggetti: è sicura anche per un bambino da solo."]
+    out += [
         "- [ ] Personaggi e nomi senza stereotipi di genere o provenienza.",
         "- [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.",
         "- [ ] \"Se qualcosa ti preoccupa\" indica segnali e figure giuste (se presente o richiesta).",

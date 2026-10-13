@@ -75,6 +75,14 @@
         "bo": "On le fait aussi. On inspire, un, deux, trois. On souffle, chhhh.",
         "pilu": "Les mains sur le ventre. Tu sens comme ça monte et descend ?",
         "tango": "On inspire, un, deux, trois ! On souffle... chhhh. Doucement, doucement."
+      },
+      "gesture": {
+        "together": "Faites-le ensemble : les mains sur le ventre, on inspire jusqu'à trois, on expire chhhh. Trois fois.",
+        "back": {
+          "bo": "Mon volcan est petit maintenant.",
+          "pilu": "Tu sens ? Le ventre va tout doucement.",
+          "tango": "Chhhh... Le volcan dort. On retourne voir Lia !"
+        }
       }
     },
     {

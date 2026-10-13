@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "La chouette s'envole dans le ciel étoilé ; une plume blanche descend lentement vers la main d'Emma."
       },
-      "text": "Le souffle du vent. Une branche qui goutte : tic, tic. La respiration, dedans, dehors. Elles restent là, en silence, à écouter. Puis la chouette s'envole et laisse tomber une plume blanche. Emma la ramasse. « Si légère. Et pourtant si pleine. » « C'est comme le silence », dit Pietrolino. « Il ne fait pas de bruit, mais il te change à l'intérieur. »"
+      "text": "Le souffle du vent. Une branche qui goutte : tic, tic. La respiration, dedans, dehors. Elles restent là, en silence, à écouter. Puis la chouette s'envole et laisse tomber une plume blanche. Emma la ramasse. « Si légère. Et pourtant si pleine. » « C'est comme le silence », dit Pietrolino. « Il ne fait pas de bruit, mais il te change à l'intérieur. »",
+      "companionLines": {
+        "bo": "On essaie nous aussi, {nome} ? Les yeux fermés et pas un bruit. Dans le noir j'ai un peu peur : tu me tiens la main ?",
+        "pilu": "Ferme les yeux avec moi, {nome}. Écoute : combien de sons entends-tu ? Moi, je les compte en silence.",
+        "tango": "Silence pour nous aussi, {nome} ! Tout de suite ! ...Attends. Le silence, ça ne se fait pas en courant. Les yeux fermés, et on écoute."
+      },
+      "gesture": {
+        "together": "Fermez les yeux ensemble et restez en silence une demi-minute. Puis dites-vous à tour de rôle un son que vous avez entendu.",
+        "back": {
+          "bo": "J'ai entendu ma respiration, {nome}. Et toi ?",
+          "pilu": "Quels sons as-tu entendus, {nome} ? Moi, un tout petit bourdonnement.",
+          "tango": "Je me suis vraiment tu ! J'ai entendu un tic tic. Et toi, {nome} ?"
+        }
+      }
     },
     {
       "illustration": {

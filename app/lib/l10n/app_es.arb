@@ -263,5 +263,12 @@
 
   "lessonNaming": "Esto es",
   "lessonShow": "¿Dónde está?",
-  "lessonTell": "¿Cómo se llama?"
+  "lessonTell": "¿Cómo se llama?",
+
+  "gesturePause": "Pausa: hagamos el gesto",
+  "gestureStart": "¿Listos? ¡Ya!",
+  "huntFound": "¡Lo encontré!",
+  "huntNotFound": "No lo encuentro",
+  "huntTellMe": "¿Qué has encontrado? Dilo en voz alta.",
+  "huntRules": "el niño busca una cosa cada vez, en casa o al aire libre con vosotros. Solo cosas a su alcance: nada de subirse a sitios, nada afilado ni frágil, nada de medicinas ni productos de limpieza. Fuera, solo lo que ya está caído en el suelo. Al final, todo vuelve a su sitio."
 }

@@ -96,6 +96,14 @@
         "bo": "Faisons-le nous aussi, {nome}. Les mains sur le ventre. On inspire... un, deux, trois. On souffle... ssssh. Je me sens déjà mieux.",
         "pilu": "Essayons ensemble, {nome} : les mains sur le ventre, on inspire un deux trois, on souffle sssssh. Ça marche aussi avec des ailes, tu sais.",
         "tango": "Allez {nome}, on le fait ! Les mains sur le ventre. On inspire un, deux, trois. On souffle ssssh. Oh. C'est plus difficile que de courir."
+      },
+      "gesture": {
+        "together": "Faites-le ensemble, assis ou debout : les mains sur le ventre, on inspire en comptant jusqu'à trois, on expire en soufflant doucement. Trois fois, sans se presser.",
+        "back": {
+          "bo": "Voilà, {nome}. Mon volcan est tout petit maintenant.",
+          "pilu": "Tu sens comme ton ventre est lent maintenant, {nome} ? Retournons voir Lia.",
+          "tango": "Fini. Enfin... fini doucement ! Mon volcan dort. On va voir Lia, {nome}."
+        }
       }
     },
     {

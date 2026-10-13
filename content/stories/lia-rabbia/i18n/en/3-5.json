@@ -75,6 +75,14 @@
         "bo": "Let's do it too. In, one, two, three. Out, shhhh.",
         "pilu": "Hands on your tummy. Can you feel it go up and down?",
         "tango": "In, one, two, three! Out... shhhh. Slowly, slowly."
+      },
+      "gesture": {
+        "together": "Do it together: hands on your tummies, in to three, out shhhh. Three times.",
+        "back": {
+          "bo": "My volcano is small now.",
+          "pilu": "Can you feel it? Your tummy goes slowly, slowly.",
+          "tango": "Shhhh... The volcano is asleep. Back to Lia!"
+        }
       }
     },
     {

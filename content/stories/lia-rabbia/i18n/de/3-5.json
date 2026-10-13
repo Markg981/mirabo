@@ -75,6 +75,14 @@
         "bo": "Wir machen auch mit. Ein, eins, zwei, drei. Aus, schhhh.",
         "pilu": "Hände auf den Bauch. Spürst du, wie er hoch und runter geht?",
         "tango": "Ein, eins, zwei, drei! Aus... schhhh. Langsam, langsam."
+      },
+      "gesture": {
+        "together": "Macht es zusammen: Hände auf den Bauch, ein bis drei, aus pssst. Dreimal.",
+        "back": {
+          "bo": "Mein Vulkan ist jetzt klein.",
+          "pilu": "Spürst du? Der Bauch geht ganz langsam.",
+          "tango": "Pssst... Der Vulkan schläft. Zurück zu Lia!"
+        }
       }
     },
     {

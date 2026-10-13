@@ -1070,4 +1070,23 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get lessonTell => '¿Cómo se llama?';
+
+  @override
+  String get gesturePause => 'Pausa: hagamos el gesto';
+
+  @override
+  String get gestureStart => '¿Listos? ¡Ya!';
+
+  @override
+  String get huntFound => '¡Lo encontré!';
+
+  @override
+  String get huntNotFound => 'No lo encuentro';
+
+  @override
+  String get huntTellMe => '¿Qué has encontrado? Dilo en voz alta.';
+
+  @override
+  String get huntRules =>
+      'el niño busca una cosa cada vez, en casa o al aire libre con vosotros. Solo cosas a su alcance: nada de subirse a sitios, nada afilado ni frágil, nada de medicinas ni productos de limpieza. Fuera, solo lo que ya está caído en el suelo. Al final, todo vuelve a su sitio.';
 }

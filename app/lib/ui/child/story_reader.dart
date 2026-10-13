@@ -14,13 +14,15 @@ import '../../models/three_period_lesson.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'companion_widget.dart';
+import 'gesture_pause_board.dart';
 import 'lesson_board.dart';
 import 'scene_illustration.dart';
 
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
 /// la pausa di dialogo a metà, il saluto alla fine. Nessun "prossima storia".
 /// In fascia 3–5 c'è la lezione in tre tempi (LessonRun): da soli la conduce
-/// il compagno, insieme il genitore.
+/// il compagno, insieme il genitore. La pausa di gesto ferma la storia mentre il
+/// bambino fa il gesto con il corpo; da soli si va avanti quando è finita.
 ///
 /// Se la schermata ha l'audio registrato, si ascolta quello con il nome del
 /// bambino (TTS di sistema in cache, vedi NameVoice) inserito nei punti
@@ -44,6 +46,10 @@ class _StoryReaderState extends State<StoryReader> {
   final Map<int, LessonRun> _lessons = {};
   Timer? _lessonTimer;
 
+  /// Le pause di gesto, per schermata: una pausa finita resta finita.
+  final Map<int, GesturePhase> _gestures = {};
+  Timer? _gestureTimer;
+
   late final AppState _state;
   late final ChildProfile _profile;
   late final SessionMode _mode;
@@ -64,6 +70,7 @@ class _StoryReaderState extends State<StoryReader> {
   @override
   void dispose() {
     _lessonTimer?.cancel();
+    _gestureTimer?.cancel();
     _tts.stop();
     _player.dispose();
     if (!_recorded) {
@@ -81,6 +88,11 @@ class _StoryReaderState extends State<StoryReader> {
   /// Solo da soli: la lezione in tre tempi di questa schermata.
   LessonRun? get _lessonRun => _screen.lesson != null && _mode == SessionMode.alone
       ? _lessons.putIfAbsent(_index, () => LessonRun(_screen.lesson!))
+      : null;
+
+  /// Solo da soli: a che punto è la pausa di gesto di questa schermata.
+  GesturePhase? get _gesturePhase => _screen.gesture != null && _mode == SessionMode.alone
+      ? _gestures[_index] ?? GesturePhase.ready
       : null;
 
   /// Solo da soli: la domanda del compagno nella pausa di dialogo.
@@ -157,8 +169,27 @@ class _StoryReaderState extends State<StoryReader> {
     }
   }
 
+  /// Il "via" della pausa di gesto: silenzio per il tempo del gesto, poi il
+  /// compagno dice che si riprende. Se il bambino cambia schermata, la pausa
+  /// torna da capo.
+  Future<void> _startGesture() async {
+    final gesture = _screen.gesture!;
+    final index = _index;
+    await _player.stop();
+    await _tts.stop();
+    setState(() => _gestures[index] = GesturePhase.running);
+    _gestureTimer?.cancel();
+    _gestureTimer = Timer(Duration(seconds: gesture.seconds), () {
+      if (!mounted || index != _index) return;
+      setState(() => _gestures[index] = GesturePhase.done);
+      _say(_withName(gesture.back.forCompanion(_profile.companion)));
+    });
+  }
+
   void _go(int index) {
     _lessonTimer?.cancel();
+    _gestureTimer?.cancel();
+    if (_gestures[_index] == GesturePhase.running) _gestures.remove(_index);
     setState(() => _index = index);
     _speakCurrent();
   }
@@ -186,8 +217,10 @@ class _StoryReaderState extends State<StoryReader> {
     final screen = _screen;
     final isDialogue = screen.kind == ScreenKind.dialogue;
     final lessonRun = _lessonRun;
-    final canAdvance =
-        (!isDialogue || _mode == SessionMode.together || _dialogueAnswer != null) && (lessonRun?.isDone ?? true);
+    final gesturePhase = _gesturePhase;
+    final canAdvance = (!isDialogue || _mode == SessionMode.together || _dialogueAnswer != null) &&
+        (lessonRun?.isDone ?? true) &&
+        (gesturePhase == null || gesturePhase == GesturePhase.done);
     final world = worldStyle(widget.story.world);
     final tokens = MiraboTokens.of(context);
     final accent = tokens.tint(world.color);
@@ -297,7 +330,11 @@ class _StoryReaderState extends State<StoryReader> {
                               const SizedBox(height: 14),
                               _buildLesson(context, screen, lessonRun),
                             ],
-                            if (screen.companionLines != null && !isDialogue && screen.lesson == null) ...[
+                            if (screen.gesture != null) ...[
+                              const SizedBox(height: 14),
+                              _buildGesture(context, screen, gesturePhase, accent),
+                            ],
+                            if (screen.companionLines != null && !isDialogue && screen.lesson == null && screen.gesture == null) ...[
                               const SizedBox(height: 14),
                               _CompanionBubble(
                                 companion: companion,
@@ -382,6 +419,45 @@ class _StoryReaderState extends State<StoryReader> {
           stage: _profile.companionStage,
           text: first && intro != null ? '$intro ${run.prompt}' : run.prompt,
         ),
+      ],
+    );
+  }
+
+  Widget _buildGesture(BuildContext context, StoryScreen screen, GesturePhase? phase, Color accent) {
+    final companion = _state.companionOf(_profile);
+    final gesture = screen.gesture!;
+    final invite = screen.companionLines == null ? null : _withName(screen.companionLines!.forCompanion(_profile.companion));
+    final line = phase == GesturePhase.done ? _withName(gesture.back.forCompanion(_profile.companion)) : invite;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (phase == null)
+          SoftPanel(
+            padding: const EdgeInsets.all(18),
+            color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.teal), 0.85),
+            child: Row(
+              children: [
+                const IconBadge(icon: Icons.people_rounded, color: MiraboColors.teal, size: 52),
+                const SizedBox(width: 14),
+                Expanded(child: Text(gesture.together, style: Theme.of(context).textTheme.bodyMedium)),
+              ],
+            ),
+          )
+        else
+          Center(
+            child: GesturePauseBoard(
+              emoji: gesture.emoji,
+              seconds: gesture.seconds,
+              phase: phase,
+              color: accent,
+              onStart: _startGesture,
+              size: 130,
+            ),
+          ),
+        if (line != null && phase != GesturePhase.running) ...[
+          const SizedBox(height: 12),
+          _CompanionBubble(companion: companion, stage: _profile.companionStage, text: line),
+        ],
       ],
     );
   }

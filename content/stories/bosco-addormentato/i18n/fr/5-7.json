@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "Emma assise les yeux fermés sur la neige fraîche ; le premier flocon descend du ciel."
       },
-      "text": "Emma ferme les yeux. Elle entend le vent dans les feuilles. Elle entend le bois qui respire doucement. Quand elle les rouvre, un flocon de neige descend du ciel. « Il neige ! » « C'est l'oreiller du bois », dit Pietrolino. « Maintenant, il peut vraiment rêver. »"
+      "text": "Emma ferme les yeux. Elle entend le vent dans les feuilles. Elle entend le bois qui respire doucement. Quand elle les rouvre, un flocon de neige descend du ciel. « Il neige ! » « C'est l'oreiller du bois », dit Pietrolino. « Maintenant, il peut vraiment rêver. »",
+      "companionLines": {
+        "bo": "Fermons les yeux nous aussi, {nome}. Trois respirations lentes, comme la forêt qui s'endort.",
+        "pilu": "Faisons comme Emma, {nome} : les yeux fermés et trois respirations lentes. Tu sens la forêt ?",
+        "tango": "Les yeux fermés, {nome} ! Et trois respirations... lentes. Lentes ! Pour un renard, ce n'est pas facile."
+      },
+      "gesture": {
+        "together": "Fermez les yeux et prenez ensemble trois respirations lentes, comme la forêt qui s'endort. Puis rouvrez les yeux doucement.",
+        "back": {
+          "bo": "Quel calme, {nome}. J'ai presque sommeil.",
+          "pilu": "La forêt aussi respire comme ça, {nome}. Tout doucement.",
+          "tango": "Trois respirations ! Super lentes ! Maintenant, voyons Emma, {nome}."
+        }
+      }
     },
     {
       "illustration": {

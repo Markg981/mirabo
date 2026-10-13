@@ -1,0 +1,69 @@
+{
+  "title": "Chasse aux couleurs",
+  "offscreen": "Les jours suivants, jouez sans la tablette : « Je vois, je vois une chose... jaune ». Chacun son tour : l'enfant choisit aussi la couleur.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Une chose rouge",
+          "say": "Cherche dans la maison une chose rouge et apporte-la ici."
+        },
+        {
+          "label": "Une chose bleue",
+          "say": "Maintenant une chose bleue. Cherche bien."
+        },
+        {
+          "label": "Une chose jaune",
+          "say": "Et maintenant une chose jaune, comme le soleil."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Une chose verte",
+          "say": "Cherche une chose verte et apporte-la ici."
+        },
+        {
+          "label": "Une chose blanche",
+          "say": "Maintenant une chose blanche."
+        },
+        {
+          "label": "Une chose orange",
+          "say": "Une chose orange : c'est difficile, regarde bien."
+        },
+        {
+          "label": "Une chose noire",
+          "say": "Et pour finir, une chose noire."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Une chose marron",
+          "say": "Cherche une chose marron, comme le bois."
+        },
+        {
+          "label": "Une chose violette",
+          "say": "Maintenant une chose violette. Il y en a une à la maison ?"
+        },
+        {
+          "label": "Une chose de toutes les couleurs",
+          "say": "Et maintenant une chose avec plein de couleurs ensemble."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}

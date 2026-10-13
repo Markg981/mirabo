@@ -1555,6 +1555,42 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come si chiama?'**
   String get lessonTell;
+
+  /// No description provided for @gesturePause.
+  ///
+  /// In it, this message translates to:
+  /// **'Pausa: facciamo il gesto'**
+  String get gesturePause;
+
+  /// No description provided for @gestureStart.
+  ///
+  /// In it, this message translates to:
+  /// **'Pronti? Via!'**
+  String get gestureStart;
+
+  /// No description provided for @huntFound.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ho trovato!'**
+  String get huntFound;
+
+  /// No description provided for @huntNotFound.
+  ///
+  /// In it, this message translates to:
+  /// **'Non lo trovo'**
+  String get huntNotFound;
+
+  /// No description provided for @huntTellMe.
+  ///
+  /// In it, this message translates to:
+  /// **'Che cosa hai trovato? Dillo a voce alta.'**
+  String get huntTellMe;
+
+  /// No description provided for @huntRules.
+  ///
+  /// In it, this message translates to:
+  /// **'il bambino cerca una cosa alla volta, in casa o all\'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.'**
+  String get huntRules;
 }
 
 class _AppLocalizationsDelegate
