@@ -28,8 +28,20 @@ class AppState extends ChangeNotifier {
   bool _childChosen = false;
   bool get needsChildChoice => profiles.length > 1 && !_childChosen;
 
+  /// Il compagno è appena cresciuto e il bambino non l'ha ancora visto.
+  CompanionGrowth? pendingGrowth;
+
+  /// Per ogni profilo, i mondi di cui ha finito almeno una storia.
+  final Map<int, Set<World>> _found = {};
+
   Future<void> init() async {
     profiles = await db.profiles();
+    _found.clear();
+    final worldOf = {for (final s in repo.storiesIn('it')) s.id: s.world};
+    for (final p in profiles) {
+      final ids = await db.completedStoryIds(p.id);
+      _found[p.id] = {for (final id in ids) if (worldOf[id] != null) worldOf[id]!};
+    }
     currentProfile = profiles.isEmpty ? null : profiles.first;
     if (currentProfile != null) mode = currentProfile!.lastMode;
     notifyListeners();
@@ -56,6 +68,9 @@ class AppState extends ChangeNotifier {
   /// Il compagno, le storie e le attività arrivano nella lingua del bambino.
   Companion companionOf(ChildProfile p) => repo.companionsIn(p.language).firstWhere((c) => c.id == p.companion);
 
+  /// Le cose nella tana di Tango vengono da questi mondi.
+  Set<World> worldsFound(ChildProfile p) => _found[p.id] ?? const {};
+
   List<Story> storiesFor(ChildProfile p) => repo.storiesIn(p.language).where((s) => p.canOpen(s, mode)).toList();
 
   List<Activity> activitiesFor(ChildProfile p, {ActivityModule? module}) => repo.activitiesIn(p.language)
@@ -70,7 +85,25 @@ class AppState extends ChangeNotifier {
     if (p == null || results.isEmpty) return;
     await db.addRounds(p.id, activity, before.level, results);
     await db.saveProgress(applyAdaptive(before, results, activity.levels.length));
-    await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+    await _countSession(p);
+  }
+
+  /// Una sessione in più verso la crescita; se cambia stadio, il bambino lo
+  /// vedrà appena torna fra le carte.
+  Future<void> _countSession(ChildProfile p) async {
+    final next = p.copyWith(storiesCompleted: p.storiesCompleted + 1);
+    if (next.companionStage > p.companionStage) {
+      pendingGrowth = CompanionGrowth(profileId: p.id, from: p.companionStage, to: next.companionStage);
+    }
+    await updateProfile(next);
+  }
+
+  /// Il momento della crescita da mostrare a questo bambino, una volta sola.
+  CompanionGrowth? takeGrowth(ChildProfile p) {
+    final g = pendingGrowth;
+    if (g == null || g.profileId != p.id) return null;
+    pendingGrowth = null;
+    return g;
   }
 
   Future<void> selectProfile(ChildProfile p) async {
@@ -125,7 +158,10 @@ class AppState extends ChangeNotifier {
       dialogueAnswer: dialogueAnswer,
       when: DateTime.now(),
     ));
-    if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+    if (completed) {
+      (_found[p.id] ??= {}).add(story.world);
+      await _countSession(p);
+    }
   }
 
   /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così
@@ -135,8 +171,18 @@ class AppState extends ChangeNotifier {
     await backup.forget();
     profiles = const [];
     currentProfile = null;
+    pendingGrowth = null;
+    _found.clear();
     notifyListeners();
   }
+}
+
+/// Il compagno di un bambino è passato dallo stadio [from] allo stadio [to].
+class CompanionGrowth {
+  const CompanionGrowth({required this.profileId, required this.from, required this.to});
+  final int profileId;
+  final int from;
+  final int to;
 }
 
 class AppStateScope extends InheritedWidget {

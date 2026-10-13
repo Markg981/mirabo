@@ -271,6 +271,13 @@ class LocalDb {
         .toList();
   }
 
+  /// Le storie finite almeno una volta, da sempre: riempiono la tana del compagno.
+  Future<Set<String>> completedStoryIds(int profileId) async {
+    final rows = await _db.query('diary',
+        distinct: true, columns: ['story_id'], where: 'profile_id = ? AND completed = 1', whereArgs: [profileId]);
+    return {for (final r in rows) r['story_id'] as String};
+  }
+
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
     await _db.delete('activity_rounds');

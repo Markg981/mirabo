@@ -8,20 +8,43 @@ import 'package_verifier.dart';
 
 /// Descrizione di un compagno, da companions.json.
 class Companion {
-  const Companion({required this.id, required this.name, required this.kind, required this.tagline, required this.growth});
+  const Companion({
+    required this.id,
+    required this.name,
+    required this.kind,
+    required this.tagline,
+    required this.growth,
+    this.growthDescriptions = const [],
+    this.growthAfter = const [],
+  });
   final CompanionId id;
   final String name;
   final String kind;
   final String tagline;
+
+  /// Nome breve di ogni stadio (0-3).
   final List<String> growth;
 
-  factory Companion.fromJson(Map<String, dynamic> j) => Companion(
-        id: CompanionId.values.byName(j['id'] as String),
-        name: j['name'] as String,
-        kind: j['kind'] as String,
-        tagline: j['tagline'] as String,
-        growth: (j['growth'] as List).map((g) => (g as Map<String, dynamic>)['label'] as String).toList(),
-      );
+  /// Cosa cambia a ogni stadio, per il genitore.
+  final List<String> growthDescriptions;
+
+  /// Storie completate per arrivare a ogni stadio (0 per il primo).
+  final List<int> growthAfter;
+
+  String stageLabel(int stage) => growth[stage.clamp(0, growth.length - 1)];
+
+  factory Companion.fromJson(Map<String, dynamic> j) {
+    final growth = (j['growth'] as List).cast<Map<String, dynamic>>();
+    return Companion(
+      id: CompanionId.values.byName(j['id'] as String),
+      name: j['name'] as String,
+      kind: j['kind'] as String,
+      tagline: j['tagline'] as String,
+      growth: [for (final g in growth) g['label'] as String],
+      growthDescriptions: [for (final g in growth) g['description'] as String? ?? ''],
+      growthAfter: [for (final g in growth) g['after'] as int? ?? 0],
+    );
+  }
 }
 
 /// Carica le storie dai pacchetti firmati inclusi negli asset (MVP) e, in

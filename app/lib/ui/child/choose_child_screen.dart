@@ -99,7 +99,12 @@ class _ChildTile extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CompanionWidget(companion: companion, stage: profile.companionStage, size: 200, withHome: true),
+          CompanionWidget(
+              companion: companion,
+              stage: profile.companionStage,
+              size: 200,
+              withHome: true,
+              found: state.worldsFound(profile)),
           const SizedBox(height: 8),
           Text(profile.name, style: text.headlineMedium?.copyWith(color: MiraboColors.navy), maxLines: 1, overflow: TextOverflow.ellipsis),
           Text(context.l10n.chooseWith(companion.name), style: text.titleMedium?.copyWith(color: MiraboColors.inkSoft)),

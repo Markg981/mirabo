@@ -10,6 +10,8 @@
 | Come cresce | Perde il pelo da cucciolo, guadagna una sciarpa, un uccellino, una casa nel ghiaccio che si scalda | Apre gli occhi la notte, impara a volare, costruisce un nido più grande | La tana si riempie di cose trovate nelle storie |
 | Non fa mai | Dire che una risposta è sbagliata; rivolgersi ai personaggi della storia; chiedere di continuare dopo la chiusura | | |
 
+**Come cresce, nell'app.** Conta ogni sessione completata: una storia finita o un'attività con almeno un round. Gli stadi arrivano dopo 3, 6 e 12 sessioni (le soglie `after` di `content/companions/companions.json`). Al cambio di stadio, appena torna fra le carte, il bambino vede il compagno com'era e com'è adesso, con la sua casa, e lo sente dire. Succede una volta sola e non mostra punteggi. Dallo stadio 2, nella tana di Tango c'è un oggetto per ogni mondo di cui il bambino ha finito una storia: ghianda (Ambiente), conchiglia (Inclusione), sassolino a cuore (Emozioni), lanternina (Sicurezza). Il genitore vede lo stadio e quanto manca al prossimo nella scheda del profilo.
+
 ## Serie *Emma e Pietrolino* (mondo Ambiente)
 
 - **Emma**: 6 anni, due codini scompigliati, stivaletti di gomma rossi, cappottino giallo, cestino. Curiosa, concreta, chiede prima di agire.

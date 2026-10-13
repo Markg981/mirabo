@@ -12,6 +12,7 @@ import '../parent/adult_gate.dart';
 import '../parent/parent_area.dart';
 import 'categories.dart';
 import 'category_widgets.dart';
+import 'growth_moment.dart';
 import 'story_reader.dart';
 
 /// Le categorie che hanno almeno un contenuto per questo profilo.
@@ -59,7 +60,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
     if (_scroll.hasClients) _scroll.jumpTo(0);
   }
 
-  void _open(Widget page) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+  Future<void> _open(Widget page) async {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+    if (mounted) await showGrowthIfPending(context);
+  }
 
   List<Widget> _cards(AppState state, ChildProfile profile, double width) {
     final l = context.l10n;

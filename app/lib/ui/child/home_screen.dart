@@ -7,6 +7,7 @@ import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'categories.dart';
 import 'category_screen.dart';
+import 'growth_moment.dart';
 import 'category_widgets.dart';
 import 'companion_widget.dart';
 
@@ -24,7 +25,10 @@ class HomeScreen extends StatelessWidget {
     final categories = visibleCategories(state, profile);
     final text = Theme.of(context).textTheme;
 
-    void open(ChildCategory c) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoryScreen(initial: c)));
+    Future<void> open(ChildCategory c) async {
+      await Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoryScreen(initial: c)));
+      if (context.mounted) await showGrowthIfPending(context);
+    }
 
     return Scaffold(
       body: SceneBackdrop(
@@ -61,7 +65,12 @@ class HomeScreen extends StatelessWidget {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CompanionWidget(companion: companion, stage: profile.companionStage, size: size, withHome: true),
+                      CompanionWidget(
+                          companion: companion,
+                          stage: profile.companionStage,
+                          size: size,
+                          withHome: true,
+                          found: state.worldsFound(profile)),
                       const SizedBox(width: 8),
                       Flexible(
                         child: ConstrainedBox(

@@ -40,11 +40,18 @@ class ChildProfile {
   /// bambino, contenuti e voce del compagno.
   final String language;
 
-  int get companionStage {
-    if (storiesCompleted >= 12) return 3;
-    if (storiesCompleted >= 6) return 2;
-    if (storiesCompleted >= 3) return 1;
-    return 0;
+  /// Storie completate che servono per arrivare agli stadi 1, 2 e 3: le stesse
+  /// soglie "after" di companions.json (un test lo verifica).
+  static const growthThresholds = [3, 6, 12];
+
+  int get companionStage => growthThresholds.where((t) => storiesCompleted >= t).length;
+
+  /// Quante storie mancano al prossimo stadio; null se il compagno è già cresciuto del tutto.
+  int? get storiesToNextStage {
+    for (final t in growthThresholds) {
+      if (storiesCompleted < t) return t - storiesCompleted;
+    }
+    return null;
   }
 
   bool canOpen(Story story, SessionMode mode) {

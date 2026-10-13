@@ -8,7 +8,8 @@ import '../design/palette.dart';
 
 /// Il compagno del bambino, disegnato in vettoriale finché non arrivano le
 /// illustrazioni. Cresce con lo stadio (sciarpa, occhi aperti, cose nella tana:
-/// vedi docs/style-guide.md). Con [withHome] compare anche la sua casa.
+/// vedi docs/style-guide.md). Con [withHome] compare anche la sua casa; nella
+/// tana di Tango, dallo stadio 2, ci sono le cose trovate nei mondi in [found].
 /// Respira e sbatte le palpebre piano; in bassa stimolazione sta fermo.
 class CompanionWidget extends StatefulWidget {
   const CompanionWidget({
@@ -17,12 +18,14 @@ class CompanionWidget extends StatefulWidget {
     required this.stage,
     this.size = 120,
     this.withHome = false,
+    this.found,
   });
 
   final Companion companion;
   final int stage;
   final double size;
   final bool withHome;
+  final Set<World>? found;
 
   @override
   State<CompanionWidget> createState() => _CompanionWidgetState();
@@ -53,7 +56,7 @@ class _CompanionWidgetState extends State<CompanionWidget> with SingleTickerProv
     final c = widget.companion;
     return Semantics(
       image: true,
-      label: '${c.name}, ${c.kind}. ${c.growth[widget.stage.clamp(0, c.growth.length - 1)]}',
+      label: '${c.name}, ${c.kind}. ${c.stageLabel(widget.stage)}',
       child: RepaintBoundary(
         child: AnimatedBuilder(
           animation: _clock,
@@ -68,6 +71,7 @@ class _CompanionWidgetState extends State<CompanionWidget> with SingleTickerProv
                 id: c.id,
                 stage: widget.stage,
                 withHome: widget.withHome,
+                found: widget.found,
                 breath: breath,
                 eyeOpen: blink,
               ),
@@ -85,6 +89,7 @@ class CompanionPainter extends CustomPainter {
     required this.id,
     required this.stage,
     this.withHome = false,
+    this.found,
     this.breath = 0,
     this.eyeOpen = 1,
   });
@@ -92,6 +97,10 @@ class CompanionPainter extends CustomPainter {
   final CompanionId id;
   final int stage;
   final bool withHome;
+
+  /// Mondi di cui il bambino ha finito almeno una storia; null o vuoto: la
+  /// tana di Tango mostra la ghianda e la conchiglia di sempre.
+  final Set<World>? found;
   final double breath;
   final double eyeOpen;
 
@@ -434,18 +443,47 @@ class CompanionPainter extends CustomPainter {
           c.restore();
         }
         if (stage >= 2) {
-          _oval(c, 8, 80, 3.6, 4.2, const Color(0xFFB07A45));
-          c.drawArc(Rect.fromCenter(center: const Offset(8, 77), width: 8.5, height: 5), math.pi, math.pi, true,
-              Paint()..color = const Color(0xFF7B5232));
-          final shell = Path()
-            ..moveTo(86, 70)
-            ..quadraticBezierTo(92, 62, 98, 70)
-            ..close();
-          c.drawPath(shell, Paint()..color = const Color(0xFFF7C6B5));
+          final things = (found == null || found!.isEmpty) ? const {World.ambiente, World.inclusione} : found!;
+          for (final w in things) {
+            _foundThing(c, w);
+          }
         }
         if (stage >= 3) {
           _oval(c, 86, 96, 13, 3.6, const Color(0xFFF7A8B8));
         }
+    }
+  }
+
+  /// Una cosa trovata in un mondo, ognuna al suo posto ai lati della tana.
+  void _foundThing(Canvas c, World w) {
+    switch (w) {
+      case World.ambiente:
+        // ghianda
+        _oval(c, 8, 80, 3.6, 4.2, const Color(0xFFB07A45));
+        c.drawArc(Rect.fromCenter(center: const Offset(8, 77), width: 8.5, height: 5), math.pi, math.pi, true,
+            Paint()..color = const Color(0xFF7B5232));
+      case World.inclusione:
+        // conchiglia
+        final shell = Path()
+          ..moveTo(86, 70)
+          ..quadraticBezierTo(92, 62, 98, 70)
+          ..close();
+        c.drawPath(shell, Paint()..color = const Color(0xFFF7C6B5));
+      case World.emozioni:
+        // sassolino a cuore
+        final heart = Path()
+          ..moveTo(8, 72)
+          ..cubicTo(1, 67, 3, 61, 8, 64.5)
+          ..cubicTo(13, 61, 15, 67, 8, 72)
+          ..close();
+        c.drawPath(heart, Paint()..color = const Color(0xFFF07C8C));
+        _oval(c, 6, 65.5, 1.3, 0.8, Colors.white.withValues(alpha: 0.6));
+      case World.sicurezza:
+        // lanternina
+        c.drawRRect(RRect.fromLTRBR(89, 50, 97, 59, const Radius.circular(2)), Paint()..color = const Color(0xFFFFD45C));
+        c.drawRRect(RRect.fromLTRBR(88, 48, 98, 50.5, const Radius.circular(1)), Paint()..color = const Color(0xFF6B5B95));
+        c.drawArc(Rect.fromCenter(center: const Offset(93, 48), width: 5, height: 5), math.pi, math.pi, false,
+            _stroke(const Color(0xFF6B5B95), 0.9));
     }
   }
 
@@ -472,6 +510,10 @@ class CompanionPainter extends CustomPainter {
       old.id != id ||
       old.stage != stage ||
       old.withHome != withHome ||
+      !_sameWorlds(old.found, found) ||
       old.breath != breath ||
       old.eyeOpen != eyeOpen;
 }
+
+bool _sameWorlds(Set<World>? a, Set<World>? b) =>
+    (a?.length ?? 0) == (b?.length ?? 0) && (a ?? const {}).every((w) => b!.contains(w));
