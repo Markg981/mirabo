@@ -10,7 +10,7 @@ import 'package:sqflite_sqlcipher/sqflite.dart';
 import '../models/activity.dart';
 import '../models/profile.dart';
 
-/// Database locale: profili e diario. Tutto resta sul dispositivo.
+/// Database locale: profili, diario e gesti fatti nella vita vera. Tutto resta sul dispositivo.
 ///
 /// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
 /// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
@@ -19,7 +19,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 3;
+  static const _version = 4;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -49,7 +49,9 @@ class LocalDb {
             low_stimulation INTEGER NOT NULL DEFAULT 0,
             alone_minutes INTEGER NOT NULL DEFAULT 20,
             stories_completed INTEGER NOT NULL DEFAULT 0,
-            language TEXT NOT NULL DEFAULT 'it'
+            language TEXT NOT NULL DEFAULT 'it',
+            gestures_done INTEGER NOT NULL DEFAULT 0,
+            stage_floor INTEGER NOT NULL DEFAULT 0
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -63,11 +65,20 @@ class LocalDb {
           )''');
         await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
         await _createActivityTables(db);
+        await _createGesturesTable(db);
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
         // v3: lingua per bambino. I profili esistenti restano in italiano.
         if (from < 3) await db.execute("ALTER TABLE profiles ADD COLUMN language TEXT NOT NULL DEFAULT 'it'");
+        // v4: il compagno cresce con i gesti fatti davvero, non con le storie.
+        // Chi era già cresciuto con le storie resta allo stadio raggiunto.
+        if (from < 4) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN gestures_done INTEGER NOT NULL DEFAULT 0');
+          await db.execute('ALTER TABLE profiles ADD COLUMN stage_floor INTEGER NOT NULL DEFAULT 0');
+          await db.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
+          await _createGesturesTable(db);
+        }
       },
     );
     return LocalDb._(db);
@@ -163,6 +174,21 @@ class LocalDb {
       )''');
     await db.execute('CREATE INDEX rounds_profile ON activity_rounds(profile_id, skill, at)');
   }
+
+  static Future<void> _createGesturesTable(Database db) async {
+    await db.execute('''
+      CREATE TABLE gestures (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        story_id TEXT NOT NULL,
+        at TEXT NOT NULL
+      )''');
+    await db.execute('CREATE INDEX gestures_profile ON gestures(profile_id, at)');
+  }
+
+  /// Stadio che il compagno aveva quando cresceva con le storie completate.
+  static const _legacyStageSql =
+      'CASE WHEN stories_completed >= 12 THEN 3 WHEN stories_completed >= 6 THEN 2 WHEN stories_completed >= 3 THEN 1 ELSE 0 END';
 
   Future<ActivityProgress> progress(int profileId, String activityId) async {
     final rows = await _db.query('activity_progress',
@@ -271,8 +297,26 @@ class LocalDb {
         .toList();
   }
 
+  Future<void> addGesture(GestureEntry g) => _db.insert('gestures', {
+        'profile_id': g.profileId,
+        'story_id': g.storyId,
+        'at': g.when.toIso8601String(),
+      });
+
+  Future<List<GestureEntry>> gestures(int profileId) async {
+    final rows = await _db.query('gestures', where: 'profile_id = ?', whereArgs: [profileId], orderBy: 'at DESC');
+    return rows
+        .map((r) => GestureEntry(
+              profileId: r['profile_id'] as int,
+              storyId: r['story_id'] as String,
+              when: DateTime.parse(r['at'] as String),
+            ))
+        .toList();
+  }
+
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
+    await _db.delete('gestures');
     await _db.delete('activity_rounds');
     await _db.delete('activity_progress');
     await _db.delete('diary');
@@ -280,7 +324,7 @@ class LocalDb {
   }
 
   /// Tabelle nell'ordine di inserimento (prima i profili, poi chi li riferisce).
-  static const _tables = ['profiles', 'diary', 'activity_progress', 'activity_rounds'];
+  static const _tables = ['profiles', 'diary', 'activity_progress', 'activity_rounds', 'gestures'];
 
   /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
   /// del backup su Drive, che viene cifrato prima di uscire dal dispositivo.
@@ -304,6 +348,8 @@ class LocalDb {
           await tx.insert(t, Map<String, Object?>.from(row as Map));
         }
       }
+      // Come nella migrazione v4: chi era cresciuto con le storie non torna indietro.
+      if (schema < 4) await tx.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
     });
   }
 }

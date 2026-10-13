@@ -25,7 +25,7 @@ lia-rabbia/
 | `formats` | string[] | `illustrated`, `audio`, `choices`, `animation` |
 | `togetherOnly` | bool | disponibile solo in modalità insieme |
 | `keyPhrase` | string | frase-chiave della storia |
-| `gesture` | string? | gesto da imparare, mostrato al genitore |
+| `gesture` | string? | gesto da fare nella vita vera; il genitore lo segna nel diario ed è ciò che fa crescere il compagno |
 | `parentCard` | string | file markdown della scheda genitore |
 | `sources` | string[] | fonti pedagogiche |
 | `reviewedBy` | string? | chi ha fatto la revisione pedagogica, con qualifica e data; obbligatorio se `status` è `published` |

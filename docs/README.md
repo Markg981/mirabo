@@ -16,5 +16,6 @@
 | Compagno | Uno per bambino, scelto tra Bo (mammut), Pilù (civetta), Tango (volpe), non sostituibile |
 | Nome del bambino | Pronunciato con TTS di sistema, generato una volta e messo in cache |
 | Motivazione | Progressione narrativa; nessun punto, stella, streak o notifica |
+| Crescita del compagno | Solo con i gesti delle storie fatti nella vita vera, segnati dal genitore nel diario (3, 6, 12 gesti; lo stesso gesto vale una volta al giorno). Storie e attività non la fanno avanzare: il tempo sullo schermo non è premiato |
 | Contenuti | Scritti da Marco con l'AI, revisione pedagogica prima della pubblicazione (`pedagogical-review.md`); proprietari |
 | Serie | *Emma e Pietrolino* è il mondo Ambiente |

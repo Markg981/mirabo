@@ -812,6 +812,53 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get gesturesTitle => 'Real-life gestures';
+
+  @override
+  String gesturesIntro(String companion, String name) {
+    return '$companion only grows when $name really does the gesture from a story, not with time spent on the app. When you\'ve done it, mark it here.';
+  }
+
+  @override
+  String gesturesNext(int count, String companion) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count more gestures',
+      one: '1 more gesture',
+    );
+    return '$_temp0 until $companion\'s next step.';
+  }
+
+  @override
+  String gesturesAllGrown(String companion) {
+    return '$companion has reached the last step: the gestures are still worth doing.';
+  }
+
+  @override
+  String gesturesEmpty(String name) {
+    return 'Gestures from the stories $name has finished appear here.';
+  }
+
+  @override
+  String get gestureMark => 'Done today';
+
+  @override
+  String get gestureMarked => 'Marked today';
+
+  @override
+  String gestureTimes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'done $count times',
+      one: 'done once',
+      zero: 'not done yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String growthTitle(Object name) {
     return 'How $name is growing';
   }
