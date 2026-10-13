@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../data/development_stats.dart';
+import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
@@ -253,13 +254,15 @@ class _DiaryTab extends StatefulWidget {
 }
 
 class _DiaryTabState extends State<_DiaryTab> {
-  late Future<(List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>)> _data = _load();
+  late Future<_DiaryData> _data = _load();
 
-  /// Il diario mostra 30 giorni; i gesti vengono da tutte le storie finite.
-  Future<(List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>)> _load() async {
+  /// Il diario mostra 30 giorni; i gesti vengono da tutte le storie finite;
+  /// il racconto della settimana usa anche i round delle attività a casa.
+  Future<_DiaryData> _load() async {
     final db = widget.state.db;
     final id = widget.profile.id;
-    return (await db.diary(id), await db.diary(id, days: 3650), await db.gestures(id));
+    final weekAgo = DateTime.now().subtract(const Duration(days: 7));
+    return (await db.diary(id), await db.diary(id, days: 3650), await db.gestures(id), await db.rounds(id, from: weekAgo));
   }
 
   Future<void> _mark(String storyId) async {
@@ -274,18 +277,38 @@ class _DiaryTabState extends State<_DiaryTab> {
       future: _data,
       builder: (context, snap) {
         if (snap.data == null) return const Center(child: CircularProgressIndicator());
-        final (entries, allEntries, gestures) = snap.data!;
+        final (entries, allEntries, gestures, rounds) = snap.data!;
         final lang = AppLanguage.ofDevice().code;
-        final finished = <String>{for (final e in allEntries) if (e.completed) e.storyId};
-        final withGesture = [
-          for (final id in finished)
-            if (state.repo.byId(id, lang) case final story? when story.gesture != null) story,
+        final profile = state.profiles.firstWhere((p) => p.id == widget.profile.id, orElse: () => widget.profile);
+        final finished = [
+          for (final id in <String>{for (final e in allEntries) if (e.completed) e.storyId})
+            if (state.repo.byId(id, lang) case final story?) story,
         ];
+        final withGesture = [for (final s in finished) if (s.gesture != null) s];
+        final now = DateTime.now();
         return ListView(
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           children: [
+            _IdeaSection(
+              name: profile.name,
+              ideas: ideasFor(finished: finished, activities: state.repo.activitiesIn(lang), band: profile.ageBand),
+              today: now,
+            ),
+            const SizedBox(height: 20),
+            _WeekSection(
+              name: profile.name,
+              week: WeekDigest.build(
+                now: now,
+                diary: entries,
+                gestureEntries: gestures,
+                rounds: rounds,
+                story: (id) => state.repo.byId(id, lang),
+                activity: (id) => state.repo.activityById(id, lang),
+              ),
+            ),
+            const SizedBox(height: 20),
             _GesturesSection(
-              profile: state.profiles.firstWhere((p) => p.id == widget.profile.id, orElse: () => widget.profile),
+              profile: profile,
               companion: state.companionOf(widget.profile).name,
               stories: withGesture,
               gestures: gestures,
@@ -325,6 +348,113 @@ class _DiaryTabState extends State<_DiaryTab> {
       }
     }
     return answerId;
+  }
+}
+
+/// Diario a 30 giorni, tutto il diario, gesti, round della settimana.
+typedef _DiaryData = (List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>, List<Map<String, Object?>>);
+
+/// Un'idea per oggi (3.4.3): una cosa concreta da fare fuori dallo schermo,
+/// presa dalla scheda "Come parlarne" di una storia finita o da una presentazione.
+class _IdeaSection extends StatefulWidget {
+  const _IdeaSection({required this.name, required this.ideas, required this.today});
+  final String name;
+  final List<DailyIdea> ideas;
+  final DateTime today;
+
+  @override
+  State<_IdeaSection> createState() => _IdeaSectionState();
+}
+
+class _IdeaSectionState extends State<_IdeaSection> {
+  int _skip = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final idea = ideaForDay(widget.ideas, widget.today, skip: _skip);
+    final text = Theme.of(context).textTheme;
+    return FormSection(
+      icon: Icons.lightbulb_rounded,
+      color: MiraboColors.sky,
+      title: context.l10n.ideaTitle,
+      subtitle: context.l10n.ideaIntro(widget.name),
+      children: [
+        ...switch (idea) {
+          null => [Text(context.l10n.ideaEmpty(widget.name))],
+          StoryIdea(:final story, text: final body) => [
+              Text(context.l10n.ideaFromStory(story.title), style: text.titleMedium),
+              const SizedBox(height: 6),
+              MarkdownBody(data: body),
+            ],
+          HomeIdea(:final activity, :final materials) => [
+              Text(context.l10n.ideaHome(activity.title, context.l10n.areaLabel(activity.area.name)), style: text.titleMedium),
+              const SizedBox(height: 6),
+              if (materials.isNotEmpty) Text(context.l10n.presentationWhatYouNeedSay(materials.join(', '))),
+              Text(context.l10n.ideaHomeHint, style: text.bodySmall),
+            ],
+        },
+        if (widget.ideas.length > 1)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton.icon(
+              icon: const Icon(Icons.refresh_rounded),
+              label: Text(context.l10n.ideaAnother),
+              onPressed: () => setState(() => _skip++),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// Racconto della settimana (3.4.1): gli ultimi 7 giorni in poche frasi,
+/// senza numeri da migliorare.
+class _WeekSection extends StatelessWidget {
+  const _WeekSection({required this.name, required this.week});
+  final String name;
+  final WeekDigest week;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    String titles(Iterable<String> t) => t.join(', ');
+    final lines = <String>[
+      if (week.isEmpty) l10n.weekEmpty,
+      if (week.stories.isNotEmpty) ...[
+        l10n.weekStories(week.stories.length, titles(week.stories.map((s) => s.title))),
+        if (week.together == week.sessions)
+          l10n.weekAllTogether
+        else if (week.together == 0)
+          l10n.weekAllAlone
+        else
+          l10n.weekTogether(week.together, week.sessions),
+        for (final (story, answer) in week.choices) l10n.weekChoice(story.title, answer),
+      ],
+      if (week.gestures.isNotEmpty)
+        l10n.weekGestures(week.gestures.length, titles(week.gestures.map((s) => s.title)))
+      else if (week.stories.any((s) => s.gesture != null))
+        l10n.weekNoGestures,
+      if (week.home.isNotEmpty) l10n.weekHome(titles(week.home.map((a) => a.title))),
+    ];
+    return FormSection(
+      icon: Icons.auto_stories_rounded,
+      color: MiraboColors.teal,
+      title: l10n.weekTitle(name),
+      subtitle: l10n.weekIntro,
+      children: [
+        for (final line in lines)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Text(line, style: Theme.of(context).textTheme.bodyLarge),
+          ),
+        if (week.stories.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(l10n.weekKeyPhrase(week.stories.first.keyPhrase),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic)),
+          ),
+      ],
+    );
   }
 }
 

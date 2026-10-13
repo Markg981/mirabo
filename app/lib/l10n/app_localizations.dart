@@ -1292,6 +1292,120 @@ abstract class AppLocalizations {
   /// **'{count, plural, =0{non ancora fatto} =1{fatto 1 volta} other{fatto {count} volte}}'**
   String gestureTimes(int count);
 
+  /// No description provided for @ideaTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'idea per oggi'**
+  String get ideaTitle;
+
+  /// No description provided for @ideaIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Una cosa piccola da fare con {name}, lontano dallo schermo. Cambia ogni giorno.'**
+  String ideaIntro(String name);
+
+  /// No description provided for @ideaFromStory.
+  ///
+  /// In it, this message translates to:
+  /// **'Dalla storia «{story}»'**
+  String ideaFromStory(String story);
+
+  /// No description provided for @ideaHome.
+  ///
+  /// In it, this message translates to:
+  /// **'Da fare con le mani: {title} ({area})'**
+  String ideaHome(String title, String area);
+
+  /// No description provided for @ideaHomeHint.
+  ///
+  /// In it, this message translates to:
+  /// **'La presentazione passo per passo è tra le attività Montessori.'**
+  String get ideaHomeHint;
+
+  /// No description provided for @ideaAnother.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'altra idea'**
+  String get ideaAnother;
+
+  /// No description provided for @ideaEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Quando {name} avrà finito una storia, qui troverai un\'idea da fare insieme.'**
+  String ideaEmpty(String name);
+
+  /// No description provided for @weekTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'La settimana di {name}'**
+  String weekTitle(String name);
+
+  /// No description provided for @weekIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Gli ultimi 7 giorni, raccontati. Niente voti: solo quello che è successo.'**
+  String get weekIntro;
+
+  /// No description provided for @weekStories.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Ha ascoltato una storia: {titles}.} other{Ha ascoltato {count} storie: {titles}.}}'**
+  String weekStories(int count, String titles);
+
+  /// No description provided for @weekAllTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Le avete ascoltate sempre insieme.'**
+  String get weekAllTogether;
+
+  /// No description provided for @weekAllAlone.
+  ///
+  /// In it, this message translates to:
+  /// **'Le ha ascoltate da solo: la prossima potete ascoltarla insieme.'**
+  String get weekAllAlone;
+
+  /// No description provided for @weekTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'{together, plural, =1{Una volta su {total} eravate insieme.} other{{together} volte su {total} eravate insieme.}}'**
+  String weekTogether(int together, int total);
+
+  /// No description provided for @weekChoice.
+  ///
+  /// In it, this message translates to:
+  /// **'In «{story}», alla pausa ha scelto: «{answer}».'**
+  String weekChoice(String story, String answer);
+
+  /// No description provided for @weekKeyPhrase.
+  ///
+  /// In it, this message translates to:
+  /// **'Una frase da ripetere insieme: «{phrase}»'**
+  String weekKeyPhrase(String phrase);
+
+  /// No description provided for @weekGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{Nella vita vera ha fatto il gesto di {titles}.} other{Nella vita vera ha fatto {count} gesti, delle storie {titles}.}}'**
+  String weekGestures(int count, String titles);
+
+  /// No description provided for @weekNoGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun gesto segnato: se l\'avete fatto, segnalo qui sotto.'**
+  String get weekNoGestures;
+
+  /// No description provided for @weekHome.
+  ///
+  /// In it, this message translates to:
+  /// **'Con le mani, fuori dallo schermo: {titles}.'**
+  String weekHome(String titles);
+
+  /// No description provided for @weekEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Questa settimana nessuna storia e nessun gesto segnato. Va bene così: anche le settimane lontane dallo schermo contano.'**
+  String get weekEmpty;
+
   /// No description provided for @growthTitle.
   ///
   /// In it, this message translates to:
