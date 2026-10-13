@@ -1,0 +1,53 @@
+{
+  "title": "Nature hunt",
+  "offscreen": "Bring home just one treasure, already fallen on the ground, and put it on a little plate: it's the start of your nature table.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "A fallen leaf",
+          "say": "Look for a leaf that has fallen on the ground. The ones on the trees stay there."
+        },
+        {
+          "label": "A smooth stone",
+          "say": "Now a smooth stone, as small as your hand."
+        },
+        {
+          "label": "A fallen twig",
+          "say": "And a fallen twig. How does it feel?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "A seed or an acorn",
+          "say": "Look for a seed, an acorn or a pine cone."
+        },
+        {
+          "label": "A fallen petal",
+          "say": "Now a petal that has fallen on the ground. We don't pull flowers off."
+        },
+        {
+          "label": "A little creature to look at",
+          "say": "Look for a little creature, an ant or a ladybird. We don't pick it up: look at it and come and tell me what it's like."
+        },
+        {
+          "label": "A piece of bark",
+          "say": "And a little piece of fallen bark. Smell it: what does it smell of?"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

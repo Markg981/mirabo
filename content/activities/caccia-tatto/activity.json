@@ -1,0 +1,70 @@
+{
+  "id": "caccia-tatto",
+  "title": "Caccia al tatto",
+  "area": "sensoriale",
+  "skill": "tatto",
+  "type": "hunt",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": false,
+  "offscreen": "Mettete in un sacchetto tre delle cose trovate: il bambino infila la mano e dice com'è ciascuna, senza guardare.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "☁️",
+          "label": "Una cosa morbida",
+          "say": "Cerca una cosa morbida, da toccare con le mani."
+        },
+        {
+          "emoji": "🪨",
+          "label": "Una cosa dura",
+          "say": "Adesso una cosa dura. Toccala bene."
+        },
+        {
+          "emoji": "🥄",
+          "label": "Una cosa liscia",
+          "say": "E adesso una cosa liscia, che sotto le dita scivola."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🧽",
+          "label": "Una cosa ruvida",
+          "say": "Cerca una cosa ruvida, che sotto le dita gratta un po'."
+        },
+        {
+          "emoji": "🪶",
+          "label": "Una cosa leggera",
+          "say": "Adesso una cosa leggera leggera."
+        },
+        {
+          "emoji": "📚",
+          "label": "Una cosa pesante",
+          "say": "Una cosa pesante, ma che riesci a portare da solo."
+        },
+        {
+          "emoji": "🥣",
+          "label": "Una cosa fredda",
+          "say": "E una cosa fredda al tatto, come un cucchiaio o una ciotola."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

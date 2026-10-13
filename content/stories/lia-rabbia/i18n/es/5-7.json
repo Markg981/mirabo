@@ -96,6 +96,14 @@
         "bo": "Hagámoslo también nosotros, {nome}. Manos en la barriga. Dentro... uno, dos, tres. Fuera... ssssh. Yo ya me siento mejor.",
         "pilu": "Probémoslo juntos, {nome}: manos en la barriga, dentro uno dos tres, fuera sssssh. También funciona con alas, ¿sabes?",
         "tango": "¡Venga, {nome}, hagámoslo! Manos en la barriga. Dentro uno, dos, tres. Fuera ssssh. Oh. Es más difícil que correr."
+      },
+      "gesture": {
+        "together": "Hacedlo juntos, sentados o de pie: manos en la barriga, dentro contando hasta tres, fuera soplando despacio. Tres veces, sin prisa.",
+        "back": {
+          "bo": "Ya está, {nome}. Mi volcán ahora es pequeñito.",
+          "pilu": "¿Notas qué lenta va la barriga ahora, {nome}? Volvamos con Lia.",
+          "tango": "Hecho. Bueno... ¡hecho despacio! Mi volcán duerme. Vamos con Lia, {nome}."
+        }
       }
     },
     {

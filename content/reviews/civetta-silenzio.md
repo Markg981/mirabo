@@ -68,11 +68,23 @@
   - pilu: Anche il silenzio si può ascoltare. Vediamo come finisce.
   - tango: Zitto zitto. Strano, eh? Guardiamo Emma.
 
-### 6. turn
+### 6. gesture
 
 *Illustrazione:* La civetta vola via nel cielo stellato; una piuma bianca scende lenta verso la mano di Emma.
 
 > Il fruscio del vento. Un ramo che gocciola: tic, tic. Il respiro, dentro e fuori. Stanno lì, in silenzio, ad ascoltare. Poi la civetta vola via e lascia cadere una piuma bianca. Emma la raccoglie. "Così leggera. Eppure così piena." "È come il silenzio," dice Pietrolino. "Non fa rumore, ma ti cambia dentro."
+
+- **bo**: Proviamo anche noi, {nome}? Occhi chiusi e zitti zitti. Al buio ho un po' paura: mi tieni la mano?
+- **pilu**: Chiudi gli occhi con me, {nome}. Ascolta: quanti suoni senti? Io li conto in silenzio.
+- **tango**: Silenzio anche noi, {nome}! Subito! ...Aspetta. Il silenzio non si fa di corsa. Occhi chiusi, e ascoltiamo.
+
+*Pausa di gesto* 👂, 30 secondi.
+
+*Insieme:* Chiudete gli occhi insieme e restate in silenzio per mezzo minuto. Poi ditevi a turno un suono che avete sentito.
+
+- **bo** al ritorno: Ho sentito il mio respiro, {nome}. E tu?
+- **pilu** al ritorno: Che suoni hai sentito, {nome}? Io un ronzio piccolo piccolo.
+- **tango** al ritorno: Sono stato zitto davvero! Ho sentito un tic tic. E tu, {nome}?
 
 ### 7. closing
 
@@ -98,6 +110,8 @@ Da leggere in `content/stories/civetta-silenzio/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
+- [ ] La pausa di gesto si fa sul posto e senza oggetti: è sicura anche per un bambino da solo.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

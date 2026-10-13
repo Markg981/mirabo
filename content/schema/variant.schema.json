@@ -28,7 +28,7 @@
         "additionalProperties": false,
         "properties": {
           "n": { "type": "integer", "minimum": 1 },
-          "kind": { "enum": ["hook", "situation", "dialogue", "lesson", "turn", "closing"] },
+          "kind": { "enum": ["hook", "situation", "dialogue", "lesson", "gesture", "turn", "closing"] },
           "illustration": {
             "type": "object",
             "required": ["alt"],
@@ -120,6 +120,18 @@
               },
               "ask": { "type": "string", "minLength": 1 },
               "done": { "type": "string", "minLength": 1 }
+            }
+          },
+          "gesture": {
+            "description": "Pausa di gesto: la storia si ferma e il bambino fa il gesto con il corpo, poi si riprende",
+            "type": "object",
+            "required": ["e", "seconds", "together", "back"],
+            "additionalProperties": false,
+            "properties": {
+              "e": { "type": "string", "minLength": 1 },
+              "seconds": { "type": "integer", "minimum": 5, "maximum": 60 },
+              "together": { "type": "string", "minLength": 1 },
+              "back": { "$ref": "#/$defs/companionLines" }
             }
           },
           "dialogue": {

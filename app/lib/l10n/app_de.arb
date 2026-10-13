@@ -292,5 +292,12 @@
   "shelfFull": "In diesem Regal stehen schon {max} Materialien: nimm eins weg, um ein anderes hinzustellen.",
   "shelfKindStory": "Geschichte",
   "shelfKindGame": "Spiel",
-  "shelfKindActivity": "Aktivität"
+  "shelfKindActivity": "Aktivität",
+
+  "gesturePause": "Pause: Wir machen die Geste",
+  "gestureStart": "Bereit? Los!",
+  "huntFound": "Ich hab's gefunden!",
+  "huntNotFound": "Ich finde es nicht",
+  "huntTellMe": "Was hast du gefunden? Sag es laut.",
+  "huntRules": "Das Kind sucht immer nur eine Sache, im Haus oder draußen mit euch. Nur Dinge in Reichweite: nicht klettern, nichts Spitzes oder Zerbrechliches, keine Medikamente oder Putzmittel. Draußen nur, was schon auf dem Boden liegt. Am Ende kommt alles wieder an seinen Platz."
 }

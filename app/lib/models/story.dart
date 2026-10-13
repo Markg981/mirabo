@@ -25,7 +25,7 @@ enum AgeBand {
   }
 }
 
-enum ScreenKind { hook, situation, dialogue, lesson, turn, closing }
+enum ScreenKind { hook, situation, dialogue, lesson, gesture, turn, closing }
 
 enum CompanionId { bo, pilu, tango }
 
@@ -234,6 +234,33 @@ class Lesson {
       );
 }
 
+/// Pausa di gesto: la storia si ferma e il bambino fa con il corpo il gesto del
+/// protagonista (respirare, chiudere gli occhi, ascoltare). L'invito è nelle
+/// `companionLines` della schermata; da soli si va avanti dopo [seconds], quando
+/// il compagno dice [back]. Non fa crescere il compagno: quello lo fa solo il
+/// gesto nella vita vera, segnato dal genitore.
+class GesturePause {
+  const GesturePause({required this.emoji, required this.seconds, required this.together, required this.back});
+
+  final String emoji;
+
+  /// Quanto dura la pausa da soli, prima che si possa andare avanti.
+  final int seconds;
+
+  /// Guida per il genitore in modalità insieme.
+  final String together;
+
+  /// Detta dal compagno quando la pausa finisce.
+  final CompanionLines back;
+
+  factory GesturePause.fromJson(Map<String, dynamic> j) => GesturePause(
+        emoji: j['e'] as String,
+        seconds: j['seconds'] as int,
+        together: j['together'] as String,
+        back: CompanionLines.fromJson(j['back'] as Map<String, dynamic>),
+      );
+}
+
 class StoryScreen {
   const StoryScreen({
     required this.n,
@@ -244,6 +271,7 @@ class StoryScreen {
     this.companionLines,
     this.dialogue,
     this.lesson,
+    this.gesture,
     this.isKeyPhrase = false,
   });
 
@@ -255,6 +283,7 @@ class StoryScreen {
   final CompanionLines? companionLines;
   final Dialogue? dialogue;
   final Lesson? lesson;
+  final GesturePause? gesture;
   final bool isKeyPhrase;
 
   factory StoryScreen.fromJson(Map<String, dynamic> j) => StoryScreen(
@@ -267,6 +296,7 @@ class StoryScreen {
             j['companionLines'] == null ? null : CompanionLines.fromJson(j['companionLines'] as Map<String, dynamic>),
         dialogue: j['dialogue'] == null ? null : Dialogue.fromJson(j['dialogue'] as Map<String, dynamic>),
         lesson: j['lesson'] == null ? null : Lesson.fromJson(j['lesson'] as Map<String, dynamic>),
+        gesture: j['gesture'] == null ? null : GesturePause.fromJson(j['gesture'] as Map<String, dynamic>),
         isKeyPhrase: (j['keyPhrase'] as bool?) ?? false,
       );
 }

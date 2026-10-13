@@ -1,0 +1,49 @@
+{
+  "title": "Búsqueda de cantidades",
+  "offscreen": "Al poner la mesa, preguntad: \"¿Traes tres cucharas?\". Contad juntos tocando cada cosa una sola vez.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Un libro",
+          "say": "Busca un libro y tráelo aquí. Uno solo."
+        },
+        {
+          "label": "Dos cucharas",
+          "say": "Ahora dos cucharas. Cuéntalas mientras las coges."
+        },
+        {
+          "label": "Tres calcetines",
+          "say": "Y ahora tres calcetines. Uno, dos, tres."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Cuatro calcetines",
+          "say": "Busca cuatro calcetines. Cuéntalos tocándolos."
+        },
+        {
+          "label": "Dos zapatos que hacen pareja",
+          "say": "Ahora dos zapatos que hacen pareja."
+        },
+        {
+          "label": "Cinco juguetes",
+          "say": "Y cinco juguetes. Ponlos en fila y cuéntalos."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

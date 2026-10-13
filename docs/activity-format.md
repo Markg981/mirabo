@@ -93,7 +93,7 @@ tappe descrittive: "sta iniziando / ci sta lavorando / ce la fa / lo fa da solo"
 ## Modulo Montessori (`"module": "montessori"`)
 
 Aree: `vita-pratica`, `sensoriale`, `linguaggio` (include la scrittura), `matematica`, `cultura`.
-Le attività sono generate da `studio/seed_montessori.py`. Tre tipi in più:
+Le attività sono generate da `studio/seed_montessori.py`. Quattro tipi in più:
 
 ### `presentation` — presentazione da fare a casa
 Il cuore del modulo: materiali di casa, passi mostrati dal grande una volta sola, controllo
@@ -121,6 +121,21 @@ come nell'alfabeto mobile.
 ```json
 { "rounds": [ { "emoji": "☀️", "word": "SOLE", "extra": "AMR" } ] }
 ```
+
+### `hunt` — caccia al tesoro
+Il ponte con il mondo reale: il compagno dice una cosa da cercare in casa (o all'aperto, con un
+grande), il bambino si alza, la trova con le mani e la porta. Quando torna tocca "L'ho trovato!" e
+dice a voce che cosa ha trovato; "Non lo trovo" va bene uguale e si passa alla cosa dopo. Il tablet
+non controlla niente. Prima di cominciare l'app mostra al grande la regola: solo cose a portata di
+mano, niente di affilato, fragile o pericoloso, fuori solo ciò che è già caduto a terra. L'outro
+chiede di rimettere ogni cosa al suo posto. Da 2 a 6 cose per livello, ognuna con `emoji`, `label`
+(mostrata) e `say` (detta dal compagno).
+```json
+{ "items": [ { "emoji": "🔴", "label": "Una cosa rossa", "say": "Cerca in casa una cosa rossa e portala qui." } ] }
+```
+Ogni cosa è un round con `choice` `hunt=found` o `hunt=skip`; le statistiche contano quante cose ha
+trovato, non quanto in fretta. Le cacce sono nel modulo Montessori (colori, tatto, suoni iniziali,
+quantità, natura) e hanno il bollino "a casa".
 
 ### Seriazione con `sequence`
 Un round con `"sizes": true` e carte con `size` (0–1) disegna le tessere in scala: torre

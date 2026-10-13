@@ -1,0 +1,69 @@
+{
+  "title": "Colour hunt",
+  "offscreen": "In the following days, play without the tablet: \"I spy something... yellow\". Take turns: the child chooses the colour too.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Something red",
+          "say": "Look around the house for something red and bring it here."
+        },
+        {
+          "label": "Something blue",
+          "say": "Now something blue. Look carefully."
+        },
+        {
+          "label": "Something yellow",
+          "say": "And now something yellow, like the sun."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Something green",
+          "say": "Look for something green and bring it here."
+        },
+        {
+          "label": "Something white",
+          "say": "Now something white."
+        },
+        {
+          "label": "Something orange",
+          "say": "Something orange: that's tricky, look carefully."
+        },
+        {
+          "label": "Something black",
+          "say": "And to finish, something black."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Something brown",
+          "say": "Look for something brown, like wood."
+        },
+        {
+          "label": "Something purple",
+          "say": "Now something purple. Is there one in the house?"
+        },
+        {
+          "label": "Something with lots of colours",
+          "say": "And now something with lots of colours together."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

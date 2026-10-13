@@ -173,7 +173,7 @@
     },
     {
       "n": 8,
-      "kind": "turn",
+      "kind": "gesture",
       "illustration": {
         "alt": "Lia e la nonna con le mani sulla pancia; sopra di loro il vulcano, che da rosso diventa arancione, poi rosa, con la lava che scende piano.",
         "scene": {
@@ -191,6 +191,16 @@
         "bo": "Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.",
         "pilu": "Proviamolo insieme, {nome}: mani sulla pancia, dentro uno due tre, fuori sssssh. Funziona anche con le ali, sai.",
         "tango": "Dai {nome}, facciamolo! Mani sulla pancia. Dentro uno, due, tre. Fuori ssssh. Oh. È più difficile che correre."
+      },
+      "gesture": {
+        "e": "🌋",
+        "seconds": 20,
+        "together": "Fatelo insieme, seduti o in piedi: mani sulla pancia, dentro contando fino a tre, fuori soffiando piano. Tre volte, senza fretta.",
+        "back": {
+          "bo": "Eccoci, {nome}. Il mio vulcano adesso è piccolo piccolo.",
+          "pilu": "Senti com'è lenta la pancia adesso, {nome}? Torniamo da Lia.",
+          "tango": "Fatto. Cioè... fatto piano! Il mio vulcano dorme. Andiamo da Lia, {nome}."
+        }
       }
     },
     {

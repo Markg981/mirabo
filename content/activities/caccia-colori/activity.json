@@ -1,0 +1,89 @@
+{
+  "id": "caccia-colori",
+  "title": "Caccia ai colori",
+  "area": "sensoriale",
+  "skill": "colori",
+  "type": "hunt",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": false,
+  "offscreen": "Nei giorni dopo giocate senza tablet: \"Vedo vedo una cosa... gialla\". A turno, anche il bambino sceglie il colore.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "🔴",
+          "label": "Una cosa rossa",
+          "say": "Cerca in casa una cosa rossa e portala qui."
+        },
+        {
+          "emoji": "🔵",
+          "label": "Una cosa blu",
+          "say": "Adesso una cosa blu. Cerca bene."
+        },
+        {
+          "emoji": "🟡",
+          "label": "Una cosa gialla",
+          "say": "E adesso una cosa gialla, come il sole."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🟢",
+          "label": "Una cosa verde",
+          "say": "Cerca una cosa verde e portala qui."
+        },
+        {
+          "emoji": "⚪",
+          "label": "Una cosa bianca",
+          "say": "Adesso una cosa bianca."
+        },
+        {
+          "emoji": "🟠",
+          "label": "Una cosa arancione",
+          "say": "Una cosa arancione: è difficile, guarda bene."
+        },
+        {
+          "emoji": "⚫",
+          "label": "Una cosa nera",
+          "say": "E per finire una cosa nera."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🟤",
+          "label": "Una cosa marrone",
+          "say": "Cerca una cosa marrone, come il legno."
+        },
+        {
+          "emoji": "🟣",
+          "label": "Una cosa viola",
+          "say": "Adesso una cosa viola. Ce n'è una in casa?"
+        },
+        {
+          "emoji": "🎨",
+          "label": "Una cosa con tanti colori",
+          "say": "E adesso una cosa con tanti colori insieme."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

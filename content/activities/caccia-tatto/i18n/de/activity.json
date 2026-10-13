@@ -1,0 +1,53 @@
+{
+  "title": "Fühlsuche",
+  "offscreen": "Steckt drei der gefundenen Dinge in einen Beutel: Das Kind greift hinein und sagt, wie sich jedes anfühlt, ohne hinzuschauen.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Etwas Weiches",
+          "say": "Such etwas Weiches zum Anfassen."
+        },
+        {
+          "label": "Etwas Hartes",
+          "say": "Jetzt etwas Hartes. Fühl es genau."
+        },
+        {
+          "label": "Etwas Glattes",
+          "say": "Und jetzt etwas Glattes, das unter den Fingern rutscht."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Etwas Raues",
+          "say": "Such etwas Raues, das unter den Fingern ein bisschen kratzt."
+        },
+        {
+          "label": "Etwas Leichtes",
+          "say": "Jetzt etwas ganz Leichtes."
+        },
+        {
+          "label": "Etwas Schweres",
+          "say": "Etwas Schweres, das du aber allein tragen kannst."
+        },
+        {
+          "label": "Etwas Kaltes",
+          "say": "Und etwas, das sich kalt anfühlt, wie ein Löffel oder eine Schüssel."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

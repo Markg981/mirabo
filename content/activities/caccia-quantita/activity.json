@@ -1,0 +1,65 @@
+{
+  "id": "caccia-quantita",
+  "title": "Caccia alle quantità",
+  "area": "matematica",
+  "skill": "numeri",
+  "type": "hunt",
+  "ageBands": [
+    "3-5",
+    "5-7"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": false,
+  "offscreen": "Apparecchiando, chiedete: \"Porti tre cucchiai?\". Contate insieme toccando ogni cosa una volta sola.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "📕",
+          "label": "Un libro",
+          "say": "Cerca un libro e portalo qui. Uno solo."
+        },
+        {
+          "emoji": "🥄",
+          "label": "Due cucchiai",
+          "say": "Adesso due cucchiai. Contali mentre li prendi."
+        },
+        {
+          "emoji": "🧦",
+          "label": "Tre calzini",
+          "say": "E adesso tre calzini. Uno, due, tre."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🧦",
+          "label": "Quattro calzini",
+          "say": "Cerca quattro calzini. Contali toccandoli."
+        },
+        {
+          "emoji": "👟",
+          "label": "Due scarpe che fanno coppia",
+          "say": "Adesso due scarpe che fanno coppia."
+        },
+        {
+          "emoji": "🧸",
+          "label": "Cinque giochi",
+          "say": "E cinque giochi. Mettili in fila e contali."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

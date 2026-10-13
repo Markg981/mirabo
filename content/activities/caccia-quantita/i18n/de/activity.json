@@ -1,0 +1,49 @@
+{
+  "title": "Mengensuche",
+  "offscreen": "Beim Tischdecken fragt: „Bringst du drei Löffel?“. Zählt zusammen und berührt jedes Ding nur einmal.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Ein Buch",
+          "say": "Such ein Buch und bring es her. Nur eins."
+        },
+        {
+          "label": "Zwei Löffel",
+          "say": "Jetzt zwei Löffel. Zähl sie, während du sie nimmst."
+        },
+        {
+          "label": "Drei Socken",
+          "say": "Und jetzt drei Socken. Eins, zwei, drei."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Vier Socken",
+          "say": "Such vier Socken. Zähl sie, indem du sie berührst."
+        },
+        {
+          "label": "Zwei Schuhe, die ein Paar sind",
+          "say": "Jetzt zwei Schuhe, die zusammengehören."
+        },
+        {
+          "label": "Fünf Spielsachen",
+          "say": "Und fünf Spielsachen. Leg sie in eine Reihe und zähl sie."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

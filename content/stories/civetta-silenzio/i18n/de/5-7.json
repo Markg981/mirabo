@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "Die Eule fliegt in den Sternenhimmel davon; eine weiße Feder schwebt langsam zu Emmas Hand herab."
       },
-      "text": "Das Rauschen des Windes. Ein Ast, der tropft: tick, tick. Der Atem, ein und aus. Sie sitzen still da und hören zu. Dann fliegt die Eule davon und lässt eine weiße Feder fallen. Emma hebt sie auf. „So leicht. Und doch so voll.“ „Sie ist wie die Stille“, sagt Pietrolino. „Sie macht kein Geräusch, aber sie verändert dich innen drin.“"
+      "text": "Das Rauschen des Windes. Ein Ast, der tropft: tick, tick. Der Atem, ein und aus. Sie sitzen still da und hören zu. Dann fliegt die Eule davon und lässt eine weiße Feder fallen. Emma hebt sie auf. „So leicht. Und doch so voll.“ „Sie ist wie die Stille“, sagt Pietrolino. „Sie macht kein Geräusch, aber sie verändert dich innen drin.“",
+      "companionLines": {
+        "bo": "Probieren wir es auch, {nome}? Augen zu und mucksmäuschenstill. Im Dunkeln habe ich ein bisschen Angst: Hältst du meine Hand?",
+        "pilu": "Schließ die Augen mit mir, {nome}. Hör mal: Wie viele Geräusche hörst du? Ich zähle sie ganz leise.",
+        "tango": "Wir sind auch still, {nome}! Sofort! ...Warte. Stille geht nicht im Laufschritt. Augen zu, und wir hören."
+      },
+      "gesture": {
+        "together": "Schließt zusammen die Augen und seid eine halbe Minute still. Dann sagt euch abwechselnd ein Geräusch, das ihr gehört habt.",
+        "back": {
+          "bo": "Ich habe meinen Atem gehört, {nome}. Und du?",
+          "pilu": "Welche Geräusche hast du gehört, {nome}? Ich ein ganz kleines Summen.",
+          "tango": "Ich war wirklich still! Ich habe ein Tick-tick gehört. Und du, {nome}?"
+        }
+      }
     },
     {
       "illustration": {

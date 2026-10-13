@@ -8,6 +8,8 @@ Due forme, come deciso:
 - esercizi su schermo: seriazione (torre rosa, scala marrone, aste), abbinamenti
   (tavolette dei colori, nomenclature), alfabeto mobile, lettere e forme da tracciare,
   conteggio con le aste numeriche.
+- `hunt`: cacce al tesoro in casa o all'aperto. Il compagno dice cosa cercare, il bambino
+  si alza, lo trova con le mani e torna a dirlo a voce; poi si rimette tutto a posto.
 
 Il filone "scrittura" vive nell'area linguaggio: pregrafismo, incastri di ferro,
 lettere smerigliate, alfabeto mobile, copia di parole e frasi (7–10).
@@ -419,6 +421,99 @@ presentation(
     ],
     control="Il fagiolo stesso: se germoglia, le cure sono andate bene; se marcisce, c'era troppa acqua.",
     observe="Dopo due settimane trapiantatelo nella terra: diventa la pianta di 'Prendersi cura di una pianta'.",
+)
+
+
+# ================================================================ CACCE AL TESORO
+# Il ponte con il mondo reale: il tablet dice cosa cercare, il resto succede fuori dallo
+# schermo. Nessuna verifica e nessun punteggio: il bambino dice a voce cosa ha trovato,
+# "non lo trovo" va bene uguale. Alla fine ogni cosa torna al suo posto.
+INTRO_HUNT = lines(
+    "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano.",
+)
+OUTRO_HUNT = lines(
+    "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!",
+)
+
+
+def hunt(*, id, title, area, skill, ageBands, levels, offscreen, together=False):
+    add(
+        id=id, title=title, area=area, skill=skill, type="hunt", ageBands=ageBands,
+        intro=INTRO_HUNT, outro=OUTRO_HUNT, togetherSuggested=together, offscreen=offscreen,
+        levels=[{"items": [{"emoji": e, "label": label, "say": say} for e, label, say in lv]} for lv in levels],
+    )
+
+
+hunt(
+    id="caccia-colori", title="Caccia ai colori", area="sensoriale", skill="colori", ageBands=["3-5", "5-7"],
+    offscreen="Nei giorni dopo giocate senza tablet: \"Vedo vedo una cosa... gialla\". A turno, anche il bambino sceglie il colore.",
+    levels=[
+        [("🔴", "Una cosa rossa", "Cerca in casa una cosa rossa e portala qui."),
+         ("🔵", "Una cosa blu", "Adesso una cosa blu. Cerca bene."),
+         ("🟡", "Una cosa gialla", "E adesso una cosa gialla, come il sole.")],
+        [("🟢", "Una cosa verde", "Cerca una cosa verde e portala qui."),
+         ("⚪", "Una cosa bianca", "Adesso una cosa bianca."),
+         ("🟠", "Una cosa arancione", "Una cosa arancione: è difficile, guarda bene."),
+         ("⚫", "Una cosa nera", "E per finire una cosa nera.")],
+        [("🟤", "Una cosa marrone", "Cerca una cosa marrone, come il legno."),
+         ("🟣", "Una cosa viola", "Adesso una cosa viola. Ce n'è una in casa?"),
+         ("🎨", "Una cosa con tanti colori", "E adesso una cosa con tanti colori insieme.")],
+    ],
+)
+hunt(
+    id="caccia-tatto", title="Caccia al tatto", area="sensoriale", skill="tatto", ageBands=["3-5", "5-7"],
+    offscreen="Mettete in un sacchetto tre delle cose trovate: il bambino infila la mano e dice com'è ciascuna, senza guardare.",
+    levels=[
+        [("☁️", "Una cosa morbida", "Cerca una cosa morbida, da toccare con le mani."),
+         ("🪨", "Una cosa dura", "Adesso una cosa dura. Toccala bene."),
+         ("🥄", "Una cosa liscia", "E adesso una cosa liscia, che sotto le dita scivola.")],
+        [("🧽", "Una cosa ruvida", "Cerca una cosa ruvida, che sotto le dita gratta un po'."),
+         ("🪶", "Una cosa leggera", "Adesso una cosa leggera leggera."),
+         ("📚", "Una cosa pesante", "Una cosa pesante, ma che riesci a portare da solo."),
+         ("🥣", "Una cosa fredda", "E una cosa fredda al tatto, come un cucchiaio o una ciotola.")],
+    ],
+)
+hunt(
+    id="caccia-suoni", title="Caccia ai suoni", area="linguaggio", skill="suoni-iniziali", ageBands=["3-5", "5-7"],
+    offscreen="È il gioco del suono di sempre: \"Vedo una cosa che comincia con mmm\". Dite il suono, non il nome della lettera.",
+    levels=[
+        [("👂", "Comincia con mmm", "Cerca una cosa che comincia con mmm, come mela."),
+         ("👂", "Comincia con sss", "Adesso una cosa che comincia con sss, come sole."),
+         ("👂", "Comincia con p", "E una cosa che comincia con p, come palla.")],
+        [("👂", "Comincia con lll", "Cerca una cosa che comincia con lll, come luna."),
+         ("👂", "Comincia con t", "Adesso una cosa che comincia con t, come tavolo."),
+         ("👂", "Comincia con fff", "E una cosa che comincia con fff, come foglia.")],
+    ],
+)
+hunt(
+    id="caccia-quantita", title="Caccia alle quantità", area="matematica", skill="numeri", ageBands=["3-5", "5-7"],
+    offscreen="Apparecchiando, chiedete: \"Porti tre cucchiai?\". Contate insieme toccando ogni cosa una volta sola.",
+    levels=[
+        [("📕", "Un libro", "Cerca un libro e portalo qui. Uno solo."),
+         ("🥄", "Due cucchiai", "Adesso due cucchiai. Contali mentre li prendi."),
+         ("🧦", "Tre calzini", "E adesso tre calzini. Uno, due, tre.")],
+        [("🧦", "Quattro calzini", "Cerca quattro calzini. Contali toccandoli."),
+         ("👟", "Due scarpe che fanno coppia", "Adesso due scarpe che fanno coppia."),
+         ("🧸", "Cinque giochi", "E cinque giochi. Mettili in fila e contali.")],
+    ],
+)
+hunt(
+    id="caccia-natura", title="Caccia nella natura", area="cultura", skill="natura", ageBands=["3-5", "5-7", "7-10"],
+    together=True,
+    offscreen="Portate a casa un tesoro solo, già caduto a terra, e mettetelo su un piattino: è l'inizio del tavolo della natura.",
+    levels=[
+        [("🍂", "Una foglia caduta", "Cerca una foglia caduta a terra. Quelle sugli alberi restano lì."),
+         ("🪨", "Un sasso liscio", "Adesso un sasso liscio, piccolo come la tua mano."),
+         ("🌿", "Un rametto caduto", "E un rametto caduto. Senti com'è?")],
+        [("🌰", "Un seme o una ghianda", "Cerca un seme, una ghianda o una pigna."),
+         ("🌸", "Un petalo caduto", "Adesso un petalo caduto a terra. I fiori non si strappano."),
+         ("🐞", "Un animaletto da guardare", "Cerca un animaletto, una formica o una coccinella. Non si prende: guardalo e torna a dirmi com'è."),
+         ("🪵", "Un pezzo di corteccia", "E un pezzetto di corteccia caduto. Annusalo: di cosa sa?")],
+    ],
 )
 
 

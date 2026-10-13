@@ -1,0 +1,49 @@
+{
+  "title": "Búsqueda de sonidos",
+  "offscreen": "Es el juego del sonido de siempre: \"Veo, veo una cosa que empieza por mmm\". Decid el sonido, no el nombre de la letra.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Empieza por mmm",
+          "say": "Busca una cosa que empiece por mmm, como mesa."
+        },
+        {
+          "label": "Empieza por sss",
+          "say": "Ahora una cosa que empiece por sss, como sol."
+        },
+        {
+          "label": "Empieza por p",
+          "say": "Y una cosa que empiece por p, como pelota."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Empieza por lll",
+          "say": "Busca una cosa que empiece por lll, como libro."
+        },
+        {
+          "label": "Empieza por t",
+          "say": "Ahora una cosa que empiece por t, como taza."
+        },
+        {
+          "label": "Empieza por fff",
+          "say": "Y una cosa que empiece por fff, como foto."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

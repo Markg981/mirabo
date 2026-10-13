@@ -135,7 +135,7 @@
     },
     {
       "n": 6,
-      "kind": "turn",
+      "kind": "gesture",
       "illustration": {
         "alt": "La civetta vola via nel cielo stellato; una piuma bianca scende lenta verso la mano di Emma.",
         "scene": {
@@ -148,7 +148,22 @@
           ]
         }
       },
-      "text": "Il fruscio del vento. Un ramo che gocciola: tic, tic. Il respiro, dentro e fuori. Stanno lì, in silenzio, ad ascoltare. Poi la civetta vola via e lascia cadere una piuma bianca. Emma la raccoglie. \"Così leggera. Eppure così piena.\" \"È come il silenzio,\" dice Pietrolino. \"Non fa rumore, ma ti cambia dentro.\""
+      "text": "Il fruscio del vento. Un ramo che gocciola: tic, tic. Il respiro, dentro e fuori. Stanno lì, in silenzio, ad ascoltare. Poi la civetta vola via e lascia cadere una piuma bianca. Emma la raccoglie. \"Così leggera. Eppure così piena.\" \"È come il silenzio,\" dice Pietrolino. \"Non fa rumore, ma ti cambia dentro.\"",
+      "companionLines": {
+        "bo": "Proviamo anche noi, {nome}? Occhi chiusi e zitti zitti. Al buio ho un po' paura: mi tieni la mano?",
+        "pilu": "Chiudi gli occhi con me, {nome}. Ascolta: quanti suoni senti? Io li conto in silenzio.",
+        "tango": "Silenzio anche noi, {nome}! Subito! ...Aspetta. Il silenzio non si fa di corsa. Occhi chiusi, e ascoltiamo."
+      },
+      "gesture": {
+        "e": "👂",
+        "seconds": 30,
+        "together": "Chiudete gli occhi insieme e restate in silenzio per mezzo minuto. Poi ditevi a turno un suono che avete sentito.",
+        "back": {
+          "bo": "Ho sentito il mio respiro, {nome}. E tu?",
+          "pilu": "Che suoni hai sentito, {nome}? Io un ronzio piccolo piccolo.",
+          "tango": "Sono stato zitto davvero! Ho sentito un tic tic. E tu, {nome}?"
+        }
+      }
     },
     {
       "n": 7,

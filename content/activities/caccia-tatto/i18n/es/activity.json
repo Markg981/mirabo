@@ -1,0 +1,53 @@
+{
+  "title": "Búsqueda del tacto",
+  "offscreen": "Meted en una bolsa tres de las cosas encontradas: el niño mete la mano y dice cómo es cada una, sin mirar.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Una cosa blanda",
+          "say": "Busca una cosa blanda, para tocarla con las manos."
+        },
+        {
+          "label": "Una cosa dura",
+          "say": "Ahora una cosa dura. Tócala bien."
+        },
+        {
+          "label": "Una cosa lisa",
+          "say": "Y ahora una cosa lisa, que resbala bajo los dedos."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Una cosa áspera",
+          "say": "Busca una cosa áspera, que rasca un poco bajo los dedos."
+        },
+        {
+          "label": "Una cosa ligera",
+          "say": "Ahora una cosa ligera, muy ligera."
+        },
+        {
+          "label": "Una cosa pesada",
+          "say": "Una cosa pesada, pero que puedas llevar tú solo."
+        },
+        {
+          "label": "Una cosa fría",
+          "say": "Y una cosa fría al tacto, como una cuchara o un cuenco."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

@@ -79,7 +79,20 @@
       "illustration": {
         "alt": "The owl flies away into the starry sky; a white feather drifts slowly down towards Emma's hand."
       },
-      "text": "The rustle of the wind. A branch dripping: tick, tick. Breathing, in and out. They sit there in silence, listening. Then the owl flies away and lets a white feather fall. Emma picks it up. \"So light. And yet so full.\" \"It's like silence,\" says Pietrolino. \"It doesn't make a sound, but it changes you inside.\""
+      "text": "The rustle of the wind. A branch dripping: tick, tick. Breathing, in and out. They sit there in silence, listening. Then the owl flies away and lets a white feather fall. Emma picks it up. \"So light. And yet so full.\" \"It's like silence,\" says Pietrolino. \"It doesn't make a sound, but it changes you inside.\"",
+      "companionLines": {
+        "bo": "Shall we try too, {nome}? Eyes closed and quiet as mice. I'm a bit scared of the dark: will you hold my hand?",
+        "pilu": "Close your eyes with me, {nome}. Listen: how many sounds can you hear? I'll count them quietly.",
+        "tango": "Silence for us too, {nome}! Right now! ...Wait. You can't do silence in a hurry. Eyes closed, and let's listen."
+      },
+      "gesture": {
+        "together": "Close your eyes together and stay silent for half a minute. Then take turns saying one sound you heard.",
+        "back": {
+          "bo": "I heard my breathing, {nome}. What about you?",
+          "pilu": "What sounds did you hear, {nome}? I heard a tiny little hum.",
+          "tango": "I really stayed quiet! I heard a tick tick. What about you, {nome}?"
+        }
+      }
     },
     {
       "illustration": {

@@ -68,11 +68,23 @@
   - pilu: Succede. Vediamo cosa scopre Emma sul fermarsi.
   - tango: Ecco! Anch'io! ...Però sbadiglio. Vediamo.
 
-### 6. turn
+### 6. gesture
 
 *Illustrazione:* Emma con gli occhi chiusi seduta sulla neve appena caduta; il primo fiocco di neve scende dal cielo.
 
 > Emma chiude gli occhi. Sente il vento tra le foglie. Sente il bosco che respira piano. Quando li riapre, un fiocco di neve scende dal cielo. "Nevica!" "È il cuscino del bosco," dice Pietrolino. "Adesso può sognare davvero."
+
+- **bo**: Chiudiamo gli occhi anche noi, {nome}. Tre respiri lenti, come il bosco che si addormenta.
+- **pilu**: Facciamo come Emma, {nome}: occhi chiusi e tre respiri lenti. Lo senti il bosco?
+- **tango**: Occhi chiusi, {nome}! E tre respiri... lenti. Lenti! Per una volpe non è facile.
+
+*Pausa di gesto* 🍂, 20 secondi.
+
+*Insieme:* Chiudete gli occhi e fate insieme tre respiri lenti, come il bosco che si addormenta. Poi riaprite gli occhi piano.
+
+- **bo** al ritorno: Che pace, {nome}. Mi viene quasi sonno.
+- **pilu** al ritorno: Anche il bosco respira così, {nome}. Piano piano.
+- **tango** al ritorno: Tre respiri! Lentissimi! Adesso vediamo Emma, {nome}.
 
 ### 7. closing
 
@@ -98,6 +110,8 @@ Da leggere in `content/stories/bosco-addormentato/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
+- [ ] La pausa di gesto si fa sul posto e senza oggetti: è sicura anche per un bambino da solo.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it'),
+    Locale('it')
   ];
 
   /// No description provided for @appTitle.
@@ -1723,6 +1723,42 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Attività'**
   String get shelfKindActivity;
+
+  /// No description provided for @gesturePause.
+  ///
+  /// In it, this message translates to:
+  /// **'Pausa: facciamo il gesto'**
+  String get gesturePause;
+
+  /// No description provided for @gestureStart.
+  ///
+  /// In it, this message translates to:
+  /// **'Pronti? Via!'**
+  String get gestureStart;
+
+  /// No description provided for @huntFound.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ho trovato!'**
+  String get huntFound;
+
+  /// No description provided for @huntNotFound.
+  ///
+  /// In it, this message translates to:
+  /// **'Non lo trovo'**
+  String get huntNotFound;
+
+  /// No description provided for @huntTellMe.
+  ///
+  /// In it, this message translates to:
+  /// **'Che cosa hai trovato? Dillo a voce alta.'**
+  String get huntTellMe;
+
+  /// No description provided for @huntRules.
+  ///
+  /// In it, this message translates to:
+  /// **'il bambino cerca una cosa alla volta, in casa o all\'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.'**
+  String get huntRules;
 }
 
 class _AppLocalizationsDelegate
@@ -1758,9 +1794,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

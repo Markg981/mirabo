@@ -292,5 +292,12 @@
   "shelfFull": "Cette étagère contient déjà {max} matériels : retires-en un pour en poser un autre.",
   "shelfKindStory": "Histoire",
   "shelfKindGame": "Jeu",
-  "shelfKindActivity": "Activité"
+  "shelfKindActivity": "Activité",
+
+  "gesturePause": "Pause : faisons le geste",
+  "gestureStart": "Prêts ? Partez !",
+  "huntFound": "Je l'ai trouvé !",
+  "huntNotFound": "Je ne le trouve pas",
+  "huntTellMe": "Qu'est-ce que tu as trouvé ? Dis-le à voix haute.",
+  "huntRules": "l'enfant cherche une chose à la fois, à la maison ou dehors avec vous. Seulement des choses à sa portée : pas d'escalade, rien de coupant ni de fragile, pas de médicaments ni de produits ménagers. Dehors, seulement ce qui est déjà tombé par terre. À la fin, on remet tout à sa place."
 }

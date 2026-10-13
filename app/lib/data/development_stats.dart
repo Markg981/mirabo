@@ -116,6 +116,12 @@ class DevelopmentStats {
       if (codes.contains('done')) return Stage.canDo;
       return Stage.working;
     }
+    // Cacce al tesoro: conta quante cose ha trovato, non quanto in fretta.
+    final hunts = choices.where((r) => (r['choice'] as String).startsWith('hunt=')).toList();
+    if (hunts.isNotEmpty && hunts.length == rounds.length) {
+      final found = hunts.where((r) => r['choice'] == 'hunt=found').length / hunts.length;
+      return found >= 0.8 ? Stage.canDo : (found >= 0.4 ? Stage.working : Stage.starting);
+    }
     // Tipi senza giusto/sbagliato: l'ha fatto.
     if (choices.length == rounds.length) return rounds.length >= 3 ? Stage.canDo : Stage.working;
     final scored = rounds.where((r) => r['choice'] == null).toList();
