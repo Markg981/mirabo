@@ -24,7 +24,6 @@
   "homeHello": "Hallo {name}!",
   "homeQuestion": "Was machen wir heute?",
   "homeOneStory": "Eine Geschichte",
-  "homeLetsPlay": "Spielen",
   "switchChildA11y": "Kind wechseln. Jetzt spielt {name}",
 
   "chooseWhoPlays": "Wer spielt heute?",
@@ -33,9 +32,8 @@
   "chooseAddHint": "für Erwachsene",
   "chooseAddA11y": "Ein Kind hinzufügen",
 
-  "catStories": "Geschichten",
-  "catGames": "Spiele",
   "catEmpty": "Heute gibt es hier nichts.",
+  "capacityLabel": "{capacity, select, insieme{Ich und die anderen} mani{Die Hände} sensi{Die Sinne} parole{Die Wörter} pensare{Zählen und denken} mondo{Die Welt} other{{capacity}}}",
   "badgeAtHome": "Zu Hause",
   "badgeTogether": "Zusammen",
   "areaLabel": "{area, select, cognitivo{Vorbereitung} autonomia{Selbstständigkeit} sociale{In der Klasse} paure{Erster Schultag} vitaPratica{Praktisches Leben} sensoriale{Sinne} linguaggio{Sprache und Schreiben} matematica{Mathematik} cultura{Kultur} other{{area}}}",
@@ -160,6 +158,7 @@
   "parentTabCards": "Darüber sprechen",
   "parentTabDiary": "Tagebuch",
   "parentTabGrowth": "Entwicklung",
+  "parentTabShelf": "Regal",
   "parentHowUse": "Wie nutzt ihr die App gerade?",
   "parentHowUseHint": "Im Modus „zusammen“ erscheinen Gesprächspausen für euch beide. Im Modus „allein“ antwortet das Kind durch Tippen, und Geschichten über Sicherheit und Körper bleiben verborgen.",
   "parentData": "Wo die Daten liegen",
@@ -263,5 +262,16 @@
 
   "lessonNaming": "Das ist",
   "lessonShow": "Wo ist es?",
-  "lessonTell": "Wie heißt das?"
+  "lessonTell": "Wie heißt das?",
+
+  "shelfTitle": "{name}s Regal",
+  "shelfHint": "Wenige Materialien auf einmal, wie in den Regalen einer Montessori-Umgebung: {name} wählt frei unter denen, die du hier hinstellst. Höchstens {max} pro Fähigkeit; tausche sie aus, wenn sie erkundet sind.",
+  "shelfCount": "{count} von {max}",
+  "shelfAuto": "Automatische Auswahl",
+  "shelfAutoOn": "Das Regal füllt sich jetzt von selbst: die ersten passenden Materialien jeder Fähigkeit.",
+  "shelfAutoHint": "Das Regal füllt sich von selbst. Tippe auf ein Material, um selbst auszuwählen.",
+  "shelfFull": "In diesem Regal stehen schon {max} Materialien: nimm eins weg, um ein anderes hinzustellen.",
+  "shelfKindStory": "Geschichte",
+  "shelfKindGame": "Spiel",
+  "shelfKindActivity": "Aktivität"
 }

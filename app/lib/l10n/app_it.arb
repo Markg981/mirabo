@@ -24,7 +24,6 @@
   "homeHello": "Ciao {name}!",
   "homeQuestion": "Cosa facciamo oggi?",
   "homeOneStory": "Una storia",
-  "homeLetsPlay": "Giochiamo",
   "switchChildA11y": "Cambia bambino. Ora gioca {name}",
 
   "chooseWhoPlays": "Chi gioca oggi?",
@@ -33,9 +32,8 @@
   "chooseAddHint": "per i grandi",
   "chooseAddA11y": "Aggiungi un bambino",
 
-  "catStories": "Le storie",
-  "catGames": "Giochi",
   "catEmpty": "Qui non c'è niente per oggi.",
+  "capacityLabel": "{capacity, select, insieme{Io e gli altri} mani{Le mani} sensi{I sensi} parole{Le parole} pensare{Contare e pensare} mondo{Il mondo} other{{capacity}}}",
   "badgeAtHome": "A casa",
   "badgeTogether": "Insieme",
   "areaLabel": "{area, select, cognitivo{Prerequisiti} autonomia{Autonomia} sociale{In classe} paure{Primo giorno} vitaPratica{Vita pratica} sensoriale{Sensoriale} linguaggio{Linguaggio e scrittura} matematica{Matematica} cultura{Cultura} other{{area}}}",
@@ -160,6 +158,7 @@
   "parentTabCards": "Come parlarne",
   "parentTabDiary": "Diario",
   "parentTabGrowth": "Sviluppo",
+  "parentTabShelf": "Mensola",
   "parentHowUse": "Come usate l'app adesso?",
   "parentHowUseHint": "In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.",
   "parentData": "Dove vivono i dati",
@@ -271,5 +270,19 @@
 
   "lessonNaming": "Questo è",
   "lessonShow": "Dov'è?",
-  "lessonTell": "Come si chiama?"
+  "lessonTell": "Come si chiama?",
+
+  "shelfTitle": "La mensola di {name}",
+  "shelfHint": "Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} per capacità; cambiali quando li ha esplorati.",
+  "@shelfHint": { "placeholders": { "name": { "type": "String" }, "max": { "type": "int" } } },
+  "shelfCount": "{count} di {max}",
+  "@shelfCount": { "placeholders": { "count": { "type": "int" }, "max": { "type": "int" } } },
+  "shelfAuto": "Scelta automatica",
+  "shelfAutoOn": "Ora la mensola si riempie da sola: per ogni capacità i primi materiali adatti.",
+  "shelfAutoHint": "La mensola si riempie da sola. Tocca un materiale per sceglierli tu.",
+  "shelfFull": "Su questa mensola ci sono già {max} materiali: togline uno per metterne un altro.",
+  "@shelfFull": { "placeholders": { "max": { "type": "int" } } },
+  "shelfKindStory": "Storia",
+  "shelfKindGame": "Gioco",
+  "shelfKindActivity": "Attività"
 }

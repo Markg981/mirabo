@@ -24,7 +24,6 @@
   "homeHello": "¡Hola, {name}!",
   "homeQuestion": "¿Qué hacemos hoy?",
   "homeOneStory": "Un cuento",
-  "homeLetsPlay": "A jugar",
   "switchChildA11y": "Cambiar de niño. Ahora juega {name}",
 
   "chooseWhoPlays": "¿Quién juega hoy?",
@@ -33,9 +32,8 @@
   "chooseAddHint": "para los mayores",
   "chooseAddA11y": "Añadir un niño",
 
-  "catStories": "Cuentos",
-  "catGames": "Juegos",
   "catEmpty": "Aquí no hay nada para hoy.",
+  "capacityLabel": "{capacity, select, insieme{Yo y los demás} mani{Las manos} sensi{Los sentidos} parole{Las palabras} pensare{Contar y pensar} mondo{El mundo} other{{capacity}}}",
   "badgeAtHome": "En casa",
   "badgeTogether": "Juntos",
   "areaLabel": "{area, select, cognitivo{Preparación} autonomia{Autonomía} sociale{En clase} paure{Primer día} vitaPratica{Vida práctica} sensoriale{Sensorial} linguaggio{Lenguaje y escritura} matematica{Matemáticas} cultura{Cultura} other{{area}}}",
@@ -160,6 +158,7 @@
   "parentTabCards": "Cómo hablarlo",
   "parentTabDiary": "Diario",
   "parentTabGrowth": "Desarrollo",
+  "parentTabShelf": "Estante",
   "parentHowUse": "¿Cómo usáis la app ahora?",
   "parentHowUseHint": "En el modo \"juntos\" aparecen las pausas de diálogo para los dos. En el modo \"yo solo\" el niño responde tocando y los cuentos sobre seguridad y cuerpo quedan ocultos.",
   "parentData": "Dónde están los datos",
@@ -263,5 +262,16 @@
 
   "lessonNaming": "Esto es",
   "lessonShow": "¿Dónde está?",
-  "lessonTell": "¿Cómo se llama?"
+  "lessonTell": "¿Cómo se llama?",
+
+  "shelfTitle": "El estante de {name}",
+  "shelfHint": "Pocos materiales a la vez, como en los estantes de un ambiente Montessori: {name} elige libremente entre los que pongas aquí. Como máximo {max} por capacidad; cámbialos cuando los haya explorado.",
+  "shelfCount": "{count} de {max}",
+  "shelfAuto": "Elección automática",
+  "shelfAutoOn": "Ahora el estante se llena solo: los primeros materiales adecuados de cada capacidad.",
+  "shelfAutoHint": "El estante se llena solo. Toca un material para elegirlos tú.",
+  "shelfFull": "En este estante ya hay {max} materiales: quita uno para poner otro.",
+  "shelfKindStory": "Cuento",
+  "shelfKindGame": "Juego",
+  "shelfKindActivity": "Actividad"
 }

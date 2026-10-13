@@ -10,7 +10,7 @@ import 'package:sqflite_sqlcipher/sqflite.dart';
 import '../models/activity.dart';
 import '../models/profile.dart';
 
-/// Database locale: profili, diario e gesti fatti nella vita vera. Tutto resta sul dispositivo.
+/// Database locale: profili (con la loro mensola), diario e gesti fatti nella vita vera. Tutto resta sul dispositivo.
 ///
 /// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
 /// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
@@ -19,7 +19,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 4;
+  static const _version = 5;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -51,7 +51,8 @@ class LocalDb {
             stories_completed INTEGER NOT NULL DEFAULT 0,
             language TEXT NOT NULL DEFAULT 'it',
             gestures_done INTEGER NOT NULL DEFAULT 0,
-            stage_floor INTEGER NOT NULL DEFAULT 0
+            stage_floor INTEGER NOT NULL DEFAULT 0,
+            shelf TEXT
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -79,6 +80,8 @@ class LocalDb {
           await db.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
           await _createGesturesTable(db);
         }
+        // v5: la mensola scelta dal genitore. NULL: si riempie da sola.
+        if (from < 5) await db.execute('ALTER TABLE profiles ADD COLUMN shelf TEXT');
       },
     );
     return LocalDb._(db);
