@@ -60,6 +60,25 @@ class ActivityItem extends ShelfItem {
   String get source => activity.area.name;
 }
 
+/// Gli strumenti di "Creo e scopro": la fabbrica di storie esercita le
+/// parole, il calendario della natura l'osservazione del mondo.
+enum MakeTool { factory, nature }
+
+class MakeItem extends ShelfItem {
+  const MakeItem(this.tool);
+  final MakeTool tool;
+
+  @override
+  String get key => 'make:${tool.name}';
+  @override
+  Capacity get capacity => switch (tool) {
+        MakeTool.factory => Capacity.parole,
+        MakeTool.nature => Capacity.mondo,
+      };
+  @override
+  String get source => 'make';
+}
+
 /// Le aree "Verso la scuola" e Montessori portate sulle capacità. I
 /// prerequisiti si dividono per abilità: lettere e suoni alle parole,
 /// numeri e logica al pensare.

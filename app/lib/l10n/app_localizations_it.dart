@@ -1240,4 +1240,455 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get huntRules =>
       'il bambino cerca una cosa alla volta, in casa o all\'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.';
+
+  @override
+  String get catMake => 'Creo e scopro';
+
+  @override
+  String get factoryTitle => 'Fabbrica di storie';
+
+  @override
+  String get natureTitle => 'Calendario della natura';
+
+  @override
+  String factoryAsk(String step) {
+    String _temp0 = intl.Intl.selectLogic(
+      step,
+      {
+        'who': 'Chi è il protagonista?',
+        'place': 'Dove vive?',
+        'problem': 'Un giorno, cosa succede?',
+        'feeling': 'Come si sente?',
+        'helper': 'Chi arriva ad aiutare?',
+        'ending': 'Come finisce?',
+        'other': '$step',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get factoryNameIt => 'Che titolo diamo alla storia?';
+
+  @override
+  String get factoryRead => 'Leggiamo la storia!';
+
+  @override
+  String get factoryMine => 'Le mie storie';
+
+  @override
+  String get factoryNew => 'Inventane una';
+
+  @override
+  String factoryBy(Object name) {
+    return 'Una storia inventata da $name';
+  }
+
+  @override
+  String get factoryEnd => 'Fine';
+
+  @override
+  String factoryDone(Object name) {
+    return 'Che bella storia, $name! La metto tra le tue storie.';
+  }
+
+  @override
+  String get factoryMineEmpty => 'Qui troverai le storie che inventi.';
+
+  @override
+  String factoryWhoA(String who) {
+    String _temp0 = intl.Intl.selectLogic(
+      who,
+      {
+        'dragon': 'un piccolo drago',
+        'bunny': 'un coniglietto',
+        'robot': 'un robot gentile',
+        'penguin': 'un pinguino',
+        'unicorn': 'un unicorno',
+        'kitten': 'un gattino',
+        'other': '$who',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryWhoThe(String who) {
+    String _temp0 = intl.Intl.selectLogic(
+      who,
+      {
+        'dragon': 'il piccolo drago',
+        'bunny': 'il coniglietto',
+        'robot': 'il robot gentile',
+        'penguin': 'il pinguino',
+        'unicorn': 'l\'unicorno',
+        'kitten': 'il gattino',
+        'other': '$who',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPlaceName(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'forest': 'il bosco',
+        'room': 'la cameretta',
+        'stream': 'il ruscello',
+        'sky': 'le nuvole',
+        'snow': 'la neve',
+        'night': 'la notte',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPlaceIn(String place) {
+    String _temp0 = intl.Intl.selectLogic(
+      place,
+      {
+        'forest': 'in un bosco pieno di alberi',
+        'room': 'in una cameretta piena di giochi',
+        'stream': 'vicino a un ruscello',
+        'sky': 'su una nuvola soffice',
+        'snow': 'in un prato pieno di neve',
+        'night': 'in un prato sotto le stelle',
+        'other': '$place',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryProblemName(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm': 'il temporale',
+        'star': 'la stellina caduta',
+        'sadFriend': 'un amico triste',
+        'litter': 'i rifiuti',
+        'lost': 'la strada persa',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryProblem(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm': 'arrivò un temporale fortissimo',
+        'star': 'una stellina cadde dal cielo e non sapeva tornare a casa',
+        'sadFriend': 'arrivò un amico tutto triste che non voleva parlare',
+        'litter': 'qualcuno lasciò tanti rifiuti per terra',
+        'lost': 'la nebbia nascose la strada di casa',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factorySolution(String problem) {
+    String _temp0 = intl.Intl.selectLogic(
+      problem,
+      {
+        'storm':
+            'trovarono un riparo asciutto e aspettarono che il temporale passasse',
+        'star':
+            'costruirono una scala altissima e riportarono la stellina in cielo',
+        'sadFriend':
+            'si sedettero vicino all\'amico e lo ascoltarono, finché tornò a sorridere',
+        'litter':
+            'raccolsero i rifiuti con i guanti e li misero nei bidoni giusti',
+        'lost':
+            'seguirono le impronte sul sentiero e ritrovarono la strada di casa',
+        'other': '$problem',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryFeelingName(String feeling) {
+    String _temp0 = intl.Intl.selectLogic(
+      feeling,
+      {
+        'fear': 'la paura',
+        'sadness': 'la tristezza',
+        'anger': 'la rabbia',
+        'curiosity': 'la curiosità',
+        'courage': 'il coraggio',
+        'other': '$feeling',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryFeeling(String feeling) {
+    String _temp0 = intl.Intl.selectLogic(
+      feeling,
+      {
+        'fear': 'un po\' di paura',
+        'sadness': 'un po\' di tristezza',
+        'anger': 'un po\' di rabbia',
+        'curiosity': 'tanta curiosità',
+        'courage': 'tanto coraggio',
+        'other': '$feeling',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryHelperA(String helper) {
+    String _temp0 = intl.Intl.selectLogic(
+      helper,
+      {
+        'turtle': 'una tartaruga saggia',
+        'owl': 'un gufo che sa tante cose',
+        'bear': 'un orso gentile',
+        'bee': 'un\'ape velocissima',
+        'other': '$helper',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryEndingName(String ending) {
+    String _temp0 = intl.Intl.selectLogic(
+      ending,
+      {
+        'party': 'una festa',
+        'sleep': 'la nanna',
+        'hug': 'un abbraccio',
+        'snack': 'una merenda',
+        'other': '$ending',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String factoryPageStart(Object who, Object place) {
+    return 'C\'era una volta $who, che viveva $place.';
+  }
+
+  @override
+  String factoryPageProblem(Object problem) {
+    return 'Un giorno $problem.';
+  }
+
+  @override
+  String factoryPageFeeling(Object who, Object feeling) {
+    return '$who sentì $feeling e fece un bel respiro.';
+  }
+
+  @override
+  String factoryPageHelp(Object helper, Object solution) {
+    return 'Per fortuna arrivò $helper. Insieme $solution.';
+  }
+
+  @override
+  String factoryEnding(String ending, Object who) {
+    String _temp0 = intl.Intl.selectLogic(
+      ending,
+      {
+        'party':
+            'E quella sera $who fece una grande festa con tutti gli amici.',
+        'sleep':
+            'E quella sera $who si addormentò felice, sotto una coperta calda.',
+        'hug': 'E alla fine $who abbracciò forte il suo nuovo amico.',
+        'snack': 'E alla fine $who fece merenda con tutti, sotto il sole.',
+        'other': '$ending',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureAskWeather => 'Che tempo fa?';
+
+  @override
+  String get natureAskSeen => 'Cosa hai visto fuori?';
+
+  @override
+  String get natureUpTo => 'Puoi sceglierne fino a tre.';
+
+  @override
+  String natureWeather(String weather) {
+    String _temp0 = intl.Intl.selectLogic(
+      weather,
+      {
+        'sun': 'Sole',
+        'clouds': 'Nuvole',
+        'rain': 'Pioggia',
+        'snow': 'Neve',
+        'wind': 'Vento',
+        'fog': 'Nebbia',
+        'other': '$weather',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureThing(String thing) {
+    String _temp0 = intl.Intl.selectLogic(
+      thing,
+      {
+        'leaf': 'Foglie',
+        'flower': 'Fiori',
+        'bird': 'Uccellini',
+        'bug': 'Coccinelle e insetti',
+        'snail': 'Lumache',
+        'fruit': 'Frutti',
+        'mushroom': 'Funghi',
+        'rainbow': 'L\'arcobaleno',
+        'moon': 'La luna',
+        'other': '$thing',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String natureMonthTip(String month) {
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        'm1':
+            'Fa freddo e tanti alberi sono spogli. Riesci a vedere i nidi tra i rami?',
+        'm2':
+            'Le giornate si allungano un pochino. Cerca le prime gemme sui rami.',
+        'm3':
+            'Arriva la primavera: spuntano i primi fiori. Di che colore sono?',
+        'm4':
+            'Gli uccellini costruiscono i nidi. Ascolta: quanti canti diversi senti?',
+        'm5':
+            'Il prato è pieno di fiori e di api. Guardale da lontano: lavorano tanto!',
+        'm6':
+            'Sono i giorni più lunghi dell\'anno. Cosa vedi la sera, quando c\'è ancora luce?',
+        'm7': 'Fa caldo: cerca l\'ombra degli alberi. Senti le cicale?',
+        'm8':
+            'Di notte, se il cielo è limpido, a volte cade una stella. Esprimi un desiderio!',
+        'm9': 'Maturano tanti frutti: uva, mele, fichi. Quali conosci?',
+        'm10':
+            'Le foglie cambiano colore e cadono. Quanti colori diversi trovi?',
+        'm11': 'Nel bosco spuntano i funghi. Si guardano, ma non si toccano!',
+        'm12':
+            'Sono i giorni più corti dell\'anno. Il bosco riposa, come nella storia di Emma.',
+        'other': '$month',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureThisMonth => 'Questo mese';
+
+  @override
+  String natureDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count giorni',
+      one: '1 giorno',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get natureEmptyMonth => 'Questo mese il calendario è ancora vuoto.';
+
+  @override
+  String get natureToday => 'Oggi';
+
+  @override
+  String get readWord => 'Tocca una parola per riascoltarla';
+
+  @override
+  String get profileReadAlong => 'Lettura karaoke';
+
+  @override
+  String get profileReadAlongHint =>
+      'Mentre la voce legge, la parola si illumina; toccandola si riascolta.';
+
+  @override
+  String get parentTabPrint => 'Stampabili';
+
+  @override
+  String printIntro(Object name) {
+    return 'Fogli da stampare e usare lontano dallo schermo, nella lingua di $name.';
+  }
+
+  @override
+  String get printEveryday => 'Per tutti i giorni';
+
+  @override
+  String get printNameTrace => 'Ricalco il mio nome';
+
+  @override
+  String printNameTraceHint(Object name) {
+    return 'Il nome di $name da ripassare con la matita.';
+  }
+
+  @override
+  String get printNature => 'Calendario della natura del mese';
+
+  @override
+  String printNatureHint(Object name) {
+    return 'La griglia del mese da riempire a mano, con quello che $name ha già segnato.';
+  }
+
+  @override
+  String get printGestures => 'Gesti delle storie';
+
+  @override
+  String get printGestureHint =>
+      'Il gesto, due settimane da colorare e lo spazio per disegnarlo.';
+
+  @override
+  String printGesturesEmpty(Object name) {
+    return 'Qui compariranno i gesti delle storie che $name ha finito.';
+  }
+
+  @override
+  String get printMade => 'Storie inventate';
+
+  @override
+  String get printMadeHint =>
+      'Il libretto della storia, con lo spazio per i disegni.';
+
+  @override
+  String printMadeEmpty(Object name) {
+    return 'Qui compariranno le storie che $name inventa nella fabbrica.';
+  }
+
+  @override
+  String get printButton => 'Stampa';
+
+  @override
+  String get pdfDrawHere => 'Disegna qui';
+
+  @override
+  String get pdfGestureTimes => 'Ogni volta che lo fai, colora un cerchio.';
+
+  @override
+  String get pdfTraceName => 'Ripassa il tuo nome';
+
+  @override
+  String get pdfWeather => 'Tempo';
+
+  @override
+  String get pdfSeen => 'Ho visto';
 }

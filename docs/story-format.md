@@ -142,6 +142,7 @@ tradotti si traducono `together` e `back`.
 ## Regole
 
 - `{nome}` compare solo nelle battute del compagno; la narrazione non lo usa.
+- `audio.words` serve alla lettura karaoke: l'*i*-esima coppia `[ms, parola]` è l'*i*-esima parola di `text` (lettere e cifre; la punteggiatura non conta), con i tempi della registrazione senza il nome. Vedi [`creo-e-scopro.md`](creo-e-scopro.md).
 - L'audio registrato non contiene il nome: `nameSlots` sono gli istanti (ms) in cui l'app inserisce il nome del bambino, detto dal TTS di sistema e messo in cache una volta per profilo. Se l'app non riesce a generarlo, la schermata si legge tutta col TTS.
 - Le battute del compagno parlano al bambino, mai ai personaggi.
 - Ogni schermata ha `illustration.alt`: è il testo per lo screen reader e il brief per chi disegna.

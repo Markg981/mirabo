@@ -29,6 +29,7 @@ class _ProfileFormState extends State<ProfileForm> {
   late bool _safetyTogetherOnly = widget.existing?.safetyTogetherOnly ?? true;
   late bool _dyslexia = widget.existing?.dyslexiaFont ?? false;
   late bool _lowStim = widget.existing?.lowStimulation ?? false;
+  late bool _readAlong = widget.existing?.readAlong ?? true;
   late int _aloneMinutes = widget.existing?.aloneSessionMinutes ?? 20;
   late String _language = widget.existing?.language ?? AppLanguage.ofDevice().code;
 
@@ -53,6 +54,7 @@ class _ProfileFormState extends State<ProfileForm> {
         safetyTogetherOnly: _safetyTogetherOnly,
         dyslexiaFont: _dyslexia,
         lowStimulation: _lowStim,
+        readAlong: _readAlong,
         aloneSessionMinutes: _aloneMinutes,
         language: _language,
       ));
@@ -64,6 +66,7 @@ class _ProfileFormState extends State<ProfileForm> {
         safetyTogetherOnly: _safetyTogetherOnly,
         dyslexiaFont: _dyslexia,
         lowStimulation: _lowStim,
+        readAlong: _readAlong,
         aloneSessionMinutes: _aloneMinutes,
         language: _language,
       ));
@@ -235,6 +238,13 @@ class _ProfileFormState extends State<ProfileForm> {
                       title: Text(l.profileLowStim),
                       subtitle: Text(l.profileLowStimHint),
                       onChanged: (v) => setState(() => _lowStim = v),
+                    ),
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _readAlong,
+                      title: Text(l.profileReadAlong),
+                      subtitle: Text(l.profileReadAlongHint),
+                      onChanged: (v) => setState(() => _readAlong = v),
                     ),
                     const Divider(height: 28),
                     Row(

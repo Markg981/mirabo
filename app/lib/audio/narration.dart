@@ -20,6 +20,32 @@ AudioSource narrationWithName(Uri narration, Uri? name, List<int> nameSlots) {
   return ConcatenatingAudioSource(children: parts, useLazyPreparation: false);
 }
 
+/// I pezzi in cui [narrationWithName] divide la registrazione, nello stesso
+/// ordine: per ogni pezzo il punto della registrazione da cui parte (ms),
+/// null per il nome. Serve al karaoke per sapere a che punto è la voce.
+List<int?> narrationOffsets(List<int> nameSlots) {
+  if (nameSlots.isEmpty) return const [0];
+  final out = <int?>[];
+  var from = 0;
+  for (final ms in [...nameSlots]..sort()) {
+    if (ms > from) out.add(from);
+    out.add(null);
+    from = ms;
+  }
+  out.add(from);
+  return out;
+}
+
+/// Il punto della registrazione (ms) che si sta ascoltando, dal pezzo
+/// [index] della sequenza e dalla posizione dentro il pezzo. Null mentre si
+/// sente il nome: lì il testo resta fermo.
+int? narrationTime(List<int?> offsets, int? index, Duration position) {
+  final i = index ?? 0;
+  if (i < 0 || i >= offsets.length) return null;
+  final from = offsets[i];
+  return from == null ? null : from + position.inMilliseconds;
+}
+
 ClippingAudioSource _clip(Uri narration, int fromMs, int? toMs) => ClippingAudioSource(
       child: AudioSource.uri(narration),
       start: Duration(milliseconds: fromMs),

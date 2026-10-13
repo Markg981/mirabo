@@ -11,6 +11,8 @@ import '../parent/adult_gate.dart';
 import '../parent/parent_area.dart';
 import 'categories.dart';
 import 'category_widgets.dart';
+import 'nature_calendar.dart';
+import 'story_factory.dart';
 import 'story_reader.dart';
 
 void openParentArea(BuildContext context) => AdultGate.open(
@@ -74,6 +76,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
             if (!a.isHome && a.togetherSuggested) (Icons.people_rounded, l.badgeTogether),
           ],
           onTap: () => _open(ActivityPlayer(activity: a)),
+        ),
+      MakeItem(tool: MakeTool.factory) => BigCard(
+          title: l.factoryTitle,
+          color: MiraboColors.plum,
+          emojis: const ['🐉', '✨', '📖'],
+          width: width,
+          onTap: () => _open(const StoryFactoryScreen()),
+        ),
+      MakeItem(tool: MakeTool.nature) => BigCard(
+          title: l.natureTitle,
+          color: MiraboColors.leaf,
+          emojis: const ['☀️', '🍂', '🐞'],
+          width: width,
+          onTap: () => _open(const NatureCalendar()),
         ),
     };
   }

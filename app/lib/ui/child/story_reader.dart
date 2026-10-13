@@ -9,6 +9,7 @@ import '../../app_state.dart';
 import '../../audio/narration.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
+import '../../models/read_along.dart';
 import '../../models/story.dart';
 import '../../models/three_period_lesson.dart';
 import '../design/palette.dart';
@@ -16,6 +17,7 @@ import '../design/widgets.dart';
 import 'companion_widget.dart';
 import 'gesture_pause_board.dart';
 import 'lesson_board.dart';
+import 'read_along_text.dart';
 import 'scene_illustration.dart';
 
 /// Lettore di una storia: una schermata alla volta, il compagno a lato,
@@ -27,6 +29,10 @@ import 'scene_illustration.dart';
 /// Se la schermata ha l'audio registrato, si ascolta quello con il nome del
 /// bambino (TTS di sistema in cache, vedi NameVoice) inserito nei punti
 /// audio.nameSlots. Altrimenti, o se manca un pezzo, legge il TTS su tutto il testo.
+///
+/// Lettura karaoke (se il profilo la tiene accesa): la parola che la voce
+/// legge si illumina, dai tempi di audio.words con la registrazione o dai
+/// progressi del TTS; toccando una parola la si riascolta.
 class StoryReader extends StatefulWidget {
   const StoryReader({super.key, required this.story});
   final Story story;
@@ -41,6 +47,13 @@ class _StoryReaderState extends State<StoryReader> {
   int _index = 0;
   String? _dialogueAnswer;
   bool _recorded = false;
+
+  /// Karaoke: la parola che si sta leggendo (-1 nessuna) e se il TTS sta
+  /// leggendo proprio il testo della schermata, non una battuta o una parola.
+  int _word = -1;
+  bool _ttsReadsText = false;
+  StreamSubscription<Duration>? _position;
+  List<int?> _offsets = const [0];
 
   /// Le lezioni avviate, per schermata: tornando indietro non si ricomincia.
   final Map<int, LessonRun> _lessons = {};
@@ -64,13 +77,34 @@ class _StoryReaderState extends State<StoryReader> {
     _variant = widget.story.variants[_profile.ageBand]!;
     _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
     _tts.setSpeechRate(0.45);
+    if (_profile.readAlong) {
+      // Il testo della schermata è il primo pezzo detto: gli indici coincidono.
+      _tts.setProgressHandler((_, start, __, ___) {
+        if (_ttsReadsText) _highlight(wordAtChar(readAlongWords(_screen.text ?? ''), start));
+      });
+      _tts.setCompletionHandler(() => _highlight(-1));
+      _position = _player.positionStream.listen(_followRecording);
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) => _speakCurrent());
+  }
+
+  void _highlight(int word) {
+    if (mounted && word != _word) setState(() => _word = word);
+  }
+
+  /// Con la registrazione: dal punto del file ai tempi delle parole.
+  void _followRecording(Duration position) {
+    final timings = _screen.audio?.words ?? const [];
+    if (timings.isEmpty || !_player.playing) return;
+    final ms = narrationTime(_offsets, _player.currentIndex, position);
+    if (ms != null) _highlight(wordAtTime(timings, ms));
   }
 
   @override
   void dispose() {
     _lessonTimer?.cancel();
     _gestureTimer?.cancel();
+    _position?.cancel();
     _tts.stop();
     _player.dispose();
     if (!_recorded) {
@@ -101,6 +135,8 @@ class _StoryReaderState extends State<StoryReader> {
       : null;
 
   Future<void> _speakCurrent() async {
+    _ttsReadsText = false;
+    _highlight(-1);
     await _tts.stop();
     await _player.stop();
     if (await _playRecorded()) return;
@@ -109,6 +145,7 @@ class _StoryReaderState extends State<StoryReader> {
     if (_screen.companionLines != null) parts.add(_withName(_screen.companionLines!.forCompanion(_profile.companion)));
     if (_alonePrompt != null) parts.add(_alonePrompt!);
     if (_lessonRun != null) parts.add(_lessonRun!.prompt);
+    _ttsReadsText = _screen.text != null;
     if (parts.isNotEmpty) await _tts.speak(parts.join(' '));
   }
 
@@ -127,8 +164,10 @@ class _StoryReaderState extends State<StoryReader> {
       if (audio.nameSlots.isNotEmpty && name == null) return false;
       // Il bambino è già andato avanti: questa schermata non si legge più.
       if (!mounted || index != _index) return true;
+      _offsets = narrationOffsets(audio.nameSlots);
       await _player.setAudioSource(narrationWithName(narration.uri, name?.uri, audio.nameSlots));
       await _player.play();
+      _highlight(-1);
       // La registrazione non conosce la modalità: la domanda "da solo" la dice il TTS.
       final after = _alonePrompt ?? _lessonRun?.prompt;
       if (mounted && index == _index && _player.processingState == ProcessingState.completed && after != null) {
@@ -141,6 +180,8 @@ class _StoryReaderState extends State<StoryReader> {
   }
 
   Future<void> _say(String line) async {
+    _ttsReadsText = false;
+    _highlight(-1);
     await _player.stop();
     await _tts.stop();
     await _tts.speak(line);
@@ -206,9 +247,7 @@ class _StoryReaderState extends State<StoryReader> {
 
   Future<void> _choose(DialogueOption option) async {
     setState(() => _dialogueAnswer = option.id);
-    await _player.stop();
-    await _tts.stop();
-    await _tts.speak(_withName(option.reaction.forCompanion(_profile.companion)));
+    await _say(_withName(option.reaction.forCompanion(_profile.companion)));
   }
 
   @override
@@ -274,7 +313,7 @@ class _StoryReaderState extends State<StoryReader> {
                               )
                             : screen.illustration.scene == null
                             ? _IllustrationPlaceholder(alt: screen.illustration.alt, color: accent, icon: world.icon)
-                            : _IllustrationFrame(
+                            : IllustrationFrame(
                                 alt: screen.illustration.alt,
                                 color: accent,
                                 child: SceneIllustration(
@@ -297,7 +336,13 @@ class _StoryReaderState extends State<StoryReader> {
                                 child: SoftPanel(
                                   padding: const EdgeInsets.fromLTRB(26, 22, 26, 22),
                                   child: SingleChildScrollView(
-                                    child: Text(screen.text!, style: text.bodyLarge?.copyWith(fontSize: 24)),
+                                    child: ReadAlongText(
+                                      text: screen.text!,
+                                      current: _word,
+                                      enabled: _profile.readAlong,
+                                      onWord: _say,
+                                      style: text.bodyLarge?.copyWith(fontSize: 24),
+                                    ),
                                   ),
                                 ),
                               )
@@ -518,9 +563,10 @@ class _StoryReaderState extends State<StoryReader> {
 }
 
 /// Cornice della pagina illustrata: angoli tondi e bordo "a rilievo" nel
-/// colore del mondo. La descrizione resta per lo screen reader.
-class _IllustrationFrame extends StatelessWidget {
-  const _IllustrationFrame({required this.alt, required this.color, required this.child});
+/// colore del mondo. La descrizione resta per lo screen reader. La usa anche
+/// il lettore delle storie inventate.
+class IllustrationFrame extends StatelessWidget {
+  const IllustrationFrame({super.key, required this.alt, required this.color, required this.child});
   final String alt;
   final Color color;
   final Widget child;

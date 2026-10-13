@@ -8,9 +8,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
 import '../models/activity.dart';
+import '../models/made_story.dart';
+import '../models/nature_day.dart';
 import '../models/profile.dart';
 
-/// Database locale: profili (con la loro mensola), diario e gesti fatti nella vita vera. Tutto resta sul dispositivo.
+/// Database locale: profili (con la loro mensola), diario, gesti fatti nella
+/// vita vera, storie inventate e calendario della natura. Tutto resta sul dispositivo.
 ///
 /// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
 /// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
@@ -19,7 +22,7 @@ class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
-  static const _version = 5;
+  static const _version = 6;
   static const _keyName = 'mirabo_db_key';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -52,7 +55,8 @@ class LocalDb {
             language TEXT NOT NULL DEFAULT 'it',
             gestures_done INTEGER NOT NULL DEFAULT 0,
             stage_floor INTEGER NOT NULL DEFAULT 0,
-            shelf TEXT
+            shelf TEXT,
+            read_along INTEGER NOT NULL DEFAULT 1
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -67,6 +71,7 @@ class LocalDb {
         await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
         await _createActivityTables(db);
         await _createGesturesTable(db);
+        await _createMakeTables(db);
       },
       onUpgrade: (db, from, to) async {
         if (from < 2) await _createActivityTables(db);
@@ -82,6 +87,11 @@ class LocalDb {
         }
         // v5: la mensola scelta dal genitore. NULL: si riempie da sola.
         if (from < 5) await db.execute('ALTER TABLE profiles ADD COLUMN shelf TEXT');
+        // v6: lettura karaoke, storie inventate, calendario della natura.
+        if (from < 6) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
+          await _createMakeTables(db);
+        }
       },
     );
     return LocalDb._(db);
@@ -187,6 +197,30 @@ class LocalDb {
         at TEXT NOT NULL
       )''');
     await db.execute('CREATE INDEX gestures_profile ON gestures(profile_id, at)');
+  }
+
+  static Future<void> _createMakeTables(Database db) async {
+    await db.execute('''
+      CREATE TABLE made_stories (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        title TEXT,
+        who TEXT NOT NULL,
+        place TEXT NOT NULL,
+        problem TEXT NOT NULL,
+        feeling TEXT NOT NULL,
+        helper TEXT NOT NULL,
+        ending TEXT NOT NULL,
+        at TEXT NOT NULL
+      )''');
+    await db.execute('''
+      CREATE TABLE nature_days (
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        day TEXT NOT NULL,
+        weather TEXT,
+        seen TEXT NOT NULL DEFAULT '',
+        PRIMARY KEY (profile_id, day)
+      )''');
   }
 
   /// Stadio che il compagno aveva quando cresceva con le storie completate.
@@ -317,8 +351,34 @@ class LocalDb {
         .toList();
   }
 
+  Future<MadeStory> addMadeStory(MadeStory s) async {
+    final id = await _db.insert('made_stories', s.toRow()..remove('id'));
+    return MadeStory.fromRow((await _db.query('made_stories', where: 'id = ?', whereArgs: [id])).first);
+  }
+
+  Future<List<MadeStory>> madeStories(int profileId) async =>
+      (await _db.query('made_stories', where: 'profile_id = ?', whereArgs: [profileId], orderBy: 'at DESC'))
+          .map(MadeStory.fromRow)
+          .toList();
+
+  /// Un giorno vuoto si cancella: nel calendario resta solo ciò che è stato visto.
+  Future<void> saveNatureDay(NatureDay d) => d.isEmpty
+      ? _db.delete('nature_days', where: 'profile_id = ? AND day = ?', whereArgs: [d.profileId, NatureDay.key(d.day)])
+      : _db.insert('nature_days', d.toRow(), conflictAlgorithm: ConflictAlgorithm.replace);
+
+  /// I giorni segnati nel mese di [month].
+  Future<List<NatureDay>> natureMonth(int profileId, DateTime month) async {
+    final from = NatureDay.key(DateTime(month.year, month.month, 1));
+    final to = NatureDay.key(DateTime(month.year, month.month + 1, 1));
+    final rows = await _db.query('nature_days',
+        where: 'profile_id = ? AND day >= ? AND day < ?', whereArgs: [profileId, from, to], orderBy: 'day');
+    return rows.map(NatureDay.fromRow).toList();
+  }
+
   /// "Elimina tutti i dati": cancella profili e diario.
   Future<void> wipe() async {
+    await _db.delete('nature_days');
+    await _db.delete('made_stories');
     await _db.delete('gestures');
     await _db.delete('activity_rounds');
     await _db.delete('activity_progress');
@@ -327,7 +387,15 @@ class LocalDb {
   }
 
   /// Tabelle nell'ordine di inserimento (prima i profili, poi chi li riferisce).
-  static const _tables = ['profiles', 'diary', 'activity_progress', 'activity_rounds', 'gestures'];
+  static const _tables = [
+    'profiles',
+    'diary',
+    'activity_progress',
+    'activity_rounds',
+    'gestures',
+    'made_stories',
+    'nature_days',
+  ];
 
   /// Tutti i dati come JSON semplice (solo int, testo e null): è il contenuto
   /// del backup su Drive, che viene cifrato prima di uscire dal dispositivo.

@@ -143,17 +143,22 @@ class _CapacityShelf extends StatelessWidget {
         StoryItem(:final story) => story.title,
         GameItem(:final game) => game.title(l),
         ActivityItem(:final activity) => activity.title,
+        MakeItem(tool: MakeTool.factory) => l.factoryTitle,
+        MakeItem(tool: MakeTool.nature) => l.natureTitle,
       };
 
   static String _kind(ShelfItem i, AppLocalizations l) => switch (i) {
         StoryItem() => l.shelfKindStory,
         GameItem() => l.shelfKindGame,
         ActivityItem(:final activity) => activity.isHome ? l.badgeAtHome : l.shelfKindActivity,
+        MakeItem() => l.catMake,
       };
 
   static IconData _icon(ShelfItem i) => switch (i) {
         StoryItem() => Icons.auto_stories_rounded,
         GameItem() => Icons.sports_esports_rounded,
         ActivityItem(:final activity) => activity.isHome ? Icons.home_rounded : Icons.extension_rounded,
+        MakeItem(tool: MakeTool.factory) => Icons.auto_fix_high_rounded,
+        MakeItem(tool: MakeTool.nature) => Icons.wb_sunny_rounded,
       };
 }
