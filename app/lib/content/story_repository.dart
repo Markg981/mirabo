@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -54,6 +55,12 @@ class StoryRepository {
 
   List<Activity> activitiesIn(String lang) => _activities(lang).values.toList()
     ..sort((a, b) => a.area.index != b.area.index ? a.area.index.compareTo(b.area.index) : a.title.compareTo(b.title));
+
+  /// Un file binario di una storia (audio, illustrazione), cercato anche in assets/.
+  Uint8List? storyFile(String storyId, String path) {
+    final pkg = _storyPkgs[storyId];
+    return pkg?.bytes(path) ?? pkg?.bytes('assets/$path');
+  }
 
   /// Lingue in cui un contenuto ha una traduzione non ancora rivista.
   bool isDraft(String id, String lang) {

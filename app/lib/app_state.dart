@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import 'audio/name_voice.dart';
 import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
 import 'data/local_db.dart';
@@ -10,14 +11,18 @@ import 'models/story.dart';
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
 /// Volutamente semplice (ChangeNotifier) finché non serve di più.
 class AppState extends ChangeNotifier {
-  AppState({required this.db, required this.repo, CloudBackup? backup})
-      : backup = backup ?? CloudBackup(db: db);
+  AppState({required this.db, required this.repo, CloudBackup? backup, NameVoice? nameVoice})
+      : backup = backup ?? CloudBackup(db: db),
+        nameVoice = nameVoice ?? NameVoice();
 
   final LocalDb db;
   final StoryRepository repo;
 
   /// Backup opt-in su Drive: spento finché il genitore non lo attiva.
   final CloudBackup backup;
+
+  /// Il nome di ogni bambino detto dal TTS, in cache per le storie registrate.
+  final NameVoice nameVoice;
 
   List<ChildProfile> profiles = const [];
   ChildProfile? currentProfile;
@@ -33,6 +38,10 @@ class AppState extends ChangeNotifier {
     currentProfile = profiles.isEmpty ? null : profiles.first;
     if (currentProfile != null) mode = currentProfile!.lastMode;
     notifyListeners();
+    // Profili nati prima della cache, o ripristinati da Drive su un tablet nuovo.
+    for (final p in profiles) {
+      nameVoice.prepare(p);
+    }
   }
 
   /// Dopo un ripristino da Drive: ricarica tutto e ripropone "Chi gioca oggi?".
@@ -97,6 +106,7 @@ class AppState extends ChangeNotifier {
     _childChosen = true;
     mode = saved.lastMode;
     notifyListeners();
+    nameVoice.prepare(saved);
   }
 
   Future<void> updateProfile(ChildProfile p) async {
@@ -104,10 +114,13 @@ class AppState extends ChangeNotifier {
     profiles = await db.profiles();
     if (currentProfile?.id == p.id) currentProfile = p;
     notifyListeners();
+    // Se nome e lingua non sono cambiati il file c'è già e non si rigenera.
+    nameVoice.prepare(p);
   }
 
   Future<void> deleteProfile(int id) async {
     await db.deleteProfile(id);
+    await nameVoice.forget(id);
     profiles = await db.profiles();
     if (currentProfile?.id == id) currentProfile = profiles.isEmpty ? null : profiles.first;
     notifyListeners();
@@ -133,6 +146,7 @@ class AppState extends ChangeNotifier {
   Future<void> wipeAll() async {
     await db.wipe();
     await backup.forget();
+    await nameVoice.forget();
     profiles = const [];
     currentProfile = null;
     notifyListeners();
