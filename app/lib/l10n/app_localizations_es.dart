@@ -864,6 +864,108 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get ideaTitle => 'Una idea para hoy';
+
+  @override
+  String ideaIntro(String name) {
+    return 'Algo pequeño para hacer con $name, lejos de la pantalla. Cambia cada día.';
+  }
+
+  @override
+  String ideaFromStory(String story) {
+    return 'De la historia «$story»';
+  }
+
+  @override
+  String ideaHome(String title, String area) {
+    return 'Con las manos: $title ($area)';
+  }
+
+  @override
+  String get ideaHomeHint =>
+      'La presentación paso a paso está en las actividades Montessori.';
+
+  @override
+  String get ideaAnother => 'Otra idea';
+
+  @override
+  String ideaEmpty(String name) {
+    return 'Cuando $name termine una historia, aquí encontrarás una idea para hacer juntos.';
+  }
+
+  @override
+  String weekTitle(String name) {
+    return 'La semana de $name';
+  }
+
+  @override
+  String get weekIntro =>
+      'Los últimos 7 días, contados. Sin notas: solo lo que ha pasado.';
+
+  @override
+  String weekStories(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ha escuchado $count historias: $titles.',
+      one: 'Ha escuchado una historia: $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekAllTogether => 'Siempre las habéis escuchado juntos.';
+
+  @override
+  String get weekAllAlone =>
+      'Las ha escuchado solo: la próxima podéis escucharla juntos.';
+
+  @override
+  String weekTogether(int together, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      together,
+      locale: localeName,
+      other: '$together veces de $total estabais juntos.',
+      one: 'Una vez de $total estabais juntos.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String weekChoice(String story, String answer) {
+    return 'En «$story», en la pausa eligió: «$answer».';
+  }
+
+  @override
+  String weekKeyPhrase(String phrase) {
+    return 'Una frase para repetir juntos: «$phrase»';
+  }
+
+  @override
+  String weekGestures(int count, String titles) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'En la vida real hizo $count gestos, de las historias $titles.',
+      one: 'En la vida real hizo el gesto de $titles.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weekNoGestures =>
+      'Ningún gesto marcado: si lo habéis hecho, márcalo aquí abajo.';
+
+  @override
+  String weekHome(String titles) {
+    return 'Con las manos, lejos de la pantalla: $titles.';
+  }
+
+  @override
+  String get weekEmpty =>
+      'Esta semana no hay historias ni gestos marcados. No pasa nada: las semanas lejos de la pantalla también cuentan.';
+
+  @override
   String growthTitle(Object name) {
     return 'Cómo está creciendo $name';
   }
