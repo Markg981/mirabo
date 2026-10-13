@@ -1,24 +1,39 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_sqlcipher/sqflite.dart';
 
 import '../models/activity.dart';
 import '../models/profile.dart';
 
 /// Database locale: profili e diario. Tutto resta sul dispositivo.
 ///
-/// Nota per la fase 1: la cifratura a riposo si aggiunge sostituendo sqflite
-/// con sqflite_sqlcipher e una chiave in flutter_secure_storage; lo schema non cambia.
+/// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
+/// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
+/// Keystore), mai accanto al database.
 class LocalDb {
   LocalDb._(this._db);
   final Database _db;
 
   static const _version = 3;
+  static const _keyName = 'mirabo_db_key';
+  static const _storage = FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    // Solo questo dispositivo: la chiave non finisce nei backup iCloud.
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock_this_device),
+  );
 
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
+    final path = p.join(dir.path, 'mirabo.db');
+    final key = await _databaseKey(path);
     final db = await openDatabase(
-      p.join(dir.path, 'mirabo.db'),
+      path,
+      password: key,
       version: _version,
       onCreate: (db, _) async {
         await db.execute('''
@@ -56,6 +71,71 @@ class LocalDb {
       },
     );
     return LocalDb._(db);
+  }
+
+  /// Legge la chiave dal secure storage o ne crea una nuova. Un database già
+  /// presente viene sistemato prima di aprirlo:
+  /// - in chiaro (versioni precedenti alla cifratura): convertito con la nuova chiave;
+  /// - cifrato ma senza chiave (es. file ripristinato da un backup su un altro
+  ///   dispositivo): illeggibile, quindi eliminato e si riparte da zero.
+  static Future<String> _databaseKey(String path) async {
+    final file = File(path);
+    final exists = await file.exists();
+    final plaintext = exists && await _isPlaintext(file);
+
+    var key = await _storage.read(key: _keyName);
+    if (key == null) {
+      if (exists && !plaintext) await _deleteDatabaseFiles(path);
+      key = _newKey();
+      // Salvata prima della conversione: se l'app si chiude a metà, al riavvio
+      // il file è ancora in chiaro e la conversione riparte con la stessa chiave.
+      await _storage.write(key: _keyName, value: key);
+    }
+    if (plaintext) await _encryptInPlace(path, key);
+    return key;
+  }
+
+  static String _newKey() {
+    final rnd = Random.secure();
+    return base64Url.encode(List<int>.generate(32, (_) => rnd.nextInt(256)));
+  }
+
+  /// Un file SQLite in chiaro inizia con l'intestazione "SQLite format 3\0";
+  /// uno SQLCipher ha al suo posto il salt casuale.
+  static Future<bool> _isPlaintext(File file) async {
+    final raf = await file.open();
+    try {
+      final header = await raf.read(16);
+      return ascii.decode(header, allowInvalid: true) == 'SQLite format 3\u0000';
+    } finally {
+      await raf.close();
+    }
+  }
+
+  /// Copia il database in chiaro in un nuovo file cifrato e lo sostituisce.
+  static Future<void> _encryptInPlace(String path, String key) async {
+    final tmp = '$path.enc';
+    await _deleteDatabaseFiles(tmp);
+    final plain = await openDatabase(path, singleInstance: false);
+    try {
+      final userVersion = Sqflite.firstIntValue(await plain.rawQuery('PRAGMA user_version')) ?? 0;
+      await plain.execute('ATTACH DATABASE ? AS encrypted KEY ?', [tmp, key]);
+      await plain.rawQuery("SELECT sqlcipher_export('encrypted')");
+      await plain.execute('PRAGMA encrypted.user_version = $userVersion');
+      await plain.execute('DETACH DATABASE encrypted');
+    } finally {
+      await plain.close();
+    }
+    // rename sostituisce l'originale in modo atomico: non c'è un momento senza file.
+    await File(tmp).rename(path);
+    await _deleteDatabaseFiles(path, mainFile: false);
+  }
+
+  static Future<void> _deleteDatabaseFiles(String path, {bool mainFile = true}) async {
+    for (final suffix in [if (mainFile) '', '-journal', '-wal', '-shm']) {
+      final f = File('$path$suffix');
+      if (await f.exists()) await f.delete();
+    }
   }
 
   static Future<void> _createActivityTables(Database db) async {
