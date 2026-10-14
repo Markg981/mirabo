@@ -62,7 +62,7 @@ class ChooseChildScreen extends StatelessWidget {
                         _AddTile(
                           onTap: () => AdultGate.open(
                             context,
-                            then: () => Navigator.of(context).push(adultRoute((_) => const ProfileForm())),
+                            then: () => Navigator.of(context).push(adultRoute((_) => const AdultGuard(child: ProfileForm()))),
                           ),
                           label: text,
                         ),

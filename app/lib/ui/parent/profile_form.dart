@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'adult_gate.dart';
+
 import '../../app_state.dart';
 import '../../content/story_repository.dart';
 import '../../l10n/l10n.dart';
@@ -324,6 +326,7 @@ class _ProfileFormState extends State<ProfileForm> {
                         style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
                         icon: const Icon(Icons.delete_outline_rounded),
                         onPressed: () async {
+                          if (!await AdultGate.confirm(context)) return;
                           await state.deleteProfile(widget.existing!.id);
                           if (context.mounted) Navigator.of(context).pop();
                         },

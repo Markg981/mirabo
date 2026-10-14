@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'adult_gate.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 
@@ -54,7 +56,7 @@ class BackupSection extends StatelessWidget {
                       OutlinedButton.icon(
                         icon: const Icon(Icons.settings_backup_restore_rounded),
                         label: Text(l.backupRestore),
-                        onPressed: backup.busy ? null : () => restoreFromDrive(context),
+                        onPressed: backup.busy ? null : () async { if (await AdultGate.confirm(context) && context.mounted) await restoreFromDrive(context); },
                       ),
                       TextButton(
                         onPressed: backup.busy ? null : () => _disable(context),
@@ -65,12 +67,12 @@ class BackupSection extends StatelessWidget {
                       FilledButton.icon(
                         icon: const Icon(Icons.add_to_drive_rounded),
                         label: Text(l.backupEnable),
-                        onPressed: backup.busy ? null : () => _enable(context),
+                        onPressed: backup.busy ? null : () async { if (await AdultGate.confirm(context) && context.mounted) await _enable(context); },
                       ),
                       OutlinedButton.icon(
                         icon: const Icon(Icons.settings_backup_restore_rounded),
                         label: Text(l.backupRestore),
-                        onPressed: backup.busy ? null : () => restoreFromDrive(context),
+                        onPressed: backup.busy ? null : () async { if (await AdultGate.confirm(context) && context.mounted) await restoreFromDrive(context); },
                       ),
                     ],
             ),

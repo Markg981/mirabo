@@ -467,5 +467,18 @@
   "projectLogTitle": "Les petits projets de {name}",
   "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
   "projectResultHeld": "à l'essai, ça a tenu",
-  "projectResultNotYet": "à l'essai, pas encore : on change quelque chose et on réessaie"
+  "projectResultNotYet": "à l'essai, pas encore : on change quelque chose et on réessaie",
+  "gateSetupTitle": "Choisis un code PIN pour les grands",
+  "gateSetupBody": "4 à 6 chiffres. Il ouvre l'espace des adultes et protège les actions délicates. Si tu l'oublies, tu pourras en choisir un nouveau sans rien perdre.",
+  "gatePinLabel": "Code PIN",
+  "gatePinConfirmLabel": "Répète le code PIN",
+  "gatePinMismatch": "Les deux codes ne correspondent pas",
+  "gatePinFormat": "Le code doit avoir de 4 à 6 chiffres",
+  "gatePinWrong": "Code PIN erroné",
+  "gatePinWait": "Trop d'essais. Réessaie dans {time}",
+  "@gatePinWait": { "placeholders": { "time": { "type": "String" } } },
+  "gateForgot": "J'ai oublié le code PIN",
+  "gateForgotUnavailable": "Impossible de vérifier que tu es un adulte avec le verrouillage de l'appareil. Active un verrouillage d'écran d'adulte et réessaie.",
+  "gateDeviceReason": "Confirme que tu es un adulte pour choisir un nouveau code PIN",
+  "gateChangePin": "Changer le code PIN"
 }

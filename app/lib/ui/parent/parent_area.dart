@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'adult_gate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../l10n/l10n.dart';
@@ -139,7 +140,18 @@ class _SessionTab extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-              child: _WipeButton(state: state),
+              child: Wrap(
+                spacing: 12,
+                runSpacing: 8,
+                children: [
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.pin_outlined),
+                    label: Text(context.l10n.gateChangePin),
+                    onPressed: () => AdultGate.changePin(context),
+                  ),
+                  _WipeButton(state: state),
+                ],
+              ),
             ),
           ],
         ),

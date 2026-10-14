@@ -467,5 +467,18 @@
   "projectLogTitle": "{name}'s small projects",
   "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
   "projectResultHeld": "it held in the test",
-  "projectResultNotYet": "not yet in the test: change something and try again"
+  "projectResultNotYet": "not yet in the test: change something and try again",
+  "gateSetupTitle": "Choose a grown-up PIN",
+  "gateSetupBody": "4 to 6 digits. It opens the grown-ups' area and guards sensitive actions. If you forget it you can choose a new one without losing anything.",
+  "gatePinLabel": "PIN",
+  "gatePinConfirmLabel": "Repeat the PIN",
+  "gatePinMismatch": "The two PINs do not match",
+  "gatePinFormat": "The PIN must have 4 to 6 digits",
+  "gatePinWrong": "Wrong PIN",
+  "gatePinWait": "Too many attempts. Try again in {time}",
+  "@gatePinWait": { "placeholders": { "time": { "type": "String" } } },
+  "gateForgot": "I forgot the PIN",
+  "gateForgotUnavailable": "Could not verify you are an adult with the device lock. Set an adult screen lock and try again.",
+  "gateDeviceReason": "Confirm you are an adult to choose a new PIN",
+  "gateChangePin": "Change PIN"
 }
