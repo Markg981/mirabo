@@ -707,14 +707,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get parentData => 'Where the data lives';
+  String get parentData => 'Your data';
 
   @override
   String get parentDataHint =>
       'Profiles, diary and progress stay on this device, encrypted. The Google Drive backup below is optional.';
 
   @override
-  String get parentWipe => 'Delete all data';
+  String get parentWipe => 'Delete all Mirabò data on this tablet';
 
   @override
   String get parentWipeConfirmTitle => 'Delete everything?';
@@ -2107,4 +2107,53 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gateChangePin => 'Change PIN';
+
+  @override
+  String get dataWipeTitle => 'Delete everything from this tablet?';
+
+  @override
+  String get dataWipeBody =>
+      'Profiles, progress, diary, creations and generated files (including the name\'s voice) will be permanently deleted, along with the database and its key. The tablet will go back to how it was on first launch. This cannot be undone. Any Google Drive backup is not touched.';
+
+  @override
+  String dataWipeTypePrompt(String word) {
+    return 'To confirm, type $word';
+  }
+
+  @override
+  String get dataWipeWord => 'DELETE';
+
+  @override
+  String get dataWipeDone =>
+      'All Mirabò data has been deleted from this tablet.';
+
+  @override
+  String get dataWipeFailed =>
+      'Not everything could be deleted. Please try again.';
+
+  @override
+  String get dataRemoteButton => 'Also delete the Google Drive backup';
+
+  @override
+  String get dataRemoteTitle => 'Delete the Drive backup?';
+
+  @override
+  String dataRemoteBody(String account) {
+    return 'The backup file in the Drive of $account will be deleted, then the tablet will sign out of Google and revoke the permission given to the app. An internet connection is needed. This cannot be undone. Data on this tablet stays.';
+  }
+
+  @override
+  String get dataRemoteDone =>
+      'Google Drive backup deleted and account disconnected.';
+
+  @override
+  String get dataRemoteFailed =>
+      'The Google Drive backup was NOT deleted (probably no network, or Google sign-in is needed again). Nothing has changed: connect to the internet and try again.';
+
+  @override
+  String get dataOutsideTitle => 'What the app cannot control';
+
+  @override
+  String get dataOutsideBody =>
+      'Mirabò cannot delete your operating system\'s backups (the phone or tablet backup on iCloud or Google), nor files you have already exported, printed or shared. For those: open the iCloud or Google settings on the device and delete old backups, and remove saved or sent files by hand. If anything is left in your Drive, you can find and delete it in Drive > Settings > Manage apps.';
 }
