@@ -86,6 +86,21 @@ class AppLocalizationsIt extends AppLocalizations {
       'È stato bello. Chiama un grande: ci vediamo la prossima volta!';
 
   @override
+  String closingTitle(Object name) {
+    return 'Bel lavoro, $name!';
+  }
+
+  @override
+  String get closingBody =>
+      'Hai fatto un bel pezzo di strada. Ora puoi posare il tablet: tutto resta com\'è, lo ritrovi quando vuoi.';
+
+  @override
+  String get closingBack => 'Torna a casa';
+
+  @override
+  String get closingA11y => 'Ho finito';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Cambia bambino. Ora gioca $name';
   }
@@ -179,6 +194,17 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get activityHelp => 'Guarda bene. Ti aiuto io.';
+
+  @override
+  String get activityHelpButton => 'Aiuto';
+
+  @override
+  String get activityHelpPoint =>
+      'Guarda l\'elemento colorato: può essere lui. Prova tu.';
+
+  @override
+  String get activityHelpDemo =>
+      'Ti faccio vedere: guarda quello che si è acceso e toccalo piano. Ora prova tu.';
 
   @override
   String get checklistPrompt => 'Cosa è già pronto?';
@@ -1268,6 +1294,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get huntNotFound => 'Non lo trovo';
 
   @override
+  String get huntRest => 'Schermo a riposo';
+
+  @override
+  String get huntRestHint =>
+      'Tocca lo schermo quando sei tornato. Se non ti va, va bene lo stesso.';
+
+  @override
   String get huntTellMe => 'Che cosa hai trovato? Dillo a voce alta.';
 
   @override
@@ -1316,6 +1349,9 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get factoryEnd => 'Fine';
+
+  @override
+  String get factoryOtherEnding => 'Prova un altro finale';
 
   @override
   String factoryDone(Object name) {
@@ -1770,6 +1806,12 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get adviceNo => 'Non ora';
+
+  @override
+  String get sharedPromptGuide => 'Spiegami tu cosa fare';
+
+  @override
+  String get sharedPromptHelp => 'Come potremmo aiutare?';
 
   @override
   String get homeActivityHeading => 'Un\'attività dalla storia';

@@ -1,0 +1,49 @@
+{
+  "title": "Shadow hunt outdoors",
+  "offscreen": "The next day, at the same time, go back and look at the same shadow: has it changed? Mark the spot with a stone.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "The shadow of a tree",
+          "say": "With a grown-up, look for the shadow of a tree or a pole. Stay on the sidewalk or in the garden."
+        },
+        {
+          "label": "Your shadow",
+          "say": "Now your own shadow. Move slowly: what does it do?"
+        },
+        {
+          "label": "Where the sun reaches",
+          "say": "And a place where the sun reaches and one where it doesn't. Which is warmer?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "The shadow of a fallen leaf",
+          "say": "Look for a leaf that has already fallen on the ground and look at its shadow."
+        },
+        {
+          "label": "The shadow of a stone",
+          "say": "Now a stone: where is its shadow? On the side away from the sun."
+        },
+        {
+          "label": "A shadow that changes shape",
+          "say": "Last, a shadow that changes shape when you move."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

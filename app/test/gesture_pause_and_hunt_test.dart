@@ -144,4 +144,39 @@ void main() {
     expect(results.every((r) => r.firstTry), isTrue);
     expect(finished, isTrue);
   });
+
+  testWidgets('la caccia a schermo spento: il riposo si toglie con un tocco, senza conferma né risultato', (tester) async {
+    final results = <RoundResult>[];
+    final said = <String>[];
+    final ctx = ActivityContext(
+      profile: const ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b3to5, companion: CompanionId.pilu),
+      companionName: 'Pilù',
+      say: (t) async => said.add(t),
+    );
+    await tester.pumpWidget(_app(HuntRound(
+      level: const {
+        'items': [
+          {'emoji': '🌓', 'label': 'Una zona d ombra', 'say': 'Cerca una zona d ombra.'},
+          {'emoji': '🧸', 'label': 'Un giocattolo', 'say': 'Adesso un giocattolo.'},
+        ],
+      },
+      ctx: ctx,
+      onRound: results.add,
+      onFinished: () {},
+    )));
+    await tester.tap(find.text(l10nIt.go));
+    await tester.pump();
+    await tester.tap(find.text(l10nIt.huntRest));
+    await tester.pump();
+    // La consegna è stata detta; lo schermo riposa e chiede solo un tocco.
+    expect(said.last, 'Cerca una zona d ombra.');
+    expect(find.text(l10nIt.huntRestHint), findsOneWidget);
+    expect(results, isEmpty);
+    await tester.tap(find.text(l10nIt.huntRestHint));
+    await tester.pump();
+    // Tornato: stessa cosa da cercare, nessun risultato registrato dal riposo.
+    expect(find.text(l10nIt.huntRestHint), findsNothing);
+    expect(find.text('Una zona d ombra'), findsOneWidget);
+    expect(results, isEmpty);
+  });
 }

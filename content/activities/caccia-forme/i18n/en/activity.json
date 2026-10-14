@@ -1,0 +1,53 @@
+{
+  "title": "Shape hunt",
+  "offscreen": "Walk around the room without the tablet: \"I spy a circle\". Take turns, the child picks the shape too.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Something round",
+          "say": "Look for something round, like a circle, and bring it here."
+        },
+        {
+          "label": "Something with corners",
+          "say": "Now something with four corners, like a square."
+        },
+        {
+          "label": "Something with three points",
+          "say": "And something with three points, like a triangle."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Something long and thin",
+          "say": "Look for something long and thin."
+        },
+        {
+          "label": "Something round but flattened",
+          "say": "Now something round but squashed, like an egg or a coin."
+        },
+        {
+          "label": "Something that stands up on its own",
+          "say": "Something with flat sides that stands up on its own."
+        },
+        {
+          "label": "Something that rolls",
+          "say": "And last, something that rolls. Try it on the rug!"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

@@ -399,6 +399,7 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
   late final ChildProfile _profile = AppStateScope.read(context).currentProfile!;
   late final FlutterTts _tts = _voiceFor(_profile);
   late List<MadePage> _pages;
+  late MadeStory _story = widget.story;
   int _index = 0;
   int _word = -1;
   bool _readsText = false;
@@ -409,7 +410,7 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _pages = widget.story.pages(context.l10n);
+    _pages = _story.pages(context.l10n);
   }
 
   @override
@@ -457,6 +458,18 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
 
   void _go(int i) {
     setState(() => _index = i);
+    _read();
+  }
+
+  /// 7–10: sull'ultima pagina si provano gli altri finali e si confrontano.
+  /// La scelta resta solo per questa lettura: la storia salvata non cambia.
+  bool get _comparesEndings => _profile.ageBand == AgeBand.b7to10 && _index == _pages.length - 1;
+
+  void _tryEnding(String id) {
+    setState(() {
+      _story = _story.withEnding(id);
+      _pages = _story.pages(context.l10n);
+    });
     _read();
   }
 
@@ -552,6 +565,22 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
                           ],
                         ),
                 ),
+                if (_comparesEndings) ...[
+                  const SizedBox(height: 8),
+                  Text(l.factoryOtherEnding, style: text.titleMedium),
+                  const SizedBox(height: 6),
+                  Wrap(
+                    spacing: 10,
+                    children: [
+                      for (final p in StoryParts.ending)
+                        ChoiceChip(
+                          label: Text('${p.emoji} ${StoryParts.label(l, FactoryStep.ending, p.id)}'),
+                          selected: _story.part(FactoryStep.ending) == p.id,
+                          onSelected: (_) => _tryEnding(p.id),
+                        ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 12),
                 Row(
                   children: [

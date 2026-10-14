@@ -360,6 +360,11 @@ class _StoryReaderState extends State<StoryReader> {
                                   ]),
                                 ),
                               ),
+                            // Leggiamo insieme: invito facoltativo, solo in modalità insieme.
+                            if (screen.sharedPrompt != null && _mode == SessionMode.together) ...[
+                              const SizedBox(height: 14),
+                              _buildSharedPrompt(context, screen.sharedPrompt!),
+                            ],
                             if (isDialogue) ...[
                               const SizedBox(height: 14),
                               _buildDialogue(context, screen.dialogue!),
@@ -498,6 +503,36 @@ class _StoryReaderState extends State<StoryReader> {
           _CompanionBubble(companion: companion, stage: _profile.companionStage, text: line),
         ],
       ],
+    );
+  }
+
+  /// Invito al dialogo per l'adulto e il bambino: nessuna risposta da dare all'app.
+  Widget _buildSharedPrompt(BuildContext context, SharedPrompt prompt) {
+    final l10n = context.l10n;
+    final guide = prompt.role == SharedPromptRole.guide;
+    return Semantics(
+      container: true,
+      child: SoftPanel(
+        padding: const EdgeInsets.all(18),
+        color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.teal), 0.85),
+        child: Row(
+          children: [
+            IconBadge(icon: guide ? Icons.record_voice_over_rounded : Icons.volunteer_activism_rounded, color: MiraboColors.teal, size: 52),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(guide ? l10n.sharedPromptGuide : l10n.sharedPromptHelp,
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: MiraboColors.navy)),
+                  const SizedBox(height: 4),
+                  Text(_withName(prompt.text), style: Theme.of(context).textTheme.bodyMedium),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

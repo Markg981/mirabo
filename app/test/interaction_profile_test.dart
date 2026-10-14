@@ -214,6 +214,25 @@ void main() {
       expect(said, hasLength(1 + RoundState.maxRepeats));
     });
 
+    testWidgets('il comando Aiuto procede a passi e non completa il round', (tester) async {
+      final said = <String>[];
+      var rounds = 0;
+      await tester.pumpWidget(_app(TapMatchRound(level: _fourOptions, ctx: _ctx(said), onRound: (_) => rounds++, onFinished: () {})));
+      await tester.pump();
+      final first = said.first;
+      final help = find.byIcon(Icons.lightbulb_outline_rounded);
+      await tester.tap(help);
+      await tester.pump();
+      expect(said.last, first);
+      await tester.tap(help);
+      await tester.pump();
+      expect(said.last, isNot(first));
+      await tester.tap(help);
+      await tester.pump();
+      expect(said, hasLength(4));
+      expect(rounds, 0);
+    });
+
     testWidgets('con autonomia = 3 la consegna si dice una volta, poi solo su richiesta', (tester) async {
       final said = <String>[];
       await tester.pumpWidget(_app(TapMatchRound(level: _fourOptions, ctx: _ctx(said), onRound: (_) {}, onFinished: () {})));

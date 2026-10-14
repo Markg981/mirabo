@@ -9,6 +9,7 @@ import '../design/widgets.dart';
 import 'categories.dart';
 import 'category_screen.dart';
 import 'category_widgets.dart';
+import 'closing_screen.dart';
 import 'companion_widget.dart';
 
 /// Casa del bambino: il compagno nella sua casa che chiede "cosa facciamo
@@ -48,6 +49,15 @@ class HomeScreen extends StatelessWidget {
                     ],
                     _ModeChip(mode: state.mode),
                     const Spacer(),
+                    // "Ho finito" c'è sempre: chiudere è una scelta del bambino.
+                    RoundIconButton(
+                      icon: Icons.waving_hand_rounded,
+                      tooltip: context.l10n.closingA11y,
+                      size: 56,
+                      color: MiraboColors.navy,
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ClosingScreen())),
+                    ),
+                    const SizedBox(width: 12),
                     RoundIconButton(
                       icon: Icons.lock_rounded,
                       tooltip: context.l10n.parentArea,

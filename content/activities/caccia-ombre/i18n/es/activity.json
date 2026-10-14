@@ -1,0 +1,49 @@
+{
+  "title": "Caza de sombras",
+  "offscreen": "Por la noche, con una linterna, haced sombras en la pared con las manos y con un juguete. ¿La que se acerca a la luz hace la sombra más grande?",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Una sombra en el suelo o en la pared",
+          "say": "Busca una sombra en el suelo o en la pared. Mírala bien: ¿qué forma tiene?"
+        },
+        {
+          "label": "La sombra de una silla",
+          "say": "Ahora la sombra de una silla o de un mueble. Tócala con el dedo: ¿la notas?"
+        },
+        {
+          "label": "La sombra de tu mano",
+          "say": "Y la sombra de tu mano. ¿Qué pasa si la acercas a la pared?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Un juguete que hace una sombra bonita",
+          "say": "Busca un juguete que haga una sombra bonita y tráelo aquí."
+        },
+        {
+          "label": "Un sitio sin sombra",
+          "say": "Ahora un sitio donde no hay sombra. ¿Por qué crees que es así?"
+        },
+        {
+          "label": "Una sombra larga y una corta",
+          "say": "Encuentra una sombra larga y una corta, y dime cuál te gusta más."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}
