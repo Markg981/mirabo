@@ -13,6 +13,7 @@ import 'theme.dart';
 import 'ui/child/choose_child_screen.dart';
 import 'ui/child/goodbye_screen.dart';
 import 'ui/child/home_screen.dart';
+import 'ui/parent/onboarding_screen.dart';
 import 'ui/parent/profile_form.dart';
 
 Future<void> main() async {
@@ -57,12 +58,18 @@ class MiraboApp extends StatelessWidget {
             // Lato bambino: la lingua del bambino che gioca. Prima di sceglierlo
             // (primo avvio, "Chi gioca oggi?") quella del tablet.
             locale: profile == null || state.needsChildChoice
-                ? AppLanguage.ofDevice().locale
+                ? (state.onboardingLanguage ?? AppLanguage.ofDevice()).locale
                 : AppLanguage.fromCode(profile.language).locale,
             supportedLocales: [for (final l in AppLanguage.values) l.locale],
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             home: profile == null
-                ? const ProfileForm(firstRun: true)
+                ? (state.onboardingSeen
+                    ? ProfileForm(
+                        firstRun: true,
+                        initialLanguage: state.onboardingLanguage,
+                        initialBand: state.onboardingBand,
+                      )
+                    : const OnboardingScreen())
                 : state.aloneGoodbye
                     ? const GoodbyeScreen()
                     : state.needsChildChoice
