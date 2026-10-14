@@ -448,6 +448,13 @@
   "supervisionNearby": "An adult nearby",
   "supervisionFree": "The child can do it alone",
 
+  "usageTitle": "Screen time",
+  "usageWeek": "Last 7 days, screen on: {minutes} min in total, over {days} days.",
+  "usageToday": "Today: {minutes} min.",
+  "usageGestures": "Gestures marked in the diary in the last 7 days: {count}. These happened in real life, away from the screen.",
+  "usageLimit": "In \"alone\" mode the companion says goodbye after {minutes} min (change it in the profile).",
+  "usageCannot": "What the app cannot measure: how much the child is really looking at the screen, listening with the screen off, time on other devices, what you do together away from the screen. Minutes are only one part: what they watch, with whom and how you talk about it matter too.",
+
   "projectPhaseIdea": "The idea",
   "projectPhasePrediction": "The prediction",
   "projectPhaseTest": "The test",

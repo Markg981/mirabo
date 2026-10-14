@@ -9,6 +9,7 @@ import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
 import 'data/interaction_advice.dart';
 import 'data/local_db.dart';
+import 'data/usage_tracker.dart';
 import 'games/game.dart';
 import 'models/activity.dart';
 import 'models/made_story.dart';
@@ -40,6 +41,9 @@ class AppState extends ChangeNotifier {
 
   /// Il nome di ogni bambino detto dal TTS, in cache per le storie registrate.
   final NameVoice nameVoice;
+
+  /// Tempo d'uso per bambino; lo avvia main (null nei test).
+  UsageTracker? usage;
 
   List<ChildProfile> profiles = const [];
   ChildProfile? currentProfile;

@@ -1897,6 +1897,33 @@ class AppLocalizationsEs extends AppLocalizations {
   String get supervisionFree => 'El niño puede hacerlo solo';
 
   @override
+  String get usageTitle => 'Tiempo de pantalla';
+
+  @override
+  String usageWeek(Object days, Object minutes) {
+    return 'Últimos 7 días, con la pantalla encendida: $minutes min en total, en $days días.';
+  }
+
+  @override
+  String usageToday(Object minutes) {
+    return 'Hoy: $minutes min.';
+  }
+
+  @override
+  String usageGestures(Object count) {
+    return 'Gestos anotados en el diario en los últimos 7 días: $count. Son cosas hechas en la vida real, lejos de la pantalla.';
+  }
+
+  @override
+  String usageLimit(Object minutes) {
+    return 'En el modo \"solo\" el compañero se despide tras $minutes min (se cambia en el perfil).';
+  }
+
+  @override
+  String get usageCannot =>
+      'Lo que la app no puede medir: cuánto mira realmente el niño la pantalla, la escucha con la pantalla apagada, el tiempo en otros dispositivos, lo que hacéis juntos fuera de la pantalla. Los minutos son solo una parte: también cuentan qué mira, con quién y cómo habláis de ello.';
+
+  @override
   String get projectPhaseIdea => 'La idea';
 
   @override
