@@ -1,0 +1,17 @@
+{
+  "_nota": "Valori illustrativi, NON previsioni ne' prezzi decisi. Le commissioni vanno verificate per mercato, programma e operazione al momento della vendita.",
+  "scenarios": [
+    {"name": "prudente", "price": 24.99, "vat_rate": 0.22, "store_fee_rate": 0.30, "refund_rate": 0.08,
+     "variable_cost": 1.5, "acquisition_cost": 10, "families": 300,
+     "fixed_costs": {"manutenzione_e_accessibilita": 4000, "supporto": 2000},
+     "collections": [{"items": 8, "per_item": {"revisione_pedagogica": 150, "traduzione": 250, "audio": 200, "accessibilita": 60}, "one_off": {"illustrazioni": 2000}, "yearly_maintenance": 600, "years": 2}]},
+    {"name": "base", "price": 24.99, "vat_rate": 0.22, "store_fee_rate": 0.15, "refund_rate": 0.05,
+     "variable_cost": 1.0, "acquisition_cost": 6, "families": 1000,
+     "fixed_costs": {"manutenzione_e_accessibilita": 4000, "supporto": 2000},
+     "collections": [{"items": 8, "per_item": {"revisione_pedagogica": 150, "traduzione": 250, "audio": 200, "accessibilita": 60}, "one_off": {"illustrazioni": 2000}, "yearly_maintenance": 600, "years": 2}]},
+    {"name": "ottimista", "price": 24.99, "vat_rate": 0.22, "store_fee_rate": 0.15, "refund_rate": 0.03,
+     "variable_cost": 0.8, "acquisition_cost": 3, "families": 3000,
+     "fixed_costs": {"manutenzione_e_accessibilita": 4000, "supporto": 2000},
+     "collections": [{"items": 8, "per_item": {"revisione_pedagogica": 150, "traduzione": 250, "audio": 200, "accessibilita": 60}, "one_off": {"illustrazioni": 2000}, "yearly_maintenance": 600, "years": 2}]}
+  ]
+}
