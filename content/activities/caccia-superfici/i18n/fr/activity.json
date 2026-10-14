@@ -1,0 +1,53 @@
+{
+  "title": "Chasse aux surfaces",
+  "offscreen": "Passez ensemble la main sur trois surfaces différentes (la table, un pull, la vitre) et trouvez un mot pour chacune.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Une surface lisse",
+          "say": "Cherche une surface lisse et passe la main dessus. Puis dis-moi comment elle est."
+        },
+        {
+          "label": "Une surface rugueuse",
+          "say": "Maintenant une surface rugueuse, qui gratte un peu sous la main."
+        },
+        {
+          "label": "Une surface douce",
+          "say": "Et une surface douce, où la main s'enfonce un peu."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Une surface froide",
+          "say": "Cherche une surface froide, comme la vitre ou un carreau."
+        },
+        {
+          "label": "Une surface avec du relief",
+          "say": "Maintenant une surface avec du relief ou des rayures. Sens-la du bout des doigts."
+        },
+        {
+          "label": "Une surface qui fait du bruit",
+          "say": "Et une surface qui fait du bruit quand tu la caresses doucement."
+        },
+        {
+          "label": "Deux surfaces différentes côte à côte",
+          "say": "Pour finir, deux surfaces différentes l'une à côté de l'autre. Dis-moi en quoi elles sont différentes."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}

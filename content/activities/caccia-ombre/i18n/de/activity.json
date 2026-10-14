@@ -1,0 +1,49 @@
+{
+  "title": "Schatten-Suche",
+  "offscreen": "Macht abends mit einer Taschenlampe Schatten an der Wand, mit den Händen und mit einem Spielzeug. Macht der, der näher ans Licht geht, den größeren Schatten?",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Ein Schatten auf dem Boden oder an der Wand",
+          "say": "Suche einen Schatten auf dem Boden oder an der Wand. Sieh ihn dir genau an: Welche Form hat er?"
+        },
+        {
+          "label": "Der Schatten eines Stuhls",
+          "say": "Jetzt der Schatten eines Stuhls oder eines Möbels. Berühre ihn mit dem Finger: Spürst du ihn?"
+        },
+        {
+          "label": "Der Schatten deiner Hand",
+          "say": "Und der Schatten deiner Hand. Was passiert, wenn du sie näher an die Wand hältst?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Ein Spielzeug mit einem schönen Schatten",
+          "say": "Suche ein Spielzeug, das einen schönen Schatten macht, und bring es her."
+        },
+        {
+          "label": "Ein Ort ohne Schatten",
+          "say": "Jetzt ein Ort, an dem es keinen Schatten gibt. Warum wohl?"
+        },
+        {
+          "label": "Ein langer und ein kurzer Schatten",
+          "say": "Finde einen langen und einen kurzen Schatten und sag mir, welcher dir besser gefällt."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

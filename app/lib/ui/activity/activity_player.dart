@@ -296,7 +296,14 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   static const maxRepeats = 2;
 
   int _announcedFor = -1;
+  String? _prompt;
   Timer? _repeat;
+
+  /// Aiuto a richiesta, a piccoli passi: 0 = nessuno, 1 = consegna ripetuta,
+  /// 2 = elemento indicato, 3 = breve dimostrazione a voce. Il tablet non
+  /// completa mai il round da solo: dopo ogni passo il bambino prova.
+  int helpStep = 0;
+  static const helpSteps = 3;
   final Map<int, List<Object?>> _picked = {};
 
   /// La consegna del round: detta all'inizio e, con autonomia 1, ripetuta se il
@@ -304,6 +311,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   void announce(String text) {
     if (_announcedFor == index) return;
     _announcedFor = index;
+    _prompt = text;
     _repeat?.cancel();
     _repeat = null;
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -316,6 +324,24 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
         widget.ctx.say(text);
       });
     }
+  }
+
+  /// Il comando "Aiuto": ogni tocco porta al passo successivo (ripete la
+  /// consegna, indica l'elemento, mostra a voce). Dopo l'ultimo ricomincia dalla consegna.
+  void askHelp() {
+    if (lastCorrect == true) return;
+    _repeat?.cancel();
+    final l10n = context.l10n;
+    setState(() {
+      helpStep = helpStep >= helpSteps ? 1 : helpStep + 1;
+      // L'indicazione conta come aiuto usato, ma non risolve nulla.
+      if (helpStep >= 2 && hints == 0) hints = 1;
+    });
+    widget.ctx.say(switch (helpStep) {
+      1 => _prompt ?? l10n.activityHelp,
+      2 => l10n.activityHelpPoint,
+      _ => l10n.activityHelpDemo,
+    });
   }
 
   /// Le opzioni di questo round, tagliate a MiraboTokens.maxOptions. La scelta
@@ -364,6 +390,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
       index++;
       attempts = 0;
       hints = 0;
+      helpStep = 0;
       lastCorrect = null;
     });
   }
@@ -375,9 +402,19 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   Widget build(BuildContext context) => Column(
         children: [
           Expanded(child: buildRound(context, index)),
+          // Il comando Aiuto sta sempre nello stesso posto (in basso a destra).
           Padding(
-            padding: const EdgeInsets.only(bottom: 14),
-            child: StepDots(count: roundCount, current: index, color: MiraboColors.navy),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
+            child: Row(
+              children: [
+                const SizedBox(width: 60),
+                Expanded(child: Center(child: StepDots(count: roundCount, current: index, color: MiraboColors.navy))),
+                if (_prompt != null)
+                  RoundIconButton(icon: Icons.lightbulb_outline_rounded, tooltip: context.l10n.activityHelpButton, onPressed: askHelp)
+                else
+                  const SizedBox(width: 60),
+              ],
+            ),
           ),
         ],
       );

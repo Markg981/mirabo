@@ -153,6 +153,17 @@ void main() {
     await tester.pumpAndSettle();
     expect(db.saved.single.title, 'La scala per le stelle');
     expect(find.text('La scala per le stelle'), findsOneWidget);
+
+    // Sull'ultima pagina di 7–10 si provano altri finali, senza toccare la storia salvata.
+    for (var i = 0; i < 4; i++) {
+      await tester.tap(find.text('Avanti'));
+      await tester.pumpAndSettle();
+    }
+    expect(find.text('Prova un altro finale'), findsOneWidget);
+    await tester.tap(find.byType(ChoiceChip).first);
+    await tester.pumpAndSettle();
+    expect(spoken.last, contains('festa'));
+    expect(db.saved.single.part(FactoryStep.ending), 'sleep');
   });
 
   testWidgets('il karaoke illumina solo la parola letta', (tester) async {

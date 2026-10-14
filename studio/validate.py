@@ -82,7 +82,7 @@ def check_review(folder: Path, meta: dict) -> list[str]:
 
 LANGUAGES = ("en", "es", "fr", "de")
 META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
-SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "lesson", "gesture"}
+SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "sharedPrompt", "lesson", "gesture"}
 GESTURE_TEXT_KEYS = {"together", "back"}
 LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
 LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
@@ -141,6 +141,8 @@ def check_translations(folder: Path, meta: dict) -> list[str]:
                     oo = ((o.get("dialogue") or {}).get("alone") or {}).get("options", [])
                     if len(oo) != len(bo):
                         errors.append(f"{label}/{file} #{n}: {len(oo)} opzioni tradotte su {len(bo)}")
+                if ("sharedPrompt" in b) != ("sharedPrompt" in o):
+                    errors.append(f"{label}/{file} #{n}: l'invito al dialogo (sharedPrompt) va tradotto, o assente, come nell'italiano")
                 if "lesson" in b:
                     ol = o.get("lesson") or {}
                     if set(ol) - LESSON_TEXT_KEYS:
@@ -174,6 +176,11 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
         errors.append(f"{label}: la prima schermata deve essere 'hook'")
     if kinds and kinds[-1] != "closing":
         errors.append(f"{label}: l'ultima schermata deve essere 'closing'")
+    shared = [s for s in screens if s.get("sharedPrompt")]
+    if len(shared) > max(3, len(screens) // 3):
+        errors.append(f"{label}: troppi inviti al dialogo (sharedPrompt): servono pochi punti scelti, non ogni pagina")
+    if any(s.get("kind") == "dialogue" for s in shared):
+        errors.append(f"{label}: la pausa di dialogo ha già il suo invito, niente sharedPrompt sulla stessa schermata")
     if kinds.count("dialogue") > 1:
         errors.append(f"{label}: al massimo una pausa di dialogo")
     if band == "3-5" and meta.get("togetherOnly") and "dialogue" in kinds:

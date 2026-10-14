@@ -1,0 +1,53 @@
+{
+  "title": "Chasse aux formes",
+  "offscreen": "Faites un tour de la pièce sans tablette : \"Je vois, je vois un cercle\". À tour de rôle, l'enfant choisit aussi la forme.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Quelque chose de rond",
+          "say": "Cherche quelque chose de rond, comme un cercle, et apporte-le ici."
+        },
+        {
+          "label": "Quelque chose avec des coins",
+          "say": "Maintenant quelque chose avec quatre coins, comme un carré."
+        },
+        {
+          "label": "Quelque chose avec trois pointes",
+          "say": "Et quelque chose avec trois pointes, comme un triangle."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Quelque chose de long et étroit",
+          "say": "Cherche quelque chose de long et étroit."
+        },
+        {
+          "label": "Quelque chose de rond mais aplati",
+          "say": "Maintenant quelque chose de rond mais aplati, comme un œuf ou une pièce."
+        },
+        {
+          "label": "Quelque chose qui tient debout tout seul",
+          "say": "Quelque chose avec des faces plates qui tient debout tout seul."
+        },
+        {
+          "label": "Quelque chose qui roule",
+          "say": "Et pour finir quelque chose qui roule. Essaie sur le tapis !"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}
