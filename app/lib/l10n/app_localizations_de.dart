@@ -2077,6 +2077,71 @@ class AppLocalizationsDe extends AppLocalizations {
       'beim Test noch nicht: etwas ändern und noch einmal versuchen';
 
   @override
+  String get onbSkip => 'Überspringen';
+
+  @override
+  String get onbPromiseTitle =>
+      'Geschichten zum Entdecken, Spiele zum Verstehen, Ideen zum gemeinsamen Ausprobieren';
+
+  @override
+  String get onbPromiseBody =>
+      'Mirabò ist für Kinder von 3 bis 10 Jahren und für die Erwachsenen, die mit ihnen spielen.';
+
+  @override
+  String get onbFactFree => 'Kostenlos';
+
+  @override
+  String get onbFactOffline =>
+      'Funktioniert offline: die Cloud ist Ihre Entscheidung';
+
+  @override
+  String get onbFactNoAds => 'Ohne Werbung';
+
+  @override
+  String get onbFactNoAccount => 'Kein Konto für das Kind';
+
+  @override
+  String get onbSetupTitle => 'Sprache und Altersgruppe';
+
+  @override
+  String get onbSetupHint =>
+      'Alles Weitere lässt sich später im Erwachsenenbereich einstellen.';
+
+  @override
+  String get onbTryTitle => 'Ein Vorgeschmack auf eine Geschichte';
+
+  @override
+  String get onbTryNote =>
+      'Nur eine Vorschau: Die ganze Geschichte öffnet sich gemeinsam mit dem Kind.';
+
+  @override
+  String get onbHomeTitle => 'Von der Geschichte ins echte Leben';
+
+  @override
+  String get onbHomeIntro =>
+      'Jede Geschichte kann zu einer konkreten Aktivität zu Hause werden. Zum Beispiel:';
+
+  @override
+  String get onbGoTitle => 'Bereit, es mit Ihrem Kind zu probieren?';
+
+  @override
+  String get onbGoBody =>
+      'Ein paar Sekunden genügen: ein Begleiter, bei Wunsch ein Spitzname, die Altersgruppe. Kein Geburtsdatum, keine Anmeldung.';
+
+  @override
+  String get onbGoButton => 'Mit Ihrem Kind ausprobieren';
+
+  @override
+  String get onbReopen => 'Einführung noch einmal ansehen';
+
+  @override
+  String get onbReopenHint =>
+      'Der Willkommensweg mit einem Vorgeschmack auf eine Geschichte.';
+
+  @override
+  String get onbClose => 'Schließen';
+
+  @override
   String get dataWipeTitle => 'Alles von diesem Tablet löschen?';
 
   @override

@@ -10,6 +10,7 @@
 - `data-deletion.md`: cancellazione dei dati su questo tablet e del backup su Drive.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 - `compliance/`: bozze di governance di privacy e sicurezza (DPIA, programma di sicurezza, conservazione, incidenti e richieste, fornitori, checklist MASVS), da validare con un consulente.
+- `onboarding.md`: onboarding dell'adulto al primo avvio (60 secondi), stato e criterio di test.
 - `business/model-decision.md`: proposta di modello di business (non una decisione: l'app resta gratuita), con `entitlements-offline.md` e `schools-pilot.md`; calcolatore in `studio/economics.py`.
 - `privacy/data-inventory.md`: inventario dei dati, delle dipendenze, dei permessi e dei flussi di rete (con `privacy/network-observation.md`, controllo `studio/check_inventory.py`).
 - `store/` e `privacy/`: dichiarazioni agli store, informativa e COPPA (bozze da validare); parti da `store/checklist-release.md`.
