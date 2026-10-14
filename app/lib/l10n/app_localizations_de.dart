@@ -2093,6 +2093,47 @@ class AppLocalizationsDe extends AppLocalizations {
       'beim Test noch nicht: etwas ändern und noch einmal versuchen';
 
   @override
+  String get gateSetupTitle => 'Wähle eine PIN für Erwachsene';
+
+  @override
+  String get gateSetupBody =>
+      '4 bis 6 Ziffern. Sie öffnet den Erwachsenenbereich und schützt heikle Aktionen. Wenn du sie vergisst, kannst du eine neue wählen, ohne etwas zu verlieren.';
+
+  @override
+  String get gatePinLabel => 'PIN';
+
+  @override
+  String get gatePinConfirmLabel => 'PIN wiederholen';
+
+  @override
+  String get gatePinMismatch => 'Die beiden PINs stimmen nicht überein';
+
+  @override
+  String get gatePinFormat => 'Die PIN muss 4 bis 6 Ziffern haben';
+
+  @override
+  String get gatePinWrong => 'Falsche PIN';
+
+  @override
+  String gatePinWait(String time) {
+    return 'Zu viele Versuche. Versuche es in $time erneut';
+  }
+
+  @override
+  String get gateForgot => 'Ich habe die PIN vergessen';
+
+  @override
+  String get gateForgotUnavailable =>
+      'Die Erwachsenen-Prüfung mit der Gerätesperre war nicht möglich. Richte eine Bildschirmsperre für Erwachsene ein und versuche es erneut.';
+
+  @override
+  String get gateDeviceReason =>
+      'Bestätige, dass du erwachsen bist, um eine neue PIN zu wählen';
+
+  @override
+  String get gateChangePin => 'PIN ändern';
+
+  @override
   String get onbSkip => 'Überspringen';
 
   @override

@@ -2085,6 +2085,46 @@ class AppLocalizationsEn extends AppLocalizations {
       'not yet in the test: change something and try again';
 
   @override
+  String get gateSetupTitle => 'Choose a grown-up PIN';
+
+  @override
+  String get gateSetupBody =>
+      '4 to 6 digits. It opens the grown-ups\' area and guards sensitive actions. If you forget it you can choose a new one without losing anything.';
+
+  @override
+  String get gatePinLabel => 'PIN';
+
+  @override
+  String get gatePinConfirmLabel => 'Repeat the PIN';
+
+  @override
+  String get gatePinMismatch => 'The two PINs do not match';
+
+  @override
+  String get gatePinFormat => 'The PIN must have 4 to 6 digits';
+
+  @override
+  String get gatePinWrong => 'Wrong PIN';
+
+  @override
+  String gatePinWait(String time) {
+    return 'Too many attempts. Try again in $time';
+  }
+
+  @override
+  String get gateForgot => 'I forgot the PIN';
+
+  @override
+  String get gateForgotUnavailable =>
+      'Could not verify you are an adult with the device lock. Set an adult screen lock and try again.';
+
+  @override
+  String get gateDeviceReason => 'Confirm you are an adult to choose a new PIN';
+
+  @override
+  String get gateChangePin => 'Change PIN';
+
+  @override
   String get onbSkip => 'Skip';
 
   @override
