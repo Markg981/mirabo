@@ -1,0 +1,49 @@
+{
+  "title": "Schatten-Suche draußen",
+  "offscreen": "Am nächsten Tag, zur gleichen Uhrzeit, schaut euch denselben Schatten noch einmal an: Hat er sich verändert? Markiert die Stelle mit einem Stein.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Der Schatten eines Baumes",
+          "say": "Suche mit einem Erwachsenen den Schatten eines Baumes oder eines Pfostens. Bleib auf dem Gehweg oder im Garten."
+        },
+        {
+          "label": "Dein Schatten",
+          "say": "Jetzt dein eigener Schatten. Beweg dich langsam: Was macht er?"
+        },
+        {
+          "label": "Wo die Sonne hinkommt",
+          "say": "Und ein Ort, wo die Sonne hinkommt, und einer, wo nicht. Welcher ist wärmer?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Der Schatten eines gefallenen Blattes",
+          "say": "Suche ein Blatt, das schon auf den Boden gefallen ist, und sieh dir seinen Schatten an."
+        },
+        {
+          "label": "Der Schatten eines Steins",
+          "say": "Jetzt ein Stein: Wo ist sein Schatten? Auf der Seite, die von der Sonne wegzeigt."
+        },
+        {
+          "label": "Ein Schatten, der die Form ändert",
+          "say": "Zum Schluss ein Schatten, der seine Form ändert, wenn du dich bewegst."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

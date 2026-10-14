@@ -1,0 +1,65 @@
+{
+  "id": "caccia-ombre-fuori",
+  "title": "Caccia alle ombre all'aperto",
+  "area": "cultura",
+  "skill": "ombre",
+  "type": "hunt",
+  "ageBands": [
+    "5-7",
+    "7-10"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": true,
+  "offscreen": "Il giorno dopo, alla stessa ora, tornate a guardare la stessa ombra: è cambiata? Segnate il punto con un sasso.",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "🌳",
+          "label": "L'ombra di un albero",
+          "say": "Con un grande, cerca l'ombra di un albero o di un palo. Resta sul marciapiede o nel giardino."
+        },
+        {
+          "emoji": "🧍",
+          "label": "La tua ombra",
+          "say": "Adesso la tua ombra. Muoviti piano: lei che fa?"
+        },
+        {
+          "emoji": "☀️",
+          "label": "Dove il sole arriva",
+          "say": "E un posto dove il sole arriva e uno dove no. Quale è più caldo?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🍃",
+          "label": "L'ombra di una foglia caduta",
+          "say": "Cerca una foglia già caduta a terra e guarda la sua ombra."
+        },
+        {
+          "emoji": "🪨",
+          "label": "L'ombra di un sasso",
+          "say": "Adesso un sasso: dov'è la sua ombra? Dalla parte opposta al sole."
+        },
+        {
+          "emoji": "🕳️",
+          "label": "Un'ombra che cambia forma",
+          "say": "Per finire, un'ombra che cambia forma se ti sposti."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

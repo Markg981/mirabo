@@ -73,7 +73,11 @@
       "illustration": {
         "alt": "Emma, wearing Grandma's gloves, puts the plastic in the bag and the broken branches in a little pile."
       },
-      "text": "Grandma gives her the gloves and the bag. Emma picks up the plastic, then puts the broken branches in a little pile. Pietrolino hops onto a root. \"Can you hear anything?\" asks Emma. \"Maybe... a tiny, tiny whisper.\" Emma sits down under the trunk. \"Is it all right if I stay with you a while? I won't leave you alone.\""
+      "text": "Grandma gives her the gloves and the bag. Emma picks up the plastic, then puts the broken branches in a little pile. Pietrolino hops onto a root. \"Can you hear anything?\" asks Emma. \"Maybe... a tiny, tiny whisper.\" Emma sits down under the trunk. \"Is it all right if I stay with you a while? I won't leave you alone.\"",
+      "sharedPrompt": {
+        "role": "guide",
+        "text": "Emma has to pick up the plastic without getting hurt. You tell her what to do, step by step: Grandma is listening!"
+      }
     },
     {
       "illustration": {
@@ -84,6 +88,10 @@
         "bo": "My hands feel muddy just watching. I like it, {nome}.",
         "pilu": "You know, {nome}? A seed needs earth, water and time. Time is the longest part.",
         "tango": "Three seeds! I'd have planted a hundred! ...Maybe three is fine, eh {nome}?"
+      },
+      "sharedPrompt": {
+        "role": "help",
+        "text": "How could we help these seeds grow into trees? Let's think about it together."
       }
     },
     {

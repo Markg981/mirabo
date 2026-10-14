@@ -26,6 +26,10 @@
   "homeOneStory": "Una storia",
   "goodbyeTitle": "Per oggi basta, {name}!",
   "goodbyeBody": "È stato bello. Chiama un grande: ci vediamo la prossima volta!",
+  "closingTitle": "Bel lavoro, {name}!",
+  "closingBody": "Hai fatto un bel pezzo di strada. Ora puoi posare il tablet: tutto resta com'è, lo ritrovi quando vuoi.",
+  "closingBack": "Torna a casa",
+  "closingA11y": "Ho finito",
   "switchChildA11y": "Cambia bambino. Ora gioca {name}",
 
   "chooseWhoPlays": "Chi gioca oggi?",
@@ -46,6 +50,9 @@
 
   "activityTryAgain": "Riprova.",
   "activityHelp": "Guarda bene. Ti aiuto io.",
+  "activityHelpButton": "Aiuto",
+  "activityHelpPoint": "Guarda l'elemento colorato: può essere lui. Prova tu.",
+  "activityHelpDemo": "Ti faccio vedere: guarda quello che si è acceso e toccalo piano. Ora prova tu.",
   "checklistPrompt": "Cosa è già pronto?",
   "checklistSay": "Cosa è già pronto per domani?",
   "checklistAlone": "da solo",
@@ -351,6 +358,8 @@
   "gestureStart": "Pronti? Via!",
   "huntFound": "L'ho trovato!",
   "huntNotFound": "Non lo trovo",
+  "huntRest": "Schermo a riposo",
+  "huntRestHint": "Tocca lo schermo quando sei tornato. Se non ti va, va bene lo stesso.",
   "huntTellMe": "Che cosa hai trovato? Dillo a voce alta.",
   "huntRules": "il bambino cerca una cosa alla volta, in casa o all'aperto con voi. Solo cose a portata di mano: niente da salire, niente di affilato o di fragile, niente medicine o detersivi. Fuori si prende solo ciò che è già caduto a terra. Alla fine si rimette tutto a posto.",
 
@@ -364,6 +373,7 @@
   "factoryNew": "Inventane una",
   "factoryBy": "Una storia inventata da {name}",
   "factoryEnd": "Fine",
+  "factoryOtherEnding": "Prova un altro finale",
   "factoryDone": "Che bella storia, {name}! La metto tra le tue storie.",
   "factoryMineEmpty": "Qui troverai le storie che inventi.",
   "factoryWhoA": "{who, select, dragon{un piccolo drago} bunny{un coniglietto} robot{un robot gentile} penguin{un pinguino} unicorn{un unicorno} kitten{un gattino} other{{who}}}",
@@ -445,5 +455,8 @@
   "adviceReading": "Negli ultimi giorni {name} compone le parole al primo tentativo: vuoi provare a mostrare più testo?",
   "adviceAutonomy": "Negli ultimi giorni {name} risponde giusto al primo tentativo: vuoi provare con più scelte per volta?",
   "adviceYes": "Sì, proviamo",
-  "adviceNo": "Non ora"
+  "adviceNo": "Non ora",
+
+  "sharedPromptGuide": "Spiegami tu cosa fare",
+  "sharedPromptHelp": "Come potremmo aiutare?"
 }

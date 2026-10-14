@@ -86,6 +86,21 @@ class AppLocalizationsEn extends AppLocalizations {
       'That was fun. Go and find a grown-up: see you next time!';
 
   @override
+  String closingTitle(Object name) {
+    return 'Nice work, $name!';
+  }
+
+  @override
+  String get closingBody =>
+      'You\'ve come a long way. You can put the tablet down now: everything stays just as it is, ready whenever you want.';
+
+  @override
+  String get closingBack => 'Back home';
+
+  @override
+  String get closingA11y => 'I\'m done';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Change child. $name is playing now';
   }
@@ -179,6 +194,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get activityHelp => 'Look carefully. I\'ll help you.';
+
+  @override
+  String get activityHelpButton => 'Help';
+
+  @override
+  String get activityHelpPoint =>
+      'Look at the colored one: it could be that. You try.';
+
+  @override
+  String get activityHelpDemo =>
+      'Let me show you: look at the one that is lit and gently touch it. Now you try.';
 
   @override
   String get checklistPrompt => 'What\'s ready already?';
@@ -1302,6 +1328,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get huntNotFound => 'I can\'t find it';
 
   @override
+  String get huntRest => 'Rest the screen';
+
+  @override
+  String get huntRestHint =>
+      'Touch the screen when you\'re back. It\'s fine if you\'d rather not.';
+
+  @override
   String get huntTellMe => 'What did you find? Say it out loud.';
 
   @override
@@ -1350,6 +1383,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get factoryEnd => 'The end';
+
+  @override
+  String get factoryOtherEnding => 'Try another ending';
 
   @override
   String factoryDone(Object name) {
@@ -1800,4 +1836,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adviceNo => 'Not now';
+
+  @override
+  String get sharedPromptGuide => 'Tell me what to do';
+
+  @override
+  String get sharedPromptHelp => 'How could we help?';
 }

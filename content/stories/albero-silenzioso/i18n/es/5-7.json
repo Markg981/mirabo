@@ -73,7 +73,11 @@
       "illustration": {
         "alt": "Emma, con los guantes de la abuela, mete el plástico en la bolsa y las ramas rotas en un montoncito."
       },
-      "text": "La abuela le da los guantes y la bolsa. Emma recoge el plástico y luego pone las ramas rotas en un montoncito. Pietrolino salta a una raíz. \"¿Oyes algo?\", pregunta Emma. \"Quizá... un susurro muy, muy pequeño.\" Emma se sienta bajo el tronco. \"¿Te parece bien si me quedo un rato contigo? No te dejo sola.\""
+      "text": "La abuela le da los guantes y la bolsa. Emma recoge el plástico y luego pone las ramas rotas en un montoncito. Pietrolino salta a una raíz. \"¿Oyes algo?\", pregunta Emma. \"Quizá... un susurro muy, muy pequeño.\" Emma se sienta bajo el tronco. \"¿Te parece bien si me quedo un rato contigo? No te dejo sola.\"",
+      "sharedPrompt": {
+        "role": "guide",
+        "text": "Emma tiene que recoger el plástico sin hacerse daño. Explícale tú qué hacer, paso a paso: ¡la abuela escucha!"
+      }
     },
     {
       "illustration": {
@@ -84,6 +88,10 @@
         "bo": "Solo de mirar ya tengo las manos llenas de tierra. Me gusta, {nome}.",
         "pilu": "¿Sabes, {nome}? Una semilla necesita tierra, agua y tiempo. El tiempo es la parte más larga.",
         "tango": "¡Tres semillas! ¡Yo habría puesto cien! ...Bueno, quizá tres están bien, ¿eh, {nome}?"
+      },
+      "sharedPrompt": {
+        "role": "help",
+        "text": "¿Cómo podríamos ayudar a estas semillas a convertirse en árboles? Pensémoslo juntos."
       }
     },
     {
