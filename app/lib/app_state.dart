@@ -11,6 +11,7 @@ import 'data/interaction_advice.dart';
 import 'data/local_db.dart';
 import 'data/usage_tracker.dart';
 import 'games/game.dart';
+import 'l10n/l10n.dart';
 import 'models/activity.dart';
 import 'models/made_story.dart';
 import 'models/nature_day.dart';
@@ -122,8 +123,36 @@ class AppState extends ChangeNotifier {
     super.dispose();
   }
 
+  /// Chiave in `settings`: il genitore ha già visto (o saltato) l'onboarding.
+  static const onboardingSeenKey = 'onboarding_seen';
+
+  /// Onboarding dell'adulto già visto o saltato: chi lo ha visto non lo rivede
+  /// (lo riapre dall'area adulti). Un profilo già esistente vale come "visto".
+  bool onboardingSeen = true;
+
+  /// Scelte fatte nell'onboarding, prima che esista un profilo: lingua e fascia
+  /// diventano i valori iniziali del modulo del bambino.
+  AppLanguage? onboardingLanguage;
+  AgeBand? onboardingBand;
+
+  /// Sceglie la lingua già durante l'onboarding (l'interfaccia la segue subito).
+  void setOnboardingLanguage(AppLanguage l) {
+    onboardingLanguage = l;
+    notifyListeners();
+  }
+
+  /// Fine (o salto) dell'onboarding: non si ripropone; si passa al profilo del bambino.
+  Future<void> finishOnboarding({AppLanguage? language, AgeBand? band}) async {
+    onboardingLanguage = language ?? onboardingLanguage;
+    onboardingBand = band ?? onboardingBand;
+    onboardingSeen = true;
+    notifyListeners();
+    await db.setSetting(onboardingSeenKey, '1');
+  }
+
   Future<void> init() async {
     profiles = await db.profiles();
+    onboardingSeen = profiles.isNotEmpty || await db.setting(onboardingSeenKey) != null;
     hemisphere = Hemisphere.byName(await db.setting(LocalDb.hemisphereKey)) ?? Hemisphere.fromRegion(_region());
     currentProfile = profiles.isEmpty ? null : profiles.first;
     if (currentProfile != null) mode = currentProfile!.lastMode;
