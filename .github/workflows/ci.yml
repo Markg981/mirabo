@@ -27,6 +27,29 @@ jobs:
           name: pacchetti
           path: dist/*.mirabo
 
+  dipendenze:
+    name: Osserva le dipendenze (informativo, non blocca)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Dipendenze Dart/Flutter non aggiornate
+        working-directory: app
+        run: flutter pub outdated || true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Vulnerabilità note delle dipendenze Python dello studio
+        run: |
+          pip install pip-audit
+          pip-audit -r studio/requirements.txt || true
+
   android:
     name: Analizza, testa e compila Android
     runs-on: ubuntu-latest
