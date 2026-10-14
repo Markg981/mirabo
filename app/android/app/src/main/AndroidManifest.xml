@@ -1,5 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solo per il backup opt-in su Google Drive (docs/backup.md). Senza backup
+         attivo l'app non apre connessioni. Vedi docs/privacy/data-inventory.md. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Politica di backup del sistema: niente. Il database e' cifrato con una
+         chiave che non lascia il Keystore, quindi una copia non sarebbe leggibile
+         altrove; l'unico backup e' quello scelto dal genitore. -->
     <application
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:label="mirabo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

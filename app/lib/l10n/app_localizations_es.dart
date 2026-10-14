@@ -712,14 +712,14 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get parentData => 'Dónde están los datos';
+  String get parentData => 'Tus datos';
 
   @override
   String get parentDataHint =>
       'Los perfiles, el diario y el progreso se quedan en este dispositivo, cifrados. La copia en Google Drive de abajo es opcional.';
 
   @override
-  String get parentWipe => 'Borrar todos los datos';
+  String get parentWipe => 'Eliminar todos los datos de Mirabò en esta tableta';
 
   @override
   String get parentWipeConfirmTitle => '¿Borrar todo?';
@@ -2133,4 +2133,53 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onbClose => 'Cerrar';
+
+  @override
+  String get dataWipeTitle => '¿Eliminar todo de esta tableta?';
+
+  @override
+  String get dataWipeBody =>
+      'Se borrarán para siempre perfiles, progreso, diario, creaciones y archivos generados (también la voz del nombre), junto con la base de datos y su clave. La tableta volverá a como estaba en el primer arranque. No se puede deshacer. Una copia en Google Drive no se toca.';
+
+  @override
+  String dataWipeTypePrompt(String word) {
+    return 'Para confirmar, escribe $word';
+  }
+
+  @override
+  String get dataWipeWord => 'ELIMINAR';
+
+  @override
+  String get dataWipeDone =>
+      'Se han eliminado todos los datos de Mirabò de esta tableta.';
+
+  @override
+  String get dataWipeFailed =>
+      'No se ha podido eliminar todo. Inténtalo de nuevo.';
+
+  @override
+  String get dataRemoteButton => 'Eliminar también la copia en Google Drive';
+
+  @override
+  String get dataRemoteTitle => '¿Eliminar la copia en Drive?';
+
+  @override
+  String dataRemoteBody(String account) {
+    return 'El archivo de copia en el Drive de $account se borrará; después la tableta cierra la sesión de Google y revoca el permiso dado a la app. Hace falta internet. No se puede deshacer. Los datos de esta tableta se quedan.';
+  }
+
+  @override
+  String get dataRemoteDone =>
+      'Copia de Google Drive eliminada y cuenta desconectada.';
+
+  @override
+  String get dataRemoteFailed =>
+      'La copia de Google Drive NO se ha eliminado (probablemente no hay red o hace falta volver a iniciar sesión en Google). No ha cambiado nada: conéctate a internet e inténtalo de nuevo.';
+
+  @override
+  String get dataOutsideTitle => 'Lo que la app no controla';
+
+  @override
+  String get dataOutsideBody =>
+      'Mirabò no puede borrar las copias de seguridad del sistema operativo (copia del móvil o la tableta en iCloud o Google), ni los archivos que ya hayas exportado, impreso o compartido. Para eso: abre los ajustes de iCloud o de Google del dispositivo y borra las copias antiguas, y quita a mano los archivos guardados o enviados. Si algo queda en tu Drive, lo encuentras y lo borras en Drive > Ajustes > Administrar aplicaciones.';
 }

@@ -710,14 +710,14 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get parentData => 'Wo die Daten liegen';
+  String get parentData => 'Deine Daten';
 
   @override
   String get parentDataHint =>
       'Profile, Tagebuch und Fortschritte bleiben verschlüsselt auf diesem Gerät. Die Google-Drive-Sicherung unten ist freiwillig.';
 
   @override
-  String get parentWipe => 'Alle Daten löschen';
+  String get parentWipe => 'Alle Mirabò-Daten auf diesem Tablet löschen';
 
   @override
   String get parentWipeConfirmTitle => 'Alles löschen?';
@@ -2140,4 +2140,53 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get onbClose => 'Schließen';
+
+  @override
+  String get dataWipeTitle => 'Alles von diesem Tablet löschen?';
+
+  @override
+  String get dataWipeBody =>
+      'Profile, Fortschritte, Tagebuch, Kreationen und erzeugte Dateien (auch die Stimme des Namens) werden endgültig gelöscht, ebenso die Datenbank und ihr Schlüssel. Das Tablet ist danach wie beim ersten Start. Das lässt sich nicht rückgängig machen. Eine Google-Drive-Sicherung bleibt unberührt.';
+
+  @override
+  String dataWipeTypePrompt(String word) {
+    return 'Zur Bestätigung schreibe $word';
+  }
+
+  @override
+  String get dataWipeWord => 'LÖSCHEN';
+
+  @override
+  String get dataWipeDone =>
+      'Alle Mirabò-Daten wurden von diesem Tablet gelöscht.';
+
+  @override
+  String get dataWipeFailed =>
+      'Es konnte nicht alles gelöscht werden. Versuche es noch einmal.';
+
+  @override
+  String get dataRemoteButton => 'Auch die Google-Drive-Sicherung löschen';
+
+  @override
+  String get dataRemoteTitle => 'Die Sicherung auf Drive löschen?';
+
+  @override
+  String dataRemoteBody(String account) {
+    return 'Die Sicherungsdatei im Drive von $account wird gelöscht, dann meldet sich das Tablet von Google ab und widerruft die der App erteilte Berechtigung. Dafür braucht es Internet. Das lässt sich nicht rückgängig machen. Die Daten auf diesem Tablet bleiben.';
+  }
+
+  @override
+  String get dataRemoteDone =>
+      'Google-Drive-Sicherung gelöscht und Konto getrennt.';
+
+  @override
+  String get dataRemoteFailed =>
+      'Die Google-Drive-Sicherung wurde NICHT gelöscht (wahrscheinlich kein Netz oder eine neue Google-Anmeldung ist nötig). Nichts hat sich geändert: Verbinde dich mit dem Internet und versuche es erneut.';
+
+  @override
+  String get dataOutsideTitle => 'Was die App nicht kontrollieren kann';
+
+  @override
+  String get dataOutsideBody =>
+      'Mirabò kann die Sicherungen des Betriebssystems (Gerätesicherung bei iCloud oder Google) nicht löschen, ebenso wenig Dateien, die du schon exportiert, gedruckt oder geteilt hast. Dafür: Öffne die iCloud- oder Google-Einstellungen des Geräts, lösche alte Sicherungen und entferne gespeicherte oder gesendete Dateien von Hand. Was in deinem Drive übrig bleibt, findest und löschst du unter Drive > Einstellungen > Apps verwalten.';
 }
