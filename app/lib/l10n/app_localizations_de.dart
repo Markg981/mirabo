@@ -951,6 +951,43 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ideaAnother => 'Eine andere Idee';
 
   @override
+  String ideaReasonNone(String name) {
+    return 'Eine Präsentation passend zum Alter von $name';
+  }
+
+  @override
+  String get ideaNeedsNothing => 'Das braucht ihr: nichts Besonderes';
+
+  @override
+  String get ideaPrepNone => 'Vorbereitung: keine';
+
+  @override
+  String get ideaPrepQuick => 'Vorbereitung: etwa 2 Minuten';
+
+  @override
+  String get ideaPrepShort => 'Vorbereitung: etwa 5 Minuten';
+
+  @override
+  String ideaVariant(String text) {
+    return 'Variante: $text';
+  }
+
+  @override
+  String ideaVariantStory(String name) {
+    return 'wenn heute nicht der richtige Moment ist, verschiebt es auf morgen; oder lasst $name anleiten und sagen, was zu tun ist.';
+  }
+
+  @override
+  String get ideaVariantHome =>
+      'nach ein paar Tagen darf es allein machen, ohne es noch einmal vorzuführen.';
+
+  @override
+  String get ideaNoMaterials => 'Wir haben dieses Material nicht';
+
+  @override
+  String get ideaNotInterested => 'Kein Interesse';
+
+  @override
   String ideaEmpty(String name) {
     return 'Sobald $name eine Geschichte beendet hat, finden Sie hier eine Idee für gemeinsam.';
   }
@@ -1029,42 +1066,57 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String growthTitle(Object name) {
-    return 'Wie $name wächst';
+    return 'Was $name erkundet hat';
   }
 
   @override
   String get growthIntro =>
-      'Verglichen wird nur mit sich selbst, vor einem Monat. Die App sieht nur einen kleinen Teil des Tages: Bei Fragen zur Entwicklung sind Kinderarzt oder Lehrkraft die Ansprechpartner.';
+      'Ein Tagebuch dessen, was in den letzten 30 Tagen gewählt und wieder aufgegriffen wurde, keine Bewertung: Tippen, Tempo und Abschlüsse sagen nicht, was das Kind kann. Kein Vergleich, weder mit anderen Kindern noch mit vor einem Monat.';
 
   @override
   String get growthEmpty =>
-      'Keine Aktivitäten in den letzten 30 Tagen. Sobald das Kind welche macht, siehst du hier die Etappen.';
+      'Keine Aktivitäten in den letzten 30 Tagen. Sobald das Kind welche wählt, siehst du hier die erkundeten Themen.';
 
   @override
   String get growthOffscreen =>
       'Wo es keinen Fortschritt gibt, probier die Aktivität ohne Bildschirm aus der Karte: nicht mehr Zeit in der App.';
 
   @override
-  String growthNew(Object count) {
-    return 'In den letzten 30 Tagen: $count Runden. Vor einem Monat hatte es das noch nicht ausprobiert.';
+  String exploreTheme(String theme) {
+    return 'Erkundet: $theme';
   }
 
   @override
-  String growthCompare(Object before, Object now) {
-    return 'Heute: $now · vor einem Monat: $before (grauer Rand).';
+  String exploreResumed(int days) {
+    return 'An $days verschiedenen Tagen wieder aufgegriffen.';
   }
 
   @override
-  String stageLabel(String stage) {
-    String _temp0 = intl.Intl.selectLogic(stage, {
-      'starting': 'fängt an',
-      'working': 'arbeitet daran',
-      'canDo': 'schafft es',
-      'alone': 'macht es allein',
-      'other': '$stage',
-    });
-    return '$_temp0';
-  }
+  String get exploreOnce => 'An einem Tag ausprobiert.';
+
+  @override
+  String get exploreCreationsTitle => 'Erfundene und aufbewahrte Geschichten';
+
+  @override
+  String get exploreCreationsEmpty =>
+      'Noch keine erfundenen Geschichten in der Geschichtenfabrik.';
+
+  @override
+  String get exploreNotesTitle => 'Deine Beobachtungen';
+
+  @override
+  String get exploreNotesHint =>
+      'Etwas, das dir aufgefallen ist: eine Frage, ein Spiel, ein Satz...';
+
+  @override
+  String get exploreNotesAdd => 'Hinzufügen';
+
+  @override
+  String get exploreNotesEmpty =>
+      'Keine Beobachtungen. Sie bleiben nur auf diesem Gerät.';
+
+  @override
+  String get exploreNotesDelete => 'Beobachtung löschen';
 
   @override
   String skillLabel(String skill) {
@@ -1812,6 +1864,33 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get sharedPromptHelp => 'Wie könnten wir helfen?';
+
+  @override
+  String get homeActivityHeading => 'Eine Aktivität zur Geschichte';
+
+  @override
+  String get homeActivitySteps => 'Was das Kind tut';
+
+  @override
+  String get homeActivityMaterials => 'Was ihr braucht';
+
+  @override
+  String get homeActivityPreparation => 'Vorbereitung';
+
+  @override
+  String get homeActivitySupervision => 'Aufsicht';
+
+  @override
+  String get homeActivityAlternatives => 'Wenn etwas fehlt';
+
+  @override
+  String get supervisionTogether => 'Mit dem Kind, von Anfang bis Ende';
+
+  @override
+  String get supervisionNearby => 'Ein Erwachsener in der Nähe';
+
+  @override
+  String get supervisionFree => 'Das Kind kann es allein';
 
   @override
   String get usageTitle => 'Bildschirmzeit';

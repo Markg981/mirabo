@@ -1424,6 +1424,66 @@ abstract class AppLocalizations {
   /// **'Un\'altra idea'**
   String get ideaAnother;
 
+  /// No description provided for @ideaReasonNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Una presentazione adatta all\'età di {name}'**
+  String ideaReasonNone(String name);
+
+  /// No description provided for @ideaNeedsNothing.
+  ///
+  /// In it, this message translates to:
+  /// **'Occorrente: niente di particolare'**
+  String get ideaNeedsNothing;
+
+  /// No description provided for @ideaPrepNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: nessuna'**
+  String get ideaPrepNone;
+
+  /// No description provided for @ideaPrepQuick.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: circa 2 minuti'**
+  String get ideaPrepQuick;
+
+  /// No description provided for @ideaPrepShort.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: circa 5 minuti'**
+  String get ideaPrepShort;
+
+  /// No description provided for @ideaVariant.
+  ///
+  /// In it, this message translates to:
+  /// **'Variante: {text}'**
+  String ideaVariant(String text);
+
+  /// No description provided for @ideaVariantStory.
+  ///
+  /// In it, this message translates to:
+  /// **'se oggi non è il momento, rimandate a domani; oppure lasciate che sia {name} a guidare e a dirvi cosa fare.'**
+  String ideaVariantStory(String name);
+
+  /// No description provided for @ideaVariantHome.
+  ///
+  /// In it, this message translates to:
+  /// **'dopo qualche giorno lasciate che la faccia da solo, senza ripresentarla.'**
+  String get ideaVariantHome;
+
+  /// No description provided for @ideaNoMaterials.
+  ///
+  /// In it, this message translates to:
+  /// **'Non abbiamo questi materiali'**
+  String get ideaNoMaterials;
+
+  /// No description provided for @ideaNotInterested.
+  ///
+  /// In it, this message translates to:
+  /// **'Non ci interessa'**
+  String get ideaNotInterested;
+
   /// No description provided for @ideaEmpty.
   ///
   /// In it, this message translates to:
@@ -1505,19 +1565,19 @@ abstract class AppLocalizations {
   /// No description provided for @growthTitle.
   ///
   /// In it, this message translates to:
-  /// **'Come sta crescendo {name}'**
+  /// **'Cosa ha esplorato {name}'**
   String growthTitle(Object name);
 
   /// No description provided for @growthIntro.
   ///
   /// In it, this message translates to:
-  /// **'Il confronto è solo con sé stesso, un mese fa. L\'app vede una parte piccola della sua giornata: per dubbi sullo sviluppo il riferimento è il pediatra o l\'insegnante.'**
+  /// **'Un diario di ciò che ha scelto e ripreso negli ultimi 30 giorni, non una valutazione: tocchi, velocità e completamenti non dicono quanto sa fare. Nessun confronto, né con altri bambini né con un mese fa.'**
   String get growthIntro;
 
   /// No description provided for @growthEmpty.
   ///
   /// In it, this message translates to:
-  /// **'Nessuna attività negli ultimi 30 giorni. Quando ne farà qualcuna, qui vedrai le tappe.'**
+  /// **'Nessuna attività negli ultimi 30 giorni. Quando ne sceglierà qualcuna, qui vedrai i temi che ha esplorato.'**
   String get growthEmpty;
 
   /// No description provided for @growthOffscreen.
@@ -1526,23 +1586,65 @@ abstract class AppLocalizations {
   /// **'Dove non c\'è miglioramento, prova l\'attività fuori dallo schermo suggerita nella scheda: non più tempo sull\'app.'**
   String get growthOffscreen;
 
-  /// No description provided for @growthNew.
+  /// No description provided for @exploreTheme.
   ///
   /// In it, this message translates to:
-  /// **'Negli ultimi 30 giorni: {count} round. Un mese fa non l\'aveva ancora provato.'**
-  String growthNew(Object count);
+  /// **'Ha esplorato: {theme}'**
+  String exploreTheme(String theme);
 
-  /// No description provided for @growthCompare.
+  /// No description provided for @exploreResumed.
   ///
   /// In it, this message translates to:
-  /// **'Oggi: {now} · un mese fa: {before} (bordo grigio).'**
-  String growthCompare(Object before, Object now);
+  /// **'L\'ha ripreso in {days} giorni diversi.'**
+  String exploreResumed(int days);
 
-  /// No description provided for @stageLabel.
+  /// No description provided for @exploreOnce.
   ///
   /// In it, this message translates to:
-  /// **'{stage, select, starting{sta iniziando} working{ci sta lavorando} canDo{ce la fa} alone{lo fa da solo} other{{stage}}}'**
-  String stageLabel(String stage);
+  /// **'L\'ha provato in un giorno.'**
+  String get exploreOnce;
+
+  /// No description provided for @exploreCreationsTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie che ha inventato e conservato'**
+  String get exploreCreationsTitle;
+
+  /// No description provided for @exploreCreationsEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Ancora nessuna storia inventata nella fabbrica di storie.'**
+  String get exploreCreationsEmpty;
+
+  /// No description provided for @exploreNotesTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Le tue osservazioni'**
+  String get exploreNotesTitle;
+
+  /// No description provided for @exploreNotesHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Qualcosa che hai notato: una domanda, un gioco, una frase...'**
+  String get exploreNotesHint;
+
+  /// No description provided for @exploreNotesAdd.
+  ///
+  /// In it, this message translates to:
+  /// **'Aggiungi'**
+  String get exploreNotesAdd;
+
+  /// No description provided for @exploreNotesEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessuna osservazione. Restano solo su questo dispositivo.'**
+  String get exploreNotesEmpty;
+
+  /// No description provided for @exploreNotesDelete.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina l\'osservazione'**
+  String get exploreNotesDelete;
 
   /// No description provided for @skillLabel.
   ///
@@ -2431,6 +2533,60 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come potremmo aiutare?'**
   String get sharedPromptHelp;
+
+  /// No description provided for @homeActivityHeading.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'attività dalla storia'**
+  String get homeActivityHeading;
+
+  /// No description provided for @homeActivitySteps.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa fa il bambino'**
+  String get homeActivitySteps;
+
+  /// No description provided for @homeActivityMaterials.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa serve'**
+  String get homeActivityMaterials;
+
+  /// No description provided for @homeActivityPreparation.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione'**
+  String get homeActivityPreparation;
+
+  /// No description provided for @homeActivitySupervision.
+  ///
+  /// In it, this message translates to:
+  /// **'Supervisione'**
+  String get homeActivitySupervision;
+
+  /// No description provided for @homeActivityAlternatives.
+  ///
+  /// In it, this message translates to:
+  /// **'Se manca qualcosa'**
+  String get homeActivityAlternatives;
+
+  /// No description provided for @supervisionTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Con il bambino, dall\'inizio alla fine'**
+  String get supervisionTogether;
+
+  /// No description provided for @supervisionNearby.
+  ///
+  /// In it, this message translates to:
+  /// **'Un adulto vicino'**
+  String get supervisionNearby;
+
+  /// No description provided for @supervisionFree.
+  ///
+  /// In it, this message translates to:
+  /// **'Il bambino può fare da solo'**
+  String get supervisionFree;
 
   /// No description provided for @usageTitle.
   ///

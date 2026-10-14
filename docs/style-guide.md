@@ -199,6 +199,14 @@ Titolo `# Come parlarne: <titolo della storia>`, poi queste sezioni, nell'ordine
    L'app mostra questa sezione al genitore come "Un'idea per oggi": il titolo va scritto
    esattamente così (nelle traduzioni: `In real life`, `En la vida real`, `Dans la vraie vie`,
    `Im echten Leben`) e il testo deve reggersi da solo, senza rimandi alle altre sezioni.
+   Se un oggetto o un problema del racconto si presta, la storia può avere anche un'**attività
+   dalla storia** strutturata (`home-activity.json`, vedi `story-format.md`): resta una proposta
+   per il genitore, il bambino la fa senza tornare nell'app e il tablet non verifica né premia.
+   Per ogni fascia: materiali comuni di casa, preparazione dell'adulto, supervisione (con il
+   bambino / vicino / lasciarlo fare) e alternative. Esempio: *La tavola degli ospiti* — 3–5
+   prepara due posti con oggetti messi a disposizione dall'adulto; 5–7 organizza parte della
+   tavola e controlla che persone e oggetti corrispondano; 7–10 disegna un piano, lo prova e
+   racconta cosa ha modificato. Esempio reale: *I cerchi del sassolino* in `sassolino-magico`.
 4. `## Errori comuni`: tre punti, ognuno con il perché in poche parole.
 5. `## Se qualcosa ti preoccupa` (facoltativa, obbligatoria per paure, rabbia, perdita, sicurezza):
    i segnali da non ignorare e a chi rivolgersi (pediatra, insegnanti). Mai una diagnosi.

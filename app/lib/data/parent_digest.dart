@@ -113,10 +113,19 @@ enum IdeaReason {
   none,
 }
 
+/// Preparazione stimata di un'idea: serve a capire se c'è tempo adesso.
+enum IdeaPrep { none, quick, short }
+
 /// Un'idea concreta da fare oggi, fuori dallo schermo.
 sealed class DailyIdea {
   const DailyIdea(this.reason);
   final IdeaReason reason;
+
+  /// Quanto ci vuole a preparare il necessario.
+  IdeaPrep get prep;
+
+  /// Una variante già scritta nel contenuto; null se serve quella generica.
+  String? get variant;
 
   /// La chiave salvata nello storico delle idee ("story:…", "activity:…").
   String get key;
@@ -130,6 +139,13 @@ class StoryIdea extends DailyIdea {
 
   @override
   String get key => 'story:${story.id}';
+
+  /// Un gesto o una parola: non serve preparare nulla.
+  @override
+  IdeaPrep get prep => IdeaPrep.none;
+
+  @override
+  String? get variant => null;
 }
 
 /// Una presentazione Montessori da fare a casa.
@@ -141,6 +157,17 @@ class HomeIdea extends DailyIdea {
   String get key => 'activity:${activity.id}';
 
   Capacity get capacity => capacityOfActivity(activity);
+
+  /// Con uno o due oggetti di casa si è pronti subito; con più, ci vuole un po'.
+  @override
+  IdeaPrep get prep => materials.length <= 2 ? IdeaPrep.quick : IdeaPrep.short;
+
+  /// "Osserva" del primo livello: come proseguire nei giorni dopo.
+  @override
+  String? get variant => switch (activity.level(1)['observe']) {
+        final String t when t.trim().isNotEmpty => t.trim(),
+        _ => null,
+      };
 
   /// "Cosa serve" del primo livello.
   List<String> get materials => [
@@ -186,6 +213,7 @@ String? realLifeSection(String markdown) {
 /// dopo quel giorno il bambino non abbia chiesto di rifarla. L'idea già scelta
 /// oggi resta la prima: così non cambia riaprendo l'area genitore, anche se
 /// nel frattempo cambiano i dati. Se sono state proposte tutte, si ricomincia.
+/// Le idee in [dismissed] (scartate dal genitore) non tornano mai.
 List<DailyIdea> ideasFor({
   required DateTime now,
   required AgeBand band,
@@ -194,6 +222,7 @@ List<DailyIdea> ideasFor({
   required List<ProposedIdea> history,
   required Story? Function(String id) story,
   required List<Activity> activities,
+  Set<String> dismissed = const {},
 }) {
   final home = [for (final a in activities) if (a.isHome && a.supports(band)) a];
   final byId = {for (final a in activities) a.id: a};
@@ -283,6 +312,10 @@ List<DailyIdea> ideasFor({
       if (realLifeSection(card) case final text?) all.insert(0, StoryIdea(s!, text));
     }
   }
+
+  // Il genitore ha scartato queste idee ("non abbiamo i materiali", "non ci
+  // interessa"): non tornano, nemmeno se erano quelle di oggi.
+  all.removeWhere((i) => dismissed.contains(i.key));
 
   final first = [for (final i in all) if (chosen.contains(i.key)) i];
   final rest = [for (final i in all) if (!chosen.contains(i.key) && fresh(i)) i];

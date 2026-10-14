@@ -59,8 +59,49 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
         if variant.get("ageBand") != band:
             errors.append(f"{folder.name}/{file}: ageBand '{variant.get('ageBand')}' diverso da '{band}'")
         errors += check_screens(f"{folder.name}/{file}", variant.get("screens", []), band, meta)
+    errors += check_home_activity(folder, meta)
     errors += check_translations(folder, meta)
     errors += check_review(folder, meta)
+    return errors
+
+
+BAND_LISTS = ("steps", "materials", "preparation", "alternatives")
+
+
+def check_home_activity(folder: Path, meta: dict) -> list[str]:
+    """L'attività dalla storia (facoltativa): struttura per fascia e overlay tradotti con le stesse liste."""
+    file = meta.get("homeActivity")
+    if not file:
+        return []
+    errors: list[str] = []
+    path = folder / file
+    if not path.exists():
+        return [f"{folder.name}: attività '{file}' mancante"]
+    activity = read_json(path)
+    for e in load_schema("home-activity.schema.json").iter_errors(activity):
+        errors.append(f"{folder.name}/{file}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
+    base_bands = activity.get("bands", {})
+    for lang_dir in sorted(p for p in (folder / "i18n").glob("*") if p.is_dir()):
+        label = f"{folder.name}/i18n/{lang_dir.name}/{file}"
+        tpath = lang_dir / file
+        if not tpath.exists():
+            errors.append(f"{label}: manca l'attività tradotta")
+            continue
+        over = read_json(tpath)
+        if set(over) - {"title", "intro", "bands"}:
+            errors.append(f"{label}: campi non traducibili {sorted(set(over) - {'title', 'intro', 'bands'})}")
+        if set(over.get("bands", {})) != set(base_bands):
+            errors.append(f"{label}: le fasce devono essere {sorted(base_bands)}")
+            continue
+        for band, b in base_bands.items():
+            o = over["bands"][band]
+            if set(o) - set(b):
+                errors.append(f"{label} [{band}]: campi non traducibili {sorted(set(o) - set(b))}")
+            for key in BAND_LISTS:
+                if len(o.get(key, [])) != len(b.get(key, [])):
+                    errors.append(f"{label} [{band}]: '{key}' ha {len(o.get(key, []))} voci, l'italiano {len(b.get(key, []))}")
+            if set(o.get("supervision", {})) - {"note"}:
+                errors.append(f"{label} [{band}]: della supervisione si traduce solo 'note'")
     return errors
 
 
@@ -82,7 +123,7 @@ def check_review(folder: Path, meta: dict) -> list[str]:
 
 LANGUAGES = ("en", "es", "fr", "de")
 META_TEXT_KEYS = {"title", "keyPhrase", "gesture", "reviewed"}
-SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "sharedPrompt", "lesson", "gesture"}
+SCREEN_TEXT_KEYS = {"illustration", "text", "companionLines", "dialogue", "sharedPrompt", "lesson", "gesture", "consequence"}
 GESTURE_TEXT_KEYS = {"together", "back"}
 LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
 LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
@@ -153,6 +194,14 @@ def check_translations(folder: Path, meta: dict) -> list[str]:
                     for i, it in enumerate(items, 1):
                         if set(it) != LESSON_ITEM_TEXT_KEYS:
                             errors.append(f"{label}/{file} #{n}: la figura {i} va tradotta in {sorted(LESSON_ITEM_TEXT_KEYS)} e basta")
+                if "consequence" in b:
+                    bo = b["consequence"]["options"]
+                    oo = (o.get("consequence") or {}).get("options", [])
+                    if len(oo) != len(bo):
+                        errors.append(f"{label}/{file} #{n}: {len(oo)} mosse tradotte su {len(bo)}")
+                    for i, (mb, mo) in enumerate(zip(bo, oo), 1):
+                        if not mo.get("outcome") or not mo.get("label"):
+                            errors.append(f"{label}/{file} #{n}: la mossa {i} va tradotta con label e outcome")
                 if "gesture" in b:
                     og = o.get("gesture") or {}
                     if set(og) != GESTURE_TEXT_KEYS:
@@ -193,6 +242,11 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
     # La pausa di gesto è facoltativa: al massimo una, perché resti un momento speciale.
     if kinds.count("gesture") > 1:
         errors.append(f"{label}: al massimo una pausa di gesto")
+    # Le pause interattive restano poche: una sola pausa di conseguenza per variante.
+    if kinds.count("consequence") > 1:
+        errors.append(f"{label}: al massimo una pausa di conseguenza")
+    if band == "3-5" and meta.get("togetherOnly") and "consequence" in kinds:
+        errors.append(f"{label}: nessuna pausa di conseguenza in 3-5 quando la storia è solo insieme")
     if sum(1 for s in screens if s.get("keyPhrase")) != 1:
         errors.append(f"{label}: esattamente una schermata deve avere keyPhrase: true")
     if kinds and not any(s.get("companionLines") for s in screens if s.get("kind") == "hook"):
@@ -236,6 +290,29 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
                         errors.append(f"{label} #{n}: parola da evitare nella pausa di gesto: '{word}'")
         elif "gesture" in s:
             errors.append(f"{label} #{n}: campo gesture su una schermata che non è 'gesture'")
+        if s.get("kind") == "consequence":
+            c = s.get("consequence")
+            if not c:
+                errors.append(f"{label} #{n}: schermata 'consequence' senza campo consequence")
+            else:
+                ids = [o["id"] for o in c["options"]]
+                if len(ids) != len(set(ids)):
+                    errors.append(f"{label} #{n}: id delle mosse duplicati")
+                if len(ids) > (2 if band == "3-5" else 3):
+                    errors.append(f"{label} #{n}: al massimo {2 if band == '3-5' else 3} mosse per la fascia {band}")
+                # I piccoli vedono una relazione causa-effetto; solo i grandi confrontano strategie.
+                if band != "7-10" and c.get("minTries", 1) > 1:
+                    errors.append(f"{label} #{n}: minTries oltre 1 solo in 7-10")
+                if c.get("minTries", 1) > len(ids):
+                    errors.append(f"{label} #{n}: minTries maggiore del numero di mosse")
+                for o in c["options"]:
+                    if NAME_PLACEHOLDER in o["outcome"]:
+                        errors.append(f"{label} #{n}: {NAME_PLACEHOLDER} non va nella conseguenza raccontata")
+                    for word in BANNED:
+                        if re.search(rf"\b{re.escape(word)}\b", o["outcome"] + " " + o["label"], flags=re.IGNORECASE):
+                            errors.append(f"{label} #{n}: parola da evitare nella mossa '{o['id']}': '{word}'")
+        elif "consequence" in s:
+            errors.append(f"{label} #{n}: campo consequence su una schermata che non è 'consequence'")
         if s.get("kind") not in ("hook",) and not text and s.get("kind") != "dialogue":
             errors.append(f"{label} #{n}: schermata senza testo")
         lines = s.get("companionLines")

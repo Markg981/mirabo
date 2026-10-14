@@ -1,0 +1,44 @@
+{
+  "title": "The pebble's circles",
+  "intro": "In the story a pebble drops into the water and makes circles that spread out. At home a bowl of water is enough to see them for real: the activity is done without the tablet.",
+  "bands": {
+    "3-5": {
+      "goal": "Look and listen to what a pebble does when it falls into the water.",
+      "steps": [
+        "The child drops one pebble at a time into the bowl, gently.",
+        "Each of you says what you see (the circles) and what you hear (plink).",
+        "When the water is still again, try another pebble."
+      ],
+      "materials": ["a large bowl with a little water", "two or three smooth pebbles, bigger than a walnut", "a tea towel to dry up"],
+      "preparation": ["Put the bowl on a low table or on the floor, on top of the tea towel.", "Put the pebbles on a small plate next to the bowl."],
+      "supervision": { "note": "Small pebbles can end up in a mouth: pick big ones and stay next to the child for the whole game." },
+      "alternatives": ["Without pebbles: leaves or big bottle caps to drop.", "Outside: a puddle or a fountain, holding the child's hand."]
+    },
+    "5-7": {
+      "goal": "Discover that different stones make different circles.",
+      "steps": [
+        "The child picks three stones of different sizes and lines them up, smallest to biggest.",
+        "Says out loud which one will make the biggest circles.",
+        "Drops them one at a time, watches and checks whether the guess was right.",
+        "Puts the stones back and dries up any spilled water."
+      ],
+      "materials": ["a bowl or basin with water", "three stones of different sizes", "a cloth to dry up"],
+      "preparation": ["Gather the stones, bowl and cloth together on a surface that can get wet.", "Let the child choose the stones."],
+      "supervision": { "note": "It is enough for you to be in the room and for the stones to be too big to go in a mouth. No need to say whether the guess was right: looking together is enough." },
+      "alternatives": ["Use the sink with a little water if you have no bowl.", "Use three balls of different weights instead of stones."]
+    },
+    "7-10": {
+      "goal": "Run a test, see what happens and tell about it.",
+      "steps": [
+        "The child decides what to find out (for example: do the circles change if the stone falls from higher up?).",
+        "Draws the plan: what will be used and in what order.",
+        "Does the test and notes or draws what happens.",
+        "Tells out loud what changed compared to the plan, and why."
+      ],
+      "materials": ["a basin with water", "stones or other small things that sink", "paper and pencil", "a cloth to dry up"],
+      "preparation": ["Leave the materials in a corner where it is fine to get wet.", "Just say there is a test to do: the child chooses the question."],
+      "supervision": { "note": "The child can do it all alone; just ask to be told about it afterwards. Stay close if using a full sink or if outdoors." },
+      "alternatives": ["Use a puddle or a fountain if you pass one during the day.", "Use a magnifying glass to look closely at the circles, if the child asks for it."]
+    }
+  }
+}
