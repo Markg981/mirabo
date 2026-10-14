@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mirabo/home-activity",
+  "title": "Mirabò attività dalla storia (da fare a casa, senza tablet)",
+  "type": "object",
+  "required": ["title", "bands"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "intro": { "type": "string" },
+    "bands": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "3-5": { "$ref": "#/$defs/band" },
+        "5-7": { "$ref": "#/$defs/band" },
+        "7-10": { "$ref": "#/$defs/band" }
+      }
+    }
+  },
+  "$defs": {
+    "textList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "band": {
+      "type": "object",
+      "required": ["goal", "steps", "materials", "preparation", "supervision", "alternatives"],
+      "additionalProperties": false,
+      "properties": {
+        "goal": { "type": "string", "minLength": 1 },
+        "steps": { "$ref": "#/$defs/textList" },
+        "materials": { "$ref": "#/$defs/textList" },
+        "preparation": { "$ref": "#/$defs/textList" },
+        "supervision": {
+          "type": "object",
+          "required": ["level", "note"],
+          "additionalProperties": false,
+          "properties": {
+            "level": { "enum": ["together", "nearby", "free"] },
+            "note": { "type": "string", "minLength": 1 }
+          }
+        },
+        "alternatives": { "$ref": "#/$defs/textList" }
+      }
+    }
+  }
+}

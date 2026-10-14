@@ -35,6 +35,49 @@
     },
     {
       "illustration": {
+        "alt": "Emma de rodillas en la orilla mirando unos papeles que flotan en el arroyo; Pietrolino en la palma de su mano; a lo lejos, la abuela sobre el tronco."
+      },
+      "text": "Emma mira los papeles que flotan en el arroyo. El agua se los lleva poco a poco más abajo. \"¿Qué puedo hacer?\" se pregunta.",
+      "consequence": {
+        "together": "Pregunta: ¿qué puede hacer Emma con los papeles? Deja que el niño pruebe una opción cada vez y mirad juntos qué pasa; luego pregunta: ¿y si probara otra cosa?",
+        "prompt": {
+          "bo": "¿Qué hace Emma con los papeles, {nome}? Pruébalo tú.",
+          "pilu": "Vamos a ver qué pasa, {nome}. ¿Qué hace Emma?",
+          "tango": "¡Vamos {nome}, elige tú lo que hace Emma!"
+        },
+        "options": [
+          {
+            "label": "Los deja ahí",
+            "outcome": "Emma los deja ahí. El arroyo se los lleva abajo, abajo, hasta un punto estrecho, donde se quedan atascados entre las piedras.",
+            "reaction": {
+              "bo": "Así que acabaron ahí. ¿Probamos otra cosa, {nome}?",
+              "pilu": "¿Has visto adónde los llevó el agua? ¿Quieres probar otra opción, {nome}?",
+              "tango": "¡Se atascaron! ¡Probemos otra vez, {nome}, haz que Emma haga otra cosa!"
+            }
+          },
+          {
+            "label": "Los coge con las manos",
+            "outcome": "Emma los coge con las manos. Los papeles salen del agua, pero las manos se mojan y se enfrían. ¿Dónde los pone ahora?",
+            "reaction": {
+              "bo": "Qué frío en las manos. ¿Probamos otra cosa, {nome}?",
+              "pilu": "Los papeles están fuera, pero las manos están mojadas. ¿Qué cambiarías, {nome}?",
+              "tango": "¡Brr, qué frío! ¡Probemos otra vez, {nome}!"
+            }
+          },
+          {
+            "label": "Le pide una bolsa a la abuela",
+            "outcome": "Emma llama a la abuela, que le da una bolsa. Todos los papeles caben y las manos se quedan secas.",
+            "reaction": {
+              "bo": "Todo en la bolsa. Si quieres, puedes probar otra vez, {nome}.",
+              "pilu": "Así fue con una bolsa. ¿Se te ocurre otra opción, {nome}?",
+              "tango": "¡Todo en la bolsa! ¿Quieres ver qué pasa con las otras opciones, {nome}?"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "illustration": {
         "alt": "Emma vuelve con la abuela con su cesta; Pietrolino asoma por el bolsillo del abrigo; círculos en el agua detrás de ellas."
       },
       "text": "Emma mete a Pietrolino en el bolsillo del abrigo y vuelve con la abuela. \"Abuela, he encontrado un amigo. Mañana volvemos al bosque.\" Desde el bolsillo llega una vocecita: \"El bosque tiene muchas cosas que decir. Basta con escuchar.\"",

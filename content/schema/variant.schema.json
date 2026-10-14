@@ -28,7 +28,7 @@
         "additionalProperties": false,
         "properties": {
           "n": { "type": "integer", "minimum": 1 },
-          "kind": { "enum": ["hook", "situation", "dialogue", "lesson", "gesture", "turn", "closing"] },
+          "kind": { "enum": ["hook", "situation", "dialogue", "lesson", "gesture", "consequence", "turn", "closing"] },
           "illustration": {
             "type": "object",
             "required": ["alt"],
@@ -142,6 +142,34 @@
               "seconds": { "type": "integer", "minimum": 5, "maximum": 60 },
               "together": { "type": "string", "minLength": 1 },
               "back": { "$ref": "#/$defs/companionLines" }
+            }
+          },
+          "consequence": {
+            "description": "Pausa di conseguenza: il bambino prova una mossa sul problema della storia, il racconto ne mostra l'esito e si può riprovare",
+            "type": "object",
+            "required": ["together", "prompt", "options"],
+            "additionalProperties": false,
+            "properties": {
+              "together": { "type": "string", "minLength": 1 },
+              "prompt": { "$ref": "#/$defs/companionLines" },
+              "minTries": { "type": "integer", "minimum": 1, "maximum": 3 },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": ["id", "icon", "label", "outcome", "reaction"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+                    "icon": { "type": "string" },
+                    "label": { "type": "string", "minLength": 1 },
+                    "outcome": { "type": "string", "minLength": 1 },
+                    "reaction": { "$ref": "#/$defs/companionLines" }
+                  }
+                }
+              }
             }
           },
           "dialogue": {

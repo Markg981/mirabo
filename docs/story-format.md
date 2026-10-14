@@ -28,9 +28,41 @@ lia-rabbia/
 | `keyPhrase` | string | frase-chiave della storia |
 | `gesture` | string? | gesto da fare nella vita vera; il genitore lo segna nel diario ed è ciò che fa crescere il compagno |
 | `parentCard` | string | file markdown della scheda genitore |
+| `homeActivity` | string? | file JSON dell'attività dalla storia (facoltativo, vedi sotto); le storie senza restano valide |
 | `sources` | string[] | fonti pedagogiche |
 | `reviewedBy` | string? | chi ha fatto la revisione pedagogica, con qualifica e data; obbligatorio se `status` è `published` |
 | `status` | `draft` \| `review` \| `published` | stato della revisione pedagogica, vedi [`pedagogical-review.md`](pedagogical-review.md) |
+
+## Attività dalla storia (`home-activity.json`, facoltativa)
+
+Un oggetto o un problema del racconto diventa qualcosa da fare davvero, a casa e senza il tablet.
+Compare nella scheda genitore sotto il testo di `parent.md`; schema in
+`content/schema/home-activity.schema.json`. Il tablet non verifica e non premia: non segna nulla.
+
+```json
+{
+  "title": "...",
+  "intro": "...",
+  "bands": {
+    "3-5": {
+      "goal": "...",
+      "steps": ["..."],
+      "materials": ["..."],
+      "preparation": ["..."],
+      "supervision": { "level": "together", "note": "..." },
+      "alternatives": ["..."]
+    }
+  }
+}
+```
+
+`bands` ha almeno una fascia (anche diversa da quelle della storia: l'attività è del genitore).
+Per fascia sono obbligatori `goal`, `steps`, `materials` (oggetti comuni di casa), `preparation`
+(cosa fa l'adulto prima), `supervision` e `alternatives`. `supervision.level` è `together` (adulto
+con il bambino), `nearby` (adulto vicino) o `free` (il bambino fa da solo e lo racconta dopo).
+Nelle traduzioni (`i18n/<lingua>/home-activity.json`) si traducono solo i testi: stesso numero di
+voci per lista, `supervision.level` non si ripete. `studio/validate.py` controlla schema e overlay.
+Per le fasce vedi l'esempio *La tavola degli ospiti* in `style-guide.md`.
 
 ## Variante per fascia (`5-7.json`)
 
@@ -46,7 +78,7 @@ Ogni `Screen` ha:
 | Campo | Tipo | Note |
 | --- | --- | --- |
 | `n` | int | numero progressivo da 1 |
-| `kind` | `hook` \| `situation` \| `dialogue` \| `lesson` \| `gesture` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, lezione in tre tempi, pausa di gesto, svolta, chiusura) |
+| `kind` | `hook` \| `situation` \| `dialogue` \| `lesson` \| `gesture` \| `consequence` \| `turn` \| `closing` | tipo (aggancio, situazione, pausa di dialogo, lezione in tre tempi, pausa di gesto, pausa di conseguenza, svolta, chiusura) |
 | `illustration` | object | `{ "file": "...", "alt": "descrizione", "scene": {...} }`; `file` può mancare finché non esiste, e allora l'app disegna `scene` se c'è |
 | `text` | string? | testo della narrazione; `{nome}` è il nome del bambino |
 | `audio` | object? | `{ "file": "...", "words": [[ms, "parola"], ...], "nameSlots": [ms, ...] }` |
@@ -54,6 +86,7 @@ Ogni `Screen` ha:
 | `dialogue` | object? | solo per `kind = dialogue`, vedi sotto |
 | `lesson` | object? | solo per `kind = lesson`, vedi sotto |
 | `gesture` | object? | solo per `kind = gesture`, vedi sotto |
+| `consequence` | object? | solo per `kind = consequence`, vedi sotto |
 | `keyPhrase` | bool? | se true, questa schermata mostra la frase-chiave in evidenza |
 
 ### Pausa di dialogo
@@ -153,6 +186,44 @@ pausa non fa crescere il compagno: lo fa solo il gesto nella vita vera, segnato 
 Insieme, la pausa la guida il genitore con `together` e si va avanti quando si vuole. Negli overlay
 tradotti si traducono `together` e `back`.
 
+### Pausa di conseguenza
+
+Il bambino interviene sul problema della storia (sceglie un riparo, distribuisce i materiali, cambia
+l'ordine di una preparazione) e il racconto mostra cosa succede; poi può riprovare con un'altra mossa.
+È diversa dalla pausa di dialogo: lì il compagno commenta e basta, qui ogni mossa ha una conseguenza
+raccontata. Criterio per metterla: "questa azione aiuta a capire ciò che sta succedendo?". Nessuna
+mossa è sbagliata o punita: `outcome` descrive, non giudica, e il compagno invita a provare altro.
+
+```json
+"consequence": {
+  "together": "Chiedi: cosa può fare Emma con le cartacce? Provate una mossa alla volta.",
+  "prompt": { "bo": "...", "pilu": "...", "tango": "..." },
+  "minTries": 1,
+  "options": [
+    {
+      "id": "sacchetto",
+      "icon": "bag",
+      "label": "Chiede un sacchetto alla nonna",
+      "outcome": "Emma chiama la nonna, che le porge un sacchetto. Le cartacce ci stanno tutte e le mani restano asciutte.",
+      "reaction": { "bo": "...", "pilu": "...", "tango": "..." }
+    }
+  ]
+}
+```
+
+| Campo | Note |
+| --- | --- |
+| `together` | guida per il genitore in modalità insieme |
+| `prompt` | domanda del compagno prima di provare |
+| `minTries` | facoltativo, da 1 (default) a 3: quante mosse diverse prova da solo prima di andare avanti. Oltre 1 solo in 7–10, per confrontare le strategie |
+| `options` | 2–3 mosse (al massimo 2 in 3–5): `id`, `icon`, `label`, `outcome` (la conseguenza raccontata, uguale per i tre compagni, senza `{nome}`), `reaction` (il commento del compagno) |
+
+Da soli, il bambino tocca una mossa: compare e viene letto `outcome`, poi il compagno dice `reaction`.
+Può toccarne un'altra quante volte vuole; si va avanti dopo `minTries` mosse diverse. Insieme, la guida
+è `together` e si va avanti quando si vuole. Gli `id` non vanno nel diario: la pausa serve a capire,
+non a registrare una risposta. La schermata ha `text` (il problema) e non ha `companionLines`. Negli
+overlay tradotti si traducono `together`, `prompt` e, per ogni mossa, `label`, `outcome` e `reaction`.
+
 ## Regole
 
 - `{nome}` compare solo nelle battute del compagno; la narrazione non lo usa.
@@ -189,6 +260,7 @@ Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la li
 (`y` + `s`/2 tra 0.75 e 0.95), così stanno "in piedi" nella scena.
 - Una sola schermata `dialogue` per storia; nessuna in fascia 3–5 quando `togetherOnly` è vero.
 - Al massimo una schermata `gesture` per variante, con `companionLines` (l'invito).
+- Al massimo una schermata `consequence` per variante; nessuna in 3–5 quando `togetherOnly` è vero.
 - Ogni variante 3–5 ha esattamente una schermata `lesson`; le altre fasce non ne hanno. Le figure
   hanno `id`, emoji e nome distinti; le frasi non usano `{nome}`.
 - `studio/validate.py` controlla tutto questo.

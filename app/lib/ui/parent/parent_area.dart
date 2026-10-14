@@ -3,10 +3,11 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
-import '../../data/development_stats.dart';
+import '../../data/exploration_diary.dart';
 import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
+import '../../models/made_story.dart';
 import '../../models/nature_day.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
@@ -318,9 +319,72 @@ class _ParentCardPage extends StatelessWidget {
             ),
         ],
       ),
-      body: Markdown(
-        data: story.parentCard!,
+      body: ListView(
         padding: const EdgeInsets.all(24),
+        children: [
+          MarkdownBody(data: story.parentCard!),
+          if (story.homeActivity case final activity?) HomeActivityView(activity: activity),
+        ],
+      ),
+    );
+  }
+}
+
+/// L'attività della storia, una sezione per fascia: cosa serve, preparazione,
+/// supervisione e alternative. Il bambino la fa senza tornare nell'app.
+class HomeActivityView extends StatelessWidget {
+  const HomeActivityView({super.key, required this.activity});
+  final HomeActivity activity;
+
+  String _supervision(AppLocalizations l, Supervision s) => switch (s) {
+        Supervision.together => l.supervisionTogether,
+        Supervision.nearby => l.supervisionNearby,
+        Supervision.free => l.supervisionFree,
+      };
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final theme = Theme.of(context);
+    Widget list(String heading, List<String> items, {bool numbered = false}) => Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(heading, style: theme.textTheme.titleSmall),
+              for (final (n, item) in items.indexed) Text('${numbered ? '${n + 1}.' : '•'} $item'),
+            ],
+          ),
+        );
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l.homeActivityHeading, style: theme.textTheme.labelLarge),
+          Text(activity.title, style: theme.textTheme.headlineSmall),
+          if (activity.intro case final intro?) Padding(padding: const EdgeInsets.only(top: 8), child: Text(intro)),
+          for (final entry in activity.bands.entries)
+            Card(
+              margin: const EdgeInsets.only(top: 16),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(l.profileYears('${entry.key.minAge}–${entry.key.maxAge}'), style: theme.textTheme.titleMedium),
+                    const SizedBox(height: 4),
+                    Text(entry.value.goal),
+                    list(l.homeActivitySteps, entry.value.steps, numbered: true),
+                    list(l.homeActivityMaterials, entry.value.materials),
+                    list(l.homeActivityPreparation, entry.value.preparation),
+                    list(l.homeActivitySupervision, ['${_supervision(l, entry.value.supervision)}. ${entry.value.supervisionNote}']),
+                    list(l.homeActivityAlternatives, entry.value.alternatives),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -359,6 +423,7 @@ class _DiaryTabState extends State<_DiaryTab> {
       history: await db.dailyIdeas(id, since: now.subtract(const Duration(days: 15))),
       story: (s) => state.repo.byId(s, lang),
       activities: state.repo.activitiesIn(lang),
+      dismissed: await db.dismissedIdeas(id),
     );
     if (ideas.isNotEmpty) await db.saveDailyIdea(id, ideaDay(now), ideas.first.key);
     final weekAgo = now.subtract(const Duration(days: 7)).toIso8601String();
@@ -393,6 +458,10 @@ class _DiaryTabState extends State<_DiaryTab> {
             _IdeaSection(
               name: profile.name,
               ideas: ideas,
+              onDismiss: (key) async {
+                await state.db.dismissIdea(widget.profile.id, key);
+                if (mounted) setState(() => _data = _load());
+              },
             ),
             const SizedBox(height: 20),
             _WeekSection(
@@ -459,9 +528,12 @@ typedef _DiaryData = (List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>, Li
 /// Le idee arrivano già in ordine di priorità: la prima è quella di oggi,
 /// "Un'altra idea" passa alla successiva.
 class _IdeaSection extends StatefulWidget {
-  const _IdeaSection({required this.name, required this.ideas});
+  const _IdeaSection({required this.name, required this.ideas, required this.onDismiss});
   final String name;
   final List<DailyIdea> ideas;
+
+  /// Il genitore scarta l'idea: non viene più riproposta.
+  final Future<void> Function(String key) onDismiss;
 
   @override
   State<_IdeaSection> createState() => _IdeaSectionState();
@@ -481,7 +553,7 @@ class _IdeaSectionState extends State<_IdeaSection> {
       StoryIdea(:final story) => l10n.ideaReasonStory(widget.name, story.title),
       DailyIdea(reason: IdeaReason.tryAlone) => l10n.ideaReasonTryAlone,
       HomeIdea(reason: IdeaReason.capacity, :final capacity) => l10n.ideaReasonCapacity(widget.name, capacity.name),
-      _ => null,
+      _ => l10n.ideaReasonNone(widget.name),
     };
     return FormSection(
       icon: Icons.lightbulb_rounded,
@@ -504,10 +576,26 @@ class _IdeaSectionState extends State<_IdeaSection> {
           HomeIdea(:final activity, :final materials) => [
               Text(context.l10n.ideaHome(activity.title, context.l10n.areaLabel(activity.area.name)), style: text.titleMedium),
               const SizedBox(height: 6),
-              if (materials.isNotEmpty) Text(context.l10n.presentationWhatYouNeedSay(materials.join(', '))),
+              Text(materials.isEmpty ? l10n.ideaNeedsNothing : l10n.presentationWhatYouNeedSay(materials.join(', '))),
               Text(context.l10n.ideaHomeHint, style: text.bodySmall),
             ],
         },
+        if (idea != null) ...[
+          const SizedBox(height: 4),
+          Text(switch (idea.prep) {
+            IdeaPrep.none => l10n.ideaPrepNone,
+            IdeaPrep.quick => l10n.ideaPrepQuick,
+            IdeaPrep.short => l10n.ideaPrepShort,
+          }),
+          Text(l10n.ideaVariant(idea.variant ?? (idea is StoryIdea ? l10n.ideaVariantStory(widget.name) : l10n.ideaVariantHome))),
+          Wrap(
+            spacing: 8,
+            children: [
+              TextButton(onPressed: () => widget.onDismiss(idea.key), child: Text(l10n.ideaNoMaterials)),
+              TextButton(onPressed: () => widget.onDismiss(idea.key), child: Text(l10n.ideaNotInterested)),
+            ],
+          ),
+        ],
         if (widget.ideas.length > 1)
           Align(
             alignment: Alignment.centerLeft,
@@ -636,45 +724,13 @@ class _GesturesSection extends StatelessWidget {
   }
 }
 
-class _DevelopmentTab extends StatelessWidget {
+class _DevelopmentTab extends StatefulWidget {
   const _DevelopmentTab({required this.state, required this.profile});
   final AppState state;
   final ChildProfile profile;
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<SkillStat>>(
-      future: DevelopmentStats(state.db).forProfile(profile.id, state.repo.activities),
-      builder: (context, snap) {
-        final stats = snap.data ?? const <SkillStat>[];
-        return ListView(
-          padding: const EdgeInsets.all(24),
-          children: [
-            Text(context.l10n.growthTitle(profile.name), style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 8),
-            Text(context.l10n.growthIntro),
-            const SizedBox(height: 16),
-            if (snap.connectionState != ConnectionState.done)
-              const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
-            else if (stats.isEmpty)
-              Text(context.l10n.growthEmpty)
-            else
-              for (final area in ActivityArea.values)
-                if (stats.any((s) => s.area == area)) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, bottom: 4),
-                    child: Text(context.l10n.areaLabel(area.name), style: Theme.of(context).textTheme.titleLarge),
-                  ),
-                  for (final s in stats.where((s) => s.area == area)) _SkillRow(stat: s),
-                ],
-            _ProjectLog(state: state, profile: profile),
-            const SizedBox(height: 24),
-            Text(context.l10n.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
-          ],
-        );
-      },
-    );
-  }
+  State<_DevelopmentTab> createState() => _DevelopmentTabState();
 }
 
 /// Il processo dei piccoli progetti: idea, previsione, prova, revisione, con le
@@ -694,7 +750,7 @@ class _ProjectLog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<ProjectStep>>(
-      future: DevelopmentStats(state.db).projectLog(profile.id),
+      future: ExplorationDiary(state.db).projectLog(profile.id),
       builder: (context, snap) {
         final steps = snap.data ?? const <ProjectStep>[];
         if (steps.isEmpty) return const SizedBox.shrink();
@@ -725,58 +781,111 @@ class _ProjectLog extends StatelessWidget {
   }
 }
 
-class _SkillRow extends StatelessWidget {
-  const _SkillRow({required this.stat});
-  final SkillStat stat;
+/// Diario descrittivo: temi esplorati e ripresi, storie inventate dal bambino
+/// e osservazioni del genitore. Niente tappe, livelli o confronti.
+class _DevelopmentTabState extends State<_DevelopmentTab> {
+  final _note = TextEditingController();
+  late Future<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)> _data = _load();
+
+  ExplorationDiary get _diary => ExplorationDiary(widget.state.db);
+
+  Future<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)> _load() async => (
+        await _diary.forProfile(widget.profile.id, widget.state.repo.activities),
+        await widget.state.madeStoriesOf(widget.profile),
+        await _diary.notes(widget.profile.id),
+      );
+
+  @override
+  void dispose() {
+    _note.dispose();
+    super.dispose();
+  }
+
+  Future<void> _add() async {
+    await _diary.addNote(widget.profile.id, _note.text);
+    _note.clear();
+    setState(() => _data = _load());
+  }
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            Expanded(child: Text(context.l10n.skillLabel(stat.skill.replaceAll('-', '_')), style: Theme.of(context).textTheme.bodyLarge)),
-            if (stat.improved) const Icon(Icons.trending_up_rounded, color: Colors.green),
-          ]),
-          const SizedBox(height: 6),
-          Row(
-            children: [
-              for (final stage in Stage.values) ...[
-                Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 14,
-                        decoration: BoxDecoration(
-                          color: stat.now != null && stage.index <= stat.now!.index ? scheme.primary : scheme.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(7),
-                          border: stat.monthAgo == stage ? Border.all(color: scheme.outline, width: 2) : null,
-                        ),
+    final l = context.l10n;
+    final theme = Theme.of(context).textTheme;
+    return FutureBuilder<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)>(
+      future: _data,
+      builder: (context, snap) {
+        final data = snap.data;
+        return ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            Text(l.growthTitle(widget.profile.name), style: theme.titleLarge),
+            const SizedBox(height: 8),
+            Text(l.growthIntro),
+            const SizedBox(height: 16),
+            if (data == null)
+              const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
+            else ...[
+              if (data.$1.isEmpty)
+                Text(l.growthEmpty)
+              else
+                for (final area in ActivityArea.values)
+                  if (data.$1.any((t) => t.area == area)) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 4),
+                      child: Text(l.areaLabel(area.name), style: theme.titleLarge),
+                    ),
+                    for (final t in data.$1.where((t) => t.area == area))
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(l.exploreTheme(l.skillLabel(t.skill.replaceAll('-', '_')))),
+                        subtitle: Text(t.resumed ? l.exploreResumed(t.days) : l.exploreOnce),
                       ),
-                      const SizedBox(height: 4),
-                      Text(context.l10n.stageLabel(stage.name), style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
-                    ],
+                  ],
+              const SizedBox(height: 24),
+              Text(l.exploreCreationsTitle, style: theme.titleLarge),
+              const SizedBox(height: 4),
+              if (data.$2.isEmpty)
+                Text(l.exploreCreationsEmpty)
+              else
+                for (final m in data.$2)
+                  ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.auto_stories_outlined), title: Text(m.titleIn(l))),
+              const SizedBox(height: 24),
+              Text(l.exploreNotesTitle, style: theme.titleLarge),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _note,
+                minLines: 2,
+                maxLines: 4,
+                decoration: InputDecoration(hintText: l.exploreNotesHint, border: const OutlineInputBorder()),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(onPressed: _add, child: Text(l.exploreNotesAdd)),
+              ),
+              if (data.$3.isEmpty)
+                Text(l.exploreNotesEmpty)
+              else
+                for (final n in data.$3)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(n.text),
+                    subtitle: Text('${n.when.day}/${n.when.month}/${n.when.year}'),
+                    trailing: IconButton(
+                      tooltip: l.exploreNotesDelete,
+                      icon: const Icon(Icons.delete_outline),
+                      onPressed: () async {
+                        await _diary.removeNote(widget.profile.id, n);
+                        setState(() => _data = _load());
+                      },
+                    ),
                   ),
-                ),
-                if (stage != Stage.values.last) const SizedBox(width: 6),
-              ],
             ],
-          ),
-          const SizedBox(height: 4),
-          Text(
-            stat.monthAgo == null
-                ? context.l10n.growthNew('${stat.rounds}')
-                : context.l10n.growthCompare(
-                    stat.now == null ? '—' : context.l10n.stageLabel(stat.now!.name),
-                    context.l10n.stageLabel(stat.monthAgo!.name),
-                  ),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
-      ),
+            _ProjectLog(state: widget.state, profile: widget.profile),
+            const SizedBox(height: 24),
+            Text(l.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
+          ],
+        );
+      },
     );
   }
 }

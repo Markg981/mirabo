@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mirabo/data/development_stats.dart';
+import 'package:mirabo/data/exploration_diary.dart';
 import 'package:mirabo/l10n/app_localizations.dart';
 import 'package:mirabo/models/activity.dart';
 import 'package:mirabo/models/profile.dart';

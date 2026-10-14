@@ -29,6 +29,9 @@ class LocalDb {
 
   /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
   static const hemisphereKey = 'hemisphere';
+
+  /// Prefisso in `settings` delle idee scartate dal genitore (poi `.idBambino`).
+  static const dismissedIdeasKey = 'dismissed_ideas';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
     // Solo questo dispositivo: la chiave non finisce nei backup iCloud.
@@ -504,6 +507,20 @@ class LocalDb {
   Future<void> saveDailyIdea(int profileId, String day, String key) => _db.insert(
       'daily_ideas', {'profile_id': profileId, 'day': day, 'idea_key': key},
       conflictAlgorithm: ConflictAlgorithm.ignore);
+
+  /// Le chiavi delle idee che il genitore ha scartato per questo bambino.
+  Future<Set<String>> dismissedIdeas(int profileId) async {
+    final raw = await setting('$dismissedIdeasKey.$profileId');
+    if (raw == null || raw.isEmpty) return {};
+    return {for (final k in raw.split('\n')) if (k.isNotEmpty) k};
+  }
+
+  /// Scarta un'idea: non verrà più riproposta a questo bambino.
+  Future<void> dismissIdea(int profileId, String key) async {
+    final all = await dismissedIdeas(profileId);
+    all.add(key);
+    await setSetting('$dismissedIdeasKey.$profileId', all.join('\n'));
+  }
 
   /// Un'impostazione della famiglia; null se non è mai stata scelta.
   Future<String?> setting(String key) async {

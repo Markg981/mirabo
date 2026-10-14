@@ -25,7 +25,7 @@ enum AgeBand {
   }
 }
 
-enum ScreenKind { hook, situation, dialogue, lesson, gesture, turn, closing }
+enum ScreenKind { hook, situation, dialogue, lesson, gesture, consequence, turn, closing }
 
 enum CompanionId { bo, pilu, tango }
 
@@ -261,6 +261,63 @@ class GesturePause {
       );
 }
 
+/// Una mossa della pausa di conseguenza: ciò che il bambino prova e ciò che
+/// ne segue nella storia. Nessuna mossa è sbagliata: [outcome] racconta cosa
+/// succede, senza giudizio, e [reaction] è il commento del compagno.
+class ConsequenceOption {
+  const ConsequenceOption({
+    required this.id,
+    required this.icon,
+    required this.label,
+    required this.outcome,
+    required this.reaction,
+  });
+
+  final String id;
+  final String icon;
+  final String label;
+
+  /// La conseguenza raccontata: uguale per tutti i compagni, senza il nome.
+  final String outcome;
+  final CompanionLines reaction;
+
+  factory ConsequenceOption.fromJson(Map<String, dynamic> j) => ConsequenceOption(
+        id: j['id'] as String,
+        icon: j['icon'] as String,
+        label: j['label'] as String,
+        outcome: j['outcome'] as String,
+        reaction: CompanionLines.fromJson(j['reaction'] as Map<String, dynamic>),
+      );
+}
+
+/// Pausa di conseguenza: il bambino interviene sul problema della storia
+/// (sceglie un riparo, cambia l'ordine di una preparazione) e il racconto
+/// mostra cosa succede. Si può riprovare con un'altra mossa; nei più grandi
+/// [minTries] chiede di provarne più d'una, per confrontare le strategie.
+class ConsequencePause {
+  const ConsequencePause({
+    required this.together,
+    required this.prompt,
+    required this.options,
+    this.minTries = 1,
+  });
+
+  /// Guida per il genitore in modalità insieme.
+  final String together;
+  final CompanionLines prompt;
+  final List<ConsequenceOption> options;
+
+  /// Quante mosse diverse prova da solo prima di poter andare avanti.
+  final int minTries;
+
+  factory ConsequencePause.fromJson(Map<String, dynamic> j) => ConsequencePause(
+        together: j['together'] as String,
+        prompt: CompanionLines.fromJson(j['prompt'] as Map<String, dynamic>),
+        options: (j['options'] as List).map((o) => ConsequenceOption.fromJson(o as Map<String, dynamic>)).toList(),
+        minTries: (j['minTries'] as int?) ?? 1,
+      );
+}
+
 /// Chi guida nel dialogo facoltativo "leggiamo insieme".
 /// `help`: "Come potremmo aiutarlo?"; `guide`: "Spiegami tu cosa fare" (il bambino guida l'adulto o il personaggio).
 enum SharedPromptRole { help, guide }
@@ -289,6 +346,7 @@ class StoryScreen {
     this.sharedPrompt,
     this.lesson,
     this.gesture,
+    this.consequence,
     this.isKeyPhrase = false,
   });
 
@@ -302,6 +360,7 @@ class StoryScreen {
   final SharedPrompt? sharedPrompt;
   final Lesson? lesson;
   final GesturePause? gesture;
+  final ConsequencePause? consequence;
   final bool isKeyPhrase;
 
   factory StoryScreen.fromJson(Map<String, dynamic> j) => StoryScreen(
@@ -316,6 +375,8 @@ class StoryScreen {
         sharedPrompt: j['sharedPrompt'] == null ? null : SharedPrompt.fromJson(j['sharedPrompt'] as Map<String, dynamic>),
         lesson: j['lesson'] == null ? null : Lesson.fromJson(j['lesson'] as Map<String, dynamic>),
         gesture: j['gesture'] == null ? null : GesturePause.fromJson(j['gesture'] as Map<String, dynamic>),
+        consequence:
+            j['consequence'] == null ? null : ConsequencePause.fromJson(j['consequence'] as Map<String, dynamic>),
         isKeyPhrase: (j['keyPhrase'] as bool?) ?? false,
       );
 }
@@ -328,6 +389,70 @@ class StoryVariant {
   factory StoryVariant.fromJson(Map<String, dynamic> j) => StoryVariant(
         ageBand: AgeBand.fromKey(j['ageBand'] as String),
         screens: (j['screens'] as List).map((s) => StoryScreen.fromJson(s as Map<String, dynamic>)).toList(),
+      );
+}
+
+/// Quanto serve l'adulto durante l'attività: con il bambino, vicino, o basta saperlo.
+enum Supervision {
+  together,
+  nearby,
+  free;
+
+  static Supervision fromKey(String key) =>
+      Supervision.values.firstWhere((s) => s.name == key, orElse: () => throw ArgumentError('Supervisione sconosciuta: $key'));
+}
+
+/// L'attività della storia per una fascia: cosa serve, come si prepara, quanta
+/// supervisione chiede e che alternative ci sono. Il bambino la fa senza il tablet.
+class HomeActivityBand {
+  const HomeActivityBand({
+    required this.goal,
+    required this.steps,
+    required this.materials,
+    required this.preparation,
+    required this.supervision,
+    required this.supervisionNote,
+    required this.alternatives,
+  });
+
+  final String goal;
+  final List<String> steps;
+  final List<String> materials;
+  final List<String> preparation;
+  final Supervision supervision;
+  final String supervisionNote;
+  final List<String> alternatives;
+
+  static List<String> _strings(Object? v) => ((v as List?) ?? const []).cast<String>();
+
+  factory HomeActivityBand.fromJson(Map<String, dynamic> j) {
+    final sup = j['supervision'] as Map<String, dynamic>;
+    return HomeActivityBand(
+      goal: j['goal'] as String,
+      steps: _strings(j['steps']),
+      materials: _strings(j['materials']),
+      preparation: _strings(j['preparation']),
+      supervision: Supervision.fromKey(sup['level'] as String),
+      supervisionNote: sup['note'] as String,
+      alternatives: _strings(j['alternatives']),
+    );
+  }
+}
+
+/// "Un'attività concreta che nasce dalla storia" (home-activity.json): un oggetto
+/// o un problema del racconto diventa qualcosa da fare davvero, con tre varianti per fascia.
+class HomeActivity {
+  const HomeActivity({required this.title, this.intro, required this.bands});
+
+  final String title;
+  final String? intro;
+  final Map<AgeBand, HomeActivityBand> bands;
+
+  factory HomeActivity.fromJson(Map<String, dynamic> j) => HomeActivity(
+        title: j['title'] as String,
+        intro: j['intro'] as String?,
+        bands: (j['bands'] as Map<String, dynamic>)
+            .map((k, v) => MapEntry(AgeBand.fromKey(k), HomeActivityBand.fromJson(v as Map<String, dynamic>))),
       );
 }
 
@@ -347,9 +472,11 @@ class Story {
     required this.keyPhrase,
     this.gesture,
     required this.parentCardFile,
+    this.homeActivityFile,
     required this.sources,
     this.variants = const {},
     this.parentCard,
+    this.homeActivity,
   });
 
   final String id;
@@ -365,9 +492,11 @@ class Story {
   final String keyPhrase;
   final String? gesture;
   final String parentCardFile;
+  final String? homeActivityFile;
   final List<String> sources;
   final Map<AgeBand, StoryVariant> variants;
   final String? parentCard;
+  final HomeActivity? homeActivity;
 
   bool supports(AgeBand band) => variantFiles.containsKey(band);
 
@@ -385,10 +514,11 @@ class Story {
         keyPhrase: j['keyPhrase'] as String,
         gesture: j['gesture'] as String?,
         parentCardFile: j['parentCard'] as String,
+        homeActivityFile: j['homeActivity'] as String?,
         sources: ((j['sources'] as List?) ?? const []).cast<String>(),
       );
 
-  Story withContent({required Map<AgeBand, StoryVariant> variants, String? parentCard}) => Story(
+  Story withContent({required Map<AgeBand, StoryVariant> variants, String? parentCard, HomeActivity? homeActivity}) => Story(
         id: id,
         version: version,
         title: title,
@@ -402,8 +532,10 @@ class Story {
         keyPhrase: keyPhrase,
         gesture: gesture,
         parentCardFile: parentCardFile,
+        homeActivityFile: homeActivityFile,
         sources: sources,
         variants: variants,
         parentCard: parentCard,
+        homeActivity: homeActivity,
       );
 }
