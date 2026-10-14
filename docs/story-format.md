@@ -78,6 +78,20 @@ Ogni `Screen` ha:
 
 Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del compagno. L'`id` scelto va nel diario del genitore.
 
+### Invito al dialogo "Leggiamo insieme" (`sharedPrompt`)
+
+Campo facoltativo di qualsiasi schermata che non sia `dialogue`:
+
+```json
+"sharedPrompt": { "role": "guide", "text": "Spiegami tu cosa deve fare Emma, passo dopo passo." }
+```
+
+- `role`: `help` ("Come potremmo aiutare?", si pensa insieme a come aiutare il personaggio) oppure `guide` ("Spiegami tu cosa fare", il bambino guida l'adulto o il personaggio attraverso una procedura: inversione dei ruoli).
+- Compare **solo in modalità insieme** (la stessa scelta che già attiva le pause di dialogo, dalla home o dall'area genitore): da soli, o con la modalità spenta, la storia resta identica.
+- Non è un quiz: nessuna risposta giusta, nessun controllo, nessun dato salvato, non blocca l'avanzamento.
+- Pochi punti scelti dalla redazione: al massimo un terzo delle schermate (e non più di 3 per variante), mai sulla stessa schermata della pausa di dialogo (che ha già il suo invito). `{nome}` è ammesso.
+- Va tradotto negli overlay `i18n/<lingua>/` (stesso `role`, solo `text` tradotto); `validate.py` verifica che l'invito ci sia in entrambi.
+
 ### Lezione in tre tempi (solo 3–5)
 
 ```json

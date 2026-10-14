@@ -73,7 +73,11 @@
       "illustration": {
         "alt": "Emma, avec les gants de Mamie, met le plastique dans le sac et les branches cassées en petit tas."
       },
-      "text": "Mamie lui donne les gants et le sac. Emma ramasse le plastique, puis met les branches cassées en petit tas. Pietrolino saute sur une racine. « Tu entends quelque chose ? » demande Emma. « Peut-être... un tout petit murmure. » Emma s'assoit sous le tronc. « Ça va si je reste un peu avec toi ? Je ne te laisse pas seul. »"
+      "text": "Mamie lui donne les gants et le sac. Emma ramasse le plastique, puis met les branches cassées en petit tas. Pietrolino saute sur une racine. « Tu entends quelque chose ? » demande Emma. « Peut-être... un tout petit murmure. » Emma s'assoit sous le tronc. « Ça va si je reste un peu avec toi ? Je ne te laisse pas seul. »",
+      "sharedPrompt": {
+        "role": "guide",
+        "text": "Emma doit ramasser le plastique sans se faire mal. Explique-lui ce qu'il faut faire, étape par étape : mamie écoute !"
+      }
     },
     {
       "illustration": {
@@ -84,6 +88,10 @@
         "bo": "Rien qu'à regarder, j'ai les mains pleines de terre. J'aime bien, {nome}.",
         "pilu": "Tu sais, {nome} ? Une graine a besoin de terre, d'eau et de temps. Le temps, c'est le plus long.",
         "tango": "Trois graines ! Moi, j'en aurais mis cent ! ...Bon, trois, c'est peut-être bien, hein {nome} ?"
+      },
+      "sharedPrompt": {
+        "role": "help",
+        "text": "Comment pourrait-on aider ces graines à devenir des arbres ? Réfléchissons ensemble."
       }
     },
     {

@@ -159,6 +159,15 @@ Ogni cosa è un round con `choice` `hunt=found` o `hunt=skip`; le statistiche co
 trovato, non quanto in fretta. Le cacce sono nel modulo Montessori (colori, tatto, suoni iniziali,
 quantità, natura) e hanno il bollino "a casa".
 
+#### Schermo a riposo (esplorazioni senza schermo)
+Dopo la consegna il bambino può toccare "Schermo a riposo": il compagno ripete la consegna a voce e lo
+schermo si oscura, con una sola riga quieta ("Tocca lo schermo quando sei tornato"). Un tocco ovunque lo
+riporta com'era; non c'è conferma, non si registra nulla, non servono foto né riconoscimento. Tornare
+nell'app è facoltativo: chi vuole può chiudere la caccia anche senza toccare più il tablet. Le esplorazioni
+nuove (`caccia-superfici`, `caccia-ombre`, `caccia-forme`) sono formulate "in casa", per chi ha poco spazio o
+non può uscire; `caccia-ombre-fuori` è la variante all'aperto, con un grande. Le varianti di luogo sono
+attività separate (stessa `skill`), non un campo del formato: così ognuna ha la sua consegna e la sua età.
+
 ### Seriazione con `sequence`
 Un round con `"sizes": true` e carte con `size` (0–1) disegna le tessere in scala: torre
 rosa, scala marrone, aste. L'ordine giusto è quello del file.

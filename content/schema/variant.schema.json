@@ -94,6 +94,16 @@
           },
           "companionLines": { "$ref": "#/$defs/companionLines" },
           "keyPhrase": { "type": "boolean" },
+          "sharedPrompt": {
+            "description": "Invito facoltativo al dialogo nella lettura insieme (solo in modalità insieme). Nessuna risposta giusta.",
+            "type": "object",
+            "required": ["role", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "role": { "enum": ["help", "guide"] },
+              "text": { "type": "string", "minLength": 1 }
+            }
+          },
           "lesson": {
             "description": "Lezione in tre tempi (solo fascia 3-5): si nomina, si riconosce, si ricorda",
             "type": "object",

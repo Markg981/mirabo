@@ -1,0 +1,53 @@
+{
+  "title": "Caza de superficies",
+  "offscreen": "Pasad juntos la mano por tres superficies distintas (la mesa, un jersey, el cristal) y buscad una palabra para cada una.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Una superficie lisa",
+          "say": "Busca una superficie lisa y pasa la mano por encima. Luego dime cómo es."
+        },
+        {
+          "label": "Una superficie rugosa",
+          "say": "Ahora una superficie rugosa, que raspa un poco bajo la mano."
+        },
+        {
+          "label": "Una superficie blanda",
+          "say": "Y una superficie blanda, donde la mano se hunde un poco."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Una superficie fría",
+          "say": "Busca una superficie fría, como el cristal o una baldosa."
+        },
+        {
+          "label": "Una superficie con relieves",
+          "say": "Ahora una superficie con relieves o rayas. Siéntela con las yemas de los dedos."
+        },
+        {
+          "label": "Una superficie que hace ruido",
+          "say": "Y una superficie que hace ruido cuando la acaricias despacio."
+        },
+        {
+          "label": "Dos superficies distintas juntas",
+          "say": "Para terminar, dos superficies distintas, una al lado de la otra. Dime en qué se diferencian."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

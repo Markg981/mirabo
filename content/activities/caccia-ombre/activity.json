@@ -1,0 +1,66 @@
+{
+  "id": "caccia-ombre",
+  "title": "Caccia alle ombre",
+  "area": "cultura",
+  "skill": "ombre",
+  "type": "hunt",
+  "ageBands": [
+    "3-5",
+    "5-7",
+    "7-10"
+  ],
+  "intro": {
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
+    "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
+  },
+  "outro": {
+    "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+  },
+  "togetherSuggested": true,
+  "offscreen": "Con una torcia, di sera, fate le ombre sul muro con le mani e con un giocattolo. Chi si avvicina alla luce fa l'ombra più grande?",
+  "levels": [
+    {
+      "items": [
+        {
+          "emoji": "🌓",
+          "label": "Un'ombra sul pavimento o sul muro",
+          "say": "Cerca un'ombra sul pavimento o sul muro. Guardala bene: che forma ha?"
+        },
+        {
+          "emoji": "🪑",
+          "label": "L'ombra di una sedia",
+          "say": "Adesso l'ombra di una sedia o di un mobile. Toccala con il dito: la senti?"
+        },
+        {
+          "emoji": "🖐️",
+          "label": "L'ombra della tua mano",
+          "say": "E l'ombra della tua mano. Cosa succede se la avvicini al muro?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "emoji": "🧸",
+          "label": "Un giocattolo che fa una bella ombra",
+          "say": "Cerca un giocattolo che fa una bella ombra e portalo qui."
+        },
+        {
+          "emoji": "🔦",
+          "label": "Un posto senza ombra",
+          "say": "Adesso un posto dove non c'è ombra. Perché secondo te?"
+        },
+        {
+          "emoji": "📏",
+          "label": "Un'ombra lunga e una corta",
+          "say": "Trova un'ombra lunga e una corta, e dimmi quale ti piace di più."
+        }
+      ]
+    }
+  ],
+  "version": 1,
+  "module": "montessori"
+}

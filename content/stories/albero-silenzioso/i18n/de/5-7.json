@@ -73,7 +73,11 @@
       "illustration": {
         "alt": "Emma mit Omas Handschuhen steckt das Plastik in den Beutel und legt die abgebrochenen Äste auf einen kleinen Haufen."
       },
-      "text": "Oma gibt ihr die Handschuhe und den Beutel. Emma sammelt das Plastik auf und legt dann die abgebrochenen Äste auf einen kleinen Haufen. Pietrolino hüpft auf eine Wurzel. „Hörst du etwas?“, fragt Emma. „Vielleicht... ein ganz, ganz leises Flüstern.“ Emma setzt sich unter den Stamm. „Ist es in Ordnung, wenn ich ein bisschen bei dir bleibe? Ich lasse dich nicht allein.“"
+      "text": "Oma gibt ihr die Handschuhe und den Beutel. Emma sammelt das Plastik auf und legt dann die abgebrochenen Äste auf einen kleinen Haufen. Pietrolino hüpft auf eine Wurzel. „Hörst du etwas?“, fragt Emma. „Vielleicht... ein ganz, ganz leises Flüstern.“ Emma setzt sich unter den Stamm. „Ist es in Ordnung, wenn ich ein bisschen bei dir bleibe? Ich lasse dich nicht allein.“",
+      "sharedPrompt": {
+        "role": "guide",
+        "text": "Emma muss das Plastik aufsammeln, ohne sich zu verletzen. Erkläre du ihr, was zu tun ist, Schritt für Schritt: Oma hört zu!"
+      }
     },
     {
       "illustration": {
@@ -84,6 +88,10 @@
         "bo": "Schon vom Zuschauen habe ich Erde an den Händen. Das gefällt mir, {nome}.",
         "pilu": "Weißt du, {nome}? Ein Samen braucht Erde, Wasser und Zeit. Die Zeit ist der längste Teil.",
         "tango": "Drei Samen! Ich hätte hundert gepflanzt! ...Na gut, drei sind vielleicht genug, oder {nome}?"
+      },
+      "sharedPrompt": {
+        "role": "help",
+        "text": "Wie könnten wir diesen Samen helfen, zu Bäumen zu werden? Überlegen wir gemeinsam."
       }
     },
     {

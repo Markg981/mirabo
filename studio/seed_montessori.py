@@ -517,6 +517,63 @@ hunt(
 )
 
 
+# Esplorazioni a schermo spento: una consegna, poi lo schermo riposa (bottone "Schermo a riposo").
+# Niente foto, niente riconoscimento: il bambino cerca con le mani e lo dice a voce.
+# Le versioni "in casa" non richiedono di uscire né di muoversi molto; quella "all'aperto" è con un grande.
+hunt(
+    id="caccia-superfici", title="Caccia alle superfici", area="sensoriale", skill="superfici", ageBands=["3-5", "5-7"],
+    offscreen="Passate la mano insieme su tre superfici diverse (il tavolo, un maglione, il vetro) e trovate una parola per ciascuna.",
+    levels=[
+        [("🪟", "Una superficie liscia", "Cerca una superficie liscia e passaci sopra la mano. Poi dimmi com'è."),
+         ("🧶", "Una superficie ruvida", "Adesso una superficie ruvida, che sotto la mano gratta."),
+         ("🛋️", "Una superficie morbida", "E una superficie morbida, dove la mano affonda un po'.")],
+        [("🌡️", "Una superficie fredda", "Cerca una superficie fredda, come il vetro o una piastrella."),
+         ("🧱", "Una superficie con i rilievi", "Adesso una superficie con dei rilievi o delle righe. Senti con i polpastrelli."),
+         ("📃", "Una superficie che fa rumore", "E una superficie che fa rumore quando la accarezzi piano."),
+         ("🪵", "Due superfici diverse vicine", "Per finire, due superfici diverse una accanto all'altra. Dimmi in cosa sono diverse.")],
+    ],
+)
+hunt(
+    id="caccia-ombre", title="Caccia alle ombre", area="cultura", skill="ombre", ageBands=["3-5", "5-7", "7-10"],
+    together=True,
+    offscreen="Con una torcia, di sera, fate le ombre sul muro con le mani e con un giocattolo. Chi si avvicina alla luce fa l'ombra più grande?",
+    levels=[
+        [("🌓", "Un'ombra sul pavimento o sul muro", "Cerca un'ombra sul pavimento o sul muro. Guardala bene: che forma ha?"),
+         ("🪑", "L'ombra di una sedia", "Adesso l'ombra di una sedia o di un mobile. Toccala con il dito: la senti?"),
+         ("🖐️", "L'ombra della tua mano", "E l'ombra della tua mano. Cosa succede se la avvicini al muro?")],
+        [("🧸", "Un giocattolo che fa una bella ombra", "Cerca un giocattolo che fa una bella ombra e portalo qui."),
+         ("🔦", "Un posto senza ombra", "Adesso un posto dove non c'è ombra. Perché secondo te?"),
+         ("📏", "Un'ombra lunga e una corta", "Trova un'ombra lunga e una corta, e dimmi quale ti piace di più.")],
+    ],
+)
+hunt(
+    id="caccia-ombre-fuori", title="Caccia alle ombre all'aperto", area="cultura", skill="ombre", ageBands=["5-7", "7-10"],
+    together=True,
+    offscreen="Il giorno dopo, alla stessa ora, tornate a guardare la stessa ombra: è cambiata? Segnate il punto con un sasso.",
+    levels=[
+        [("🌳", "L'ombra di un albero", "Con un grande, cerca l'ombra di un albero o di un palo. Resta sul marciapiede o nel giardino."),
+         ("🧍", "La tua ombra", "Adesso la tua ombra. Muoviti piano: lei che fa?"),
+         ("☀️", "Dove il sole arriva", "E un posto dove il sole arriva e uno dove no. Quale è più caldo?")],
+        [("🍃", "L'ombra di una foglia caduta", "Cerca una foglia già caduta a terra e guarda la sua ombra."),
+         ("🪨", "L'ombra di un sasso", "Adesso un sasso: dov'è la sua ombra? Dalla parte opposta al sole."),
+         ("🕳️", "Un'ombra che cambia forma", "Per finire, un'ombra che cambia forma se ti sposti.")],
+    ],
+)
+hunt(
+    id="caccia-forme", title="Caccia alle forme", area="matematica", skill="forme", ageBands=["3-5", "5-7"],
+    offscreen="Fate un giro della stanza senza tablet: \"Vedo vedo un cerchio\". A turno, anche il bambino sceglie la forma.",
+    levels=[
+        [("⚪", "Una cosa rotonda", "Cerca una cosa rotonda, come un cerchio, e portala qui."),
+         ("⬜", "Una cosa con gli angoli", "Adesso una cosa con quattro angoli, come un quadrato."),
+         ("🔺", "Una cosa con tre punte", "E una cosa con tre punte, come un triangolo.")],
+        [("📦", "Una cosa lunga e stretta", "Cerca una cosa lunga e stretta."),
+         ("🥚", "Una cosa tonda ma non troppo", "Adesso una cosa tonda ma schiacciata, come un uovo o una moneta."),
+         ("🧊", "Una cosa che sta in piedi da sola", "Una cosa con le facce piatte che sta in piedi da sola."),
+         ("🔄", "Una cosa che rotola", "E per finire una cosa che rotola. Provala sul tappeto!")],
+    ],
+)
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     for a in ACTIVITIES:
