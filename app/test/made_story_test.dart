@@ -117,4 +117,11 @@ void main() {
       expect(feet, inInclusiveRange(0.75, 0.95));
     }
   });
+
+  test('withEnding cambia solo il finale', () {
+    final story = _covering().first;
+    final other = story.withEnding('party');
+    expect(other.part(FactoryStep.ending), 'party');
+    expect(other.part(FactoryStep.who), story.part(FactoryStep.who));
+  });
 }
