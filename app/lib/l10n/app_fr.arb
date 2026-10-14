@@ -46,6 +46,9 @@
 
   "activityTryAgain": "Essaie encore.",
   "activityHelp": "Regarde bien. Je t'aide.",
+  "activityHelpButton": "Aide",
+  "activityHelpPoint": "Regarde celui qui est en couleur : ce pourrait être lui. À toi d'essayer.",
+  "activityHelpDemo": "Je te montre : regarde celui qui s'est allumé et touche-le doucement. À toi maintenant.",
   "checklistPrompt": "Qu'est-ce qui est déjà prêt ?",
   "checklistSay": "Qu'est-ce qui est déjà prêt pour demain ?",
   "checklistAlone": "tout seul",

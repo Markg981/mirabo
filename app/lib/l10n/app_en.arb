@@ -46,6 +46,9 @@
 
   "activityTryAgain": "Try again.",
   "activityHelp": "Look carefully. I'll help you.",
+  "activityHelpButton": "Help",
+  "activityHelpPoint": "Look at the colored one: it could be that. You try.",
+  "activityHelpDemo": "Let me show you: look at the one that is lit and gently touch it. Now you try.",
   "checklistPrompt": "What's ready already?",
   "checklistSay": "What's ready for tomorrow already?",
   "checklistAlone": "on my own",

@@ -46,6 +46,9 @@
 
   "activityTryAgain": "Riprova.",
   "activityHelp": "Guarda bene. Ti aiuto io.",
+  "activityHelpButton": "Aiuto",
+  "activityHelpPoint": "Guarda l'elemento colorato: può essere lui. Prova tu.",
+  "activityHelpDemo": "Ti faccio vedere: guarda quello che si è acceso e toccalo piano. Ora prova tu.",
   "checklistPrompt": "Cosa è già pronto?",
   "checklistSay": "Cosa è già pronto per domani?",
   "checklistAlone": "da solo",

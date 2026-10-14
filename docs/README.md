@@ -20,5 +20,6 @@
 | Ponte con il mondo reale | Pausa di gesto nelle storie (il bambino fa il gesto del protagonista, poi si riprende) e cacce al tesoro tra le attività Montessori (si cerca con le mani, si dice a voce, si rimette a posto). Il tablet non verifica e non premia |
 | Crescita del compagno | Solo con i gesti delle storie fatti nella vita vera, segnati dal genitore nel diario (3, 6, 12 gesti; lo stesso gesto vale una volta al giorno). Storie e attività non la fanno avanzare: il tempo sullo schermo non è premiato |
 | Diario del genitore | "Un'idea per oggi" (dalla sezione *Nella vita vera* delle schede delle storie finite e dalle presentazioni Montessori per la sua età; cambia ogni giorno) e "La settimana di …", gli ultimi 7 giorni raccontati in poche frasi. Senza voti e senza notifiche: si legge quando si apre l'area genitore |
+| Aiuto nelle attività | Un comando fisso (lampadina, in basso a destra) a richiesta, a passi: ripete la consegna, indica l'elemento, la dice a voce con un invito a provare. Non completa mai il round al posto del bambino |
 | Contenuti | Scritti da Marco con l'AI, revisione pedagogica prima della pubblicazione (`pedagogical-review.md`); proprietari |
 | Serie | *Emma e Pietrolino* è il mondo Ambiente |
