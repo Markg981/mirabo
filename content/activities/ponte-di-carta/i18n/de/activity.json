@@ -1,0 +1,60 @@
+{
+  "title": "Die Papierbrücke",
+  "intro": {
+    "bo": "{nome}, heute baust du etwas mit deinen Händen: eine Papierbrücke. Erst denkst du nach, dann probierst du es aus, dann verbesserst du sie.",
+    "pilu": "{nome}, kann ein Blatt Papier zu einer Brücke werden? Wir überlegen und probieren es dann wirklich aus.",
+    "tango": "Eine Papierbrücke, {nome}! Ich würde sie sofort umwerfen, aber du überlegst und rätst erst. Dann wird getestet!"
+  },
+  "outro": {
+    "bo": "Du hast nachgedacht, getestet und etwas geändert, {nome}. Es gibt viele Arten, eine Brücke zu bauen: deine ist eine.",
+    "pilu": "Gut gemacht, {nome}. Es gibt nie nur eine Brücke: Du kannst weitere bauen und sie vergleichen.",
+    "tango": "Deine Brücke steht, {nome}! Erfindest du morgen noch eine? Ich halte die Bücher."
+  },
+  "offscreen": "Ihr braucht ein Blatt Papier (später zwei), zwei Bücher, ein paar Münzen und etwas Klebeband. Die Brücke wird wirklich gebaut, die Münzen kommen eine nach der anderen darauf. Fragt \"Was glaubst du, passiert?\" und \"Was würdest du ändern?\", ohne zu sagen, ob es stimmt: Der Test entscheidet, und jede Brücke, die hält, ist eine gute Lösung.",
+  "levels": [
+    {
+      "goal": "Baue eine Papierbrücke zwischen zwei Büchern.",
+      "criterion": "Hält die Brücke eine Münze?",
+      "phases": [
+        {
+          "label": "Wie baust du deine Brücke?",
+          "say": "Überlege, wie das Blatt zwischen den beiden Büchern stehen bleibt. Du kannst es falten, rollen, ganz wie du willst. Dann erzähl mir deine Idee."
+        },
+        {
+          "label": "Hält sie die Münze?",
+          "say": "Rate, bevor du testest: Bleibt die Münze auf der Brücke liegen? Sag mir, warum du das denkst."
+        },
+        {
+          "label": "Probier es wirklich aus",
+          "say": "Leg die Münze mit deinen Händen auf die Brücke. Dann erzähl mir, wie es war."
+        },
+        {
+          "label": "Was würdest du ändern?",
+          "say": "Sieh dir deine Brücke an. Was würdest du ändern, damit sie stärker wird, oder um sie anders zu bauen? Wenn du magst, probier es aus."
+        }
+      ]
+    },
+    {
+      "goal": "Baue eine längere Papierbrücke, mit den Büchern weiter auseinander.",
+      "criterion": "Hält die Brücke fünf Münzen?",
+      "phases": [
+        {
+          "label": "Wie machst du sie stärker?",
+          "say": "Jetzt stehen die Bücher weiter auseinander. Wie benutzt du die Blätter? Du kannst eins auf das andere legen oder sie wie eine Ziehharmonika falten. Erzähl mir deine Idee."
+        },
+        {
+          "label": "Wie viele Münzen hält sie?",
+          "say": "Rate, bevor du testest: Wie viele Münzen hält die Brücke? Warum denkst du das?"
+        },
+        {
+          "label": "Probier es wirklich aus",
+          "say": "Leg die Münzen eine nach der anderen mit deinen Händen darauf. Dann erzähl mir, wie es war."
+        },
+        {
+          "label": "Was hast du geändert?",
+          "say": "Was hast du im Vergleich zu deiner ersten Idee geändert? Gibt es andere Wege, sie zu bauen? Probier einen aus."
+        }
+      ]
+    }
+  ]
+}

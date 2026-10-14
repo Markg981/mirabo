@@ -1,0 +1,60 @@
+{
+  "title": "El puente de papel",
+  "intro": {
+    "bo": "{nome}, hoy construyes algo con las manos: un puente de papel. Primero piensas, luego pruebas, luego lo mejoras.",
+    "pilu": "{nome}, ¿puede una hoja de papel convertirse en un puente? Pensemos y luego probemos de verdad.",
+    "tango": "¡Un puente de papel, {nome}! Yo lo tiraría enseguida, pero tú primero piensas y adivinas. ¡Luego se prueba!"
+  },
+  "outro": {
+    "bo": "Pensaste, probaste y cambiaste, {nome}. Hay muchas formas de hacer un puente: la tuya es una.",
+    "pilu": "Buen trabajo, {nome}. Un puente nunca es uno solo: puedes hacer otros y compararlos.",
+    "tango": "¡Tu puente está hecho, {nome}! ¿Mañana inventas otro? Yo sujeto los libros."
+  },
+  "offscreen": "Hace falta una hoja (luego dos), dos libros, unas monedas y un poco de cinta. Se construye el puente de verdad y se ponen las monedas una a una. Pregunta '¿qué crees que pasará?' y '¿qué cambiarías?' sin decir si está bien: decide la prueba, y todo puente que aguanta es una buena solución.",
+  "levels": [
+    {
+      "goal": "Construye un puente de papel entre dos libros.",
+      "criterion": "¿El puente aguanta una moneda?",
+      "phases": [
+        {
+          "label": "¿Cómo construirás tu puente?",
+          "say": "Piensa cómo hacer que la hoja se sostenga entre los dos libros. Puedes doblarla, enrollarla, como quieras. Luego cuéntame tu idea."
+        },
+        {
+          "label": "¿Aguantará la moneda?",
+          "say": "Antes de probar, adivina: ¿la moneda se queda sobre el puente? Cuéntame por qué lo piensas."
+        },
+        {
+          "label": "Pruébalo de verdad",
+          "say": "Pon la moneda sobre el puente con tus manos. Luego cuéntame cómo fue."
+        },
+        {
+          "label": "¿Qué cambiarías?",
+          "say": "Mira tu puente. ¿Qué cambiarías para hacerlo más fuerte, o para hacerlo de otra forma? Si quieres, pruébalo."
+        }
+      ]
+    },
+    {
+      "goal": "Construye un puente de papel más largo, con los libros más separados.",
+      "criterion": "¿El puente aguanta cinco monedas?",
+      "phases": [
+        {
+          "label": "¿Cómo lo harás más fuerte?",
+          "say": "Ahora los libros están más lejos. ¿Cómo usarás las hojas? Puedes poner una sobre otra o doblarlas como un acordeón. Cuéntame tu idea."
+        },
+        {
+          "label": "¿Cuántas monedas aguantará?",
+          "say": "Antes de probar, adivina: ¿cuántas monedas aguanta el puente? ¿Por qué lo piensas?"
+        },
+        {
+          "label": "Pruébalo de verdad",
+          "say": "Añade las monedas una a una, con tus manos. Luego cuéntame cómo fue."
+        },
+        {
+          "label": "¿Qué has cambiado?",
+          "say": "¿Qué has cambiado respecto a tu primera idea? ¿Hay otras formas de construirlo? Prueba una."
+        }
+      ]
+    }
+  ]
+}

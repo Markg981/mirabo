@@ -350,7 +350,7 @@ def check_lesson(label: str, lesson: dict) -> list[str]:
 LEVEL_KEYS = {
     "tapMatch": "rounds", "count": "rounds", "sequence": "rounds", "pattern": "rounds", "trace": "rounds",
     "checklist": "items", "sceneChoice": "scenes", "explore": "spots", "countdown": "daily",
-    "presentation": "steps", "pairs": "rounds", "spell": "rounds", "hunt": "items",
+    "presentation": "steps", "pairs": "rounds", "spell": "rounds", "hunt": "items", "project": "phases",
 }
 SCHOOL_AREAS = {"cognitivo", "autonomia", "sociale", "paure"}
 MONTESSORI_AREAS = {"vita-pratica", "sensoriale", "linguaggio", "matematica", "cultura"}
@@ -411,6 +411,15 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
             for it in items:
                 if not (it.get("emoji") and it.get("label") and it.get("say")):
                     errors.append(f"{folder.name}: livello {i}: ogni cosa da cercare ha 'emoji', 'label' e 'say'")
+        if a.get("type") == "project":
+            phases = [p.get("phase") for p in level.get("phases", [])]
+            if phases != ["idea", "prediction", "test", "revision"]:
+                errors.append(f"{folder.name}: livello {i}: un progetto ha i passaggi idea, prediction, test, revision (in ordine)")
+            if not (level.get("goal") and level.get("criterion")):
+                errors.append(f"{folder.name}: livello {i}: un progetto ha 'goal' e 'criterion' (osservabile nel mondo reale)")
+            for p in level.get("phases", []):
+                if not (p.get("emoji") and p.get("label") and p.get("say")):
+                    errors.append(f"{folder.name}: livello {i}: ogni passaggio ha 'emoji', 'label' e 'say'")
         if a.get("type") == "sceneChoice":
             for sc in level.get("scenes", []):
                 if not 2 <= len(sc.get("options", [])) <= 3:

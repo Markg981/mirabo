@@ -37,7 +37,7 @@ enum ActivityArea {
       };
 }
 
-enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown, presentation, pairs, spell, hunt }
+enum ActivityType { tapMatch, count, sequence, pattern, trace, checklist, sceneChoice, explore, countdown, presentation, pairs, spell, hunt, project }
 
 class Activity {
   const Activity({
@@ -157,7 +157,7 @@ class RoundResult {
   final int attempts;
   final int hints;
 
-  /// Per sceneChoice/checklist/hunt: cosa è stato scelto (nessuna risposta sbagliata).
+  /// Per sceneChoice/checklist/hunt/project: cosa è stato scelto (nessuna risposta sbagliata).
   final String? choice;
 
   bool get firstTry => attempts == 1 && hints == 0;

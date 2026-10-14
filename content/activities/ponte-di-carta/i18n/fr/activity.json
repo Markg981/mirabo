@@ -1,0 +1,60 @@
+{
+  "title": "Le pont de papier",
+  "intro": {
+    "bo": "{nome}, aujourd'hui tu construis quelque chose avec tes mains : un pont de papier. D'abord tu réfléchis, puis tu essaies, puis tu l'améliores.",
+    "pilu": "{nome}, une feuille de papier peut-elle devenir un pont ? Réfléchissons, puis essayons pour de vrai.",
+    "tango": "Un pont de papier, {nome} ! Moi je le ferais tomber tout de suite, mais toi tu réfléchis et tu devines d'abord. Ensuite on essaie !"
+  },
+  "outro": {
+    "bo": "Tu as réfléchi, essayé et changé, {nome}. Il y a plein de façons de faire un pont : le tien en est une.",
+    "pilu": "Bravo, {nome}. Un pont n'est jamais le seul : tu peux en faire d'autres et les comparer.",
+    "tango": "Ton pont est fait, {nome} ! Demain tu en inventes un autre ? Moi je tiens les livres."
+  },
+  "offscreen": "Il faut une feuille (puis deux), deux livres, quelques pièces et un peu de ruban adhésif. On construit vraiment le pont et on pose les pièces une par une. Demandez « que penses-tu qu'il va se passer ? » et « que changerais-tu ? » sans dire si c'est juste : c'est l'essai qui décide, et tout pont qui tient est une bonne solution.",
+  "levels": [
+    {
+      "goal": "Construis un pont de papier entre deux livres.",
+      "criterion": "Le pont tient-il une pièce ?",
+      "phases": [
+        {
+          "label": "Comment construiras-tu ton pont ?",
+          "say": "Réfléchis à la façon de faire tenir la feuille entre les deux livres. Tu peux la plier, la rouler, comme tu veux. Puis dis-moi ton idée."
+        },
+        {
+          "label": "Tiendra-t-il la pièce ?",
+          "say": "Avant d'essayer, devine : la pièce reste-t-elle sur le pont ? Dis-moi pourquoi tu le penses."
+        },
+        {
+          "label": "Essaie pour de vrai",
+          "say": "Pose la pièce sur le pont avec tes mains. Puis dis-moi comment ça s'est passé."
+        },
+        {
+          "label": "Que changerais-tu ?",
+          "say": "Regarde ton pont. Que changerais-tu pour le rendre plus solide, ou pour le faire autrement ? Si tu veux, essaie."
+        }
+      ]
+    },
+    {
+      "goal": "Construis un pont de papier plus long, avec les livres plus éloignés.",
+      "criterion": "Le pont tient-il cinq pièces ?",
+      "phases": [
+        {
+          "label": "Comment le rendras-tu plus solide ?",
+          "say": "Maintenant les livres sont plus loin. Comment vas-tu utiliser les feuilles ? Tu peux en mettre une sur l'autre ou les plier en accordéon. Dis-moi ton idée."
+        },
+        {
+          "label": "Combien de pièces tiendra-t-il ?",
+          "say": "Avant d'essayer, devine : combien de pièces le pont tient-il ? Pourquoi le penses-tu ?"
+        },
+        {
+          "label": "Essaie pour de vrai",
+          "say": "Ajoute les pièces une par une, avec tes mains. Puis dis-moi comment ça s'est passé."
+        },
+        {
+          "label": "Qu'as-tu changé ?",
+          "say": "Qu'as-tu changé par rapport à ta première idée ? Y a-t-il d'autres façons de le construire ? Essaie-en une."
+        }
+      ]
+    }
+  ]
+}

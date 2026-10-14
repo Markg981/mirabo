@@ -1,0 +1,85 @@
+{
+  "id": "ponte-di-carta",
+  "version": 1,
+  "title": "Il ponte di carta",
+  "area": "cognitivo",
+  "skill": "progetti-aperti",
+  "type": "project",
+  "ageBands": [
+    "7-10"
+  ],
+  "togetherSuggested": false,
+  "intro": {
+    "bo": "{nome}, oggi costruisci qualcosa con le mani: un ponte di carta. Prima pensi, poi provi, poi lo migliori.",
+    "pilu": "{nome}, un foglio di carta può diventare un ponte? Pensiamoci, poi proviamo davvero.",
+    "tango": "Un ponte di carta, {nome}! Io lo butterei giù subito, ma tu prima pensi e indovini. Poi si prova!"
+  },
+  "outro": {
+    "bo": "Hai pensato, provato e cambiato, {nome}. Ci sono tanti modi di fare un ponte: il tuo è uno.",
+    "pilu": "Bel lavoro, {nome}. Un ponte non è mai uno solo: puoi farne altri e confrontarli.",
+    "tango": "Il tuo ponte è fatto, {nome}! Domani ne inventi un altro? Io tengo i libri."
+  },
+  "offscreen": "Servono un foglio (poi due), due libri, qualche moneta e un po' di nastro. Si costruisce il ponte davvero e si mettono le monete una alla volta. Chiedete 'cosa pensi che succeda?' e 'cosa cambieresti?' senza dire se è giusto: decide la prova, e ogni ponte che regge è una buona soluzione.",
+  "levels": [
+    {
+      "goal": "Costruisci un ponte di carta tra due libri.",
+      "criterion": "Il ponte regge una moneta?",
+      "phases": [
+        {
+          "phase": "idea",
+          "emoji": "💡",
+          "label": "Come costruirai il tuo ponte?",
+          "say": "Pensa a come far stare il foglio tra i due libri. Puoi piegarlo, arrotolarlo, come vuoi tu. Poi dimmi la tua idea."
+        },
+        {
+          "phase": "prediction",
+          "emoji": "🔮",
+          "label": "Reggerà la moneta?",
+          "say": "Prima di provare, indovina: la moneta resta sopra il ponte? Dimmi perché lo pensi."
+        },
+        {
+          "phase": "test",
+          "emoji": "🧪",
+          "label": "Provalo davvero",
+          "say": "Metti la moneta sul ponte con le tue mani. Poi dimmi com'è andata."
+        },
+        {
+          "phase": "revision",
+          "emoji": "🛠️",
+          "label": "Cosa cambieresti?",
+          "say": "Guarda il tuo ponte. Cosa cambieresti per farlo più forte, o per farlo in un altro modo? Se vuoi, provalo."
+        }
+      ]
+    },
+    {
+      "goal": "Costruisci un ponte di carta più lungo, con i libri più distanti.",
+      "criterion": "Il ponte regge cinque monete?",
+      "phases": [
+        {
+          "phase": "idea",
+          "emoji": "💡",
+          "label": "Come lo farai più forte?",
+          "say": "Ora i libri sono più lontani. Come userai i fogli? Puoi metterne uno sopra l'altro, o piegarli a fisarmonica. Dimmi la tua idea."
+        },
+        {
+          "phase": "prediction",
+          "emoji": "🔮",
+          "label": "Quante monete reggerà?",
+          "say": "Prima di provare, indovina: quante monete regge il ponte? Perché lo pensi?"
+        },
+        {
+          "phase": "test",
+          "emoji": "🧪",
+          "label": "Provalo davvero",
+          "say": "Aggiungi le monete una alla volta, con le tue mani. Poi dimmi com'è andata."
+        },
+        {
+          "phase": "revision",
+          "emoji": "🛠️",
+          "label": "Cosa hai cambiato?",
+          "say": "Cosa hai cambiato rispetto alla prima idea? Ci sono altri modi per costruirlo? Provane uno."
+        }
+      ]
+    }
+  ]
+}

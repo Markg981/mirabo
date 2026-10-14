@@ -168,6 +168,25 @@ nuove (`caccia-superfici`, `caccia-ombre`, `caccia-forme`) sono formulate "in ca
 non può uscire; `caccia-ombre-fuori` è la variante all'aperto, con un grande. Le varianti di luogo sono
 attività separate (stessa `skill`), non un campo del formato: così ognuna ha la sua consegna e la sua età.
 
+### `project` — piccolo progetto aperto (7–10)
+Per i grandi: un progetto da costruire con le mani, in quattro passaggi sempre uguali e in
+quest'ordine: **idea → previsione → prova → revisione** (`phase`: `idea`, `prediction`, `test`,
+`revision`). Ogni passaggio è un round. Il livello ha `goal` (cosa costruire), `criterion` (la
+domanda osservabile nel mondo reale, es. "Il ponte regge una moneta?": ammette più soluzioni) e
+`phases`, ognuna con `emoji`, `label` (mostrata) e `say` (detta dal compagno). Il tablet non
+verifica e non giudica: decide la prova fatta con le mani. In idea, previsione e revisione il
+bambino può scrivere due righe facoltative (max 140 caratteri); nella prova tocca "Ha retto" o
+"Non ancora" (nessuno dei due è un errore: porta alla revisione).
+```json
+{ "goal": "Costruisci un ponte di carta tra due libri.", "criterion": "Il ponte regge una moneta?",
+  "phases": [ { "phase": "idea", "emoji": "💡", "label": "Come costruirai il tuo ponte?", "say": "..." } ] }
+```
+Nessun cambio di schema: il `choice` del round (`activity_rounds.choice`) è `project=idea;note=...`,
+`project=prediction`, `project=test;result=held|notyet`, `project=revision;note=...` (la nota va per
+ultima). Nell'area genitori, scheda Crescita, "I piccoli progetti di ..." mostra il processo e le
+note, senza voti. Per le statistiche conta averlo fatto (tipo senza giusto/sbagliato). La skill è
+`progetti-aperti`. Le note restano sul dispositivo come ogni altro round. Esempio: `ponte-di-carta`.
+
 ### Seriazione con `sequence`
 Un round con `"sizes": true` e carte con `size` (0–1) disegna le tessere in scala: torre
 rosa, scala marrone, aste. L'ordine giusto è quello del file.

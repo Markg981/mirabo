@@ -282,7 +282,7 @@
   "exploreNotesAdd": "Hinzufügen",
   "exploreNotesEmpty": "Keine Beobachtungen. Sie bleiben nur auf diesem Gerät.",
   "exploreNotesDelete": "Beobachtung löschen",
-  "skillLabel": "{skill, select, suoni_iniziali{Laute und Buchstaben} pregrafismo{Buchstaben nachspuren} numeri{Zahlen und Mengen} logica{Logik und Reihen} routine_sera{Sachen für morgen vorbereiten} routine_mattino{Die Morgenroutine} vestirsi{Sich allein anziehen} mensa{Beim Mittagessen} turno_e_condivisione{Warten und Teilen} chiedere_aiuto{Um Hilfe bitten} distacco{Der Abschied am Morgen} conoscere_la_scuola{Die Schule kennenlernen} primo_giorno{Der erste Tag} travasi{Umfüllen und Gießen} motricita_fine{Feinmotorik} cura_ambiente{Sorge für die Umgebung} dimensioni{Größen und Reihenbildung} colori{Farben} forme{Formen} tatto{Tasten} udito{Hören} scrittura{Schreiben} vocabolario{Wortschatz} decine{Zehner und Einer} geografia{Geografie} botanica{Botanik} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Kleine Projekte} suoni_iniziali{Laute und Buchstaben} pregrafismo{Buchstaben nachspuren} numeri{Zahlen und Mengen} logica{Logik und Reihen} routine_sera{Sachen für morgen vorbereiten} routine_mattino{Die Morgenroutine} vestirsi{Sich allein anziehen} mensa{Beim Mittagessen} turno_e_condivisione{Warten und Teilen} chiedere_aiuto{Um Hilfe bitten} distacco{Der Abschied am Morgen} conoscere_la_scuola{Die Schule kennenlernen} primo_giorno{Der erste Tag} travasi{Umfüllen und Gießen} motricita_fine{Feinmotorik} cura_ambiente{Sorge für die Umgebung} dimensioni{Größen und Reihenbildung} colori{Farben} forme{Formen} tatto{Tasten} udito{Hören} scrittura{Schreiben} vocabolario{Wortschatz} decine{Zehner und Einer} geografia{Geografie} botanica{Botanik} other{{skill}}}",
 
   "profileWelcome": "Willkommen bei Mirabò",
   "profileEdit": "Profil bearbeiten",
@@ -453,5 +453,19 @@
   "usageToday": "Heute: {minutes} Min.",
   "usageGestures": "In den letzten 7 Tagen im Tagebuch notierte Gesten: {count}. Das sind Dinge aus dem echten Leben, abseits des Bildschirms.",
   "usageLimit": "Im Modus „allein“ verabschiedet sich der Begleiter nach {minutes} Min. (im Profil änderbar).",
-  "usageCannot": "Was die App nicht messen kann: wie viel das Kind wirklich auf den Bildschirm schaut, Zuhören bei ausgeschaltetem Bildschirm, Zeit auf anderen Geräten, was ihr gemeinsam abseits des Bildschirms tut. Minuten sind nur ein Teil: Es zählt auch, was es sieht, mit wem und wie ihr darüber sprecht."
+  "usageCannot": "Was die App nicht messen kann: wie viel das Kind wirklich auf den Bildschirm schaut, Zuhören bei ausgeschaltetem Bildschirm, Zeit auf anderen Geräten, was ihr gemeinsam abseits des Bildschirms tut. Minuten sind nur ein Teil: Es zählt auch, was es sieht, mit wem und wie ihr darüber sprecht.",
+
+  "projectPhaseIdea": "Die Idee",
+  "projectPhasePrediction": "Die Vorhersage",
+  "projectPhaseTest": "Der Test",
+  "projectPhaseRevision": "Die Überarbeitung",
+  "projectNoteHint": "Wenn du magst, schreib ein, zwei Zeilen (freiwillig)",
+  "projectNext": "Weiter",
+  "projectFinish": "Fertig",
+  "projectHeld": "Es hat gehalten",
+  "projectNotYet": "Noch nicht",
+  "projectLogTitle": "Die kleinen Projekte von {name}",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "beim Test hat es gehalten",
+  "projectResultNotYet": "beim Test noch nicht: etwas ändern und noch einmal versuchen"
 }

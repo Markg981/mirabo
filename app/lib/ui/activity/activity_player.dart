@@ -20,6 +20,7 @@ import 'types/hunt_round.dart';
 import 'types/pairs_round.dart';
 import 'types/pattern_round.dart';
 import 'types/presentation_round.dart';
+import 'types/project_round.dart';
 import 'types/scene_choice_round.dart';
 import 'types/sequence_round.dart';
 import 'types/spell_round.dart';
@@ -199,6 +200,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       ActivityType.pairs => PairsRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.spell => SpellRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
       ActivityType.hunt => HuntRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
+      ActivityType.project => ProjectRound(level: level, ctx: _ctx, onRound: _onRound, onFinished: _finish),
     };
   }
 }

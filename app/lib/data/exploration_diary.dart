@@ -74,6 +74,16 @@ class ExplorationDiary {
   // nessuno schema nuovo, e finiscono nel backup e nella cancellazione dati.
   static String _key(int profileId) => 'parent_notes_$profileId';
 
+  /// Il processo dei piccoli progetti (idea, previsione, prova, revisione) con
+  /// le note del bambino, dal più recente: il genitore lo rilegge, non lo valuta.
+  Future<List<ProjectStep>> projectLog(int profileId, {int days = 90}) async {
+    final rows = await db.rounds(profileId, from: DateTime.now().subtract(Duration(days: days)));
+    return [
+      for (final r in rows)
+        if (ProjectStep.parse(r['activity_id'] as String, r['at'] as String, r['choice'] as String?) case final s?) s,
+    ].reversed.toList();
+  }
+
   Future<List<ParentNote>> notes(int profileId) async {
     final raw = await db.setting(_key(profileId));
     if (raw == null) return const [];
@@ -97,5 +107,25 @@ class ExplorationDiary {
   Future<void> removeNote(int profileId, ParentNote note) async {
     final all = await notes(profileId);
     await _save(profileId, [for (final n in all) if (n.when != note.when || n.text != note.text) n]);
+  }
+}
+
+/// Un passaggio di un piccolo progetto, letto dal `choice` di un round
+/// (`project=idea;note=...`, `project=test;result=held|notyet`).
+class ProjectStep {
+  const ProjectStep({required this.activityId, required this.at, required this.phase, this.note, this.result});
+  final String activityId;
+  final String at;
+  final String phase;
+  final String? note;
+  final String? result;
+
+  static ProjectStep? parse(String activityId, String at, String? choice) {
+    if (choice == null || !choice.startsWith('project=')) return null;
+    final noteAt = choice.indexOf(';note=');
+    final head = noteAt < 0 ? choice : choice.substring(0, noteAt);
+    final note = noteAt < 0 ? null : choice.substring(noteAt + 6);
+    final parts = {for (final kv in head.split(';')) kv.split('=')[0]: kv.contains('=') ? kv.substring(kv.indexOf('=') + 1) : ''};
+    return ProjectStep(activityId: activityId, at: at, phase: parts['project']!, note: note, result: parts['result']);
   }
 }

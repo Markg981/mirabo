@@ -1121,35 +1121,39 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String skillLabel(String skill) {
-    String _temp0 = intl.Intl.selectLogic(skill, {
-      'suoni_iniziali': 'Sonidos y letras',
-      'pregrafismo': 'Trazar letras',
-      'numeri': 'Números y cantidades',
-      'logica': 'Lógica y secuencias',
-      'routine_sera': 'Preparar las cosas para mañana',
-      'routine_mattino': 'La rutina de la mañana',
-      'vestirsi': 'Vestirse solo',
-      'mensa': 'En el comedor',
-      'turno_e_condivisione': 'Esperar el turno y compartir',
-      'chiedere_aiuto': 'Pedir ayuda',
-      'distacco': 'La despedida de la mañana',
-      'conoscere_la_scuola': 'Conocer la escuela',
-      'primo_giorno': 'El primer día',
-      'travasi': 'Trasvasar y verter',
-      'motricita_fine': 'Motricidad fina',
-      'cura_ambiente': 'Cuidado del entorno',
-      'dimensioni': 'Tamaños y seriación',
-      'colori': 'Colores',
-      'forme': 'Formas',
-      'tatto': 'Tacto',
-      'udito': 'Oído',
-      'scrittura': 'Escritura',
-      'vocabolario': 'Vocabulario',
-      'decine': 'Decenas y unidades',
-      'geografia': 'Geografía',
-      'botanica': 'Botánica',
-      'other': '$skill',
-    });
+    String _temp0 = intl.Intl.selectLogic(
+      skill,
+      {
+        'progetti_aperti': 'Pequeños proyectos',
+        'suoni_iniziali': 'Sonidos y letras',
+        'pregrafismo': 'Trazar letras',
+        'numeri': 'Números y cantidades',
+        'logica': 'Lógica y secuencias',
+        'routine_sera': 'Preparar las cosas para mañana',
+        'routine_mattino': 'La rutina de la mañana',
+        'vestirsi': 'Vestirse solo',
+        'mensa': 'En el comedor',
+        'turno_e_condivisione': 'Esperar el turno y compartir',
+        'chiedere_aiuto': 'Pedir ayuda',
+        'distacco': 'La despedida de la mañana',
+        'conoscere_la_scuola': 'Conocer la escuela',
+        'primo_giorno': 'El primer día',
+        'travasi': 'Trasvasar y verter',
+        'motricita_fine': 'Motricidad fina',
+        'cura_ambiente': 'Cuidado del entorno',
+        'dimensioni': 'Tamaños y seriación',
+        'colori': 'Colores',
+        'forme': 'Formas',
+        'tatto': 'Tacto',
+        'udito': 'Oído',
+        'scrittura': 'Escritura',
+        'vocabolario': 'Vocabulario',
+        'decine': 'Decenas y unidades',
+        'geografia': 'Geografía',
+        'botanica': 'Botánica',
+        'other': '$skill',
+      },
+    );
     return '$_temp0';
   }
 
@@ -1918,4 +1922,44 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get usageCannot =>
       'Lo que la app no puede medir: cuánto mira realmente el niño la pantalla, la escucha con la pantalla apagada, el tiempo en otros dispositivos, lo que hacéis juntos fuera de la pantalla. Los minutos son solo una parte: también cuentan qué mira, con quién y cómo habláis de ello.';
+
+  @override
+  String get projectPhaseIdea => 'La idea';
+
+  @override
+  String get projectPhasePrediction => 'La predicción';
+
+  @override
+  String get projectPhaseTest => 'La prueba';
+
+  @override
+  String get projectPhaseRevision => 'La revisión';
+
+  @override
+  String get projectNoteHint =>
+      'Si quieres, escribe un par de líneas (opcional)';
+
+  @override
+  String get projectNext => 'Siguiente';
+
+  @override
+  String get projectFinish => 'Ya terminé';
+
+  @override
+  String get projectHeld => 'Aguantó';
+
+  @override
+  String get projectNotYet => 'Todavía no';
+
+  @override
+  String projectLogTitle(String name) {
+    return 'Los pequeños proyectos de $name';
+  }
+
+  @override
+  String get projectResultHeld => 'en la prueba aguantó';
+
+  @override
+  String get projectResultNotYet =>
+      'en la prueba todavía no: se cambia algo y se prueba otra vez';
 }

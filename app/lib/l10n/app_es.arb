@@ -282,7 +282,7 @@
   "exploreNotesAdd": "Añadir",
   "exploreNotesEmpty": "Sin observaciones. Se quedan solo en este dispositivo.",
   "exploreNotesDelete": "Eliminar la observación",
-  "skillLabel": "{skill, select, suoni_iniziali{Sonidos y letras} pregrafismo{Trazar letras} numeri{Números y cantidades} logica{Lógica y secuencias} routine_sera{Preparar las cosas para mañana} routine_mattino{La rutina de la mañana} vestirsi{Vestirse solo} mensa{En el comedor} turno_e_condivisione{Esperar el turno y compartir} chiedere_aiuto{Pedir ayuda} distacco{La despedida de la mañana} conoscere_la_scuola{Conocer la escuela} primo_giorno{El primer día} travasi{Trasvasar y verter} motricita_fine{Motricidad fina} cura_ambiente{Cuidado del entorno} dimensioni{Tamaños y seriación} colori{Colores} forme{Formas} tatto{Tacto} udito{Oído} scrittura{Escritura} vocabolario{Vocabulario} decine{Decenas y unidades} geografia{Geografía} botanica{Botánica} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Pequeños proyectos} suoni_iniziali{Sonidos y letras} pregrafismo{Trazar letras} numeri{Números y cantidades} logica{Lógica y secuencias} routine_sera{Preparar las cosas para mañana} routine_mattino{La rutina de la mañana} vestirsi{Vestirse solo} mensa{En el comedor} turno_e_condivisione{Esperar el turno y compartir} chiedere_aiuto{Pedir ayuda} distacco{La despedida de la mañana} conoscere_la_scuola{Conocer la escuela} primo_giorno{El primer día} travasi{Trasvasar y verter} motricita_fine{Motricidad fina} cura_ambiente{Cuidado del entorno} dimensioni{Tamaños y seriación} colori{Colores} forme{Formas} tatto{Tacto} udito{Oído} scrittura{Escritura} vocabolario{Vocabulario} decine{Decenas y unidades} geografia{Geografía} botanica{Botánica} other{{skill}}}",
 
   "profileWelcome": "Bienvenidos a Mirabò",
   "profileEdit": "Editar perfil",
@@ -453,5 +453,19 @@
   "usageToday": "Hoy: {minutes} min.",
   "usageGestures": "Gestos anotados en el diario en los últimos 7 días: {count}. Son cosas hechas en la vida real, lejos de la pantalla.",
   "usageLimit": "En el modo \"solo\" el compañero se despide tras {minutes} min (se cambia en el perfil).",
-  "usageCannot": "Lo que la app no puede medir: cuánto mira realmente el niño la pantalla, la escucha con la pantalla apagada, el tiempo en otros dispositivos, lo que hacéis juntos fuera de la pantalla. Los minutos son solo una parte: también cuentan qué mira, con quién y cómo habláis de ello."
+  "usageCannot": "Lo que la app no puede medir: cuánto mira realmente el niño la pantalla, la escucha con la pantalla apagada, el tiempo en otros dispositivos, lo que hacéis juntos fuera de la pantalla. Los minutos son solo una parte: también cuentan qué mira, con quién y cómo habláis de ello.",
+
+  "projectPhaseIdea": "La idea",
+  "projectPhasePrediction": "La predicción",
+  "projectPhaseTest": "La prueba",
+  "projectPhaseRevision": "La revisión",
+  "projectNoteHint": "Si quieres, escribe un par de líneas (opcional)",
+  "projectNext": "Siguiente",
+  "projectFinish": "Ya terminé",
+  "projectHeld": "Aguantó",
+  "projectNotYet": "Todavía no",
+  "projectLogTitle": "Los pequeños proyectos de {name}",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "en la prueba aguantó",
+  "projectResultNotYet": "en la prueba todavía no: se cambia algo y se prueba otra vez"
 }

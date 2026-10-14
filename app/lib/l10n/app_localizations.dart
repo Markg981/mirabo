@@ -1649,7 +1649,7 @@ abstract class AppLocalizations {
   /// No description provided for @skillLabel.
   ///
   /// In it, this message translates to:
-  /// **'{skill, select, suoni_iniziali{Suoni e lettere} pregrafismo{Tracciare lettere} numeri{Numeri e quantità} logica{Logica e sequenze} routine_sera{Preparare le cose per domani} routine_mattino{La routine del mattino} vestirsi{Vestirsi da solo} mensa{A mensa} turno_e_condivisione{Aspettare il turno e condividere} chiedere_aiuto{Chiedere aiuto} distacco{Il saluto del mattino} conoscere_la_scuola{Conoscere la scuola} primo_giorno{Il primo giorno} travasi{Travasi e versare} motricita_fine{Motricità fine} cura_ambiente{Cura dell\'ambiente} dimensioni{Grandezze e seriazione} colori{Colori} forme{Forme} tatto{Tatto} udito{Udito} scrittura{Scrittura} vocabolario{Vocabolario} decine{Decine e unità} geografia{Geografia} botanica{Botanica} other{{skill}}}'**
+  /// **'{skill, select, progetti_aperti{Piccoli progetti} suoni_iniziali{Suoni e lettere} pregrafismo{Tracciare lettere} numeri{Numeri e quantità} logica{Logica e sequenze} routine_sera{Preparare le cose per domani} routine_mattino{La routine del mattino} vestirsi{Vestirsi da solo} mensa{A mensa} turno_e_condivisione{Aspettare il turno e condividere} chiedere_aiuto{Chiedere aiuto} distacco{Il saluto del mattino} conoscere_la_scuola{Conoscere la scuola} primo_giorno{Il primo giorno} travasi{Travasi e versare} motricita_fine{Motricità fine} cura_ambiente{Cura dell\'ambiente} dimensioni{Grandezze e seriazione} colori{Colori} forme{Forme} tatto{Tatto} udito{Udito} scrittura{Scrittura} vocabolario{Vocabolario} decine{Decine e unità} geografia{Geografia} botanica{Botanica} other{{skill}}}'**
   String skillLabel(String skill);
 
   /// No description provided for @profileWelcome.
@@ -2623,6 +2623,78 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Cosa l\'app non può misurare: quanto il bambino guarda davvero lo schermo, l\'ascolto a schermo spento, il tempo su altri dispositivi, ciò che fate insieme fuori dallo schermo. I minuti sono solo una parte: contano anche cosa guarda, con chi e come ne parlate.'**
   String get usageCannot;
+
+  /// No description provided for @projectPhaseIdea.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'idea'**
+  String get projectPhaseIdea;
+
+  /// No description provided for @projectPhasePrediction.
+  ///
+  /// In it, this message translates to:
+  /// **'La previsione'**
+  String get projectPhasePrediction;
+
+  /// No description provided for @projectPhaseTest.
+  ///
+  /// In it, this message translates to:
+  /// **'La prova'**
+  String get projectPhaseTest;
+
+  /// No description provided for @projectPhaseRevision.
+  ///
+  /// In it, this message translates to:
+  /// **'La revisione'**
+  String get projectPhaseRevision;
+
+  /// No description provided for @projectNoteHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Se vuoi, scrivi due righe (facoltativo)'**
+  String get projectNoteHint;
+
+  /// No description provided for @projectNext.
+  ///
+  /// In it, this message translates to:
+  /// **'Avanti'**
+  String get projectNext;
+
+  /// No description provided for @projectFinish.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho finito'**
+  String get projectFinish;
+
+  /// No description provided for @projectHeld.
+  ///
+  /// In it, this message translates to:
+  /// **'Ha retto'**
+  String get projectHeld;
+
+  /// No description provided for @projectNotYet.
+  ///
+  /// In it, this message translates to:
+  /// **'Non ancora'**
+  String get projectNotYet;
+
+  /// No description provided for @projectLogTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'I piccoli progetti di {name}'**
+  String projectLogTitle(String name);
+
+  /// No description provided for @projectResultHeld.
+  ///
+  /// In it, this message translates to:
+  /// **'alla prova ha retto'**
+  String get projectResultHeld;
+
+  /// No description provided for @projectResultNotYet.
+  ///
+  /// In it, this message translates to:
+  /// **'alla prova non ancora: si cambia e si riprova'**
+  String get projectResultNotYet;
 }
 
 class _AppLocalizationsDelegate

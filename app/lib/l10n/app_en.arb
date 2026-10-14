@@ -282,7 +282,7 @@
   "exploreNotesAdd": "Add",
   "exploreNotesEmpty": "No observations. They stay on this device only.",
   "exploreNotesDelete": "Delete the observation",
-  "skillLabel": "{skill, select, suoni_iniziali{Sounds and letters} pregrafismo{Tracing letters} numeri{Numbers and quantities} logica{Logic and sequences} routine_sera{Getting ready for tomorrow} routine_mattino{The morning routine} vestirsi{Getting dressed alone} mensa{At lunch} turno_e_condivisione{Waiting your turn and sharing} chiedere_aiuto{Asking for help} distacco{Saying goodbye in the morning} conoscere_la_scuola{Getting to know school} primo_giorno{The first day} travasi{Pouring and transferring} motricita_fine{Fine motor skills} cura_ambiente{Caring for the environment} dimensioni{Sizes and ordering} colori{Colours} forme{Shapes} tatto{Touch} udito{Hearing} scrittura{Writing} vocabolario{Vocabulary} decine{Tens and units} geografia{Geography} botanica{Botany} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Small projects} suoni_iniziali{Sounds and letters} pregrafismo{Tracing letters} numeri{Numbers and quantities} logica{Logic and sequences} routine_sera{Getting ready for tomorrow} routine_mattino{The morning routine} vestirsi{Getting dressed alone} mensa{At lunch} turno_e_condivisione{Waiting your turn and sharing} chiedere_aiuto{Asking for help} distacco{Saying goodbye in the morning} conoscere_la_scuola{Getting to know school} primo_giorno{The first day} travasi{Pouring and transferring} motricita_fine{Fine motor skills} cura_ambiente{Caring for the environment} dimensioni{Sizes and ordering} colori{Colours} forme{Shapes} tatto{Touch} udito{Hearing} scrittura{Writing} vocabolario{Vocabulary} decine{Tens and units} geografia{Geography} botanica{Botany} other{{skill}}}",
 
   "profileWelcome": "Welcome to Mirabò",
   "profileEdit": "Edit profile",
@@ -453,5 +453,19 @@
   "usageToday": "Today: {minutes} min.",
   "usageGestures": "Gestures marked in the diary in the last 7 days: {count}. These happened in real life, away from the screen.",
   "usageLimit": "In \"alone\" mode the companion says goodbye after {minutes} min (change it in the profile).",
-  "usageCannot": "What the app cannot measure: how much the child is really looking at the screen, listening with the screen off, time on other devices, what you do together away from the screen. Minutes are only one part: what they watch, with whom and how you talk about it matter too."
+  "usageCannot": "What the app cannot measure: how much the child is really looking at the screen, listening with the screen off, time on other devices, what you do together away from the screen. Minutes are only one part: what they watch, with whom and how you talk about it matter too.",
+
+  "projectPhaseIdea": "The idea",
+  "projectPhasePrediction": "The prediction",
+  "projectPhaseTest": "The test",
+  "projectPhaseRevision": "The revision",
+  "projectNoteHint": "If you like, write a couple of lines (optional)",
+  "projectNext": "Next",
+  "projectFinish": "I'm done",
+  "projectHeld": "It held",
+  "projectNotYet": "Not yet",
+  "projectLogTitle": "{name}'s small projects",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "it held in the test",
+  "projectResultNotYet": "not yet in the test: change something and try again"
 }
