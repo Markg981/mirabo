@@ -54,6 +54,8 @@ jobs:
         run: flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
       - working-directory: app
         run: flutter pub get
+      - name: Inventario dati e dipendenze (docs/privacy)
+        run: python studio/check_inventory.py --require-lock
       - name: Analizza e testa (esito riportato come commento sul commit)
         working-directory: app
         env:
