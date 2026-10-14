@@ -15,6 +15,7 @@ import '../../models/story.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'backup_section.dart';
+import 'data_deletion.dart';
 import 'printables_tab.dart';
 import 'profile_form.dart';
 import 'shelf_tab.dart';
@@ -137,10 +138,7 @@ class _SessionTab extends StatelessWidget {
           title: context.l10n.parentData,
           subtitle: context.l10n.parentDataHint,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: _WipeButton(state: state),
-            ),
+            DataDeletionSection(state: state),
           ],
         ),
         const SizedBox(height: 20),
@@ -209,40 +207,6 @@ class _InteractionAdviceCard extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-class _WipeButton extends StatelessWidget {
-  const _WipeButton({required this.state});
-  final AppState state;
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton.icon(
-          style: OutlinedButton.styleFrom(
-            foregroundColor: Theme.of(context).colorScheme.error,
-            side: BorderSide(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.5), width: 1.5),
-          ),
-          icon: const Icon(Icons.delete_forever_rounded),
-          label: Text(context.l10n.parentWipe),
-          onPressed: () async {
-            final ok = await showDialog<bool>(
-              context: context,
-              builder: (_) => AlertDialog(
-                title: Text(context.l10n.parentWipeConfirmTitle),
-                content: Text(context.l10n.parentWipeConfirm),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context, false), child: Text(context.l10n.cancel)),
-                  FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(context.l10n.parentWipeYes)),
-                ],
-              ),
-            );
-            if (ok == true) {
-              await state.wipeAll();
-              if (context.mounted) Navigator.of(context).popUntil((r) => r.isFirst);
-            }
-          },
-        );
   }
 }
 
