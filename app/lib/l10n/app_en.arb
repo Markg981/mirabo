@@ -26,6 +26,10 @@
   "homeOneStory": "A story",
   "goodbyeTitle": "That's all for today, {name}!",
   "goodbyeBody": "That was fun. Go and find a grown-up: see you next time!",
+  "closingTitle": "Nice work, {name}!",
+  "closingBody": "You've come a long way. You can put the tablet down now: everything stays just as it is, ready whenever you want.",
+  "closingBack": "Back home",
+  "closingA11y": "I'm done",
   "switchChildA11y": "Change child. {name} is playing now",
 
   "chooseWhoPlays": "Who's playing today?",
@@ -46,6 +50,9 @@
 
   "activityTryAgain": "Try again.",
   "activityHelp": "Look carefully. I'll help you.",
+  "activityHelpButton": "Help",
+  "activityHelpPoint": "Look at the colored one: it could be that. You try.",
+  "activityHelpDemo": "Let me show you: look at the one that is lit and gently touch it. Now you try.",
   "checklistPrompt": "What's ready already?",
   "checklistSay": "What's ready for tomorrow already?",
   "checklistAlone": "on my own",
@@ -311,6 +318,8 @@
   "gestureStart": "Ready? Go!",
   "huntFound": "I found it!",
   "huntNotFound": "I can't find it",
+  "huntRest": "Rest the screen",
+  "huntRestHint": "Touch the screen when you're back. It's fine if you'd rather not.",
   "huntTellMe": "What did you find? Say it out loud.",
   "huntRules": "the child looks for one thing at a time, at home or outdoors with you. Only things within reach: no climbing, nothing sharp or fragile, no medicines or cleaning products. Outdoors, only things that have already fallen to the ground. At the end, everything goes back in its place.",
 
@@ -324,6 +333,7 @@
   "factoryNew": "Make one up",
   "factoryBy": "A story made up by {name}",
   "factoryEnd": "The end",
+  "factoryOtherEnding": "Try another ending",
   "factoryDone": "What a lovely story, {name}! I'll keep it with your stories.",
   "factoryMineEmpty": "The stories you make up will be here.",
   "factoryWhoA": "{who, select, dragon{a little dragon} bunny{a bunny} robot{a kind robot} penguin{a penguin} unicorn{a unicorn} kitten{a kitten} other{{who}}}",
@@ -402,6 +412,10 @@
   "adviceAutonomy": "Lately {name} answers right on the first try: would you like to try more choices at a time?",
   "adviceYes": "Yes, let's try",
   "adviceNo": "Not now",
+
+  "sharedPromptGuide": "Tell me what to do",
+  "sharedPromptHelp": "How could we help?",
+
   "usageTitle": "Screen time",
   "usageWeek": "Last 7 days, screen on: {minutes} min in total, over {days} days.",
   "usageToday": "Today: {minutes} min.",

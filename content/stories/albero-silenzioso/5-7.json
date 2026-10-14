@@ -140,7 +140,11 @@
           ]
         }
       },
-      "text": "La nonna le dà i guanti e il sacchetto. Emma raccoglie la plastica, poi mette i rami rotti in un mucchietto. Pietrolino salta sulla radice. \"Senti qualcosa?\" chiede Emma. \"Forse... un sussurro piccolo piccolo.\" Emma si siede sotto il tronco. \"Va bene se resto un po' con te? Non ti lascio sola.\""
+      "text": "La nonna le dà i guanti e il sacchetto. Emma raccoglie la plastica, poi mette i rami rotti in un mucchietto. Pietrolino salta sulla radice. \"Senti qualcosa?\" chiede Emma. \"Forse... un sussurro piccolo piccolo.\" Emma si siede sotto il tronco. \"Va bene se resto un po' con te? Non ti lascio sola.\"",
+      "sharedPrompt": {
+        "role": "guide",
+        "text": "Emma deve raccogliere la plastica senza farsi male. Spiegami tu cosa deve fare, passo dopo passo: la nonna ascolta!"
+      }
     },
     {
       "n": 6,
@@ -165,6 +169,10 @@
         "bo": "Ho le mani sporche di terra solo a guardare. Mi piace, {nome}.",
         "pilu": "Sai, {nome}? Un seme ha bisogno di terra, acqua e tempo. Il tempo è la parte più lunga.",
         "tango": "Tre semi! Io ne avrei messi cento! ...Forse tre vanno bene, eh {nome}?"
+      },
+      "sharedPrompt": {
+        "role": "help",
+        "text": "Come potremmo aiutare questi semini a diventare alberi? Pensiamoci insieme."
       }
     },
     {

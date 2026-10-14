@@ -107,6 +107,15 @@ class MadeStory {
   final Map<FactoryStep, String> parts;
   final DateTime when;
 
+  /// La stessa storia con un altro finale, per confrontarli (7–10). Non si salva.
+  MadeStory withEnding(String endingId) => MadeStory(
+        id: id,
+        profileId: profileId,
+        title: title,
+        parts: {...parts, FactoryStep.ending: endingId},
+        when: when,
+      );
+
   String part(FactoryStep s) => parts[s]!;
   String emoji(FactoryStep s) => StoryParts.find(s, part(s)).emoji;
 

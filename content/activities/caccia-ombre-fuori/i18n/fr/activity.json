@@ -1,0 +1,49 @@
+{
+  "title": "Chasse aux ombres dehors",
+  "offscreen": "Le lendemain, à la même heure, retournez regarder la même ombre : a-t-elle changé ? Marquez l'endroit avec un caillou.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "L'ombre d'un arbre",
+          "say": "Avec un grand, cherche l'ombre d'un arbre ou d'un poteau. Reste sur le trottoir ou dans le jardin."
+        },
+        {
+          "label": "Ton ombre",
+          "say": "Maintenant ton ombre. Bouge doucement : que fait-elle ?"
+        },
+        {
+          "label": "Là où le soleil arrive",
+          "say": "Et un endroit où le soleil arrive et un où il n'arrive pas. Lequel est le plus chaud ?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "L'ombre d'une feuille tombée",
+          "say": "Cherche une feuille déjà tombée par terre et regarde son ombre."
+        },
+        {
+          "label": "L'ombre d'un caillou",
+          "say": "Maintenant un caillou : où est son ombre ? Du côté opposé au soleil."
+        },
+        {
+          "label": "Une ombre qui change de forme",
+          "say": "Pour finir, une ombre qui change de forme quand tu bouges."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
+    "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
+  },
+  "outro": {
+    "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+  },
+  "reviewed": false
+}

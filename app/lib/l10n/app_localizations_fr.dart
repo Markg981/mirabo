@@ -86,6 +86,21 @@ class AppLocalizationsFr extends AppLocalizations {
       'C\'était chouette. Va chercher un grand : à la prochaine !';
 
   @override
+  String closingTitle(Object name) {
+    return 'Beau travail, $name !';
+  }
+
+  @override
+  String get closingBody =>
+      'Tu as fait un beau bout de chemin. Tu peux poser la tablette : tout reste comme c\'est, tu le retrouves quand tu veux.';
+
+  @override
+  String get closingBack => 'Retour à la maison';
+
+  @override
+  String get closingA11y => 'J\'ai fini';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Changer d\'enfant. C\'est $name qui joue';
   }
@@ -179,6 +194,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get activityHelp => 'Regarde bien. Je t\'aide.';
+
+  @override
+  String get activityHelpButton => 'Aide';
+
+  @override
+  String get activityHelpPoint =>
+      'Regarde celui qui est en couleur : ce pourrait être lui. À toi d\'essayer.';
+
+  @override
+  String get activityHelpDemo =>
+      'Je te montre : regarde celui qui s\'est allumé et touche-le doucement. À toi maintenant.';
 
   @override
   String get checklistPrompt => 'Qu\'est-ce qui est déjà prêt ?';
@@ -1275,6 +1301,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get huntNotFound => 'Je ne le trouve pas';
 
   @override
+  String get huntRest => 'Écran au repos';
+
+  @override
+  String get huntRestHint =>
+      'Touche l\'écran quand tu es de retour. Si tu préfères ne pas le faire, ce n\'est pas grave.';
+
+  @override
   String get huntTellMe => 'Qu\'est-ce que tu as trouvé ? Dis-le à voix haute.';
 
   @override
@@ -1323,6 +1356,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get factoryEnd => 'Fin';
+
+  @override
+  String get factoryOtherEnding => 'Essaie une autre fin';
 
   @override
   String factoryDone(Object name) {
@@ -1777,6 +1813,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get adviceNo => 'Pas maintenant';
+
+  @override
+  String get sharedPromptGuide => 'Dis-moi ce qu\'il faut faire';
+
+  @override
+  String get sharedPromptHelp => 'Comment pourrait-on aider ?';
 
   @override
   String get usageTitle => 'Temps d\'écran';

@@ -26,6 +26,10 @@
   "homeOneStory": "Un cuento",
   "goodbyeTitle": "¡Por hoy ya está, {name}!",
   "goodbyeBody": "Ha sido bonito. Llama a un mayor: ¡hasta la próxima!",
+  "closingTitle": "¡Buen trabajo, {name}!",
+  "closingBody": "Has hecho un buen camino. Ahora puedes dejar la tablet: todo queda como está, lo encuentras cuando quieras.",
+  "closingBack": "Volver a casa",
+  "closingA11y": "He terminado",
   "switchChildA11y": "Cambiar de niño. Ahora juega {name}",
 
   "chooseWhoPlays": "¿Quién juega hoy?",
@@ -46,6 +50,9 @@
 
   "activityTryAgain": "Inténtalo otra vez.",
   "activityHelp": "Mira bien. Yo te ayudo.",
+  "activityHelpButton": "Ayuda",
+  "activityHelpPoint": "Mira el que tiene color: puede ser ese. Prueba tú.",
+  "activityHelpDemo": "Te lo enseño: mira el que se ha iluminado y tócalo con suavidad. Ahora prueba tú.",
   "checklistPrompt": "¿Qué está ya listo?",
   "checklistSay": "¿Qué está ya listo para mañana?",
   "checklistAlone": "yo solo",
@@ -311,6 +318,8 @@
   "gestureStart": "¿Listos? ¡Ya!",
   "huntFound": "¡Lo encontré!",
   "huntNotFound": "No lo encuentro",
+  "huntRest": "Pantalla en reposo",
+  "huntRestHint": "Toca la pantalla cuando vuelvas. Si no quieres, no pasa nada.",
   "huntTellMe": "¿Qué has encontrado? Dilo en voz alta.",
   "huntRules": "el niño busca una cosa cada vez, en casa o al aire libre con vosotros. Solo cosas a su alcance: nada de subirse a sitios, nada afilado ni frágil, nada de medicinas ni productos de limpieza. Fuera, solo lo que ya está caído en el suelo. Al final, todo vuelve a su sitio.",
 
@@ -324,6 +333,7 @@
   "factoryNew": "Inventa uno",
   "factoryBy": "Un cuento inventado por {name}",
   "factoryEnd": "Fin",
+  "factoryOtherEnding": "Prueba otro final",
   "factoryDone": "¡Qué cuento tan bonito, {name}! Lo guardo con tus cuentos.",
   "factoryMineEmpty": "Aquí encontrarás los cuentos que inventes.",
   "factoryWhoA": "{who, select, dragon{un dragoncito} bunny{un conejito} robot{un robot amable} penguin{un pingüino} unicorn{un unicornio} kitten{un gatito} other{{who}}}",
@@ -402,6 +412,10 @@
   "adviceAutonomy": "Estos días {name} acierta al primer intento: ¿quieres probar con más opciones a la vez?",
   "adviceYes": "Sí, probemos",
   "adviceNo": "Ahora no",
+
+  "sharedPromptGuide": "Dime tú qué hacer",
+  "sharedPromptHelp": "¿Cómo podríamos ayudar?",
+
   "usageTitle": "Tiempo de pantalla",
   "usageWeek": "Últimos 7 días, con la pantalla encendida: {minutes} min en total, en {days} días.",
   "usageToday": "Hoy: {minutes} min.",

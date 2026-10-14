@@ -1,0 +1,49 @@
+{
+  "title": "Shadow hunt",
+  "offscreen": "In the evening, with a flashlight, make shadows on the wall with your hands and a toy. Does the one who gets closer to the light make the bigger shadow?",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "A shadow on the floor or the wall",
+          "say": "Look for a shadow on the floor or the wall. Look at it closely: what shape is it?"
+        },
+        {
+          "label": "The shadow of a chair",
+          "say": "Now the shadow of a chair or a piece of furniture. Touch it with your finger: can you feel it?"
+        },
+        {
+          "label": "The shadow of your hand",
+          "say": "And the shadow of your hand. What happens if you bring it closer to the wall?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "A toy that makes a nice shadow",
+          "say": "Look for a toy that makes a nice shadow and bring it here."
+        },
+        {
+          "label": "A place with no shadow",
+          "say": "Now a place where there is no shadow. Why do you think so?"
+        },
+        {
+          "label": "A long shadow and a short one",
+          "say": "Find a long shadow and a short one, and tell me which you like more."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

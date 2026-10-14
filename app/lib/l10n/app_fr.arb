@@ -26,6 +26,10 @@
   "homeOneStory": "Une histoire",
   "goodbyeTitle": "C'est fini pour aujourd'hui, {name} !",
   "goodbyeBody": "C'était chouette. Va chercher un grand : à la prochaine !",
+  "closingTitle": "Beau travail, {name} !",
+  "closingBody": "Tu as fait un beau bout de chemin. Tu peux poser la tablette : tout reste comme c'est, tu le retrouves quand tu veux.",
+  "closingBack": "Retour à la maison",
+  "closingA11y": "J'ai fini",
   "switchChildA11y": "Changer d'enfant. C'est {name} qui joue",
 
   "chooseWhoPlays": "Qui joue aujourd'hui ?",
@@ -46,6 +50,9 @@
 
   "activityTryAgain": "Essaie encore.",
   "activityHelp": "Regarde bien. Je t'aide.",
+  "activityHelpButton": "Aide",
+  "activityHelpPoint": "Regarde celui qui est en couleur : ce pourrait être lui. À toi d'essayer.",
+  "activityHelpDemo": "Je te montre : regarde celui qui s'est allumé et touche-le doucement. À toi maintenant.",
   "checklistPrompt": "Qu'est-ce qui est déjà prêt ?",
   "checklistSay": "Qu'est-ce qui est déjà prêt pour demain ?",
   "checklistAlone": "tout seul",
@@ -311,6 +318,8 @@
   "gestureStart": "Prêts ? Partez !",
   "huntFound": "Je l'ai trouvé !",
   "huntNotFound": "Je ne le trouve pas",
+  "huntRest": "Écran au repos",
+  "huntRestHint": "Touche l'écran quand tu es de retour. Si tu préfères ne pas le faire, ce n'est pas grave.",
   "huntTellMe": "Qu'est-ce que tu as trouvé ? Dis-le à voix haute.",
   "huntRules": "l'enfant cherche une chose à la fois, à la maison ou dehors avec vous. Seulement des choses à sa portée : pas d'escalade, rien de coupant ni de fragile, pas de médicaments ni de produits ménagers. Dehors, seulement ce qui est déjà tombé par terre. À la fin, on remet tout à sa place.",
 
@@ -324,6 +333,7 @@
   "factoryNew": "Invente une histoire",
   "factoryBy": "Une histoire inventée par {name}",
   "factoryEnd": "Fin",
+  "factoryOtherEnding": "Essaie une autre fin",
   "factoryDone": "Quelle belle histoire, {name} ! Je la range avec tes histoires.",
   "factoryMineEmpty": "Tu trouveras ici les histoires que tu inventes.",
   "factoryWhoA": "{who, select, dragon{un petit dragon} bunny{un petit lapin} robot{un gentil robot} penguin{un pingouin} unicorn{une licorne} kitten{un chaton} other{{who}}}",
@@ -402,6 +412,10 @@
   "adviceAutonomy": "Ces derniers jours, {name} répond juste du premier coup : voulez-vous essayer avec plus de choix à la fois ?",
   "adviceYes": "Oui, essayons",
   "adviceNo": "Pas maintenant",
+
+  "sharedPromptGuide": "Dis-moi ce qu'il faut faire",
+  "sharedPromptHelp": "Comment pourrait-on aider ?",
+
   "usageTitle": "Temps d'écran",
   "usageWeek": "7 derniers jours, écran allumé : {minutes} min au total, sur {days} jours.",
   "usageToday": "Aujourd'hui : {minutes} min.",

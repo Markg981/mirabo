@@ -26,6 +26,10 @@
   "homeOneStory": "Eine Geschichte",
   "goodbyeTitle": "Für heute ist Schluss, {name}!",
   "goodbyeBody": "Das war schön. Hol einen Erwachsenen: bis zum nächsten Mal!",
+  "closingTitle": "Gut gemacht, {name}!",
+  "closingBody": "Du bist ein gutes Stück weitergekommen. Du kannst das Tablet jetzt weglegen: alles bleibt, wie es ist, und wartet auf dich.",
+  "closingBack": "Zurück nach Hause",
+  "closingA11y": "Ich bin fertig",
   "switchChildA11y": "Kind wechseln. Jetzt spielt {name}",
 
   "chooseWhoPlays": "Wer spielt heute?",
@@ -46,6 +50,9 @@
 
   "activityTryAgain": "Versuch's nochmal.",
   "activityHelp": "Schau genau hin. Ich helfe dir.",
+  "activityHelpButton": "Hilfe",
+  "activityHelpPoint": "Schau das farbige an: Es könnte das sein. Probier du.",
+  "activityHelpDemo": "Ich zeige es dir: Schau das leuchtende an und tippe es sanft an. Jetzt probierst du.",
   "checklistPrompt": "Was ist schon fertig?",
   "checklistSay": "Was ist für morgen schon fertig?",
   "checklistAlone": "allein",
@@ -311,6 +318,8 @@
   "gestureStart": "Bereit? Los!",
   "huntFound": "Ich hab's gefunden!",
   "huntNotFound": "Ich finde es nicht",
+  "huntRest": "Bildschirm ruhen lassen",
+  "huntRestHint": "Tippe auf den Bildschirm, wenn du zurück bist. Wenn du nicht magst, ist das auch in Ordnung.",
   "huntTellMe": "Was hast du gefunden? Sag es laut.",
   "huntRules": "Das Kind sucht immer nur eine Sache, im Haus oder draußen mit euch. Nur Dinge in Reichweite: nicht klettern, nichts Spitzes oder Zerbrechliches, keine Medikamente oder Putzmittel. Draußen nur, was schon auf dem Boden liegt. Am Ende kommt alles wieder an seinen Platz.",
 
@@ -324,6 +333,7 @@
   "factoryNew": "Erfinde eine",
   "factoryBy": "Eine Geschichte von {name}",
   "factoryEnd": "Ende",
+  "factoryOtherEnding": "Probier ein anderes Ende",
   "factoryDone": "Was für eine schöne Geschichte, {name}! Ich lege sie zu deinen Geschichten.",
   "factoryMineEmpty": "Hier findest du die Geschichten, die du erfindest.",
   "factoryWhoA": "{who, select, dragon{ein kleiner Drache} bunny{ein Häschen} robot{ein freundlicher Roboter} penguin{ein Pinguin} unicorn{ein Einhorn} kitten{ein Kätzchen} other{{who}}}",
@@ -402,6 +412,10 @@
   "adviceAutonomy": "In den letzten Tagen antwortet {name} beim ersten Versuch richtig: mehr Auswahl auf einmal ausprobieren?",
   "adviceYes": "Ja, probieren wir",
   "adviceNo": "Nicht jetzt",
+
+  "sharedPromptGuide": "Sag du mir, was zu tun ist",
+  "sharedPromptHelp": "Wie könnten wir helfen?",
+
   "usageTitle": "Bildschirmzeit",
   "usageWeek": "Letzte 7 Tage, Bildschirm an: {minutes} Min. insgesamt, an {days} Tagen.",
   "usageToday": "Heute: {minutes} Min.",

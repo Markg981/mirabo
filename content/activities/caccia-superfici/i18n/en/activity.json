@@ -1,0 +1,53 @@
+{
+  "title": "Surface hunt",
+  "offscreen": "Run your hand together over three different surfaces (the table, a sweater, the glass) and find a word for each.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "A smooth surface",
+          "say": "Look for a smooth surface and run your hand over it. Then tell me how it feels."
+        },
+        {
+          "label": "A rough surface",
+          "say": "Now a rough surface, that scratches a little under your hand."
+        },
+        {
+          "label": "A soft surface",
+          "say": "And a soft surface, where your hand sinks in a little."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "A cold surface",
+          "say": "Look for a cold surface, like glass or a tile."
+        },
+        {
+          "label": "A surface with bumps",
+          "say": "Now a surface with bumps or lines. Feel it with your fingertips."
+        },
+        {
+          "label": "A surface that makes a sound",
+          "say": "And a surface that makes a sound when you stroke it gently."
+        },
+        {
+          "label": "Two different surfaces side by side",
+          "say": "Last, two different surfaces next to each other. Tell me how they are different."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
+    "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
+  },
+  "outro": {
+    "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+  },
+  "reviewed": false
+}

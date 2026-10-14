@@ -86,6 +86,21 @@ class AppLocalizationsEs extends AppLocalizations {
       'Ha sido bonito. Llama a un mayor: ¡hasta la próxima!';
 
   @override
+  String closingTitle(Object name) {
+    return '¡Buen trabajo, $name!';
+  }
+
+  @override
+  String get closingBody =>
+      'Has hecho un buen camino. Ahora puedes dejar la tablet: todo queda como está, lo encuentras cuando quieras.';
+
+  @override
+  String get closingBack => 'Volver a casa';
+
+  @override
+  String get closingA11y => 'He terminado';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Cambiar de niño. Ahora juega $name';
   }
@@ -179,6 +194,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get activityHelp => 'Mira bien. Yo te ayudo.';
+
+  @override
+  String get activityHelpButton => 'Ayuda';
+
+  @override
+  String get activityHelpPoint =>
+      'Mira el que tiene color: puede ser ese. Prueba tú.';
+
+  @override
+  String get activityHelpDemo =>
+      'Te lo enseño: mira el que se ha iluminado y tócalo con suavidad. Ahora prueba tú.';
 
   @override
   String get checklistPrompt => '¿Qué está ya listo?';
@@ -1270,6 +1296,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get huntNotFound => 'No lo encuentro';
 
   @override
+  String get huntRest => 'Pantalla en reposo';
+
+  @override
+  String get huntRestHint =>
+      'Toca la pantalla cuando vuelvas. Si no quieres, no pasa nada.';
+
+  @override
   String get huntTellMe => '¿Qué has encontrado? Dilo en voz alta.';
 
   @override
@@ -1318,6 +1351,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get factoryEnd => 'Fin';
+
+  @override
+  String get factoryOtherEnding => 'Prueba otro final';
 
   @override
   String factoryDone(Object name) {
@@ -1770,6 +1806,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get adviceNo => 'Ahora no';
+
+  @override
+  String get sharedPromptGuide => 'Dime tú qué hacer';
+
+  @override
+  String get sharedPromptHelp => '¿Cómo podríamos ayudar?';
 
   @override
   String get usageTitle => 'Tiempo de pantalla';
