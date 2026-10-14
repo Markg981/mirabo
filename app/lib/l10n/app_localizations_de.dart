@@ -181,6 +181,17 @@ class AppLocalizationsDe extends AppLocalizations {
   String get activityHelp => 'Schau genau hin. Ich helfe dir.';
 
   @override
+  String get activityHelpButton => 'Hilfe';
+
+  @override
+  String get activityHelpPoint =>
+      'Schau das farbige an: Es könnte das sein. Probier du.';
+
+  @override
+  String get activityHelpDemo =>
+      'Ich zeige es dir: Schau das leuchtende an und tippe es sanft an. Jetzt probierst du.';
+
+  @override
   String get checklistPrompt => 'Was ist schon fertig?';
 
   @override

@@ -338,6 +338,24 @@ abstract class AppLocalizations {
   /// **'Guarda bene. Ti aiuto io.'**
   String get activityHelp;
 
+  /// No description provided for @activityHelpButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Aiuto'**
+  String get activityHelpButton;
+
+  /// No description provided for @activityHelpPoint.
+  ///
+  /// In it, this message translates to:
+  /// **'Guarda l\'elemento colorato: può essere lui. Prova tu.'**
+  String get activityHelpPoint;
+
+  /// No description provided for @activityHelpDemo.
+  ///
+  /// In it, this message translates to:
+  /// **'Ti faccio vedere: guarda quello che si è acceso e toccalo piano. Ora prova tu.'**
+  String get activityHelpDemo;
+
   /// No description provided for @checklistPrompt.
   ///
   /// In it, this message translates to:
