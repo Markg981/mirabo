@@ -401,5 +401,11 @@
   "adviceReading": "Estos días {name} forma las palabras al primer intento: ¿quieres probar a mostrar más texto?",
   "adviceAutonomy": "Estos días {name} acierta al primer intento: ¿quieres probar con más opciones a la vez?",
   "adviceYes": "Sí, probemos",
-  "adviceNo": "Ahora no"
+  "adviceNo": "Ahora no",
+  "usageTitle": "Tiempo de pantalla",
+  "usageWeek": "Últimos 7 días, con la pantalla encendida: {minutes} min en total, en {days} días.",
+  "usageToday": "Hoy: {minutes} min.",
+  "usageGestures": "Gestos anotados en el diario en los últimos 7 días: {count}. Son cosas hechas en la vida real, lejos de la pantalla.",
+  "usageLimit": "En el modo \"solo\" el compañero se despide tras {minutes} min (se cambia en el perfil).",
+  "usageCannot": "Lo que la app no puede medir: cuánto mira realmente el niño la pantalla, la escucha con la pantalla apagada, el tiempo en otros dispositivos, lo que hacéis juntos fuera de la pantalla. Los minutos son solo una parte: también cuentan qué mira, con quién y cómo habláis de ello."
 }

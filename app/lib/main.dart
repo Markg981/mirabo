@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'app_state.dart';
+import 'data/usage_tracker.dart';
 import 'content/story_repository.dart';
 import 'data/local_db.dart';
 import 'l10n/l10n.dart';
@@ -26,6 +27,10 @@ Future<void> main() async {
   // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
   unawaited(state.backup.autoBackup());
   AppLifecycleListener(onResume: () => unawaited(state.backup.autoBackup()));
+  // Tempo con l'app in primo piano, per bambino (solo per l'area genitori).
+  state.usage = UsageTracker(db: db, profileId: () => state.currentProfile?.id)..start();
+  // Quando cambia il bambino il tratto fin lì va a quello di prima.
+  state.addListener(() => state.usage?.tick());
   runApp(MiraboApp(state: state));
 }
 

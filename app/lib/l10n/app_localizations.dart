@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -2359,6 +2359,42 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Non ora'**
   String get adviceNo;
+
+  /// No description provided for @usageTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Tempo con lo schermo'**
+  String get usageTitle;
+
+  /// No description provided for @usageWeek.
+  ///
+  /// In it, this message translates to:
+  /// **'Ultimi 7 giorni, con lo schermo acceso: {minutes} min in tutto, in {days} giorni.'**
+  String usageWeek(Object days, Object minutes);
+
+  /// No description provided for @usageToday.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi: {minutes} min.'**
+  String usageToday(Object minutes);
+
+  /// No description provided for @usageGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'Gesti segnati nel diario negli ultimi 7 giorni: {count}. Sono cose fatte nella vita vera, a parte dallo schermo.'**
+  String usageGestures(Object count);
+
+  /// No description provided for @usageLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nella modalità \"da solo\" il compagno saluta dopo {minutes} min (si cambia nel profilo).'**
+  String usageLimit(Object minutes);
+
+  /// No description provided for @usageCannot.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa l\'app non può misurare: quanto il bambino guarda davvero lo schermo, l\'ascolto a schermo spento, il tempo su altri dispositivi, ciò che fate insieme fuori dallo schermo. I minuti sono solo una parte: contano anche cosa guarda, con chi e come ne parlate.'**
+  String get usageCannot;
 }
 
 class _AppLocalizationsDelegate
@@ -2394,8 +2430,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }
