@@ -1,0 +1,96 @@
+# Inventario dei dati, delle dipendenze e dei flussi di rete
+
+Bozza tecnica ricavata dal codice (stato: schema DB v10, `app/pubspec.yaml` 0.1.0+1), non dalle intenzioni. Non è una dichiarazione di conformità né un testo legale: serve da base per le dichiarazioni degli store e per la privacy policy, che vanno validate da un professionista. Il controllo automatico è `python studio/check_inventory.py` (CI), che legge l'elenco approvato in `approved-dependencies.json`. Il traffico reale si verifica con `network-observation.md`.
+
+**Principio.** "Locale" non vuol dire "nessuna raccolta": qui sotto ogni dato dice dove vive e se esce. Anche un identificatore pseudonimo (id profilo, impronta del nome, account Google) resta un dato personale.
+
+**Esito in breve.** L'app non ha backend, analytics, pubblicità, crash reporting, CDN né account del bambino. L'unica destinazione di rete nel codice è Google (accesso e Drive), e solo dopo che il genitore attiva il backup. Restano due punti da verificare sul dispositivo: il motore TTS (sezione *flutter_tts*) e il comportamento di Play services.
+
+## 1. Dati
+
+Tutti i percorsi sono quelli di `path_provider`: `getApplicationSupportDirectory()` (Android `files/`, iOS `Library/Application Support`) e `getTemporaryDirectory()` (cache).
+
+| Dato | Dove nasce | Dove è conservato | Cifrato | Lascia il dispositivo | Finalità | Per quanto | Come si cancella |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Profilo del bambino**: nome (testo libero), fascia d'età, compagno, lingua, mensola, opzioni (font, bassa stimolazione, "da solo" e minuti, lettura karaoke), profilo di interazione (mani, lettura, autonomia) | Form del genitore (`profile_form.dart`) → `LocalDb`, tabella `profiles` | `mirabo.db` (SQLCipher, Application Support) | Sì, a riposo (AES-256 SQLCipher) | Solo nel backup Drive opt-in, cifrato con la password del genitore | Personalizzare storie, voce e limiti | Finché il profilo esiste | Elimina profilo (cascata sulle tabelle collegate); *Elimina tutti i dati* (`AppState.wipeAll` → `LocalDb.wipe`) |
+| **Progressi**: storie finite, gesti fatti (`gestures_done`, `stage_floor`, tabella `gestures`), `activity_progress` (livello, serie, sessioni), `activity_rounds` (competenza, tentativi, suggerimenti, scelta) | Giochi e attività, gesti segnati dal genitore | `mirabo.db` | Sì | Solo backup Drive opt-in | Far procedere il compagno e le attività; diario descrittivo | Finché il profilo esiste | Come sopra |
+| **Diario e osservazioni**: tabella `diary` (storia, modo, completata, risposta al dialogo, data), `parent_notes_<id>` (testo libero del genitore), tempi d'uso `usage.<profilo>.<aaaa-mm-gg>` (minuti con app in primo piano), `dismissed_ideas.*`, `daily_ideas`, `shelf_history`, `nature_days` (meteo, osservazioni), emisfero | Uso dell'app e area genitore; l'emisfero si deduce dalla regione del tablet (nessuna posizione) | `mirabo.db` (tabelle e `settings`) | Sì | Solo backup Drive opt-in | Diario descrittivo, idee del giorno, calendario della natura | Finché il profilo / la famiglia esiste | `wipeAll` svuota anche `settings` |
+| **Creazioni**: storie inventate (`made_stories`: sei scelte, eventuale titolo, data) | Fabbrica di storie | `mirabo.db` | Sì | Backup Drive opt-in; su carta se il genitore stampa il libretto | Conservare "Le mie storie" | Finché il profilo esiste | Cascata con il profilo; `wipeAll` |
+| **Disegni** (gioco "Disegna") | `drawing_game.dart` | **Solo in memoria** (`_marks`); non salvati su file né nel DB, non esportati né stampati (nessun `toImage`/scrittura nel codice) | n/d | No | Gioco libero | Fino alla chiusura del foglio o dell'app | Si perdono da soli |
+| **Nome del bambino come voce (TTS)** | `NameVoice` (`name_voice.dart`) sintetizza il nome con il TTS di sistema e lo scrive su file | `<Application Support>/names/name_<idProfilo>_<impronta>.wav` (`.caf` su iOS). L'impronta è SHA-1 troncato di nome, lingua e velocità: pseudonima, non reversibile ma verificabile per tentativi | **No** (file audio in chiaro, protezione di default del sistema) | Non nel backup Drive (`exportAll` esporta solo il DB). Il testo del nome va al motore TTS di sistema (vedi *flutter_tts*) | Dire il nome nelle storie registrate | Finché il nome non cambia | Cambio nome: il file vecchio si cancella; elimina profilo e `wipeAll` chiamano `nameVoice.forget` |
+| **Nome letto dal TTS in tempo reale** (lettori, attività, fabbrica, calendario, categorie) | `FlutterTts.speak` con testo che può contenere il nome | Nessuna copia dell'app | n/d | Dipende dal motore TTS del dispositivo | Leggere ad alta voce | Il tempo della lettura | n/d |
+| **Audio e contenuto delle storie** | Pacchetti firmati negli asset dell'app | Asset nell'APK/IPA; copie dell'audio in `getTemporaryDirectory()/mirabo_audio/<storia>/` e toni del xilofono `mirabo_xilofono_*.wav` | No (contenuti editoriali, non dati personali) | No | Riproduzione | Cache di sistema, svuotabile | Il sistema la pulisce; disinstallazione |
+| **Backup su Drive**: `mirabo-backup.json` (esportazione di tutte le tabelle, schema v10) | `CloudBackup` → `DriveStore` quando il genitore lo attiva | Cartella nascosta `appDataFolder` del Drive del genitore | Sì: AES-256-GCM, chiave da password (PBKDF2-HMAC-SHA256, 200.000 iterazioni, sale nel file) | **Sì, verso Google** (vedi flussi). Google vede i byte cifrati, la dimensione, la data e l'account | Ripristino su un altro tablet | Fino a quando il genitore lo elimina (Drive › Gestisci app); *Disattiva* senza "elimina copia" lo lascia | *Disattiva e cancella la copia* (`deleteRemote`) o Drive. *Elimina tutti i dati* NON tocca Drive (scelta documentata in `backup.md`) |
+| **Chiavi e stato del backup** | Primo avvio (`mirabo_db_key`, 256 bit casuali); attivazione backup (`mirabo_backup_key`, chiave derivata; `mirabo_backup_account` = email Google; `mirabo_backup_last`) | `flutter_secure_storage`: Android EncryptedSharedPreferences con chiave nel Keystore; iOS Keychain `first_unlock_this_device` | Sì (Keystore / Keychain) | No | Aprire il DB; backup automatico senza richiedere la password | Finché il profilo / il backup sono attivi | `forget()` rimuove chiave backup, account e data (anche con `wipeAll`). La chiave del DB resta fino alla disinstallazione |
+| **Chiave pubblica Ed25519** dei pacchetti | Studio editoriale | Asset | n/d | No | Verifica delle storie | n/d | n/d |
+
+Note.
+
+- **Identificatori.** Il DB usa id numerici locali (`profiles.id`); non c'è alcun ID pubblicitario, ID dispositivo o ID di installazione generato dall'app. Il file del nome contiene l'id profilo e un'impronta del nome.
+- **Account Google.** L'email del genitore resta nel secure storage e transita verso Google solo con il backup attivo. Non ci sono account del bambino.
+- **Keychain su iOS.** Gli elementi del Keychain possono sopravvivere alla disinstallazione e a una reinstallazione (comportamento di piattaforma). Dopo una reinstallazione possono quindi restare `mirabo_backup_account`/`mirabo_backup_key` senza DB. Da verificare su dispositivo; se confermato, l'app dovrà ripulirli al primo avvio.
+- **Dati dell'area genitore non personali** (`story.parentCard`, testi) sono contenuti degli asset.
+
+## 2. Backup del sistema operativo
+
+| Piattaforma | Stato nel repo | Politica |
+| --- | --- | --- |
+| Android | `app/android/app/src/main/AndroidManifest.xml`: `allowBackup="false"`, `fullBackupContent="false"`, `dataExtractionRules=@xml/data_extraction_rules` (esclude cloud-backup e device-transfer per tutti i domini). Prima di questa modifica l'attributo mancava e il default `true` includeva `files/mirabo.db` e `files/names/` nel backup Google | Nessun dato nel backup di sistema né nel trasferimento fra dispositivi. Motivo: il DB è illeggibile senza la chiave del Keystore (non esportabile); il file del nome in chiaro non deve viaggiare. L'unico backup è quello scelto dal genitore |
+| iOS | `AppDelegate.swift` marca Application Support con `isExcludedFromBackup` all'avvio. `flutter_secure_storage` usa `first_unlock_this_device` (il Keychain non migra né va nei backup iCloud). Non sono usati Documents né `UIFileSharingEnabled` | Database e voce del nome fuori dai backup iCloud/iTunes. Il codice a runtime comunque gestisce un DB cifrato senza chiave (`_databaseKey`: lo elimina e riparte). Non verificato su macOS in questo lavoro: controllare con la build iOS in CI su `main` e su un dispositivo (backup di prova e ripristino) |
+
+Le cartelle `app/android` e `app/ios` **sono tracciate** nel repo; `flutter create .` in CI non sovrascrive i file esistenti, quindi queste impostazioni valgono anche nelle build di CI. Cambiare queste politiche richiede di aggiornare questo documento.
+
+## 3. Permessi dichiarati
+
+| Piattaforma | Permesso / chiave | Dove | Motivo |
+| --- | --- | --- | --- |
+| Android | `INTERNET` | manifest `main` (aggiunto qui) | Solo backup Drive. Prima era presente solo nei manifest `debug` e `profile`: una build release avrebbe avuto il backup non funzionante |
+| Android | `INTERNET` | manifest `debug`, `profile` | Template Flutter (hot reload, DevTools); non in release |
+| Android | (nessun altro) | | Niente microfono, fotocamera, posizione, contatti, archivio esterno, notifiche. Plugin: i manifest uniti dei plugin possono aggiungere permessi: controllare con `aapt dump permissions` sulla release (vedi osservazione, passo 0) |
+| Android | `<queries>` per `PROCESS_TEXT` | manifest `main` | Template Flutter (selezione testo); non è un flusso di rete |
+| iOS | nessuna chiave `NS*UsageDescription` | `Info.plist` | Niente microfono, foto, posizione, tracking. Nessun `NSAppTransportSecurity` eccezioni. Il backup richiede in più, a build, lo schema URL del client OAuth (vedi `backup.md`, da aggiungere quando si configura Google) |
+
+Il controllo `check_inventory.py` fallisce se compare un permesso Android in `src/main` o una chiave `NS*UsageDescription` non elencata.
+
+## 4. Dipendenze (da `app/pubspec.yaml`)
+
+Elenco approvato machine-readable: `docs/privacy/approved-dependencies.json` (comprese le 80 transitive di `pubspec.lock`). Tutte le dipendenze dirette sono qui sotto.
+
+| Pacchetto | Uso nel codice | Flussi di rete |
+| --- | --- | --- |
+| `sqflite_sqlcipher` | DB locale cifrato (`local_db.dart`) | Nessuno |
+| `flutter_secure_storage` | Chiavi (`local_db.dart`, `cloud_backup.dart`) | Nessuno |
+| `path_provider`, `path` | Percorsi | Nessuno |
+| `archive`, `cryptography`, `crypto` | Pacchetti storia, firma, backup | Nessuno |
+| `intl`, `flutter_localizations` | Testi e formati | Nessuno |
+| `flutter_markdown` | Schede genitore (`MarkdownBody`) | Nessuno: nessun `onTapLink`, nessun `url_launcher` |
+| `pdf` | Stampabili generati in locale | Nessuno |
+| `printing` | `Printing.layoutPdf` (`printables_tab.dart`): dialogo di stampa/condivisione del sistema | Nessuno dall'app. Il PDF va al servizio scelto dal genitore (stampante, AirPrint/Servizio di stampa, "Salva", app di condivisione): da lì il flusso è del genitore. Il pacchetto dipende da `http` solo per `networkImage`, mai usato |
+| `just_audio` | Narrazione e xilofono da file locali (`setAudioSource` con file/`Uri` locali) | Nessuno: nel codice non ci sono URL. Il plugin saprebbe leggere flussi remoti, ma non gli vengono passati |
+| `flutter_tts` | `FlutterTts().speak` / `synthesizeToFile`, lingua e velocità; **nessun** `setEngine` | **Dipende dal dispositivo.** Chiama il TTS di sistema. iOS: `AVSpeechSynthesizer`, sul dispositivo. Android: motore predefinito scelto dall'utente; con motori come Google TTS una voce non installata può essere sintetizzata in rete, e allora il testo (anche il nome del bambino) esce verso il fornitore del motore. Il codice non lo impedisce né lo rileva: da misurare (`network-observation.md`, scenario TTS) e, se serve, imporre voci offline |
+| `google_sign_in` | `DriveStore.connect` / `reconnect` | Google: `accounts.google.com`, `oauth2.googleapis.com`, Google Play services (Android); SDK Google Sign-In (iOS). Solo dopo l'attivazione del backup. Play services può avere traffico proprio, fuori dal controllo dell'app |
+| `googleapis` | `drive.DriveApi`, scope `drive.appdata` | `www.googleapis.com` (REST Drive v3 e upload). File `mirabo-backup.json` cifrato |
+| `extension_google_sign_in_as_googleapis_auth` | Client autenticato | Come sopra |
+| `flutter` / `flutter_test` / `flutter_lints` | SDK, test, analisi | Nessuno in release |
+
+Cosa **non** c'è: analytics, crash reporting, pubblicità, remote config, push, deep link, `url_launcher`, WebView, `google_fonts` (i font sono negli asset, licenza OFL).
+
+## 5. Flussi di rete
+
+| Destinazione | Quando | Contenuto | Condizione | Controllo |
+| --- | --- | --- | --- | --- |
+| `accounts.google.com`, `oauth2.googleapis.com` | Attivazione, ripristino, backup automatico (ri-autenticazione) | Token OAuth, scope `drive.appdata`, account del genitore | Backup attivo o in attivazione (opt-in) | Interruttore in area genitore; *Disattiva* revoca |
+| `www.googleapis.com` (Drive v3) | Backup (al più 1 al giorno + manuale), ripristino, cancellazione copia | Blob cifrato AES-GCM | Idem | Idem |
+| IP, user agent, orari | Ogni richiesta ai domini sopra | Metadati di rete visibili a Google | Idem | Nessuno oltre l'opt-in |
+| Motore TTS di sistema (Android, se in rete) | Ogni `speak` / sintesi del nome | Testo letto, possibile nome | Dipende da motore e voce installata | Da misurare; mitigazione: voci offline installate |
+| Store (Google Play / App Store) | Installazione e aggiornamenti | Gestiti dagli store, non dall'app | n/d | Fuori dall'app |
+| Servizi di stampa/condivisione scelti dal genitore | Dopo "Stampa" | PDF | Azione del genitore | Fuori dall'app |
+
+Non ci sono CDN: contenuti, immagini e font sono negli asset. Non c'è canale di assistenza nell'app (nessun form o `mailto`); un indirizzo di assistenza, se ci sarà, è nelle schede degli store. Statistiche e crash che Google Play o Apple raccolgono dagli utenti che le abilitano sono dei fornitori, non dell'app.
+
+**Criterio di accettazione**: zero destinazioni di rete non documentate. Sezione *Risultati* di `network-observation.md` da compilare sulla build distribuita.
+
+## 6. Cosa cambia in questo lavoro e punti aperti
+
+- Aggiunti `INTERNET` al manifest main, `allowBackup=false` e `data_extraction_rules.xml`, esclusione iOS dal backup, `check_inventory.py` in CI.
+- Aperti: (1) comportamento del TTS di rete su Android; (2) Keychain iOS dopo reinstallazione; (3) la voce del nome è in chiaro su file (protezione di default del sistema); (4) *Elimina tutti i dati* non cancella la copia su Drive per scelta, da spiegare nelle dichiarazioni; (5) conferma dei permessi uniti dei plugin sulla release.

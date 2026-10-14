@@ -1031,7 +1031,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentData.
   ///
   /// In it, this message translates to:
-  /// **'Dove vivono i dati'**
+  /// **'I tuoi dati'**
   String get parentData;
 
   /// No description provided for @parentDataHint.
@@ -1043,7 +1043,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentWipe.
   ///
   /// In it, this message translates to:
-  /// **'Elimina tutti i dati'**
+  /// **'Elimina tutti i dati di Mirabò su questo tablet'**
   String get parentWipe;
 
   /// No description provided for @parentWipeConfirmTitle.
@@ -2725,6 +2725,84 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'alla prova non ancora: si cambia e si riprova'**
   String get projectResultNotYet;
+
+  /// No description provided for @dataWipeTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Eliminare tutto da questo tablet?'**
+  String get dataWipeTitle;
+
+  /// No description provided for @dataWipeBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Verranno cancellati per sempre profili, progressi, diario, creazioni e file generati (anche la voce del nome), insieme al database e alla sua chiave. Il tablet tornerà come al primo avvio. Non si può annullare. Un eventuale backup su Google Drive non viene toccato.'**
+  String get dataWipeBody;
+
+  /// No description provided for @dataWipeTypePrompt.
+  ///
+  /// In it, this message translates to:
+  /// **'Per confermare scrivi {word}'**
+  String dataWipeTypePrompt(String word);
+
+  /// No description provided for @dataWipeWord.
+  ///
+  /// In it, this message translates to:
+  /// **'ELIMINA'**
+  String get dataWipeWord;
+
+  /// No description provided for @dataWipeDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Tutti i dati di Mirabò sono stati eliminati da questo tablet.'**
+  String get dataWipeDone;
+
+  /// No description provided for @dataWipeFailed.
+  ///
+  /// In it, this message translates to:
+  /// **'Non è stato possibile eliminare tutto. Riprova.'**
+  String get dataWipeFailed;
+
+  /// No description provided for @dataRemoteButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina anche il backup su Google Drive'**
+  String get dataRemoteButton;
+
+  /// No description provided for @dataRemoteTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Eliminare il backup su Drive?'**
+  String get dataRemoteTitle;
+
+  /// No description provided for @dataRemoteBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Il file di backup nel Drive di {account} verrà cancellato, poi il tablet si scollega da Google e revoca il permesso dato all\'app. Serve internet. Non si può annullare. I dati su questo tablet restano.'**
+  String dataRemoteBody(String account);
+
+  /// No description provided for @dataRemoteDone.
+  ///
+  /// In it, this message translates to:
+  /// **'Backup su Google Drive eliminato e account scollegato.'**
+  String get dataRemoteDone;
+
+  /// No description provided for @dataRemoteFailed.
+  ///
+  /// In it, this message translates to:
+  /// **'Il backup su Google Drive NON è stato eliminato (probabilmente manca la rete o serve un nuovo accesso a Google). Non è cambiato niente: collegati a internet e riprova.'**
+  String get dataRemoteFailed;
+
+  /// No description provided for @dataOutsideTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa resta fuori dal controllo dell\'app'**
+  String get dataOutsideTitle;
+
+  /// No description provided for @dataOutsideBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati. Se resta qualcosa sul tuo Drive, lo trovi e lo elimini in Drive › Impostazioni › Gestisci app.'**
+  String get dataOutsideBody;
 }
 
 class _AppLocalizationsDelegate
