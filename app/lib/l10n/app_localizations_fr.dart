@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -111,18 +112,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String capacityLabel(String capacity) {
-    String _temp0 = intl.Intl.selectLogic(
-      capacity,
-      {
-        'insieme': 'Moi et les autres',
-        'mani': 'Les mains',
-        'sensi': 'Les sens',
-        'parole': 'Les mots',
-        'pensare': 'Compter et penser',
-        'mondo': 'Le monde',
-        'other': '$capacity',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(capacity, {
+      'insieme': 'Moi et les autres',
+      'mani': 'Les mains',
+      'sensi': 'Les sens',
+      'parole': 'Les mots',
+      'pensare': 'Compter et penser',
+      'mondo': 'Le monde',
+      'other': '$capacity',
+    });
     return '$_temp0';
   }
 
@@ -134,51 +132,42 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String areaLabel(String area) {
-    String _temp0 = intl.Intl.selectLogic(
-      area,
-      {
-        'cognitivo': 'Se préparer',
-        'autonomia': 'Autonomie',
-        'sociale': 'En classe',
-        'paure': 'Premier jour',
-        'vitaPratica': 'Vie pratique',
-        'sensoriale': 'Sensoriel',
-        'linguaggio': 'Langage et écriture',
-        'matematica': 'Maths',
-        'cultura': 'Culture',
-        'other': '$area',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(area, {
+      'cognitivo': 'Se préparer',
+      'autonomia': 'Autonomie',
+      'sociale': 'En classe',
+      'paure': 'Premier jour',
+      'vitaPratica': 'Vie pratique',
+      'sensoriale': 'Sensoriel',
+      'linguaggio': 'Langage et écriture',
+      'matematica': 'Maths',
+      'cultura': 'Culture',
+      'other': '$area',
+    });
     return '$_temp0';
   }
 
   @override
   String worldShort(String world) {
-    String _temp0 = intl.Intl.selectLogic(
-      world,
-      {
-        'emozioni': 'Émotions',
-        'inclusione': 'Ensemble',
-        'ambiente': 'La forêt',
-        'sicurezza': 'Mon corps',
-        'other': '$world',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(world, {
+      'emozioni': 'Émotions',
+      'inclusione': 'Ensemble',
+      'ambiente': 'La forêt',
+      'sicurezza': 'Mon corps',
+      'other': '$world',
+    });
     return '$_temp0';
   }
 
   @override
   String worldLong(String world) {
-    String _temp0 = intl.Intl.selectLogic(
-      world,
-      {
-        'emozioni': 'Émotions et conflits',
-        'inclusione': 'Diversité et inclusion',
-        'ambiente': 'Nature et êtres vivants',
-        'sicurezza': 'Sécurité et corps',
-        'other': '$world',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(world, {
+      'emozioni': 'Émotions et conflits',
+      'inclusione': 'Diversité et inclusion',
+      'ambiente': 'Nature et êtres vivants',
+      'sicurezza': 'Sécurité et corps',
+      'other': '$world',
+    });
     return '$_temp0';
   }
 
@@ -375,24 +364,21 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String animalName(String animal) {
-    String _temp0 = intl.Intl.selectLogic(
-      animal,
-      {
-        'dog': 'le chien',
-        'cat': 'le chat',
-        'rabbit': 'le lapin',
-        'fox': 'le renard',
-        'bear': 'l\'ours',
-        'panda': 'le panda',
-        'frog': 'la grenouille',
-        'monkey': 'le singe',
-        'lion': 'le lion',
-        'tiger': 'le tigre',
-        'cow': 'la vache',
-        'pig': 'le cochon',
-        'other': '$animal',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(animal, {
+      'dog': 'le chien',
+      'cat': 'le chat',
+      'rabbit': 'le lapin',
+      'fox': 'le renard',
+      'bear': 'l\'ours',
+      'panda': 'le panda',
+      'frog': 'la grenouille',
+      'monkey': 'le singe',
+      'lion': 'le lion',
+      'tiger': 'le tigre',
+      'cow': 'la vache',
+      'pig': 'le cochon',
+      'other': '$animal',
+    });
     return '$_temp0';
   }
 
@@ -415,49 +401,40 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String balloonsPopColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'rouges',
-        'blue': 'bleus',
-        'green': 'verts',
-        'yellow': 'jaunes',
-        'purple': 'violets',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'rouges',
+      'blue': 'bleus',
+      'green': 'verts',
+      'yellow': 'jaunes',
+      'purple': 'violets',
+      'other': '$color',
+    });
     return 'Éclate seulement les ballons $_temp0.';
   }
 
   @override
   String balloonsNowColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'rouges',
-        'blue': 'bleus',
-        'green': 'verts',
-        'yellow': 'jaunes',
-        'purple': 'violets',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'rouges',
+      'blue': 'bleus',
+      'green': 'verts',
+      'yellow': 'jaunes',
+      'purple': 'violets',
+      'other': '$color',
+    });
     return 'Maintenant les ballons $_temp0.';
   }
 
   @override
   String balloonsOnlyColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'rouges',
-        'blue': 'bleus',
-        'green': 'verts',
-        'yellow': 'jaunes',
-        'purple': 'violets',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'rouges',
+      'blue': 'bleus',
+      'green': 'verts',
+      'yellow': 'jaunes',
+      'purple': 'violets',
+      'other': '$color',
+    });
     return 'Seulement les $_temp0';
   }
 
@@ -490,17 +467,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String balloonA11yColor(String color) {
-    String _temp0 = intl.Intl.selectLogic(
-      color,
-      {
-        'red': 'rouge',
-        'blue': 'bleu',
-        'green': 'vert',
-        'yellow': 'jaune',
-        'purple': 'violet',
-        'other': '$color',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'red': 'rouge',
+      'blue': 'bleu',
+      'green': 'vert',
+      'yellow': 'jaune',
+      'purple': 'violet',
+      'other': '$color',
+    });
     return 'Ballon $_temp0';
   }
 
@@ -531,20 +505,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String shapeName(String shape) {
-    String _temp0 = intl.Intl.selectLogic(
-      shape,
-      {
-        'circle': 'le cercle',
-        'square': 'le carré',
-        'triangle': 'le triangle',
-        'star': 'l\'étoile',
-        'heart': 'le cœur',
-        'hexagon': 'l\'hexagone',
-        'circleSmall': 'le petit cercle',
-        'squareSmall': 'le petit carré',
-        'other': '$shape',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(shape, {
+      'circle': 'le cercle',
+      'square': 'le carré',
+      'triangle': 'le triangle',
+      'star': 'l\'étoile',
+      'heart': 'le cœur',
+      'hexagon': 'l\'hexagone',
+      'circleSmall': 'le petit cercle',
+      'squareSmall': 'le petit carré',
+      'other': '$shape',
+    });
     return '$_temp0';
   }
 
@@ -673,15 +644,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String hemisphere(String place) {
-    String _temp0 = intl.Intl.selectLogic(
-      place,
-      {
-        'north': 'Hémisphère nord',
-        'south': 'Hémisphère sud',
-        'equator': 'Près de l\'équateur',
-        'other': '$place',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(place, {
+      'north': 'Hémisphère nord',
+      'south': 'Hémisphère sud',
+      'equator': 'Près de l\'équateur',
+      'other': '$place',
+    });
     return '$_temp0';
   }
 
@@ -945,18 +913,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String ideaReasonCapacity(String name, String capacity) {
-    String _temp0 = intl.Intl.selectLogic(
-      capacity,
-      {
-        'insieme': '$name aime être avec les autres',
-        'mani': '$name aime travailler avec les mains',
-        'sensi': '$name aime explorer avec les sens',
-        'parole': '$name aime jouer avec les mots',
-        'pensare': '$name aime compter et réfléchir',
-        'mondo': '$name aime découvrir le monde',
-        'other': '$name le choisit souvent',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(capacity, {
+      'insieme': '$name aime être avec les autres',
+      'mani': '$name aime travailler avec les mains',
+      'sensi': '$name aime explorer avec les sens',
+      'parole': '$name aime jouer avec les mots',
+      'pensare': '$name aime compter et réfléchir',
+      'mondo': '$name aime découvrir le monde',
+      'other': '$name le choisit souvent',
+    });
     return '$_temp0';
   }
 
@@ -1043,80 +1008,89 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String growthTitle(Object name) {
-    return 'Comment $name grandit';
+    return 'Ce que $name a exploré';
   }
 
   @override
   String get growthIntro =>
-      'La seule comparaison est avec lui-même, il y a un mois. L\'appli ne voit qu\'une petite partie de sa journée : en cas de doute sur le développement, la référence est le pédiatre ou l\'enseignant.';
+      'Un journal de ce qu\'il ou elle a choisi et repris ces 30 derniers jours, pas une évaluation : les touches, la vitesse et les réussites ne disent pas ce qu\'il ou elle sait faire. Aucune comparaison, ni avec d\'autres enfants ni avec il y a un mois.';
 
   @override
   String get growthEmpty =>
-      'Aucune activité ces 30 derniers jours. Quand il en fera, vous verrez les étapes ici.';
+      'Aucune activité ces 30 derniers jours. Quand il ou elle en choisira, vous verrez ici les thèmes explorés.';
 
   @override
   String get growthOffscreen =>
       'Là où il n\'y a pas de progrès, essayez l\'activité hors écran proposée dans la fiche : pas plus de temps sur l\'appli.';
 
   @override
-  String growthNew(Object count) {
-    return 'Ces 30 derniers jours : $count manches. Il y a un mois, il ne l\'avait pas encore essayé.';
+  String exploreTheme(String theme) {
+    return 'A exploré : $theme';
   }
 
   @override
-  String growthCompare(Object before, Object now) {
-    return 'Aujourd\'hui : $now · il y a un mois : $before (bord gris).';
+  String exploreResumed(int days) {
+    return 'L\'a repris sur $days jours différents.';
   }
 
   @override
-  String stageLabel(String stage) {
-    String _temp0 = intl.Intl.selectLogic(
-      stage,
-      {
-        'starting': 'débute',
-        'working': 'y travaille',
-        'canDo': 'y arrive',
-        'alone': 'le fait seul',
-        'other': '$stage',
-      },
-    );
-    return '$_temp0';
-  }
+  String get exploreOnce => 'L\'a essayé un jour.';
+
+  @override
+  String get exploreCreationsTitle => 'Histoires inventées et gardées';
+
+  @override
+  String get exploreCreationsEmpty =>
+      'Pas encore d\'histoire inventée dans la fabrique d\'histoires.';
+
+  @override
+  String get exploreNotesTitle => 'Vos observations';
+
+  @override
+  String get exploreNotesHint =>
+      'Quelque chose que vous avez remarqué : une question, un jeu, une phrase...';
+
+  @override
+  String get exploreNotesAdd => 'Ajouter';
+
+  @override
+  String get exploreNotesEmpty =>
+      'Aucune observation. Elles restent sur cet appareil uniquement.';
+
+  @override
+  String get exploreNotesDelete => 'Supprimer l\'observation';
 
   @override
   String skillLabel(String skill) {
-    String _temp0 = intl.Intl.selectLogic(
-      skill,
-      {
-        'suoni_iniziali': 'Sons et lettres',
-        'pregrafismo': 'Tracer les lettres',
-        'numeri': 'Nombres et quantités',
-        'logica': 'Logique et suites',
-        'routine_sera': 'Préparer ses affaires pour demain',
-        'routine_mattino': 'La routine du matin',
-        'vestirsi': 'S\'habiller seul',
-        'mensa': 'À la cantine',
-        'turno_e_condivisione': 'Attendre son tour et partager',
-        'chiedere_aiuto': 'Demander de l\'aide',
-        'distacco': 'Se dire au revoir le matin',
-        'conoscere_la_scuola': 'Découvrir l\'école',
-        'primo_giorno': 'Le premier jour',
-        'travasi': 'Transvaser et verser',
-        'motricita_fine': 'Motricité fine',
-        'cura_ambiente': 'Prendre soin de l\'environnement',
-        'dimensioni': 'Tailles et sériation',
-        'colori': 'Couleurs',
-        'forme': 'Formes',
-        'tatto': 'Toucher',
-        'udito': 'Ouïe',
-        'scrittura': 'Écriture',
-        'vocabolario': 'Vocabulaire',
-        'decine': 'Dizaines et unités',
-        'geografia': 'Géographie',
-        'botanica': 'Botanique',
-        'other': '$skill',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(skill, {
+      'suoni_iniziali': 'Sons et lettres',
+      'pregrafismo': 'Tracer les lettres',
+      'numeri': 'Nombres et quantités',
+      'logica': 'Logique et suites',
+      'routine_sera': 'Préparer ses affaires pour demain',
+      'routine_mattino': 'La routine du matin',
+      'vestirsi': 'S\'habiller seul',
+      'mensa': 'À la cantine',
+      'turno_e_condivisione': 'Attendre son tour et partager',
+      'chiedere_aiuto': 'Demander de l\'aide',
+      'distacco': 'Se dire au revoir le matin',
+      'conoscere_la_scuola': 'Découvrir l\'école',
+      'primo_giorno': 'Le premier jour',
+      'travasi': 'Transvaser et verser',
+      'motricita_fine': 'Motricité fine',
+      'cura_ambiente': 'Prendre soin de l\'environnement',
+      'dimensioni': 'Tailles et sériation',
+      'colori': 'Couleurs',
+      'forme': 'Formes',
+      'tatto': 'Toucher',
+      'udito': 'Ouïe',
+      'scrittura': 'Écriture',
+      'vocabolario': 'Vocabulaire',
+      'decine': 'Dizaines et unités',
+      'geografia': 'Géographie',
+      'botanica': 'Botanique',
+      'other': '$skill',
+    });
     return '$_temp0';
   }
 
@@ -1152,15 +1126,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String ageBandLabel(String band) {
-    String _temp0 = intl.Intl.selectLogic(
-      band,
-      {
-        'small': 'Petits',
-        'mid': 'Premiers pas',
-        'big': 'Grands',
-        'other': '$band',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(band, {
+      'small': 'Petits',
+      'mid': 'Premiers pas',
+      'big': 'Grands',
+      'other': '$band',
+    });
     return '$_temp0';
   }
 
@@ -1336,18 +1307,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String factoryAsk(String step) {
-    String _temp0 = intl.Intl.selectLogic(
-      step,
-      {
-        'who': 'Qui est le héros ?',
-        'place': 'Où vit-il ?',
-        'problem': 'Un jour, que se passe-t-il ?',
-        'feeling': 'Que ressent-il ?',
-        'helper': 'Qui vient aider ?',
-        'ending': 'Comment ça finit ?',
-        'other': '$step',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(step, {
+      'who': 'Qui est le héros ?',
+      'place': 'Où vit-il ?',
+      'problem': 'Un jour, que se passe-t-il ?',
+      'feeling': 'Que ressent-il ?',
+      'helper': 'Qui vient aider ?',
+      'ending': 'Comment ça finit ?',
+      'other': '$step',
+    });
     return '$_temp0';
   }
 
@@ -1382,185 +1350,148 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String factoryWhoA(String who) {
-    String _temp0 = intl.Intl.selectLogic(
-      who,
-      {
-        'dragon': 'un petit dragon',
-        'bunny': 'un petit lapin',
-        'robot': 'un gentil robot',
-        'penguin': 'un pingouin',
-        'unicorn': 'une licorne',
-        'kitten': 'un chaton',
-        'other': '$who',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(who, {
+      'dragon': 'un petit dragon',
+      'bunny': 'un petit lapin',
+      'robot': 'un gentil robot',
+      'penguin': 'un pingouin',
+      'unicorn': 'une licorne',
+      'kitten': 'un chaton',
+      'other': '$who',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryWhoThe(String who) {
-    String _temp0 = intl.Intl.selectLogic(
-      who,
-      {
-        'dragon': 'le petit dragon',
-        'bunny': 'le petit lapin',
-        'robot': 'le gentil robot',
-        'penguin': 'le pingouin',
-        'unicorn': 'la licorne',
-        'kitten': 'le chaton',
-        'other': '$who',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(who, {
+      'dragon': 'le petit dragon',
+      'bunny': 'le petit lapin',
+      'robot': 'le gentil robot',
+      'penguin': 'le pingouin',
+      'unicorn': 'la licorne',
+      'kitten': 'le chaton',
+      'other': '$who',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryPlaceName(String place) {
-    String _temp0 = intl.Intl.selectLogic(
-      place,
-      {
-        'forest': 'la forêt',
-        'room': 'la chambre',
-        'stream': 'le ruisseau',
-        'sky': 'les nuages',
-        'snow': 'la neige',
-        'night': 'la nuit',
-        'other': '$place',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(place, {
+      'forest': 'la forêt',
+      'room': 'la chambre',
+      'stream': 'le ruisseau',
+      'sky': 'les nuages',
+      'snow': 'la neige',
+      'night': 'la nuit',
+      'other': '$place',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryPlaceIn(String place) {
-    String _temp0 = intl.Intl.selectLogic(
-      place,
-      {
-        'forest': 'dans une forêt pleine d\'arbres',
-        'room': 'dans une chambre pleine de jouets',
-        'stream': 'près d\'un petit ruisseau',
-        'sky': 'sur un nuage tout doux',
-        'snow': 'dans un pré plein de neige',
-        'night': 'dans un pré sous les étoiles',
-        'other': '$place',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(place, {
+      'forest': 'dans une forêt pleine d\'arbres',
+      'room': 'dans une chambre pleine de jouets',
+      'stream': 'près d\'un petit ruisseau',
+      'sky': 'sur un nuage tout doux',
+      'snow': 'dans un pré plein de neige',
+      'night': 'dans un pré sous les étoiles',
+      'other': '$place',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryProblemName(String problem) {
-    String _temp0 = intl.Intl.selectLogic(
-      problem,
-      {
-        'storm': 'l\'orage',
-        'star': 'la petite étoile tombée',
-        'sadFriend': 'un ami triste',
-        'litter': 'les déchets',
-        'lost': 'le chemin perdu',
-        'other': '$problem',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(problem, {
+      'storm': 'l\'orage',
+      'star': 'la petite étoile tombée',
+      'sadFriend': 'un ami triste',
+      'litter': 'les déchets',
+      'lost': 'le chemin perdu',
+      'other': '$problem',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryProblem(String problem) {
-    String _temp0 = intl.Intl.selectLogic(
-      problem,
-      {
-        'storm': 'un gros orage arriva',
-        'star':
-            'une petite étoile tomba du ciel et ne savait plus rentrer chez elle',
-        'sadFriend': 'un ami arriva, tout triste, et ne voulait pas parler',
-        'litter': 'quelqu\'un laissa plein de déchets par terre',
-        'lost': 'le brouillard cacha le chemin de la maison',
-        'other': '$problem',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(problem, {
+      'storm': 'un gros orage arriva',
+      'star':
+          'une petite étoile tomba du ciel et ne savait plus rentrer chez elle',
+      'sadFriend': 'un ami arriva, tout triste, et ne voulait pas parler',
+      'litter': 'quelqu\'un laissa plein de déchets par terre',
+      'lost': 'le brouillard cacha le chemin de la maison',
+      'other': '$problem',
+    });
     return '$_temp0';
   }
 
   @override
   String factorySolution(String problem) {
-    String _temp0 = intl.Intl.selectLogic(
-      problem,
-      {
-        'storm':
-            'ils trouvèrent un abri au sec et attendirent la fin de l\'orage',
-        'star':
-            'ils construisirent une très haute échelle et ramenèrent la petite étoile dans le ciel',
-        'sadFriend':
-            'ils s\'assirent près de leur ami et l\'écoutèrent, jusqu\'à ce qu\'il sourie de nouveau',
-        'litter':
-            'ils ramassèrent les déchets avec des gants et les mirent dans les bonnes poubelles',
-        'lost':
-            'ils suivirent les traces sur le sentier et retrouvèrent le chemin de la maison',
-        'other': '$problem',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(problem, {
+      'storm':
+          'ils trouvèrent un abri au sec et attendirent la fin de l\'orage',
+      'star': 'ils construisirent une très haute échelle et ramenèrent la petite étoile dans le ciel',
+      'sadFriend': 'ils s\'assirent près de leur ami et l\'écoutèrent, jusqu\'à ce qu\'il sourie de nouveau',
+      'litter': 'ils ramassèrent les déchets avec des gants et les mirent dans les bonnes poubelles',
+      'lost': 'ils suivirent les traces sur le sentier et retrouvèrent le chemin de la maison',
+      'other': '$problem',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryFeelingName(String feeling) {
-    String _temp0 = intl.Intl.selectLogic(
-      feeling,
-      {
-        'fear': 'la peur',
-        'sadness': 'la tristesse',
-        'anger': 'la colère',
-        'curiosity': 'la curiosité',
-        'courage': 'le courage',
-        'other': '$feeling',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(feeling, {
+      'fear': 'la peur',
+      'sadness': 'la tristesse',
+      'anger': 'la colère',
+      'curiosity': 'la curiosité',
+      'courage': 'le courage',
+      'other': '$feeling',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryFeeling(String feeling) {
-    String _temp0 = intl.Intl.selectLogic(
-      feeling,
-      {
-        'fear': 'un peu de peur',
-        'sadness': 'un peu de tristesse',
-        'anger': 'un peu de colère',
-        'curiosity': 'beaucoup de curiosité',
-        'courage': 'beaucoup de courage',
-        'other': '$feeling',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(feeling, {
+      'fear': 'un peu de peur',
+      'sadness': 'un peu de tristesse',
+      'anger': 'un peu de colère',
+      'curiosity': 'beaucoup de curiosité',
+      'courage': 'beaucoup de courage',
+      'other': '$feeling',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryHelperA(String helper) {
-    String _temp0 = intl.Intl.selectLogic(
-      helper,
-      {
-        'turtle': 'une tortue sage',
-        'owl': 'un hibou qui sait plein de choses',
-        'bear': 'un ours gentil',
-        'bee': 'une abeille très rapide',
-        'other': '$helper',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(helper, {
+      'turtle': 'une tortue sage',
+      'owl': 'un hibou qui sait plein de choses',
+      'bear': 'un ours gentil',
+      'bee': 'une abeille très rapide',
+      'other': '$helper',
+    });
     return '$_temp0';
   }
 
   @override
   String factoryEndingName(String ending) {
-    String _temp0 = intl.Intl.selectLogic(
-      ending,
-      {
-        'party': 'une fête',
-        'sleep': 'au lit',
-        'hug': 'un câlin',
-        'snack': 'un goûter',
-        'other': '$ending',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(ending, {
+      'party': 'une fête',
+      'sleep': 'au lit',
+      'hug': 'un câlin',
+      'snack': 'un goûter',
+      'other': '$ending',
+    });
     return '$_temp0';
   }
 
@@ -1586,18 +1517,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String factoryEnding(String ending, Object who) {
-    String _temp0 = intl.Intl.selectLogic(
-      ending,
-      {
-        'party': 'Et ce soir-là, $who fit une grande fête avec tous ses amis.',
-        'sleep':
-            'Et ce soir-là, $who s\'endormit avec le sourire, sous une couverture bien chaude.',
-        'hug': 'Et à la fin, $who fit un gros câlin à son nouvel ami.',
-        'snack':
-            'Et à la fin, $who partagea un goûter avec tout le monde, au soleil.',
-        'other': '$ending',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(ending, {
+      'party': 'Et ce soir-là, $who fit une grande fête avec tous ses amis.',
+      'sleep':
+          'Et ce soir-là, $who s\'endormit avec le sourire, sous une couverture bien chaude.',
+      'hug': 'Et à la fin, $who fit un gros câlin à son nouvel ami.',
+      'snack':
+          'Et à la fin, $who partagea un goûter avec tout le monde, au soleil.',
+      'other': '$ending',
+    });
     return '$_temp0';
   }
 
@@ -1612,99 +1540,68 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String natureWeather(String weather) {
-    String _temp0 = intl.Intl.selectLogic(
-      weather,
-      {
-        'sun': 'Soleil',
-        'clouds': 'Nuages',
-        'rain': 'Pluie',
-        'snow': 'Neige',
-        'wind': 'Vent',
-        'fog': 'Brouillard',
-        'other': '$weather',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(weather, {
+      'sun': 'Soleil',
+      'clouds': 'Nuages',
+      'rain': 'Pluie',
+      'snow': 'Neige',
+      'wind': 'Vent',
+      'fog': 'Brouillard',
+      'other': '$weather',
+    });
     return '$_temp0';
   }
 
   @override
   String natureThing(String thing) {
-    String _temp0 = intl.Intl.selectLogic(
-      thing,
-      {
-        'leaf': 'Feuilles',
-        'flower': 'Fleurs',
-        'bird': 'Oiseaux',
-        'bug': 'Coccinelles et insectes',
-        'snail': 'Escargots',
-        'fruit': 'Fruits',
-        'mushroom': 'Champignons',
-        'rainbow': 'Un arc-en-ciel',
-        'moon': 'La lune',
-        'other': '$thing',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(thing, {
+      'leaf': 'Feuilles',
+      'flower': 'Fleurs',
+      'bird': 'Oiseaux',
+      'bug': 'Coccinelles et insectes',
+      'snail': 'Escargots',
+      'fruit': 'Fruits',
+      'mushroom': 'Champignons',
+      'rainbow': 'Un arc-en-ciel',
+      'moon': 'La lune',
+      'other': '$thing',
+    });
     return '$_temp0';
   }
 
   @override
   String natureMonthTip(String month) {
-    String _temp0 = intl.Intl.selectLogic(
-      month,
-      {
-        'm1':
-            'Il fait froid et beaucoup d\'arbres sont nus. Vois-tu des nids dans les branches ?',
-        'm2':
-            'Les jours rallongent un tout petit peu. Cherche les premiers bourgeons sur les branches.',
-        'm3':
-            'Le printemps arrive : les premières fleurs sortent. De quelle couleur sont-elles ?',
-        'm4':
-            'Les oiseaux construisent leurs nids. Écoute : combien de chants différents entends-tu ?',
-        'm5':
-            'Le pré est plein de fleurs et d\'abeilles. Regarde-les de loin : elles travaillent beaucoup !',
-        'm6':
-            'Ce sont les jours les plus longs de l\'année. Que vois-tu le soir, quand il fait encore clair ?',
-        'm7':
-            'Il fait chaud : cherche l\'ombre des arbres. Entends-tu les cigales ?',
-        'm8':
-            'La nuit, si le ciel est dégagé, on voit parfois une étoile filante. Fais un vœu !',
-        'm9':
-            'Beaucoup de fruits mûrissent : raisins, pommes, figues. Lesquels connais-tu ?',
-        'm10':
-            'Les feuilles changent de couleur et tombent. Combien de couleurs différentes trouves-tu ?',
-        'm11':
-            'Dans la forêt, les champignons poussent. On les regarde, mais on ne les touche pas !',
-        'm12':
-            'Ce sont les jours les plus courts de l\'année. La forêt se repose, comme dans l\'histoire d\'Emma.',
-        'other': '$month',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(month, {
+      'm1': 'Il fait froid et beaucoup d\'arbres sont nus. Vois-tu des nids dans les branches ?',
+      'm2': 'Les jours rallongent un tout petit peu. Cherche les premiers bourgeons sur les branches.',
+      'm3': 'Le printemps arrive : les premières fleurs sortent. De quelle couleur sont-elles ?',
+      'm4': 'Les oiseaux construisent leurs nids. Écoute : combien de chants différents entends-tu ?',
+      'm5': 'Le pré est plein de fleurs et d\'abeilles. Regarde-les de loin : elles travaillent beaucoup !',
+      'm6': 'Ce sont les jours les plus longs de l\'année. Que vois-tu le soir, quand il fait encore clair ?',
+      'm7': 'Il fait chaud : cherche l\'ombre des arbres. Entends-tu les cigales ?',
+      'm8': 'La nuit, si le ciel est dégagé, on voit parfois une étoile filante. Fais un vœu !',
+      'm9': 'Beaucoup de fruits mûrissent : raisins, pommes, figues. Lesquels connais-tu ?',
+      'm10': 'Les feuilles changent de couleur et tombent. Combien de couleurs différentes trouves-tu ?',
+      'm11': 'Dans la forêt, les champignons poussent. On les regarde, mais on ne les touche pas !',
+      'm12': 'Ce sont les jours les plus courts de l\'année. La forêt se repose, comme dans l\'histoire d\'Emma.',
+      'other': '$month',
+    });
     return '$_temp0';
   }
 
   @override
   String natureEquatorTip(String tip) {
-    String _temp0 = intl.Intl.selectLogic(
-      tip,
-      {
-        'e1': 'Quand la pluie arrive, l\'air change d\'odeur. Tu la sens ?',
-        'e2':
-            'Après une averse, il reste des flaques. Qu\'est-ce que tu vois dedans ?',
-        'e3':
-            'Les jours secs, la terre devient dure et poussiéreuse. Touche-la : comment est-elle aujourd\'hui ?',
-        'e4':
-            'Avec la pluie, les plantes poussent vite. Tu trouves une feuille nouvelle, encore toute claire ?',
-        'e5':
-            'Cherche une feuille immense et une toute petite. En quoi sont-elles différentes ?',
-        'e6':
-            'Y a-t-il un arbre avec des fleurs ou des fruits ? De quelle couleur sont-ils ?',
-        'e7':
-            'Les fourmis marchent en file. Suis-les des yeux : où vont-elles ?',
-        'e8':
-            'Après la pluie, parfois un arc-en-ciel apparaît. Combien de couleurs comptes-tu ?',
-        'other': '$tip',
-      },
-    );
+    String _temp0 = intl.Intl.selectLogic(tip, {
+      'e1': 'Quand la pluie arrive, l\'air change d\'odeur. Tu la sens ?',
+      'e2': 'Après une averse, il reste des flaques. Qu\'est-ce que tu vois dedans ?',
+      'e3': 'Les jours secs, la terre devient dure et poussiéreuse. Touche-la : comment est-elle aujourd\'hui ?',
+      'e4': 'Avec la pluie, les plantes poussent vite. Tu trouves une feuille nouvelle, encore toute claire ?',
+      'e5': 'Cherche une feuille immense et une toute petite. En quoi sont-elles différentes ?',
+      'e6': 'Y a-t-il un arbre avec des fleurs ou des fruits ? De quelle couleur sont-ils ?',
+      'e7': 'Les fourmis marchent en file. Suis-les des yeux : où vont-elles ?',
+      'e8': 'Après la pluie, parfois un arc-en-ciel apparaît. Combien de couleurs comptes-tu ?',
+      'other': '$tip',
+    });
     return '$_temp0';
   }
 

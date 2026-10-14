@@ -3,10 +3,11 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
-import '../../data/development_stats.dart';
+import '../../data/exploration_diary.dart';
 import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
+import '../../models/made_story.dart';
 import '../../models/nature_day.dart';
 import '../../models/profile.dart';
 import '../../models/story.dart';
@@ -636,98 +637,119 @@ class _GesturesSection extends StatelessWidget {
   }
 }
 
-class _DevelopmentTab extends StatelessWidget {
+class _DevelopmentTab extends StatefulWidget {
   const _DevelopmentTab({required this.state, required this.profile});
   final AppState state;
   final ChildProfile profile;
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<SkillStat>>(
-      future: DevelopmentStats(state.db).forProfile(profile.id, state.repo.activities),
-      builder: (context, snap) {
-        final stats = snap.data ?? const <SkillStat>[];
-        return ListView(
-          padding: const EdgeInsets.all(24),
-          children: [
-            Text(context.l10n.growthTitle(profile.name), style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 8),
-            Text(context.l10n.growthIntro),
-            const SizedBox(height: 16),
-            if (snap.connectionState != ConnectionState.done)
-              const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
-            else if (stats.isEmpty)
-              Text(context.l10n.growthEmpty)
-            else
-              for (final area in ActivityArea.values)
-                if (stats.any((s) => s.area == area)) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, bottom: 4),
-                    child: Text(context.l10n.areaLabel(area.name), style: Theme.of(context).textTheme.titleLarge),
-                  ),
-                  for (final s in stats.where((s) => s.area == area)) _SkillRow(stat: s),
-                ],
-            const SizedBox(height: 24),
-            Text(context.l10n.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
-          ],
-        );
-      },
-    );
-  }
+  State<_DevelopmentTab> createState() => _DevelopmentTabState();
 }
 
-class _SkillRow extends StatelessWidget {
-  const _SkillRow({required this.stat});
-  final SkillStat stat;
+/// Diario descrittivo: temi esplorati e ripresi, storie inventate dal bambino
+/// e osservazioni del genitore. Niente tappe, livelli o confronti.
+class _DevelopmentTabState extends State<_DevelopmentTab> {
+  final _note = TextEditingController();
+  late Future<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)> _data = _load();
+
+  ExplorationDiary get _diary => ExplorationDiary(widget.state.db);
+
+  Future<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)> _load() async => (
+        await _diary.forProfile(widget.profile.id, widget.state.repo.activities),
+        await widget.state.madeStoriesOf(widget.profile),
+        await _diary.notes(widget.profile.id),
+      );
+
+  @override
+  void dispose() {
+    _note.dispose();
+    super.dispose();
+  }
+
+  Future<void> _add() async {
+    await _diary.addNote(widget.profile.id, _note.text);
+    _note.clear();
+    setState(() => _data = _load());
+  }
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            Expanded(child: Text(context.l10n.skillLabel(stat.skill.replaceAll('-', '_')), style: Theme.of(context).textTheme.bodyLarge)),
-            if (stat.improved) const Icon(Icons.trending_up_rounded, color: Colors.green),
-          ]),
-          const SizedBox(height: 6),
-          Row(
-            children: [
-              for (final stage in Stage.values) ...[
-                Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 14,
-                        decoration: BoxDecoration(
-                          color: stat.now != null && stage.index <= stat.now!.index ? scheme.primary : scheme.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(7),
-                          border: stat.monthAgo == stage ? Border.all(color: scheme.outline, width: 2) : null,
-                        ),
+    final l = context.l10n;
+    final theme = Theme.of(context).textTheme;
+    return FutureBuilder<(List<ThemeExploration>, List<MadeStory>, List<ParentNote>)>(
+      future: _data,
+      builder: (context, snap) {
+        final data = snap.data;
+        return ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            Text(l.growthTitle(widget.profile.name), style: theme.titleLarge),
+            const SizedBox(height: 8),
+            Text(l.growthIntro),
+            const SizedBox(height: 16),
+            if (data == null)
+              const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
+            else ...[
+              if (data.$1.isEmpty)
+                Text(l.growthEmpty)
+              else
+                for (final area in ActivityArea.values)
+                  if (data.$1.any((t) => t.area == area)) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 4),
+                      child: Text(l.areaLabel(area.name), style: theme.titleLarge),
+                    ),
+                    for (final t in data.$1.where((t) => t.area == area))
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(l.exploreTheme(l.skillLabel(t.skill.replaceAll('-', '_')))),
+                        subtitle: Text(t.resumed ? l.exploreResumed(t.days) : l.exploreOnce),
                       ),
-                      const SizedBox(height: 4),
-                      Text(context.l10n.stageLabel(stage.name), style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
-                    ],
+                  ],
+              const SizedBox(height: 24),
+              Text(l.exploreCreationsTitle, style: theme.titleLarge),
+              const SizedBox(height: 4),
+              if (data.$2.isEmpty)
+                Text(l.exploreCreationsEmpty)
+              else
+                for (final m in data.$2)
+                  ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.auto_stories_outlined), title: Text(m.titleIn(l))),
+              const SizedBox(height: 24),
+              Text(l.exploreNotesTitle, style: theme.titleLarge),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _note,
+                minLines: 2,
+                maxLines: 4,
+                decoration: InputDecoration(hintText: l.exploreNotesHint, border: const OutlineInputBorder()),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(onPressed: _add, child: Text(l.exploreNotesAdd)),
+              ),
+              if (data.$3.isEmpty)
+                Text(l.exploreNotesEmpty)
+              else
+                for (final n in data.$3)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(n.text),
+                    subtitle: Text('${n.when.day}/${n.when.month}/${n.when.year}'),
+                    trailing: IconButton(
+                      tooltip: l.exploreNotesDelete,
+                      icon: const Icon(Icons.delete_outline),
+                      onPressed: () async {
+                        await _diary.removeNote(widget.profile.id, n);
+                        setState(() => _data = _load());
+                      },
+                    ),
                   ),
-                ),
-                if (stage != Stage.values.last) const SizedBox(width: 6),
-              ],
             ],
-          ),
-          const SizedBox(height: 4),
-          Text(
-            stat.monthAgo == null
-                ? context.l10n.growthNew('${stat.rounds}')
-                : context.l10n.growthCompare(
-                    stat.now == null ? '—' : context.l10n.stageLabel(stat.now!.name),
-                    context.l10n.stageLabel(stat.monthAgo!.name),
-                  ),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
-      ),
+            const SizedBox(height: 24),
+            Text(l.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
+          ],
+        );
+      },
     );
   }
 }
