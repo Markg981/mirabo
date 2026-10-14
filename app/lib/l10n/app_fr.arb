@@ -324,6 +324,7 @@
   "factoryNew": "Invente une histoire",
   "factoryBy": "Une histoire inventée par {name}",
   "factoryEnd": "Fin",
+  "factoryOtherEnding": "Essaie une autre fin",
   "factoryDone": "Quelle belle histoire, {name} ! Je la range avec tes histoires.",
   "factoryMineEmpty": "Tu trouveras ici les histoires que tu inventes.",
   "factoryWhoA": "{who, select, dragon{un petit dragon} bunny{un petit lapin} robot{un gentil robot} penguin{un pingouin} unicorn{une licorne} kitten{un chaton} other{{who}}}",

@@ -324,6 +324,7 @@
   "factoryNew": "Make one up",
   "factoryBy": "A story made up by {name}",
   "factoryEnd": "The end",
+  "factoryOtherEnding": "Try another ending",
   "factoryDone": "What a lovely story, {name}! I'll keep it with your stories.",
   "factoryMineEmpty": "The stories you make up will be here.",
   "factoryWhoA": "{who, select, dragon{a little dragon} bunny{a bunny} robot{a kind robot} penguin{a penguin} unicorn{a unicorn} kitten{a kitten} other{{who}}}",

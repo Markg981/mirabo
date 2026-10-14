@@ -38,6 +38,11 @@ l'emozione si accoglie con un respiro, qualunque sia.
   tutti i pezzi in tutte e cinque le lingue (genere, articoli, ordine delle parole in tedesco).
   Per aggiungere un pezzo: l'id e l'emoji in `StoryParts` (`app/lib/models/made_story.dart`) e un
   caso in ogni `select` delle cinque lingue; `made_story_test.dart` controlla che non manchi.
+- **Per fascia**: in 3–5 e 5–7 i pezzi si toccano e il compagno li dice a voce (niente da leggere);
+  in 7–10 si aggiunge il titolo e, sull'ultima pagina, *Prova un altro finale*: quattro scelte con
+  cui il bambino rilegge la stessa storia con finali diversi e li confronta. Il confronto vale solo
+  per quella lettura: la storia salvata resta con il finale scelto (nessun cambio di schema).
+  Capitoli e cambio di punto di vista restano da fare.
 - Le storie inventate non fanno crescere il compagno, come le altre storie.
 
 ## Calendario della natura

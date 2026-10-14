@@ -324,6 +324,7 @@
   "factoryNew": "Inventa uno",
   "factoryBy": "Un cuento inventado por {name}",
   "factoryEnd": "Fin",
+  "factoryOtherEnding": "Prueba otro final",
   "factoryDone": "¡Qué cuento tan bonito, {name}! Lo guardo con tus cuentos.",
   "factoryMineEmpty": "Aquí encontrarás los cuentos que inventes.",
   "factoryWhoA": "{who, select, dragon{un dragoncito} bunny{un conejito} robot{un robot amable} penguin{un pingüino} unicorn{un unicornio} kitten{un gatito} other{{who}}}",
