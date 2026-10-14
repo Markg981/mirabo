@@ -25,7 +25,7 @@ enum AgeBand {
   }
 }
 
-enum ScreenKind { hook, situation, dialogue, lesson, gesture, turn, closing }
+enum ScreenKind { hook, situation, dialogue, lesson, gesture, consequence, turn, closing }
 
 enum CompanionId { bo, pilu, tango }
 
@@ -261,6 +261,63 @@ class GesturePause {
       );
 }
 
+/// Una mossa della pausa di conseguenza: ciò che il bambino prova e ciò che
+/// ne segue nella storia. Nessuna mossa è sbagliata: [outcome] racconta cosa
+/// succede, senza giudizio, e [reaction] è il commento del compagno.
+class ConsequenceOption {
+  const ConsequenceOption({
+    required this.id,
+    required this.icon,
+    required this.label,
+    required this.outcome,
+    required this.reaction,
+  });
+
+  final String id;
+  final String icon;
+  final String label;
+
+  /// La conseguenza raccontata: uguale per tutti i compagni, senza il nome.
+  final String outcome;
+  final CompanionLines reaction;
+
+  factory ConsequenceOption.fromJson(Map<String, dynamic> j) => ConsequenceOption(
+        id: j['id'] as String,
+        icon: j['icon'] as String,
+        label: j['label'] as String,
+        outcome: j['outcome'] as String,
+        reaction: CompanionLines.fromJson(j['reaction'] as Map<String, dynamic>),
+      );
+}
+
+/// Pausa di conseguenza: il bambino interviene sul problema della storia
+/// (sceglie un riparo, cambia l'ordine di una preparazione) e il racconto
+/// mostra cosa succede. Si può riprovare con un'altra mossa; nei più grandi
+/// [minTries] chiede di provarne più d'una, per confrontare le strategie.
+class ConsequencePause {
+  const ConsequencePause({
+    required this.together,
+    required this.prompt,
+    required this.options,
+    this.minTries = 1,
+  });
+
+  /// Guida per il genitore in modalità insieme.
+  final String together;
+  final CompanionLines prompt;
+  final List<ConsequenceOption> options;
+
+  /// Quante mosse diverse prova da solo prima di poter andare avanti.
+  final int minTries;
+
+  factory ConsequencePause.fromJson(Map<String, dynamic> j) => ConsequencePause(
+        together: j['together'] as String,
+        prompt: CompanionLines.fromJson(j['prompt'] as Map<String, dynamic>),
+        options: (j['options'] as List).map((o) => ConsequenceOption.fromJson(o as Map<String, dynamic>)).toList(),
+        minTries: (j['minTries'] as int?) ?? 1,
+      );
+}
+
 /// Chi guida nel dialogo facoltativo "leggiamo insieme".
 /// `help`: "Come potremmo aiutarlo?"; `guide`: "Spiegami tu cosa fare" (il bambino guida l'adulto o il personaggio).
 enum SharedPromptRole { help, guide }
@@ -289,6 +346,7 @@ class StoryScreen {
     this.sharedPrompt,
     this.lesson,
     this.gesture,
+    this.consequence,
     this.isKeyPhrase = false,
   });
 
@@ -302,6 +360,7 @@ class StoryScreen {
   final SharedPrompt? sharedPrompt;
   final Lesson? lesson;
   final GesturePause? gesture;
+  final ConsequencePause? consequence;
   final bool isKeyPhrase;
 
   factory StoryScreen.fromJson(Map<String, dynamic> j) => StoryScreen(
@@ -316,6 +375,8 @@ class StoryScreen {
         sharedPrompt: j['sharedPrompt'] == null ? null : SharedPrompt.fromJson(j['sharedPrompt'] as Map<String, dynamic>),
         lesson: j['lesson'] == null ? null : Lesson.fromJson(j['lesson'] as Map<String, dynamic>),
         gesture: j['gesture'] == null ? null : GesturePause.fromJson(j['gesture'] as Map<String, dynamic>),
+        consequence:
+            j['consequence'] == null ? null : ConsequencePause.fromJson(j['consequence'] as Map<String, dynamic>),
         isKeyPhrase: (j['keyPhrase'] as bool?) ?? false,
       );
 }
