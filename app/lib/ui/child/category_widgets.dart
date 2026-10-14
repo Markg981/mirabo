@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
+import '../../app_state.dart';
 import '../../l10n/l10n.dart';
 import '../../models/shelf.dart';
 import '../design/palette.dart';
@@ -7,15 +9,48 @@ import '../design/widgets.dart';
 import 'categories.dart';
 
 /// Barra in basso con le capacità che hanno qualcosa sulla mensola: bottoni
-/// rotondi colorati con un'emoji. Quella scelta si alza e prende l'anello blu.
-class CategoryDock extends StatelessWidget {
+/// rotondi colorati con un'emoji e, sotto, il nome. Quella scelta si alza e
+/// prende l'anello blu. Tenendo premuto un bottone la voce ne dice il nome:
+/// chi non legge ancora lo riconosce da immagine e suono. I bottoni non si
+/// spostano mai in base a cosa il bambino ha fatto da poco.
+class CategoryDock extends StatefulWidget {
   const CategoryDock({super.key, required this.categories, required this.onSelect, this.selected});
   final List<Capacity> categories;
   final Capacity? selected;
   final ValueChanged<Capacity> onSelect;
 
   @override
+  State<CategoryDock> createState() => _CategoryDockState();
+}
+
+class _CategoryDockState extends State<CategoryDock> {
+  FlutterTts? _tts;
+
+  @override
+  void dispose() {
+    _tts?.stop();
+    super.dispose();
+  }
+
+  Future<void> _say(Capacity c) async {
+    final profile = AppStateScope.of(context).currentProfile;
+    final name = c.label(context.l10n);
+    try {
+      final tts = _tts ??= FlutterTts();
+      if (profile != null) {
+        await tts.setLanguage(AppLanguage.fromCode(profile.language).ttsCode);
+      }
+      await tts.setSpeechRate(0.45);
+      await tts.stop();
+      await tts.speak(name);
+    } catch (_) {
+      // Senza voce di sistema il nome resta scritto sotto il bottone.
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final categories = widget.categories;
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
       padding: const EdgeInsets.fromLTRB(8, 14, 8, 10),
@@ -32,7 +67,7 @@ class CategoryDock extends StatelessWidget {
             for (final c in categories)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 7),
-                child: _DockButton(category: c, selected: c == selected, onTap: () => onSelect(c)),
+                child: _DockButton(category: c, selected: c == widget.selected, onTap: () => widget.onSelect(c), onListen: () => _say(c)),
               ),
           ],
         ),
@@ -42,10 +77,11 @@ class CategoryDock extends StatelessWidget {
 }
 
 class _DockButton extends StatelessWidget {
-  const _DockButton({required this.category, required this.selected, required this.onTap});
+  const _DockButton({required this.category, required this.selected, required this.onTap, required this.onListen});
   final Capacity category;
   final bool selected;
   final VoidCallback onTap;
+  final VoidCallback onListen;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +97,9 @@ class _DockButton extends StatelessWidget {
         excludeSemantics: true,
         child: GestureDetector(
           onTap: onTap,
-          child: AnimatedContainer(
+          onLongPress: onListen,
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            AnimatedContainer(
             duration: Duration(milliseconds: tokens.animate ? 180 : 0),
             curve: Curves.easeOutBack,
             width: size,
@@ -75,7 +113,19 @@ class _DockButton extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(category.emoji, style: TextStyle(fontSize: size * 0.46, height: 1.1)),
-          ),
+            ),
+            const SizedBox(height: 4),
+            SizedBox(
+              width: 92,
+              child: Text(
+                category.label(context.l10n),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(color: MiraboColors.navy),
+              ),
+            ),
+          ]),
         ),
       ),
     );
