@@ -951,6 +951,43 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ideaAnother => 'Eine andere Idee';
 
   @override
+  String ideaReasonNone(String name) {
+    return 'Eine Präsentation passend zum Alter von $name';
+  }
+
+  @override
+  String get ideaNeedsNothing => 'Das braucht ihr: nichts Besonderes';
+
+  @override
+  String get ideaPrepNone => 'Vorbereitung: keine';
+
+  @override
+  String get ideaPrepQuick => 'Vorbereitung: etwa 2 Minuten';
+
+  @override
+  String get ideaPrepShort => 'Vorbereitung: etwa 5 Minuten';
+
+  @override
+  String ideaVariant(String text) {
+    return 'Variante: $text';
+  }
+
+  @override
+  String ideaVariantStory(String name) {
+    return 'wenn heute nicht der richtige Moment ist, verschiebt es auf morgen; oder lasst $name anleiten und sagen, was zu tun ist.';
+  }
+
+  @override
+  String get ideaVariantHome =>
+      'nach ein paar Tagen darf es allein machen, ohne es noch einmal vorzuführen.';
+
+  @override
+  String get ideaNoMaterials => 'Wir haben dieses Material nicht';
+
+  @override
+  String get ideaNotInterested => 'Kein Interesse';
+
+  @override
   String ideaEmpty(String name) {
     return 'Sobald $name eine Geschichte beendet hat, finden Sie hier eine Idee für gemeinsam.';
   }
