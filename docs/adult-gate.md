@@ -46,4 +46,4 @@ I 60 s sono un compromesso: una stampa lunga può richiedere di reinserire il PI
 
 ## Test
 
-`app/test/adult_pin_test.dart` (formato, hash e sale, attese, reset) e `app/test/adult_gate_test.dart` (creazione, verifica, recupero con e senza autenticazione del dispositivo).
+`app/test/adult_pin_test.dart` (formato, hash e sale, attese, reset) e `app/test/widget_test.dart` (creazione, verifica, recupero con e senza autenticazione del dispositivo).

@@ -4,6 +4,8 @@ import 'package:mirabo/data/adult_pin.dart';
 import 'package:mirabo/l10n/l10n.dart';
 import 'package:mirabo/ui/parent/adult_gate.dart';
 
+/// Sostituisce il widget_test generato da `flutter create` (la CI lo rigenera se
+/// manca): verifica il gate adulti, che è la barriera tra bambino e impostazioni.
 void main() {
   late MemoryPinStore store;
   var opened = 0;
