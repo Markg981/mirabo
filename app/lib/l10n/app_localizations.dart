@@ -1826,6 +1826,18 @@ abstract class AppLocalizations {
   /// **'Non lo trovo'**
   String get huntNotFound;
 
+  /// No description provided for @huntRest.
+  ///
+  /// In it, this message translates to:
+  /// **'Schermo a riposo'**
+  String get huntRest;
+
+  /// No description provided for @huntRestHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca lo schermo quando sei tornato. Se non ti va, va bene lo stesso.'**
+  String get huntRestHint;
+
   /// No description provided for @huntTellMe.
   ///
   /// In it, this message translates to:

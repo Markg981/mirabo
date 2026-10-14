@@ -1309,6 +1309,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get huntNotFound => 'I can\'t find it';
 
   @override
+  String get huntRest => 'Rest the screen';
+
+  @override
+  String get huntRestHint =>
+      'Touch the screen when you\'re back. It\'s fine if you\'d rather not.';
+
+  @override
   String get huntTellMe => 'What did you find? Say it out loud.';
 
   @override

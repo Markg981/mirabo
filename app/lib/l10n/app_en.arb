@@ -311,6 +311,8 @@
   "gestureStart": "Ready? Go!",
   "huntFound": "I found it!",
   "huntNotFound": "I can't find it",
+  "huntRest": "Rest the screen",
+  "huntRestHint": "Touch the screen when you're back. It's fine if you'd rather not.",
   "huntTellMe": "What did you find? Say it out loud.",
   "huntRules": "the child looks for one thing at a time, at home or outdoors with you. Only things within reach: no climbing, nothing sharp or fragile, no medicines or cleaning products. Outdoors, only things that have already fallen to the ground. At the end, everything goes back in its place.",
 

@@ -22,6 +22,10 @@ class _HuntRoundState extends RoundState<HuntRound> {
   bool _found = false;
   bool _started = false;
 
+  /// Schermo a riposo: dopo la consegna lo schermo si oscura e non chiede niente.
+  /// Basta toccarlo per tornare; non c'è conferma e non si registra nulla.
+  bool _resting = false;
+
   @override
   int get roundCount => _items.length;
 
@@ -45,7 +49,7 @@ class _HuntRoundState extends RoundState<HuntRound> {
     if (!_started) return _buildRules(context);
     final item = _items[i];
     final text = Theme.of(context).textTheme;
-    return Column(
+    final page = Column(
       children: [
         PromptBar(text: item['label'] as String, onSay: () => _ask(i)),
         Expanded(
@@ -89,6 +93,15 @@ class _HuntRoundState extends RoundState<HuntRound> {
                   ]
                 : [
                     ChunkyButton(
+                      label: context.l10n.huntRest,
+                      icon: Icons.nightlight_round,
+                      color: MiraboColors.sky,
+                      onPressed: () {
+                        _ask(i);
+                        setState(() => _resting = true);
+                      },
+                    ),
+                    ChunkyButton(
                       label: context.l10n.huntFound,
                       icon: Icons.back_hand_rounded,
                       color: MiraboColors.leaf,
@@ -104,7 +117,38 @@ class _HuntRoundState extends RoundState<HuntRound> {
         ),
       ],
     );
+
+    if (!_resting) return page;
+    return Stack(
+      children: [
+        page,
+        Positioned.fill(
+          child: Semantics(
+            button: true,
+            label: context.l10n.huntRestHint,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => setState(() => _resting = false),
+              child: ColoredBox(
+                color: const Color(0xFF101418),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: Text(
+                      context.l10n.huntRestHint,
+                      textAlign: TextAlign.center,
+                      style: text.titleMedium?.copyWith(color: const Color(0xFF8A94A0)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
+
 
   /// La regola per il grande, prima di cominciare.
   Widget _buildRules(BuildContext context) {

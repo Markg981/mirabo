@@ -1,0 +1,53 @@
+{
+  "title": "Caza de formas",
+  "offscreen": "Dad una vuelta por la habitación sin tableta: \"Veo veo un círculo\". Por turnos, el niño también elige la forma.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Algo redondo",
+          "say": "Busca algo redondo, como un círculo, y tráelo aquí."
+        },
+        {
+          "label": "Algo con esquinas",
+          "say": "Ahora algo con cuatro esquinas, como un cuadrado."
+        },
+        {
+          "label": "Algo con tres puntas",
+          "say": "Y algo con tres puntas, como un triángulo."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Algo largo y estrecho",
+          "say": "Busca algo largo y estrecho."
+        },
+        {
+          "label": "Algo redondo pero aplastado",
+          "say": "Ahora algo redondo pero aplastado, como un huevo o una moneda."
+        },
+        {
+          "label": "Algo que se mantiene en pie solo",
+          "say": "Algo con caras planas que se mantiene en pie solo."
+        },
+        {
+          "label": "Algo que rueda",
+          "say": "Y para terminar algo que rueda. ¡Pruébalo en la alfombra!"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}
