@@ -86,9 +86,7 @@ poi si vede "cosa succede" per ogni scelta.
 ## Progressi
 
 Per ogni (profilo, attività) l'app tiene `level` (1..n), `successes`, `attempts`, `hints`,
-`lastPlayed`. Regola adattiva: 3 successi consecutivi al primo tentativo → livello +1;
-2 round con 2 o più errori → livello −1. Le statistiche genitore traducono il livello in
-tappe descrittive: "sta iniziando / ci sta lavorando / ce la fa / lo fa da solo".
+`lastPlayed`. Il livello non cambia da solo: lo sceglie il bambino a fine attività (più semplice / ancora così / più sfida), vedi `adaptivity.md`.
 
 ## Profilo di interazione
 

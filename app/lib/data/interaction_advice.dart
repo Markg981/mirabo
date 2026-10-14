@@ -7,8 +7,12 @@ enum InteractionAxis { hands, reading, autonomy }
 /// Una proposta al genitore: spostare un asse di un passo. L'app propone, non
 /// cambia da sola: decide sempre il genitore.
 class InteractionAdvice {
-  const InteractionAdvice(this.axis, this.next);
+  const InteractionAdvice(this.axis, this.next, {this.rounds = 0, this.days = 0});
   final InteractionAxis axis;
+
+  /// Su cosa si basa la proposta, da dire al genitore: quanti round e in quanti giorni.
+  final int rounds;
+  final int days;
 
   /// Il profilo come sarebbe accettando la proposta.
   final InteractionProfile next;
@@ -37,6 +41,8 @@ InteractionAdvice? adviseInteraction(
   List<Map<String, Object?>> rounds,
   ActivityType? Function(String activityId) typeOf,
 ) {
+  // Quanti round e giorni hanno portato alla proposta; vale per l'ultimo ready() riuscito.
+  var basisRounds = 0, basisDays = 0;
   bool ready(bool Function(ActivityType t) which) {
     final mine = rounds.where((r) {
       final t = typeOf(r['activity_id'] as String);
@@ -46,17 +52,23 @@ InteractionAdvice? adviseInteraction(
     final days = mine.map((r) => (r['at'] as String).substring(0, 10)).toSet();
     if (days.length < adviceMinDays) return false;
     final firstTry = mine.where((r) => r['attempts'] == 1 && r['hints'] == 0).length;
-    return firstTry / mine.length >= adviceFirstTryShare;
+    if (firstTry / mine.length < adviceFirstTryShare) return false;
+    basisRounds = mine.length;
+    basisDays = days.length;
+    return true;
   }
 
   if (profile.hands < InteractionProfile.maxLevel && ready((t) => t == ActivityType.trace)) {
-    return InteractionAdvice(InteractionAxis.hands, profile.copyWith(hands: profile.hands + 1));
+    return InteractionAdvice(InteractionAxis.hands, profile.copyWith(hands: profile.hands + 1),
+        rounds: basisRounds, days: basisDays);
   }
   if (profile.reading != ReadingLevel.fluent && ready((t) => t == ActivityType.spell)) {
-    return InteractionAdvice(InteractionAxis.reading, profile.copyWith(reading: ReadingLevel.values[profile.reading.index + 1]));
+    return InteractionAdvice(InteractionAxis.reading, profile.copyWith(reading: ReadingLevel.values[profile.reading.index + 1]),
+        rounds: basisRounds, days: basisDays);
   }
   if (profile.autonomy < InteractionProfile.maxLevel && ready(_choiceTypes.contains)) {
-    return InteractionAdvice(InteractionAxis.autonomy, profile.copyWith(autonomy: profile.autonomy + 1));
+    return InteractionAdvice(InteractionAxis.autonomy, profile.copyWith(autonomy: profile.autonomy + 1),
+        rounds: basisRounds, days: basisDays);
   }
   return null;
 }

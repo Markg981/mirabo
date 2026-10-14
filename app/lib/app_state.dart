@@ -220,7 +220,28 @@ class AppState extends ChangeNotifier {
     final p = currentProfile;
     if (p == null || results.isEmpty) return;
     await db.addRounds(p.id, activity, before.level, results);
-    await db.saveProgress(applyAdaptive(before, results, activity.levels.length));
+    // Il livello non cambia da solo: lo sceglie il bambino a fine attività
+    // (più semplice / ancora così / più sfida), vedi setActivityLevel.
+    await db.saveProgress(before.copyWith(sessions: before.sessions + 1, lastPlayed: DateTime.now()));
+  }
+
+  /// Scelta facoltativa a fine attività: cambia solo il livello di quell'attività
+  /// (una dimensione per volta, sempre in [1, maxLevel]) e si può annullare
+  /// con la scelta opposta. Non tocca fascia, profilo di interazione né audio.
+  Future<ActivityProgress> setActivityLevel(ActivityProgress p, int level, int maxLevel) async {
+    final next = p.copyWith(level: level.clamp(1, maxLevel), streak: 0);
+    await db.saveProgress(next);
+    return next;
+  }
+
+  static String adviceOffKey(int profileId) => 'advice_off.$profileId';
+
+  /// Le proposte al genitore sono accese salvo scelta contraria (per bambino).
+  Future<bool> adviceEnabled(ChildProfile p) async => await db.setting(adviceOffKey(p.id)) != '1';
+
+  Future<void> setAdviceEnabled(ChildProfile p, bool on) async {
+    await db.setSetting(adviceOffKey(p.id), on ? '0' : '1');
+    notifyListeners();
   }
 
   /// Proposte a cui il genitore ha detto "non ora": per questa apertura dell'app
@@ -230,6 +251,7 @@ class AppState extends ChangeNotifier {
   /// Se i round dell'ultima settimana dicono che il bambino è pronto, propone
   /// di spostare un asse del profilo di interazione. Non cambia niente da sola.
   Future<InteractionAdvice?> interactionAdvice(ChildProfile p, {DateTime? now}) async {
+    if (!await adviceEnabled(p)) return null;
     final rounds = await db.rounds(p.id, from: (now ?? DateTime.now()).subtract(const Duration(days: 7)), to: now);
     final types = {for (final a in repo.activities) a.id: a.type};
     final advice = adviseInteraction(p.interaction, rounds, (id) => types[id]);

@@ -56,16 +56,6 @@ void main() {
     expect(ActivityArea.fromKey('cultura').module, ActivityModule.montessori);
   });
 
-  test('la regola adattiva sale dopo 3 primi tentativi e scende dopo 2 round difficili', () {
-    const p = ActivityProgress(profileId: 1, activityId: 'x');
-    const ok = RoundResult(attempts: 1, hints: 0);
-    const hard = RoundResult(attempts: 3, hints: 1);
-    expect(applyAdaptive(p, [ok, ok, ok], 3).level, 2);
-    expect(applyAdaptive(p, [ok, ok], 3).level, 1);
-    expect(applyAdaptive(p.copyWith(level: 2), [hard, hard], 3).level, 1);
-    expect(applyAdaptive(p, [hard, hard], 3).level, 1);
-  });
-
   test('il profilo nasconde sicurezza in modalità da solo', () {
     const p = ChildProfile(id: 1, name: 'Test', ageBand: AgeBand.b5to7, companion: CompanionId.bo);
     final safety = Story.fromJson({

@@ -75,6 +75,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
   final List<RoundResult> _results = [];
   _Phase _phase = _Phase.intro;
   bool _saved = false;
+  int _run = 0;
 
   @override
   void initState() {
@@ -115,6 +116,23 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     _ctx.say(widget.activity.outro.forCompanion(_profile.companion));
   }
 
+  /// Scelta facoltativa a fine attività: cambia solo il livello (una dimensione),
+  /// la stessa attività riparte con la stessa voce e gli stessi aiuti.
+  /// [delta] 0 = "ancora così": ripete fedelmente lo stesso livello.
+  Future<void> _again(int delta) async {
+    final max = widget.activity.levels.length;
+    var p = (await _state.db.progress(_profile.id, widget.activity.id));
+    if (delta != 0) p = await _state.setActivityLevel(p, p.level + delta, max);
+    if (!mounted) return;
+    setState(() {
+      _progress = p;
+      _results.clear();
+      _saved = false;
+      _run++;
+      _phase = _Phase.rounds;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final progress = _progress;
@@ -136,8 +154,14 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
           text: _ctx.withName(widget.activity.outro.forCompanion(_profile.companion)),
           button: context.l10n.seeYouTomorrow,
           onPressed: () => Navigator.of(context).pop(),
+          extra: _LevelChoices(
+            canEasier: progress.level > 1,
+            canHarder: progress.level < widget.activity.levels.length,
+            onChoose: _again,
+            say: _ctx.say,
+          ),
         ),
-      _Phase.rounds => _buildRounds(level),
+      _Phase.rounds => KeyedSubtree(key: ValueKey(_run), child: _buildRounds(level)),
     };
 
     return ExitGuard(
@@ -205,6 +229,44 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
   }
 }
 
+/// "Più semplice / Ancora così / Più sfida": tre icone con la voce (tenendo
+/// premuto si ascolta), mai obbligatorie: "A domani" chiude comunque.
+class _LevelChoices extends StatelessWidget {
+  const _LevelChoices({required this.canEasier, required this.canHarder, required this.onChoose, required this.say});
+  final bool canEasier;
+  final bool canHarder;
+  final Future<void> Function(int delta) onChoose;
+  final Future<void> Function(String text) say;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    Widget choice(IconData icon, String label, int delta, bool enabled, Color color) => Padding(
+          padding: const EdgeInsets.only(left: 14, right: 4),
+          child: Semantics(
+            label: label,
+            button: true,
+            child: GestureDetector(
+              onLongPress: () => say(label),
+              child: ChunkyButton(
+                label: label,
+                icon: icon,
+                color: color,
+                onPressed: enabled ? () => onChoose(delta) : null,
+              ),
+            ),
+          ),
+        );
+    return Wrap(
+      children: [
+        choice(Icons.arrow_downward_rounded, l.levelEasier, -1, canEasier, MiraboColors.navy),
+        choice(Icons.replay_rounded, l.levelSame, 0, true, MiraboColors.leaf),
+        choice(Icons.arrow_upward_rounded, l.levelHarder, 1, canHarder, MiraboColors.sun),
+      ],
+    );
+  }
+}
+
 class _CompanionSays extends StatelessWidget {
   const _CompanionSays({
     required this.companion,
@@ -212,7 +274,9 @@ class _CompanionSays extends StatelessWidget {
     required this.text,
     required this.button,
     required this.onPressed,
+    this.extra,
   });
+  final Widget? extra;
   final Companion companion;
   final int stage;
   final String text;
@@ -243,6 +307,7 @@ class _CompanionSays extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 22),
                       child: Text(text, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 24)),
                     ),
+                    if (extra != null) ...[const SizedBox(height: 20), extra!],
                     const SizedBox(height: 28),
                     Padding(
                       padding: const EdgeInsets.only(left: 14),
@@ -527,7 +592,7 @@ class PromptBar extends StatelessWidget {
             Tooltip(
               message: context.l10n.listenAgain,
               child: Material(
-                color: tokens.tint(MiraboColors.sky),
+                color: tokens.tint(MiraboColors.navy),
                 shape: const CircleBorder(),
                 child: InkWell(
                   customBorder: const CircleBorder(),
