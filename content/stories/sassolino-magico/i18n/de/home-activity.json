@@ -1,0 +1,44 @@
+{
+  "title": "Die Kreise des Steinchens",
+  "intro": "In der Geschichte fällt ein Steinchen ins Wasser und macht Kreise, die sich ausbreiten. Zu Hause genügt eine Schüssel Wasser, um sie echt zu sehen: Die Aktivität geht ohne Tablet.",
+  "bands": {
+    "3-5": {
+      "goal": "Schauen und hören, was ein Steinchen macht, wenn es ins Wasser fällt.",
+      "steps": [
+        "Das Kind lässt ein Steinchen nach dem anderen sanft in die Schüssel fallen.",
+        "Jeder sagt, was er sieht (die Kreise) und was er hört (plitsch).",
+        "Wenn das Wasser wieder still ist, probiert man ein anderes Steinchen."
+      ],
+      "materials": ["eine große Schüssel mit wenig Wasser", "zwei oder drei glatte Steinchen, größer als eine Walnuss", "ein Geschirrtuch zum Abtrocknen"],
+      "preparation": ["Stell die Schüssel auf einen niedrigen Tisch oder auf den Boden, auf das Geschirrtuch.", "Leg die Steinchen auf einen kleinen Teller neben die Schüssel."],
+      "supervision": { "note": "Kleine Steinchen können im Mund landen: Nimm große und bleib während des ganzen Spiels neben dem Kind." },
+      "alternatives": ["Ohne Steinchen: Blätter oder große Flaschendeckel zum Fallenlassen.", "Draußen: eine Pfütze oder ein Brunnen, das Kind an der Hand."]
+    },
+    "5-7": {
+      "goal": "Entdecken, dass verschiedene Steine verschiedene Kreise machen.",
+      "steps": [
+        "Das Kind sucht drei Steine in verschiedenen Größen aus und legt sie der Größe nach in eine Reihe.",
+        "Es sagt laut, welcher die größten Kreise machen wird.",
+        "Es lässt sie einzeln fallen, schaut und prüft, ob es richtig geraten hat.",
+        "Es legt die Steine zurück an ihren Platz und wischt verschüttetes Wasser auf."
+      ],
+      "materials": ["eine Schüssel oder Wanne mit Wasser", "drei Steine in verschiedenen Größen", "ein Tuch zum Abtrocknen"],
+      "preparation": ["Legt Steine, Schüssel und Tuch zusammen auf eine Fläche, die nass werden darf.", "Lass das Kind die Steine aussuchen."],
+      "supervision": { "note": "Es reicht, wenn du im Zimmer bist und die Steine zu groß für den Mund sind. Du musst nicht sagen, ob es richtig geraten hat: Gemeinsam schauen genügt." },
+      "alternatives": ["Mit dem Waschbecken und wenig Wasser, falls ihr keine Schüssel habt.", "Mit drei Bällen unterschiedlichen Gewichts statt der Steine."]
+    },
+    "7-10": {
+      "goal": "Einen Versuch machen, sehen, was passiert, und davon erzählen.",
+      "steps": [
+        "Das Kind entscheidet, was es herausfinden will (zum Beispiel: Ändern sich die Kreise, wenn der Stein von weiter oben fällt?).",
+        "Es zeichnet seinen Plan: was es benutzt und in welcher Reihenfolge.",
+        "Es macht den Versuch und notiert oder zeichnet, was es sieht.",
+        "Es erzählt laut, was es gegenüber dem Plan geändert hat und warum."
+      ],
+      "materials": ["eine Wanne mit Wasser", "Steine oder andere kleine Dinge, die sinken", "Papier und Bleistift", "ein Tuch zum Abtrocknen"],
+      "preparation": ["Lass das Material in einer Ecke bereit, wo es nass werden darf.", "Sag nur, dass es einen Versuch zu machen gibt: Die Frage wählt das Kind."],
+      "supervision": { "note": "Das Kind kann alles allein machen; bitte es nur, es dir hinterher zu erzählen. Bleib in der Nähe, wenn es ein volles Waschbecken benutzt oder draußen ist." },
+      "alternatives": ["Mit einer Pfütze oder einem Brunnen, wenn ihr im Laufe des Tages an einem vorbeikommt.", "Mit einer Lupe, um die Kreise aus der Nähe anzusehen, wenn das Kind danach fragt."]
+    }
+  }
+}

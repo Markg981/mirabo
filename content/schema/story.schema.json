@@ -32,6 +32,7 @@
     "keyPhrase": { "type": "string", "minLength": 1 },
     "gesture": { "type": "string" },
     "parentCard": { "type": "string" },
+    "homeActivity": { "type": "string", "pattern": "\\.json$" },
     "sources": { "type": "array", "items": { "type": "string" } },
     "reviewedBy": { "type": "string" },
     "status": { "enum": ["draft", "review", "published"] }

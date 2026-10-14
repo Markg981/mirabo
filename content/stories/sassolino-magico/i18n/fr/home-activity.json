@@ -1,0 +1,44 @@
+{
+  "title": "Les cercles du petit caillou",
+  "intro": "Dans l'histoire, un petit caillou tombe dans l'eau et fait des cercles qui s'élargissent. À la maison, un bol d'eau suffit pour les voir pour de vrai : l'activité se fait sans la tablette.",
+  "bands": {
+    "3-5": {
+      "goal": "Regarder et écouter ce que fait un petit caillou quand il tombe dans l'eau.",
+      "steps": [
+        "L'enfant laisse tomber un caillou à la fois dans le bol, doucement.",
+        "Chacun dit ce qu'il voit (les cercles) et ce qu'il entend (ploc).",
+        "Quand l'eau est de nouveau calme, on essaie avec un autre caillou."
+      ],
+      "materials": ["un grand bol avec un peu d'eau", "deux ou trois cailloux lisses, plus gros qu'une noix", "un torchon pour essuyer"],
+      "preparation": ["Pose le bol sur une table basse ou par terre, sur le torchon.", "Mets les cailloux dans une petite assiette à côté du bol."],
+      "supervision": { "note": "Les petits cailloux peuvent finir dans la bouche : choisis des gros et reste à côté de l'enfant pendant tout le jeu." },
+      "alternatives": ["Sans cailloux : des feuilles ou de gros bouchons à laisser tomber.", "Dehors : une flaque ou une fontaine, en tenant l'enfant par la main."]
+    },
+    "5-7": {
+      "goal": "Découvrir que des pierres différentes font des cercles différents.",
+      "steps": [
+        "L'enfant choisit trois pierres de tailles différentes et les met en rang, de la plus petite à la plus grande.",
+        "Il dit à voix haute laquelle fera les plus grands cercles.",
+        "Il les laisse tomber une à une, regarde et vérifie s'il avait deviné.",
+        "Il remet les pierres à leur place et essuie l'eau renversée."
+      ],
+      "materials": ["un bol ou une bassine avec de l'eau", "trois pierres de tailles différentes", "un chiffon pour essuyer"],
+      "preparation": ["Rassemblez pierres, bol et chiffon sur une surface qui peut être mouillée.", "Laisse l'enfant choisir les pierres."],
+      "supervision": { "note": "Il suffit que tu sois dans la pièce et que les pierres soient trop grosses pour aller dans la bouche. Inutile de dire s'il a deviné : regarder ensemble suffit." },
+      "alternatives": ["Avec l'évier et un peu d'eau, si vous n'avez pas de bol.", "Avec trois balles de poids différents à la place des pierres."]
+    },
+    "7-10": {
+      "goal": "Faire un essai, voir ce qui se passe et le raconter.",
+      "steps": [
+        "L'enfant décide ce qu'il veut découvrir (par exemple : les cercles changent-ils si la pierre tombe de plus haut ?).",
+        "Il dessine son plan : ce qu'il utilisera et dans quel ordre.",
+        "Il fait l'essai et note ou dessine ce qu'il voit.",
+        "Il raconte à voix haute ce qu'il a changé par rapport au plan et pourquoi."
+      ],
+      "materials": ["une bassine avec de l'eau", "des pierres ou d'autres petits objets qui coulent", "du papier et un crayon", "un chiffon pour essuyer"],
+      "preparation": ["Laisse le matériel dans un coin où l'on peut mouiller.", "Dis seulement qu'il y a un essai à faire : la question, c'est l'enfant qui la choisit."],
+      "supervision": { "note": "L'enfant peut tout faire seul ; demande-lui seulement de te le raconter ensuite. Reste près de lui s'il utilise un évier plein ou s'il est dehors." },
+      "alternatives": ["Avec une flaque ou une fontaine, si vous en croisez une dans la journée.", "Avec une loupe pour regarder les cercles de près, si l'enfant la demande."]
+    }
+  }
+}

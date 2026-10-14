@@ -401,5 +401,14 @@
   "adviceReading": "Ces derniers jours, {name} compose les mots du premier coup : voulez-vous afficher plus de texte ?",
   "adviceAutonomy": "Ces derniers jours, {name} répond juste du premier coup : voulez-vous essayer avec plus de choix à la fois ?",
   "adviceYes": "Oui, essayons",
-  "adviceNo": "Pas maintenant"
+  "adviceNo": "Pas maintenant",
+  "homeActivityHeading": "Une activité de l'histoire",
+  "homeActivitySteps": "Ce que fait l'enfant",
+  "homeActivityMaterials": "Ce qu'il faut",
+  "homeActivityPreparation": "Préparation",
+  "homeActivitySupervision": "Supervision",
+  "homeActivityAlternatives": "S'il manque quelque chose",
+  "supervisionTogether": "Avec l'enfant, du début à la fin",
+  "supervisionNearby": "Un adulte à proximité",
+  "supervisionFree": "L'enfant peut le faire seul"
 }

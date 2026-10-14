@@ -401,5 +401,14 @@
   "adviceReading": "Lately {name} builds words on the first try: would you like to show more text?",
   "adviceAutonomy": "Lately {name} answers right on the first try: would you like to try more choices at a time?",
   "adviceYes": "Yes, let's try",
-  "adviceNo": "Not now"
+  "adviceNo": "Not now",
+  "homeActivityHeading": "An activity from the story",
+  "homeActivitySteps": "What the child does",
+  "homeActivityMaterials": "What you need",
+  "homeActivityPreparation": "Preparation",
+  "homeActivitySupervision": "Supervision",
+  "homeActivityAlternatives": "If something is missing",
+  "supervisionTogether": "With the child, start to finish",
+  "supervisionNearby": "An adult nearby",
+  "supervisionFree": "The child can do it alone"
 }

@@ -59,8 +59,49 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
         if variant.get("ageBand") != band:
             errors.append(f"{folder.name}/{file}: ageBand '{variant.get('ageBand')}' diverso da '{band}'")
         errors += check_screens(f"{folder.name}/{file}", variant.get("screens", []), band, meta)
+    errors += check_home_activity(folder, meta)
     errors += check_translations(folder, meta)
     errors += check_review(folder, meta)
+    return errors
+
+
+BAND_LISTS = ("steps", "materials", "preparation", "alternatives")
+
+
+def check_home_activity(folder: Path, meta: dict) -> list[str]:
+    """L'attività dalla storia (facoltativa): struttura per fascia e overlay tradotti con le stesse liste."""
+    file = meta.get("homeActivity")
+    if not file:
+        return []
+    errors: list[str] = []
+    path = folder / file
+    if not path.exists():
+        return [f"{folder.name}: attività '{file}' mancante"]
+    activity = read_json(path)
+    for e in load_schema("home-activity.schema.json").iter_errors(activity):
+        errors.append(f"{folder.name}/{file}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
+    base_bands = activity.get("bands", {})
+    for lang_dir in sorted(p for p in (folder / "i18n").glob("*") if p.is_dir()):
+        label = f"{folder.name}/i18n/{lang_dir.name}/{file}"
+        tpath = lang_dir / file
+        if not tpath.exists():
+            errors.append(f"{label}: manca l'attività tradotta")
+            continue
+        over = read_json(tpath)
+        if set(over) - {"title", "intro", "bands"}:
+            errors.append(f"{label}: campi non traducibili {sorted(set(over) - {'title', 'intro', 'bands'})}")
+        if set(over.get("bands", {})) != set(base_bands):
+            errors.append(f"{label}: le fasce devono essere {sorted(base_bands)}")
+            continue
+        for band, b in base_bands.items():
+            o = over["bands"][band]
+            if set(o) - set(b):
+                errors.append(f"{label} [{band}]: campi non traducibili {sorted(set(o) - set(b))}")
+            for key in BAND_LISTS:
+                if len(o.get(key, [])) != len(b.get(key, [])):
+                    errors.append(f"{label} [{band}]: '{key}' ha {len(o.get(key, []))} voci, l'italiano {len(b.get(key, []))}")
+            if set(o.get("supervision", {})) - {"note"}:
+                errors.append(f"{label} [{band}]: della supervisione si traduce solo 'note'")
     return errors
 
 

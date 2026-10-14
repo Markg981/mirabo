@@ -312,6 +312,70 @@ class StoryVariant {
       );
 }
 
+/// Quanto serve l'adulto durante l'attività: con il bambino, vicino, o basta saperlo.
+enum Supervision {
+  together,
+  nearby,
+  free;
+
+  static Supervision fromKey(String key) =>
+      Supervision.values.firstWhere((s) => s.name == key, orElse: () => throw ArgumentError('Supervisione sconosciuta: $key'));
+}
+
+/// L'attività della storia per una fascia: cosa serve, come si prepara, quanta
+/// supervisione chiede e che alternative ci sono. Il bambino la fa senza il tablet.
+class HomeActivityBand {
+  const HomeActivityBand({
+    required this.goal,
+    required this.steps,
+    required this.materials,
+    required this.preparation,
+    required this.supervision,
+    required this.supervisionNote,
+    required this.alternatives,
+  });
+
+  final String goal;
+  final List<String> steps;
+  final List<String> materials;
+  final List<String> preparation;
+  final Supervision supervision;
+  final String supervisionNote;
+  final List<String> alternatives;
+
+  static List<String> _strings(Object? v) => ((v as List?) ?? const []).cast<String>();
+
+  factory HomeActivityBand.fromJson(Map<String, dynamic> j) {
+    final sup = j['supervision'] as Map<String, dynamic>;
+    return HomeActivityBand(
+      goal: j['goal'] as String,
+      steps: _strings(j['steps']),
+      materials: _strings(j['materials']),
+      preparation: _strings(j['preparation']),
+      supervision: Supervision.fromKey(sup['level'] as String),
+      supervisionNote: sup['note'] as String,
+      alternatives: _strings(j['alternatives']),
+    );
+  }
+}
+
+/// "Un'attività concreta che nasce dalla storia" (home-activity.json): un oggetto
+/// o un problema del racconto diventa qualcosa da fare davvero, con tre varianti per fascia.
+class HomeActivity {
+  const HomeActivity({required this.title, this.intro, required this.bands});
+
+  final String title;
+  final String? intro;
+  final Map<AgeBand, HomeActivityBand> bands;
+
+  factory HomeActivity.fromJson(Map<String, dynamic> j) => HomeActivity(
+        title: j['title'] as String,
+        intro: j['intro'] as String?,
+        bands: (j['bands'] as Map<String, dynamic>)
+            .map((k, v) => MapEntry(AgeBand.fromKey(k), HomeActivityBand.fromJson(v as Map<String, dynamic>))),
+      );
+}
+
 /// Metadati di una storia (story.json) più le varianti caricate dal pacchetto.
 class Story {
   const Story({
@@ -328,9 +392,11 @@ class Story {
     required this.keyPhrase,
     this.gesture,
     required this.parentCardFile,
+    this.homeActivityFile,
     required this.sources,
     this.variants = const {},
     this.parentCard,
+    this.homeActivity,
   });
 
   final String id;
@@ -346,9 +412,11 @@ class Story {
   final String keyPhrase;
   final String? gesture;
   final String parentCardFile;
+  final String? homeActivityFile;
   final List<String> sources;
   final Map<AgeBand, StoryVariant> variants;
   final String? parentCard;
+  final HomeActivity? homeActivity;
 
   bool supports(AgeBand band) => variantFiles.containsKey(band);
 
@@ -366,10 +434,11 @@ class Story {
         keyPhrase: j['keyPhrase'] as String,
         gesture: j['gesture'] as String?,
         parentCardFile: j['parentCard'] as String,
+        homeActivityFile: j['homeActivity'] as String?,
         sources: ((j['sources'] as List?) ?? const []).cast<String>(),
       );
 
-  Story withContent({required Map<AgeBand, StoryVariant> variants, String? parentCard}) => Story(
+  Story withContent({required Map<AgeBand, StoryVariant> variants, String? parentCard, HomeActivity? homeActivity}) => Story(
         id: id,
         version: version,
         title: title,
@@ -383,8 +452,10 @@ class Story {
         keyPhrase: keyPhrase,
         gesture: gesture,
         parentCardFile: parentCardFile,
+        homeActivityFile: homeActivityFile,
         sources: sources,
         variants: variants,
         parentCard: parentCard,
+        homeActivity: homeActivity,
       );
 }

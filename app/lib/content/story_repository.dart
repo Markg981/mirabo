@@ -144,7 +144,17 @@ class StoryRepository {
     }
     final card = meta.parentCardFile;
     final parentCard = (lang == 'it' ? null : pkg.text('i18n/$lang/$card')) ?? pkg.text(card);
-    return meta.withContent(variants: variants, parentCard: parentCard);
+    // L'attività è facoltativa; se l'overlay tradotto è rotto resta quella italiana.
+    HomeActivity? homeActivity;
+    if (meta.homeActivityFile case final file?) {
+      try {
+        homeActivity = HomeActivity.fromJson(_localized(pkg, file, lang)!);
+      } catch (_) {
+        final base = pkg.json(file);
+        if (base != null) homeActivity = HomeActivity.fromJson(base);
+      }
+    }
+    return meta.withContent(variants: variants, parentCard: parentCard, homeActivity: homeActivity);
   }
 }
 

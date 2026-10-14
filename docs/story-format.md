@@ -28,9 +28,41 @@ lia-rabbia/
 | `keyPhrase` | string | frase-chiave della storia |
 | `gesture` | string? | gesto da fare nella vita vera; il genitore lo segna nel diario ed è ciò che fa crescere il compagno |
 | `parentCard` | string | file markdown della scheda genitore |
+| `homeActivity` | string? | file JSON dell'attività dalla storia (facoltativo, vedi sotto); le storie senza restano valide |
 | `sources` | string[] | fonti pedagogiche |
 | `reviewedBy` | string? | chi ha fatto la revisione pedagogica, con qualifica e data; obbligatorio se `status` è `published` |
 | `status` | `draft` \| `review` \| `published` | stato della revisione pedagogica, vedi [`pedagogical-review.md`](pedagogical-review.md) |
+
+## Attività dalla storia (`home-activity.json`, facoltativa)
+
+Un oggetto o un problema del racconto diventa qualcosa da fare davvero, a casa e senza il tablet.
+Compare nella scheda genitore sotto il testo di `parent.md`; schema in
+`content/schema/home-activity.schema.json`. Il tablet non verifica e non premia: non segna nulla.
+
+```json
+{
+  "title": "...",
+  "intro": "...",
+  "bands": {
+    "3-5": {
+      "goal": "...",
+      "steps": ["..."],
+      "materials": ["..."],
+      "preparation": ["..."],
+      "supervision": { "level": "together", "note": "..." },
+      "alternatives": ["..."]
+    }
+  }
+}
+```
+
+`bands` ha almeno una fascia (anche diversa da quelle della storia: l'attività è del genitore).
+Per fascia sono obbligatori `goal`, `steps`, `materials` (oggetti comuni di casa), `preparation`
+(cosa fa l'adulto prima), `supervision` e `alternatives`. `supervision.level` è `together` (adulto
+con il bambino), `nearby` (adulto vicino) o `free` (il bambino fa da solo e lo racconta dopo).
+Nelle traduzioni (`i18n/<lingua>/home-activity.json`) si traducono solo i testi: stesso numero di
+voci per lista, `supervision.level` non si ripete. `studio/validate.py` controlla schema e overlay.
+Per le fasce vedi l'esempio *La tavola degli ospiti* in `style-guide.md`.
 
 ## Variante per fascia (`5-7.json`)
 
