@@ -4,9 +4,11 @@
 - `story-format.md`: formato dei pacchetti storia (contratto studio ↔ app).
 - `style-guide.md`: voce, struttura delle storie, compagni, serie *Emma e Pietrolino*, regole editoriali, scheda genitore e traduzioni.
 - `pedagogical-review.md`: revisione pedagogica delle storie (stati, schede in `content/reviews/`, `studio/review.py`).
+- `launch/readiness.md`: prontezza al lancio (Italia/UE e USA), matrice di rischio e protocollo di test con le famiglie.
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 - `onboarding.md`: onboarding dell'adulto al primo avvio (60 secondi), stato e criterio di test.
+- `store/` e `privacy/`: dichiarazioni agli store, informativa e COPPA (bozze da validare); parti da `store/checklist-release.md`.
 
 ## Tempi d'uso (area genitori, scheda "Crescita")
 
