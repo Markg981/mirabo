@@ -477,5 +477,12 @@
   "homeActivityAlternatives": "Se manca qualcosa",
   "supervisionTogether": "Con il bambino, dall'inizio alla fine",
   "supervisionNearby": "Un adulto vicino",
-  "supervisionFree": "Il bambino può fare da solo"
+  "supervisionFree": "Il bambino può fare da solo",
+
+  "usageTitle": "Tempo con lo schermo",
+  "usageWeek": "Ultimi 7 giorni, con lo schermo acceso: {minutes} min in tutto, in {days} giorni.",
+  "usageToday": "Oggi: {minutes} min.",
+  "usageGestures": "Gesti segnati nel diario negli ultimi 7 giorni: {count}. Sono cose fatte nella vita vera, a parte dallo schermo.",
+  "usageLimit": "Nella modalità \"da solo\" il compagno saluta dopo {minutes} min (si cambia nel profilo).",
+  "usageCannot": "Cosa l'app non può misurare: quanto il bambino guarda davvero lo schermo, l'ascolto a schermo spento, il tempo su altri dispositivi, ciò che fate insieme fuori dallo schermo. I minuti sono solo una parte: contano anche cosa guarda, con chi e come ne parlate."
 }

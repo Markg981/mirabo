@@ -7,6 +7,12 @@
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 
+## Tempi d'uso (area genitori, scheda "Crescita")
+
+- **Cosa si misura**: solo il tempo con l'app in primo piano e lo schermo acceso, per bambino e per giorno (`usage_tracker.dart`, contatori `usage.<profilo>.<aaaa-mm-gg>` in `settings`, inclusi nel backup; nessun cambio di schema).
+- **Cosa non si misura**: se il bambino guarda davvero, l'ascolto a schermo spento, il tempo su altri dispositivi, ciò che si fa fuori dallo schermo. Le attività pratiche le dichiara la famiglia: i gesti segnati nel diario compaiono accanto ai minuti e la scheda lo dice apertamente.
+- **Limiti**: resta il limite per profilo della sessione "da solo" (minuti scelti nel profilo); la scheda lo richiama. Nessun obiettivo giornaliero di utilizzo e nessun messaggio che giudichi: dati neutri e il promemoria che contano anche contenuto, contesto e comunicazione (le "5 Cs" AAP), non solo i minuti.
+
 ## Decisioni chiave
 
 | Ambito | Decisione |

@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../data/exploration_diary.dart';
+import '../../data/usage_tracker.dart';
 import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
@@ -774,6 +775,8 @@ class _DevelopmentTabState extends State<_DevelopmentTab> {
             const SizedBox(height: 8),
             Text(l.growthIntro),
             const SizedBox(height: 16),
+            _UsageCard(state: widget.state, profile: widget.profile),
+            const SizedBox(height: 16),
             if (data == null)
               const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
             else ...[
@@ -852,3 +855,46 @@ String _bandKey(AgeBand b) => switch (b) {
       AgeBand.b5to7 => 'mid',
       AgeBand.b7to10 => 'big',
     };
+
+/// Tempi d'uso contestualizzati: schermo acceso (l'unica cosa che l'app misura),
+/// gesti segnati dalla famiglia e, soprattutto, cosa i minuti non dicono.
+/// Dati neutri: nessun obiettivo, nessun giudizio.
+class _UsageCard extends StatelessWidget {
+  const _UsageCard({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final weekAgo = DateTime.now().subtract(const Duration(days: 7));
+    return FutureBuilder<(List<DayUsage>, int)>(
+      future: () async {
+        final days = await state.usage?.lastDays(profile.id) ?? const <DayUsage>[];
+        final gestures = (await state.db.gestures(profile.id)).where((g) => g.when.isAfter(weekAgo)).length;
+        return (days, gestures);
+      }(),
+      builder: (context, snap) {
+        final days = snap.data?.$1 ?? const <DayUsage>[];
+        final total = days.fold<int>(0, (a, d) => a + d.seconds);
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(l.usageTitle, style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 8),
+              if (days.isNotEmpty) ...[
+                Text(l.usageWeek((total / 60).round(), days.where((d) => d.seconds > 0).length)),
+                Text(l.usageToday(days.last.minutes)),
+              ],
+              Text(l.usageGestures(snap.data?.$2 ?? 0)),
+              Text(l.usageLimit(profile.aloneSessionMinutes)),
+              const SizedBox(height: 8),
+              Text(l.usageCannot, style: const TextStyle(fontStyle: FontStyle.italic)),
+            ]),
+          ),
+        );
+      },
+    );
+  }
+}

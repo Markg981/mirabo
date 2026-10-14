@@ -2587,6 +2587,42 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Il bambino può fare da solo'**
   String get supervisionFree;
+
+  /// No description provided for @usageTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Tempo con lo schermo'**
+  String get usageTitle;
+
+  /// No description provided for @usageWeek.
+  ///
+  /// In it, this message translates to:
+  /// **'Ultimi 7 giorni, con lo schermo acceso: {minutes} min in tutto, in {days} giorni.'**
+  String usageWeek(Object days, Object minutes);
+
+  /// No description provided for @usageToday.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi: {minutes} min.'**
+  String usageToday(Object minutes);
+
+  /// No description provided for @usageGestures.
+  ///
+  /// In it, this message translates to:
+  /// **'Gesti segnati nel diario negli ultimi 7 giorni: {count}. Sono cose fatte nella vita vera, a parte dallo schermo.'**
+  String usageGestures(Object count);
+
+  /// No description provided for @usageLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nella modalità \"da solo\" il compagno saluta dopo {minutes} min (si cambia nel profilo).'**
+  String usageLimit(Object minutes);
+
+  /// No description provided for @usageCannot.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa l\'app non può misurare: quanto il bambino guarda davvero lo schermo, l\'ascolto a schermo spento, il tempo su altri dispositivi, ciò che fate insieme fuori dallo schermo. I minuti sono solo una parte: contano anche cosa guarda, con chi e come ne parlate.'**
+  String get usageCannot;
 }
 
 class _AppLocalizationsDelegate

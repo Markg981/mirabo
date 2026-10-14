@@ -446,5 +446,12 @@
   "homeActivityAlternatives": "Wenn etwas fehlt",
   "supervisionTogether": "Mit dem Kind, von Anfang bis Ende",
   "supervisionNearby": "Ein Erwachsener in der Nähe",
-  "supervisionFree": "Das Kind kann es allein"
+  "supervisionFree": "Das Kind kann es allein",
+
+  "usageTitle": "Bildschirmzeit",
+  "usageWeek": "Letzte 7 Tage, Bildschirm an: {minutes} Min. insgesamt, an {days} Tagen.",
+  "usageToday": "Heute: {minutes} Min.",
+  "usageGestures": "In den letzten 7 Tagen im Tagebuch notierte Gesten: {count}. Das sind Dinge aus dem echten Leben, abseits des Bildschirms.",
+  "usageLimit": "Im Modus „allein“ verabschiedet sich der Begleiter nach {minutes} Min. (im Profil änderbar).",
+  "usageCannot": "Was die App nicht messen kann: wie viel das Kind wirklich auf den Bildschirm schaut, Zuhören bei ausgeschaltetem Bildschirm, Zeit auf anderen Geräten, was ihr gemeinsam abseits des Bildschirms tut. Minuten sind nur ein Teil: Es zählt auch, was es sieht, mit wem und wie ihr darüber sprecht."
 }
