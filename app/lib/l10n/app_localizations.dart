@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -241,6 +241,30 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
   String get goodbyeBody;
+
+  /// No description provided for @closingTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Bel lavoro, {name}!'**
+  String closingTitle(Object name);
+
+  /// No description provided for @closingBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Hai fatto un bel pezzo di strada. Ora puoi posare il tablet: tutto resta com\'è, lo ritrovi quando vuoi.'**
+  String get closingBody;
+
+  /// No description provided for @closingBack.
+  ///
+  /// In it, this message translates to:
+  /// **'Torna a casa'**
+  String get closingBack;
+
+  /// No description provided for @closingA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho finito'**
+  String get closingA11y;
 
   /// No description provided for @switchChildA11y.
   ///
@@ -2394,8 +2418,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

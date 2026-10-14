@@ -26,6 +26,10 @@
   "homeOneStory": "Un cuento",
   "goodbyeTitle": "¡Por hoy ya está, {name}!",
   "goodbyeBody": "Ha sido bonito. Llama a un mayor: ¡hasta la próxima!",
+  "closingTitle": "¡Buen trabajo, {name}!",
+  "closingBody": "Has hecho un buen camino. Ahora puedes dejar la tablet: todo queda como está, lo encuentras cuando quieras.",
+  "closingBack": "Volver a casa",
+  "closingA11y": "He terminado",
   "switchChildA11y": "Cambiar de niño. Ahora juega {name}",
 
   "chooseWhoPlays": "¿Quién juega hoy?",
