@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -1382,6 +1382,66 @@ abstract class AppLocalizations {
   /// **'Un\'altra idea'**
   String get ideaAnother;
 
+  /// No description provided for @ideaReasonNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Una presentazione adatta all\'età di {name}'**
+  String ideaReasonNone(String name);
+
+  /// No description provided for @ideaNeedsNothing.
+  ///
+  /// In it, this message translates to:
+  /// **'Occorrente: niente di particolare'**
+  String get ideaNeedsNothing;
+
+  /// No description provided for @ideaPrepNone.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: nessuna'**
+  String get ideaPrepNone;
+
+  /// No description provided for @ideaPrepQuick.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: circa 2 minuti'**
+  String get ideaPrepQuick;
+
+  /// No description provided for @ideaPrepShort.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione: circa 5 minuti'**
+  String get ideaPrepShort;
+
+  /// No description provided for @ideaVariant.
+  ///
+  /// In it, this message translates to:
+  /// **'Variante: {text}'**
+  String ideaVariant(String text);
+
+  /// No description provided for @ideaVariantStory.
+  ///
+  /// In it, this message translates to:
+  /// **'se oggi non è il momento, rimandate a domani; oppure lasciate che sia {name} a guidare e a dirvi cosa fare.'**
+  String ideaVariantStory(String name);
+
+  /// No description provided for @ideaVariantHome.
+  ///
+  /// In it, this message translates to:
+  /// **'dopo qualche giorno lasciate che la faccia da solo, senza ripresentarla.'**
+  String get ideaVariantHome;
+
+  /// No description provided for @ideaNoMaterials.
+  ///
+  /// In it, this message translates to:
+  /// **'Non abbiamo questi materiali'**
+  String get ideaNoMaterials;
+
+  /// No description provided for @ideaNotInterested.
+  ///
+  /// In it, this message translates to:
+  /// **'Non ci interessa'**
+  String get ideaNotInterested;
+
   /// No description provided for @ideaEmpty.
   ///
   /// In it, this message translates to:
@@ -2394,8 +2454,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

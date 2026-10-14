@@ -359,6 +359,7 @@ class _DiaryTabState extends State<_DiaryTab> {
       history: await db.dailyIdeas(id, since: now.subtract(const Duration(days: 15))),
       story: (s) => state.repo.byId(s, lang),
       activities: state.repo.activitiesIn(lang),
+      dismissed: await db.dismissedIdeas(id),
     );
     if (ideas.isNotEmpty) await db.saveDailyIdea(id, ideaDay(now), ideas.first.key);
     final weekAgo = now.subtract(const Duration(days: 7)).toIso8601String();
@@ -393,6 +394,10 @@ class _DiaryTabState extends State<_DiaryTab> {
             _IdeaSection(
               name: profile.name,
               ideas: ideas,
+              onDismiss: (key) async {
+                await state.db.dismissIdea(widget.profile.id, key);
+                if (mounted) setState(() => _data = _load());
+              },
             ),
             const SizedBox(height: 20),
             _WeekSection(
@@ -459,9 +464,12 @@ typedef _DiaryData = (List<DiaryEntry>, List<DiaryEntry>, List<GestureEntry>, Li
 /// Le idee arrivano già in ordine di priorità: la prima è quella di oggi,
 /// "Un'altra idea" passa alla successiva.
 class _IdeaSection extends StatefulWidget {
-  const _IdeaSection({required this.name, required this.ideas});
+  const _IdeaSection({required this.name, required this.ideas, required this.onDismiss});
   final String name;
   final List<DailyIdea> ideas;
+
+  /// Il genitore scarta l'idea: non viene più riproposta.
+  final Future<void> Function(String key) onDismiss;
 
   @override
   State<_IdeaSection> createState() => _IdeaSectionState();
@@ -481,7 +489,7 @@ class _IdeaSectionState extends State<_IdeaSection> {
       StoryIdea(:final story) => l10n.ideaReasonStory(widget.name, story.title),
       DailyIdea(reason: IdeaReason.tryAlone) => l10n.ideaReasonTryAlone,
       HomeIdea(reason: IdeaReason.capacity, :final capacity) => l10n.ideaReasonCapacity(widget.name, capacity.name),
-      _ => null,
+      _ => l10n.ideaReasonNone(widget.name),
     };
     return FormSection(
       icon: Icons.lightbulb_rounded,
@@ -504,10 +512,26 @@ class _IdeaSectionState extends State<_IdeaSection> {
           HomeIdea(:final activity, :final materials) => [
               Text(context.l10n.ideaHome(activity.title, context.l10n.areaLabel(activity.area.name)), style: text.titleMedium),
               const SizedBox(height: 6),
-              if (materials.isNotEmpty) Text(context.l10n.presentationWhatYouNeedSay(materials.join(', '))),
+              Text(materials.isEmpty ? l10n.ideaNeedsNothing : l10n.presentationWhatYouNeedSay(materials.join(', '))),
               Text(context.l10n.ideaHomeHint, style: text.bodySmall),
             ],
         },
+        if (idea != null) ...[
+          const SizedBox(height: 4),
+          Text(switch (idea.prep) {
+            IdeaPrep.none => l10n.ideaPrepNone,
+            IdeaPrep.quick => l10n.ideaPrepQuick,
+            IdeaPrep.short => l10n.ideaPrepShort,
+          }),
+          Text(l10n.ideaVariant(idea.variant ?? (idea is StoryIdea ? l10n.ideaVariantStory(widget.name) : l10n.ideaVariantHome))),
+          Wrap(
+            spacing: 8,
+            children: [
+              TextButton(onPressed: () => widget.onDismiss(idea.key), child: Text(l10n.ideaNoMaterials)),
+              TextButton(onPressed: () => widget.onDismiss(idea.key), child: Text(l10n.ideaNotInterested)),
+            ],
+          ),
+        ],
         if (widget.ideas.length > 1)
           Align(
             alignment: Alignment.centerLeft,

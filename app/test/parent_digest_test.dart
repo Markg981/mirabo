@@ -53,6 +53,7 @@ void main() {
       List<Map<String, Object?>> rounds = const [],
       List<ProposedIdea> history = const [],
       DateTime? when,
+      Set<String> dismissed = const {},
     }) =>
         ideasFor(
           now: when ?? now,
@@ -62,6 +63,7 @@ void main() {
           history: history,
           story: (id) => stories[id],
           activities: [travaso, versare],
+          dismissed: dismissed,
         );
 
     test('una presentazione segnata "rifarla" ieri viene prima di tutto', () {
@@ -95,6 +97,25 @@ void main() {
         {'activity_id': 'travaso-secco', 'choice': 'presentation=alone', 'at': at(10)},
       ]);
       expect(alone.first.key, 'activity:versare-acqua');
+    });
+
+    test("un'idea scartata dal genitore non torna, nemmeno se era quella di oggi", () {
+      final rounds = [{'activity_id': 'travaso-secco', 'choice': 'presentation=done', 'at': at(20)}];
+      expect(ideas(rounds: rounds).first.key, 'activity:travaso-secco');
+      final without = ideas(rounds: rounds, dismissed: {'activity:travaso-secco'});
+      expect(without.map((i) => i.key), isNot(contains('activity:travaso-secco')));
+      final today = [(day: '2026-10-13', key: 'activity:travaso-secco')];
+      expect(ideas(rounds: rounds, history: today, dismissed: {'activity:travaso-secco'}).first.key, 'activity:versare-acqua');
+      expect(ideas(dismissed: {'activity:travaso-secco', 'activity:versare-acqua'}), isEmpty);
+    });
+
+    test('ogni idea porta occorrente, preparazione e variante', () {
+      final story = ideas(diary: [read('foglia', 1)]).first as StoryIdea;
+      expect(story.prep, IdeaPrep.none);
+      expect(story.variant, isNull);
+      final home = ideas().whereType<HomeIdea>().first;
+      expect(home.materials, isNotEmpty);
+      expect(home.prep, anyOf(IdeaPrep.quick, IdeaPrep.short));
     });
 
     test('la stessa idea non torna entro 14 giorni', () {
