@@ -1948,19 +1948,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get autonomy3 => 'Alone';
 
   @override
-  String adviceHands(Object name) {
-    return 'Lately $name traces letters on the first try: would you like to try finer tracing?';
+  String adviceHands(String name, int n) {
+    return 'We suggest finer tracing because in the last $n activities $name traced letters on the first try.';
   }
 
   @override
-  String adviceReading(Object name) {
-    return 'Lately $name builds words on the first try: would you like to show more text?';
+  String adviceReading(String name, int n) {
+    return 'We suggest more text because in the last $n activities $name built words on the first try.';
   }
 
   @override
-  String adviceAutonomy(Object name) {
-    return 'Lately $name answers right on the first try: would you like to try more choices at a time?';
+  String adviceAutonomy(String name, int n) {
+    return 'We suggest more choices at a time because in the last $n activities $name answered right on the first try.';
   }
+
+  @override
+  String get adviceSwitchTitle => 'Interaction profile suggestions';
+
+  @override
+  String get adviceSwitchHint =>
+      'The app looks at the last 7 days of rounds, on this device only, and suggests one step. If you turn it off, it suggests nothing.';
+
+  @override
+  String get levelEasier => 'Easier';
+
+  @override
+  String get levelSame => 'Same again';
+
+  @override
+  String get levelHarder => 'More challenge';
 
   @override
   String get adviceYes => 'Yes, let\'s try';

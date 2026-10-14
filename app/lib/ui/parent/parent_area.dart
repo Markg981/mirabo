@@ -109,6 +109,7 @@ class _SessionTab extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
       children: [
         _InteractionAdviceCard(state: state, profile: profile),
+        _AdviceSwitch(state: state, profile: profile),
         FormSection(
           icon: Icons.people_rounded,
           color: MiraboColors.sky,
@@ -190,9 +191,9 @@ class _InteractionAdviceCard extends StatelessWidget {
         if (advice == null) return const SizedBox.shrink();
         final l = context.l10n;
         final message = switch (advice.axis) {
-          InteractionAxis.hands => l.adviceHands(profile.name),
-          InteractionAxis.reading => l.adviceReading(profile.name),
-          InteractionAxis.autonomy => l.adviceAutonomy(profile.name),
+          InteractionAxis.hands => l.adviceHands(profile.name, advice.rounds),
+          InteractionAxis.reading => l.adviceReading(profile.name, advice.rounds),
+          InteractionAxis.autonomy => l.adviceAutonomy(profile.name, advice.rounds),
         };
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
@@ -225,6 +226,31 @@ class _InteractionAdviceCard extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// Interruttore: spegne le proposte sul profilo di interazione (docs/adaptivity.md).
+class _AdviceSwitch extends StatelessWidget {
+  const _AdviceSwitch({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    return FutureBuilder<bool>(
+      future: state.adviceEnabled(profile),
+      builder: (context, snap) => Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: Text(l.adviceSwitchTitle),
+          subtitle: Text(l.adviceSwitchHint),
+          value: snap.data ?? true,
+          onChanged: (on) => state.setAdviceEnabled(profile, on),
+        ),
+      ),
     );
   }
 }

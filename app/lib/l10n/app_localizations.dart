@@ -2495,20 +2495,50 @@ abstract class AppLocalizations {
   /// No description provided for @adviceHands.
   ///
   /// In it, this message translates to:
-  /// **'Negli ultimi giorni {name} traccia le lettere al primo tentativo: vuoi provare i tracciati più fini?'**
-  String adviceHands(Object name);
+  /// **'Ti proponiamo i tracciati più fini perché nelle ultime {n} attività {name} ha tracciato le lettere al primo tentativo.'**
+  String adviceHands(String name, int n);
 
   /// No description provided for @adviceReading.
   ///
   /// In it, this message translates to:
-  /// **'Negli ultimi giorni {name} compone le parole al primo tentativo: vuoi provare a mostrare più testo?'**
-  String adviceReading(Object name);
+  /// **'Ti proponiamo più testo perché nelle ultime {n} attività {name} ha composto le parole al primo tentativo.'**
+  String adviceReading(String name, int n);
 
   /// No description provided for @adviceAutonomy.
   ///
   /// In it, this message translates to:
-  /// **'Negli ultimi giorni {name} risponde giusto al primo tentativo: vuoi provare con più scelte per volta?'**
-  String adviceAutonomy(Object name);
+  /// **'Ti proponiamo più scelte per volta perché nelle ultime {n} attività {name} ha risposto giusto al primo tentativo.'**
+  String adviceAutonomy(String name, int n);
+
+  /// No description provided for @adviceSwitchTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Proposte sul profilo di interazione'**
+  String get adviceSwitchTitle;
+
+  /// No description provided for @adviceSwitchHint.
+  ///
+  /// In it, this message translates to:
+  /// **'L’app guarda i round degli ultimi 7 giorni, solo su questo dispositivo, e ti suggerisce un passo. Se la spegni, non propone più nulla.'**
+  String get adviceSwitchHint;
+
+  /// No description provided for @levelEasier.
+  ///
+  /// In it, this message translates to:
+  /// **'Più semplice'**
+  String get levelEasier;
+
+  /// No description provided for @levelSame.
+  ///
+  /// In it, this message translates to:
+  /// **'Ancora così'**
+  String get levelSame;
+
+  /// No description provided for @levelHarder.
+  ///
+  /// In it, this message translates to:
+  /// **'Più sfida'**
+  String get levelHarder;
 
   /// No description provided for @adviceYes.
   ///

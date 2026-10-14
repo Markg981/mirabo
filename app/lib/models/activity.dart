@@ -136,7 +136,7 @@ class ActivityProgress {
   final String activityId;
   final int level;
 
-  /// Round consecutivi riusciti al primo tentativo (per salire di livello).
+  /// Round consecutivi riusciti al primo tentativo (non fa salire di livello da solo).
   final int streak;
   final int sessions;
   final DateTime? lastPlayed;
@@ -161,26 +161,4 @@ class RoundResult {
   final String? choice;
 
   bool get firstTry => attempts == 1 && hints == 0;
-}
-
-/// Regola adattiva (docs/activity-format.md): 3 successi al primo tentativo → +1,
-/// due round con 2+ errori → −1. Calcolata a fine sessione.
-ActivityProgress applyAdaptive(ActivityProgress p, List<RoundResult> results, int maxLevel) {
-  var level = p.level;
-  var streak = p.streak;
-  var hardRounds = 0;
-  for (final r in results) {
-    if (r.firstTry) {
-      streak++;
-      if (streak >= 3 && level < maxLevel) {
-        level++;
-        streak = 0;
-      }
-    } else {
-      streak = 0;
-      if (r.attempts >= 3) hardRounds++;
-    }
-  }
-  if (hardRounds >= 2 && level > 1) level--;
-  return p.copyWith(level: level, streak: streak, sessions: p.sessions + 1, lastPlayed: DateTime.now());
 }
