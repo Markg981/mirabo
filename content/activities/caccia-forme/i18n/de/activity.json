@@ -1,0 +1,53 @@
+{
+  "title": "Formen-Suche",
+  "offscreen": "Macht eine Runde durchs Zimmer ohne Tablet: \"Ich sehe was, was du nicht siehst, und es ist rund\". Abwechselnd wählt auch das Kind die Form.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Etwas Rundes",
+          "say": "Suche etwas Rundes, wie einen Kreis, und bring es her."
+        },
+        {
+          "label": "Etwas mit Ecken",
+          "say": "Jetzt etwas mit vier Ecken, wie ein Quadrat."
+        },
+        {
+          "label": "Etwas mit drei Spitzen",
+          "say": "Und etwas mit drei Spitzen, wie ein Dreieck."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Etwas Langes und Schmales",
+          "say": "Suche etwas Langes und Schmales."
+        },
+        {
+          "label": "Etwas Rundes, aber Flaches",
+          "say": "Jetzt etwas Rundes, aber Plattes, wie ein Ei oder eine Münze."
+        },
+        {
+          "label": "Etwas, das von allein steht",
+          "say": "Etwas mit ebenen Seiten, das von allein steht."
+        },
+        {
+          "label": "Etwas, das rollt",
+          "say": "Und zum Schluss etwas, das rollt. Probier es auf dem Teppich!"
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}

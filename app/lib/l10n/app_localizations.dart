@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it'),
+    Locale('it')
   ];
 
   /// No description provided for @appTitle.
@@ -242,6 +242,30 @@ abstract class AppLocalizations {
   /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
   String get goodbyeBody;
 
+  /// No description provided for @closingTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Bel lavoro, {name}!'**
+  String closingTitle(Object name);
+
+  /// No description provided for @closingBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Hai fatto un bel pezzo di strada. Ora puoi posare il tablet: tutto resta com\'è, lo ritrovi quando vuoi.'**
+  String get closingBody;
+
+  /// No description provided for @closingBack.
+  ///
+  /// In it, this message translates to:
+  /// **'Torna a casa'**
+  String get closingBack;
+
+  /// No description provided for @closingA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho finito'**
+  String get closingA11y;
+
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:
@@ -337,6 +361,24 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Guarda bene. Ti aiuto io.'**
   String get activityHelp;
+
+  /// No description provided for @activityHelpButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Aiuto'**
+  String get activityHelpButton;
+
+  /// No description provided for @activityHelpPoint.
+  ///
+  /// In it, this message translates to:
+  /// **'Guarda l\'elemento colorato: può essere lui. Prova tu.'**
+  String get activityHelpPoint;
+
+  /// No description provided for @activityHelpDemo.
+  ///
+  /// In it, this message translates to:
+  /// **'Ti faccio vedere: guarda quello che si è acceso e toccalo piano. Ora prova tu.'**
+  String get activityHelpDemo;
 
   /// No description provided for @checklistPrompt.
   ///
@@ -1868,6 +1910,18 @@ abstract class AppLocalizations {
   /// **'Non lo trovo'**
   String get huntNotFound;
 
+  /// No description provided for @huntRest.
+  ///
+  /// In it, this message translates to:
+  /// **'Schermo a riposo'**
+  String get huntRest;
+
+  /// No description provided for @huntRestHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Tocca lo schermo quando sei tornato. Se non ti va, va bene lo stesso.'**
+  String get huntRestHint;
+
   /// No description provided for @huntTellMe.
   ///
   /// In it, this message translates to:
@@ -1939,6 +1993,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Fine'**
   String get factoryEnd;
+
+  /// No description provided for @factoryOtherEnding.
+  ///
+  /// In it, this message translates to:
+  /// **'Prova un altro finale'**
+  String get factoryOtherEnding;
 
   /// No description provided for @factoryDone.
   ///
@@ -2401,6 +2461,18 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Non ora'**
   String get adviceNo;
+
+  /// No description provided for @sharedPromptGuide.
+  ///
+  /// In it, this message translates to:
+  /// **'Spiegami tu cosa fare'**
+  String get sharedPromptGuide;
+
+  /// No description provided for @sharedPromptHelp.
+  ///
+  /// In it, this message translates to:
+  /// **'Come potremmo aiutare?'**
+  String get sharedPromptHelp;
 }
 
 class _AppLocalizationsDelegate
@@ -2436,9 +2508,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

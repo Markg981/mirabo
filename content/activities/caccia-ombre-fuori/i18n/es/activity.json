@@ -1,0 +1,49 @@
+{
+  "title": "Caza de sombras al aire libre",
+  "offscreen": "Al día siguiente, a la misma hora, volved a mirar la misma sombra: ¿ha cambiado? Marcad el sitio con una piedra.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "La sombra de un árbol",
+          "say": "Con un mayor, busca la sombra de un árbol o de un poste. Quédate en la acera o en el jardín."
+        },
+        {
+          "label": "Tu sombra",
+          "say": "Ahora tu sombra. Muévete despacio: ¿qué hace ella?"
+        },
+        {
+          "label": "Donde llega el sol",
+          "say": "Y un sitio donde llega el sol y otro donde no. ¿Cuál es más cálido?"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "La sombra de una hoja caída",
+          "say": "Busca una hoja que ya se ha caído al suelo y mira su sombra."
+        },
+        {
+          "label": "La sombra de una piedra",
+          "say": "Ahora una piedra: ¿dónde está su sombra? Al lado contrario del sol."
+        },
+        {
+          "label": "Una sombra que cambia de forma",
+          "say": "Para terminar, una sombra que cambia de forma si te mueves."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
+    "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
+  },
+  "outro": {
+    "bo": "Cuántos tesoros, {nome}. Ahora cada uno vuelve a su sitio, y así mañana los encontramos.",
+    "pilu": "Cada tesoro vuelve donde lo encontraste, {nome}: eso también es parte del juego. Hasta mañana.",
+    "tango": "¡Qué búsqueda! {nome}, ¿lo ponemos todo en su sitio? Yo... yo vigilo. ¡Hasta mañana!"
+  },
+  "reviewed": false
+}

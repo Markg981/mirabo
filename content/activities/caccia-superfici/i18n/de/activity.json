@@ -1,0 +1,53 @@
+{
+  "title": "Oberflächen-Suche",
+  "offscreen": "Fahrt gemeinsam mit der Hand über drei verschiedene Oberflächen (den Tisch, einen Pullover, das Glas) und findet für jede ein Wort.",
+  "levels": [
+    {
+      "items": [
+        {
+          "label": "Eine glatte Oberfläche",
+          "say": "Suche eine glatte Oberfläche und fahre mit der Hand darüber. Dann sag mir, wie sie sich anfühlt."
+        },
+        {
+          "label": "Eine raue Oberfläche",
+          "say": "Jetzt eine raue Oberfläche, die unter der Hand ein bisschen kratzt."
+        },
+        {
+          "label": "Eine weiche Oberfläche",
+          "say": "Und eine weiche Oberfläche, in die die Hand ein bisschen einsinkt."
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "label": "Eine kalte Oberfläche",
+          "say": "Suche eine kalte Oberfläche, wie Glas oder eine Fliese."
+        },
+        {
+          "label": "Eine Oberfläche mit Erhebungen",
+          "say": "Jetzt eine Oberfläche mit Erhebungen oder Rillen. Fühle sie mit den Fingerspitzen."
+        },
+        {
+          "label": "Eine Oberfläche, die Geräusche macht",
+          "say": "Und eine Oberfläche, die ein Geräusch macht, wenn du sie sanft streichelst."
+        },
+        {
+          "label": "Zwei verschiedene Oberflächen nebeneinander",
+          "say": "Zum Schluss zwei verschiedene Oberflächen nebeneinander. Sag mir, worin sie sich unterscheiden."
+        }
+      ]
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
+    "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
+  },
+  "outro": {
+    "bo": "So viele Schätze, {nome}. Jetzt kommt jeder an seinen Platz zurück, dann finden wir sie morgen wieder.",
+    "pilu": "Jeder Schatz kommt dahin zurück, wo du ihn gefunden hast, {nome}: Das gehört auch zum Spiel. Bis morgen.",
+    "tango": "Was für eine Suche! {nome}, räumen wir alles wieder auf? Ich... ich passe auf. Bis morgen!"
+  },
+  "reviewed": false
+}
