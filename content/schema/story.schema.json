@@ -35,6 +35,8 @@
     "homeActivity": { "type": "string", "pattern": "\\.json$" },
     "sources": { "type": "array", "items": { "type": "string" } },
     "reviewedBy": { "type": "string" },
+    "author": { "type": "string", "minLength": 1 },
+    "minAppVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
     "status": { "enum": ["draft", "review", "published"] }
   }
 }

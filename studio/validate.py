@@ -494,6 +494,48 @@ def _merge(base, over):
     return over
 
 
+def check_manifest(manifest: dict) -> list[str]:
+    """Coerenza del manifest generato da pack.py (schema + regole incrociate)."""
+    label = f"manifest {manifest.get('id', '?')}"
+    errors = [f"{label}: {'/'.join(map(str, e.path))} {e.message}" for e in load_schema("manifest.schema.json").iter_errors(manifest)]
+    if errors:
+        return errors
+    files, sizes = manifest["files"], manifest["sizes"]
+    if set(files) != set(sizes):
+        errors.append(f"{label}: 'sizes' e 'files' non elencano gli stessi file")
+    elif sum(sizes.values()) != manifest["size"]:
+        errors.append(f"{label}: 'size' non è la somma di 'sizes'")
+    in_parts = [f for part in manifest["parts"].values() for f in part]
+    if sorted(in_parts) != sorted(files):
+        errors.append(f"{label}: 'parts' deve contenere ogni file una volta sola")
+    for lang in manifest["parts"]:
+        if lang != "base" and lang not in manifest["languages"]:
+            errors.append(f"{label}: parte '{lang}' non elencata in 'languages'")
+    ed = manifest["editorial"]
+    if ed["approvedVersion"] is not None:
+        if not ed["reviewer"]:
+            errors.append(f"{label}: versione approvata senza revisore")
+        if ed["approvedVersion"] > manifest["version"]:
+            errors.append(f"{label}: la versione approvata è successiva a quella del pacchetto")
+    return errors
+
+
+def check_retired() -> list[str]:
+    """content/retired.json: schema e id esistenti; la sequenza deve solo crescere."""
+    path = CONTENT / "retired.json"
+    if not path.exists():
+        return []
+    doc = read_json(path)
+    errors = [f"retired.json: {'/'.join(map(str, e.path))} {e.message}" for e in load_schema("retired.schema.json").iter_errors(doc)]
+    if errors:
+        return errors
+    known = {p.name for p in STORIES.iterdir() if p.is_dir()} | {p.name for p in ACTIVITIES.iterdir() if p.is_dir()}
+    for entry in doc["retired"]:
+        if entry["id"] not in known:
+            errors.append(f"retired.json: contenuto sconosciuto '{entry['id']}'")
+    return errors
+
+
 def main(argv: list[str]) -> int:
     story_v = load_schema("story.schema.json")
     variant_v = load_schema("variant.schema.json")
@@ -511,6 +553,10 @@ def main(argv: list[str]) -> int:
     for folder in activities:
         errs = check_activity(folder, activity_v)
         print(f"[{'OK ' if not errs else 'ERR'}] attività {folder.name}")
+        all_errors += errs
+    if not explicit:
+        errs = check_retired()
+        print(f"[{'OK ' if not errs else 'ERR'}] elenco ritirati")
         all_errors += errs
     for e in all_errors:
         print("  -", e)

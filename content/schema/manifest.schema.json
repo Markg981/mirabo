@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mirabo/manifest",
+  "title": "Manifest di un pacchetto .mirabo (formato 2)",
+  "type": "object",
+  "required": ["id", "kind", "version", "files", "manifestVersion", "formatVersion", "minAppVersion", "languages", "sizes", "size", "parts", "editorial"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["story", "activity"] },
+    "version": { "type": "integer", "minimum": 1 },
+    "manifestVersion": { "const": 2 },
+    "formatVersion": { "type": "integer", "minimum": 1 },
+    "minAppVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "languages": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[a-z]{2}$" }, "uniqueItems": true },
+    "files": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" } },
+    "sizes": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+    "size": { "type": "integer", "minimum": 0 },
+    "parts": {
+      "type": "object",
+      "required": ["base"],
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "editorial": {
+      "type": "object",
+      "required": ["author", "reviewer", "approvedVersion"],
+      "additionalProperties": false,
+      "properties": {
+        "author": { "type": "string", "minLength": 1 },
+        "reviewer": { "type": ["string", "null"] },
+        "approvedVersion": { "type": ["integer", "null"], "minimum": 1 }
+      }
+    },
+    "signature": { "type": "string", "pattern": "^[0-9a-f]{128}$" }
+  }
+}
