@@ -2533,6 +2533,60 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Come potremmo aiutare?'**
   String get sharedPromptHelp;
+
+  /// No description provided for @homeActivityHeading.
+  ///
+  /// In it, this message translates to:
+  /// **'Un\'attività dalla storia'**
+  String get homeActivityHeading;
+
+  /// No description provided for @homeActivitySteps.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa fa il bambino'**
+  String get homeActivitySteps;
+
+  /// No description provided for @homeActivityMaterials.
+  ///
+  /// In it, this message translates to:
+  /// **'Cosa serve'**
+  String get homeActivityMaterials;
+
+  /// No description provided for @homeActivityPreparation.
+  ///
+  /// In it, this message translates to:
+  /// **'Preparazione'**
+  String get homeActivityPreparation;
+
+  /// No description provided for @homeActivitySupervision.
+  ///
+  /// In it, this message translates to:
+  /// **'Supervisione'**
+  String get homeActivitySupervision;
+
+  /// No description provided for @homeActivityAlternatives.
+  ///
+  /// In it, this message translates to:
+  /// **'Se manca qualcosa'**
+  String get homeActivityAlternatives;
+
+  /// No description provided for @supervisionTogether.
+  ///
+  /// In it, this message translates to:
+  /// **'Con il bambino, dall\'inizio alla fine'**
+  String get supervisionTogether;
+
+  /// No description provided for @supervisionNearby.
+  ///
+  /// In it, this message translates to:
+  /// **'Un adulto vicino'**
+  String get supervisionNearby;
+
+  /// No description provided for @supervisionFree.
+  ///
+  /// In it, this message translates to:
+  /// **'Il bambino può fare da solo'**
+  String get supervisionFree;
 }
 
 class _AppLocalizationsDelegate

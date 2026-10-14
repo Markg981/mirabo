@@ -1,0 +1,44 @@
+{
+  "title": "Los círculos de la piedrecita",
+  "intro": "En el cuento una piedrecita cae al agua y hace círculos que se agrandan. En casa basta un cuenco con agua para verlos de verdad: la actividad se hace sin la tableta.",
+  "bands": {
+    "3-5": {
+      "goal": "Mirar y escuchar qué hace una piedrecita cuando cae al agua.",
+      "steps": [
+        "El niño deja caer una piedrecita cada vez en el cuenco, con suavidad.",
+        "Cada uno dice lo que ve (los círculos) y lo que oye (plin).",
+        "Cuando el agua vuelve a quedarse quieta, se prueba con otra piedrecita."
+      ],
+      "materials": ["un cuenco grande con poca agua", "dos o tres piedrecitas lisas, más grandes que una nuez", "un paño para secar"],
+      "preparation": ["Pon el cuenco en una mesa baja o en el suelo, sobre el paño.", "Pon las piedrecitas en un platito junto al cuenco."],
+      "supervision": { "note": "Las piedrecitas pequeñas pueden acabar en la boca: elige las grandes y quédate junto al niño durante todo el juego." },
+      "alternatives": ["Sin piedrecitas: hojas o tapones grandes para dejar caer.", "Fuera de casa: un charco o una fuente, de la mano del niño."]
+    },
+    "5-7": {
+      "goal": "Descubrir que piedras distintas hacen círculos distintos.",
+      "steps": [
+        "El niño elige tres piedras de tamaño diferente y las pone en fila, de la más pequeña a la más grande.",
+        "Dice en voz alta cuál cree que hará los círculos más grandes.",
+        "Las deja caer una a una, mira y comprueba si había acertado.",
+        "Vuelve a poner las piedras en su sitio y seca el agua derramada."
+      ],
+      "materials": ["un cuenco o una palangana con agua", "tres piedras de tamaño diferente", "un paño para secar"],
+      "preparation": ["Reunid piedras, cuenco y paño en una superficie que se pueda mojar.", "Deja que el niño elija las piedras."],
+      "supervision": { "note": "Basta con que estés en la habitación y que las piedras sean demasiado grandes para la boca. No hace falta decir si acertó: mirar juntos es suficiente." },
+      "alternatives": ["Con el fregadero y poca agua, si no tenéis cuenco.", "Con tres pelotas de distinto peso en lugar de piedras."]
+    },
+    "7-10": {
+      "goal": "Hacer una prueba, ver qué pasa y contarlo.",
+      "steps": [
+        "El niño decide qué quiere descubrir (por ejemplo: ¿cambian los círculos si la piedra cae desde más alto?).",
+        "Dibuja su plan: qué usará y en qué orden.",
+        "Hace la prueba y anota o dibuja lo que ve.",
+        "Cuenta en voz alta qué cambió respecto al plan y por qué."
+      ],
+      "materials": ["una palangana con agua", "piedras u otros objetos pequeños que se hundan", "papel y lápiz", "un paño para secar"],
+      "preparation": ["Deja el material en un rincón donde se pueda mojar.", "Solo di que hay una prueba por hacer: la pregunta la elige el niño."],
+      "supervision": { "note": "El niño puede hacerlo todo solo; pídele únicamente que te lo cuente después. Quédate cerca si usa un fregadero lleno o si está al aire libre." },
+      "alternatives": ["Con un charco o una fuente, si pasáis por uno durante el día.", "Con una lupa para mirar de cerca los círculos, si el niño la pide."]
+    }
+  }
+}

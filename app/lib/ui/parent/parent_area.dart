@@ -319,9 +319,72 @@ class _ParentCardPage extends StatelessWidget {
             ),
         ],
       ),
-      body: Markdown(
-        data: story.parentCard!,
+      body: ListView(
         padding: const EdgeInsets.all(24),
+        children: [
+          MarkdownBody(data: story.parentCard!),
+          if (story.homeActivity case final activity?) HomeActivityView(activity: activity),
+        ],
+      ),
+    );
+  }
+}
+
+/// L'attività della storia, una sezione per fascia: cosa serve, preparazione,
+/// supervisione e alternative. Il bambino la fa senza tornare nell'app.
+class HomeActivityView extends StatelessWidget {
+  const HomeActivityView({super.key, required this.activity});
+  final HomeActivity activity;
+
+  String _supervision(AppLocalizations l, Supervision s) => switch (s) {
+        Supervision.together => l.supervisionTogether,
+        Supervision.nearby => l.supervisionNearby,
+        Supervision.free => l.supervisionFree,
+      };
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final theme = Theme.of(context);
+    Widget list(String heading, List<String> items, {bool numbered = false}) => Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(heading, style: theme.textTheme.titleSmall),
+              for (final (n, item) in items.indexed) Text('${numbered ? '${n + 1}.' : '•'} $item'),
+            ],
+          ),
+        );
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l.homeActivityHeading, style: theme.textTheme.labelLarge),
+          Text(activity.title, style: theme.textTheme.headlineSmall),
+          if (activity.intro case final intro?) Padding(padding: const EdgeInsets.only(top: 8), child: Text(intro)),
+          for (final entry in activity.bands.entries)
+            Card(
+              margin: const EdgeInsets.only(top: 16),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(l.profileYears('${entry.key.minAge}–${entry.key.maxAge}'), style: theme.textTheme.titleMedium),
+                    const SizedBox(height: 4),
+                    Text(entry.value.goal),
+                    list(l.homeActivitySteps, entry.value.steps, numbered: true),
+                    list(l.homeActivityMaterials, entry.value.materials),
+                    list(l.homeActivityPreparation, entry.value.preparation),
+                    list(l.homeActivitySupervision, ['${_supervision(l, entry.value.supervision)}. ${entry.value.supervisionNote}']),
+                    list(l.homeActivityAlternatives, entry.value.alternatives),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

@@ -1857,4 +1857,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sharedPromptHelp => 'How could we help?';
+
+  @override
+  String get homeActivityHeading => 'An activity from the story';
+
+  @override
+  String get homeActivitySteps => 'What the child does';
+
+  @override
+  String get homeActivityMaterials => 'What you need';
+
+  @override
+  String get homeActivityPreparation => 'Preparation';
+
+  @override
+  String get homeActivitySupervision => 'Supervision';
+
+  @override
+  String get homeActivityAlternatives => 'If something is missing';
+
+  @override
+  String get supervisionTogether => 'With the child, start to finish';
+
+  @override
+  String get supervisionNearby => 'An adult nearby';
+
+  @override
+  String get supervisionFree => 'The child can do it alone';
 }

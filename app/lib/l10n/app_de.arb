@@ -436,5 +436,15 @@
   "adviceNo": "Nicht jetzt",
 
   "sharedPromptGuide": "Sag du mir, was zu tun ist",
-  "sharedPromptHelp": "Wie könnten wir helfen?"
+  "sharedPromptHelp": "Wie könnten wir helfen?",
+
+  "homeActivityHeading": "Eine Aktivität zur Geschichte",
+  "homeActivitySteps": "Was das Kind tut",
+  "homeActivityMaterials": "Was ihr braucht",
+  "homeActivityPreparation": "Vorbereitung",
+  "homeActivitySupervision": "Aufsicht",
+  "homeActivityAlternatives": "Wenn etwas fehlt",
+  "supervisionTogether": "Mit dem Kind, von Anfang bis Ende",
+  "supervisionNearby": "Ein Erwachsener in der Nähe",
+  "supervisionFree": "Das Kind kann es allein"
 }

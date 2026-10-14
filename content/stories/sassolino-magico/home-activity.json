@@ -1,0 +1,44 @@
+{
+  "title": "I cerchi del sassolino",
+  "intro": "Nella storia un sassolino cade nell'acqua e fa cerchi che si allargano. A casa basta una ciotola d'acqua per vederli davvero: l'attività si fa senza il tablet.",
+  "bands": {
+    "3-5": {
+      "goal": "Guardare e ascoltare cosa fa un sassolino quando cade nell'acqua.",
+      "steps": [
+        "Il bambino lascia cadere un sassolino alla volta nella ciotola, piano.",
+        "Ognuno dice cosa vede (i cerchi) e cosa sente (plin).",
+        "Quando l'acqua torna ferma, si prova con un altro sassolino."
+      ],
+      "materials": ["una ciotola grande con poca acqua", "due o tre sassolini lisci, più grandi di una noce", "un canovaccio per asciugare"],
+      "preparation": ["Metti la ciotola su un tavolo basso o per terra, sopra il canovaccio.", "Metti i sassolini in un piattino accanto alla ciotola."],
+      "supervision": { "level": "together", "note": "I sassolini piccoli si possono mettere in bocca: scegli quelli grandi e resta accanto al bambino per tutto il gioco." },
+      "alternatives": ["Senza sassolini: foglie o tappi grandi da lasciar cadere.", "Fuori casa: una pozzanghera o una fontana, tenendo il bambino per mano."]
+    },
+    "5-7": {
+      "goal": "Scoprire che sassi diversi fanno cerchi diversi.",
+      "steps": [
+        "Il bambino sceglie tre sassi di grandezza diversa e li mette in fila, dal più piccolo al più grande.",
+        "Dice a voce quale pensa che farà i cerchi più grandi.",
+        "Li lascia cadere uno alla volta, guarda e controlla se aveva indovinato.",
+        "Rimette i sassi al loro posto e asciuga l'acqua versata."
+      ],
+      "materials": ["una ciotola o una bacinella con acqua", "tre sassi di grandezza diversa", "un panno per asciugare"],
+      "preparation": ["Mettete insieme sassi, ciotola e panno su un piano che si può bagnare.", "Lascia che sia il bambino a scegliere i sassi."],
+      "supervision": { "level": "nearby", "note": "Basta che tu sia nella stanza e che i sassi siano abbastanza grandi da non finire in bocca. Non serve dire se ha indovinato: guardare insieme basta." },
+      "alternatives": ["Con il lavandino e poca acqua, se non avete una ciotola.", "Con tre palline di peso diverso al posto dei sassi."]
+    },
+    "7-10": {
+      "goal": "Fare una prova, guardare cosa succede e raccontarlo.",
+      "steps": [
+        "Il bambino decide cosa vuole scoprire (per esempio: i cerchi cambiano se il sasso cade da più in alto?).",
+        "Disegna il suo piano: cosa userà e in che ordine.",
+        "Fa la prova e annota o disegna cosa vede.",
+        "Racconta a voce cosa ha cambiato rispetto al piano e perché."
+      ],
+      "materials": ["una bacinella con acqua", "sassi o altri oggetti piccoli che affondano", "fogli e matita", "un panno per asciugare"],
+      "preparation": ["Lascia il materiale a disposizione in un angolo dove si può bagnare.", "Dì solo che c'è una prova da fare: la domanda la sceglie il bambino."],
+      "supervision": { "level": "free", "note": "Il bambino può fare tutto da solo; chiedigli solo di raccontartelo dopo. Resta vicino se usa un lavandino pieno o se è all'aperto." },
+      "alternatives": ["Con una pozzanghera o una fontana, se ci passate durante la giornata.", "Con una lente per guardare da vicino i cerchi, se il bambino la chiede."]
+    }
+  }
+}
