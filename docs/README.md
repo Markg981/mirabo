@@ -22,4 +22,5 @@
 | Diario del genitore | "Un'idea per oggi" (dalla sezione *Nella vita vera* delle schede delle storie finite e dalle presentazioni Montessori per la sua età; cambia ogni giorno) e "La settimana di …", gli ultimi 7 giorni raccontati in poche frasi. Senza voti e senza notifiche: si legge quando si apre l'area genitore |
 | Aiuto nelle attività | Un comando fisso (lampadina, in basso a destra) a richiesta, a passi: ripete la consegna, indica l'elemento, la dice a voce con un invito a provare. Non completa mai il round al posto del bambino |
 | Contenuti | Scritti da Marco con l'AI, revisione pedagogica prima della pubblicazione (`pedagogical-review.md`); proprietari |
+| Barra delle categorie | Ogni bottone ha emoji, colore e nome scritto; tenendolo premuto la voce ne dice il nome. I bottoni non cambiano posizione in base al comportamento recente |
 | Serie | *Emma e Pietrolino* è il mondo Ambiente |
