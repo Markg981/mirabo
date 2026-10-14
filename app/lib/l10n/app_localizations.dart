@@ -2359,6 +2359,18 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Non ora'**
   String get adviceNo;
+
+  /// No description provided for @sharedPromptGuide.
+  ///
+  /// In it, this message translates to:
+  /// **'Spiegami tu cosa fare'**
+  String get sharedPromptGuide;
+
+  /// No description provided for @sharedPromptHelp.
+  ///
+  /// In it, this message translates to:
+  /// **'Come potremmo aiutare?'**
+  String get sharedPromptHelp;
 }
 
 class _AppLocalizationsDelegate

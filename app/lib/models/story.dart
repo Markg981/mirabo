@@ -261,6 +261,22 @@ class GesturePause {
       );
 }
 
+/// Chi guida nel dialogo facoltativo "leggiamo insieme".
+/// `help`: "Come potremmo aiutarlo?"; `guide`: "Spiegami tu cosa fare" (il bambino guida l'adulto o il personaggio).
+enum SharedPromptRole { help, guide }
+
+/// Invito al dialogo per la lettura condivisa: nessuna risposta giusta, nessun controllo dell'app.
+class SharedPrompt {
+  const SharedPrompt({required this.role, required this.text});
+  final SharedPromptRole role;
+  final String text;
+
+  factory SharedPrompt.fromJson(Map<String, dynamic> j) => SharedPrompt(
+        role: SharedPromptRole.values.byName(j['role'] as String),
+        text: j['text'] as String,
+      );
+}
+
 class StoryScreen {
   const StoryScreen({
     required this.n,
@@ -270,6 +286,7 @@ class StoryScreen {
     this.audio,
     this.companionLines,
     this.dialogue,
+    this.sharedPrompt,
     this.lesson,
     this.gesture,
     this.isKeyPhrase = false,
@@ -282,6 +299,7 @@ class StoryScreen {
   final StoryAudio? audio;
   final CompanionLines? companionLines;
   final Dialogue? dialogue;
+  final SharedPrompt? sharedPrompt;
   final Lesson? lesson;
   final GesturePause? gesture;
   final bool isKeyPhrase;
@@ -295,6 +313,7 @@ class StoryScreen {
         companionLines:
             j['companionLines'] == null ? null : CompanionLines.fromJson(j['companionLines'] as Map<String, dynamic>),
         dialogue: j['dialogue'] == null ? null : Dialogue.fromJson(j['dialogue'] as Map<String, dynamic>),
+        sharedPrompt: j['sharedPrompt'] == null ? null : SharedPrompt.fromJson(j['sharedPrompt'] as Map<String, dynamic>),
         lesson: j['lesson'] == null ? null : Lesson.fromJson(j['lesson'] as Map<String, dynamic>),
         gesture: j['gesture'] == null ? null : GesturePause.fromJson(j['gesture'] as Map<String, dynamic>),
         isKeyPhrase: (j['keyPhrase'] as bool?) ?? false,

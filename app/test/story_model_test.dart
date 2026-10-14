@@ -27,6 +27,18 @@ void main() {
     }
   });
 
+  test('gli inviti "leggiamo insieme" sono pochi, facoltativi e mai sulla pausa di dialogo', () {
+    final v = StoryVariant.fromJson(
+        jsonDecode(File('${stories.path}/albero-silenzioso/5-7.json').readAsStringSync()));
+    final prompts = v.screens.where((s) => s.sharedPrompt != null).toList();
+    expect(prompts, isNotEmpty);
+    expect(prompts.length, lessThanOrEqualTo(v.screens.length ~/ 3));
+    expect(prompts.any((s) => s.kind == ScreenKind.dialogue), isFalse);
+    expect(prompts.map((s) => s.sharedPrompt!.role), containsAll([SharedPromptRole.help, SharedPromptRole.guide]));
+    // Senza il campo la schermata resta quella di sempre.
+    expect(v.screens.first.sharedPrompt, isNull);
+  });
+
   test('tutte le attività in content/ si caricano nel modello', () {
     final dir = Directory('${root.path}/content/activities');
     for (final d in dir.listSync().whereType<Directory>()) {

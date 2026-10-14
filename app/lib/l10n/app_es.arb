@@ -401,5 +401,8 @@
   "adviceReading": "Estos días {name} forma las palabras al primer intento: ¿quieres probar a mostrar más texto?",
   "adviceAutonomy": "Estos días {name} acierta al primer intento: ¿quieres probar con más opciones a la vez?",
   "adviceYes": "Sí, probemos",
-  "adviceNo": "Ahora no"
+  "adviceNo": "Ahora no",
+
+  "sharedPromptGuide": "Dime tú qué hacer",
+  "sharedPromptHelp": "¿Cómo podríamos ayudar?"
 }
