@@ -385,12 +385,14 @@ class AppState extends ChangeNotifier {
     await db.setSetting(LocalDb.hemisphereKey, h.name);
   }
 
-  /// Il backup su Drive non si tocca: il tablet lo dimentica e basta, così
-  /// resta ripristinabile e un tablet vuoto non lo sovrascrive.
+  /// Cancella tutto da questo tablet: profili, diario, creazioni, file generati,
+  /// database e relativa chiave. Poi l'app riparte da zero. Il backup su Drive
+  /// non si tocca (resta ripristinabile e un tablet vuoto non lo sovrascrive):
+  /// per cancellare anche quello c'è [CloudBackup.disable] con `deleteRemote`.
   Future<void> wipeAll() async {
-    await db.wipe();
     await backup.forget();
     await nameVoice.forget();
+    await db.eraseAndReopen();
     hemisphere = Hemisphere.fromRegion(_region());
     profiles = const [];
     currentProfile = null;

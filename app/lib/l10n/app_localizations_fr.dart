@@ -42,7 +42,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get readAgain => 'Relire';
 
   @override
-  String get seeYouTomorrow => 'À demain !';
+  String get seeYouTomorrow => 'Salut !';
 
   @override
   String get go => 'C\'est parti !';
@@ -712,14 +712,15 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get parentData => 'Où sont les données';
+  String get parentData => 'Vos données';
 
   @override
   String get parentDataHint =>
       'Les profils, le journal et les progrès restent sur cet appareil, chiffrés. La sauvegarde sur Google Drive ci-dessous est facultative.';
 
   @override
-  String get parentWipe => 'Effacer toutes les données';
+  String get parentWipe =>
+      'Supprimer toutes les données de Mirabò sur cette tablette';
 
   @override
   String get parentWipeConfirmTitle => 'Tout effacer ?';
@@ -2095,4 +2096,52 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get winddownHint =>
       'Peu avant la fin, le compagnon prévient calmement et ne propose rien de nouveau. Ce qui est ouvert peut se terminer.';
+
+  @override
+  String get dataWipeTitle => 'Tout supprimer de cette tablette ?';
+
+  @override
+  String get dataWipeBody =>
+      'Profils, progrès, journal, créations et fichiers générés (y compris la voix du prénom) seront supprimés définitivement, avec la base de données et sa clé. La tablette reviendra comme au premier lancement. Impossible d\'annuler. Une éventuelle sauvegarde Google Drive n\'est pas touchée.';
+
+  @override
+  String dataWipeTypePrompt(String word) {
+    return 'Pour confirmer, écrivez $word';
+  }
+
+  @override
+  String get dataWipeWord => 'SUPPRIMER';
+
+  @override
+  String get dataWipeDone =>
+      'Toutes les données de Mirabò ont été supprimées de cette tablette.';
+
+  @override
+  String get dataWipeFailed => 'Impossible de tout supprimer. Réessayez.';
+
+  @override
+  String get dataRemoteButton => 'Supprimer aussi la sauvegarde Google Drive';
+
+  @override
+  String get dataRemoteTitle => 'Supprimer la sauvegarde sur Drive ?';
+
+  @override
+  String dataRemoteBody(String account) {
+    return 'Le fichier de sauvegarde dans le Drive de $account sera supprimé, puis la tablette se déconnecte de Google et révoque l\'autorisation donnée à l\'app. Une connexion internet est nécessaire. Impossible d\'annuler. Les données de cette tablette restent.';
+  }
+
+  @override
+  String get dataRemoteDone =>
+      'Sauvegarde Google Drive supprimée et compte déconnecté.';
+
+  @override
+  String get dataRemoteFailed =>
+      'La sauvegarde Google Drive n\'a PAS été supprimée (probablement pas de réseau, ou une nouvelle connexion Google est requise). Rien n\'a changé : connectez-vous à internet et réessayez.';
+
+  @override
+  String get dataOutsideTitle => 'Ce que l\'app ne contrôle pas';
+
+  @override
+  String get dataOutsideBody =>
+      'Mirabò ne peut pas supprimer les sauvegardes du système (sauvegarde du téléphone ou de la tablette sur iCloud ou Google), ni les fichiers déjà exportés, imprimés ou partagés. Pour ceux-ci : ouvrez les réglages iCloud ou Google de l\'appareil et supprimez les anciennes sauvegardes, puis retirez à la main les fichiers enregistrés ou envoyés. S\'il reste quelque chose dans votre Drive, vous le trouvez et le supprimez dans Drive > Paramètres > Gérer les applications.';
 }

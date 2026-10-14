@@ -42,7 +42,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get readAgain => 'Rileggi';
 
   @override
-  String get seeYouTomorrow => 'A domani!';
+  String get seeYouTomorrow => 'Ciao!';
 
   @override
   String get go => 'Via!';
@@ -709,14 +709,14 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get parentData => 'Dove vivono i dati';
+  String get parentData => 'I tuoi dati';
 
   @override
   String get parentDataHint =>
       'Profili, diario e progressi restano su questo dispositivo, cifrati. Il backup su Google Drive qui sotto è facoltativo.';
 
   @override
-  String get parentWipe => 'Elimina tutti i dati';
+  String get parentWipe => 'Elimina tutti i dati di Mirabò su questo tablet';
 
   @override
   String get parentWipeConfirmTitle => 'Eliminare tutto?';
@@ -2082,4 +2082,53 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get winddownHint =>
       'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.';
+
+  @override
+  String get dataWipeTitle => 'Eliminare tutto da questo tablet?';
+
+  @override
+  String get dataWipeBody =>
+      'Verranno cancellati per sempre profili, progressi, diario, creazioni e file generati (anche la voce del nome), insieme al database e alla sua chiave. Il tablet tornerà come al primo avvio. Non si può annullare. Un eventuale backup su Google Drive non viene toccato.';
+
+  @override
+  String dataWipeTypePrompt(String word) {
+    return 'Per confermare scrivi $word';
+  }
+
+  @override
+  String get dataWipeWord => 'ELIMINA';
+
+  @override
+  String get dataWipeDone =>
+      'Tutti i dati di Mirabò sono stati eliminati da questo tablet.';
+
+  @override
+  String get dataWipeFailed =>
+      'Non è stato possibile eliminare tutto. Riprova.';
+
+  @override
+  String get dataRemoteButton => 'Elimina anche il backup su Google Drive';
+
+  @override
+  String get dataRemoteTitle => 'Eliminare il backup su Drive?';
+
+  @override
+  String dataRemoteBody(String account) {
+    return 'Il file di backup nel Drive di $account verrà cancellato, poi il tablet si scollega da Google e revoca il permesso dato all\'app. Serve internet. Non si può annullare. I dati su questo tablet restano.';
+  }
+
+  @override
+  String get dataRemoteDone =>
+      'Backup su Google Drive eliminato e account scollegato.';
+
+  @override
+  String get dataRemoteFailed =>
+      'Il backup su Google Drive NON è stato eliminato (probabilmente manca la rete o serve un nuovo accesso a Google). Non è cambiato niente: collegati a internet e riprova.';
+
+  @override
+  String get dataOutsideTitle => 'Cosa resta fuori dal controllo dell\'app';
+
+  @override
+  String get dataOutsideBody =>
+      'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati. Se resta qualcosa sul tuo Drive, lo trovi e lo elimini in Drive › Impostazioni › Gestisci app.';
 }
