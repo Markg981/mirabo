@@ -35,6 +35,16 @@ class DevelopmentStats {
   DevelopmentStats(this.db);
   final LocalDb db;
 
+  /// Il processo dei piccoli progetti (idea, previsione, prova, revisione) con
+  /// le note del bambino, dal più recente: il genitore lo rilegge, non lo valuta.
+  Future<List<ProjectStep>> projectLog(int profileId, {int days = 90}) async {
+    final rows = await db.rounds(profileId, from: DateTime.now().subtract(Duration(days: days)));
+    return [
+      for (final r in rows)
+        if (ProjectStep.parse(r['activity_id'] as String, r['at'] as String, r['choice'] as String?) case final s?) s,
+    ].reversed.toList();
+  }
+
   static final _skillLabels = {
     'suoni-iniziali': 'Suoni e lettere',
     'pregrafismo': 'Tracciare lettere',
@@ -62,6 +72,7 @@ class DevelopmentStats {
     'decine': 'Decine e unità',
     'geografia': 'Geografia',
     'botanica': 'Botanica',
+    'progetti-aperti': 'Piccoli progetti',
   };
 
   static String label(String skill) => _skillLabels[skill] ?? skill;
@@ -131,5 +142,25 @@ class DevelopmentStats {
     if (firstTry >= 0.7) return Stage.canDo;
     if (firstTry >= 0.4) return Stage.working;
     return Stage.starting;
+  }
+}
+
+/// Un passaggio di un piccolo progetto, letto dal `choice` di un round
+/// (`project=idea;note=...`, `project=test;result=held|notyet`).
+class ProjectStep {
+  const ProjectStep({required this.activityId, required this.at, required this.phase, this.note, this.result});
+  final String activityId;
+  final String at;
+  final String phase;
+  final String? note;
+  final String? result;
+
+  static ProjectStep? parse(String activityId, String at, String? choice) {
+    if (choice == null || !choice.startsWith('project=')) return null;
+    final noteAt = choice.indexOf(';note=');
+    final head = noteAt < 0 ? choice : choice.substring(0, noteAt);
+    final note = noteAt < 0 ? null : choice.substring(noteAt + 6);
+    final parts = {for (final kv in head.split(';')) kv.split('=')[0]: kv.contains('=') ? kv.substring(kv.indexOf('=') + 1) : ''};
+    return ProjectStep(activityId: activityId, at: at, phase: parts['project']!, note: note, result: parts['result']);
   }
 }

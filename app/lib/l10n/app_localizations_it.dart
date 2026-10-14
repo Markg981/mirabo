@@ -1081,6 +1081,7 @@ class AppLocalizationsIt extends AppLocalizations {
     String _temp0 = intl.Intl.selectLogic(
       skill,
       {
+        'progetti_aperti': 'Piccoli progetti',
         'suoni_iniziali': 'Suoni e lettere',
         'pregrafismo': 'Tracciare lettere',
         'numeri': 'Numeri e quantità',
@@ -1882,4 +1883,43 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get adviceNo => 'Non ora';
+
+  @override
+  String get projectPhaseIdea => 'L\'idea';
+
+  @override
+  String get projectPhasePrediction => 'La previsione';
+
+  @override
+  String get projectPhaseTest => 'La prova';
+
+  @override
+  String get projectPhaseRevision => 'La revisione';
+
+  @override
+  String get projectNoteHint => 'Se vuoi, scrivi due righe (facoltativo)';
+
+  @override
+  String get projectNext => 'Avanti';
+
+  @override
+  String get projectFinish => 'Ho finito';
+
+  @override
+  String get projectHeld => 'Ha retto';
+
+  @override
+  String get projectNotYet => 'Non ancora';
+
+  @override
+  String projectLogTitle(String name) {
+    return 'I piccoli progetti di $name';
+  }
+
+  @override
+  String get projectResultHeld => 'alla prova ha retto';
+
+  @override
+  String get projectResultNotYet =>
+      'alla prova non ancora: si cambia e si riprova';
 }

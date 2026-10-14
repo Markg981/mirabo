@@ -253,7 +253,7 @@
   "growthNew": "In the last 30 days: {count} rounds. A month ago they hadn't tried it yet.",
   "growthCompare": "Today: {now} · a month ago: {before} (grey border).",
   "stageLabel": "{stage, select, starting{getting started} working{working on it} canDo{can do it} alone{does it alone} other{{stage}}}",
-  "skillLabel": "{skill, select, suoni_iniziali{Sounds and letters} pregrafismo{Tracing letters} numeri{Numbers and quantities} logica{Logic and sequences} routine_sera{Getting ready for tomorrow} routine_mattino{The morning routine} vestirsi{Getting dressed alone} mensa{At lunch} turno_e_condivisione{Waiting your turn and sharing} chiedere_aiuto{Asking for help} distacco{Saying goodbye in the morning} conoscere_la_scuola{Getting to know school} primo_giorno{The first day} travasi{Pouring and transferring} motricita_fine{Fine motor skills} cura_ambiente{Caring for the environment} dimensioni{Sizes and ordering} colori{Colours} forme{Shapes} tatto{Touch} udito{Hearing} scrittura{Writing} vocabolario{Vocabulary} decine{Tens and units} geografia{Geography} botanica{Botany} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Small projects} suoni_iniziali{Sounds and letters} pregrafismo{Tracing letters} numeri{Numbers and quantities} logica{Logic and sequences} routine_sera{Getting ready for tomorrow} routine_mattino{The morning routine} vestirsi{Getting dressed alone} mensa{At lunch} turno_e_condivisione{Waiting your turn and sharing} chiedere_aiuto{Asking for help} distacco{Saying goodbye in the morning} conoscere_la_scuola{Getting to know school} primo_giorno{The first day} travasi{Pouring and transferring} motricita_fine{Fine motor skills} cura_ambiente{Caring for the environment} dimensioni{Sizes and ordering} colori{Colours} forme{Shapes} tatto{Touch} udito{Hearing} scrittura{Writing} vocabolario{Vocabulary} decine{Tens and units} geografia{Geography} botanica{Botany} other{{skill}}}",
 
   "profileWelcome": "Welcome to Mirabò",
   "profileEdit": "Edit profile",
@@ -401,5 +401,18 @@
   "adviceReading": "Lately {name} builds words on the first try: would you like to show more text?",
   "adviceAutonomy": "Lately {name} answers right on the first try: would you like to try more choices at a time?",
   "adviceYes": "Yes, let's try",
-  "adviceNo": "Not now"
+  "adviceNo": "Not now",
+  "projectPhaseIdea": "The idea",
+  "projectPhasePrediction": "The prediction",
+  "projectPhaseTest": "The test",
+  "projectPhaseRevision": "The revision",
+  "projectNoteHint": "If you like, write a couple of lines (optional)",
+  "projectNext": "Next",
+  "projectFinish": "I'm done",
+  "projectHeld": "It held",
+  "projectNotYet": "Not yet",
+  "projectLogTitle": "{name}'s small projects",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "it held in the test",
+  "projectResultNotYet": "not yet in the test: change something and try again"
 }

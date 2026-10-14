@@ -253,7 +253,7 @@
   "growthNew": "In den letzten 30 Tagen: {count} Runden. Vor einem Monat hatte es das noch nicht ausprobiert.",
   "growthCompare": "Heute: {now} · vor einem Monat: {before} (grauer Rand).",
   "stageLabel": "{stage, select, starting{fängt an} working{arbeitet daran} canDo{schafft es} alone{macht es allein} other{{stage}}}",
-  "skillLabel": "{skill, select, suoni_iniziali{Laute und Buchstaben} pregrafismo{Buchstaben nachspuren} numeri{Zahlen und Mengen} logica{Logik und Reihen} routine_sera{Sachen für morgen vorbereiten} routine_mattino{Die Morgenroutine} vestirsi{Sich allein anziehen} mensa{Beim Mittagessen} turno_e_condivisione{Warten und Teilen} chiedere_aiuto{Um Hilfe bitten} distacco{Der Abschied am Morgen} conoscere_la_scuola{Die Schule kennenlernen} primo_giorno{Der erste Tag} travasi{Umfüllen und Gießen} motricita_fine{Feinmotorik} cura_ambiente{Sorge für die Umgebung} dimensioni{Größen und Reihenbildung} colori{Farben} forme{Formen} tatto{Tasten} udito{Hören} scrittura{Schreiben} vocabolario{Wortschatz} decine{Zehner und Einer} geografia{Geografie} botanica{Botanik} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Kleine Projekte} suoni_iniziali{Laute und Buchstaben} pregrafismo{Buchstaben nachspuren} numeri{Zahlen und Mengen} logica{Logik und Reihen} routine_sera{Sachen für morgen vorbereiten} routine_mattino{Die Morgenroutine} vestirsi{Sich allein anziehen} mensa{Beim Mittagessen} turno_e_condivisione{Warten und Teilen} chiedere_aiuto{Um Hilfe bitten} distacco{Der Abschied am Morgen} conoscere_la_scuola{Die Schule kennenlernen} primo_giorno{Der erste Tag} travasi{Umfüllen und Gießen} motricita_fine{Feinmotorik} cura_ambiente{Sorge für die Umgebung} dimensioni{Größen und Reihenbildung} colori{Farben} forme{Formen} tatto{Tasten} udito{Hören} scrittura{Schreiben} vocabolario{Wortschatz} decine{Zehner und Einer} geografia{Geografie} botanica{Botanik} other{{skill}}}",
 
   "profileWelcome": "Willkommen bei Mirabò",
   "profileEdit": "Profil bearbeiten",
@@ -401,5 +401,18 @@
   "adviceReading": "In den letzten Tagen legt {name} Wörter beim ersten Versuch: mehr Text zeigen?",
   "adviceAutonomy": "In den letzten Tagen antwortet {name} beim ersten Versuch richtig: mehr Auswahl auf einmal ausprobieren?",
   "adviceYes": "Ja, probieren wir",
-  "adviceNo": "Nicht jetzt"
+  "adviceNo": "Nicht jetzt",
+  "projectPhaseIdea": "Die Idee",
+  "projectPhasePrediction": "Die Vorhersage",
+  "projectPhaseTest": "Der Test",
+  "projectPhaseRevision": "Die Überarbeitung",
+  "projectNoteHint": "Wenn du magst, schreib ein, zwei Zeilen (freiwillig)",
+  "projectNext": "Weiter",
+  "projectFinish": "Fertig",
+  "projectHeld": "Es hat gehalten",
+  "projectNotYet": "Noch nicht",
+  "projectLogTitle": "Die kleinen Projekte von {name}",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "beim Test hat es gehalten",
+  "projectResultNotYet": "beim Test noch nicht: etwas ändern und noch einmal versuchen"
 }

@@ -1,0 +1,60 @@
+{
+  "title": "The paper bridge",
+  "intro": {
+    "bo": "{nome}, today you build something with your hands: a paper bridge. First you think, then you test, then you improve it.",
+    "pilu": "{nome}, can a sheet of paper become a bridge? Let's think, then really test it.",
+    "tango": "A paper bridge, {nome}! I'd knock it down right away, but you think and guess first. Then we test!"
+  },
+  "outro": {
+    "bo": "You thought, tested and changed things, {nome}. There are many ways to build a bridge: yours is one.",
+    "pilu": "Well done, {nome}. There is never just one bridge: you can build more and compare them.",
+    "tango": "Your bridge is done, {nome}! Invent another tomorrow? I'll hold the books."
+  },
+  "offscreen": "You need a sheet of paper (later two), two books, some coins and a bit of tape. Build the bridge for real and add the coins one at a time. Ask 'what do you think will happen?' and 'what would you change?' without saying whether it is right: the test decides, and every bridge that holds is a good solution.",
+  "levels": [
+    {
+      "goal": "Build a paper bridge between two books.",
+      "criterion": "Does the bridge hold a coin?",
+      "phases": [
+        {
+          "label": "How will you build your bridge?",
+          "say": "Think about how to make the sheet stay between the two books. You can fold it, roll it, however you like. Then tell me your idea."
+        },
+        {
+          "label": "Will it hold the coin?",
+          "say": "Before you test it, guess: will the coin stay on the bridge? Tell me why you think so."
+        },
+        {
+          "label": "Really test it",
+          "say": "Put the coin on the bridge with your own hands. Then tell me how it went."
+        },
+        {
+          "label": "What would you change?",
+          "say": "Look at your bridge. What would you change to make it stronger, or to build it another way? If you like, try it."
+        }
+      ]
+    },
+    {
+      "goal": "Build a longer paper bridge, with the books further apart.",
+      "criterion": "Does the bridge hold five coins?",
+      "phases": [
+        {
+          "label": "How will you make it stronger?",
+          "say": "Now the books are further apart. How will you use the sheets? You can stack one on the other, or fold them like an accordion. Tell me your idea."
+        },
+        {
+          "label": "How many coins will it hold?",
+          "say": "Before you test it, guess: how many coins will the bridge hold? Why do you think so?"
+        },
+        {
+          "label": "Really test it",
+          "say": "Add the coins one at a time, with your own hands. Then tell me how it went."
+        },
+        {
+          "label": "What did you change?",
+          "say": "What did you change from your first idea? Are there other ways to build it? Try one."
+        }
+      ]
+    }
+  ]
+}

@@ -275,7 +275,7 @@
   "growthNew": "Negli ultimi 30 giorni: {count} round. Un mese fa non l'aveva ancora provato.",
   "growthCompare": "Oggi: {now} · un mese fa: {before} (bordo grigio).",
   "stageLabel": "{stage, select, starting{sta iniziando} working{ci sta lavorando} canDo{ce la fa} alone{lo fa da solo} other{{stage}}}",
-  "skillLabel": "{skill, select, suoni_iniziali{Suoni e lettere} pregrafismo{Tracciare lettere} numeri{Numeri e quantità} logica{Logica e sequenze} routine_sera{Preparare le cose per domani} routine_mattino{La routine del mattino} vestirsi{Vestirsi da solo} mensa{A mensa} turno_e_condivisione{Aspettare il turno e condividere} chiedere_aiuto{Chiedere aiuto} distacco{Il saluto del mattino} conoscere_la_scuola{Conoscere la scuola} primo_giorno{Il primo giorno} travasi{Travasi e versare} motricita_fine{Motricità fine} cura_ambiente{Cura dell'ambiente} dimensioni{Grandezze e seriazione} colori{Colori} forme{Forme} tatto{Tatto} udito{Udito} scrittura{Scrittura} vocabolario{Vocabolario} decine{Decine e unità} geografia{Geografia} botanica{Botanica} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Piccoli progetti} suoni_iniziali{Suoni e lettere} pregrafismo{Tracciare lettere} numeri{Numeri e quantità} logica{Logica e sequenze} routine_sera{Preparare le cose per domani} routine_mattino{La routine del mattino} vestirsi{Vestirsi da solo} mensa{A mensa} turno_e_condivisione{Aspettare il turno e condividere} chiedere_aiuto{Chiedere aiuto} distacco{Il saluto del mattino} conoscere_la_scuola{Conoscere la scuola} primo_giorno{Il primo giorno} travasi{Travasi e versare} motricita_fine{Motricità fine} cura_ambiente{Cura dell'ambiente} dimensioni{Grandezze e seriazione} colori{Colori} forme{Forme} tatto{Tatto} udito{Udito} scrittura{Scrittura} vocabolario{Vocabolario} decine{Decine e unità} geografia{Geografia} botanica{Botanica} other{{skill}}}",
 
   "profileWelcome": "Benvenuti in Mirabò",
   "profileEdit": "Modifica profilo",
@@ -432,5 +432,18 @@
   "adviceReading": "Negli ultimi giorni {name} compone le parole al primo tentativo: vuoi provare a mostrare più testo?",
   "adviceAutonomy": "Negli ultimi giorni {name} risponde giusto al primo tentativo: vuoi provare con più scelte per volta?",
   "adviceYes": "Sì, proviamo",
-  "adviceNo": "Non ora"
+  "adviceNo": "Non ora",
+  "projectPhaseIdea": "L'idea",
+  "projectPhasePrediction": "La previsione",
+  "projectPhaseTest": "La prova",
+  "projectPhaseRevision": "La revisione",
+  "projectNoteHint": "Se vuoi, scrivi due righe (facoltativo)",
+  "projectNext": "Avanti",
+  "projectFinish": "Ho finito",
+  "projectHeld": "Ha retto",
+  "projectNotYet": "Non ancora",
+  "projectLogTitle": "I piccoli progetti di {name}",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "alla prova ha retto",
+  "projectResultNotYet": "alla prova non ancora: si cambia e si riprova"
 }

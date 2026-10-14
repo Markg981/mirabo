@@ -253,7 +253,7 @@
   "growthNew": "Ces 30 derniers jours : {count} manches. Il y a un mois, il ne l'avait pas encore essayé.",
   "growthCompare": "Aujourd'hui : {now} · il y a un mois : {before} (bord gris).",
   "stageLabel": "{stage, select, starting{débute} working{y travaille} canDo{y arrive} alone{le fait seul} other{{stage}}}",
-  "skillLabel": "{skill, select, suoni_iniziali{Sons et lettres} pregrafismo{Tracer les lettres} numeri{Nombres et quantités} logica{Logique et suites} routine_sera{Préparer ses affaires pour demain} routine_mattino{La routine du matin} vestirsi{S'habiller seul} mensa{À la cantine} turno_e_condivisione{Attendre son tour et partager} chiedere_aiuto{Demander de l'aide} distacco{Se dire au revoir le matin} conoscere_la_scuola{Découvrir l'école} primo_giorno{Le premier jour} travasi{Transvaser et verser} motricita_fine{Motricité fine} cura_ambiente{Prendre soin de l'environnement} dimensioni{Tailles et sériation} colori{Couleurs} forme{Formes} tatto{Toucher} udito{Ouïe} scrittura{Écriture} vocabolario{Vocabulaire} decine{Dizaines et unités} geografia{Géographie} botanica{Botanique} other{{skill}}}",
+  "skillLabel": "{skill, select, progetti_aperti{Petits projets} suoni_iniziali{Sons et lettres} pregrafismo{Tracer les lettres} numeri{Nombres et quantités} logica{Logique et suites} routine_sera{Préparer ses affaires pour demain} routine_mattino{La routine du matin} vestirsi{S'habiller seul} mensa{À la cantine} turno_e_condivisione{Attendre son tour et partager} chiedere_aiuto{Demander de l'aide} distacco{Se dire au revoir le matin} conoscere_la_scuola{Découvrir l'école} primo_giorno{Le premier jour} travasi{Transvaser et verser} motricita_fine{Motricité fine} cura_ambiente{Prendre soin de l'environnement} dimensioni{Tailles et sériation} colori{Couleurs} forme{Formes} tatto{Toucher} udito{Ouïe} scrittura{Écriture} vocabolario{Vocabulaire} decine{Dizaines et unités} geografia{Géographie} botanica{Botanique} other{{skill}}}",
 
   "profileWelcome": "Bienvenue dans Mirabò",
   "profileEdit": "Modifier le profil",
@@ -401,5 +401,18 @@
   "adviceReading": "Ces derniers jours, {name} compose les mots du premier coup : voulez-vous afficher plus de texte ?",
   "adviceAutonomy": "Ces derniers jours, {name} répond juste du premier coup : voulez-vous essayer avec plus de choix à la fois ?",
   "adviceYes": "Oui, essayons",
-  "adviceNo": "Pas maintenant"
+  "adviceNo": "Pas maintenant",
+  "projectPhaseIdea": "L'idée",
+  "projectPhasePrediction": "La prévision",
+  "projectPhaseTest": "L'essai",
+  "projectPhaseRevision": "La révision",
+  "projectNoteHint": "Si tu veux, écris deux lignes (facultatif)",
+  "projectNext": "Suivant",
+  "projectFinish": "J'ai fini",
+  "projectHeld": "Ça a tenu",
+  "projectNotYet": "Pas encore",
+  "projectLogTitle": "Les petits projets de {name}",
+  "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
+  "projectResultHeld": "à l'essai, ça a tenu",
+  "projectResultNotYet": "à l'essai, pas encore : on change quelque chose et on réessaie"
 }

@@ -667,8 +667,57 @@ class _DevelopmentTab extends StatelessWidget {
                   ),
                   for (final s in stats.where((s) => s.area == area)) _SkillRow(stat: s),
                 ],
+            _ProjectLog(state: state, profile: profile),
             const SizedBox(height: 24),
             Text(context.l10n.growthOffscreen, style: const TextStyle(fontStyle: FontStyle.italic)),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Il processo dei piccoli progetti: idea, previsione, prova, revisione, con le
+/// note del bambino. Solo da leggere: nessun voto.
+class _ProjectLog extends StatelessWidget {
+  const _ProjectLog({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  String _phase(BuildContext context, String phase) => switch (phase) {
+        'idea' => context.l10n.projectPhaseIdea,
+        'prediction' => context.l10n.projectPhasePrediction,
+        'test' => context.l10n.projectPhaseTest,
+        _ => context.l10n.projectPhaseRevision,
+      };
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<ProjectStep>>(
+      future: DevelopmentStats(state.db).projectLog(profile.id),
+      builder: (context, snap) {
+        final steps = snap.data ?? const <ProjectStep>[];
+        if (steps.isEmpty) return const SizedBox.shrink();
+        final titles = {for (final a in state.repo.activities) a.id: a.title};
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 24, bottom: 4),
+              child: Text(context.l10n.projectLogTitle(profile.name), style: Theme.of(context).textTheme.titleLarge),
+            ),
+            for (final s in steps.take(24))
+              ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                title: Text('${titles[s.activityId] ?? s.activityId} · ${_phase(context, s.phase)}'),
+                subtitle: switch ((s.result, s.note)) {
+                  ('held', _) => Text(context.l10n.projectResultHeld),
+                  ('notyet', _) => Text(context.l10n.projectResultNotYet),
+                  (_, final n?) when n.isNotEmpty => Text(n),
+                  _ => null,
+                },
+              ),
           ],
         );
       },
