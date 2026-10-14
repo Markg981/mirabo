@@ -86,6 +86,21 @@ class AppLocalizationsFr extends AppLocalizations {
       'C\'était chouette. Va chercher un grand : à la prochaine !';
 
   @override
+  String closingTitle(Object name) {
+    return 'Beau travail, $name !';
+  }
+
+  @override
+  String get closingBody =>
+      'Tu as fait un beau bout de chemin. Tu peux poser la tablette : tout reste comme c\'est, tu le retrouves quand tu veux.';
+
+  @override
+  String get closingBack => 'Retour à la maison';
+
+  @override
+  String get closingA11y => 'J\'ai fini';
+
+  @override
   String switchChildA11y(Object name) {
     return 'Changer d\'enfant. C\'est $name qui joue';
   }

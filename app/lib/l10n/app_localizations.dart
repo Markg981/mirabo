@@ -242,6 +242,30 @@ abstract class AppLocalizations {
   /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
   String get goodbyeBody;
 
+  /// No description provided for @closingTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Bel lavoro, {name}!'**
+  String closingTitle(Object name);
+
+  /// No description provided for @closingBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Hai fatto un bel pezzo di strada. Ora puoi posare il tablet: tutto resta com\'è, lo ritrovi quando vuoi.'**
+  String get closingBody;
+
+  /// No description provided for @closingBack.
+  ///
+  /// In it, this message translates to:
+  /// **'Torna a casa'**
+  String get closingBack;
+
+  /// No description provided for @closingA11y.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho finito'**
+  String get closingA11y;
+
   /// No description provided for @switchChildA11y.
   ///
   /// In it, this message translates to:

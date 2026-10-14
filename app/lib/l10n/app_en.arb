@@ -26,6 +26,10 @@
   "homeOneStory": "A story",
   "goodbyeTitle": "That's all for today, {name}!",
   "goodbyeBody": "That was fun. Go and find a grown-up: see you next time!",
+  "closingTitle": "Nice work, {name}!",
+  "closingBody": "You've come a long way. You can put the tablet down now: everything stays just as it is, ready whenever you want.",
+  "closingBack": "Back home",
+  "closingA11y": "I'm done",
   "switchChildA11y": "Change child. {name} is playing now",
 
   "chooseWhoPlays": "Who's playing today?",
