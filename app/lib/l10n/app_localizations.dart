@@ -2720,6 +2720,120 @@ abstract class AppLocalizations {
   /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.'**
   String get winddownHint;
 
+  /// No description provided for @onbSkip.
+  ///
+  /// In it, this message translates to:
+  /// **'Salta'**
+  String get onbSkip;
+
+  /// No description provided for @onbPromiseTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie da esplorare, giochi da capire, idee da provare insieme'**
+  String get onbPromiseTitle;
+
+  /// No description provided for @onbPromiseBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Mirabò è per bambini da 3 a 10 anni e per l\'adulto che gioca accanto a loro.'**
+  String get onbPromiseBody;
+
+  /// No description provided for @onbFactFree.
+  ///
+  /// In it, this message translates to:
+  /// **'Gratuita'**
+  String get onbFactFree;
+
+  /// No description provided for @onbFactOffline.
+  ///
+  /// In it, this message translates to:
+  /// **'Funziona offline: il cloud è una scelta tua'**
+  String get onbFactOffline;
+
+  /// No description provided for @onbFactNoAds.
+  ///
+  /// In it, this message translates to:
+  /// **'Senza pubblicità'**
+  String get onbFactNoAds;
+
+  /// No description provided for @onbFactNoAccount.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun account per il bambino'**
+  String get onbFactNoAccount;
+
+  /// No description provided for @onbSetupTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Lingua e fascia d\'età'**
+  String get onbSetupTitle;
+
+  /// No description provided for @onbSetupHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Tutto il resto si regola dopo, dall\'area adulti.'**
+  String get onbSetupHint;
+
+  /// No description provided for @onbTryTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Un assaggio di storia'**
+  String get onbTryTitle;
+
+  /// No description provided for @onbTryNote.
+  ///
+  /// In it, this message translates to:
+  /// **'È solo un\'anteprima: la storia intera si apre insieme al bambino.'**
+  String get onbTryNote;
+
+  /// No description provided for @onbHomeTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Dalla storia alla vita vera'**
+  String get onbHomeTitle;
+
+  /// No description provided for @onbHomeIntro.
+  ///
+  /// In it, this message translates to:
+  /// **'Ogni storia può diventare un gesto concreto a casa. Per esempio:'**
+  String get onbHomeIntro;
+
+  /// No description provided for @onbGoTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Pronti a provare con tuo figlio?'**
+  String get onbGoTitle;
+
+  /// No description provided for @onbGoBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Bastano pochi secondi: un compagno, un soprannome se vuoi, la fascia d\'età. Niente data di nascita, niente iscrizione.'**
+  String get onbGoBody;
+
+  /// No description provided for @onbGoButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Prova con tuo figlio'**
+  String get onbGoButton;
+
+  /// No description provided for @onbReopen.
+  ///
+  /// In it, this message translates to:
+  /// **'Rivedi la presentazione'**
+  String get onbReopen;
+
+  /// No description provided for @onbReopenHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Il percorso di benvenuto, con l\'assaggio di una storia.'**
+  String get onbReopenHint;
+
+  /// No description provided for @onbClose.
+  ///
+  /// In it, this message translates to:
+  /// **'Chiudi'**
+  String get onbClose;
+
   /// No description provided for @dataWipeTitle.
   ///
   /// In it, this message translates to:

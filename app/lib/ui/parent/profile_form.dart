@@ -13,9 +13,13 @@ import 'backup_section.dart';
 /// Creazione o modifica di un profilo bambino. Lo compila il genitore.
 /// Al primo avvio è l'unica schermata; il compagno si sceglie una volta sola.
 class ProfileForm extends StatefulWidget {
-  const ProfileForm({super.key, this.existing, this.firstRun = false});
+  const ProfileForm({super.key, this.existing, this.firstRun = false, this.initialLanguage, this.initialBand});
   final ChildProfile? existing;
   final bool firstRun;
+
+  /// Scelte già fatte nell'onboarding dell'adulto (solo per un profilo nuovo).
+  final AppLanguage? initialLanguage;
+  final AgeBand? initialBand;
 
   @override
   State<ProfileForm> createState() => _ProfileFormState();
@@ -23,7 +27,7 @@ class ProfileForm extends StatefulWidget {
 
 class _ProfileFormState extends State<ProfileForm> {
   late final _name = TextEditingController(text: widget.existing?.name ?? '');
-  late AgeBand _band = widget.existing?.ageBand ?? AgeBand.b5to7;
+  late AgeBand _band = widget.existing?.ageBand ?? widget.initialBand ?? AgeBand.b5to7;
   CompanionId? _companion;
   late Set<World> _worlds = widget.existing?.enabledWorlds ?? World.values.toSet();
   late bool _safetyTogetherOnly = widget.existing?.safetyTogetherOnly ?? true;
@@ -31,7 +35,7 @@ class _ProfileFormState extends State<ProfileForm> {
   late bool _lowStim = widget.existing?.lowStimulation ?? false;
   late bool _readAlong = widget.existing?.readAlong ?? true;
   late int _aloneMinutes = widget.existing?.aloneSessionMinutes ?? 20;
-  late String _language = widget.existing?.language ?? AppLanguage.ofDevice().code;
+  late String _language = widget.existing?.language ?? (widget.initialLanguage ?? AppLanguage.ofDevice()).code;
 
   /// Profilo di interazione: segue la fascia d'età finché il genitore non tocca un asse.
   late InteractionProfile _interaction = widget.existing?.interaction ?? InteractionProfile.forAge(_band);

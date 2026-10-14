@@ -2084,6 +2084,70 @@ class AppLocalizationsIt extends AppLocalizations {
       'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.';
 
   @override
+  String get onbSkip => 'Salta';
+
+  @override
+  String get onbPromiseTitle =>
+      'Storie da esplorare, giochi da capire, idee da provare insieme';
+
+  @override
+  String get onbPromiseBody =>
+      'Mirabò è per bambini da 3 a 10 anni e per l\'adulto che gioca accanto a loro.';
+
+  @override
+  String get onbFactFree => 'Gratuita';
+
+  @override
+  String get onbFactOffline => 'Funziona offline: il cloud è una scelta tua';
+
+  @override
+  String get onbFactNoAds => 'Senza pubblicità';
+
+  @override
+  String get onbFactNoAccount => 'Nessun account per il bambino';
+
+  @override
+  String get onbSetupTitle => 'Lingua e fascia d\'età';
+
+  @override
+  String get onbSetupHint =>
+      'Tutto il resto si regola dopo, dall\'area adulti.';
+
+  @override
+  String get onbTryTitle => 'Un assaggio di storia';
+
+  @override
+  String get onbTryNote =>
+      'È solo un\'anteprima: la storia intera si apre insieme al bambino.';
+
+  @override
+  String get onbHomeTitle => 'Dalla storia alla vita vera';
+
+  @override
+  String get onbHomeIntro =>
+      'Ogni storia può diventare un gesto concreto a casa. Per esempio:';
+
+  @override
+  String get onbGoTitle => 'Pronti a provare con tuo figlio?';
+
+  @override
+  String get onbGoBody =>
+      'Bastano pochi secondi: un compagno, un soprannome se vuoi, la fascia d\'età. Niente data di nascita, niente iscrizione.';
+
+  @override
+  String get onbGoButton => 'Prova con tuo figlio';
+
+  @override
+  String get onbReopen => 'Rivedi la presentazione';
+
+  @override
+  String get onbReopenHint =>
+      'Il percorso di benvenuto, con l\'assaggio di una storia.';
+
+  @override
+  String get onbClose => 'Chiudi';
+
+  @override
   String get dataWipeTitle => 'Eliminare tutto da questo tablet?';
 
   @override
