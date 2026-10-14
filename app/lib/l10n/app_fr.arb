@@ -405,5 +405,8 @@
   "adviceReading": "Ces derniers jours, {name} compose les mots du premier coup : voulez-vous afficher plus de texte ?",
   "adviceAutonomy": "Ces derniers jours, {name} répond juste du premier coup : voulez-vous essayer avec plus de choix à la fois ?",
   "adviceYes": "Oui, essayons",
-  "adviceNo": "Pas maintenant"
+  "adviceNo": "Pas maintenant",
+
+  "sharedPromptGuide": "Dis-moi ce qu'il faut faire",
+  "sharedPromptHelp": "Comment pourrait-on aider ?"
 }

@@ -1784,4 +1784,10 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get adviceNo => 'Non ora';
+
+  @override
+  String get sharedPromptGuide => 'Spiegami tu cosa fare';
+
+  @override
+  String get sharedPromptHelp => 'Come potremmo aiutare?';
 }

@@ -405,5 +405,8 @@
   "adviceReading": "Lately {name} builds words on the first try: would you like to show more text?",
   "adviceAutonomy": "Lately {name} answers right on the first try: would you like to try more choices at a time?",
   "adviceYes": "Yes, let's try",
-  "adviceNo": "Not now"
+  "adviceNo": "Not now",
+
+  "sharedPromptGuide": "Tell me what to do",
+  "sharedPromptHelp": "How could we help?"
 }

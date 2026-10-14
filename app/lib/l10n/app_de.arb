@@ -405,5 +405,8 @@
   "adviceReading": "In den letzten Tagen legt {name} Wörter beim ersten Versuch: mehr Text zeigen?",
   "adviceAutonomy": "In den letzten Tagen antwortet {name} beim ersten Versuch richtig: mehr Auswahl auf einmal ausprobieren?",
   "adviceYes": "Ja, probieren wir",
-  "adviceNo": "Nicht jetzt"
+  "adviceNo": "Nicht jetzt",
+
+  "sharedPromptGuide": "Sag du mir, was zu tun ist",
+  "sharedPromptHelp": "Wie könnten wir helfen?"
 }
