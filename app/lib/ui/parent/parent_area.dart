@@ -946,7 +946,7 @@ class _UsageCard extends StatelessWidget {
                 Text(l.usageToday(days.last.minutes)),
               ],
               Text(l.usageGestures(snap.data?.$2 ?? 0)),
-              Text(l.usageLimit(profile.aloneSessionMinutes)),
+              Text(profile.aloneSessionMinutes <= 0 ? l.usageNoLimit : l.usageLimit(profile.aloneSessionMinutes)),
               const SizedBox(height: 8),
               Text(l.usageCannot, style: const TextStyle(fontStyle: FontStyle.italic)),
             ]),

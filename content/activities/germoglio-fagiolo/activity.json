@@ -61,8 +61,8 @@
   },
   "outro": {
     "bo": "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
-    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
-    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!"
+    "pilu": "Ogni cosa torna al suo posto, {nome}: è parte del lavoro.",
+    "tango": "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo."
   },
   "togetherSuggested": true
 }

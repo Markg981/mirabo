@@ -152,6 +152,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 child: LayoutBuilder(builder: (context, c) {
                   final cardH = c.maxHeight - 48;
                   final cardW = (cardH * 0.82).clamp(260.0, 380.0);
+                  // Limite vicino: niente di nuovo da iniziare (storie, attività, giochi).
+                  if (state.windingDown) return const Center(child: WinddownNote());
                   final cards = [for (final i in shelf[_category] ?? const <ShelfItem>[]) _card(i, cardW)];
                   if (cards.isEmpty) {
                     return Center(child: SoftPanel(child: Text(context.l10n.catEmpty, style: text.titleLarge)));

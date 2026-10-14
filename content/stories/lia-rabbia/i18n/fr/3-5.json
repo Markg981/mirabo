@@ -91,9 +91,9 @@
       },
       "text": "Le volcan descend tout doucement. Lia et Teo font une nouvelle tour, large, large.",
       "companionLines": {
-        "bo": "Mon volcan est calme maintenant, {nome}. À demain !",
-        "pilu": "Ce soir, j'essaie la respiration du volcan, {nome}. À demain.",
-        "tango": "Demain, je respire avant de courir, {nome}. À demain !"
+        "bo": "Mon volcan est calme maintenant, {nome}.",
+        "pilu": "Ce soir, j'essaie la respiration du volcan, {nome}.",
+        "tango": "Demain, je respire avant de courir, {nome}."
       }
     }
   ]

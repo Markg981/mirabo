@@ -185,7 +185,7 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Piccoli Custodi! Posso esserlo anch'io, {nome}? Domani faccio un mucchio di foglie per i ricci.",
-        "pilu": "Domani prova a disegnare anche tu un cartello per il tuo parco, {nome}. Cosa ci scriveresti? A domani.",
+        "pilu": "Domani prova a disegnare anche tu un cartello per il tuo parco, {nome}. Cosa ci scriveresti?",
         "tango": "Io mi iscrivo subito ai Custodi! E anche tu, {nome}! Domani cerchiamo ricci. Ciao!"
       }
     }

@@ -212,7 +212,7 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Un germoglio! Piccolo come me. Domani cerco un seme anch'io, {nome}.",
-        "pilu": "Hai visto, {nome}? Nessuna magia: guanti, semi, un po' d'acqua e un po' di compagnia. A domani.",
+        "pilu": "Hai visto, {nome}? Nessuna magia: guanti, semi, un po' d'acqua e un po' di compagnia.",
         "tango": "Domani pianto un seme in un vaso, {nome}! E lo guardo ogni giorno. Anche se ci mette tanto!"
       }
     }

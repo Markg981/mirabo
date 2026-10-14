@@ -135,9 +135,9 @@
       "text": "Emma mette Pietrolino nel taschino e torna dalla nonna. Dal taschino, una vocina: \"Anche un sassolino piccolo fa cerchi grandi.\"",
       "keyPhrase": true,
       "companionLines": {
-        "bo": "Domani ascolto il bosco con te, {nome}. A domani.",
-        "pilu": "Domani chiudo gli occhi e ascolto, {nome}. A domani.",
-        "tango": "Domani mi fermo un minuto e ascolto, {nome}. A domani!"
+        "bo": "Domani ascolto il bosco con te, {nome}.",
+        "pilu": "Domani chiudo gli occhi e ascolto, {nome}.",
+        "tango": "Domani mi fermo un minuto e ascolto, {nome}."
       }
     }
   ]

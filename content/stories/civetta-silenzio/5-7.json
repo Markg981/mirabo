@@ -185,7 +185,7 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Stasera ascolto il mio respiro prima di dormire, {nome}. Shhh. Buonanotte.",
-        "pilu": "Stasera prova anche tu un minuto di silenzio, {nome}. Ascolta cosa si sente. A domani.",
+        "pilu": "Stasera prova anche tu un minuto di silenzio, {nome}. Ascolta cosa si sente.",
         "tango": "Stasera provo a stare zitta un minuto intero, {nome}! ...Shhh. Ciao!"
       }
     }

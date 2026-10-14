@@ -111,8 +111,8 @@
       "text": "On the way home Emma says: \"Grandma, tomorrow I'll tell Sara and Omar. That the stream was sad, and I helped it.\" Grandma nods. And behind them the stream starts singing again: plink... plonk... plink.",
       "companionLines": {
         "bo": "She did it, {nome}. Even with wet sleeves. Tomorrow, if you see some litter, will you tell me?",
-        "pilu": "Did you see, {nome}? No magic: just gloves, a bag and someone watching. See you tomorrow.",
-        "tango": "Plink plonk plink! Tomorrow I'm going to look for a stream. Will you come too, {nome}? See you tomorrow!"
+        "pilu": "Did you see, {nome}? No magic: just gloves, a bag and someone watching.",
+        "tango": "Plink plonk plink! Tomorrow I'm going to look for a stream. Will you come too, {nome}?"
       }
     }
   ]

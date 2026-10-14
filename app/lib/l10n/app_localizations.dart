@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @seeYouTomorrow.
   ///
   /// In it, this message translates to:
-  /// **'A domani!'**
+  /// **'Ciao!'**
   String get seeYouTomorrow;
 
   /// No description provided for @go.
@@ -2725,6 +2725,30 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'alla prova non ancora: si cambia e si riprova'**
   String get projectResultNotYet;
+
+  /// No description provided for @profileNoLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun limite'**
+  String get profileNoLimit;
+
+  /// No description provided for @usageNoLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nella modalità \"da solo\" non c\'è un limite di tempo (si imposta nel profilo).'**
+  String get usageNoLimit;
+
+  /// No description provided for @winddownNote.
+  ///
+  /// In it, this message translates to:
+  /// **'Tra poco ci salutiamo. Finiamo con calma quello che stiamo facendo.'**
+  String get winddownNote;
+
+  /// No description provided for @winddownHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.'**
+  String get winddownHint;
 
   /// No description provided for @gateSetupTitle.
   ///

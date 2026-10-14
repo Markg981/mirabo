@@ -72,9 +72,9 @@
       },
       "text": "Emma mete a Pietrolino en el bolsillo y vuelve con la abuela. Desde el bolsillo, una vocecita: \"Hasta una piedrecita pequeña hace círculos grandes.\"",
       "companionLines": {
-        "bo": "Mañana escucho el bosque contigo, {nome}. Hasta mañana.",
-        "pilu": "Mañana cierro los ojos y escucho, {nome}. Hasta mañana.",
-        "tango": "Mañana me paro un minuto y escucho, {nome}. ¡Hasta mañana!"
+        "bo": "Mañana escucho el bosque contigo, {nome}.",
+        "pilu": "Mañana cierro los ojos y escucho, {nome}.",
+        "tango": "Mañana me paro un minuto y escucho, {nome}. ¡"
       }
     }
   ]

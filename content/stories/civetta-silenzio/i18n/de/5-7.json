@@ -101,7 +101,7 @@
       "text": "Oma bringt Emma zurück ins Bett. Emma legt die Feder auf den Nachttisch, neben Pietrolino. Sie atmet langsam, so wie sie es gelernt hat. Und diesmal schläft sie ruhig ein.",
       "companionLines": {
         "bo": "Heute Abend höre ich vor dem Schlafen meinem Atem zu, {nome}. Pssst. Gute Nacht.",
-        "pilu": "Probier heute Abend auch eine Minute Stille, {nome}. Hör, was man hört. Bis morgen.",
+        "pilu": "Probier heute Abend auch eine Minute Stille, {nome}. Hör, was man hört.",
         "tango": "Heute Abend versuche ich, eine ganze Minute still zu sein, {nome}! ...Pssst. Tschüss!"
       }
     }

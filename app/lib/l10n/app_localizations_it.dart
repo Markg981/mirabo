@@ -42,7 +42,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get readAgain => 'Rileggi';
 
   @override
-  String get seeYouTomorrow => 'A domani!';
+  String get seeYouTomorrow => 'Ciao!';
 
   @override
   String get go => 'Via!';
@@ -2083,6 +2083,21 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get projectResultNotYet =>
       'alla prova non ancora: si cambia e si riprova';
+
+  @override
+  String get profileNoLimit => 'Nessun limite';
+
+  @override
+  String get usageNoLimit =>
+      'Nella modalità \"da solo\" non c\'è un limite di tempo (si imposta nel profilo).';
+
+  @override
+  String get winddownNote =>
+      'Tra poco ci salutiamo. Finiamo con calma quello che stiamo facendo.';
+
+  @override
+  String get winddownHint =>
+      'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.';
 
   @override
   String get gateSetupTitle => 'Scegli un PIN per i grandi';

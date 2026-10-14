@@ -101,7 +101,7 @@
       "text": "Mamie raccompagne Emma au lit. Emma pose la plume sur la table de nuit, à côté de Pietrolino. Elle respire lentement, comme elle l'a appris. Et cette fois, elle s'endort tranquille.",
       "companionLines": {
         "bo": "Ce soir, j'écoute ma respiration avant de dormir, {nome}. Chut. Bonne nuit.",
-        "pilu": "Ce soir, essaie toi aussi une minute de silence, {nome}. Écoute ce qu'on entend. À demain.",
+        "pilu": "Ce soir, essaie toi aussi une minute de silence, {nome}. Écoute ce qu'on entend.",
         "tango": "Ce soir, j'essaie de me taire une minute entière, {nome} ! ...Chut. Salut !"
       }
     }

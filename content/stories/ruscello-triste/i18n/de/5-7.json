@@ -111,8 +111,8 @@
       "text": "Auf dem Heimweg sagt Emma: „Oma, morgen erzähle ich es Sara und Omar. Dass der Bach traurig war und ich ihm geholfen habe.“ Oma nickt. Und hinter ihnen fängt der Bach wieder an zu singen: plin... plon... plin.",
       "companionLines": {
         "bo": "Sie hat es geschafft, {nome}. Sogar mit nassen Ärmeln. Wenn du morgen Müll siehst, sagst du es mir?",
-        "pilu": "Hast du gesehen, {nome}? Keine Zauberei: nur Handschuhe, ein Beutel und jemand, der zugeschaut hat. Bis morgen.",
-        "tango": "Plin plon plin! Morgen suche ich einen Bach. Kommst du mit, {nome}? Bis morgen!"
+        "pilu": "Hast du gesehen, {nome}? Keine Zauberei: nur Handschuhe, ein Beutel und jemand, der zugeschaut hat.",
+        "tango": "Plin plon plin! Morgen suche ich einen Bach. Kommst du mit, {nome}?"
       }
     }
   ]

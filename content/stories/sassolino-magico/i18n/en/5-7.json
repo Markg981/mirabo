@@ -83,7 +83,7 @@
       "text": "Emma puts Pietrolino in her coat pocket and goes back to Grandma. \"Grandma, I've found a friend. Let's come back to the wood tomorrow.\" A tiny voice comes from the pocket: \"The wood has lots of things to say. You just have to listen.\"",
       "companionLines": {
         "bo": "A pebble friend. I'd like one too, {nome}. Tomorrow I'll look for a smiling stone.",
-        "pilu": "Tomorrow, try stopping for a minute and listening, {nome}. Who knows what you'll hear. See you tomorrow.",
+        "pilu": "Tomorrow, try stopping for a minute and listening, {nome}. Who knows what you'll hear.",
         "tango": "Tomorrow we'll go back with Emma, {nome}! And this time I'll stop before I throw. Promise!"
       }
     }

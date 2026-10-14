@@ -16,8 +16,8 @@
   },
   "outro": {
     "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
-    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
-    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo."
   },
   "togetherSuggested": true,
   "offscreen": "Portate a casa un tesoro solo, già caduto a terra, e mettetelo su un piattino: è l'inizio del tavolo della natura.",

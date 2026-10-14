@@ -240,3 +240,23 @@ class BigCard extends StatelessWidget {
   Widget _emoji(String e, double size, double angle) =>
       Transform.rotate(angle: angle, child: Text(e, style: TextStyle(fontSize: size, height: 1.1)));
 }
+
+/// Poco prima del limite: una frase tranquilla, senza numeri né conto alla
+/// rovescia. Non propone nulla di nuovo; chi ha una storia aperta la finisce.
+class WinddownNote extends StatelessWidget {
+  const WinddownNote({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+      child: SoftPanel(
+        child: Semantics(
+          liveRegion: true,
+          child: Text(l.winddownNote, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+        ),
+      ),
+    );
+  }
+}

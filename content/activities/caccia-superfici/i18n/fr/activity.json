@@ -46,8 +46,8 @@
   },
   "outro": {
     "bo": "Que de trésors, {nome}. Maintenant chacun retourne à sa place, comme ça demain on les retrouve.",
-    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu. À demain.",
-    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille. À demain !"
+    "pilu": "Chaque trésor retourne là où tu l'as trouvé, {nome} : ça aussi, ça fait partie du jeu.",
+    "tango": "Quelle chasse ! {nome}, on remet tout à sa place ? Moi... je surveille."
   },
   "reviewed": false
 }

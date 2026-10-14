@@ -93,7 +93,7 @@
       "text": "Al día siguiente, Emma vuelve con unos carteles hechos a mano: \"Aquí vive un erizo\", \"Respeta a quien duerme entre las hojas\", \"Llévate tu basura a casa\". En el colegio lo cuenta a la maestra y a sus compañeros. Y así nace el Grupo de los Pequeños Guardianes de la Naturaleza.",
       "companionLines": {
         "bo": "¡Pequeños Guardianes! ¿Puedo serlo yo también, {nome}? Mañana hago un montón de hojas para los erizos.",
-        "pilu": "Mañana prueba a dibujar tú también un cartel para tu parque, {nome}. ¿Qué escribirías? Hasta mañana.",
+        "pilu": "Mañana prueba a dibujar tú también un cartel para tu parque, {nome}. ¿Qué escribirías?",
         "tango": "¡Yo me apunto ya a los Guardianes! ¡Y tú también, {nome}! Mañana buscamos erizos. ¡Adiós!"
       }
     }

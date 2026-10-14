@@ -34,8 +34,8 @@ INTRO_HOME = lines(
 )
 OUTRO_HOME = lines(
     "Hai lavorato da solo, {nome}. Mettiamo tutto a posto, così domani lo ritrovi.",
-    "Ogni cosa torna al suo posto, {nome}: è parte del lavoro. A domani.",
-    "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo. A domani!",
+    "Ogni cosa torna al suo posto, {nome}: è parte del lavoro.",
+    "Fatto! {nome}, rimettiamo tutto a posto? Io... io guardo.",
 )
 INTRO_SCREEN = lines(
     "Proviamo insieme, {nome}? Se sbagliamo, il materiale ce lo dice da solo.",
@@ -435,8 +435,8 @@ INTRO_HUNT = lines(
 )
 OUTRO_HUNT = lines(
     "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
-    "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
-    "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!",
+    "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco.",
+    "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo.",
 )
 
 

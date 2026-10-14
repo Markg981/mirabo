@@ -33,8 +33,8 @@
   },
   "outro": {
     "bo": "You worked on your own, {nome}. Let's put everything away, so you'll find it again tomorrow.",
-    "pilu": "Everything goes back in its place, {nome}: that's part of the work. See you tomorrow.",
-    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch. See you tomorrow!"
+    "pilu": "Everything goes back in its place, {nome}: that's part of the work.",
+    "tango": "Done! {nome}, shall we put everything away? I'll... I'll watch."
   },
   "reviewed": true
 }

@@ -68,6 +68,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              if (state.windingDown) const WinddownNote(),
               Expanded(
                 child: LayoutBuilder(builder: (context, c) {
                   final size = (c.maxHeight * 0.98).clamp(200.0, 400.0);

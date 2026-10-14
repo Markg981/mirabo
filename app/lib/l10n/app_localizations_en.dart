@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get readAgain => 'Read again';
 
   @override
-  String get seeYouTomorrow => 'See you tomorrow!';
+  String get seeYouTomorrow => 'Bye for now!';
 
   @override
   String get go => 'Let\'s go!';
@@ -2083,6 +2083,21 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get projectResultNotYet =>
       'not yet in the test: change something and try again';
+
+  @override
+  String get profileNoLimit => 'No limit';
+
+  @override
+  String get usageNoLimit =>
+      'In \"alone\" mode there is no time limit (set it in the profile).';
+
+  @override
+  String get winddownNote =>
+      'We\'ll say goodbye soon. Let\'s calmly finish what we\'re doing.';
+
+  @override
+  String get winddownHint =>
+      'Shortly before the end the companion gently says so and offers nothing new. What is open can be finished.';
 
   @override
   String get gateSetupTitle => 'Choose a grown-up PIN';

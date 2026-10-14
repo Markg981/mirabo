@@ -108,4 +108,45 @@ void main() {
     await advance(const Duration(minutes: 5));
     expect(state.aloneGoodbye, isTrue);
   });
+
+  testWidgets('preavviso: negli ultimi minuti non si propone nulla di nuovo', (tester) async {
+    final (state, advance) = await start(tester, alone);
+    await advance(const Duration(minutes: 16));
+    expect(state.windingDown, isFalse);
+    await advance(const Duration(minutes: 1));
+    expect(state.windingDown, isTrue);
+    expect(state.aloneGoodbye, isFalse);
+    await advance(const Duration(minutes: 3));
+    expect(state.aloneGoodbye, isTrue);
+  });
+
+  testWidgets('a storia aperta il preavviso resta e il saluto aspetta, senza penalità', (tester) async {
+    final (state, advance) = await start(tester, alone);
+    state.holdSession();
+    await advance(const Duration(minutes: 30));
+    expect(state.windingDown, isTrue);
+    expect(state.aloneGoodbye, isFalse);
+    state.releaseSession();
+    await tester.pump();
+    expect(state.aloneGoodbye, isTrue);
+  });
+
+  testWidgets('nessun limite (0 minuti): niente preavviso e niente saluto', (tester) async {
+    final (state, advance) = await start(tester, alone.copyWith(aloneSessionMinutes: 0));
+    await advance(const Duration(hours: 3));
+    expect(state.windingDown, isFalse);
+    expect(state.aloneGoodbye, isFalse);
+  });
+
+  testWidgets('limite breve: il preavviso parte subito', (tester) async {
+    final (state, advance) = await start(tester, alone.copyWith(aloneSessionMinutes: 2));
+    expect(state.windingDown, isTrue);
+    await advance(const Duration(minutes: 2));
+  });
+
+  testWidgets('insieme non ci sono preavvisi', (tester) async {
+    final (state, advance) = await start(tester, alone.copyWith(lastMode: SessionMode.together));
+    await advance(const Duration(minutes: 18));
+    expect(state.windingDown, isFalse);
+  });
 }

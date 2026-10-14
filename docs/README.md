@@ -7,6 +7,7 @@
 - `content-distribution.md`: raccolte versionate, installazione atomica, ritiro delle versioni, lingue e audio, "Mantieni offline".
 - `launch/readiness.md`: prontezza al lancio (Italia/UE e USA), matrice di rischio e protocollo di test con le famiglie.
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
+- `session-limit.md`: limite di sessione facoltativo, preavviso e chiusura senza meccanismi di prolungamento.
 - `data-deletion.md`: cancellazione dei dati su questo tablet e del backup su Drive.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 - `adaptivity.md`: adattività esplicita (livello scelto a fine attività, proposte al genitore, dati e base giuridica).

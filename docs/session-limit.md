@@ -1,0 +1,18 @@
+# Limite di sessione e chiusura senza prolungamento
+
+Riferimento: policy AAP 2026 sui meccanismi di prolungamento dell'uso (autoplay, serie, ricompense di ritorno, appelli emotivi a restare o tornare). Mirabò non ne usa nessuno.
+
+## Il limite
+
+- Per bambino, **facoltativo**, nel profilo (area genitore): 10-30 minuti oppure "Nessun limite" (`aloneSessionMinutes` = 0; nessun cambio di schema). Vale per la sessione "da solo"; con l'adulto presente decide l'adulto.
+- **Preavviso** (`AppState.windingDown`, 3 minuti prima): la casa mostra una frase calma ("Tra poco ci salutiamo. Finiamo con calma quello che stiamo facendo.") e le schermate delle categorie non propongono storie, attività o giochi nuovi. Nessun numero, nessun conto alla rovescia.
+- **Mai a metà**: la storia o l'attività aperta si conclude (`SessionHold`); poi scatta il saluto esistente (`GoodbyeScreen`). Storie e disegni sono già salvati durante l'uso. Nessuna penalità, nessun blocco.
+- "Ho finito" resta sempre disponibile, indipendentemente dal limite.
+
+## Niente prolungamento
+
+- Nessuna storia o attività parte da sola alla fine di un'altra (niente autoplay, "prossimo episodio" o serie a catena).
+- La chiusura è una scelta, non un compito in più.
+- Le frasi di chiusura non danno appuntamenti né chiedono di tornare: niente "a domani", "mi mancherai", "ti aspetto". Al massimo un invito facoltativo a riprendere un progetto.
+- Rifiutare una pausa di gesto o una caccia al tesoro non blocca la storia: si può sempre andare avanti.
+- Nulla richiede foto, GPS o prove di completamento: il tablet non verifica.

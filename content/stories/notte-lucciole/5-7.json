@@ -185,7 +185,7 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Il buio era pieno di luci, {nome}. Stasera spengo la luce e guardo fuori dalla finestra. Con te.",
-        "pilu": "Stasera prova anche tu, {nome}: spegni la luce, aspetta un po', e guarda cosa si accende. A domani.",
+        "pilu": "Stasera prova anche tu, {nome}: spegni la luce, aspetta un po', e guarda cosa si accende.",
         "tango": "Domani torno al buio a contare le lucciole, {nome}! Ferma ferma, però. Ciao!"
       }
     }

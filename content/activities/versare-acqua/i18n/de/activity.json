@@ -42,8 +42,8 @@
   },
   "outro": {
     "bo": "Du hast allein gearbeitet, {nome}. Räumen wir alles weg, dann findest du es morgen wieder.",
-    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit. Bis morgen.",
-    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu. Bis morgen!"
+    "pilu": "Alles kommt an seinen Platz zurück, {nome}: Das gehört zur Arbeit.",
+    "tango": "Fertig! {nome}, räumen wir alles weg? Ich... ich schaue zu."
   },
   "reviewed": true
 }

@@ -15,8 +15,8 @@
   },
   "outro": {
     "bo": "Quanti tesori, {nome}. Adesso ognuno torna al suo posto, così domani li ritroviamo.",
-    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco. A domani.",
-    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo. A domani!"
+    "pilu": "Ogni tesoro torna dove l'hai trovato, {nome}: anche questo fa parte del gioco.",
+    "tango": "Che caccia! {nome}, rimettiamo tutto a posto? Io... io controllo."
   },
   "togetherSuggested": false,
   "offscreen": "Fate un giro della stanza senza tablet: \"Vedo vedo un cerchio\". A turno, anche il bambino sceglie la forma.",

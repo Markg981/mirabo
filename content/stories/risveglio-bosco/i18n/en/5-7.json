@@ -93,7 +93,7 @@
       "text": "The next day Emma comes back with some hand-made signs: \"A hedgehog lives here\", \"Respect those who sleep among the leaves\", \"Take your rubbish home\". At school she talks about it with her teacher and classmates. And that's how the Little Nature Keepers club begins.",
       "companionLines": {
         "bo": "Little Keepers! Can I be one too, {nome}? Tomorrow I'll make a pile of leaves for the hedgehogs.",
-        "pilu": "Tomorrow, try drawing a sign for your park too, {nome}. What would you write on it? See you tomorrow.",
+        "pilu": "Tomorrow, try drawing a sign for your park too, {nome}. What would you write on it?",
         "tango": "I'm joining the Keepers right now! And so are you, {nome}! Tomorrow we look for hedgehogs. Bye!"
       }
     }

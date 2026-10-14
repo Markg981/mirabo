@@ -77,9 +77,9 @@
       },
       "text": "At home, Emma and Grandma put a bowl on the balcony. \"This one's for the rain,\" says Emma.",
       "companionLines": {
-        "bo": "Tonight I'll turn off the tap, {nome}. See you tomorrow.",
-        "pilu": "Tomorrow I'll see if the bowl is full, {nome}. See you tomorrow.",
-        "tango": "Tonight I'll turn off the tap, quick, {nome}! See you tomorrow!"
+        "bo": "Tonight I'll turn off the tap, {nome}.",
+        "pilu": "Tomorrow I'll see if the bowl is full, {nome}.",
+        "tango": "Tonight I'll turn off the tap, quick, {nome}!"
       }
     }
   ]

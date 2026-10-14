@@ -72,9 +72,9 @@
       },
       "text": "Emma puts Pietrolino in her pocket and goes back to Grandma. From the pocket, a little voice: \"Even a tiny pebble makes big circles.\"",
       "companionLines": {
-        "bo": "Tomorrow I'll listen to the wood with you, {nome}. See you tomorrow.",
-        "pilu": "Tomorrow I'll close my eyes and listen, {nome}. See you tomorrow.",
-        "tango": "Tomorrow I'll stop for a minute and listen, {nome}. See you tomorrow!"
+        "bo": "Tomorrow I'll listen to the wood with you, {nome}.",
+        "pilu": "Tomorrow I'll close my eyes and listen, {nome}.",
+        "tango": "Tomorrow I'll stop for a minute and listen, {nome}."
       }
     }
   ]

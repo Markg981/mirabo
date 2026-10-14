@@ -101,7 +101,7 @@
       "text": "La abuela acompaña a Emma otra vez a la cama. Emma deja la pluma en la mesilla, junto a Pietrolino. Respira despacio, como ha aprendido. Y esta vez se duerme tranquila.",
       "companionLines": {
         "bo": "Esta noche escucho mi respiración antes de dormir, {nome}. Chist. Buenas noches.",
-        "pilu": "Esta noche prueba tú también un minuto de silencio, {nome}. Escucha lo que se oye. Hasta mañana.",
+        "pilu": "Esta noche prueba tú también un minuto de silencio, {nome}. Escucha lo que se oye.",
         "tango": "¡Esta noche intento estar callada un minuto entero, {nome}! ...Chist. ¡Adiós!"
       }
     }

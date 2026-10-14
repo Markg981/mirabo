@@ -241,8 +241,8 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Ce l'ha fatta, {nome}. Anche con le maniche bagnate. Domani se vedi una cartaccia me lo dici?",
-        "pilu": "Hai visto, {nome}? Nessuna magia: solo guanti, un sacchetto e qualcuno che guardava. A domani.",
-        "tango": "Plin plon plin! Io domani cerco un ruscello. Vieni anche tu, {nome}? A domani!"
+        "pilu": "Hai visto, {nome}? Nessuna magia: solo guanti, un sacchetto e qualcuno che guardava.",
+        "tango": "Plin plon plin! Io domani cerco un ruscello. Vieni anche tu, {nome}?"
       }
     }
   ]

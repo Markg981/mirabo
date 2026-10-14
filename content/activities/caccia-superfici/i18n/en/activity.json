@@ -46,8 +46,8 @@
   },
   "outro": {
     "bo": "So many treasures, {nome}. Now each one goes back in its place, so we can find them again tomorrow.",
-    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too. See you tomorrow.",
-    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it. See you tomorrow!"
+    "pilu": "Every treasure goes back where you found it, {nome}: that's part of the game too.",
+    "tango": "What a hunt! {nome}, shall we put everything back? I'll... I'll keep an eye on it."
   },
   "reviewed": false
 }

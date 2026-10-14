@@ -118,9 +118,9 @@
       },
       "text": "The new tower isn't the tallest in the world. It's the widest, because they built it together. And Lia's volcano? It's still in there, quiet. It will come back one day. But now Lia knows how to wait for it.",
       "companionLines": {
-        "bo": "We did it, {nome}. My volcano is all green now. See you tomorrow?",
-        "pilu": "Now you know too, {nome}: the volcano passes. I'm off to sleep a bit, it's daytime. See you tomorrow.",
-        "tango": "I'll remember, {nome}: in one two three, out sssh. I'll try it this afternoon. See you tomorrow!"
+        "bo": "We did it, {nome}. My volcano is all green now.",
+        "pilu": "Now you know too, {nome}: the volcano passes. I'm off to sleep a bit, it's daytime.",
+        "tango": "I'll remember, {nome}: in one two three, out sssh. I'll try it this afternoon."
       }
     }
   ]
