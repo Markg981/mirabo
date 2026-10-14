@@ -17,7 +17,7 @@ import 'story_reader.dart';
 
 void openParentArea(BuildContext context) => AdultGate.open(
       context,
-      then: () => Navigator.of(context).push(adultRoute((_) => const SessionHold(child: ParentArea()))),
+      then: () => Navigator.of(context).push(adultRoute((_) => const SessionHold(child: AdultGuard(child: ParentArea())))),
     );
 
 /// Una capacità della mensola: i suoi pochi materiali come carte grandi, la

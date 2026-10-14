@@ -2098,6 +2098,47 @@ class AppLocalizationsFr extends AppLocalizations {
       'Peu avant la fin, le compagnon prévient calmement et ne propose rien de nouveau. Ce qui est ouvert peut se terminer.';
 
   @override
+  String get gateSetupTitle => 'Choisis un code PIN pour les grands';
+
+  @override
+  String get gateSetupBody =>
+      '4 à 6 chiffres. Il ouvre l\'espace des adultes et protège les actions délicates. Si tu l\'oublies, tu pourras en choisir un nouveau sans rien perdre.';
+
+  @override
+  String get gatePinLabel => 'Code PIN';
+
+  @override
+  String get gatePinConfirmLabel => 'Répète le code PIN';
+
+  @override
+  String get gatePinMismatch => 'Les deux codes ne correspondent pas';
+
+  @override
+  String get gatePinFormat => 'Le code doit avoir de 4 à 6 chiffres';
+
+  @override
+  String get gatePinWrong => 'Code PIN erroné';
+
+  @override
+  String gatePinWait(String time) {
+    return 'Trop d\'essais. Réessaie dans $time';
+  }
+
+  @override
+  String get gateForgot => 'J\'ai oublié le code PIN';
+
+  @override
+  String get gateForgotUnavailable =>
+      'Impossible de vérifier que tu es un adulte avec le verrouillage de l\'appareil. Active un verrouillage d\'écran d\'adulte et réessaie.';
+
+  @override
+  String get gateDeviceReason =>
+      'Confirme que tu es un adulte pour choisir un nouveau code PIN';
+
+  @override
+  String get gateChangePin => 'Changer le code PIN';
+
+  @override
   String get onbSkip => 'Passer';
 
   @override

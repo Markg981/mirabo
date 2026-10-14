@@ -46,9 +46,10 @@ Le cartelle `app/android` e `app/ios` **sono tracciate** nel repo; `flutter crea
 | --- | --- | --- | --- |
 | Android | `INTERNET` | manifest `main` (aggiunto qui) | Solo backup Drive. Prima era presente solo nei manifest `debug` e `profile`: una build release avrebbe avuto il backup non funzionante |
 | Android | `INTERNET` | manifest `debug`, `profile` | Template Flutter (hot reload, DevTools); non in release |
+| Android | `USE_BIOMETRIC` | manifest `main` | Recupero del PIN adulti con lo sblocco del dispositivo (`local_auth`); nessuna rete |
 | Android | (nessun altro) | | Niente microfono, fotocamera, posizione, contatti, archivio esterno, notifiche. Plugin: i manifest uniti dei plugin possono aggiungere permessi: controllare con `aapt dump permissions` sulla release (vedi osservazione, passo 0) |
 | Android | `<queries>` per `PROCESS_TEXT` | manifest `main` | Template Flutter (selezione testo); non è un flusso di rete |
-| iOS | nessuna chiave `NS*UsageDescription` | `Info.plist` | Niente microfono, foto, posizione, tracking. Nessun `NSAppTransportSecurity` eccezioni. Il backup richiede in più, a build, lo schema URL del client OAuth (vedi `backup.md`, da aggiungere quando si configura Google) |
+| iOS | solo `NSFaceIDUsageDescription` | `Info.plist` | Face ID solo per recuperare il PIN adulti (`local_auth`, docs/adult-gate.md). Niente microfono, foto, posizione, tracking. Nessun `NSAppTransportSecurity` eccezioni. Il backup richiede in più, a build, lo schema URL del client OAuth (vedi `backup.md`, da aggiungere quando si configura Google) |
 
 Il controllo `check_inventory.py` fallisce se compare un permesso Android in `src/main` o una chiave `NS*UsageDescription` non elencata.
 
@@ -59,7 +60,8 @@ Elenco approvato machine-readable: `docs/privacy/approved-dependencies.json` (co
 | Pacchetto | Uso nel codice | Flussi di rete |
 | --- | --- | --- |
 | `sqflite_sqlcipher` | DB locale cifrato (`local_db.dart`) | Nessuno |
-| `flutter_secure_storage` | Chiavi (`local_db.dart`, `cloud_backup.dart`) | Nessuno |
+| `flutter_secure_storage` | Chiavi (`local_db.dart`, `cloud_backup.dart`, hash del PIN in `adult_pin.dart`) | Nessuno |
+| `local_auth` | Recupero del PIN adulti con lo sblocco del dispositivo (`adult_gate.dart`) | Nessuno: l'app riceve solo l'esito |
 | `path_provider`, `path` | Percorsi | Nessuno |
 | `archive`, `cryptography`, `crypto` | Pacchetti storia, firma, backup | Nessuno |
 | `intl`, `flutter_localizations` | Testi e formati | Nessuno |

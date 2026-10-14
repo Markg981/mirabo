@@ -2720,6 +2720,78 @@ abstract class AppLocalizations {
   /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.'**
   String get winddownHint;
 
+  /// No description provided for @gateSetupTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Scegli un PIN per i grandi'**
+  String get gateSetupTitle;
+
+  /// No description provided for @gateSetupBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Se lo dimentichi potrai sceglierne uno nuovo senza perdere nulla.'**
+  String get gateSetupBody;
+
+  /// No description provided for @gatePinLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'PIN'**
+  String get gatePinLabel;
+
+  /// No description provided for @gatePinConfirmLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'Ripeti il PIN'**
+  String get gatePinConfirmLabel;
+
+  /// No description provided for @gatePinMismatch.
+  ///
+  /// In it, this message translates to:
+  /// **'I due PIN non coincidono'**
+  String get gatePinMismatch;
+
+  /// No description provided for @gatePinFormat.
+  ///
+  /// In it, this message translates to:
+  /// **'Il PIN deve avere da 4 a 6 cifre'**
+  String get gatePinFormat;
+
+  /// No description provided for @gatePinWrong.
+  ///
+  /// In it, this message translates to:
+  /// **'PIN sbagliato'**
+  String get gatePinWrong;
+
+  /// No description provided for @gatePinWait.
+  ///
+  /// In it, this message translates to:
+  /// **'Troppi tentativi. Riprova tra {time}'**
+  String gatePinWait(String time);
+
+  /// No description provided for @gateForgot.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho dimenticato il PIN'**
+  String get gateForgot;
+
+  /// No description provided for @gateForgotUnavailable.
+  ///
+  /// In it, this message translates to:
+  /// **'Non riesco a verificare che sei un adulto con il blocco del dispositivo. Attiva un blocco schermo dell\'adulto e riprova.'**
+  String get gateForgotUnavailable;
+
+  /// No description provided for @gateDeviceReason.
+  ///
+  /// In it, this message translates to:
+  /// **'Conferma di essere un adulto per scegliere un nuovo PIN'**
+  String get gateDeviceReason;
+
+  /// No description provided for @gateChangePin.
+  ///
+  /// In it, this message translates to:
+  /// **'Cambia PIN'**
+  String get gateChangePin;
+
   /// No description provided for @onbSkip.
   ///
   /// In it, this message translates to:
