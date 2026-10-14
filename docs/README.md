@@ -6,6 +6,7 @@
 - `pedagogical-review.md`: revisione pedagogica delle storie (stati, schede in `content/reviews/`, `studio/review.py`).
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
+- `privacy/data-inventory.md`: inventario dei dati, delle dipendenze, dei permessi e dei flussi di rete (con `privacy/network-observation.md`, controllo `studio/check_inventory.py`).
 
 ## Tempi d'uso (area genitori, scheda "Crescita")
 
