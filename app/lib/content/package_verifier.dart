@@ -10,7 +10,7 @@ import 'trusted_key.dart';
 /// Un pacchetto .mirabo aperto e verificato: i file sono disponibili solo se la
 /// firma del manifest è valida e ogni file corrisponde al suo hash.
 class VerifiedPackage {
-  VerifiedPackage._(this.id, this.kind, this.version, this._files);
+  VerifiedPackage._(this.id, this.kind, this.version, this._files, this.manifest);
 
   final String id;
 
@@ -18,6 +18,9 @@ class VerifiedPackage {
   final String kind;
   final int version;
   final Map<String, Uint8List> _files;
+
+  /// Il manifest firmato (senza la firma): compatibilità, lingue, parti, editoriale.
+  final Map<String, dynamic> manifest;
 
   Uint8List? bytes(String path) => _files[path];
   String? text(String path) => _files[path] == null ? null : utf8.decode(_files[path]!);
@@ -41,8 +44,16 @@ class PackageVerifier {
 
   /// Apre e verifica un archivio .mirabo. Lancia [PackageVerificationException]
   /// se il manifest manca, la firma non è valida o un file non corrisponde.
-  Future<VerifiedPackage> open(Uint8List archiveBytes) async {
-    final archive = ZipDecoder().decodeBytes(archiveBytes);
+  ///
+  /// [isOptional] indica i file che possono mancare (le parti di lingue non
+  /// scaricate): se presenti vengono comunque verificati.
+  Future<VerifiedPackage> open(Uint8List archiveBytes, {bool Function(String path)? isOptional}) async {
+    final Archive archive;
+    try {
+      archive = ZipDecoder().decodeBytes(archiveBytes);
+    } catch (_) {
+      throw PackageVerificationException('archivio non leggibile');
+    }
     final files = <String, Uint8List>{};
     for (final f in archive.files) {
       if (f.isFile) files[f.name] = Uint8List.fromList(f.content as List<int>);
@@ -51,17 +62,12 @@ class PackageVerifier {
     if (manifestBytes == null) throw PackageVerificationException('manifest.json assente');
     final manifest = jsonDecode(utf8.decode(manifestBytes)) as Map<String, dynamic>;
 
-    final signatureHex = manifest.remove('signature') as String?;
-    if (signatureHex == null) throw PackageVerificationException('pacchetto non firmato');
-    final ok = await _ed25519.verify(
-      utf8.encode(_canonical(manifest)),
-      signature: Signature(_hex(signatureHex), publicKey: SimplePublicKey(_hex(_publicKeyHex), type: KeyPairType.ed25519)),
-    );
-    if (!ok) throw PackageVerificationException('firma non valida');
+    await verifySignedDocument(manifest, what: 'pacchetto');
 
     final expected = (manifest['files'] as Map<String, dynamic>).cast<String, String>();
     for (final entry in expected.entries) {
       final data = files[entry.key];
+      if (data == null && (isOptional?.call(entry.key) ?? false)) continue;
       if (data == null) throw PackageVerificationException('file mancante: ${entry.key}');
       if (sha256.convert(data).toString() != entry.value) {
         throw PackageVerificationException('hash diverso per ${entry.key}');
@@ -69,11 +75,30 @@ class PackageVerifier {
     }
     files.removeWhere((k, _) => !expected.containsKey(k));
     return VerifiedPackage._(
-        manifest['id'] as String, (manifest['kind'] as String?) ?? 'story', manifest['version'] as int, files);
+        manifest['id'] as String, (manifest['kind'] as String?) ?? 'story', manifest['version'] as int, files, manifest);
+  }
+
+  /// Verifica la firma Ed25519 di un documento JSON (manifest, elenco dei ritirati)
+  /// e la rimuove dalla mappa. Lancia [PackageVerificationException] se manca o non vale.
+  Future<void> verifySignedDocument(Map<String, dynamic> doc, {String what = 'documento'}) async {
+    final signatureHex = doc.remove('signature') as String?;
+    if (signatureHex == null) throw PackageVerificationException('$what non firmato');
+    final bool ok;
+    try {
+      ok = await _ed25519.verify(
+        utf8.encode(_canonical(doc)),
+        signature: Signature(_hex(signatureHex), publicKey: SimplePublicKey(_hex(_publicKeyHex), type: KeyPairType.ed25519)),
+      );
+    } on FormatException {
+      throw PackageVerificationException('firma non valida');
+    }
+    if (!ok) throw PackageVerificationException('firma non valida');
   }
 
   /// JSON canonico identico a quello prodotto da studio/pack.py:
   /// chiavi ordinate ricorsivamente, nessuno spazio, caratteri non ASCII non escapati.
+  static String canonicalJson(Object? value) => _canonical(value);
+
   static String _canonical(Object? value) {
     if (value is Map) {
       final keys = value.keys.map((k) => k.toString()).toList()..sort();

@@ -267,10 +267,27 @@ Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la li
 
 ## Pacchetto distribuito
 
-`studio/pack.py` produce `dist/<id>-v<version>.mirabo` (zip) con dentro i file sopra e un `manifest.json` firmato Ed25519:
+`studio/pack.py` produce `dist/<id>-v<version>.mirabo` (zip) con dentro i file sopra e un `manifest.json` firmato Ed25519 (schema: `content/schema/manifest.schema.json`, controllato da `validate.check_manifest`):
 
 ```json
-{ "id": "lia-rabbia", "version": 3, "files": { "story.json": "<sha256>", ... }, "signature": "<base64>" }
+{
+  "id": "lia-rabbia", "kind": "story", "version": 3,
+  "manifestVersion": 2,
+  "formatVersion": 1, "minAppVersion": "0.1.0",
+  "languages": ["it", "en", "fr"],
+  "files": { "story.json": "<sha256>", "i18n/en/audio/01.m4a": "<sha256>" },
+  "sizes": { "story.json": 1234, "i18n/en/audio/01.m4a": 55000 },
+  "size": 56234,
+  "parts": { "base": ["story.json"], "en": ["i18n/en/audio/01.m4a"] },
+  "editorial": { "author": "Studio Mirabò", "reviewer": "Nome, 2026-05-01", "approvedVersion": 3 },
+  "signature": "<hex Ed25519 della forma canonica del manifest senza firma>"
+}
 ```
 
-L'app verifica la firma con la chiave pubblica in `app/lib/content/trusted_key.dart` e rifiuta qualsiasi pacchetto non valido.
+- **Compatibilità**: l'app installa solo se `formatVersion` è minore o uguale al formato che conosce e la sua versione è almeno `minAppVersion` (in `story.json` si può alzare con `minAppVersion`, default `0.1.0`).
+- **Dimensioni e hash**: `sizes` e `size` (byte non compressi) servono al controllo preventivo dello spazio; ogni file ha il suo sha256 in `files`.
+- **Tracciabilità editoriale**: `author` (campo facoltativo `author` di `story.json`), `reviewer` (`reviewedBy`, scritto da `review.py --approve`) e `approvedVersion` (versione nell'intestazione della scheda in `content/reviews/`, altrimenti quella pubblicata). Le attività non hanno revisione: `reviewer` e `approvedVersion` sono `null`.
+- **Lingue e audio**: vedi `docs/content-distribution.md`.
+- I manifest senza i campi nuovi (formato 1) restano leggibili dall'app.
+
+L'app verifica la firma con la chiave pubblica in `app/lib/content/trusted_key.dart` e rifiuta qualsiasi pacchetto non valido. L'installazione atomica, il ritiro delle versioni (`content/retired.json`) e "Mantieni offline" sono descritti in `docs/content-distribution.md`.
