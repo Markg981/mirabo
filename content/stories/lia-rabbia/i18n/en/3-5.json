@@ -91,9 +91,9 @@
       },
       "text": "The volcano goes down slowly, slowly. Lia and Teo build a new tower, wide, wide.",
       "companionLines": {
-        "bo": "My volcano is calm now, {nome}. See you tomorrow!",
-        "pilu": "Tonight I'll try the volcano breath, {nome}. See you tomorrow.",
-        "tango": "Tomorrow I'll breathe before I run, {nome}. See you tomorrow!"
+        "bo": "My volcano is calm now, {nome}.",
+        "pilu": "Tonight I'll try the volcano breath, {nome}.",
+        "tango": "Tomorrow I'll breathe before I run, {nome}."
       }
     }
   ]

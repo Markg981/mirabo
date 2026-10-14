@@ -111,8 +111,8 @@
       "text": "Sur le chemin de la maison, Emma dit : « Mamie, demain je le raconte à Sara et à Omar. Que le ruisseau était triste, et que je l'ai aidé. » Mamie hoche la tête. Et derrière elles, le ruisseau se remet à chanter : plin... plon... plin.",
       "companionLines": {
         "bo": "Elle a réussi, {nome}. Même avec les manches mouillées. Demain, si tu vois un papier par terre, tu me le dis ?",
-        "pilu": "Tu as vu, {nome} ? Pas de magie : juste des gants, un sac et quelqu'un qui regardait. À demain.",
-        "tango": "Plin plon plin ! Demain je cherche un ruisseau. Tu viens aussi, {nome} ? À demain !"
+        "pilu": "Tu as vu, {nome} ? Pas de magie : juste des gants, un sac et quelqu'un qui regardait.",
+        "tango": "Plin plon plin ! Demain je cherche un ruisseau. Tu viens aussi, {nome} ?"
       }
     }
   ]

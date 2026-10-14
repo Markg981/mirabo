@@ -72,9 +72,9 @@
       },
       "text": "Emma met Pietrolino dans sa poche et retourne vers Mamie. De la poche, une petite voix : « Même un tout petit caillou fait de grands cercles. »",
       "companionLines": {
-        "bo": "Demain, j'écoute le bois avec toi, {nome}. À demain.",
-        "pilu": "Demain, je ferme les yeux et j'écoute, {nome}. À demain.",
-        "tango": "Demain, je m'arrête une minute et j'écoute, {nome}. À demain !"
+        "bo": "Demain, j'écoute le bois avec toi, {nome}.",
+        "pilu": "Demain, je ferme les yeux et j'écoute, {nome}.",
+        "tango": "Demain, je m'arrête une minute et j'écoute, {nome}."
       }
     }
   ]

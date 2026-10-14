@@ -77,9 +77,9 @@
       },
       "text": "À la maison, Emma et Mamie posent un bol sur le balcon. « Celui-là, c'est pour la pluie », dit Emma.",
       "companionLines": {
-        "bo": "Ce soir, je ferme le robinet, {nome}. À demain.",
-        "pilu": "Demain, je regarde si le bol est plein, {nome}. À demain.",
-        "tango": "Ce soir, je ferme le robinet, vite, {nome} ! À demain !"
+        "bo": "Ce soir, je ferme le robinet, {nome}.",
+        "pilu": "Demain, je regarde si le bol est plein, {nome}.",
+        "tango": "Ce soir, je ferme le robinet, vite, {nome} !"
       }
     }
   ]

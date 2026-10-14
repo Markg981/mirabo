@@ -77,9 +77,9 @@
       },
       "text": "Zu Hause stellen Emma und Oma eine Schüssel auf den Balkon. „Die ist für den Regen“, sagt Emma.",
       "companionLines": {
-        "bo": "Heute Abend drehe ich den Wasserhahn zu, {nome}. Bis morgen.",
-        "pilu": "Morgen schaue ich, ob die Schüssel voll ist, {nome}. Bis morgen.",
-        "tango": "Heute Abend drehe ich den Hahn zu, schnell, {nome}! Bis morgen!"
+        "bo": "Heute Abend drehe ich den Wasserhahn zu, {nome}.",
+        "pilu": "Morgen schaue ich, ob die Schüssel voll ist, {nome}.",
+        "tango": "Heute Abend drehe ich den Hahn zu, schnell, {nome}!"
       }
     }
   ]

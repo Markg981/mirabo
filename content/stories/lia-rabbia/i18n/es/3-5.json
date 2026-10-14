@@ -91,9 +91,9 @@
       },
       "text": "El volcán baja despacito. Lia y Teo hacen una torre nueva, ancha, ancha.",
       "companionLines": {
-        "bo": "Mi volcán ahora está tranquilo, {nome}. ¡Hasta mañana!",
-        "pilu": "Esta noche pruebo la respiración del volcán, {nome}. Hasta mañana.",
-        "tango": "Mañana respiro antes de correr, {nome}. ¡Hasta mañana!"
+        "bo": "Mi volcán ahora está tranquilo, {nome}. ¡",
+        "pilu": "Esta noche pruebo la respiración del volcán, {nome}.",
+        "tango": "Mañana respiro antes de correr, {nome}. ¡"
       }
     }
   ]

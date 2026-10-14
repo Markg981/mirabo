@@ -93,7 +93,7 @@
       "text": "Am nächsten Tag kommt Emma mit selbstgemachten Schildern zurück: „Hier wohnt ein Igel“, „Nimm Rücksicht auf die, die im Laub schlafen“, „Nimm deinen Müll mit nach Hause“. In der Schule erzählt sie der Lehrerin und den anderen Kindern davon. Und so entsteht der Club der Kleinen Naturhüter.",
       "companionLines": {
         "bo": "Kleine Naturhüter! Darf ich auch einer sein, {nome}? Morgen mache ich einen Laubhaufen für die Igel.",
-        "pilu": "Probier morgen, auch ein Schild für deinen Park zu malen, {nome}. Was würdest du draufschreiben? Bis morgen.",
+        "pilu": "Probier morgen, auch ein Schild für deinen Park zu malen, {nome}. Was würdest du draufschreiben?",
         "tango": "Ich trete sofort den Naturhütern bei! Und du auch, {nome}! Morgen suchen wir Igel. Tschüss!"
       }
     }

@@ -13,7 +13,7 @@
   "save": "Enregistrer",
   "listenAgain": "Réécouter",
   "readAgain": "Relire",
-  "seeYouTomorrow": "À demain !",
+  "seeYouTomorrow": "Salut !",
   "go": "C'est parti !",
   "home": "Maison",
   "parentArea": "Espace parents",
@@ -467,5 +467,9 @@
   "projectLogTitle": "Les petits projets de {name}",
   "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
   "projectResultHeld": "à l'essai, ça a tenu",
-  "projectResultNotYet": "à l'essai, pas encore : on change quelque chose et on réessaie"
+  "projectResultNotYet": "à l'essai, pas encore : on change quelque chose et on réessaie",
+  "profileNoLimit": "Sans limite",
+  "usageNoLimit": "En mode « seul », il n'y a pas de limite de temps (à régler dans le profil).",
+  "winddownNote": "On se dit bientôt au revoir. Finissons doucement ce qu'on fait.",
+  "winddownHint": "Peu avant la fin, le compagnon prévient calmement et ne propose rien de nouveau. Ce qui est ouvert peut se terminer."
 }

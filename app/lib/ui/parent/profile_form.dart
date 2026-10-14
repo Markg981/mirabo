@@ -303,17 +303,26 @@ class _ProfileFormState extends State<ProfileForm> {
                     Row(
                       children: [
                         Expanded(child: Text(l.profileAloneSession, style: text.titleMedium)),
-                        Text(l.profileMinutes(_aloneMinutes), style: text.titleMedium?.copyWith(color: MiraboColors.teal)),
+                        Text(_aloneMinutes == 0 ? l.profileNoLimit : l.profileMinutes(_aloneMinutes),
+                            style: text.titleMedium?.copyWith(color: MiraboColors.teal)),
                       ],
                     ),
-                    Slider(
-                      value: _aloneMinutes.toDouble(),
-                      min: 10,
-                      max: 30,
-                      divisions: 4,
-                      label: l.profileMinutesShort(_aloneMinutes),
-                      onChanged: (v) => setState(() => _aloneMinutes = v.round()),
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _aloneMinutes == 0,
+                      title: Text(l.profileNoLimit),
+                      subtitle: Text(l.winddownHint),
+                      onChanged: (v) => setState(() => _aloneMinutes = v ? 0 : 20),
                     ),
+                    if (_aloneMinutes > 0)
+                      Slider(
+                        value: _aloneMinutes.toDouble(),
+                        min: 10,
+                        max: 30,
+                        divisions: 4,
+                        label: l.profileMinutesShort(_aloneMinutes),
+                        onChanged: (v) => setState(() => _aloneMinutes = v.round()),
+                      ),
                   ],
                 ),
                 const SizedBox(height: 28),

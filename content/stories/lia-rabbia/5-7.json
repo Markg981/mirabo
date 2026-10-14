@@ -240,8 +240,8 @@
       "keyPhrase": true,
       "companionLines": {
         "bo": "Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde. Ci vediamo domani?",
-        "pilu": "Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno. A domani.",
-        "tango": "Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio. A domani!"
+        "pilu": "Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno.",
+        "tango": "Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio."
       }
     }
   ]

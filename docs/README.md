@@ -5,6 +5,7 @@
 - `style-guide.md`: voce, struttura delle storie, compagni, serie *Emma e Pietrolino*, regole editoriali, scheda genitore e traduzioni.
 - `pedagogical-review.md`: revisione pedagogica delle storie (stati, schede in `content/reviews/`, `studio/review.py`).
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
+- `session-limit.md`: limite di sessione facoltativo, preavviso e chiusura senza meccanismi di prolungamento.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 
 ## Tempi d'uso (area genitori, scheda "Crescita")

@@ -111,8 +111,8 @@
       "text": "De camino a casa Emma dice: \"Abuela, mañana se lo cuento a Sara y a Omar. Que el arroyo estaba triste y yo lo he ayudado.\" La abuela asiente. Y detrás de ellas el arroyo vuelve a cantar: plin... plon... plin.",
       "companionLines": {
         "bo": "Lo ha conseguido, {nome}. Incluso con las mangas mojadas. Mañana, si ves un papel tirado, ¿me lo dices?",
-        "pilu": "¿Lo has visto, {nome}? Nada de magia: solo guantes, una bolsa y alguien que miraba. Hasta mañana.",
-        "tango": "¡Plin plon plin! Mañana busco un arroyo. ¿Vienes tú también, {nome}? ¡Hasta mañana!"
+        "pilu": "¿Lo has visto, {nome}? Nada de magia: solo guantes, una bolsa y alguien que miraba.",
+        "tango": "¡Plin plon plin! Mañana busco un arroyo. ¿Vienes tú también, {nome}? ¡"
       }
     }
   ]

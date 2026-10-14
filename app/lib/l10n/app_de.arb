@@ -13,7 +13,7 @@
   "save": "Speichern",
   "listenAgain": "Nochmal hören",
   "readAgain": "Nochmal vorlesen",
-  "seeYouTomorrow": "Bis morgen!",
+  "seeYouTomorrow": "Tschüss!",
   "go": "Los geht's!",
   "home": "Zuhause",
   "parentArea": "Elternbereich",
@@ -467,5 +467,9 @@
   "projectLogTitle": "Die kleinen Projekte von {name}",
   "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
   "projectResultHeld": "beim Test hat es gehalten",
-  "projectResultNotYet": "beim Test noch nicht: etwas ändern und noch einmal versuchen"
+  "projectResultNotYet": "beim Test noch nicht: etwas ändern und noch einmal versuchen",
+  "profileNoLimit": "Kein Limit",
+  "usageNoLimit": "Im Modus „allein“ gibt es kein Zeitlimit (im Profil einstellbar).",
+  "winddownNote": "Bald verabschieden wir uns. Wir machen in Ruhe fertig, was wir tun.",
+  "winddownHint": "Kurz vor Schluss sagt der Begleiter es ruhig und schlägt nichts Neues vor. Was offen ist, kann beendet werden."
 }

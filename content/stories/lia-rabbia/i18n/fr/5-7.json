@@ -119,8 +119,8 @@
       "text": "La nouvelle tour n'est pas la plus haute du monde. C'est la plus large, parce qu'ils l'ont faite à deux. Et le volcan de Lia ? Il est toujours là-dedans, tranquille. Il reviendra, un jour. Mais maintenant Lia sait l'attendre.",
       "companionLines": {
         "bo": "On a réussi, {nome}. Mon volcan est tout vert maintenant. On se voit demain ?",
-        "pilu": "Maintenant tu le sais toi aussi, {nome} : le volcan, ça passe. Je vais dormir un peu, il fait jour. À demain.",
-        "tango": "Je m'en souviens, {nome} : on inspire un deux trois, on souffle sssh. J'essaie cet après-midi. À demain !"
+        "pilu": "Maintenant tu le sais toi aussi, {nome} : le volcan, ça passe. Je vais dormir un peu, il fait jour.",
+        "tango": "Je m'en souviens, {nome} : on inspire un deux trois, on souffle sssh. J'essaie cet après-midi."
       }
     }
   ]

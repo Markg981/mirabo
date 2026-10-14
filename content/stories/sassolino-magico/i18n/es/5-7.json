@@ -83,7 +83,7 @@
       "text": "Emma mete a Pietrolino en el bolsillo del abrigo y vuelve con la abuela. \"Abuela, he encontrado un amigo. Mañana volvemos al bosque.\" Desde el bolsillo llega una vocecita: \"El bosque tiene muchas cosas que decir. Basta con escuchar.\"",
       "companionLines": {
         "bo": "Un amigo piedrecita. Yo también quiero uno, {nome}. Mañana busco una piedra que sonría.",
-        "pilu": "Mañana intenta pararte un minuto a escuchar, {nome}. A ver qué oyes. Hasta mañana.",
+        "pilu": "Mañana intenta pararte un minuto a escuchar, {nome}. A ver qué oyes.",
         "tango": "¡Mañana volvemos con Emma, {nome}! Y esta vez me paro antes de lanzar. ¡Prometido!"
       }
     }

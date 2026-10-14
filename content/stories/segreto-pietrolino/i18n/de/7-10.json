@@ -99,7 +99,7 @@
       "text": "Emma und Oma gehen Hand in Hand den Hügel hinunter. Der Wind bewegt das Gras, leicht wie ein Streicheln, und scheint zu flüstern: „Danke, Emma.“ Emma dreht sich nicht um. Sie weiß, dass Pietrolino dort ist, an seinem Platz. Und sie weiß, dass sie morgen im Wald wieder zuhören wird.",
       "companionLines": {
         "bo": "Pietrolino wird mir fehlen, {nome}. Morgen, wenn ich einen runden Stein sehe, sage ich hallo.",
-        "pilu": "Wer uns etwas beigebracht hat, bleibt bei uns, {nome}. Erzähl mir morgen, wenn du magst, wer dir etwas beigebracht hat. Bis morgen.",
+        "pilu": "Wer uns etwas beigebracht hat, bleibt bei uns, {nome}. Erzähl mir morgen, wenn du magst, wer dir etwas beigebracht hat.",
         "tango": "Morgen gehe ich in den Wald, um zuzuhören, {nome}. Wie Emma. Dann freut sich Pietrolino. Tschüss!"
       }
     }

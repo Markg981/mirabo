@@ -91,9 +91,9 @@
       },
       "text": "Der Vulkan geht langsam, langsam runter. Lia und Teo bauen einen neuen Turm, breit, breit.",
       "companionLines": {
-        "bo": "Mein Vulkan ist jetzt ruhig, {nome}. Bis morgen!",
-        "pilu": "Heute Abend probiere ich den Vulkan-Atem, {nome}. Bis morgen.",
-        "tango": "Morgen atme ich, bevor ich renne, {nome}. Bis morgen!"
+        "bo": "Mein Vulkan ist jetzt ruhig, {nome}.",
+        "pilu": "Heute Abend probiere ich den Vulkan-Atem, {nome}.",
+        "tango": "Morgen atme ich, bevor ich renne, {nome}."
       }
     }
   ]

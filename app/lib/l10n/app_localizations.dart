@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it'),
+    Locale('it')
   ];
 
   /// No description provided for @appTitle.
@@ -2695,6 +2695,30 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'alla prova non ancora: si cambia e si riprova'**
   String get projectResultNotYet;
+
+  /// No description provided for @profileNoLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessun limite'**
+  String get profileNoLimit;
+
+  /// No description provided for @usageNoLimit.
+  ///
+  /// In it, this message translates to:
+  /// **'Nella modalità \"da solo\" non c\'è un limite di tempo (si imposta nel profilo).'**
+  String get usageNoLimit;
+
+  /// No description provided for @winddownNote.
+  ///
+  /// In it, this message translates to:
+  /// **'Tra poco ci salutiamo. Finiamo con calma quello che stiamo facendo.'**
+  String get winddownNote;
+
+  /// No description provided for @winddownHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.'**
+  String get winddownHint;
 }
 
 class _AppLocalizationsDelegate
@@ -2730,9 +2754,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

@@ -73,6 +73,17 @@ class AppState extends ChangeNotifier {
   bool _aloneExpired = false;
   int _holds = 0;
   bool _goodbye = false;
+  Timer? _nearTimer;
+  bool _near = false;
+
+  /// Minuti prima del limite in cui la casa si fa tranquilla: niente di nuovo
+  /// da iniziare, quello che è aperto si conclude. Non è un conto alla rovescia:
+  /// il bambino non vede numeri.
+  static const winddownLead = Duration(minutes: 3);
+
+  /// Il limite (0 = nessuno) è vicino o scaduto: non si propongono storie o
+  /// attività nuove, ma quella in corso si finisce.
+  bool get windingDown => _near || _aloneExpired;
 
   /// Il tempo "da solo" è finito e non c'è niente in corso: si saluta.
   bool get aloneGoodbye => _goodbye;
@@ -84,14 +95,35 @@ class AppState extends ChangeNotifier {
       _aloneSince = null;
       _aloneExpired = false;
       _goodbye = false;
+      _nearTimer?.cancel();
+      _nearTimer = null;
+      _near = false;
       return;
     }
     _aloneSince ??= _now();
     if (_aloneExpired) return;
+    _aloneTimer?.cancel();
+    _nearTimer?.cancel();
+    _nearTimer = null;
+    _near = false;
+    // Nessun limite: la sessione non scade mai da sola.
+    if (currentProfile!.aloneSessionMinutes <= 0) {
+      _aloneTimer = null;
+      return;
+    }
     // Il genitore può aver cambiato i minuti: si riprogramma sull'inizio di sempre.
     final left = _aloneSince!.add(Duration(minutes: currentProfile!.aloneSessionMinutes)).difference(_now());
-    _aloneTimer?.cancel();
     _aloneTimer = Timer(left.isNegative ? Duration.zero : left, _onAloneTimeUp);
+    final lead = left - winddownLead;
+    if (lead <= Duration.zero) {
+      _near = true;
+    } else {
+      _nearTimer = Timer(lead, () {
+        _nearTimer = null;
+        _near = true;
+        notifyListeners();
+      });
+    }
   }
 
   void _onAloneTimeUp() {
@@ -119,6 +151,7 @@ class AppState extends ChangeNotifier {
   @override
   void dispose() {
     _aloneTimer?.cancel();
+    _nearTimer?.cancel();
     super.dispose();
   }
 

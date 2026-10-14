@@ -283,8 +283,8 @@ class _StoryReaderState extends State<StoryReader> {
         (screen.consequence == null ||
             _mode == SessionMode.together ||
             _tried.length >= screen.consequence!.minTries) &&
-        (lessonRun?.isDone ?? true) &&
-        (gesturePhase == null || gesturePhase == GesturePhase.done);
+        (lessonRun?.isDone ?? true);
+    // La pausa di gesto è un invito: non farla non ferma mai la storia.
     final world = worldStyle(widget.story.world);
     final tokens = MiraboTokens.of(context);
     final accent = tokens.tint(world.color);

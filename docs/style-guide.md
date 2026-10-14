@@ -45,8 +45,8 @@ Valori indicativi, ricavati dalle storie già scritte. In 3–5 le prime variant
 4. **Svolta** (`turn`): il protagonista agisce, spesso con l'aiuto dell'adulto di fiducia. Il
    cambiamento si vede a passi piccoli.
 5. **Chiusura** (`closing`, l'ultima **[V]**): ritorno alla calma e a casa. Il compagno chiama il
-   bambino per nome **[V]**, dice cosa farà domani e saluta ("A domani", "Buonanotte"). Nessun
-   cliffhanger, nessuna richiesta di continuare.
+   bambino per nome **[V]**, saluta ("Buonanotte", "Ciao"), senza dare appuntamenti ("A domani"). Nessun
+   cliffhanger, nessuna richiesta di tornare o di continuare (solo, al massimo, un invito facoltativo a un progetto).
 
 ### Pausa di dialogo
 
@@ -176,7 +176,7 @@ Dieci episodi, dall'autunno alla primavera. Le bozze originali sono in
 - Niente paura usata per convincere: nessuna minaccia sul futuro del pianeta, nessun "se non lo
   fai…". Il messaggio è sempre "si può fare qualcosa, ed è piccolo".
 - Nessuna marca, prodotto o luogo reale riconoscibile.
-- Chiusura naturale: il compagno saluta e dice cosa farà domani.
+- Chiusura naturale: il compagno saluta, senza "a domani", "mi mancherai" o altre frasi che chiedono di tornare.
 
 ## Illustrazioni
 

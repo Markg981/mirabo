@@ -145,9 +145,9 @@
       "text": "A casa, Emma e la nonna mettono una ciotola sul balcone. \"Questa è per la pioggia,\" dice Emma.",
       "keyPhrase": true,
       "companionLines": {
-        "bo": "Stasera chiudo il rubinetto, {nome}. A domani.",
-        "pilu": "Domani guardo se la ciotola è piena, {nome}. A domani.",
-        "tango": "Stasera chiudo il rubinetto, svelto, {nome}! A domani!"
+        "bo": "Stasera chiudo il rubinetto, {nome}.",
+        "pilu": "Domani guardo se la ciotola è piena, {nome}.",
+        "tango": "Stasera chiudo il rubinetto, svelto, {nome}!"
       }
     }
   ]

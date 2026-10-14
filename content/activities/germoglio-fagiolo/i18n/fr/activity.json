@@ -42,8 +42,8 @@
   },
   "outro": {
     "bo": "Tu as travaillé tout seul, {nome}. Rangeons tout, comme ça demain tu le retrouves.",
-    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail. À demain.",
-    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde. À demain !"
+    "pilu": "Chaque chose retourne à sa place, {nome} : ça fait partie du travail.",
+    "tango": "Fini ! {nome}, on range tout ? Moi... moi, je regarde."
   },
   "reviewed": true
 }

@@ -93,7 +93,7 @@
       "text": "Le lendemain, Emma revient avec des pancartes faites main : « Ici vit un hérisson », « Respecte ceux qui dorment dans les feuilles », « Rapporte tes déchets chez toi ». À l'école, elle en parle à la maîtresse et à ses camarades. Et c'est ainsi que naît le Club des Petits Gardiens de la Nature.",
       "companionLines": {
         "bo": "Les Petits Gardiens ! Je peux en être aussi, {nome} ? Demain je fais un tas de feuilles pour les hérissons.",
-        "pilu": "Demain, essaie de dessiner toi aussi une pancarte pour ton parc, {nome}. Qu'est-ce que tu écrirais ? À demain.",
+        "pilu": "Demain, essaie de dessiner toi aussi une pancarte pour ton parc, {nome}. Qu'est-ce que tu écrirais ?",
         "tango": "Je m'inscris tout de suite chez les Gardiens ! Et toi aussi, {nome} ! Demain on cherche des hérissons. Salut !"
       }
     }

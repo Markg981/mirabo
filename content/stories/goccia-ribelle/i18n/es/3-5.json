@@ -77,9 +77,9 @@
       },
       "text": "En casa, Emma y la abuela ponen un cuenco en el balcón. \"Este es para la lluvia\", dice Emma.",
       "companionLines": {
-        "bo": "Esta noche cierro el grifo, {nome}. Hasta mañana.",
-        "pilu": "Mañana miro si el cuenco está lleno, {nome}. Hasta mañana.",
-        "tango": "¡Esta noche cierro el grifo, rapidito, {nome}! ¡Hasta mañana!"
+        "bo": "Esta noche cierro el grifo, {nome}.",
+        "pilu": "Mañana miro si el cuenco está lleno, {nome}.",
+        "tango": "¡Esta noche cierro el grifo, rapidito, {nome}! ¡"
       }
     }
   ]

@@ -72,9 +72,9 @@
       },
       "text": "Emma steckt Pietrolino in die Tasche und geht zurück zu Oma. Aus der Tasche kommt ein Stimmchen: „Auch ein kleiner Kiesel macht große Kreise.“",
       "companionLines": {
-        "bo": "Morgen höre ich mit dir dem Wald zu, {nome}. Bis morgen.",
-        "pilu": "Morgen mache ich die Augen zu und höre, {nome}. Bis morgen.",
-        "tango": "Morgen bleibe ich eine Minute stehen und höre, {nome}. Bis morgen!"
+        "bo": "Morgen höre ich mit dir dem Wald zu, {nome}.",
+        "pilu": "Morgen mache ich die Augen zu und höre, {nome}.",
+        "tango": "Morgen bleibe ich eine Minute stehen und höre, {nome}."
       }
     }
   ]

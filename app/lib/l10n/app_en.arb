@@ -13,7 +13,7 @@
   "save": "Save",
   "listenAgain": "Listen again",
   "readAgain": "Read again",
-  "seeYouTomorrow": "See you tomorrow!",
+  "seeYouTomorrow": "Bye for now!",
   "go": "Let's go!",
   "home": "Home",
   "parentArea": "Grown-ups area",
@@ -467,5 +467,9 @@
   "projectLogTitle": "{name}'s small projects",
   "@projectLogTitle": { "placeholders": { "name": { "type": "String" } } },
   "projectResultHeld": "it held in the test",
-  "projectResultNotYet": "not yet in the test: change something and try again"
+  "projectResultNotYet": "not yet in the test: change something and try again",
+  "profileNoLimit": "No limit",
+  "usageNoLimit": "In \"alone\" mode there is no time limit (set it in the profile).",
+  "winddownNote": "We'll say goodbye soon. Let's calmly finish what we're doing.",
+  "winddownHint": "Shortly before the end the companion gently says so and offers nothing new. What is open can be finished."
 }

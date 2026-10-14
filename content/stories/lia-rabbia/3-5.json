@@ -163,9 +163,9 @@
       "text": "Il vulcano scende piano piano. Lia e Teo fanno una torre nuova, larga larga.",
       "keyPhrase": true,
       "companionLines": {
-        "bo": "Il mio vulcano adesso è calmo, {nome}. A domani!",
-        "pilu": "Stasera provo il respiro del vulcano, {nome}. A domani.",
-        "tango": "Domani respiro prima di correre, {nome}. A domani!"
+        "bo": "Il mio vulcano adesso è calmo, {nome}.",
+        "pilu": "Stasera provo il respiro del vulcano, {nome}.",
+        "tango": "Domani respiro prima di correre, {nome}."
       }
     }
   ]

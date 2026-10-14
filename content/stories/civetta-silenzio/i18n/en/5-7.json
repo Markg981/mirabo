@@ -101,7 +101,7 @@
       "text": "Grandma takes Emma back to bed. Emma puts the feather on the bedside table, next to Pietrolino. She breathes slowly, the way she has learned. And this time she falls asleep peacefully.",
       "companionLines": {
         "bo": "Tonight I'll listen to my breathing before I sleep, {nome}. Shhh. Goodnight.",
-        "pilu": "Tonight you try a minute of silence too, {nome}. Listen to what you can hear. See you tomorrow.",
+        "pilu": "Tonight you try a minute of silence too, {nome}. Listen to what you can hear.",
         "tango": "Tonight I'll try to be quiet for a whole minute, {nome}! ...Shhh. Bye!"
       }
     }
