@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -22,7 +23,7 @@ import '../models/story.dart' show AgeBand;
 /// Keystore), mai accanto al database.
 class LocalDb {
   LocalDb._(this._db);
-  final Database _db;
+  Database _db;
 
   static const _version = 10;
   static const _keyName = 'mirabo_db_key';
@@ -530,6 +531,42 @@ class LocalDb {
 
   Future<void> setSetting(String key, String value) =>
       _db.insert('settings', {'key': key, 'value': value}, conflictAlgorithm: ConflictAlgorithm.replace);
+
+  /// Cancellazione completa: chiude il database, elimina file e chiave e ne
+  /// apre uno nuovo e vuoto, come al primo avvio. Vedi [eraseStorage].
+  Future<void> eraseAndReopen() async {
+    await _db.close();
+    await eraseStorage();
+    _db = (await open())._db;
+  }
+
+  /// Elimina da questo dispositivo il database (con i file -journal/-wal/-shm),
+  /// la sua chiave nel secure storage, la cache del nome pronunciato e tutto
+  /// ciò che l'app ha nella cartella temporanea (audio delle storie, suoni,
+  /// file generati). [supportDir] e [tempDir] servono ai test.
+  static Future<void> eraseStorage({Directory? supportDir, Directory? tempDir}) async {
+    final support = supportDir ?? await getApplicationSupportDirectory();
+    await _deleteDatabaseFiles(p.join(support.path, 'mirabo.db'));
+    await _deleteTree(Directory(p.join(support.path, 'names')));
+    await _storage.delete(key: _keyName);
+    final temp = tempDir ?? await getTemporaryDirectory();
+    if (await temp.exists()) {
+      await for (final e in temp.list()) {
+        await _deleteTree(e);
+      }
+    }
+  }
+
+  static Future<void> _deleteTree(FileSystemEntity e) async {
+    try {
+      if (await e.exists()) await e.delete(recursive: true);
+    } on FileSystemException catch (err) {
+      debugPrint('Cancellazione non riuscita: ${err.path}');
+    }
+  }
+
+  /// Vero se la chiave del database è ancora nel secure storage.
+  static Future<bool> hasKey() async => await _storage.read(key: _keyName) != null;
 
   /// "Elimina tutti i dati": cancella profili, diario e impostazioni.
   Future<void> wipe() async {

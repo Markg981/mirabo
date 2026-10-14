@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+"""Confronta dipendenze, permessi e codice di rete con l'inventario approvato.
+
+Fonte approvata: docs/privacy/approved-dependencies.json (razionale in
+docs/privacy/data-inventory.md). Controlla:
+  1. dipendenze dirette di app/pubspec.yaml (con la dichiarazione "network");
+  2. tutte le dipendenze di app/pubspec.lock, transitive comprese (se il file c'e';
+     con --require-lock la sua assenza e' un errore);
+  3. permessi Android dei manifest in app/android/**/src/main e chiavi *UsageDescription
+     di Info.plist;
+  4. in app/lib, URL http(s) e API di rete (HttpClient, Socket, WebSocket, package:http)
+     fuori dai file in "network_code_allowlist".
+
+Uso: python studio/check_inventory.py [--require-lock]
+Esce con codice 1 se compare qualcosa di non documentato.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+APP = ROOT / "app"
+APPROVED = ROOT / "docs" / "privacy" / "approved-dependencies.json"
+
+NETWORK_API = re.compile(
+    r"\b(HttpClient|Socket\.connect|SecureSocket|WebSocket|RawSocket)\b|package:(http|dio|web_socket_channel)/"
+)
+URL = re.compile(r"https?://")
+
+
+def pubspec_deps(text: str) -> dict[str, set[str]]:
+    """Nomi sotto dependencies / dev_dependencies (senza dipendere da PyYAML)."""
+    out: dict[str, set[str]] = {}
+    section = None
+    for line in text.splitlines():
+        if re.match(r"^[A-Za-z_]+:", line):
+            section = line.split(":")[0]
+            continue
+        m = re.match(r"^  ([A-Za-z_][A-Za-z0-9_]*):", line)
+        if m and section in ("dependencies", "dev_dependencies"):
+            out.setdefault(section, set()).add(m.group(1))
+    return out
+
+
+def lock_packages(text: str) -> dict[str, str]:
+    return {
+        m.group(1): m.group(2)
+        for m in re.finditer(r'^  (\S+):\n    dependency: "?([^"\n]+)"?$', text, re.M)
+    }
+
+
+def main() -> int:
+    require_lock = "--require-lock" in sys.argv
+    approved = json.loads(APPROVED.read_text(encoding="utf-8"))
+    direct = approved["direct"]
+    transitive = approved["transitive"]
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    # 1. pubspec.yaml
+    deps = pubspec_deps((APP / "pubspec.yaml").read_text(encoding="utf-8"))
+    declared = set().union(*deps.values())
+    for name in sorted(declared):
+        entry = direct.get(name)
+        if entry is None:
+            errors.append(f"dipendenza diretta non documentata: {name} (aggiungila a {APPROVED.name} e a data-inventory.md)")
+        elif not entry.get("network"):
+            errors.append(f"{name}: manca la dichiarazione \"network\"")
+        elif entry["network"] != "none" and not entry.get("destination") and entry["network"] != "device-dependent":
+            errors.append(f"{name}: network={entry['network']} ma manca \"destination\"")
+    for name in sorted(set(direct) - declared):
+        warnings.append(f"in inventario ma non piu' in pubspec.yaml: {name}")
+
+    # 2. pubspec.lock
+    lock = APP / "pubspec.lock"
+    if lock.exists():
+        pkgs = lock_packages(lock.read_text(encoding="utf-8"))
+        for name, kind in sorted(pkgs.items()):
+            if kind.startswith("direct"):
+                if name not in direct:
+                    errors.append(f"pubspec.lock: dipendenza diretta non documentata: {name}")
+            elif name not in transitive and name not in direct:
+                errors.append(f"pubspec.lock: dipendenza transitiva non documentata: {name}")
+        for name in sorted(set(transitive) - set(pkgs)):
+            warnings.append(f"transitiva in inventario ma non nel lock: {name}")
+    elif require_lock:
+        errors.append("app/pubspec.lock mancante: esegui `flutter pub get` prima del controllo")
+    else:
+        warnings.append("app/pubspec.lock assente: transitive non controllate (usa --require-lock in CI dopo pub get)")
+
+    # 3. permessi piattaforma
+    ok_perms = set(approved.get("android_permissions", {}))
+    for manifest in (APP / "android").glob("**/src/main/AndroidManifest.xml"):
+        for perm in re.findall(r'<uses-permission[^>]*android:name="([^"]+)"', manifest.read_text(encoding="utf-8")):
+            if perm not in ok_perms:
+                errors.append(f"{manifest.relative_to(ROOT)}: permesso Android non documentato: {perm}")
+    plist = APP / "ios" / "Runner" / "Info.plist"
+    if plist.exists():
+        for key in re.findall(r"<key>(NS\w+UsageDescription)</key>", plist.read_text(encoding="utf-8")):
+            if key not in approved.get("ios_privacy_keys", []):
+                errors.append(f"Info.plist: chiave di privacy non documentata: {key}")
+
+    # 4. codice di rete in lib
+    allowed = {ROOT / "app" / p for p in approved.get("network_code_allowlist", {}).get("files", [])}
+    for f in sorted((APP / "lib").rglob("*.dart")):
+        if f in allowed:
+            continue
+        for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+            code = line.split("//")[0] if "//" in line and "://" not in line else line
+            if line.lstrip().startswith("//"):
+                continue
+            if NETWORK_API.search(code) or URL.search(code):
+                errors.append(f"{f.relative_to(ROOT)}:{n}: rete o URL fuori dall'elenco approvato")
+
+    for w in warnings:
+        print(f"avviso: {w}")
+    for e in errors:
+        print(f"ERRORE: {e}")
+    if errors:
+        print(f"\n{len(errors)} problemi: inventario non allineato (docs/privacy/data-inventory.md).")
+        return 1
+    print(f"Inventario allineato: {len(declared)} dipendenze dirette, "
+          f"{'lock controllato' if lock.exists() else 'lock non presente'}.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
