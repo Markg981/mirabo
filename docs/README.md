@@ -25,3 +25,7 @@
 | Contenuti | Scritti da Marco con l'AI, revisione pedagogica prima della pubblicazione (`pedagogical-review.md`); proprietari |
 | Barra delle categorie | Ogni bottone ha emoji, colore e nome scritto; tenendolo premuto la voce ne dice il nome. I bottoni non cambiano posizione in base al comportamento recente |
 | Serie | *Emma e Pietrolino* è il mondo Ambiente |
+
+## Diario dell'esplorazione (area genitore)
+
+La scheda *Crescita* è ora un diario descrittivo (`app/lib/data/exploration_diary.dart`): temi esplorati e ripresi negli ultimi 30 giorni ("Ha esplorato: Forme", "L'ha ripreso in 3 giorni diversi"), storie inventate e conservate nella fabbrica di storie, osservazioni libere del genitore. Tocchi, tentativi, suggerimenti, velocità e completamenti non diventano indicatori di competenza o di sviluppo: niente tappe ("ce la fa", "lo fa da solo"), niente confronto con un mese prima né con altri bambini. Le osservazioni stanno in `settings` (chiave `parent_notes_<id>`, JSON), quindi senza cambio di schema, nel backup e nella cancellazione dati.

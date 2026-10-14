@@ -1067,42 +1067,57 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String growthTitle(Object name) {
-    return 'Cómo está creciendo $name';
+    return 'Qué ha explorado $name';
   }
 
   @override
   String get growthIntro =>
-      'La comparación es solo consigo mismo, hace un mes. La app ve una parte pequeña de su día: ante dudas sobre el desarrollo, la referencia es el pediatra o el maestro.';
+      'Un diario de lo que ha elegido y retomado en los últimos 30 días, no una evaluación: toques, velocidad y finalizaciones no dicen lo que sabe hacer. Sin comparaciones, ni con otros niños ni con hace un mes.';
 
   @override
   String get growthEmpty =>
-      'Ninguna actividad en los últimos 30 días. Cuando haga alguna, aquí verás las etapas.';
+      'Ninguna actividad en los últimos 30 días. Cuando elija alguna, aquí verás los temas que ha explorado.';
 
   @override
   String get growthOffscreen =>
       'Donde no hay mejora, prueba la actividad fuera de la pantalla sugerida en la ficha: no más tiempo en la app.';
 
   @override
-  String growthNew(Object count) {
-    return 'En los últimos 30 días: $count rondas. Hace un mes aún no lo había probado.';
+  String exploreTheme(String theme) {
+    return 'Ha explorado: $theme';
   }
 
   @override
-  String growthCompare(Object before, Object now) {
-    return 'Hoy: $now · hace un mes: $before (borde gris).';
+  String exploreResumed(int days) {
+    return 'Lo ha retomado en $days días distintos.';
   }
 
   @override
-  String stageLabel(String stage) {
-    String _temp0 = intl.Intl.selectLogic(stage, {
-      'starting': 'está empezando',
-      'working': 'está trabajando en ello',
-      'canDo': 'lo consigue',
-      'alone': 'lo hace solo',
-      'other': '$stage',
-    });
-    return '$_temp0';
-  }
+  String get exploreOnce => 'Lo ha probado un día.';
+
+  @override
+  String get exploreCreationsTitle => 'Cuentos que ha inventado y guardado';
+
+  @override
+  String get exploreCreationsEmpty =>
+      'Todavía no hay cuentos inventados en la fábrica de cuentos.';
+
+  @override
+  String get exploreNotesTitle => 'Tus observaciones';
+
+  @override
+  String get exploreNotesHint =>
+      'Algo que has notado: una pregunta, un juego, una frase...';
+
+  @override
+  String get exploreNotesAdd => 'Añadir';
+
+  @override
+  String get exploreNotesEmpty =>
+      'Sin observaciones. Se quedan solo en este dispositivo.';
+
+  @override
+  String get exploreNotesDelete => 'Eliminar la observación';
 
   @override
   String skillLabel(String skill) {

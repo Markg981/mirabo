@@ -1565,19 +1565,19 @@ abstract class AppLocalizations {
   /// No description provided for @growthTitle.
   ///
   /// In it, this message translates to:
-  /// **'Come sta crescendo {name}'**
+  /// **'Cosa ha esplorato {name}'**
   String growthTitle(Object name);
 
   /// No description provided for @growthIntro.
   ///
   /// In it, this message translates to:
-  /// **'Il confronto è solo con sé stesso, un mese fa. L\'app vede una parte piccola della sua giornata: per dubbi sullo sviluppo il riferimento è il pediatra o l\'insegnante.'**
+  /// **'Un diario di ciò che ha scelto e ripreso negli ultimi 30 giorni, non una valutazione: tocchi, velocità e completamenti non dicono quanto sa fare. Nessun confronto, né con altri bambini né con un mese fa.'**
   String get growthIntro;
 
   /// No description provided for @growthEmpty.
   ///
   /// In it, this message translates to:
-  /// **'Nessuna attività negli ultimi 30 giorni. Quando ne farà qualcuna, qui vedrai le tappe.'**
+  /// **'Nessuna attività negli ultimi 30 giorni. Quando ne sceglierà qualcuna, qui vedrai i temi che ha esplorato.'**
   String get growthEmpty;
 
   /// No description provided for @growthOffscreen.
@@ -1586,23 +1586,65 @@ abstract class AppLocalizations {
   /// **'Dove non c\'è miglioramento, prova l\'attività fuori dallo schermo suggerita nella scheda: non più tempo sull\'app.'**
   String get growthOffscreen;
 
-  /// No description provided for @growthNew.
+  /// No description provided for @exploreTheme.
   ///
   /// In it, this message translates to:
-  /// **'Negli ultimi 30 giorni: {count} round. Un mese fa non l\'aveva ancora provato.'**
-  String growthNew(Object count);
+  /// **'Ha esplorato: {theme}'**
+  String exploreTheme(String theme);
 
-  /// No description provided for @growthCompare.
+  /// No description provided for @exploreResumed.
   ///
   /// In it, this message translates to:
-  /// **'Oggi: {now} · un mese fa: {before} (bordo grigio).'**
-  String growthCompare(Object before, Object now);
+  /// **'L\'ha ripreso in {days} giorni diversi.'**
+  String exploreResumed(int days);
 
-  /// No description provided for @stageLabel.
+  /// No description provided for @exploreOnce.
   ///
   /// In it, this message translates to:
-  /// **'{stage, select, starting{sta iniziando} working{ci sta lavorando} canDo{ce la fa} alone{lo fa da solo} other{{stage}}}'**
-  String stageLabel(String stage);
+  /// **'L\'ha provato in un giorno.'**
+  String get exploreOnce;
+
+  /// No description provided for @exploreCreationsTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Storie che ha inventato e conservato'**
+  String get exploreCreationsTitle;
+
+  /// No description provided for @exploreCreationsEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Ancora nessuna storia inventata nella fabbrica di storie.'**
+  String get exploreCreationsEmpty;
+
+  /// No description provided for @exploreNotesTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Le tue osservazioni'**
+  String get exploreNotesTitle;
+
+  /// No description provided for @exploreNotesHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Qualcosa che hai notato: una domanda, un gioco, una frase...'**
+  String get exploreNotesHint;
+
+  /// No description provided for @exploreNotesAdd.
+  ///
+  /// In it, this message translates to:
+  /// **'Aggiungi'**
+  String get exploreNotesAdd;
+
+  /// No description provided for @exploreNotesEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Nessuna osservazione. Restano solo su questo dispositivo.'**
+  String get exploreNotesEmpty;
+
+  /// No description provided for @exploreNotesDelete.
+  ///
+  /// In it, this message translates to:
+  /// **'Elimina l\'osservazione'**
+  String get exploreNotesDelete;
 
   /// No description provided for @skillLabel.
   ///

@@ -1062,42 +1062,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String growthTitle(Object name) {
-    return 'How $name is growing';
+    return 'What $name has explored';
   }
 
   @override
   String get growthIntro =>
-      'The only comparison is with themselves, a month ago. The app sees a small part of their day: for any concerns about development, talk to your paediatrician or teacher.';
+      'A diary of what they chose and came back to in the last 30 days, not an assessment: taps, speed and completions don\'t say what they can do. No comparison, neither with other children nor with a month ago.';
 
   @override
   String get growthEmpty =>
-      'No activities in the last 30 days. Once they do some, you\'ll see the milestones here.';
+      'No activities in the last 30 days. When they pick some, you\'ll see the themes they explored here.';
 
   @override
   String get growthOffscreen =>
       'Where there\'s no progress, try the off-screen activity suggested in the card: not more time on the app.';
 
   @override
-  String growthNew(Object count) {
-    return 'In the last 30 days: $count rounds. A month ago they hadn\'t tried it yet.';
+  String exploreTheme(String theme) {
+    return 'Explored: $theme';
   }
 
   @override
-  String growthCompare(Object before, Object now) {
-    return 'Today: $now · a month ago: $before (grey border).';
+  String exploreResumed(int days) {
+    return 'Came back to it on $days different days.';
   }
 
   @override
-  String stageLabel(String stage) {
-    String _temp0 = intl.Intl.selectLogic(stage, {
-      'starting': 'getting started',
-      'working': 'working on it',
-      'canDo': 'can do it',
-      'alone': 'does it alone',
-      'other': '$stage',
-    });
-    return '$_temp0';
-  }
+  String get exploreOnce => 'Tried it on one day.';
+
+  @override
+  String get exploreCreationsTitle => 'Stories they made up and kept';
+
+  @override
+  String get exploreCreationsEmpty =>
+      'No made-up stories yet in the story factory.';
+
+  @override
+  String get exploreNotesTitle => 'Your observations';
+
+  @override
+  String get exploreNotesHint =>
+      'Something you noticed: a question, a game, a sentence...';
+
+  @override
+  String get exploreNotesAdd => 'Add';
+
+  @override
+  String get exploreNotesEmpty =>
+      'No observations. They stay on this device only.';
+
+  @override
+  String get exploreNotesDelete => 'Delete the observation';
 
   @override
   String skillLabel(String skill) {
