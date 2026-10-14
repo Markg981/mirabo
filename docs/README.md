@@ -9,6 +9,7 @@
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 - `data-deletion.md`: cancellazione dei dati su questo tablet e del backup su Drive.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
+- `adult-gate.md`: PIN dell'area adulta, tentativi, recupero e percorsi di ingresso verificati.
 - `compliance/`: bozze di governance di privacy e sicurezza (DPIA, programma di sicurezza, conservazione, incidenti e richieste, fornitori, checklist MASVS), da validare con un consulente.
 - `onboarding.md`: onboarding dell'adulto al primo avvio (60 secondi), stato e criterio di test.
 - `business/model-decision.md`: proposta di modello di business (non una decisione: l'app resta gratuita), con `entitlements-offline.md` e `schools-pilot.md`; calcolatore in `studio/economics.py`.

@@ -2069,6 +2069,47 @@ class AppLocalizationsIt extends AppLocalizations {
       'alla prova non ancora: si cambia e si riprova';
 
   @override
+  String get gateSetupTitle => 'Scegli un PIN per i grandi';
+
+  @override
+  String get gateSetupBody =>
+      'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Se lo dimentichi potrai sceglierne uno nuovo senza perdere nulla.';
+
+  @override
+  String get gatePinLabel => 'PIN';
+
+  @override
+  String get gatePinConfirmLabel => 'Ripeti il PIN';
+
+  @override
+  String get gatePinMismatch => 'I due PIN non coincidono';
+
+  @override
+  String get gatePinFormat => 'Il PIN deve avere da 4 a 6 cifre';
+
+  @override
+  String get gatePinWrong => 'PIN sbagliato';
+
+  @override
+  String gatePinWait(String time) {
+    return 'Troppi tentativi. Riprova tra $time';
+  }
+
+  @override
+  String get gateForgot => 'Ho dimenticato il PIN';
+
+  @override
+  String get gateForgotUnavailable =>
+      'Non riesco a verificare che sei un adulto con il blocco del dispositivo. Attiva un blocco schermo dell\'adulto e riprova.';
+
+  @override
+  String get gateDeviceReason =>
+      'Conferma di essere un adulto per scegliere un nuovo PIN';
+
+  @override
+  String get gateChangePin => 'Cambia PIN';
+
+  @override
   String get onbSkip => 'Salta';
 
   @override
