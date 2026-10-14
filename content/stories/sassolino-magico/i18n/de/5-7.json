@@ -35,6 +35,49 @@
     },
     {
       "illustration": {
+        "alt": "Emma kniet am Ufer und schaut auf Papierstücke, die im Bach treiben; Pietrolino auf ihrer Handfläche; in der Ferne die Oma auf dem Baumstamm."
+      },
+      "text": "Emma schaut auf die Papierstücke, die im Bach treiben. Das Wasser trägt sie langsam weiter nach unten. \"Was kann ich tun?\", fragt sie sich.",
+      "consequence": {
+        "together": "Frage: Was kann Emma mit dem Papier tun? Lass dein Kind einen Zug nach dem anderen ausprobieren und schaut gemeinsam, was passiert; dann frage: Und wenn sie etwas anderes versuchte?",
+        "prompt": {
+          "bo": "Was macht Emma mit dem Papier, {nome}? Probier du es aus.",
+          "pilu": "Schauen wir, was passiert, {nome}. Was macht Emma?",
+          "tango": "Los {nome}, du entscheidest, was Emma macht!"
+        },
+        "options": [
+          {
+            "label": "Sie lässt es liegen",
+            "outcome": "Emma lässt es liegen. Der Bach trägt es immer weiter nach unten, bis zu einer engen Stelle, wo es zwischen den Steinen hängen bleibt.",
+            "reaction": {
+              "bo": "So, da ist es gelandet. Probieren wir etwas anderes, {nome}?",
+              "pilu": "Hast du gesehen, wohin das Wasser es gebracht hat? Willst du einen anderen Zug probieren, {nome}?",
+              "tango": "Es ist hängen geblieben! Nochmal, {nome}, lass Emma etwas anderes tun!"
+            }
+          },
+          {
+            "label": "Sie nimmt es mit den Händen",
+            "outcome": "Emma nimmt es mit den Händen. Das Papier kommt aus dem Wasser, aber ihre Hände werden nass und kalt. Wohin legt sie es jetzt?",
+            "reaction": {
+              "bo": "Kalte Hände. Probieren wir etwas anderes, {nome}?",
+              "pilu": "Das Papier ist draußen, aber die Hände sind nass. Was würdest du ändern, {nome}?",
+              "tango": "Brr, so kalt! Nochmal, {nome}!"
+            }
+          },
+          {
+            "label": "Sie bittet Oma um eine Tüte",
+            "outcome": "Emma ruft die Oma, die ihr eine Tüte reicht. Das ganze Papier passt hinein und die Hände bleiben trocken.",
+            "reaction": {
+              "bo": "Alles in der Tüte. Wenn du magst, kannst du es nochmal probieren, {nome}.",
+              "pilu": "So ist es mit einer Tüte gegangen. Fällt dir ein anderer Zug ein, {nome}?",
+              "tango": "Alles in der Tüte! Willst du sehen, was die anderen Züge bewirken, {nome}?"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "illustration": {
         "alt": "Emma geht mit ihrem Korb zurück zu Oma; Pietrolino lugt aus der Manteltasche; hinter ihnen Kreise im Wasser."
       },
       "text": "Emma steckt Pietrolino in ihre Manteltasche und geht zurück zu Oma. „Oma, ich habe einen Freund gefunden. Morgen gehen wir wieder in den Wald.“ Aus der Tasche kommt ein Stimmchen: „Der Wald hat viel zu erzählen. Man muss nur zuhören.“",

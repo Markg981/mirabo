@@ -35,6 +35,49 @@
     },
     {
       "illustration": {
+        "alt": "Emma kneeling on the bank looking at some pieces of paper floating in the stream; Pietrolino on the palm of her hand; in the distance, her grandmother on the log."
+      },
+      "text": "Emma looks at the pieces of paper floating in the stream. The water slowly carries them further down. \"What can I do?\" she wonders.",
+      "consequence": {
+        "together": "Ask: what can Emma do about the paper? Let your child try one move at a time and look at what happens together; then ask: what if she tried something else?",
+        "prompt": {
+          "bo": "What does Emma do with the paper, {nome}? You try.",
+          "pilu": "Let's see what happens, {nome}. What does Emma do?",
+          "tango": "Come on {nome}, you choose what Emma does!"
+        },
+        "options": [
+          {
+            "label": "She leaves it there",
+            "outcome": "Emma leaves it there. The stream carries it down, down, to a narrow spot, where it gets stuck between the stones.",
+            "reaction": {
+              "bo": "So that's where it ended up. Shall we try something else, {nome}?",
+              "pilu": "Did you see where the water took it? Want to try another move, {nome}?",
+              "tango": "It got stuck! Let's try again, {nome}, make Emma do something else!"
+            }
+          },
+          {
+            "label": "She picks it up with her hands",
+            "outcome": "Emma picks it up with her hands. The paper comes out of the water, but her hands get wet and cold. Where does she put it now?",
+            "reaction": {
+              "bo": "Cold hands. Shall we try something else, {nome}?",
+              "pilu": "The paper is out, but her hands are wet. What would you change, {nome}?",
+              "tango": "Brr, so cold! Let's try again, {nome}!"
+            }
+          },
+          {
+            "label": "She asks Grandma for a bag",
+            "outcome": "Emma calls her grandmother, who hands her a bag. All the paper fits inside and her hands stay dry.",
+            "reaction": {
+              "bo": "All in the bag. You can try again if you like, {nome}.",
+              "pilu": "That's how it went with a bag. Can you think of another move, {nome}?",
+              "tango": "All in the bag! Want to see what the other moves do, {nome}?"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "illustration": {
         "alt": "Emma goes back to Grandma with her basket; Pietrolino peeks out of her coat pocket; circles in the water behind them."
       },
       "text": "Emma puts Pietrolino in her coat pocket and goes back to Grandma. \"Grandma, I've found a friend. Let's come back to the wood tomorrow.\" A tiny voice comes from the pocket: \"The wood has lots of things to say. You just have to listen.\"",

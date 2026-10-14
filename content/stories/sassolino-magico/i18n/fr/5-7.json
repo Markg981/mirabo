@@ -35,6 +35,49 @@
     },
     {
       "illustration": {
+        "alt": "Emma à genoux sur la rive regarde des papiers qui flottent dans le ruisseau ; Pietrolino dans la paume de sa main ; au loin, sa grand-mère sur le tronc."
+      },
+      "text": "Emma regarde les papiers qui flottent dans le ruisseau. L'eau les emporte tout doucement plus bas. \"Que puis-je faire ?\" se demande-t-elle.",
+      "consequence": {
+        "together": "Demande : que peut faire Emma avec les papiers ? Laisse l'enfant essayer un choix à la fois et regardez ensemble ce qui se passe ; puis demande : et si elle essayait autre chose ?",
+        "prompt": {
+          "bo": "Que fait Emma avec les papiers, {nome} ? Essaie.",
+          "pilu": "Voyons ce qui se passe, {nome}. Que fait Emma ?",
+          "tango": "Allez {nome}, c'est toi qui choisis ce que fait Emma !"
+        },
+        "options": [
+          {
+            "label": "Elle les laisse là",
+            "outcome": "Emma les laisse là. Le ruisseau les emporte plus bas, jusqu'à un endroit étroit, où ils se coincent entre les pierres.",
+            "reaction": {
+              "bo": "Voilà où ils sont arrivés. On essaie autre chose, {nome} ?",
+              "pilu": "Tu as vu où l'eau les a menés ? Tu veux essayer un autre choix, {nome} ?",
+              "tango": "Ils se sont coincés ! On recommence, {nome}, fais faire autre chose à Emma !"
+            }
+          },
+          {
+            "label": "Elle les ramasse avec les mains",
+            "outcome": "Emma les ramasse avec les mains. Les papiers sortent de l'eau, mais ses mains sont mouillées et froides. Où les met-elle maintenant ?",
+            "reaction": {
+              "bo": "Les mains sont froides. On essaie autre chose, {nome} ?",
+              "pilu": "Les papiers sont sortis, mais les mains sont mouillées. Que changerais-tu, {nome} ?",
+              "tango": "Brr, quel froid ! On recommence, {nome} !"
+            }
+          },
+          {
+            "label": "Elle demande un sac à sa grand-mère",
+            "outcome": "Emma appelle sa grand-mère, qui lui tend un sac. Tous les papiers y tiennent et ses mains restent sèches.",
+            "reaction": {
+              "bo": "Tout dans le sac. Si tu veux, tu peux recommencer, {nome}.",
+              "pilu": "Voilà ce que ça donne avec un sac. Tu as une autre idée, {nome} ?",
+              "tango": "Tout dans le sac ! Tu veux voir ce que donnent les autres choix, {nome} ?"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "illustration": {
         "alt": "Emma revient vers Mamie avec son panier ; Pietrolino dépasse de la poche de son manteau ; des cercles dans l'eau derrière elles."
       },
       "text": "Emma met Pietrolino dans la poche de son manteau et retourne voir Mamie. « Mamie, j'ai trouvé un ami. Demain, on revient dans le bois. » De la poche sort une petite voix : « Le bois a plein de choses à dire. Il suffit d'écouter. »",

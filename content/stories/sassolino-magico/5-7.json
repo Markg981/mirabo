@@ -81,6 +81,102 @@
     },
     {
       "n": 5,
+      "kind": "consequence",
+      "illustration": {
+        "alt": "Emma in ginocchio sulla riva guarda alcune cartacce che galleggiano nel ruscello; Pietrolino sul palmo della sua mano; in lontananza la nonna sul tronco.",
+        "scene": {
+          "bg": "stream",
+          "dirty": true,
+          "items": [
+            {
+              "e": "👧",
+              "x": 0.24,
+              "y": 0.82,
+              "s": 0.32
+            },
+            {
+              "paint": "pebble",
+              "x": 0.33,
+              "y": 0.72,
+              "s": 0.05
+            },
+            {
+              "e": "📄",
+              "x": 0.56,
+              "y": 0.6,
+              "s": 0.08,
+              "rot": -20
+            },
+            {
+              "e": "🗞️",
+              "x": 0.7,
+              "y": 0.64,
+              "s": 0.07,
+              "rot": 30
+            },
+            {
+              "e": "🪵",
+              "x": 0.9,
+              "y": 0.4,
+              "s": 0.09
+            },
+            {
+              "e": "👵",
+              "x": 0.9,
+              "y": 0.34,
+              "s": 0.11,
+              "flip": true
+            }
+          ]
+        }
+      },
+      "text": "Emma guarda le cartacce che galleggiano nel ruscello. L'acqua le porta piano piano più in giù. \"Io cosa posso fare?\" si chiede.",
+      "consequence": {
+        "together": "Chiedi: cosa può fare Emma con le cartacce? Lascia che il bambino provi una mossa alla volta e guardate insieme cosa succede; poi chiedi: e se provasse un'altra cosa?",
+        "prompt": {
+          "bo": "Cosa fa Emma con le cartacce, {nome}? Prova tu.",
+          "pilu": "Proviamo a vedere cosa succede, {nome}. Cosa fa Emma?",
+          "tango": "Dai {nome}, scegli tu cosa fa Emma!"
+        },
+        "options": [
+          {
+            "id": "lascia",
+            "icon": "wait",
+            "label": "Le lascia lì",
+            "outcome": "Emma le lascia lì. Il ruscello le porta giù, giù, fino a un punto stretto, dove si incastrano tra i sassi.",
+            "reaction": {
+              "bo": "Ecco dove sono andate a finire. E adesso? Proviamo un'altra cosa, {nome}?",
+              "pilu": "Hai visto dove le ha portate l'acqua? Vuoi provare un'altra mossa, {nome}?",
+              "tango": "Si sono incastrate! Riproviamo, {nome}, fai fare un'altra cosa a Emma!"
+            }
+          },
+          {
+            "id": "mani",
+            "icon": "hand",
+            "label": "Le prende con le mani",
+            "outcome": "Emma le prende con le mani. Le cartacce escono dall'acqua, ma le mani si bagnano e hanno freddo. E ora dove le mette?",
+            "reaction": {
+              "bo": "Che freddo alle mani. Proviamo un'altra cosa, {nome}?",
+              "pilu": "Le cartacce sono fuori, ma le mani sono bagnate. Cosa cambieresti, {nome}?",
+              "tango": "Brr, che freddo! Riproviamo, {nome}!"
+            }
+          },
+          {
+            "id": "sacchetto",
+            "icon": "bag",
+            "label": "Chiede un sacchetto alla nonna",
+            "outcome": "Emma chiama la nonna, che le porge un sacchetto. Le cartacce ci stanno tutte e le mani restano asciutte.",
+            "reaction": {
+              "bo": "Tutte nel sacchetto. Se vuoi puoi riprovare, {nome}.",
+              "pilu": "Con un sacchetto è andata così. Ti viene in mente un'altra mossa, {nome}?",
+              "tango": "Tutto nel sacchetto! Vuoi vedere cosa succede con le altre mosse, {nome}?"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "n": 6,
       "kind": "closing",
       "illustration": {
         "alt": "Emma torna dalla nonna con il cestino; Pietrolino sbuca dal taschino del cappotto; cerchi nell'acqua dietro di loro.",

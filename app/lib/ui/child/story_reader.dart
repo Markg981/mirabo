@@ -48,6 +48,11 @@ class _StoryReaderState extends State<StoryReader> {
   String? _dialogueAnswer;
   bool _recorded = false;
 
+  /// Pausa di conseguenza (una per storia): l'ultima mossa provata e tutte
+  /// quelle provate. Restano se si torna indietro.
+  String? _tryId;
+  final Set<String> _tried = {};
+
   /// Karaoke: la parola che si sta leggendo (-1 nessuna) e se il TTS sta
   /// leggendo proprio il testo della schermata, non una battuta o una parola.
   int _word = -1;
@@ -252,6 +257,16 @@ class _StoryReaderState extends State<StoryReader> {
     _go(_index + 1);
   }
 
+  /// Pausa di conseguenza: il bambino prova una mossa, il racconto mostra cosa
+  /// succede e il compagno commenta. Si può riprovare con un'altra mossa.
+  Future<void> _try(ConsequenceOption option) async {
+    setState(() {
+      _tryId = option.id;
+      _tried.add(option.id);
+    });
+    await _say('${option.outcome} ${_withName(option.reaction.forCompanion(_profile.companion))}');
+  }
+
   Future<void> _choose(DialogueOption option) async {
     setState(() => _dialogueAnswer = option.id);
     await _say(_withName(option.reaction.forCompanion(_profile.companion)));
@@ -265,6 +280,9 @@ class _StoryReaderState extends State<StoryReader> {
     final lessonRun = _lessonRun;
     final gesturePhase = _gesturePhase;
     final canAdvance = (!isDialogue || _mode == SessionMode.together || _dialogueAnswer != null) &&
+        (screen.consequence == null ||
+            _mode == SessionMode.together ||
+            _tried.length >= screen.consequence!.minTries) &&
         (lessonRun?.isDone ?? true) &&
         (gesturePhase == null || gesturePhase == GesturePhase.done);
     final world = worldStyle(widget.story.world);
@@ -372,7 +390,15 @@ class _StoryReaderState extends State<StoryReader> {
                               const SizedBox(height: 14),
                               _buildGesture(context, screen, gesturePhase, accent),
                             ],
-                            if (screen.companionLines != null && !isDialogue && screen.lesson == null && screen.gesture == null) ...[
+                            if (screen.consequence != null) ...[
+                              const SizedBox(height: 14),
+                              _buildConsequence(context, screen.consequence!),
+                            ],
+                            if (screen.companionLines != null &&
+                                !isDialogue &&
+                                screen.lesson == null &&
+                                screen.gesture == null &&
+                                screen.consequence == null) ...[
                               const SizedBox(height: 14),
                               _CompanionBubble(
                                 companion: companion,
@@ -497,6 +523,68 @@ class _StoryReaderState extends State<StoryReader> {
           const SizedBox(height: 12),
           _CompanionBubble(companion: companion, stage: _profile.companionStage, text: line),
         ],
+      ],
+    );
+  }
+
+  /// Pausa di conseguenza. Insieme: la guida per il genitore. Da soli: il
+  /// compagno propone, il bambino prova una mossa, il racconto ne mostra la
+  /// conseguenza e il bambino può provarne un'altra. Nessuna mossa è sbagliata.
+  Widget _buildConsequence(BuildContext context, ConsequencePause pause) {
+    final companion = _state.companionOf(_profile);
+    final tokens = MiraboTokens.of(context);
+    if (_mode == SessionMode.together) {
+      return SoftPanel(
+        padding: const EdgeInsets.all(18),
+        color: MiraboColors.pale(tokens.tint(MiraboColors.teal), 0.85),
+        child: Row(
+          children: [
+            const IconBadge(icon: Icons.people_rounded, color: MiraboColors.teal, size: 52),
+            const SizedBox(width: 14),
+            Expanded(child: Text(pause.together, style: Theme.of(context).textTheme.bodyMedium)),
+          ],
+        ),
+      );
+    }
+    final tried = _tryId == null ? null : pause.options.firstWhere((o) => o.id == _tryId);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (tried != null) ...[
+          SoftPanel(
+            padding: const EdgeInsets.all(16),
+            color: MiraboColors.pale(tokens.tint(MiraboColors.sun), 0.85),
+            child: Text(tried.outcome, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+          const SizedBox(height: 10),
+        ],
+        _CompanionBubble(
+          companion: companion,
+          stage: _profile.companionStage,
+          text: _withName((tried?.reaction ?? pause.prompt).forCompanion(_profile.companion)),
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 12,
+          runSpacing: 4,
+          children: [
+            for (final o in pause.options)
+              BlockTile(
+                onTap: () => _try(o),
+                radius: 20,
+                depth: 6,
+                color: _tryId == o.id ? tokens.tint(MiraboColors.sky) : MiraboColors.paper,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                semanticLabel: o.label,
+                child: Text(
+                  o.label,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: _tryId == o.id ? Colors.white : MiraboColors.ink,
+                      ),
+                ),
+              ),
+          ],
+        ),
       ],
     );
   }
