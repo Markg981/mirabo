@@ -132,7 +132,7 @@ void main() {
     expect(find.text('Una storia inventata da Emma'), findsOneWidget);
     expect(spoken.last, contains('La metto tra le tue storie'));
 
-    await tester.tap(find.text('A domani!'));
+    await tester.tap(find.text('Ciao!'));
     await tester.pumpAndSettle();
     expect(find.text('Il piccolo drago'), findsOneWidget, reason: 'la storia è tra "Le mie storie"');
   });
