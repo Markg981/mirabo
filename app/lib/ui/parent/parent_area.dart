@@ -16,6 +16,7 @@ import '../../models/story.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'backup_section.dart';
+import 'onboarding_screen.dart';
 import 'data_deletion.dart';
 import 'printables_tab.dart';
 import 'profile_form.dart';
@@ -36,6 +37,14 @@ class ParentArea extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(context.l10n.parentArea),
+          actions: [
+            IconButton(
+              key: const Key('reopen-onboarding'),
+              icon: const Icon(Icons.waving_hand_rounded),
+              tooltip: context.l10n.onbReopen,
+              onPressed: () => Navigator.of(context).push(adultRoute((_) => const OnboardingScreen(reopened: true))),
+            ),
+          ],
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(64),
             child: Padding(
