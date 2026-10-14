@@ -70,3 +70,19 @@ La checklist è nella scheda. In breve:
 - Le **attività** dei moduli scuola e Montessori non passano da questo giro.
 - Le **illustrazioni** definitive, quando arriveranno, vanno riviste insieme alla storia: la
   scheda riporta gli `alt`, che sono il brief per chi disegna.
+
+## Copertura del processo editoriale
+
+Cosa copre già il giro e cosa si aggiunge qui. Non cambia `studio/review.py` né `pack.py`.
+
+| Area | Dove è coperta |
+| --- | --- |
+| Revisione pedagogica | scheda e checklist di `review.py`, esito del revisore |
+| Controllo linguistico e dell'audio | italiano: avvisi di `review.py` e guida di stile; traduzioni: `"reviewed": true` da madrelingua. **Aggiunta**: l'audio (voce, pronuncia, volume, pause, coerenza col testo) si ascolta per intero, in ogni lingua, da una persona, come passo a parte |
+| Accessibilità | `alt` delle illustrazioni nella scheda. **Aggiunta**: si verificano contrasto, testo alternativo, uso senza il solo colore e con audio |
+| Sicurezza delle attività pratiche | pausa di gesto nella checklist. **Aggiunta**: attività pratiche e "Nella vita vera" si leggono con l'occhio della sicurezza (oggetti, età, adulto vicino); oggi non passano dal giro (vedi "Cosa non copre") |
+| Diritti sugli asset | **Aggiunta**: per testi, immagini, voci e musiche di una raccolta si annotano fonte, licenza e permesso d'uso prima di approvarla |
+
+### Registro per raccolta
+
+Per ogni raccolta si tiene in `content/reviews/` una riga con **autore**, **revisore** (nome, qualifica), esito per area (pedagogica, linguistica, audio, accessibilità, sicurezza, diritti), **lingua e fascia** e **versione approvata**. Si pubblica solo con tutte le aree chiuse sulla stessa versione. L'inserimento di autore e revisore nel manifest dei pacchetti è del lavoro `feature/analisi-17-pacchetti-versionati`.
