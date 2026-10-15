@@ -1,6 +1,6 @@
 # Darüber sprechen: Die Nacht der Glühwürmchen
 
-**Warum dieses Thema mit 5–7 Jahren.** Viele Kinder haben in diesem Alter Angst im Dunkeln. Die Geschichte leugnet die Angst nicht: Sie stellt ihr Neugier und eine Hand zum Halten zur Seite und zeigt, dass Dunkelheit mit einem vertrauten Erwachsenen zu einem Moment des Staunens werden kann.
+**Warum dieses Thema mit 6–7 Jahren.** Viele Kinder haben in diesem Alter Angst im Dunkeln. Die Geschichte leugnet die Angst nicht: Sie stellt ihr Neugier und eine Hand zum Halten zur Seite und zeigt, dass Dunkelheit mit einem vertrauten Erwachsenen zu einem Moment des Staunens werden kann.
 
 ## Drei Fragen nach der Geschichte
 

@@ -1,6 +1,6 @@
 # Comment en parler : La nuit des lucioles
 
-**Pourquoi ce thème à 5–7 ans.** À cet âge, beaucoup d'enfants ont peur du noir. L'histoire ne nie pas la peur : elle la met à côté de la curiosité et d'une main à tenir, et montre qu'être dans le noir avec un adulte de confiance peut devenir un moment d'émerveillement.
+**Pourquoi ce thème à 6–7 ans.** À cet âge, beaucoup d'enfants ont peur du noir. L'histoire ne nie pas la peur : elle la met à côté de la curiosité et d'une main à tenir, et montre qu'être dans le noir avec un adulte de confiance peut devenir un moment d'émerveillement.
 
 ## Trois questions après l'histoire
 

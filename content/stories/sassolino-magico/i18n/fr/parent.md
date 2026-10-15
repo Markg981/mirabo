@@ -1,6 +1,6 @@
 # Comment en parler : Le petit caillou magique
 
-**Pourquoi ce thème à 5–7 ans.** C'est l'épisode qui présente Emma, Mamie et Pietrolino. Le message est simple : on remarque les choses quand on s'arrête. À cet âge, s'arrêter est difficile, et c'est justement pour ça que ça peut devenir un jeu intéressant.
+**Pourquoi ce thème à 6–7 ans.** C'est l'épisode qui présente Emma, Mamie et Pietrolino. Le message est simple : on remarque les choses quand on s'arrête. À cet âge, s'arrêter est difficile, et c'est justement pour ça que ça peut devenir un jeu intéressant.
 
 ## Trois questions après l'histoire
 

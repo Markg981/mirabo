@@ -1,6 +1,6 @@
 # Darüber sprechen: Der Wald erwacht
 
-**Warum dieses Thema mit 5–7 Jahren.** Nachdem das Kind den Wald hat einschlafen sehen, findet es ihn wach, aber verletzt wieder. Die Geschichte betont zwei Dinge: Gefährliches (rostige Dosen, Glas) fasst ein Erwachsener mit Handschuhen an, und Wildtieren hilft man, ohne sie hochzunehmen. Und sie trägt die Sorge um den Wald in die Schule, zu den anderen Kindern: Allein schafft man etwas, zusammen mehr.
+**Warum dieses Thema mit 6–7 Jahren.** Nachdem das Kind den Wald hat einschlafen sehen, findet es ihn wach, aber verletzt wieder. Die Geschichte betont zwei Dinge: Gefährliches (rostige Dosen, Glas) fasst ein Erwachsener mit Handschuhen an, und Wildtieren hilft man, ohne sie hochzunehmen. Und sie trägt die Sorge um den Wald in die Schule, zu den anderen Kindern: Allein schafft man etwas, zusammen mehr.
 
 ## Drei Fragen nach der Geschichte
 

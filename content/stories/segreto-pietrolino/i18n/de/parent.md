@@ -1,6 +1,6 @@
 # Darüber sprechen: Pietrolinos Geheimnis
 
-**Warum dieses Thema mit 7–10 Jahren.** Es ist das Staffelfinale: Pietrolino verabschiedet sich von Emma und wird wieder ein Kiesel des Waldes. In diesem Alter erleben Kinder die ersten wichtigen Abschiede (ein Freund, der wegzieht, ein Schulwechsel, ein Großelternteil, das nicht mehr da ist, ein Haustier) und suchen einen Weg, dem, was sie fühlen, einen Platz zu geben. Die Geschichte zeigt, dass man traurig sein, weinen und sich trösten lassen darf und danach behalten kann, was man gelernt hat. Deshalb wird sie nur gemeinsam gelesen.
+**Warum dieses Thema mit 8–10 Jahren.** Es ist das Staffelfinale: Pietrolino verabschiedet sich von Emma und wird wieder ein Kiesel des Waldes. In diesem Alter erleben Kinder die ersten wichtigen Abschiede (ein Freund, der wegzieht, ein Schulwechsel, ein Großelternteil, das nicht mehr da ist, ein Haustier) und suchen einen Weg, dem, was sie fühlen, einen Platz zu geben. Die Geschichte zeigt, dass man traurig sein, weinen und sich trösten lassen darf und danach behalten kann, was man gelernt hat. Deshalb wird sie nur gemeinsam gelesen.
 
 ## Drei Fragen nach der Geschichte
 

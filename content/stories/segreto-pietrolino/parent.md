@@ -1,6 +1,6 @@
 # Come parlarne: Il Segreto di Pietrolino
 
-**Perché questo tema a 7–10 anni.** È il finale della stagione: Pietrolino saluta Emma e torna a essere un sassolino del bosco. A questa età i bambini affrontano i primi saluti importanti (un amico che si trasferisce, il cambio di scuola, un nonno che non c'è più, un animale) e cercano un modo per dare un posto a quello che provano. La storia mostra che si può essere tristi, piangere, farsi consolare, e poi tenere con sé quello che si è imparato. Per questo si legge solo insieme.
+**Perché questo tema a 8–10 anni.** È il finale della stagione: Pietrolino saluta Emma e torna a essere un sassolino del bosco. A questa età i bambini affrontano i primi saluti importanti (un amico che si trasferisce, il cambio di scuola, un nonno che non c'è più, un animale) e cercano un modo per dare un posto a quello che provano. La storia mostra che si può essere tristi, piangere, farsi consolare, e poi tenere con sé quello che si è imparato. Per questo si legge solo insieme.
 
 ## Tre domande dopo la storia
 

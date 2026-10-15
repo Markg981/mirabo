@@ -1,6 +1,6 @@
 # Revisione pedagogica: La Civetta del Silenzio
 
-`civetta-silenzio` v1 · mondo emozioni · tema silenzio · fasce 5-7
+`civetta-silenzio` v1 · mondo emozioni · tema silenzio · fasce 6-7
 
 **Frase-chiave.** Le risposte più belle si trovano nel silenzio.
 
@@ -8,11 +8,11 @@
 
 ## Avvisi della pre-revisione automatica
 
-- 5-7 #4: 61 parole, oltre il massimo di 60
+- 6-7 #4: 61 parole, oltre il massimo di 60
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Pratiche di silenzio e ascolto nella scuola dell'infanzia, anche di ispirazione montessoriana (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

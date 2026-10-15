@@ -46,7 +46,7 @@ add(
     area="cognitivo",
     skill="suoni-iniziali",
     type="tapMatch",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Gioco del 'vedo vedo': 'vedo una cosa che inizia con mmm...' in cucina o in auto.",
     levels=[
         {"rounds": [
@@ -78,7 +78,7 @@ add(
     area="cognitivo",
     skill="pregrafismo",
     type="trace",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Tracciare la stessa lettera con il dito nella farina, nella sabbia o sulla schiena di mamma o papà.",
     levels=[
         {"rounds": [
@@ -104,7 +104,7 @@ add(
     area="cognitivo",
     skill="numeri",
     type="count",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Contare le posate quando si apparecchia, o i gradini delle scale.",
     levels=[
         {"rounds": [
@@ -131,7 +131,7 @@ add(
     area="cognitivo",
     skill="logica",
     type="pattern",
-    ageBands=["3-5", "5-7", "7-10"],
+    ageBands=["3-5", "6-7", "8-10"],
     offscreen="Fare una fila di oggetti (cucchiaio, tappo, cucchiaio, tappo...) e chiedere cosa viene dopo.",
     levels=[
         {"rounds": [
@@ -158,7 +158,7 @@ add(
     area="autonomia",
     skill="routine-sera",
     type="checklist",
-    ageBands=["3-5", "5-7", "7-10"],
+    ageBands=["3-5", "6-7", "8-10"],
     togetherSuggested=True,
     intro=lines(
         "È sera, {nome}? Allora prepariamo le cose per domani. Una alla volta.",
@@ -181,7 +181,7 @@ add(
     area="autonomia",
     skill="routine-mattino",
     type="sequence",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Fotografare il bambino mentre fa ogni passo e appendere le foto in ordine in bagno.",
     levels=[
         {"rounds": [{"prompt": "Metti in ordine il mattino", "cards": [
@@ -198,7 +198,7 @@ add(
     area="autonomia",
     skill="vestirsi",
     type="sequence",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Mettere i vestiti sulla sedia già nell'ordine in cui si indossano.",
     levels=[
         {"rounds": [{"prompt": "Cosa metto prima?", "cards": [
@@ -215,7 +215,7 @@ add(
     area="autonomia",
     skill="mensa",
     type="sceneChoice",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Fare una 'mensa' a casa: vassoio, fila, posto a tavola scelto da solo.",
     levels=[{"scenes": [
         {"emoji": "🍽️", "text": "A mensa c'è una cosa che non hai mai mangiato.", "prompt": "Cosa fai?",
@@ -238,7 +238,7 @@ add(
     area="sociale",
     skill="turno-e-condivisione",
     type="sceneChoice",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Giocare a turni con un timer da cucina: quando suona, si passa il gioco.",
     levels=[{"scenes": [
         {"emoji": "🧒🧒", "text": "Omar ha il gioco che volevi tu.", "prompt": "Cosa fai?",
@@ -260,7 +260,7 @@ add(
     area="sociale",
     skill="turno-e-condivisione",
     type="sequence",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     togetherSuggested=True,
     intro=lines(
         "Questo gioco si fa in due, {nome}: tu e un grande. Si fa a turno. Io guardo.",
@@ -277,7 +277,7 @@ add(
     area="sociale",
     skill="chiedere-aiuto",
     type="sceneChoice",
-    ageBands=["3-5", "5-7", "7-10"],
+    ageBands=["3-5", "6-7", "8-10"],
     offscreen="Decidere insieme una frase per chiedere aiuto e provarla a casa: 'Maestra, non riesco, mi aiuti?'",
     levels=[{"scenes": [
         {"emoji": "🧥", "text": "La zip della giacca non si chiude.", "prompt": "Cosa fai?",
@@ -299,7 +299,7 @@ add(
     area="sociale",
     skill="distacco",
     type="sceneChoice",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     togetherSuggested=True,
     intro=lines(
         "{nome}, quando mamma o papà ti lasciano a scuola, come vi salutate? Scegliete insieme.",
@@ -322,7 +322,7 @@ add(
     area="paure",
     skill="conoscere-la-scuola",
     type="explore",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     offscreen="Passare davanti alla scuola vera un pomeriggio, guardare il cancello e il cortile dall'esterno.",
     levels=[{"scene": "La scuola", "spots": [
         {"emoji": "🚪", "label": "L'ingresso", "say": "Qui si entra la mattina. C'è una maestra che ti saluta."},
@@ -340,7 +340,7 @@ add(
     area="paure",
     skill="primo-giorno",
     type="sceneChoice",
-    ageBands=["3-5", "5-7"],
+    ageBands=["3-5", "6-7"],
     togetherSuggested=True,
     offscreen="Raccontare al bambino il proprio primo giorno di scuola, con una cosa che faceva paura e com'è andata.",
     levels=[{"scenes": [
@@ -363,7 +363,7 @@ add(
     area="paure",
     skill="primo-giorno",
     type="countdown",
-    ageBands=["3-5", "5-7", "7-10"],
+    ageBands=["3-5", "6-7", "8-10"],
     togetherSuggested=True,
     offscreen="Un calendario di carta sul frigo: ogni sera si colora un giorno.",
     levels=[{"event": "Il primo giorno di scuola", "days": 14, "daily": [
@@ -390,7 +390,7 @@ add(
     area="paure",
     skill="primo-giorno",
     type="sceneChoice",
-    ageBands=["7-10"],
+    ageBands=["8-10"],
     intro=lines(
         "{nome}, una scuola nuova fa un po' paura anche ai grandi. Vediamo cosa si può fare.",
         "Cambiare scuola, {nome}: tutto nuovo, ma tu sei lo stesso. Guardiamo le situazioni.",

@@ -1,6 +1,6 @@
 # Darüber sprechen: Der kleine wilde Tropfen
 
-**Warum dieses Thema mit 5–7 Jahren.** Leitungswasser scheint unendlich, und in diesem Alter sieht man nicht, woher es kommt und wohin es geht. Einem Tropfen eine Stimme zu geben, macht eine alltägliche Handlung (den Hahn zudrehen) greifbar und zeigt eine einfache Vorstellung vom Wasserkreislauf: Regen steigt auf, kommt wieder herunter, verändert seine Form.
+**Warum dieses Thema mit 6–7 Jahren.** Leitungswasser scheint unendlich, und in diesem Alter sieht man nicht, woher es kommt und wohin es geht. Einem Tropfen eine Stimme zu geben, macht eine alltägliche Handlung (den Hahn zudrehen) greifbar und zeigt eine einfache Vorstellung vom Wasserkreislauf: Regen steigt auf, kommt wieder herunter, verändert seine Form.
 
 ## Drei Fragen nach der Geschichte
 

@@ -34,7 +34,7 @@ void main() {
   const alone = ChildProfile(
     id: 1,
     name: 'T',
-    ageBand: AgeBand.b5to7,
+    ageBand: AgeBand.b6to7,
     companion: CompanionId.tango,
     lastMode: SessionMode.alone,
     aloneSessionMinutes: 20,

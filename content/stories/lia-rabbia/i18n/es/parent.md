@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El volcán de Lía
 
-**Por qué este tema a los 5–7 años.** A esta edad el enfado todavía llega de golpe y el niño no tiene herramientas para frenarlo solo; no hay que eliminarlo, hay que reconocerlo y acompañarlo. Un nombre y una imagen (el volcán) y un gesto (la respiración) le dan algo que hacer mientras pasa.
+**Por qué este tema a los 6–7 años.** A esta edad el enfado todavía llega de golpe y el niño no tiene herramientas para frenarlo solo; no hay que eliminarlo, hay que reconocerlo y acompañarlo. Un nombre y una imagen (el volcán) y un gesto (la respiración) le dan algo que hacer mientras pasa.
 
 ## Tres preguntas después de la historia
 

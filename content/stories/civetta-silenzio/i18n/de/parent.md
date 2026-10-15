@@ -1,6 +1,6 @@
 # Darüber sprechen: Die Eule der Stille
 
-**Warum dieses Thema mit 5–7 Jahren.** Kinder leben heute umgeben von Geräuschen: Stimmen, Bildschirme, Hintergrundlärm. Stille kann leer oder sogar beängstigend wirken. Die Geschichte macht daraus eine erfüllte Erfahrung, die man mit einem Erwachsenen teilt, und verbindet sie mit einer einfachen Art, zur Ruhe zu kommen: dem eigenen Atem zuhören.
+**Warum dieses Thema mit 6–7 Jahren.** Kinder leben heute umgeben von Geräuschen: Stimmen, Bildschirme, Hintergrundlärm. Stille kann leer oder sogar beängstigend wirken. Die Geschichte macht daraus eine erfüllte Erfahrung, die man mit einem Erwachsenen teilt, und verbindet sie mit einer einfachen Art, zur Ruhe zu kommen: dem eigenen Atem zuhören.
 
 ## Drei Fragen nach der Geschichte
 

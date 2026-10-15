@@ -1,6 +1,6 @@
 # Revisione pedagogica: La Notte delle Lucciole
 
-`notte-lucciole` v1 · mondo emozioni · tema meraviglia · fasce 5-7
+`notte-lucciole` v1 · mondo emozioni · tema meraviglia · fasce 6-7
 
 **Frase-chiave.** Alcune meraviglie si vedono solo quando si spegne la luce e si aspetta.
 
@@ -13,7 +13,7 @@
 - fonte da verificare: Materiali divulgativi sulle lucciole e l'inquinamento luminoso (da verificare)
 - fonte da verificare: Letteratura sull'educazione allo stupore nella prima infanzia (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

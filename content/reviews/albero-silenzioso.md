@@ -1,6 +1,6 @@
 # Revisione pedagogica: L'Albero che Non Parlava Più
 
-`albero-silenzioso` v1 · mondo ambiente · tema piantare · fasce 5-7
+`albero-silenzioso` v1 · mondo ambiente · tema piantare · fasce 6-7
 
 **Frase-chiave.** Non con la forza. Con la cura.
 
@@ -13,7 +13,7 @@
 - fonte da verificare: Legambiente, materiali di educazione ambientale per la primaria (da verificare)
 - fonte da verificare: Progetti scolastici di orto e semina per l'infanzia (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

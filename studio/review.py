@@ -25,12 +25,15 @@ from validate import COMPANIONS, NAME_PLACEHOLDER, STORIES, read_json  # noqa: E
 REVIEWS = STORIES.parent / "reviews"
 TO_VERIFY = "(da verificare"
 
-# Lunghezze della guida di stile, per fascia: (schermate min, max), parole per schermata (max),
-# parole per battuta del compagno (max).
+# Lunghezze per fascia dalle schede di progetto (content/education/bands.json): (schermate min, max),
+# parole per schermata (max), parole per battuta del compagno (max).
 BAND_LIMITS = {
-    "3-5": {"screens": (5, 7), "words": 25, "companion": 12},
-    "5-7": {"screens": (7, 10), "words": 60, "companion": 25},
-    "7-10": {"screens": (8, 10), "words": 70, "companion": 25},
+    band: {
+        "screens": tuple(card["language"]["screens"]),
+        "words": card["language"]["wordsPerScreen"],
+        "companion": card["language"]["companionWords"],
+    }
+    for band, card in json.loads((STORIES.parent / "education" / "bands.json").read_text(encoding="utf-8"))["bands"].items()
 }
 ADULT_DENIALS = ["non si fa", "non piangere", "non è niente"]
 THREATS = ["se non lo fai", "se non lo fate", "altrimenti"]

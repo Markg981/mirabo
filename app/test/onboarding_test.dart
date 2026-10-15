@@ -45,7 +45,7 @@ void main() {
   final folder = '${root.path}/content/stories/sassolino-magico';
   final meta = Story.fromJson(jsonDecode(File('$folder/story.json').readAsStringSync()) as Map<String, dynamic>);
   final activity = HomeActivity.fromJson(jsonDecode(File('$folder/home-activity.json').readAsStringSync()) as Map<String, dynamic>);
-  final variant = StoryVariant.fromJson(jsonDecode(File('$folder/5-7.json').readAsStringSync()) as Map<String, dynamic>);
+  final variant = StoryVariant.fromJson(jsonDecode(File('$folder/6-7.json').readAsStringSync()) as Map<String, dynamic>);
   final story = Story(
     id: meta.id,
     version: meta.version,
@@ -58,7 +58,7 @@ void main() {
     keyPhrase: meta.keyPhrase,
     parentCardFile: meta.parentCardFile,
     sources: meta.sources,
-    variants: {AgeBand.b5to7: variant},
+    variants: {AgeBand.b6to7: variant},
     homeActivity: activity,
   );
 

@@ -13,7 +13,7 @@ import '../models/made_story.dart';
 import '../models/nature_day.dart';
 import '../models/profile.dart';
 import '../models/shelf.dart';
-import '../models/story.dart' show AgeBand;
+import '../models/story.dart' show AgeBand, LegacyAgeBand;
 
 /// Database locale: profili (con la loro mensola), diario, gesti fatti nella
 /// vita vera, storie inventate e calendario della natura. Tutto resta sul dispositivo.
@@ -25,7 +25,7 @@ class LocalDb {
   LocalDb._(this._db);
   Database _db;
 
-  static const _version = 10;
+  static const _version = 11;
   static const _keyName = 'mirabo_db_key';
 
   /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
@@ -70,7 +70,8 @@ class LocalDb {
             shelf_rotated_at TEXT,
             hands INTEGER,
             reading TEXT,
-            autonomy INTEGER
+            autonomy INTEGER,
+            band_to_confirm TEXT
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -126,6 +127,12 @@ class LocalDb {
         if (from < 9) await _createDailyIdeas(db);
         // v10: impostazioni della famiglia (per ora l'emisfero del calendario della natura).
         if (from < 10) await _createSettings(db);
+        // v11: fasce 3-5, 6-7, 8-10. Chi era in 5-7 o 7-10 resta sugli stessi
+        // contenuti e l'adulto conferma la fascia (vedi docs/age-bands.md).
+        if (from < 11) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN band_to_confirm TEXT');
+          await db.execute(_legacyBandSql);
+        }
       },
     );
     return LocalDb._(db);
@@ -291,11 +298,21 @@ class LocalDb {
     String byBand(Object? Function(InteractionProfile p) value) => [
           'CASE age_band',
           for (final b in AgeBand.values) "WHEN '${b.key}' THEN '${value(InteractionProfile.forAge(b))}'",
+          // Le fasce di prima: gli stessi valori iniziali che avevano allora.
+          for (final b in LegacyAgeBand.values) "WHEN '${b.key}' THEN '${value(InteractionProfile.forAge(b.content))}'",
           'END',
         ].join(' ');
     return 'UPDATE profiles SET hands = ${byBand((p) => p.hands)}, reading = ${byBand((p) => p.reading.name)}, '
         'autonomy = ${byBand((p) => p.autonomy)} WHERE hands IS NULL OR reading IS NULL OR autonomy IS NULL';
   }();
+
+  /// Le fasce sovrapposte di prima passano alla fascia con le stesse varianti,
+  /// e si ricorda quale era: la conferma spetta all'adulto, non all'app.
+  static final _legacyBandSql = [
+    'UPDATE profiles SET band_to_confirm = age_band, age_band = CASE age_band',
+    for (final b in LegacyAgeBand.values) "WHEN '${b.key}' THEN '${b.content.key}'",
+    'END WHERE age_band IN (${LegacyAgeBand.values.map((b) => "'${b.key}'").join(', ')})',
+  ].join(' ');
 
   /// Stadio che il compagno aveva quando cresceva con le storie completate.
   static const _legacyStageSql =
@@ -624,6 +641,8 @@ class LocalDb {
       if (schema < 8) await tx.execute(_interactionFromAgeSql);
       // Backup di prima dell'emisfero: i suggerimenti erano quelli del nord.
       if (schema < 10) await tx.insert('settings', {'key': hemisphereKey, 'value': 'north'});
+      // Backup con le fasce di prima: come la migrazione v11.
+      if (schema < 11) await tx.execute(_legacyBandSql);
     });
   }
 }

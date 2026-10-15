@@ -1,6 +1,6 @@
 # Comment en parler : Le réveil du bois
 
-**Pourquoi ce thème à 5–7 ans.** Après avoir vu le bois s'endormir, l'enfant le retrouve réveillé mais abîmé. L'histoire insiste sur deux choses : les objets dangereux (canettes rouillées, verre) sont ramassés par un adulte avec des gants, et on aide les animaux sauvages sans les prendre dans les bras. Et elle emmène le soin du bois à l'école, avec les camarades : seul on fait quelque chose, ensemble on fait plus.
+**Pourquoi ce thème à 6–7 ans.** Après avoir vu le bois s'endormir, l'enfant le retrouve réveillé mais abîmé. L'histoire insiste sur deux choses : les objets dangereux (canettes rouillées, verre) sont ramassés par un adulte avec des gants, et on aide les animaux sauvages sans les prendre dans les bras. Et elle emmène le soin du bois à l'école, avec les camarades : seul on fait quelque chose, ensemble on fait plus.
 
 ## Trois questions après l'histoire
 

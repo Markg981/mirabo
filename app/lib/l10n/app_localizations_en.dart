@@ -427,7 +427,24 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String gameMemoryDescFood(Object count) {
+    return '$count animal and food pairs: they don\'t look alike, they go together.';
+  }
+
+  @override
+  String gameMemoryDescHome(Object count) {
+    return '$count sets of animal, food and home: three cards at a time.';
+  }
+
+  @override
   String get memoryIntro => 'Find the pairs of matching animals.';
+
+  @override
+  String get memoryIntroFood => 'Find who eats what: an animal and its food.';
+
+  @override
+  String get memoryIntroHome =>
+      'Turn three cards: an animal, its food and its home.';
 
   @override
   String get memoryCovered => 'Face-down card';
@@ -450,6 +467,35 @@ class AppLocalizationsEn extends AppLocalizations {
         'cow': 'cow',
         'pig': 'pig',
         'other': '$animal',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String memoryItemName(String item) {
+    String _temp0 = intl.Intl.selectLogic(
+      item,
+      {
+        'squirrel': 'the squirrel',
+        'penguin': 'the penguin',
+        'monkey': 'the monkey',
+        'rabbit': 'the rabbit',
+        'bear': 'the bear',
+        'panda': 'the panda',
+        'chestnut': 'the chestnut',
+        'fish': 'the fish',
+        'banana': 'the banana',
+        'carrot': 'the carrot',
+        'honey': 'the honey',
+        'bamboo': 'the bamboo',
+        'tree': 'the tree',
+        'ice': 'the ice',
+        'palm': 'the palm tree',
+        'burrow': 'the burrow',
+        'forest': 'the forest',
+        'mountain': 'the mountain',
+        'other': '$item',
       },
     );
     return '$_temp0';
@@ -568,17 +614,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gameShapesDescSmall => 'Three shapes to drag into the right hole.';
 
   @override
-  String get gameShapesDescMid => 'Five shapes to drag into the right hole.';
+  String get gameShapesDescMid =>
+      'Five shapes, the holes are turned: the same shape in another position.';
 
   @override
-  String get gameShapesDescBig => 'Six shapes, big and small: watch the size.';
+  String get gameShapesDescBig =>
+      'Six turned shapes, big and small: watch the size.';
 
   @override
   String get shapesIntro => 'Put each shape in its hole.';
 
   @override
+  String get shapesIntroTurned =>
+      'Put each shape in its hole. The holes are turned: look closely at the shape.';
+
+  @override
   String get shapesIntroBig =>
-      'Put each shape in its hole. Watch the size: big and small.';
+      'Put each shape in its hole. The holes are turned, and there are big and small shapes.';
 
   @override
   String shapesWrong(Object shape) {
@@ -1263,6 +1315,21 @@ class AppLocalizationsEn extends AppLocalizations {
       },
     );
     return '$_temp0';
+  }
+
+  @override
+  String bandConfirmTitle(Object name, Object old) {
+    return 'The age groups have changed: $name was in $old years. Which group fits now?';
+  }
+
+  @override
+  String bandConfirmHint(Object name) {
+    return 'Until you choose, $name sees the same stories and games as before. Voice, text and help stay as you set them.';
+  }
+
+  @override
+  String profileBandToConfirm(Object old) {
+    return 'Before it was $old years: choose the current group.';
   }
 
   @override

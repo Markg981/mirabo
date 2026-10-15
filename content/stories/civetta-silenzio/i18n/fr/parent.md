@@ -1,6 +1,6 @@
 # Comment en parler : La chouette du silence
 
-**Pourquoi ce thème à 5–7 ans.** Les enfants d'aujourd'hui vivent entourés de sons : des voix, des écrans, du bruit de fond. Le silence peut sembler vide, voire effrayant. L'histoire en fait une expérience pleine, à vivre avec un adulte, et la relie à un geste simple pour se calmer : écouter sa propre respiration.
+**Pourquoi ce thème à 6–7 ans.** Les enfants d'aujourd'hui vivent entourés de sons : des voix, des écrans, du bruit de fond. Le silence peut sembler vide, voire effrayant. L'histoire en fait une expérience pleine, à vivre avec un adulte, et la relie à un geste simple pour se calmer : écouter sa propre respiration.
 
 ## Trois questions après l'histoire
 

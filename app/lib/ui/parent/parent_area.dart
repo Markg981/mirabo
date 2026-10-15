@@ -108,6 +108,8 @@ class _SessionTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
       children: [
+        for (final p in state.profiles)
+          if (p.bandToConfirm != null) _BandConfirmCard(state: state, profile: p),
         _InteractionAdviceCard(state: state, profile: profile),
         _AdviceSwitch(state: state, profile: profile),
         FormSection(
@@ -170,6 +172,57 @@ class _SessionTab extends StatelessWidget {
           children: [BackupSection(state: state)],
         ),
       ],
+    );
+  }
+}
+
+/// Profilo creato con le fasce di prima (5-7, 7-10): l'adulto sceglie fra le
+/// due fasce attuali possibili. Finché non sceglie non cambia nulla per il
+/// bambino; dopo, il profilo di interazione resta quello che era.
+class _BandConfirmCard extends StatelessWidget {
+  const _BandConfirmCard({required this.state, required this.profile});
+  final AppState state;
+  final ChildProfile profile;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final old = profile.bandToConfirm!;
+    final text = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: SoftPanel(
+        key: Key('band-confirm-${profile.id}'),
+        padding: const EdgeInsets.all(20),
+        color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.sky), 0.8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const IconBadge(icon: Icons.child_care_rounded, color: MiraboColors.sky, size: 48),
+                const SizedBox(width: 14),
+                Expanded(child: Text(l.bandConfirmTitle(profile.name, old.key.replaceAll('-', '–')), style: text.titleMedium)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(l.bandConfirmHint(profile.name), style: text.bodyMedium),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 12,
+              runSpacing: 8,
+              children: [
+                for (final b in old.choices)
+                  OutlinedButton(
+                    key: Key('band-confirm-${profile.id}-${b.key}'),
+                    onPressed: () => state.confirmBand(profile, b),
+                    child: Text('${l.profileYears(b.key.replaceAll('-', '–'))} · ${l.ageBandLabel(_bandKey(b))}'),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -910,8 +963,8 @@ Widget _carded(Widget tile) => Padding(
 
 String _bandKey(AgeBand b) => switch (b) {
       AgeBand.b3to5 => 'small',
-      AgeBand.b5to7 => 'mid',
-      AgeBand.b7to10 => 'big',
+      AgeBand.b6to7 => 'mid',
+      AgeBand.b8to10 => 'big',
     };
 
 /// Tempi d'uso contestualizzati: schermo acceso (l'unica cosa che l'app misura),

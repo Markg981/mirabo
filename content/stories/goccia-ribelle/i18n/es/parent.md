@@ -1,6 +1,6 @@
 # Cómo hablar de ello: La pequeña gota rebelde
 
-**Por qué este tema a los 5–7 años.** El agua del grifo parece infinita, y a esta edad no se ve de dónde viene ni adónde va. Dar voz a una gota hace concreto un gesto cotidiano (cerrar el grifo) y muestra una idea sencilla del ciclo del agua: la lluvia sube, vuelve a bajar, cambia de forma.
+**Por qué este tema a los 6–7 años.** El agua del grifo parece infinita, y a esta edad no se ve de dónde viene ni adónde va. Dar voz a una gota hace concreto un gesto cotidiano (cerrar el grifo) y muestra una idea sencilla del ciclo del agua: la lluvia sube, vuelve a bajar, cambia de forma.
 
 ## Tres preguntas después de la historia
 

@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "Spegnere la lanterna fa comparire le lucciole: la luce forte le confonde."},
   "screens": [
     {
       "n": 1,

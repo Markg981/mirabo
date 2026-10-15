@@ -4,6 +4,7 @@
 - `story-format.md`: formato dei pacchetti storia (contratto studio ↔ app).
 - `style-guide.md`: voce, struttura delle storie, compagni, serie *Emma e Pietrolino*, regole editoriali, scheda genitore e traduzioni.
 - `educational-goals.md`: matrice educativa (tre temi per tre fasce), un obiettivo per esperienza, ruolo delle tre modalità e dell'adulto, promesse vietate; dati in `content/education/matrix.json`, controllo `studio/check_goals.py`.
+- `age-bands.md`: le tre fasce 3–5, 6–7, 8–10 senza sovrapposizioni, scheda di progetto per fascia (linguaggio, complessità narrativa, scelte, gesti, aiuti, adulto; dati in `content/education/bands.json`), fascia dei contenuti separata dagli aiuti d'interazione, varianti di storie e giochi, conferma dell'adulto per i profili 5-7 e 7-10; revisione in `content/reviews/fasce-eta.md`.
 - `theme-navigation.md`: navigazione per temi (casa → tema → storia, gioco o "lo provo" → ritorno al tema), nessun prerequisito, mensola come scorciatoia separata dal catalogo, posto fisso dei comandi; esperienze raggiungibili per fascia da `studio/check_goals.py`, verifica con i bambini in `content/reviews/temi-bambini.md`.
 - `pedagogical-review.md`: revisione pedagogica delle storie (stati, schede in `content/reviews/`, `studio/review.py`).
 - `content-distribution.md`: raccolte versionate, installazione atomica, ritiro delle versioni, lingue e audio, "Mantieni offline".
@@ -30,7 +31,7 @@
 
 | Ambito | Decisione |
 | --- | --- |
-| Età | 3–10, tre fasce (3–5, 5–7, 7–10), profili per bambino |
+| Età | 3–10, tre fasce (3–5, 6–7, 8–10), profili per bambino |
 | Piattaforma | Flutter, iOS 15+ e Android 8+, tablet prima di tutto |
 | Dati | Locale di default (SQLite cifrato); Drive personale o account cloud opt-in |
 | Compagno | Uno per bambino, scelto tra Bo (mammut), Pilù (civetta), Tango (volpe), non sostituibile |

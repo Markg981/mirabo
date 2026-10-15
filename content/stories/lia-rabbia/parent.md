@@ -1,6 +1,6 @@
 # Come parlarne: Il vulcano di Lia
 
-**Perché questo tema a 5–7 anni.** A questa età la rabbia arriva ancora tutta insieme e il bambino non ha gli strumenti per fermarla da solo; non va eliminata, va riconosciuta e accompagnata. Dare un nome e un'immagine (il vulcano) e un gesto (il respiro) gli dà qualcosa da fare mentre passa.
+**Perché questo tema a 6–7 anni.** A questa età la rabbia arriva ancora tutta insieme e il bambino non ha gli strumenti per fermarla da solo; non va eliminata, va riconosciuta e accompagnata. Dare un nome e un'immagine (il vulcano) e un gesto (il respiro) gli dà qualcosa da fare mentre passa.
 
 ## Tre domande dopo la storia
 

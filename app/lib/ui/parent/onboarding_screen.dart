@@ -34,7 +34,7 @@ enum _Step { promise, setup, taste, activity, go }
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _i = 0;
   late AppLanguage _language;
-  AgeBand _band = AgeBand.b5to7;
+  AgeBand _band = AgeBand.b6to7;
   bool _init = false;
   Story? _story;
 
@@ -257,7 +257,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   static String _bandKey(AgeBand b) => switch (b) {
         AgeBand.b3to5 => 'small',
-        AgeBand.b5to7 => 'mid',
-        AgeBand.b7to10 => 'big',
+        AgeBand.b6to7 => 'mid',
+        AgeBand.b8to10 => 'big',
       };
 }

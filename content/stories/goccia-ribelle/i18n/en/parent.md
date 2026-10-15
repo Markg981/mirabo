@@ -1,6 +1,6 @@
 # How to talk about it: The Little Rebel Raindrop
 
-**Why this topic at 5–7.** Tap water seems endless, and at this age you can't see where it comes from or where it goes. Giving a voice to a raindrop makes an everyday action (turning off the tap) concrete, and shows a simple idea of the water cycle: rain goes up, comes back down, changes shape.
+**Why this topic at 6–7.** Tap water seems endless, and at this age you can't see where it comes from or where it goes. Giving a voice to a raindrop makes an everyday action (turning off the tap) concrete, and shows a simple idea of the water cycle: rain goes up, comes back down, changes shape.
 
 ## Three questions after the story
 

@@ -14,8 +14,8 @@
       "additionalProperties": false,
       "properties": {
         "3-5": { "$ref": "#/$defs/band" },
-        "5-7": { "$ref": "#/$defs/band" },
-        "7-10": { "$ref": "#/$defs/band" }
+        "6-7": { "$ref": "#/$defs/band" },
+        "8-10": { "$ref": "#/$defs/band" }
       }
     }
   },

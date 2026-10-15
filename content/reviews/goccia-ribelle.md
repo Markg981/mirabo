@@ -1,6 +1,6 @@
 # Revisione pedagogica: La Piccola Goccia Ribelle
 
-`goccia-ribelle` v1 · mondo ambiente · tema acqua · fasce 3-5, 5-7
+`goccia-ribelle` v1 · mondo ambiente · tema acqua · fasce 3-5, 6-7
 
 **Frase-chiave.** Ogni cambiamento comincia da una goccia.
 
@@ -79,7 +79,7 @@
 - **pilu**: Domani guardo se la ciotola è piena, {nome}. A domani.
 - **tango**: Stasera chiudo il rubinetto, svelto, {nome}! A domani!
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

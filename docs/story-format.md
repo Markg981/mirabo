@@ -6,7 +6,7 @@ Una storia è una cartella `content/stories/<id>/`:
 lia-rabbia/
   story.json        metadati, fasce disponibili, scheda genitore, fonti
   3-5.json          variante per la fascia 3–5, con la lezione in tre tempi
-  5-7.json          variante per la fascia 5–7 (una per fascia disponibile)
+  6-7.json          variante per la fascia 6–7 (una per fascia disponibile)
   parent.md         scheda "Come parlarne"
   assets/           illustrazioni (png/webp) e audio (opus/aac), quando esistono
 ```
@@ -64,14 +64,22 @@ Nelle traduzioni (`i18n/<lingua>/home-activity.json`) si traducono solo i testi:
 voci per lista, `supervision.level` non si ripete. `studio/validate.py` controlla schema e overlay.
 Per le fasce vedi l'esempio *La tavola degli ospiti* in `style-guide.md`.
 
-## Variante per fascia (`5-7.json`)
+## Variante per fascia (`6-7.json`)
 
 ```json
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": { "perspective": "protagonist", "structure": "cause-effect", "note": "..." },
   "screens": [ ...Screen ]
 }
 ```
+
+`design` dice com'è costruita la variante: `perspective` (`protagonist`, `other`, `several`) e
+`structure` (`one-problem`, `cause-effect`, `dilemma`), più una `note` con il perché. Deve essere
+quella ammessa dalla scheda della fascia (`content/education/bands.json`, vedi
+[`age-bands.md`](age-bands.md)), e due varianti della stessa storia non possono avere la stessa
+coppia: le fasce differiscono nel racconto, non solo nella lunghezza. Per le bozze `validate.py`
+elenca le varianti da riprogettare; in revisione o pubblicata è un errore. Non si traduce.
 
 Ogni `Screen` ha:
 
@@ -215,7 +223,7 @@ mossa è sbagliata o punita: `outcome` descrive, non giudica, e il compagno invi
 | --- | --- |
 | `together` | guida per il genitore in modalità insieme |
 | `prompt` | domanda del compagno prima di provare |
-| `minTries` | facoltativo, da 1 (default) a 3: quante mosse diverse prova da solo prima di andare avanti. Oltre 1 solo in 7–10, per confrontare le strategie |
+| `minTries` | facoltativo, da 1 (default) a 3: quante mosse diverse prova da solo prima di andare avanti. Oltre 1 solo in 8–10, per confrontare le strategie |
 | `options` | 2–3 mosse (al massimo 2 in 3–5): `id`, `icon`, `label`, `outcome` (la conseguenza raccontata, uguale per i tre compagni, senza `{nome}`), `reaction` (il commento del compagno) |
 
 Da soli, il bambino tocca una mossa: compare e viene letto `outcome`, poi il compagno dice `reaction`.

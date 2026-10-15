@@ -6,7 +6,7 @@
   "topic": "paura-di-sbagliare",
   "series": "emma-pietrolino",
   "episode": 7,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Il coraggio non sta nel restare fermi, ma nel provarci.",

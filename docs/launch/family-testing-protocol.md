@@ -4,7 +4,7 @@ Serve al passaggio 4 di [readiness.md](readiness.md). Le soglie sono criteri ini
 
 ## Principi
 
-- **Consenso informato del genitore** per iscritto prima di ogni sessione; **assenso del bambino** adeguato all'età (3–5: a voce, con parole semplici; 5–7: a voce, spiegando cosa succede; 7–10: lettura insieme di un foglio breve). Il bambino può smettere in qualsiasi momento, senza spiegazioni; il genitore può ritirare il consenso.
+- **Consenso informato del genitore** per iscritto prima di ogni sessione; **assenso del bambino** adeguato all'età (3–5: a voce, con parole semplici; 6–7: a voce, spiegando cosa succede; 8–10: lettura insieme di un foglio breve). Il bambino può smettere in qualsiasi momento, senza spiegazioni; il genitore può ritirare il consenso.
 - **Raccolta minima**: note dell'osservatore su carta o file locale, con codice di sessione (F01, F02…). Nessun nome del bambino, nessuna registrazione video o audio salvo consenso specifico e separato, e solo se serve davvero. Nessun dato nell'app: profilo di prova senza nome reale.
 - **Metriche coerenti con la promessa di privacy dell'esperienza infantile**: nessuna metrica di prodotto sul bambino. Per i conti commerciali si usano solo transazioni adulte e coorti.
 - **Conservazione e cancellazione** (periodi proposti, da confermare con il referente privacy): note anonime al massimo 12 mesi; moduli di consenso separati dalle note, conservati finché serve a provare il consenso e poi distrutti; eventuali registrazioni (solo con consenso specifico) cancellate entro 30 giorni; il genitore può chiedere la cancellazione delle note in ogni momento (il codice di sessione le fa ritrovare).

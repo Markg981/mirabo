@@ -1,6 +1,6 @@
 # Comment en parler : La petite goutte rebelle
 
-**Pourquoi ce thème à 5–7 ans.** L'eau du robinet semble infinie, et à cet âge on ne voit ni d'où elle vient ni où elle va. Donner une voix à une goutte rend concret un geste quotidien (fermer le robinet) et montre une idée simple du cycle de l'eau : la pluie monte, redescend, change de forme.
+**Pourquoi ce thème à 6–7 ans.** L'eau du robinet semble infinie, et à cet âge on ne voit ni d'où elle vient ni où elle va. Donner une voix à une goutte rend concret un geste quotidien (fermer le robinet) et montre une idée simple du cycle de l'eau : la pluie monte, redescend, change de forme.
 
 ## Trois questions après l'histoire
 

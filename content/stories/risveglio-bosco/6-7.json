@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "Il riccio trema vicino a una lattina; Emma sceglie come aiutare e ne nascono i cartelli."},
   "screens": [
     {
       "n": 1,

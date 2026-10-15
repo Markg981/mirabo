@@ -25,7 +25,7 @@ void main() {
   ChildProfile profile({int id = 1, String name = 'Emma', String language = 'it'}) => ChildProfile(
         id: id,
         name: name,
-        ageBand: AgeBand.b5to7,
+        ageBand: AgeBand.b6to7,
         companion: CompanionId.bo,
         language: language,
       );

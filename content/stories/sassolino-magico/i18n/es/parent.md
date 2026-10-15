@@ -1,6 +1,6 @@
 # Cómo hablar de ello: La piedrecita mágica
 
-**Por qué este tema a los 5–7 años.** Es el episodio que presenta a Emma, a la abuela y a Pietrolino. El mensaje es uno solo: las cosas se notan cuando uno se para. A esta edad pararse cuesta, y precisamente por eso puede convertirse en un juego interesante.
+**Por qué este tema a los 6–7 años.** Es el episodio que presenta a Emma, a la abuela y a Pietrolino. El mensaje es uno solo: las cosas se notan cuando uno se para. A esta edad pararse cuesta, y precisamente por eso puede convertirse en un juego interesante.
 
 ## Tres preguntas después de la historia
 

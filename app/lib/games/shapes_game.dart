@@ -23,10 +23,18 @@ class _Piece {
 }
 
 /// Incastri: i pezzi colorati si trascinano nei buchi della tavola.
-/// 3-5: tre forme; 5-7: cinque; 7-10: sei, con grandi e piccole da distinguere.
+/// 3-5: tre forme, buchi dritti come i pezzi; 6-7: cinque forme e i buchi sono
+/// girati, la stessa forma va riconosciuta in un'altra posizione; 8-10: sei
+/// forme girate, con grandi e piccole da distinguere.
 class ShapesGame extends StatefulWidget {
   const ShapesGame({super.key, required this.ctx});
   final GameContext ctx;
+
+  /// I buchi sono girati (forma riconosciuta in un'altra posizione)?
+  static bool turnsHoles(AgeBand b) => b != AgeBand.b3to5;
+
+  /// Rotazioni possibili di un buco, in giri.
+  static const holeTurns = [0.125, 0.25, 0.375, 0.5];
 
   @override
   State<ShapesGame> createState() => _ShapesGameState();
@@ -35,6 +43,9 @@ class ShapesGame extends StatefulWidget {
 class _ShapesGameState extends State<ShapesGame> {
   late final List<_Piece> _pieces;
   late final List<int> _holeOrder;
+
+  /// Rotazione di ogni buco in giri (0 = dritto), per indice del pezzo.
+  late final List<double> _turns;
   final Set<int> _placed = {};
   int? _wrongHole;
 
@@ -48,14 +59,14 @@ class _ShapesGameState extends State<ShapesGame> {
           _Piece(ShapeKind.square, 1, MiraboColors.sky),
           _Piece(ShapeKind.triangle, 1, MiraboColors.sun),
         ],
-      AgeBand.b5to7 => const [
+      AgeBand.b6to7 => const [
           _Piece(ShapeKind.circle, 1, MiraboColors.rose),
           _Piece(ShapeKind.square, 1, MiraboColors.sky),
           _Piece(ShapeKind.triangle, 1, MiraboColors.sun),
           _Piece(ShapeKind.star, 1, MiraboColors.plum),
           _Piece(ShapeKind.heart, 1, MiraboColors.leaf),
         ],
-      AgeBand.b7to10 => const [
+      AgeBand.b8to10 => const [
           _Piece(ShapeKind.circle, 1, MiraboColors.rose),
           _Piece(ShapeKind.circle, 0.68, MiraboColors.rose),
           _Piece(ShapeKind.square, 1, MiraboColors.sky),
@@ -67,8 +78,16 @@ class _ShapesGameState extends State<ShapesGame> {
         .toList()
       ..shuffle(rnd);
     _holeOrder = List.generate(_pieces.length, (i) => i)..shuffle(rnd);
+    _turns = [
+      for (var i = 0; i < _pieces.length; i++)
+        ShapesGame.turnsHoles(widget.ctx.band) ? ShapesGame.holeTurns[rnd.nextInt(ShapesGame.holeTurns.length)] : 0.0,
+    ];
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => widget.ctx.say(widget.ctx.band == AgeBand.b7to10 ? context.l10n.shapesIntroBig : context.l10n.shapesIntro),
+      (_) => widget.ctx.say(switch (widget.ctx.band) {
+        AgeBand.b3to5 => context.l10n.shapesIntro,
+        AgeBand.b6to7 => context.l10n.shapesIntroTurned,
+        AgeBand.b8to10 => context.l10n.shapesIntroBig,
+      }),
     );
   }
 
@@ -160,7 +179,9 @@ class _ShapesGameState extends State<ShapesGame> {
                               return AnimatedScale(
                                 scale: hovering ? 1.06 : 1,
                                 duration: const Duration(milliseconds: 120),
-                                child: placed
+                                child: Transform.rotate(
+                                  angle: _turns[hole] * 2 * math.pi,
+                                  child: placed
                                     ? _shape(_pieces[hole], cell, tokens)
                                     : CustomPaint(
                                         painter: _ShapePainter(
@@ -170,6 +191,7 @@ class _ShapesGameState extends State<ShapesGame> {
                                           hole: true,
                                         ),
                                       ),
+                                ),
                               );
                             },
                           ),

@@ -23,6 +23,8 @@ NAME_PLACEHOLDER = "{nome}"
 # Parole che il brief vieta: la storia può parlarne solo nella scheda genitore.
 BANNED = ["cattivo", "cattiva", "cattivi", "gli uomini", "la gente", "colpa", "vergogna", "punizione"]
 COMPANIONS = ("bo", "pilu", "tango")
+# Schede di progetto delle fasce (docs/age-bands.md): limiti, prospettive e strutture ammesse.
+BAND_CARDS = json.loads((CONTENT / "education" / "bands.json").read_text(encoding="utf-8"))["bands"]
 
 
 def load_schema(name: str) -> Draft202012Validator:
@@ -48,6 +50,7 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
     if not (folder / meta.get("parentCard", "parent.md")).exists():
         errors.append(f"{folder.name}: scheda genitore '{meta.get('parentCard')}' mancante")
 
+    designs: dict[tuple, str] = {}
     for band, file in meta.get("ageBands", {}).items():
         vpath = folder / file
         if not vpath.exists():
@@ -58,11 +61,42 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
             errors.append(f"{folder.name}/{file}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
         if variant.get("ageBand") != band:
             errors.append(f"{folder.name}/{file}: ageBand '{variant.get('ageBand')}' diverso da '{band}'")
+        if band not in BAND_CARDS:
+            continue
         errors += check_screens(f"{folder.name}/{file}", variant.get("screens", []), band, meta)
+        errors += check_design(f"{folder.name}/{file}", variant.get("design"), band, meta)
+        d = variant.get("design") or {}
+        key = (d.get("perspective"), d.get("structure"))
+        if d and key in designs:
+            errors.append(f"{folder.name}/{file}: stessa prospettiva e struttura della variante {designs[key]}: le fasce devono differire nel racconto, non solo nella lunghezza")
+        designs.setdefault(key, band)
     errors += check_home_activity(folder, meta)
     errors += check_translations(folder, meta)
     errors += check_review(folder, meta)
     return errors
+
+
+def check_design(label: str, design: dict | None, band: str, meta: dict) -> list[str]:
+    """La variante dichiara prospettiva e struttura, e devono essere quelle della scheda della fascia.
+
+    Per le bozze una variante fuori scheda non blocca: finisce nell'elenco da riprogettare.
+    In revisione o pubblicata è un errore.
+    """
+    narrative = BAND_CARDS[band]["narrative"]
+    problems: list[str] = []
+    if not design:
+        problems.append("manca 'design' (prospettiva e struttura)")
+    else:
+        if design.get("perspective") not in narrative["perspectives"]:
+            problems.append(f"prospettiva '{design.get('perspective')}', la fascia {band} chiede {narrative['perspectives']}")
+        if design.get("structure") not in narrative["structures"]:
+            problems.append(f"struttura '{design.get('structure')}', la fascia {band} chiede {narrative['structures']}")
+    if not problems:
+        return []
+    if meta.get("status", "draft") == "draft":
+        REDESIGN.append(f"{label} ({'; '.join(problems)})")
+        return []
+    return [f"{label}: {p}" for p in problems]
 
 
 BAND_LISTS = ("steps", "materials", "preparation", "alternatives")
@@ -129,6 +163,7 @@ LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
 LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
 DRAFTS: list[str] = []
 UNREVIEWED: list[str] = []
+REDESIGN: list[str] = []
 
 
 def check_translations(folder: Path, meta: dict) -> list[str]:
@@ -217,6 +252,9 @@ def check_translations(folder: Path, meta: dict) -> list[str]:
 
 def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]:
     errors: list[str] = []
+    card = BAND_CARDS[band]
+    choices = card["choices"]
+    lesson = card["narrative"]["lesson"]
     kinds = [s.get("kind") for s in screens]
     ns = [s.get("n") for s in screens]
     if ns != list(range(1, len(screens) + 1)):
@@ -235,10 +273,10 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
     if band == "3-5" and meta.get("togetherOnly") and "dialogue" in kinds:
         errors.append(f"{label}: nessuna pausa di dialogo in 3-5 quando la storia è solo insieme")
     # La lezione in tre tempi è il cuore della fascia 3-5, e solo di quella.
-    if band == "3-5" and kinds.count("lesson") != 1:
-        errors.append(f"{label}: in 3-5 serve esattamente una lezione in tre tempi ('lesson')")
-    if band != "3-5" and "lesson" in kinds:
-        errors.append(f"{label}: la lezione in tre tempi è solo per la fascia 3-5")
+    if lesson == "required" and kinds.count("lesson") != 1:
+        errors.append(f"{label}: in {band} serve esattamente una lezione in tre tempi ('lesson')")
+    if lesson == "forbidden" and "lesson" in kinds:
+        errors.append(f"{label}: la lezione in tre tempi non è prevista nella fascia {band}")
     # La pausa di gesto è facoltativa: al massimo una, perché resti un momento speciale.
     if kinds.count("gesture") > 1:
         errors.append(f"{label}: al massimo una pausa di gesto")
@@ -267,7 +305,7 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
                 ids = [o["id"] for o in s["dialogue"]["alone"]["options"]]
                 if len(ids) != len(set(ids)):
                     errors.append(f"{label} #{n}: id delle opzioni duplicati")
-                band_max = 2 if band == "3-5" else 3
+                band_max = choices["dialogueOptions"]
                 if len(ids) > band_max:
                     errors.append(f"{label} #{n}: al massimo {band_max} opzioni per la fascia {band}")
         elif "dialogue" in s:
@@ -298,11 +336,11 @@ def check_screens(label: str, screens: list, band: str, meta: dict) -> list[str]
                 ids = [o["id"] for o in c["options"]]
                 if len(ids) != len(set(ids)):
                     errors.append(f"{label} #{n}: id delle mosse duplicati")
-                if len(ids) > (2 if band == "3-5" else 3):
-                    errors.append(f"{label} #{n}: al massimo {2 if band == '3-5' else 3} mosse per la fascia {band}")
+                if len(ids) > choices["consequenceMoves"]:
+                    errors.append(f"{label} #{n}: al massimo {choices['consequenceMoves']} mosse per la fascia {band}")
                 # I piccoli vedono una relazione causa-effetto; solo i grandi confrontano strategie.
-                if band != "7-10" and c.get("minTries", 1) > 1:
-                    errors.append(f"{label} #{n}: minTries oltre 1 solo in 7-10")
+                if c.get("minTries", 1) > choices["minTries"]:
+                    errors.append(f"{label} #{n}: minTries al massimo {choices['minTries']} nella fascia {band}")
                 if c.get("minTries", 1) > len(ids):
                     errors.append(f"{label} #{n}: minTries maggiore del numero di mosse")
                 for o in c["options"]:
@@ -562,6 +600,10 @@ def main(argv: list[str]) -> int:
         print("  -", e)
     if DRAFTS:
         print(f"\nTraduzioni da revisionare ({len(DRAFTS)}): " + ", ".join(DRAFTS))
+    if REDESIGN:
+        print(f"\nVarianti da riprogettare secondo la scheda della fascia ({len(REDESIGN)}):")
+        for r in REDESIGN:
+            print("  -", r)
     if UNREVIEWED:
         print(f"\nStorie in attesa di revisione pedagogica ({len(UNREVIEWED)}): " + ", ".join(UNREVIEWED))
     print(f"\n{len(stories)} storie, {len(activities)} attività, {len(all_errors)} errori")

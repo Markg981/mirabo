@@ -54,7 +54,7 @@ Map<String, Object?> _sample(String name) => {
         {
           'id': 1,
           'name': name,
-          'age_band': '5-7',
+          'age_band': '6-7',
           'companion': 'bo',
           'enabled_worlds': '',
           'safety_together_only': 1,

@@ -10,7 +10,7 @@ La matrice è una **proposta** (`"status": "proposta"`) finché un revisore peda
 
 Tre temi per tre fasce: nove celle. Ogni cella descrive **una** esperienza.
 
-| | 3–5 | 5–7 | 7–10 |
+| | 3–5 | 6–7 | 8–10 |
 | --- | --- | --- | --- |
 | **Emozioni e relazioni** | Riconoscere una situazione di frustrazione e fare il respiro del vulcano | Cominciare un compito nuovo facendone solo il primo pezzetto | Dare un nome a quello che si prova davanti a un distacco e scegliere un modo per tenere il legame |
 | **Natura e viventi** | Accorgersi di quando l'acqua scorre senza servire e chiudere il rubinetto | Prendersi cura di una pianta ogni giorno e notare che le servono acqua e tempo | Osservare un cambiamento nel tempo e descriverlo con un confronto |
@@ -46,7 +46,7 @@ La scheda per il revisore, cella per cella con i contenuti per nome, si genera c
 Se una modalità non aggiunge niente rispetto alle altre due, non si riempie con un contenuto
 qualunque: si segna `da-progettare` (manca) o `da-riprogettare` (c'è ma non serve) e si spiega
 nel contributo cosa dovrebbe fare. Oggi mancano sei modalità, in gran parte storie
-(Autonomia e scuola) e il ramo Natura 7–10; lo script le elenca a ogni esecuzione.
+(Autonomia e scuola) e il ramo Natura 8–10; lo script le elenca a ogni esecuzione.
 
 I riferimenti ai contenuti sono `story:<id>`, `activity:<id>`, `gesture:<id di storia>`,
 `offscreen:<id di attività>`; lo script controlla che esistano e che siano disponibili per la

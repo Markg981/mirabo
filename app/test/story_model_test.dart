@@ -29,7 +29,7 @@ void main() {
 
   test('gli inviti "leggiamo insieme" sono pochi, facoltativi e mai sulla pausa di dialogo', () {
     final v = StoryVariant.fromJson(
-        jsonDecode(File('${stories.path}/albero-silenzioso/5-7.json').readAsStringSync()));
+        jsonDecode(File('${stories.path}/albero-silenzioso/6-7.json').readAsStringSync()));
     final prompts = v.screens.where((s) => s.sharedPrompt != null).toList();
     expect(prompts, isNotEmpty);
     expect(prompts.length, lessThanOrEqualTo(v.screens.length ~/ 3));
@@ -57,10 +57,10 @@ void main() {
   });
 
   test('il profilo nasconde sicurezza in modalità da solo', () {
-    const p = ChildProfile(id: 1, name: 'Test', ageBand: AgeBand.b5to7, companion: CompanionId.bo);
+    const p = ChildProfile(id: 1, name: 'Test', ageBand: AgeBand.b6to7, companion: CompanionId.bo);
     final safety = Story.fromJson({
       'id': 'x', 'version': 1, 'title': 'x', 'world': 'sicurezza', 'topic': 'corpo',
-      'ageBands': {'5-7': '5-7.json'}, 'formats': ['illustrated'], 'togetherOnly': false,
+      'ageBands': {'6-7': '6-7.json'}, 'formats': ['illustrated'], 'togetherOnly': false,
       'keyPhrase': 'k', 'parentCard': 'parent.md', 'sources': [],
     });
     expect(p.canOpen(safety, SessionMode.together), isTrue);

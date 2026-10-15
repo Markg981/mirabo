@@ -1,6 +1,6 @@
 # Darüber sprechen: Der schlafende Wald
 
-**Warum dieses Thema mit 5–7 Jahren.** Viele Kinder erleben Schlafen als Verlust („ich verpasse das Spielen“) oder verbinden es mit der Traurigkeit der Dunkelheit. Die Geschichte zeigt es als etwas, das die ganze Natur tut, um zu wachsen und neu anzufangen, und zeigt, dass Innehalten kein Aufgeben ist.
+**Warum dieses Thema mit 6–7 Jahren.** Viele Kinder erleben Schlafen als Verlust („ich verpasse das Spielen“) oder verbinden es mit der Traurigkeit der Dunkelheit. Die Geschichte zeigt es als etwas, das die ganze Natur tut, um zu wachsen und neu anzufangen, und zeigt, dass Innehalten kein Aufgeben ist.
 
 ## Drei Fragen nach der Geschichte
 

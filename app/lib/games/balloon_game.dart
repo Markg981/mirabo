@@ -10,7 +10,7 @@ import '../ui/design/widgets.dart';
 import 'game.dart';
 
 /// Palloncini che salgono: si scoppiano toccandoli.
-/// 3-5: tutti; 5-7: solo il colore detto dal compagno; 7-10: i numeri in ordine.
+/// 3-5: tutti; 6-7: solo il colore detto dal compagno; 8-10: i numeri in ordine.
 class BalloonGame extends StatefulWidget {
   const BalloonGame({super.key, required this.ctx});
   final GameContext ctx;
@@ -59,12 +59,12 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
   int _progress = 0;
   bool _over = false;
 
-  // 5-7: colore da scoppiare; 7-10: prossimo numero.
+  // 6-7: colore da scoppiare; 8-10: prossimo numero.
   late (String, Color) _target = _colors[_rnd.nextInt(_colors.length)];
   int _next = 1;
 
   AgeBand get _band => widget.ctx.band;
-  int get _goal => _band == AgeBand.b5to7 ? 8 : 10;
+  int get _goal => _band == AgeBand.b6to7 ? 8 : 10;
 
   @override
   void initState() {
@@ -81,8 +81,8 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
 
   String _instruction() => switch (_band) {
         AgeBand.b3to5 => context.l10n.balloonsPopAll,
-        AgeBand.b5to7 => context.l10n.balloonsPopColor(_target.$1),
-        AgeBand.b7to10 => _next == 1 ? context.l10n.balloonsNumbersStart : context.l10n.balloonsNow('$_next'),
+        AgeBand.b6to7 => context.l10n.balloonsPopColor(_target.$1),
+        AgeBand.b8to10 => _next == 1 ? context.l10n.balloonsNumbersStart : context.l10n.balloonsNow('$_next'),
       };
 
   void _tick(Duration elapsed) {
@@ -102,15 +102,15 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
     var color = _colors[_rnd.nextInt(_colors.length)];
     int? number;
     switch (_band) {
-      case AgeBand.b5to7:
+      case AgeBand.b6to7:
         if (_rnd.nextDouble() < 0.4) color = _target;
-      case AgeBand.b7to10:
+      case AgeBand.b8to10:
         // Il numero cercato arriva spesso, così non si aspetta troppo.
         number = _rnd.nextDouble() < 0.45 ? _next : 1 + _rnd.nextInt(10);
       case AgeBand.b3to5:
         break;
     }
-    final base = switch (_band) { AgeBand.b3to5 => 8.5, AgeBand.b5to7 => 7.5, AgeBand.b7to10 => 7.0 };
+    final base = switch (_band) { AgeBand.b3to5 => 8.5, AgeBand.b6to7 => 7.5, AgeBand.b8to10 => 7.0 };
     _balloons.add(_Balloon(
       id: _nextId++,
       x: 0.06 + _rnd.nextDouble() * 0.88,
@@ -134,19 +134,19 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
     if (_over) return;
     final ok = switch (_band) {
       AgeBand.b3to5 => true,
-      AgeBand.b5to7 => b.color == _target,
-      AgeBand.b7to10 => b.number == _next,
+      AgeBand.b6to7 => b.color == _target,
+      AgeBand.b8to10 => b.number == _next,
     };
     if (!ok) {
       b.wrongAt = _now;
-      if (_band == AgeBand.b7to10) widget.ctx.say(context.l10n.balloonsWrongNumber('${b.number}', '$_next'));
+      if (_band == AgeBand.b8to10) widget.ctx.say(context.l10n.balloonsWrongNumber('${b.number}', '$_next'));
       return;
     }
     final pos = _positionOf(b);
     _balloons.remove(b);
     if (!widget.ctx.calm) _pops.add(_Pop(_now, pos + const Offset(_w / 2, _h / 2.4), b.color.$2));
     _progress++;
-    if (_band == AgeBand.b7to10) {
+    if (_band == AgeBand.b8to10) {
       widget.ctx.say('${b.number}!');
       _next++;
     }
@@ -155,7 +155,7 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
       Future.delayed(const Duration(milliseconds: 700), widget.ctx.onFinished);
       return;
     }
-    if (_band == AgeBand.b5to7 && _progress % 4 == 0) {
+    if (_band == AgeBand.b6to7 && _progress % 4 == 0) {
       final others = _colors.where((c) => c != _target).toList();
       _target = others[_rnd.nextInt(others.length)];
       widget.ctx.say(context.l10n.balloonsNowColor(_target.$1));
@@ -185,7 +185,7 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
                   ),
                 ),
                 const SizedBox(width: 14),
-                if (_band == AgeBand.b5to7) ...[
+                if (_band == AgeBand.b6to7) ...[
                   Container(width: 30, height: 30, decoration: BoxDecoration(color: tokens.tint(_target.$2), shape: BoxShape.circle)),
                   const SizedBox(width: 10),
                 ],
@@ -193,8 +193,8 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
                   child: Text(
                     switch (_band) {
                       AgeBand.b3to5 => context.l10n.balloonsPopAll,
-                      AgeBand.b5to7 => context.l10n.balloonsOnlyColor(_target.$1),
-                      AgeBand.b7to10 => _over ? context.l10n.balloonsDone : context.l10n.balloonsFind('$_next'),
+                      AgeBand.b6to7 => context.l10n.balloonsOnlyColor(_target.$1),
+                      AgeBand.b8to10 => _over ? context.l10n.balloonsDone : context.l10n.balloonsFind('$_next'),
                     },
                     style: text.titleLarge,
                   ),

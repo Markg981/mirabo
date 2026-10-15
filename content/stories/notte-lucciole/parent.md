@@ -1,6 +1,6 @@
 # Come parlarne: La Notte delle Lucciole
 
-**Perché questo tema a 5–7 anni.** Il buio spaventa molti bambini a questa età. La storia non nega la paura: la mette vicino alla curiosità e a una mano da tenere, e mostra che stare al buio con un adulto di fiducia può diventare un momento di meraviglia.
+**Perché questo tema a 6–7 anni.** Il buio spaventa molti bambini a questa età. La storia non nega la paura: la mette vicino alla curiosità e a una mano da tenere, e mostra che stare al buio con un adulto di fiducia può diventare un momento di meraviglia.
 
 ## Tre domande dopo la storia
 

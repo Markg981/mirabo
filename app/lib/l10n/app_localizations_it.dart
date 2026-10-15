@@ -427,7 +427,25 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String gameMemoryDescFood(Object count) {
+    return '$count coppie animale e cibo: non si somigliano, vanno insieme.';
+  }
+
+  @override
+  String gameMemoryDescHome(Object count) {
+    return '$count terne animale, cibo e casa: tre carte per volta.';
+  }
+
+  @override
   String get memoryIntro => 'Trova le coppie di animali uguali.';
+
+  @override
+  String get memoryIntroFood =>
+      'Trova chi mangia cosa: un animale e il suo cibo.';
+
+  @override
+  String get memoryIntroHome =>
+      'Gira tre carte: un animale, il suo cibo e la sua casa.';
 
   @override
   String get memoryCovered => 'Carta coperta';
@@ -450,6 +468,35 @@ class AppLocalizationsIt extends AppLocalizations {
         'cow': 'la mucca',
         'pig': 'il maiale',
         'other': '$animal',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String memoryItemName(String item) {
+    String _temp0 = intl.Intl.selectLogic(
+      item,
+      {
+        'squirrel': 'lo scoiattolo',
+        'penguin': 'il pinguino',
+        'monkey': 'la scimmia',
+        'rabbit': 'il coniglio',
+        'bear': 'l\'orso',
+        'panda': 'il panda',
+        'chestnut': 'la castagna',
+        'fish': 'il pesce',
+        'banana': 'la banana',
+        'carrot': 'la carota',
+        'honey': 'il miele',
+        'bamboo': 'il bambù',
+        'tree': 'l\'albero',
+        'ice': 'il ghiaccio',
+        'palm': 'la palma',
+        'burrow': 'la tana',
+        'forest': 'il bosco',
+        'mountain': 'la montagna',
+        'other': '$item',
       },
     );
     return '$_temp0';
@@ -569,18 +616,23 @@ class AppLocalizationsIt extends AppLocalizations {
   String get gameShapesDescSmall => 'Tre forme da trascinare nel buco giusto.';
 
   @override
-  String get gameShapesDescMid => 'Cinque forme da trascinare nel buco giusto.';
+  String get gameShapesDescMid =>
+      'Cinque forme, i buchi sono girati: la stessa forma in un\'altra posizione.';
 
   @override
   String get gameShapesDescBig =>
-      'Sei forme, grandi e piccole: attenzione alla misura.';
+      'Sei forme girate, grandi e piccole: attenzione alla misura.';
 
   @override
   String get shapesIntro => 'Metti ogni forma nel suo buco.';
 
   @override
+  String get shapesIntroTurned =>
+      'Metti ogni forma nel suo buco. I buchi sono girati: guarda bene la forma.';
+
+  @override
   String get shapesIntroBig =>
-      'Metti ogni forma nel suo buco. Attenzione alla misura: grandi e piccole.';
+      'Metti ogni forma nel suo buco. I buchi sono girati, e ci sono forme grandi e piccole.';
 
   @override
   String shapesWrong(Object shape) {
@@ -1265,6 +1317,21 @@ class AppLocalizationsIt extends AppLocalizations {
       },
     );
     return '$_temp0';
+  }
+
+  @override
+  String bandConfirmTitle(Object name, Object old) {
+    return 'Le fasce d\'età sono cambiate: $name era in $old anni. In quale fascia è adesso?';
+  }
+
+  @override
+  String bandConfirmHint(Object name) {
+    return 'Finché non scegli, $name vede le stesse storie e gli stessi giochi di prima. Voce, testo e aiuti restano come li hai impostati.';
+  }
+
+  @override
+  String profileBandToConfirm(Object old) {
+    return 'Prima era $old anni: scegli la fascia di adesso.';
   }
 
   @override

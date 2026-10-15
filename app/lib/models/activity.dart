@@ -111,7 +111,7 @@ class Activity {
         area: ActivityArea.fromKey(j['area'] as String),
         skill: j['skill'] as String,
         type: ActivityType.values.byName(j['type'] as String),
-        ageBands: (j['ageBands'] as List).map((b) => AgeBand.fromKey(b as String)).toSet(),
+        ageBands: (j['ageBands'] as List).map((b) => AgeBand.fromContentKey(b as String)).toSet(),
         togetherSuggested: (j['togetherSuggested'] as bool?) ?? false,
         intro: CompanionLines.fromJson(j['intro'] as Map<String, dynamic>),
         outro: CompanionLines.fromJson(j['outro'] as Map<String, dynamic>),

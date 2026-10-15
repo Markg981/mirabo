@@ -1,6 +1,6 @@
 # Lettura karaoke, fabbrica di storie, calendario della natura, stampabili
 
-Quattro funzioni pensate per allargare l'app verso i 7–10 anni senza cambiarne le regole: niente
+Quattro funzioni pensate per allargare l'app verso i 8–10 anni senza cambiarne le regole: niente
 punti, niente serie di giorni, niente notifiche, tutto sul tablet.
 
 ## Lettura karaoke
@@ -24,7 +24,7 @@ sta imparando a leggere.
 
 Un materiale della mensola, sotto la capacità **parole** (`MakeItem`, chiave `make:factory`). Il bambino sceglie sei pezzi: chi, dove, cosa succede, come
 si sente, chi arriva ad aiutare, come finisce. A ogni tocco il compagno dice il nome del pezzo,
-così si può fare anche senza saper leggere. In fascia 7–10 alla fine si scrive il titolo (se resta
+così si può fare anche senza saper leggere. In fascia 8–10 alla fine si scrive il titolo (se resta
 vuoto, il titolo è il protagonista).
 
 L'app compone cinque pagine (inizio, problema, emozione, aiuto, fine) e le legge in karaoke, con la
@@ -38,8 +38,8 @@ l'emozione si accoglie con un respiro, qualunque sia.
   tutti i pezzi in tutte e cinque le lingue (genere, articoli, ordine delle parole in tedesco).
   Per aggiungere un pezzo: l'id e l'emoji in `StoryParts` (`app/lib/models/made_story.dart`) e un
   caso in ogni `select` delle cinque lingue; `made_story_test.dart` controlla che non manchi.
-- **Per fascia**: in 3–5 e 5–7 i pezzi si toccano e il compagno li dice a voce (niente da leggere);
-  in 7–10 si aggiunge il titolo e, sull'ultima pagina, *Prova un altro finale*: quattro scelte con
+- **Per fascia**: in 3–5 e 6–7 i pezzi si toccano e il compagno li dice a voce (niente da leggere);
+  in 8–10 si aggiunge il titolo e, sull'ultima pagina, *Prova un altro finale*: quattro scelte con
   cui il bambino rilegge la stessa storia con finali diversi e li confronta. Il confronto vale solo
   per quella lettura: la storia salvata resta con il finale scelto (nessun cambio di schema).
   Capitoli e cambio di punto di vista restano da fare.

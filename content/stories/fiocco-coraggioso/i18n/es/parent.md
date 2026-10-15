@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El copo que no quería caer
 
-**Por qué este tema a los 5–7 años.** Con el comienzo del colegio llegan las primeras pruebas (leer, escribir, jugar en equipo) y con ellas el miedo a equivocarse. Algunos niños prefieren no intentarlo antes que cometer un error. El copo pone nombre a ese miedo y muestra que se puede tener miedo e intentarlo igual.
+**Por qué este tema a los 6–7 años.** Con el comienzo del colegio llegan las primeras pruebas (leer, escribir, jugar en equipo) y con ellas el miedo a equivocarse. Algunos niños prefieren no intentarlo antes que cometer un error. El copo pone nombre a ese miedo y muestra que se puede tener miedo e intentarlo igual.
 
 ## Tres preguntas después de la historia
 

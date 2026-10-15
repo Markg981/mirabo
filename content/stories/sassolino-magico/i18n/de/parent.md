@@ -1,6 +1,6 @@
 # Darüber sprechen: Der Zauberkiesel
 
-**Warum dieses Thema mit 5–7 Jahren.** Diese Folge stellt Emma, Oma und Pietrolino vor. Die Botschaft ist nur eine: Man bemerkt Dinge, wenn man stehen bleibt. In diesem Alter fällt das Stehenbleiben schwer, und gerade deshalb kann es zu einem spannenden Spiel werden.
+**Warum dieses Thema mit 6–7 Jahren.** Diese Folge stellt Emma, Oma und Pietrolino vor. Die Botschaft ist nur eine: Man bemerkt Dinge, wenn man stehen bleibt. In diesem Alter fällt das Stehenbleiben schwer, und gerade deshalb kann es zu einem spannenden Spiel werden.
 
 ## Drei Fragen nach der Geschichte
 

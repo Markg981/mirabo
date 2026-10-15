@@ -6,7 +6,7 @@
   "topic": "piantare",
   "series": "emma-pietrolino",
   "episode": 3,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Non con la forza. Con la cura.",

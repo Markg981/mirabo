@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Risveglio del Bosco
 
-`risveglio-bosco` v1 · mondo ambiente · tema cura-del-bosco · fasce 5-7
+`risveglio-bosco` v1 · mondo ambiente · tema cura-del-bosco · fasce 6-7
 
 **Frase-chiave.** Il mondo non si cambia con gesti enormi, ma con cura continua.
 
@@ -8,13 +8,13 @@
 
 ## Avvisi della pre-revisione automatica
 
-- 5-7 #4 opzione 'rifugio': etichetta oltre 5 parole
+- 6-7 #4 opzione 'rifugio': etichetta oltre 5 parole
 - scheda genitore, errore comune senza il perché: "Lasciare che il bambino raccolga oggetti taglienti"
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: LIPU e WWF Italia, indicazioni per giardini amici della fauna (da verificare)
 - fonte da verificare: Legambiente, materiali di educazione ambientale per la primaria (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

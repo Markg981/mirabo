@@ -1,6 +1,6 @@
 # How to talk about it: The Sad Little Stream
 
-**Why this topic at 5–7.** At this age children notice litter in nature and are often more upset by it than adults; the story gives them a possible action and an adult who makes it safe, so the upset becomes action instead of anxiety.
+**Why this topic at 6–7.** At this age children notice litter in nature and are often more upset by it than adults; the story gives them a possible action and an adult who makes it safe, so the upset becomes action instead of anxiety.
 
 ## Three questions after the story
 

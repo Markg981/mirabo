@@ -18,7 +18,18 @@
     }
   },
   "properties": {
-    "ageBand": { "enum": ["3-5", "5-7", "7-10"] },
+    "ageBand": { "enum": ["3-5", "6-7", "8-10"] },
+    "design": {
+      "description": "Scelte di progetto della variante, controllate contro la scheda della fascia (content/education/bands.json).",
+      "type": "object",
+      "required": ["perspective", "structure"],
+      "additionalProperties": false,
+      "properties": {
+        "perspective": { "enum": ["protagonist", "other", "several"] },
+        "structure": { "enum": ["one-problem", "cause-effect", "dilemma"] },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
     "screens": {
       "type": "array",
       "minItems": 4,

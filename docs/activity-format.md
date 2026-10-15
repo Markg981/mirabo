@@ -135,7 +135,7 @@ emoji diverse formano coppia per una proprietà (stesso colore, stessa forma).
 ```
 
 ### `spell` — alfabeto mobile
-Si compone una parola (o, per 7–10, una frase) toccando le lettere nell'ordine giusto;
+Si compone una parola (o, per 8–10, una frase) toccando le lettere nell'ordine giusto;
 le lettere offerte sono quelle della parola più `extra`. Vocali blu, consonanti rosse,
 come nell'alfabeto mobile.
 ```json
@@ -166,7 +166,7 @@ nuove (`caccia-superfici`, `caccia-ombre`, `caccia-forme`) sono formulate "in ca
 non può uscire; `caccia-ombre-fuori` è la variante all'aperto, con un grande. Le varianti di luogo sono
 attività separate (stessa `skill`), non un campo del formato: così ognuna ha la sua consegna e la sua età.
 
-### `project` — piccolo progetto aperto (7–10)
+### `project` — piccolo progetto aperto (8–10)
 Per i grandi: un progetto da costruire con le mani, in quattro passaggi sempre uguali e in
 quest'ordine: **idea → previsione → prova → revisione** (`phase`: `idea`, `prediction`, `test`,
 `revision`). Ogni passaggio è un round. Il livello ha `goal` (cosa costruire), `criterion` (la

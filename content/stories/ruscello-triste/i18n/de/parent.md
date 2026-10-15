@@ -1,6 +1,6 @@
 # Darüber sprechen: Der traurige Bach
 
-**Warum dieses Thema mit 5–7 Jahren.** In diesem Alter sehen Kinder Müll in der Natur und sind oft mehr davon betroffen als Erwachsene; die Geschichte gibt ihnen eine mögliche Handlung und einen Erwachsenen, der sie sicher macht, damit aus der Betroffenheit Handeln wird statt Angst.
+**Warum dieses Thema mit 6–7 Jahren.** In diesem Alter sehen Kinder Müll in der Natur und sind oft mehr davon betroffen als Erwachsene; die Geschichte gibt ihnen eine mögliche Handlung und einen Erwachsenen, der sie sicher macht, damit aus der Betroffenheit Handeln wird statt Angst.
 
 ## Drei Fragen nach der Geschichte
 

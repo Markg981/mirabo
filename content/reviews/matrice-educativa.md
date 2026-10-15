@@ -29,7 +29,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Emozioni e relazioni, 5-7 anni
+### Emozioni e relazioni, 6-7 anni
 
 **Esperienza.** Davanti a una cosa nuova (un compito, uno sport, una lettera difficile) il bambino ha paura di sbagliare e vorrebbe non cominciare.
 
@@ -55,7 +55,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Emozioni e relazioni, 7-10 anni
+### Emozioni e relazioni, 8-10 anni
 
 **Esperienza.** Un amico si trasferisce, si cambia scuola o classe: il bambino deve salutare qualcuno o qualcosa e prova insieme tristezza e curiosità.
 
@@ -105,7 +105,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Natura e viventi, 5-7 anni
+### Natura e viventi, 6-7 anni
 
 **Esperienza.** Un seme in un vasetto o nel cotone: il bambino lo bagna, aspetta e lo vede cambiare nei giorni.
 
@@ -131,7 +131,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Natura e viventi, 7-10 anni
+### Natura e viventi, 8-10 anni
 
 **Esperienza.** Un fenomeno vicino che cambia nel tempo: l'ombra di un albero alle diverse ore, un germoglio nei giorni.
 
@@ -183,7 +183,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Autonomia e scuola, 5-7 anni
+### Autonomia e scuola, 6-7 anni
 
 **Esperienza.** La sera prima di scuola: preparare lo zaino e le cose per il giorno dopo.
 
@@ -207,7 +207,7 @@ Regole e criteri in `docs/educational-goals.md`.
 - [ ] L'obiettivo si capisce senza leggere il titolo dei contenuti.
 - [ ] Ogni modalità aggiunge qualcosa che le altre non danno.
 
-### Autonomia e scuola, 7-10 anni
+### Autonomia e scuola, 8-10 anni
 
 **Esperienza.** Un piccolo progetto aperto: costruire con un foglio e due libri un ponte che regga qualche moneta.
 
@@ -239,13 +239,13 @@ Regole e criteri in `docs/educational-goals.md`.
   «Caccia ai colori», «Caccia alle forme», «Caccia alle superfici», «Caccia al tatto», «I cilindri dei suoni», «Il cassetto delle forme», «Il sacchetto misterioso», «La scala marrone», «Le tavolette dei colori», «La torre rosa»
 - Vita pratica che sostiene una cella senza esserne il centro (apparecchiare, piegare, travasi): candidati come attività pratiche alternative di Autonomia e scuola 3-5.
   «Apparecchiare il mio posto», «Piegare i tovaglioli», «Travaso di fagioli»
-- Scuola, ingresso e relazioni in classe: candidati a un'esperienza "il primo giorno" di Autonomia e scuola 3-5/5-7, alternativa a quella scelta. Da decidere quale delle due tenere.
+- Scuola, ingresso e relazioni in classe: candidati a un'esperienza "il primo giorno" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere.
   «Aspetto il mio turno», «Com'è fatta una scuola», «Conto alla rovescia», «Il primo giorno», «Il nostro saluto», «A mensa»
-- Storie del mondo Emozioni 5-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate.
+- Storie del mondo Emozioni 6-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate.
   «Il Bosco Addormentato», «La Civetta del Silenzio», «La Notte delle Lucciole»
-- Storie del mondo Ambiente oltre a quella della cella: la cella Natura 5-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto.
+- Storie del mondo Ambiente oltre a quella della cella: la cella Natura 6-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto.
   «Il Risveglio del Bosco», «Il Ruscello Triste», «Il Sassolino Magico»
-- Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 7-10 se si sceglie un obiettivo di osservazione più ampio.
+- Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio.
   «Caccia nella natura», «Caccia alle ombre», «I continenti», «Le carte degli animali»
 
 ## Esito

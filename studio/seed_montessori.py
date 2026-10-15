@@ -12,7 +12,7 @@ Due forme, come deciso:
   si alza, lo trova con le mani e torna a dirlo a voce; poi si rimette tutto a posto.
 
 Il filone "scrittura" vive nell'area linguaggio: pregrafismo, incastri di ferro,
-lettere smerigliate, alfabeto mobile, copia di parole e frasi (7–10).
+lettere smerigliate, alfabeto mobile, copia di parole e frasi (8–10).
 """
 from __future__ import annotations
 
@@ -84,7 +84,7 @@ presentation(
     observe="Quante volte ripete, se usa due mani, se raccoglie i fagioli caduti senza che glielo chiediate.",
 )
 presentation(
-    id="versare-acqua", title="Versare l'acqua", area="vita-pratica", skill="travasi", ageBands=["3-5", "5-7"],
+    id="versare-acqua", title="Versare l'acqua", area="vita-pratica", skill="travasi", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "🫗", "label": "Una brocchina piccola con poca acqua"}, {"emoji": "🥛", "label": "Un bicchiere"}, {"emoji": "🧽", "label": "Una spugnetta"}, {"emoji": "🧺", "label": "Un vassoio"}],
     steps=[
         {"emoji": "🫗", "text": "Prendi la brocca dal manico con una mano e tienila sotto con l'altra."},
@@ -96,7 +96,7 @@ presentation(
     observe="Se si ferma prima del bordo da solo, se asciuga senza che glielo diciate.",
 )
 presentation(
-    id="telaio-bottoni", title="Abbottonare", area="vita-pratica", skill="vestirsi", ageBands=["3-5", "5-7"],
+    id="telaio-bottoni", title="Abbottonare", area="vita-pratica", skill="vestirsi", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "🧥", "label": "Una camicia o un cardigan con bottoni grandi, steso sul tavolo"}],
     steps=[
         {"emoji": "👆", "text": "Tieni il bottone con due dita e l'asola con le altre due."},
@@ -108,7 +108,7 @@ presentation(
     observe="Dopo qualche giorno provate con la camicia addosso: è il passaggio al vestirsi da soli.",
 )
 presentation(
-    id="apparecchiare", title="Apparecchiare il mio posto", area="vita-pratica", skill="mensa", ageBands=["3-5", "5-7"],
+    id="apparecchiare", title="Apparecchiare il mio posto", area="vita-pratica", skill="mensa", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "🍽️", "label": "Piatto, bicchiere, forchetta, cucchiaio, tovagliolo"}, {"emoji": "📄", "label": "Una tovaglietta con le sagome disegnate (fatela insieme con un pennarello)"}],
     steps=[
         {"emoji": "📄", "text": "Metti la tovaglietta al tuo posto."},
@@ -120,7 +120,7 @@ presentation(
     observe="Dopo una settimana togliete la tovaglietta: ricorda da solo i posti?",
 )
 presentation(
-    id="piegare", title="Piegare i tovaglioli", area="vita-pratica", skill="motricita-fine", ageBands=["3-5", "5-7"],
+    id="piegare", title="Piegare i tovaglioli", area="vita-pratica", skill="motricita-fine", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "🧻", "label": "Tre tovaglioli di stoffa con una riga cucita o disegnata a metà"}],
     steps=[
         {"emoji": "🧻", "text": "Stendi il tovagliolo con la riga davanti a te."},
@@ -132,7 +132,7 @@ presentation(
     observe="Precisione degli angoli e cura nel passare la mano sulla piega.",
 )
 presentation(
-    id="cura-pianta", title="Prendersi cura di una pianta", area="vita-pratica", skill="cura-ambiente", ageBands=["3-5", "5-7", "7-10"],
+    id="cura-pianta", title="Prendersi cura di una pianta", area="vita-pratica", skill="cura-ambiente", ageBands=["3-5", "6-7", "8-10"],
     materials=[{"emoji": "🪴", "label": "Una pianta in vaso tutta sua"}, {"emoji": "🫗", "label": "Una brocchina"}, {"emoji": "🧽", "label": "Un panno umido"}],
     steps=[
         {"emoji": "👀", "text": "Tocca la terra con un dito: è asciutta o bagnata?"},
@@ -147,7 +147,7 @@ presentation(
 
 # ================================================================ SENSORIALE
 add(
-    id="torre-rosa", title="La torre rosa", area="sensoriale", skill="dimensioni", type="sequence", ageBands=["3-5", "5-7"],
+    id="torre-rosa", title="La torre rosa", area="sensoriale", skill="dimensioni", type="sequence", ageBands=["3-5", "6-7"],
     offscreen="Con dieci scatole o barattoli di grandezza diversa: costruisci la torre dal più grande al più piccolo, poi disfala e rifalla.",
     levels=[
         {"rounds": [{"prompt": "Dal più grande al più piccolo", "sizes": True, "cards": [
@@ -160,7 +160,7 @@ add(
     ],
 )
 add(
-    id="scala-marrone", title="La scala marrone", area="sensoriale", skill="dimensioni", type="sequence", ageBands=["3-5", "5-7"],
+    id="scala-marrone", title="La scala marrone", area="sensoriale", skill="dimensioni", type="sequence", ageBands=["3-5", "6-7"],
     offscreen="Con libri di spessore diverso: dal più grosso al più sottile, in fila come una scala.",
     levels=[
         {"rounds": [{"prompt": "Dal più grosso al più sottile", "sizes": True, "cards": [
@@ -170,7 +170,7 @@ add(
     ],
 )
 add(
-    id="tavolette-colori", title="Le tavolette dei colori", area="sensoriale", skill="colori", type="pairs", ageBands=["3-5", "5-7"],
+    id="tavolette-colori", title="Le tavolette dei colori", area="sensoriale", skill="colori", type="pairs", ageBands=["3-5", "6-7"],
     offscreen="Con campioni di colore (quelli dei negozi di vernici) tagliati a metà: trova le coppie uguali.",
     levels=[
         {"rounds": [{"prompt": "Trova le coppie uguali", "pairs": [["🟥", "🟥"], ["🟦", "🟦"], ["🟨", "🟨"]]}]},
@@ -180,7 +180,7 @@ add(
     ],
 )
 add(
-    id="forme-geometriche", title="Il cassetto delle forme", area="sensoriale", skill="forme", type="pairs", ageBands=["3-5", "5-7"],
+    id="forme-geometriche", title="Il cassetto delle forme", area="sensoriale", skill="forme", type="pairs", ageBands=["3-5", "6-7"],
     offscreen="Ritaglia forme nel cartone: ogni forma rientra solo nel suo buco (incastro).",
     levels=[
         {"rounds": [{"prompt": "Trova la forma uguale", "pairs": [["🔴", "⭕"], ["🟦", "◻️"], ["🔺", "△"]], "byLabel": True,
@@ -190,7 +190,7 @@ add(
     ],
 )
 presentation(
-    id="sacchetto-misterioso", title="Il sacchetto misterioso", area="sensoriale", skill="tatto", ageBands=["3-5", "5-7"],
+    id="sacchetto-misterioso", title="Il sacchetto misterioso", area="sensoriale", skill="tatto", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "👝", "label": "Un sacchetto di stoffa"}, {"emoji": "🧸", "label": "5–6 oggetti piccoli e conosciuti (cucchiaio, tappo, pigna, chiave, pallina, bottone)"}],
     steps=[
         {"emoji": "👀", "text": "Guardate insieme gli oggetti e diteli a voce, uno per uno. Poi metteteli nel sacchetto."},
@@ -202,7 +202,7 @@ presentation(
     observe="Dopo qualche giorno, oggetti più simili tra loro (due cucchiai di misura diversa).",
 )
 presentation(
-    id="cilindri-suoni", title="I cilindri dei suoni", area="sensoriale", skill="udito", ageBands=["3-5", "5-7"],
+    id="cilindri-suoni", title="I cilindri dei suoni", area="sensoriale", skill="udito", ageBands=["3-5", "6-7"],
     materials=[{"emoji": "🥚", "label": "6 contenitori uguali e opachi (ovetti, barattolini)"}, {"emoji": "🌾", "label": "3 riempimenti diversi, due contenitori ciascuno: riso, sassolini, farina"}],
     steps=[
         {"emoji": "👂", "text": "Scuoti un contenitore vicino all'orecchio. Ascolta."},
@@ -216,7 +216,7 @@ presentation(
 
 # ================================================================ LINGUAGGIO E SCRITTURA
 add(
-    id="pregrafismo-linee", title="Linee e onde", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "5-7"],
+    id="pregrafismo-linee", title="Linee e onde", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "6-7"],
     offscreen="Le stesse linee con il dito nella sabbia o nella farina su un vassoio, poi con un pennarello grosso su un foglio grande.",
     levels=[
         {"rounds": [
@@ -236,7 +236,7 @@ add(
     ],
 )
 add(
-    id="incastri-ferro", title="Gli incastri di ferro", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "5-7"],
+    id="incastri-ferro", title="Gli incastri di ferro", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "6-7"],
     offscreen="Ritaglia le forme nel cartone e usale come stampini: contorna con una matita, poi riempi con linee parallele senza uscire.",
     levels=[
         {"rounds": [
@@ -283,7 +283,7 @@ _LOWER = {
 }
 _SAY = {"A": "a", "B": "bi", "C": "ci", "D": "di", "E": "e", "I": "i", "L": "elle", "M": "emme", "N": "enne", "O": "o", "P": "pi", "R": "erre", "S": "esse", "T": "ti", "U": "u", "V": "vu"}
 add(
-    id="lettere-smerigliate", title="Le lettere smerigliate", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "5-7"],
+    id="lettere-smerigliate", title="Le lettere smerigliate", area="linguaggio", skill="pregrafismo", type="trace", ageBands=["3-5", "6-7"],
     offscreen="Lettere di carta vetrata incollate su cartoncini: il bambino le tocca con due dita dicendo il suono, poi le traccia nella sabbia.",
     levels=[
         {"rounds": [{"label": k, "say": _SAY[k], "paths": _UPPER[k]} for k in ["I", "L", "O", "T", "A", "M"]]},
@@ -292,7 +292,7 @@ add(
     ],
 )
 add(
-    id="gioco-del-suono", title="Il gioco del suono", area="linguaggio", skill="suoni-iniziali", type="tapMatch", ageBands=["3-5", "5-7"],
+    id="gioco-del-suono", title="Il gioco del suono", area="linguaggio", skill="suoni-iniziali", type="tapMatch", ageBands=["3-5", "6-7"],
     offscreen="'Vedo con il mio occhino una cosa che inizia con mmm': si gioca ovunque, con oggetti veri davanti.",
     levels=[
         {"rounds": [
@@ -307,7 +307,7 @@ add(
     ],
 )
 add(
-    id="alfabeto-mobile", title="L'alfabeto mobile", area="linguaggio", skill="scrittura", type="spell", ageBands=["5-7", "7-10"],
+    id="alfabeto-mobile", title="L'alfabeto mobile", area="linguaggio", skill="scrittura", type="spell", ageBands=["6-7", "8-10"],
     offscreen="Lettere di legno o di cartoncino (vocali blu, consonanti rosse): il bambino compone le parole che vuole, senza scrivere.",
     levels=[
         {"rounds": [
@@ -330,7 +330,7 @@ add(
     ],
 )
 add(
-    id="nomenclature-animali", title="Le carte degli animali", area="linguaggio", skill="vocabolario", type="pairs", ageBands=["3-5", "5-7"],
+    id="nomenclature-animali", title="Le carte degli animali", area="linguaggio", skill="vocabolario", type="pairs", ageBands=["3-5", "6-7"],
     offscreen="Carte a tre parti stampate: figura, nome, figura con nome; il bambino abbina e si corregge con la carta di controllo.",
     levels=[
         {"rounds": [{"prompt": "Abbina l'animale alla sua parola", "pairs": [["🐶", "cane"], ["🐱", "gatto"], ["🐮", "mucca"]], "wordPairs": True}]},
@@ -338,7 +338,7 @@ add(
     ],
 )
 add(
-    id="copio-la-parola", title="Copio la parola", area="linguaggio", skill="scrittura", type="spell", ageBands=["7-10"],
+    id="copio-la-parola", title="Copio la parola", area="linguaggio", skill="scrittura", type="spell", ageBands=["8-10"],
     offscreen="Un quaderno a righe: ogni giorno una parola della storia letta, scritta tre volte in corsivo.",
     intro=lines("{nome}, qui si scrivono parole intere. Io le lettere le confondo, tu no.", "Parole lunghe, {nome}: una lettera alla volta, e il suono ti dice quale.", "{nome}, parole da grandi! Dai, una lettera alla volta."),
     levels=[
@@ -349,7 +349,7 @@ add(
 
 # ================================================================ MATEMATICA
 add(
-    id="aste-numeriche", title="Le aste numeriche", area="matematica", skill="numeri", type="count", ageBands=["3-5", "5-7"],
+    id="aste-numeriche", title="Le aste numeriche", area="matematica", skill="numeri", type="count", ageBands=["3-5", "6-7"],
     offscreen="Dieci strisce di cartone di lunghezza crescente, colorate a segmenti rossi e blu: contare i segmenti e ordinarle.",
     levels=[
         {"rounds": [
@@ -365,7 +365,7 @@ add(
     ],
 )
 add(
-    id="aste-in-ordine", title="Le aste in ordine", area="matematica", skill="numeri", type="sequence", ageBands=["3-5", "5-7"],
+    id="aste-in-ordine", title="Le aste in ordine", area="matematica", skill="numeri", type="sequence", ageBands=["3-5", "6-7"],
     offscreen="Le stesse strisce di cartone: dalla più lunga alla più corta, come una scala.",
     levels=[
         {"rounds": [{"prompt": "Dalla più lunga alla più corta", "sizes": True, "cards": [{"emoji": "▬", "size": 1.0}, {"emoji": "▬", "size": 0.75}, {"emoji": "▬", "size": 0.5}, {"emoji": "▬", "size": 0.25}]}]},
@@ -373,7 +373,7 @@ add(
     ],
 )
 add(
-    id="numeri-e-quantita", title="Numeri e quantità", area="matematica", skill="numeri", type="pairs", ageBands=["3-5", "5-7"],
+    id="numeri-e-quantita", title="Numeri e quantità", area="matematica", skill="numeri", type="pairs", ageBands=["3-5", "6-7"],
     offscreen="I fuselli: dieci scomparti numerati da 0 a 9, e stecchini da mettere dentro contando ad alta voce.",
     levels=[
         {"rounds": [{"prompt": "Abbina il numero alla quantità", "pairs": [["1", "●"], ["2", "●●"], ["3", "●●●"]], "wordPairs": True}]},
@@ -382,7 +382,7 @@ add(
     ],
 )
 presentation(
-    id="perle-decine", title="Le perle delle decine", area="matematica", skill="decine", ageBands=["5-7", "7-10"],
+    id="perle-decine", title="Le perle delle decine", area="matematica", skill="decine", ageBands=["6-7", "8-10"],
     materials=[{"emoji": "📿", "label": "Perle o pasta da infilare in fili da 10 (fatene almeno 5)"}, {"emoji": "🔘", "label": "Perle sciolte per le unità"}, {"emoji": "🔢", "label": "Cartellini con i numeri 10, 20, 30... e 1–9"}],
     steps=[
         {"emoji": "📿", "text": "Conta le perle di un filo: dieci. Un filo è una decina."},
@@ -396,7 +396,7 @@ presentation(
 
 # ================================================================ CULTURA
 add(
-    id="continenti", title="I continenti", area="cultura", skill="geografia", type="pairs", ageBands=["5-7", "7-10"],
+    id="continenti", title="I continenti", area="cultura", skill="geografia", type="pairs", ageBands=["6-7", "8-10"],
     offscreen="Un mappamondo o un planisfero: il bambino cerca ogni continente e ci appoggia un animale che ci vive.",
     levels=[
         {"rounds": [{"prompt": "Abbina l'animale al suo continente", "pairs": [["🦘", "Oceania"], ["🐧", "Antartide"], ["🦁", "Africa"]], "wordPairs": True}]},
@@ -404,14 +404,14 @@ add(
     ],
 )
 add(
-    id="parti-della-pianta", title="Le parti della pianta", area="cultura", skill="botanica", type="pairs", ageBands=["5-7", "7-10"],
+    id="parti-della-pianta", title="Le parti della pianta", area="cultura", skill="botanica", type="pairs", ageBands=["6-7", "8-10"],
     offscreen="Una pianta vera sradicata (una pianta di fagiolo cresciuta nel cotone): toccare e nominare radici, fusto, foglie, fiore.",
     levels=[
         {"rounds": [{"prompt": "Abbina la parte al suo nome", "pairs": [["🌱", "fusto"], ["🍃", "foglia"], ["🌸", "fiore"], ["🥕", "radice"]], "wordPairs": True}]},
     ],
 )
 presentation(
-    id="germoglio-fagiolo", title="Il fagiolo nel cotone", area="cultura", skill="botanica", ageBands=["3-5", "5-7", "7-10"],
+    id="germoglio-fagiolo", title="Il fagiolo nel cotone", area="cultura", skill="botanica", ageBands=["3-5", "6-7", "8-10"],
     materials=[{"emoji": "🫙", "label": "Un barattolo di vetro"}, {"emoji": "☁️", "label": "Cotone idrofilo"}, {"emoji": "🫘", "label": "Due o tre fagioli secchi"}, {"emoji": "💧", "label": "Acqua"}],
     steps=[
         {"emoji": "☁️", "text": "Riempi il barattolo di cotone e bagnalo: umido, non zuppo."},
@@ -449,7 +449,7 @@ def hunt(*, id, title, area, skill, ageBands, levels, offscreen, together=False)
 
 
 hunt(
-    id="caccia-colori", title="Caccia ai colori", area="sensoriale", skill="colori", ageBands=["3-5", "5-7"],
+    id="caccia-colori", title="Caccia ai colori", area="sensoriale", skill="colori", ageBands=["3-5", "6-7"],
     offscreen="Nei giorni dopo giocate senza tablet: \"Vedo vedo una cosa... gialla\". A turno, anche il bambino sceglie il colore.",
     levels=[
         [("🔴", "Una cosa rossa", "Cerca in casa una cosa rossa e portala qui."),
@@ -465,7 +465,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-tatto", title="Caccia al tatto", area="sensoriale", skill="tatto", ageBands=["3-5", "5-7"],
+    id="caccia-tatto", title="Caccia al tatto", area="sensoriale", skill="tatto", ageBands=["3-5", "6-7"],
     offscreen="Mettete in un sacchetto tre delle cose trovate: il bambino infila la mano e dice com'è ciascuna, senza guardare.",
     levels=[
         [("☁️", "Una cosa morbida", "Cerca una cosa morbida, da toccare con le mani."),
@@ -478,7 +478,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-suoni", title="Caccia ai suoni", area="linguaggio", skill="suoni-iniziali", ageBands=["3-5", "5-7"],
+    id="caccia-suoni", title="Caccia ai suoni", area="linguaggio", skill="suoni-iniziali", ageBands=["3-5", "6-7"],
     offscreen="È il gioco del suono di sempre: \"Vedo una cosa che comincia con mmm\". Dite il suono, non il nome della lettera.",
     levels=[
         [("👂", "Comincia con mmm", "Cerca una cosa che comincia con mmm, come mela."),
@@ -490,7 +490,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-quantita", title="Caccia alle quantità", area="matematica", skill="numeri", ageBands=["3-5", "5-7"],
+    id="caccia-quantita", title="Caccia alle quantità", area="matematica", skill="numeri", ageBands=["3-5", "6-7"],
     offscreen="Apparecchiando, chiedete: \"Porti tre cucchiai?\". Contate insieme toccando ogni cosa una volta sola.",
     levels=[
         [("📕", "Un libro", "Cerca un libro e portalo qui. Uno solo."),
@@ -502,7 +502,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-natura", title="Caccia nella natura", area="cultura", skill="natura", ageBands=["3-5", "5-7", "7-10"],
+    id="caccia-natura", title="Caccia nella natura", area="cultura", skill="natura", ageBands=["3-5", "6-7", "8-10"],
     together=True,
     offscreen="Portate a casa un tesoro solo, già caduto a terra, e mettetelo su un piattino: è l'inizio del tavolo della natura.",
     levels=[
@@ -521,7 +521,7 @@ hunt(
 # Niente foto, niente riconoscimento: il bambino cerca con le mani e lo dice a voce.
 # Le versioni "in casa" non richiedono di uscire né di muoversi molto; quella "all'aperto" è con un grande.
 hunt(
-    id="caccia-superfici", title="Caccia alle superfici", area="sensoriale", skill="superfici", ageBands=["3-5", "5-7"],
+    id="caccia-superfici", title="Caccia alle superfici", area="sensoriale", skill="superfici", ageBands=["3-5", "6-7"],
     offscreen="Passate la mano insieme su tre superfici diverse (il tavolo, un maglione, il vetro) e trovate una parola per ciascuna.",
     levels=[
         [("🪟", "Una superficie liscia", "Cerca una superficie liscia e passaci sopra la mano. Poi dimmi com'è."),
@@ -534,7 +534,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-ombre", title="Caccia alle ombre", area="cultura", skill="ombre", ageBands=["3-5", "5-7", "7-10"],
+    id="caccia-ombre", title="Caccia alle ombre", area="cultura", skill="ombre", ageBands=["3-5", "6-7", "8-10"],
     together=True,
     offscreen="Con una torcia, di sera, fate le ombre sul muro con le mani e con un giocattolo. Chi si avvicina alla luce fa l'ombra più grande?",
     levels=[
@@ -547,7 +547,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-ombre-fuori", title="Caccia alle ombre all'aperto", area="cultura", skill="ombre", ageBands=["5-7", "7-10"],
+    id="caccia-ombre-fuori", title="Caccia alle ombre all'aperto", area="cultura", skill="ombre", ageBands=["6-7", "8-10"],
     together=True,
     offscreen="Il giorno dopo, alla stessa ora, tornate a guardare la stessa ombra: è cambiata? Segnate il punto con un sasso.",
     levels=[
@@ -560,7 +560,7 @@ hunt(
     ],
 )
 hunt(
-    id="caccia-forme", title="Caccia alle forme", area="matematica", skill="forme", ageBands=["3-5", "5-7"],
+    id="caccia-forme", title="Caccia alle forme", area="matematica", skill="forme", ageBands=["3-5", "6-7"],
     offscreen="Fate un giro della stanza senza tablet: \"Vedo vedo un cerchio\". A turno, anche il bambino sceglie la forma.",
     levels=[
         [("⚪", "Una cosa rotonda", "Cerca una cosa rotonda, come un cerchio, e portala qui."),

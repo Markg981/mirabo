@@ -1,6 +1,6 @@
 # How to talk about it: Lia's Volcano
 
-**Why this topic at 5–7.** At this age anger still arrives all at once and children don't yet have the tools to stop it on their own; it shouldn't be removed, it should be recognised and accompanied. A name and an image (the volcano) and a gesture (the breath) give them something to do while it passes.
+**Why this topic at 6–7.** At this age anger still arrives all at once and children don't yet have the tools to stop it on their own; it shouldn't be removed, it should be recognised and accompanied. A name and an image (the volcano) and a gesture (the breath) give them something to do while it passes.
 
 ## Three questions after the story
 

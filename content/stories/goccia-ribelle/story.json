@@ -6,7 +6,7 @@
   "topic": "acqua",
   "series": "emma-pietrolino",
   "episode": 5,
-  "ageBands": { "3-5": "3-5.json", "5-7": "5-7.json" },
+  "ageBands": { "3-5": "3-5.json", "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Ogni cambiamento comincia da una goccia.",

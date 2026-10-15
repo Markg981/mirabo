@@ -1,6 +1,6 @@
 # Darüber sprechen: Der Baum, der nicht mehr sprach
 
-**Warum dieses Thema mit 5–7 Jahren.** Kinder verstehen gut, dass es auch einem Lebewesen schlecht gehen kann. Die Geschichte zeigt, dass Fürsorge aus kleinen, wiederholten Handlungen besteht (aufräumen, pflanzen, dableiben), nicht aus einer Zaubergeste, und dass Ergebnisse Zeit brauchen.
+**Warum dieses Thema mit 6–7 Jahren.** Kinder verstehen gut, dass es auch einem Lebewesen schlecht gehen kann. Die Geschichte zeigt, dass Fürsorge aus kleinen, wiederholten Handlungen besteht (aufräumen, pflanzen, dableiben), nicht aus einer Zaubergeste, und dass Ergebnisse Zeit brauchen.
 
 ## Drei Fragen nach der Geschichte
 

@@ -6,7 +6,7 @@
   "topic": "ascolto",
   "series": "emma-pietrolino",
   "episode": 1,
-  "ageBands": { "3-5": "3-5.json", "5-7": "5-7.json" },
+  "ageBands": { "3-5": "3-5.json", "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Anche un sassolino piccolo fa cerchi grandi nell'acqua.",

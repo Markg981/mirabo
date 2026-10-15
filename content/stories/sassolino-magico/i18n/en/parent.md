@@ -1,6 +1,6 @@
 # How to talk about it: The Magic Pebble
 
-**Why this topic at 5–7.** This episode introduces Emma, Grandma and Pietrolino. It has only one message: you notice things when you stop. At this age stopping is hard, and that is exactly why it can become an interesting game.
+**Why this topic at 6–7.** This episode introduces Emma, Grandma and Pietrolino. It has only one message: you notice things when you stop. At this age stopping is hard, and that is exactly why it can become an interesting game.
 
 ## Three questions after the story
 
