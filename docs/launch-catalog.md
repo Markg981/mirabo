@@ -55,17 +55,9 @@ python studio/catalog.py --release --theme emozioni-relazioni   # cosa la blocca
 python studio/pack.py --release --theme emozioni-relazioni --sign
 ```
 
-Per il tema pilota si annotano qui ore e costi reali per ogni passaggio:
-
-| Passaggio | Lia 3-5 | Fiocco 6-7 | Pietrolino 8-10 | Chiedo aiuto | Attività dalle storie |
-| --- | --- | --- | --- | --- | --- |
-| Testo (scrittura o riscrittura) | | | | | |
-| Immagini definitive | | | | | |
-| Audio | | | | | |
-| Interazioni nell'app | | | | | |
-| Scheda adulta | | | | | |
-| Revisione pedagogica e sicurezza | | | | | |
-| Diritti d'uso | | | | | |
+Le ore reali del tema pilota si registrano in `content/validation/effort.json`, per fase (sviluppo,
+scrittura, asset, revisione, correzioni); `python studio/validation.py --estimate` ne ricava il
+calendario degli altri due temi ([launch/validation.md](launch/validation.md#le-ore-del-primo-tema-e-il-calendario)).
 
 ## Cosa deve avere una versione distribuita
 

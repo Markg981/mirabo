@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "about": "Piano dei cicli di osservazione con le famiglie e regole decise prima delle sessioni (docs/launch/validation.md). Campione esplorativo, non uno studio di efficacia.",
+  "cycles": [
+    { "id": 1, "object": "prototipi delle tre fasce" },
+    { "id": 2, "object": "prototipi corretti dopo il ciclo 1" }
+  ],
+  "familiesPerBandPerCycle": 4,
+  "tasks": [
+    { "id": "trova-storia", "who": "bambino", "ask": "Mi fai sentire la storia di <compagno o titolo>?", "success": "arriva alla storia dal tema, senza indicazioni sul percorso" },
+    { "id": "gioco-senza-storia", "who": "bambino", "ask": "Adesso vorrei vedere il gioco di questo tema.", "success": "apre il gioco del tema senza aver finito la storia e senza cercare un blocco che non c'è" },
+    { "id": "riascolta", "who": "bambino", "ask": "Me la fai sentire un'altra volta?", "success": "fa ripetere la voce della pagina o riapre la storia" },
+    { "id": "esci", "who": "bambino", "ask": "Adesso basta, come si chiude?", "success": "usa \"Ho finito\" e arriva alla chiusura" },
+    { "id": "prepara-attivita", "who": "genitore", "ask": "Prepari l'attività pratica di questa storia come la farebbe a casa.", "success": "trova la scheda, prepara i materiali e sa cosa fare durante l'attività senza chiedere" }
+  ],
+  "outcomes": {
+    "da-solo": "riuscito senza alcun intervento",
+    "dopo-domanda-neutra": "riuscito dopo la sola domanda neutra (\"Cosa vorresti fare?\") dopo 30 secondi di stallo",
+    "con-aiuto": "riuscito solo dopo un'indicazione sul percorso",
+    "non-riuscito": "non riuscito",
+    "non-proposto": "compito non proposto (bambino stanco, sessione interrotta, tempo finito)"
+  },
+  "obstacleOutcomes": ["con-aiuto", "non-riuscito"],
+  "comprehension": {
+    "questions": ["Cosa è successo?", "Cosa ha fatto <personaggio>?"],
+    "modes": {
+      "parole": "risponde a voce",
+      "immagini": "indica sulle immagini della storia",
+      "sequenza": "rimette in ordine tre o quattro immagini della storia"
+    },
+    "outcomes": {
+      "compreso": "il senso della storia è arrivato",
+      "parziale": "è arrivata una parte; si annota quale manca",
+      "non-compreso": "il senso non è arrivato",
+      "interpretazione-pericolosa": "il bambino ne ricava un comportamento che lo espone a un rischio o fa male a qualcuno"
+    }
+  },
+  "triggers": {
+    "pericolo": {
+      "when": "una sola sessione con un'interpretazione possibilmente pericolosa",
+      "threshold": 1,
+      "action": "revisione",
+      "meaning": "il contenuto esce dalle sessioni e torna alla revisione pedagogica e di sicurezza prima della sessione successiva"
+    },
+    "ostacolo": {
+      "when": "lo stesso compito (o la stessa storia non compresa) ostacola due o più sessioni della stessa fascia nello stesso ciclo",
+      "threshold": 2,
+      "action": "modifica",
+      "meaning": "si cambia l'interfaccia o la consegna e si verifica la modifica nel ciclo successivo"
+    }
+  },
+  "capacity": {
+    "hoursPerWeek": null,
+    "note": "Ore di lavoro disponibili a settimana per la produzione dei contenuti, da fissare con il referente prodotto prima di ricalcolare il calendario."
+  }
+}

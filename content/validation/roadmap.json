@@ -1,0 +1,11 @@
+{
+  "about": "Sequenza del lavoro: un passaggio si chiude solo con la sua evidenza e dopo il precedente (docs/launch/validation.md).",
+  "steps": [
+    { "id": "perimetro", "step": "Obiettivi, budget e confini dei dati", "condition": "Responsabilità e perimetro chiari.", "owner": "referente prodotto", "status": "aperto", "evidence": null, "date": null },
+    { "id": "prototipi", "step": "Prototipi delle tre fasce", "condition": "Problemi principali individuati e corretti.", "owner": "referente prodotto e osservatore delle sessioni", "status": "aperto", "evidence": null, "date": null },
+    { "id": "primo-tema", "step": "Primo tema completo", "condition": "Tutte e tre le modalità funzionano nelle tre fasce.", "owner": "sviluppo e responsabile contenuti", "status": "aperto", "evidence": null, "date": null },
+    { "id": "altri-temi", "step": "Altri due temi", "condition": "Processo produttivo misurato e sostenibile.", "owner": "referente prodotto", "status": "aperto", "evidence": null, "date": null },
+    { "id": "beta", "step": "Beta del catalogo", "condition": "Nessun problema critico aperto nei percorsi essenziali.", "owner": "referente prodotto e sviluppo", "status": "aperto", "evidence": null, "date": null },
+    { "id": "pubblicazione", "step": "Pubblicazione", "condition": "Criteri di pubblicazione soddisfatti (punto 10, docs/launch/readiness.md).", "owner": "referente prodotto", "status": "aperto", "evidence": null, "date": null }
+  ]
+}

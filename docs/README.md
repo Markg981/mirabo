@@ -11,6 +11,7 @@
 - `launch-catalog.md`: dal materiale in bozza al catalogo di lancio (inventario, nove storie, tre giochi, nove attività pratiche, tema pilota), registro delle approvazioni legato alla versione esatta, release riproducibile che contiene solo il catalogo approvato; dati in `content/catalog/`, controllo `studio/catalog.py`.
 - `content-distribution.md`: raccolte versionate, installazione atomica, ritiro delle versioni, lingue e audio, "Mantieni offline".
 - `launch/readiness.md`: prontezza al lancio (Italia/UE e USA), matrice di rischio e protocollo di test con le famiglie.
+- `launch/validation.md`: validazione con le famiglie (analisi 9): due cicli con quattro famiglie per fascia, cinque compiti precisi, comprensione a parole, sulle immagini o in sequenza, soglie di correzione decise prima (pericolo → revisione, ostacolo ripetuto → modifica), nessuna registrazione, ore del primo tema per fase e calendario ricalcolato, sequenza del lavoro con le condizioni per avanzare; dati in `content/validation/`, controllo `studio/validation.py`.
 - `backup.md`: backup opt-in su Google Drive e configurazione OAuth.
 - `session-limit.md`: limite di sessione facoltativo, preavviso e chiusura senza meccanismi di prolungamento.
 - `data-deletion.md`: cancellazione dei dati su questo tablet e del backup su Drive.
