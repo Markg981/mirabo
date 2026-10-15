@@ -74,8 +74,8 @@ jobs:
       - run: pip install -r studio/requirements.txt
       - name: Chiave di firma effimera per la CI
         run: python studio/keygen.py
-      - name: Sincronizza gli asset
-        run: python studio/sync_assets.py
+      - name: "Sincronizza gli asset (APK di debug e test, non una release: anche le bozze)"
+        run: python studio/sync_assets.py --include-drafts
       - name: Genera le cartelle piattaforma
         working-directory: app
         run: flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
