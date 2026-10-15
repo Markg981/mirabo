@@ -62,6 +62,13 @@ La checklist è nella scheda. In breve:
   sicurezza, la sezione "Se qualcosa ti preoccupa" con segnali e figure di riferimento giusti;
 - fonti reali e citate correttamente.
 
+## La matrice educativa
+
+Prima delle singole storie il revisore approva la matrice degli obiettivi
+([educational-goals.md](educational-goals.md)): `python studio/check_goals.py --sheet` scrive
+`content/reviews/matrice-educativa.md`. Una storia nuova si scrive per una cella della matrice;
+la scheda della storia si legge sapendo quale obiettivo deve servire.
+
 ## Cosa non copre
 
 - Le **traduzioni** hanno la loro revisione, da madrelingua (`"reviewed": true` nell'overlay, vedi

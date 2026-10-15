@@ -20,6 +20,8 @@ jobs:
       - run: pip install -r studio/requirements.txt
       - name: Valida le storie
         run: python studio/validate.py
+      - name: Matrice educativa e promesse vietate
+        run: python studio/check_goals.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
       - uses: actions/upload-artifact@v4
