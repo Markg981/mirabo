@@ -89,9 +89,13 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
     this.textMode = TextMode.full,
     this.repeatPrompt = false,
     this.confirmExit = false,
+    this.voiceMissing = false,
   });
 
-  factory MiraboTokens.forProfile({required bool lowStimulation, required InteractionProfile interaction}) {
+  /// Con [voiceMissing] il dispositivo non ha la voce di sistema per la lingua
+  /// del bambino: il testo si mostra comunque, perché un adulto possa leggerlo
+  /// con lui (docs/child-paths.md, "Errori").
+  factory MiraboTokens.forProfile({required bool lowStimulation, required InteractionProfile interaction, bool voiceMissing = false}) {
     final hands = interaction.hands - 1;
     final autonomy = interaction.autonomy - 1;
     return MiraboTokens(
@@ -100,6 +104,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
       snapTolerance: const [0.16, 0.12, 0.08][hands],
       maxOptions: const [2, 3, 4][autonomy],
       textMode: switch (interaction.reading) {
+        _ when voiceMissing => TextMode.full,
         ReadingLevel.none => TextMode.hidden,
         ReadingLevel.letters => TextMode.keyword,
         ReadingLevel.words => TextMode.karaoke,
@@ -107,6 +112,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
       },
       repeatPrompt: interaction.autonomy == 1,
       confirmExit: interaction.autonomy < 3,
+      voiceMissing: voiceMissing,
     );
   }
 
@@ -129,6 +135,9 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
 
   /// Autonomia 1 e 2: uscire da una storia o da un'attività chiede conferma.
   final bool confirmExit;
+
+  /// Manca la voce di sistema per la lingua del bambino.
+  final bool voiceMissing;
 
   static MiraboTokens of(BuildContext context) =>
       Theme.of(context).extension<MiraboTokens>() ?? const MiraboTokens(lowStimulation: false);
@@ -154,6 +163,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
     TextMode? textMode,
     bool? repeatPrompt,
     bool? confirmExit,
+    bool? voiceMissing,
   }) =>
       MiraboTokens(
         lowStimulation: lowStimulation ?? this.lowStimulation,
@@ -163,6 +173,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
         textMode: textMode ?? this.textMode,
         repeatPrompt: repeatPrompt ?? this.repeatPrompt,
         confirmExit: confirmExit ?? this.confirmExit,
+        voiceMissing: voiceMissing ?? this.voiceMissing,
       );
 
   @override

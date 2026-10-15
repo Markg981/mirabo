@@ -108,35 +108,39 @@ class _ChunkyButtonState extends State<ChunkyButton> {
 
 /// Esce da una storia o da un'attività. Con poca autonomia (MiraboTokens.confirmExit)
 /// prima chiede conferma con due bottoni grandi a icona, così un tocco per
-/// sbaglio non chiude tutto.
-Future<void> leaveChildPage(BuildContext context) async {
+/// sbaglio non chiude tutto. Con [say] la domanda e i due bottoni si sentono:
+/// chi non legge non resta davanti a una scelta muta.
+Future<void> leaveChildPage(BuildContext context, {Future<void> Function(String text)? say}) async {
   final nav = Navigator.of(context);
-  if (MiraboTokens.of(context).confirmExit && await _confirmExit(context) != true) return;
+  if (MiraboTokens.of(context).confirmExit && await _confirmExit(context, say) != true) return;
   nav.pop();
 }
 
-Future<bool?> _confirmExit(BuildContext context) {
+Future<bool?> _confirmExit(BuildContext context, Future<void> Function(String text)? say) {
   final l = context.l10n;
   final tokens = MiraboTokens.of(context);
+  say?.call(l.exitAsk);
   return showDialog<bool>(
     context: context,
     builder: (context) => AlertDialog(
       title: tokens.textMode.showsLabels ? Text(l.exitAsk) : null,
-      content: Row(
-        mainAxisSize: MainAxisSize.min,
+      content: Wrap(
+        spacing: 20,
+        runSpacing: 12,
         children: [
-          ChunkyButton(
+          SpokenButton(
             label: l.exitStay,
             icon: Icons.play_arrow_rounded,
             color: MiraboColors.leaf,
             onPressed: () => Navigator.of(context).pop(false),
+            onListen: say == null ? null : () => say(l.exitStay),
           ),
-          const SizedBox(width: 20),
-          ChunkyButton(
+          SpokenButton(
             label: l.exitLeave,
             icon: Icons.home_rounded,
             color: MiraboColors.apricot,
             onPressed: () => Navigator.of(context).pop(true),
+            onListen: say == null ? null : () => say(l.exitLeave),
           ),
         ],
       ),
@@ -147,8 +151,9 @@ Future<bool?> _confirmExit(BuildContext context) {
 /// Il tasto indietro del sistema passa da [leaveChildPage]: con la conferma
 /// attiva non chiude la pagina da solo.
 class ExitGuard extends StatelessWidget {
-  const ExitGuard({super.key, required this.child});
+  const ExitGuard({super.key, required this.child, this.say});
   final Widget child;
+  final Future<void> Function(String text)? say;
 
   @override
   Widget build(BuildContext context) {
@@ -156,10 +161,47 @@ class ExitGuard extends StatelessWidget {
     return PopScope(
       canPop: !confirm,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) leaveChildPage(context);
+        if (!didPop) leaveChildPage(context, say: say);
       },
       child: child,
     );
+  }
+}
+
+/// Un bottone del bambino con accanto il suo altoparlante: toccandolo si
+/// sente cosa fa il bottone. È il modo da scoprire per chi non legge; la
+/// pressione lunga sul bottone fa lo stesso, ma è solo una scorciatoia
+/// (docs/child-paths.md, "Aiuto e audio").
+class SpokenButton extends StatelessWidget {
+  const SpokenButton({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    required this.onListen,
+    this.icon,
+    this.color,
+  });
+
+  final String label;
+  final IconData? icon;
+  final Color? color;
+  final VoidCallback? onPressed;
+
+  /// Null quando non c'è una voce da usare: resta il bottone da solo.
+  final VoidCallback? onListen;
+
+  @override
+  Widget build(BuildContext context) {
+    final button = GestureDetector(
+      onLongPress: onListen,
+      child: ChunkyButton(label: label, icon: icon, color: color, onPressed: onPressed),
+    );
+    if (onListen == null) return button;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      RoundIconButton(icon: Icons.volume_up_rounded, tooltip: context.l10n.listenAgain, size: 48, color: MiraboColors.navy, onPressed: onListen),
+      const SizedBox(width: 8),
+      button,
+    ]);
   }
 }
 

@@ -42,7 +42,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get readAgain => 'Nochmal vorlesen';
 
   @override
-  String get seeYouTomorrow => 'Tschüss!';
+  String get outroDone => 'Fertig';
 
   @override
   String get go => 'Los geht\'s!';
@@ -81,8 +81,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get goodbyeBody =>
-      'Das war schön. Hol einen Erwachsenen: bis zum nächsten Mal!';
+  String get goodbyeBody => 'Für heute sind wir fertig. Hol einen Erwachsenen.';
 
   @override
   String closingTitle(Object name) {
@@ -91,7 +90,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get closingBody =>
-      'Du bist ein gutes Stück weitergekommen. Du kannst das Tablet jetzt weglegen: alles bleibt, wie es ist, und wartet auf dich.';
+      'Du bist ein gutes Stück weitergekommen. Du kannst das Tablet jetzt weglegen: Alles bleibt, wie es ist.';
 
   @override
   String get closingBack => 'Zurück nach Hause';
@@ -773,7 +772,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get parentHowUseHint =>
-      'Im Modus „zusammen“ erscheinen Gesprächspausen für euch beide. Im Modus „allein“ antwortet das Kind durch Tippen, und Geschichten über Sicherheit und Körper bleiben verborgen.';
+      'Das ist eure Angabe, keine Prüfung: Die App weiß nicht, ob wirklich ein Erwachsener dabei ist. „Zusammen“ zeigt die Gesprächspausen für euch beide und die Geschichten zum Lesen mit einem Erwachsenen, ohne Zeitlimit. „Allein“ blendet sie aus (mit den Geschichten über Sicherheit und Körper, wenn ihr das im Profil gewählt habt) und wendet das Zeitlimit des Profils an. „Zusammen“ gilt nur für dieses Mal: beim Start der App, wenn das Kind wechselt oder nach 30 Minuten mit geschlossener App geht es zurück zu „Allein“.';
 
   @override
   String get parentPlace => 'Wo ihr wohnt';
@@ -959,10 +958,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get diaryEmpty => 'Keine Geschichten in den letzten 30 Tagen.';
 
   @override
-  String get diaryTogether => 'zusammen';
+  String get diaryTogether => 'im Modus Zusammen';
 
   @override
-  String get diaryAlone => 'allein';
+  String get diaryAlone => 'im Modus Allein';
 
   @override
   String diaryChose(Object answer) {
@@ -974,7 +973,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String gesturesIntro(String companion, String name) {
-    return 'Die Geste einer Geschichte passiert im echten Leben, wenn es sich ergibt. Wenn ihr wollt, tragt sie hier ein: Sie bleibt in ${name}s Tagebuch. Das Eintragen schaltet nichts frei: $companion wächst mit den Wochen, nicht mit eingetragenen Gesten.';
+    return 'Die Geste einer Geschichte passiert im echten Leben, wenn es sich ergibt. Wenn ihr wollt, tragt sie hier ein: Sie bleibt in ${name}s Tagebuch. Das Eintragen schaltet nichts frei und verändert $companion nicht: Es ist nur eine Erinnerung.';
   }
 
   @override
@@ -1119,7 +1118,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get weekAllTogether => 'Sie haben immer gemeinsam zugehört.';
+  String get weekAllTogether => 'Immer im Modus „Zusammen“ gehört.';
 
   @override
   String get weekAllAlone =>
@@ -1130,8 +1129,8 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       together,
       locale: localeName,
-      other: '$together-mal von $total wart ihr zusammen.',
-      one: 'Einmal von $total wart ihr zusammen.',
+      other: '$together-mal von $total im Modus „Zusammen“.',
+      one: 'Einmal von $total im Modus „Zusammen“.',
     );
     return '$_temp0';
   }
@@ -1333,11 +1332,11 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get profileCompanionEditHint =>
-      'Der Begleiter wird nur einmal gewählt: Er ist der beste Freund des Kindes.';
+      'Ihr könnt ihn jederzeit wechseln: Geschichten, Zeichnungen und Fortschritte bleiben.';
 
   @override
   String get profileCompanionNewHint =>
-      'Lasst das Kind wählen. Er wird nur einmal gewählt und nicht gewechselt.';
+      'Lasst das Kind wählen. Man kann ihn später wechseln, ohne etwas zu verlieren.';
 
   @override
   String get profileWorlds => 'Welten der Geschichten';
@@ -2135,7 +2134,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String usageLimit(Object minutes) {
-    return 'Im Modus „allein“ verabschiedet sich der Begleiter nach $minutes Min. (im Profil änderbar).';
+    return 'Im Modus „Allein“ verabschiedet sich der Begleiter nach etwa $minutes Min.: Vorher wird die offene Geschichte oder Aktivität in Ruhe beendet, es ist also kein Abbruch auf die Sekunde (im Profil änderbar).';
   }
 
   @override
@@ -2195,14 +2194,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get winddownHint =>
-      'Kurz vor Schluss sagt der Begleiter es ruhig und schlägt nichts Neues vor. Was offen ist, kann beendet werden.';
+      'Kurz vor Schluss sagt der Begleiter es ruhig und schlägt nichts Neues vor. Was offen ist, wird beendet, dann verabschiedet er sich: kein Abbruch auf die Sekunde, es kann ein paar Minuten länger dauern.';
 
   @override
   String get gateSetupTitle => 'Wähle eine PIN für Erwachsene';
 
   @override
   String get gateSetupBody =>
-      '4 bis 6 Ziffern. Sie öffnet den Erwachsenenbereich und schützt heikle Aktionen. Wenn du sie vergisst, kannst du eine neue wählen, ohne etwas zu verlieren.';
+      '4 bis 6 Ziffern. Sie öffnet den Erwachsenenbereich und schützt heikle Aktionen. Gleich danach bekommst du einen Wiederherstellungscode zum Aufschreiben: Wenn du die PIN vergisst, wählst du eine neue, ohne etwas zu verlieren.';
 
   @override
   String get gatePinLabel => 'PIN';
@@ -2351,4 +2350,65 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get dataOutsideBody =>
       'Mirabò kann die Sicherungen des Betriebssystems (Gerätesicherung bei iCloud oder Google) nicht löschen, ebenso wenig Dateien, die du schon exportiert, gedruckt oder geteilt hast. Dafür: Öffne die iCloud- oder Google-Einstellungen des Geräts, lösche alte Sicherungen und entferne gespeicherte oder gesendete Dateien von Hand. Was in deinem Drive übrig bleibt, findest und löschst du unter Drive > Einstellungen > Apps verwalten.';
+
+  @override
+  String get gateRecoveryTitle => 'Der Wiederherstellungscode';
+
+  @override
+  String get gateRecoveryBody =>
+      'Schreib ihn auf Papier und bewahre ihn fern vom Tablet auf: Du brauchst ihn, wenn du die PIN vergisst. Er wird nicht mehr angezeigt.';
+
+  @override
+  String get gateRecoveryWritten => 'Ich habe ihn notiert';
+
+  @override
+  String get gateRecoveryAsk =>
+      'Gib den Wiederherstellungscode ein, den du bei der Wahl der PIN bekommen hast.';
+
+  @override
+  String get gateRecoveryLabel => 'Wiederherstellungscode';
+
+  @override
+  String get gateRecoveryWrong => 'Falscher Code';
+
+  @override
+  String get gateUseDevice => 'Bildschirmsperre des Tablets verwenden';
+
+  @override
+  String get gateDeviceOff =>
+      'Die Wiederherstellung über die Bildschirmsperre ist aus: Der Wiederherstellungscode ist nötig.';
+
+  @override
+  String get gateDeviceRecovery =>
+      'PIN-Wiederherstellung über die Bildschirmsperre';
+
+  @override
+  String get gateDeviceRecoveryHint =>
+      'Schalte sie aus, wenn das Kind den Code des Tablets kennt oder seinen Fingerabdruck registriert hat: Dann lässt sich die PIN nur mit dem Wiederherstellungscode zurücksetzen.';
+
+  @override
+  String get gateNewRecovery => 'Neuer Wiederherstellungscode';
+
+  @override
+  String gateResetNotice(String date, String how) {
+    return 'Die PIN wurde am $date $how zurückgesetzt. Wenn du es nicht warst, ändere sie und schalte die Wiederherstellung über die Bildschirmsperre aus.';
+  }
+
+  @override
+  String get gateResetHowCode => 'mit dem Wiederherstellungscode';
+
+  @override
+  String get gateResetHowDevice => 'über die Bildschirmsperre';
+
+  @override
+  String get gateResetSeen => 'OK';
+
+  @override
+  String get voiceMissingChild =>
+      'Es gibt keine Stimme: Bitte einen Erwachsenen, mit dir zu lesen';
+
+  @override
+  String voiceMissingParent(String language) {
+    return 'Auf diesem Tablet fehlt die Sprachausgabe für $language. Ein Kind, das noch nicht liest, braucht einen Erwachsenen, der mitliest: Vorerst bleibt der Text sichtbar. Installiere die Stimme in den Einstellungen des Tablets (Sprachausgabe bei Android, Gesprochene Inhalte beim iPad). Geschichten mit aufgenommenem Ton laufen trotzdem.';
+  }
 }

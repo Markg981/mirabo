@@ -42,7 +42,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get readAgain => 'Rileggi';
 
   @override
-  String get seeYouTomorrow => 'Ciao!';
+  String get outroDone => 'Fatto';
 
   @override
   String get go => 'Via!';
@@ -81,8 +81,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get goodbyeBody =>
-      'È stato bello. Chiama un grande: ci vediamo la prossima volta!';
+  String get goodbyeBody => 'Per oggi abbiamo finito. Chiama un grande.';
 
   @override
   String closingTitle(Object name) {
@@ -771,7 +770,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get parentHowUseHint =>
-      'In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.';
+      'È una vostra dichiarazione, non una verifica: l\'app non sa se un adulto è davvero accanto. «Insieme» mostra le pause di dialogo per voi due e le storie da leggere con un adulto, senza limite di tempo. «Da solo» le nasconde (con le storie su sicurezza e corpo, se l\'avete scelto nel profilo) e applica il limite di tempo del profilo. «Insieme» vale per questa volta: all\'avvio dell\'app, quando cambia il bambino o dopo 30 minuti con l\'app chiusa si torna a «da solo».';
 
   @override
   String get parentPlace => 'Dove vivete';
@@ -956,10 +955,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get diaryEmpty => 'Nessuna storia negli ultimi 30 giorni.';
 
   @override
-  String get diaryTogether => 'insieme';
+  String get diaryTogether => 'in modalità insieme';
 
   @override
-  String get diaryAlone => 'da solo';
+  String get diaryAlone => 'in modalità da solo';
 
   @override
   String diaryChose(Object answer) {
@@ -971,7 +970,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String gesturesIntro(String companion, String name) {
-    return 'Il gesto di una storia si fa nella vita vera, quando capita. Se volete, segnatelo qui: resta nel diario di $name. Segnarlo non sblocca nulla: $companion cresce con le settimane, non con i gesti segnati.';
+    return 'Il gesto di una storia si fa nella vita vera, quando capita. Se volete, segnatelo qui: resta nel diario di $name. Segnarlo non sblocca nulla e non cambia $companion: è solo un ricordo.';
   }
 
   @override
@@ -1116,7 +1115,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get weekAllTogether => 'Le avete ascoltate sempre insieme.';
+  String get weekAllTogether => 'Le ha ascoltate sempre in modalità «insieme».';
 
   @override
   String get weekAllAlone =>
@@ -1127,8 +1126,8 @@ class AppLocalizationsIt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       together,
       locale: localeName,
-      other: '$together volte su $total eravate insieme.',
-      one: 'Una volta su $total eravate insieme.',
+      other: '$together volte su $total in modalità «insieme».',
+      one: 'Una volta su $total in modalità «insieme».',
     );
     return '$_temp0';
   }
@@ -1330,11 +1329,11 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get profileCompanionEditHint =>
-      'Il compagno si sceglie una volta sola: è il suo migliore amico.';
+      'Si può cambiare quando volete: storie, disegni e progressi restano.';
 
   @override
   String get profileCompanionNewHint =>
-      'Fate scegliere al bambino. Si sceglie una volta sola e non si cambia.';
+      'Fate scegliere al bambino. Si potrà cambiare senza perdere niente.';
 
   @override
   String get profileWorlds => 'Mondi delle storie';
@@ -2127,7 +2126,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String usageLimit(Object minutes) {
-    return 'Nella modalità \"da solo\" il compagno saluta dopo $minutes min (si cambia nel profilo).';
+    return 'Nella modalità \"da solo\" il compagno saluta dopo circa $minutes min: prima si finisce con calma la storia o l\'attività aperta, quindi non è un blocco al secondo (si cambia nel profilo).';
   }
 
   @override
@@ -2186,14 +2185,14 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get winddownHint =>
-      'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.';
+      'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude, poi saluta: non è un blocco al secondo, può volerci qualche minuto in più.';
 
   @override
   String get gateSetupTitle => 'Scegli un PIN per i grandi';
 
   @override
   String get gateSetupBody =>
-      'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Se lo dimentichi potrai sceglierne uno nuovo senza perdere nulla.';
+      'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Subito dopo ti diamo un codice di recupero da scrivere su un foglio: se dimentichi il PIN ne scegli uno nuovo senza perdere nulla.';
 
   @override
   String get gatePinLabel => 'PIN';
@@ -2341,4 +2340,64 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get dataOutsideBody =>
       'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati. Se resta qualcosa sul tuo Drive, lo trovi e lo elimini in Drive › Impostazioni › Gestisci app.';
+
+  @override
+  String get gateRecoveryTitle => 'Il codice di recupero';
+
+  @override
+  String get gateRecoveryBody =>
+      'Scrivilo su un foglio e tienilo lontano dal tablet: serve se dimentichi il PIN. Non lo mostreremo più.';
+
+  @override
+  String get gateRecoveryWritten => 'L\'ho scritto';
+
+  @override
+  String get gateRecoveryAsk =>
+      'Scrivi il codice di recupero che ti abbiamo dato quando hai scelto il PIN.';
+
+  @override
+  String get gateRecoveryLabel => 'Codice di recupero';
+
+  @override
+  String get gateRecoveryWrong => 'Codice sbagliato';
+
+  @override
+  String get gateUseDevice => 'Usa il blocco del tablet';
+
+  @override
+  String get gateDeviceOff =>
+      'Il recupero con il blocco del tablet è spento: serve il codice di recupero.';
+
+  @override
+  String get gateDeviceRecovery => 'Recupero del PIN con il blocco del tablet';
+
+  @override
+  String get gateDeviceRecoveryHint =>
+      'Spegnilo se il bambino conosce il codice del tablet o ha la sua impronta registrata: allora il PIN si recupera solo con il codice di recupero.';
+
+  @override
+  String get gateNewRecovery => 'Nuovo codice di recupero';
+
+  @override
+  String gateResetNotice(String date, String how) {
+    return 'Il PIN è stato reimpostato il $date $how. Se non sei stato tu, cambialo e spegni il recupero con il blocco del tablet.';
+  }
+
+  @override
+  String get gateResetHowCode => 'con il codice di recupero';
+
+  @override
+  String get gateResetHowDevice => 'con il blocco del tablet';
+
+  @override
+  String get gateResetSeen => 'Ok';
+
+  @override
+  String get voiceMissingChild =>
+      'La voce non c\'è: chiedi a un grande di leggere con te';
+
+  @override
+  String voiceMissingParent(String language) {
+    return 'Su questo tablet manca la voce di sintesi per $language. Chi non legge ancora ha bisogno di un adulto che legga con lui: per ora il testo resta in vista. Installala dalle impostazioni del tablet (Sintesi vocale su Android, Contenuti letti ad alta voce su iPad). Le storie con l\'audio registrato si sentono lo stesso.';
+  }
 }

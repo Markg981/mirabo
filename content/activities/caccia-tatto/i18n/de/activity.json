@@ -40,7 +40,7 @@
     }
   ],
   "intro": {
-    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst, ich warte hier auf dich. Immer nur eine Sache.",
+    "bo": "{nome}, machen wir eine Schatzsuche? Du suchst in Ruhe, immer nur eine Sache.",
     "pilu": "{nome}, ich sage dir, was du suchen sollst. Schau dich gut um: Schätze gibt es überall.",
     "tango": "Schatzsuche, {nome}! Ich komme mit! ...Nein, ich bleibe hier. Du suchst, ganz in Ruhe."
   },

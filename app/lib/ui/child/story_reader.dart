@@ -88,7 +88,11 @@ class _StoryReaderState extends State<StoryReader> {
     _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
     _tts.setSpeechRate(0.45);
     // initState non può leggere il tema: i token si ricavano dal profilo, come fa il tema.
-    _textMode = MiraboTokens.forProfile(lowStimulation: _profile.lowStimulation, interaction: _profile.interaction).textMode;
+    _textMode = MiraboTokens.forProfile(
+      lowStimulation: _profile.lowStimulation,
+      interaction: _profile.interaction,
+      voiceMissing: _state.voiceMissingFor(_profile),
+    ).textMode;
     if (_readAlong) {
       // Il testo della schermata è il primo pezzo detto: gli indici coincidono.
       _tts.setProgressHandler((_, start, __, ___) {
@@ -97,7 +101,16 @@ class _StoryReaderState extends State<StoryReader> {
       _tts.setCompletionHandler(() => _highlight(-1));
       _position = _player.positionStream.listen(_followRecording);
     }
-    WidgetsBinding.instance.addPostFrameCallback((_) => _speakCurrent());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _resume());
+  }
+
+  /// Si riparte dalla schermata a cui ci si era fermati; una storia finita
+  /// riparte dall'inizio (docs/child-paths.md, "Uscita e ripresa").
+  Future<void> _resume() async {
+    final saved = await _state.storyPosition(_profile, widget.story.id);
+    if (!mounted) return;
+    if (saved > 0 && saved < _variant.screens.length) setState(() => _index = saved);
+    _speakCurrent();
   }
 
   void _highlight(int word) {
@@ -158,7 +171,11 @@ class _StoryReaderState extends State<StoryReader> {
     if (_alonePrompt != null) parts.add(_alonePrompt!);
     if (_lessonRun != null) parts.add(_lessonRun!.prompt);
     _ttsReadsText = _screen.text != null;
-    if (parts.isNotEmpty) await _tts.speak(parts.join(' '));
+    try {
+      if (parts.isNotEmpty) await _tts.speak(parts.join(' '));
+    } catch (_) {
+      // Senza voce di sistema il testo resta in vista (MiraboTokens.voiceMissing).
+    }
   }
 
   /// L'audio registrato della schermata, con il nome nei punti nameSlots.
@@ -194,9 +211,13 @@ class _StoryReaderState extends State<StoryReader> {
   Future<void> _say(String line) async {
     _ttsReadsText = false;
     _highlight(-1);
-    await _player.stop();
-    await _tts.stop();
-    await _tts.speak(line);
+    try {
+      await _player.stop();
+      await _tts.stop();
+      await _tts.speak(line);
+    } catch (_) {
+      // Senza voce di sistema il testo resta in vista (MiraboTokens.voiceMissing).
+    }
   }
 
   void _tapLesson(LessonItem item) {
@@ -244,12 +265,14 @@ class _StoryReaderState extends State<StoryReader> {
     _gestureTimer?.cancel();
     if (_gestures[_index] == GesturePhase.running) _gestures.remove(_index);
     setState(() => _index = index);
+    _state.saveStoryPosition(_profile, widget.story.id, index);
     _speakCurrent();
   }
 
   Future<void> _next() async {
     if (_isLast) {
       _recorded = true;
+      await _state.saveStoryPosition(_profile, widget.story.id, 0);
       await _state.recordStory(widget.story, completed: true, dialogueAnswer: _dialogueAnswer);
       if (mounted) Navigator.of(context).pop();
       return;
@@ -291,6 +314,7 @@ class _StoryReaderState extends State<StoryReader> {
     final text = Theme.of(context).textTheme;
 
     return ExitGuard(
+      say: _say,
       child: Scaffold(
       body: SceneBackdrop(
         child: SafeArea(
@@ -304,7 +328,7 @@ class _StoryReaderState extends State<StoryReader> {
                     RoundIconButton(
                       icon: Icons.close_rounded,
                       tooltip: context.l10n.close,
-                      onPressed: () => leaveChildPage(context),
+                      onPressed: () => leaveChildPage(context, say: _say),
                     ),
                     Expanded(
                       child: Column(
@@ -436,7 +460,7 @@ class _StoryReaderState extends State<StoryReader> {
                       ),
                     const Spacer(),
                     ChunkyButton(
-                      label: _isLast ? context.l10n.seeYouTomorrow : context.l10n.next,
+                      label: _isLast ? context.l10n.outroDone : context.l10n.next,
                       icon: _isLast ? Icons.waving_hand_rounded : Icons.arrow_forward_rounded,
                       iconAfter: !_isLast,
                       color: _isLast ? MiraboColors.apricot : MiraboColors.leaf,

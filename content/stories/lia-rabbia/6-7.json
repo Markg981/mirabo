@@ -240,7 +240,7 @@
       "text": "La torre nuova non è la più alta del mondo. È la più larga, perché l'hanno fatta in due. E il vulcano di Lia? È ancora lì dentro, tranquillo. Tornerà, un giorno. Ma adesso Lia sa aspettarlo.",
       "keyPhrase": true,
       "companionLines": {
-        "bo": "Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde. Ci vediamo domani?",
+        "bo": "Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde.",
         "pilu": "Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno.",
         "tango": "Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio."
       }

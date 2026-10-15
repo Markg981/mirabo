@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
+import '../../data/adult_pin.dart';
 import '../../data/exploration_diary.dart';
 import '../../data/usage_tracker.dart';
 import '../../data/interaction_advice.dart';
@@ -110,6 +111,15 @@ class _SessionTab extends StatelessWidget {
       children: [
         for (final p in state.profiles)
           if (p.bandToConfirm != null) _BandConfirmCard(state: state, profile: p),
+        for (final code in state.voicesMissing)
+          Card(
+            key: Key('voice-missing-$code'),
+            child: ListTile(
+              leading: const Icon(Icons.volume_off_rounded),
+              title: Text(context.l10n.voiceMissingParent(AppLanguage.fromCode(code).nativeName)),
+              trailing: IconButton(icon: const Icon(Icons.refresh_rounded), tooltip: context.l10n.listenAgain, onPressed: state.checkVoices),
+            ),
+          ),
         _InteractionAdviceCard(state: state, profile: profile),
         _AdviceSwitch(state: state, profile: profile),
         FormSection(
@@ -151,14 +161,7 @@ class _SessionTab extends StatelessWidget {
           title: context.l10n.parentData,
           subtitle: context.l10n.parentDataHint,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: OutlinedButton.icon(
-                icon: const Icon(Icons.pin_outlined),
-                label: Text(context.l10n.gateChangePin),
-                onPressed: () => AdultGate.changePin(context),
-              ),
-            ),
+            const _PinSection(),
             const SizedBox(height: 12),
             DataDeletionSection(state: state),
           ],
@@ -173,6 +176,85 @@ class _SessionTab extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+/// PIN dell'area adulta (docs/adult-gate.md): cambio, codice di recupero,
+/// recupero con il blocco del tablet e l'avviso di un reset non ancora visto.
+class _PinSection extends StatefulWidget {
+  const _PinSection();
+
+  @override
+  State<_PinSection> createState() => _PinSectionState();
+}
+
+class _PinSectionState extends State<_PinSection> {
+  PinResetNotice? _notice;
+  bool? _device;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final notice = await AdultGate.pin.resetNotice();
+    final device = await AdultGate.pin.deviceRecovery;
+    if (!mounted) return;
+    setState(() {
+      _notice = notice;
+      _device = device;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final notice = _notice;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      if (notice != null)
+        Card(
+          key: const Key('pin-reset-notice'),
+          color: Theme.of(context).colorScheme.errorContainer,
+          child: ListTile(
+            leading: const Icon(Icons.warning_amber_rounded),
+            title: Text(l.gateResetNotice(
+              MaterialLocalizations.of(context).formatMediumDate(notice.at),
+              notice.how == RecoveryChannel.code ? l.gateResetHowCode : l.gateResetHowDevice,
+            )),
+            trailing: TextButton(
+              onPressed: () async {
+                await AdultGate.pin.clearResetNotice();
+                _load();
+              },
+              child: Text(l.gateResetSeen),
+            ),
+          ),
+        ),
+      Wrap(spacing: 12, runSpacing: 8, children: [
+        OutlinedButton.icon(
+          icon: const Icon(Icons.pin_outlined),
+          label: Text(l.gateChangePin),
+          onPressed: () => AdultGate.changePin(context),
+        ),
+        OutlinedButton.icon(
+          icon: const Icon(Icons.key_rounded),
+          label: Text(l.gateNewRecovery),
+          onPressed: () => AdultGate.newRecoveryCode(context),
+        ),
+      ]),
+      if (_device != null)
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          value: _device!,
+          title: Text(l.gateDeviceRecovery),
+          subtitle: Text(l.gateDeviceRecoveryHint),
+          onChanged: (v) async {
+            if (await AdultGate.setDeviceRecovery(context, v)) _load();
+          },
+        ),
+    ]);
   }
 }
 

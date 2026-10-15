@@ -4,9 +4,10 @@ Riferimento: policy AAP 2026 sui meccanismi di prolungamento dell'uso (autoplay,
 
 ## Il limite
 
-- Per bambino, **facoltativo**, nel profilo (area genitore): 10-30 minuti oppure "Nessun limite" (`aloneSessionMinutes` = 0; nessun cambio di schema). Vale per la sessione "da solo"; con l'adulto presente decide l'adulto.
+- Per bambino, **facoltativo**, nel profilo (area genitore): 10-30 minuti oppure "Nessun limite" (`aloneSessionMinutes` = 0; nessun cambio di schema). Vale per la sessione "da solo"; in "insieme" decide l'adulto. "Insieme" è una dichiarazione, non una verifica, e scade (`child-paths.md`): ogni avvio riparte da "da solo" e quindi dal limite.
 - **Preavviso** (`AppState.windingDown`, 3 minuti prima): la casa mostra una frase calma ("Tra poco ci salutiamo. Finiamo con calma quello che stiamo facendo.") e le schermate delle categorie non propongono storie, attività o giochi nuovi. Nessun numero, nessun conto alla rovescia.
-- **Mai a metà**: la storia o l'attività aperta si conclude (`SessionHold`); poi scatta il saluto esistente (`GoodbyeScreen`). Storie e disegni sono già salvati durante l'uso. Nessuna penalità, nessun blocco.
+- **Mai a metà**: la storia o l'attività aperta si conclude (`SessionHold`); poi scatta il saluto esistente (`GoodbyeScreen`), detto a voce. Storie e disegni sono già salvati durante l'uso (`child-paths.md`). Nessuna penalità, nessun blocco.
+- **Non è un blocco al secondo.** Il limite conta i minuti dall'inizio della sessione "da solo", ma il saluto aspetta la fine di quello che è aperto: può arrivare qualche minuto dopo. L'adulto lo legge nel profilo (sotto il limite) e nella scheda Crescita ("il compagno saluta dopo circa N min: prima si finisce con calma la storia o l'attività aperta").
 - "Ho finito" resta sempre disponibile, indipendentemente dal limite.
 
 ## Niente prolungamento

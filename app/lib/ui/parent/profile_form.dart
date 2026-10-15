@@ -89,6 +89,9 @@ class _ProfileFormState extends State<ProfileForm> {
         name: _name.text.trim(),
         ageBand: _band,
         bandConfirmed: _bandConfirmed,
+        // Il compagno si può cambiare: storie, disegni e progressi stanno sul
+        // profilo, non sul personaggio, e non si perde niente.
+        companion: _companion,
         enabledWorlds: _worlds,
         safetyTogetherOnly: _safetyTogetherOnly,
         dyslexiaFont: _dyslexia,
@@ -204,13 +207,10 @@ class _ProfileFormState extends State<ProfileForm> {
                       children: [
                         for (final c in companions) ...[
                           Expanded(
-                            child: Opacity(
-                              opacity: editing && c.id != _companion ? 0.35 : 1,
-                              child: _CompanionOption(
-                                companion: c,
-                                selected: _companion == c.id,
-                                onTap: editing ? null : () => setState(() => _companion = c.id),
-                              ),
+                            child: _CompanionOption(
+                              companion: c,
+                              selected: _companion == c.id,
+                              onTap: () => setState(() => _companion = c.id),
                             ),
                           ),
                           if (c != companions.last) const SizedBox(width: 14),

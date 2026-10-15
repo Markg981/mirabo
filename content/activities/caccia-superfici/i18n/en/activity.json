@@ -40,7 +40,7 @@
     }
   ],
   "intro": {
-    "bo": "{nome}, shall we go on a treasure hunt? You look, I'll wait for you here. One thing at a time.",
+    "bo": "{nome}, shall we go on a treasure hunt? You look in your own time, one thing at a time.",
     "pilu": "{nome}, I'll tell you something to look for. Look carefully around you: treasures are everywhere.",
     "tango": "Treasure hunt, {nome}! I'm coming too! ...No, I'll stay here. You look, slowly."
   },

@@ -36,7 +36,7 @@
     }
   ],
   "intro": {
-    "bo": "{nome}, on fait une chasse au trésor ? Toi tu cherches, moi je t'attends ici. Une chose à la fois.",
+    "bo": "{nome}, on fait une chasse au trésor ? Tu cherches tranquillement, une chose à la fois.",
     "pilu": "{nome}, je te dis une chose à chercher. Regarde bien autour de toi : il y a des trésors partout.",
     "tango": "Chasse au trésor, {nome} ! Je viens aussi ! ...Non, je reste ici. Toi, cherche, doucement."
   },

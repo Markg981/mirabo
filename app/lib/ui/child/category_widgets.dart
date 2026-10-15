@@ -10,9 +10,10 @@ import 'child_top_bar.dart';
 
 /// Barra in basso con le capacità che hanno qualcosa sulla mensola: bottoni
 /// rotondi colorati con un'emoji e, sotto, il nome. Quella scelta si alza e
-/// prende l'anello blu. Tenendo premuto un bottone la voce ne dice il nome:
-/// chi non legge ancora lo riconosce da immagine e suono. I bottoni non si
-/// spostano mai in base a cosa il bambino ha fatto da poco.
+/// prende l'anello blu. Toccando un bottone la voce ne dice il nome (anche
+/// tenendolo premuto): chi non legge ancora lo riconosce da immagine e suono
+/// senza dover scoprire un gesto nascosto. I bottoni non si spostano mai in
+/// base a cosa il bambino ha fatto da poco.
 class CategoryDock extends StatefulWidget {
   const CategoryDock({super.key, required this.categories, required this.onSelect, this.selected});
   final List<Capacity> categories;
@@ -33,7 +34,7 @@ class _CategoryDockState extends State<CategoryDock> {
   }
 
   // Senza voce di sistema il nome resta scritto sotto il bottone.
-  Future<void> _say(Capacity c) => _voice.say(AppStateScope.of(context).currentProfile?.language, c.label(context.l10n));
+  Future<void> _say(Capacity c) => _voice.say(AppStateScope.maybeRead(context)?.currentProfile?.language, c.label(context.l10n));
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,10 @@ class _CategoryDockState extends State<CategoryDock> {
             for (final c in categories)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 7),
-                child: _DockButton(category: c, selected: c == widget.selected, onTap: () => widget.onSelect(c), onListen: () => _say(c)),
+                child: _DockButton(category: c, selected: c == widget.selected, onTap: () {
+                  _say(c);
+                  widget.onSelect(c);
+                }, onListen: () => _say(c)),
               ),
           ],
         ),

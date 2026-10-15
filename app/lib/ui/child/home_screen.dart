@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 12),
                     ],
                     _ModeChip(mode: state.mode),
+                    if (MiraboTokens.of(context).voiceMissing) ...[const SizedBox(width: 12), const _NoVoiceChip()],
                     const Spacer(),
                     // "Ho finito" c'è sempre: chiudere è una scelta del bambino.
                     RoundIconButton(
@@ -168,6 +169,33 @@ class _SwitchChild extends StatelessWidget {
               const Icon(Icons.swap_horiz_rounded, color: MiraboColors.navy),
             ]),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Manca la voce di sistema: un pittogramma (voce spenta, un grande con il
+/// bambino) dice di chiamare un adulto, senza contare sulla lettura.
+class _NoVoiceChip extends StatelessWidget {
+  const _NoVoiceChip();
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: context.l10n.voiceMissingChild,
+      excludeSemantics: true,
+      child: Tooltip(
+        message: context.l10n.voiceMissingChild,
+        child: Container(
+          key: const Key('no-voice'),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(color: MiraboColors.pale(MiraboColors.sun, 0.6), borderRadius: BorderRadius.circular(999)),
+          child: const Row(mainAxisSize: MainAxisSize.min, children: [
+            Icon(Icons.volume_off_rounded, color: MiraboColors.navy, size: 26),
+            SizedBox(width: 6),
+            Icon(Icons.family_restroom_rounded, color: MiraboColors.navy, size: 26),
+          ]),
         ),
       ),
     );

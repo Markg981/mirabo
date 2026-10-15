@@ -170,11 +170,11 @@ abstract class AppLocalizations {
   /// **'Rileggi'**
   String get readAgain;
 
-  /// No description provided for @seeYouTomorrow.
+  /// No description provided for @outroDone.
   ///
   /// In it, this message translates to:
-  /// **'Ciao!'**
-  String get seeYouTomorrow;
+  /// **'Fatto'**
+  String get outroDone;
 
   /// No description provided for @go.
   ///
@@ -239,7 +239,7 @@ abstract class AppLocalizations {
   /// No description provided for @goodbyeBody.
   ///
   /// In it, this message translates to:
-  /// **'È stato bello. Chiama un grande: ci vediamo la prossima volta!'**
+  /// **'Per oggi abbiamo finito. Chiama un grande.'**
   String get goodbyeBody;
 
   /// No description provided for @closingTitle.
@@ -1067,7 +1067,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentHowUseHint.
   ///
   /// In it, this message translates to:
-  /// **'In modalità \"insieme\" compaiono le pause di dialogo per voi due. In modalità \"da solo\" il bambino risponde toccando e le storie su sicurezza e corpo restano nascoste.'**
+  /// **'È una vostra dichiarazione, non una verifica: l\'app non sa se un adulto è davvero accanto. «Insieme» mostra le pause di dialogo per voi due e le storie da leggere con un adulto, senza limite di tempo. «Da solo» le nasconde (con le storie su sicurezza e corpo, se l\'avete scelto nel profilo) e applica il limite di tempo del profilo. «Insieme» vale per questa volta: all\'avvio dell\'app, quando cambia il bambino o dopo 30 minuti con l\'app chiusa si torna a «da solo».'**
   String get parentHowUseHint;
 
   /// No description provided for @parentPlace.
@@ -1361,13 +1361,13 @@ abstract class AppLocalizations {
   /// No description provided for @diaryTogether.
   ///
   /// In it, this message translates to:
-  /// **'insieme'**
+  /// **'in modalità insieme'**
   String get diaryTogether;
 
   /// No description provided for @diaryAlone.
   ///
   /// In it, this message translates to:
-  /// **'da solo'**
+  /// **'in modalità da solo'**
   String get diaryAlone;
 
   /// No description provided for @diaryChose.
@@ -1385,7 +1385,7 @@ abstract class AppLocalizations {
   /// No description provided for @gesturesIntro.
   ///
   /// In it, this message translates to:
-  /// **'Il gesto di una storia si fa nella vita vera, quando capita. Se volete, segnatelo qui: resta nel diario di {name}. Segnarlo non sblocca nulla: {companion} cresce con le settimane, non con i gesti segnati.'**
+  /// **'Il gesto di una storia si fa nella vita vera, quando capita. Se volete, segnatelo qui: resta nel diario di {name}. Segnarlo non sblocca nulla e non cambia {companion}: è solo un ricordo.'**
   String gesturesIntro(String companion, String name);
 
   /// No description provided for @gesturesEmpty.
@@ -1559,7 +1559,7 @@ abstract class AppLocalizations {
   /// No description provided for @weekAllTogether.
   ///
   /// In it, this message translates to:
-  /// **'Le avete ascoltate sempre insieme.'**
+  /// **'Le ha ascoltate sempre in modalità «insieme».'**
   String get weekAllTogether;
 
   /// No description provided for @weekAllAlone.
@@ -1571,7 +1571,7 @@ abstract class AppLocalizations {
   /// No description provided for @weekTogether.
   ///
   /// In it, this message translates to:
-  /// **'{together, plural, =1{Una volta su {total} eravate insieme.} other{{together} volte su {total} eravate insieme.}}'**
+  /// **'{together, plural, =1{Una volta su {total} in modalità «insieme».} other{{together} volte su {total} in modalità «insieme».}}'**
   String weekTogether(int together, int total);
 
   /// No description provided for @weekChoice.
@@ -1799,13 +1799,13 @@ abstract class AppLocalizations {
   /// No description provided for @profileCompanionEditHint.
   ///
   /// In it, this message translates to:
-  /// **'Il compagno si sceglie una volta sola: è il suo migliore amico.'**
+  /// **'Si può cambiare quando volete: storie, disegni e progressi restano.'**
   String get profileCompanionEditHint;
 
   /// No description provided for @profileCompanionNewHint.
   ///
   /// In it, this message translates to:
-  /// **'Fate scegliere al bambino. Si sceglie una volta sola e non si cambia.'**
+  /// **'Fate scegliere al bambino. Si potrà cambiare senza perdere niente.'**
   String get profileCompanionNewHint;
 
   /// No description provided for @profileWorlds.
@@ -2717,7 +2717,7 @@ abstract class AppLocalizations {
   /// No description provided for @usageLimit.
   ///
   /// In it, this message translates to:
-  /// **'Nella modalità \"da solo\" il compagno saluta dopo {minutes} min (si cambia nel profilo).'**
+  /// **'Nella modalità \"da solo\" il compagno saluta dopo circa {minutes} min: prima si finisce con calma la storia o l\'attività aperta, quindi non è un blocco al secondo (si cambia nel profilo).'**
   String usageLimit(Object minutes);
 
   /// No description provided for @usageCannot.
@@ -2819,7 +2819,7 @@ abstract class AppLocalizations {
   /// No description provided for @winddownHint.
   ///
   /// In it, this message translates to:
-  /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude.'**
+  /// **'Poco prima della fine il compagno avvisa con calma e non propone cose nuove. Quello che è aperto si conclude, poi saluta: non è un blocco al secondo, può volerci qualche minuto in più.'**
   String get winddownHint;
 
   /// No description provided for @gateSetupTitle.
@@ -2831,7 +2831,7 @@ abstract class AppLocalizations {
   /// No description provided for @gateSetupBody.
   ///
   /// In it, this message translates to:
-  /// **'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Se lo dimentichi potrai sceglierne uno nuovo senza perdere nulla.'**
+  /// **'Da 4 a 6 cifre. Serve per entrare nell\'area adulta e per le operazioni delicate. Subito dopo ti diamo un codice di recupero da scrivere su un foglio: se dimentichi il PIN ne scegli uno nuovo senza perdere nulla.'**
   String get gateSetupBody;
 
   /// No description provided for @gatePinLabel.
@@ -3085,6 +3085,108 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati. Se resta qualcosa sul tuo Drive, lo trovi e lo elimini in Drive › Impostazioni › Gestisci app.'**
   String get dataOutsideBody;
+
+  /// No description provided for @gateRecoveryTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Il codice di recupero'**
+  String get gateRecoveryTitle;
+
+  /// No description provided for @gateRecoveryBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Scrivilo su un foglio e tienilo lontano dal tablet: serve se dimentichi il PIN. Non lo mostreremo più.'**
+  String get gateRecoveryBody;
+
+  /// No description provided for @gateRecoveryWritten.
+  ///
+  /// In it, this message translates to:
+  /// **'L\'ho scritto'**
+  String get gateRecoveryWritten;
+
+  /// No description provided for @gateRecoveryAsk.
+  ///
+  /// In it, this message translates to:
+  /// **'Scrivi il codice di recupero che ti abbiamo dato quando hai scelto il PIN.'**
+  String get gateRecoveryAsk;
+
+  /// No description provided for @gateRecoveryLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'Codice di recupero'**
+  String get gateRecoveryLabel;
+
+  /// No description provided for @gateRecoveryWrong.
+  ///
+  /// In it, this message translates to:
+  /// **'Codice sbagliato'**
+  String get gateRecoveryWrong;
+
+  /// No description provided for @gateUseDevice.
+  ///
+  /// In it, this message translates to:
+  /// **'Usa il blocco del tablet'**
+  String get gateUseDevice;
+
+  /// No description provided for @gateDeviceOff.
+  ///
+  /// In it, this message translates to:
+  /// **'Il recupero con il blocco del tablet è spento: serve il codice di recupero.'**
+  String get gateDeviceOff;
+
+  /// No description provided for @gateDeviceRecovery.
+  ///
+  /// In it, this message translates to:
+  /// **'Recupero del PIN con il blocco del tablet'**
+  String get gateDeviceRecovery;
+
+  /// No description provided for @gateDeviceRecoveryHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Spegnilo se il bambino conosce il codice del tablet o ha la sua impronta registrata: allora il PIN si recupera solo con il codice di recupero.'**
+  String get gateDeviceRecoveryHint;
+
+  /// No description provided for @gateNewRecovery.
+  ///
+  /// In it, this message translates to:
+  /// **'Nuovo codice di recupero'**
+  String get gateNewRecovery;
+
+  /// No description provided for @gateResetNotice.
+  ///
+  /// In it, this message translates to:
+  /// **'Il PIN è stato reimpostato il {date} {how}. Se non sei stato tu, cambialo e spegni il recupero con il blocco del tablet.'**
+  String gateResetNotice(String date, String how);
+
+  /// No description provided for @gateResetHowCode.
+  ///
+  /// In it, this message translates to:
+  /// **'con il codice di recupero'**
+  String get gateResetHowCode;
+
+  /// No description provided for @gateResetHowDevice.
+  ///
+  /// In it, this message translates to:
+  /// **'con il blocco del tablet'**
+  String get gateResetHowDevice;
+
+  /// No description provided for @gateResetSeen.
+  ///
+  /// In it, this message translates to:
+  /// **'Ok'**
+  String get gateResetSeen;
+
+  /// No description provided for @voiceMissingChild.
+  ///
+  /// In it, this message translates to:
+  /// **'La voce non c\'è: chiedi a un grande di leggere con te'**
+  String get voiceMissingChild;
+
+  /// No description provided for @voiceMissingParent.
+  ///
+  /// In it, this message translates to:
+  /// **'Su questo tablet manca la voce di sintesi per {language}. Chi non legge ancora ha bisogno di un adulto che legga con lui: per ora il testo resta in vista. Installala dalle impostazioni del tablet (Sintesi vocale su Android, Contenuti letti ad alta voce su iPad). Le storie con l\'audio registrato si sentono lo stesso.'**
+  String voiceMissingParent(String language);
 }
 
 class _AppLocalizationsDelegate

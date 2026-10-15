@@ -23,6 +23,9 @@ class _GameShellState extends State<GameShell> {
   int _run = 0;
   bool _done = false;
 
+  /// L'ultima cosa detta dal gioco: il riascolta la ripete (docs/child-paths.md).
+  String? _last;
+
   @override
   void initState() {
     super.initState();
@@ -42,8 +45,21 @@ class _GameShellState extends State<GameShell> {
   }
 
   Future<void> _say(String text) async {
-    await _tts.stop();
-    await _tts.speak(text);
+    _last = text;
+    if (mounted) setState(() {});
+    try {
+      await _tts.stop();
+      await _tts.speak(text);
+    } catch (_) {
+      // Senza voce di sistema il gioco resta giocabile: le consegne sono a figure.
+    }
+  }
+
+  Future<void> _sayOnly(String text) async {
+    try {
+      await _tts.stop();
+      await _tts.speak(text);
+    } catch (_) {}
   }
 
   void _finished() {
@@ -86,6 +102,9 @@ class _GameShellState extends State<GameShell> {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    // Il riascolta sta in alto a destra, come in storie e attività.
+                    if (_last != null)
+                      RoundIconButton(icon: Icons.volume_up_rounded, tooltip: context.l10n.listenAgain, onPressed: () => _sayOnly(_last!)),
                   ],
                 ),
               ),
@@ -120,18 +139,20 @@ class _GameShellState extends State<GameShell> {
                                       const SizedBox(height: 24),
                                       Row(
                                         children: [
-                                          ChunkyButton(
+                                          SpokenButton(
                                             label: context.l10n.gameAgain,
                                             icon: Icons.replay_rounded,
                                             color: MiraboColors.leaf,
                                             onPressed: _again,
+                                            onListen: () => _sayOnly(context.l10n.gameAgain),
                                           ),
                                           const SizedBox(width: 14),
-                                          ChunkyButton(
+                                          SpokenButton(
                                             label: context.l10n.gameEnough,
                                             icon: Icons.home_rounded,
                                             color: MiraboColors.sky,
                                             onPressed: () => Navigator.of(context).pop(),
+                                            onListen: () => _sayOnly(context.l10n.gameEnough),
                                           ),
                                         ],
                                       ),

@@ -41,17 +41,15 @@ void main() {
   final since = DateTime(2026, 10, 1);
   final fresh = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango, growthSince: since);
 
-  test('il compagno cresce con le settimane, non con storie o gesti segnati', () {
-    expect(fresh.copyWith(storiesCompleted: 20, gesturesDone: 30).companionStageAt(since.add(const Duration(days: 13))), 0);
-    expect(fresh.companionStageAt(since.add(const Duration(days: 14))), 1);
-    expect(fresh.companionStageAt(since.add(const Duration(days: 42))), 2);
-    expect(fresh.companionStageAt(since.add(const Duration(days: 84))), 3);
+  test("nell'MVP il compagno non cresce: né con le settimane, né con storie o gesti", () {
+    final used = fresh.copyWith(storiesCompleted: 20, gesturesDone: 30);
+    expect(used.companionStage, 0);
+    expect(ChildProfile.fromRow({...used.toRow(), 'growth_since': DateTime(2020).toIso8601String()}).companionStage, 0);
   });
 
   test('chi era già cresciuto non torna indietro', () {
     final legacy = ChildProfile.fromRow({...fresh.toRow(), 'stage_floor': 2});
-    expect(legacy.companionStageAt(since), 2);
-    expect(legacy.companionStageAt(since.add(const Duration(days: 84))), 3);
+    expect(legacy.companionStage, 2);
   });
 
   test('una riga senza le colonne nuove (backup v3) parte da zero', () {
@@ -61,7 +59,20 @@ void main() {
       ..remove('growth_since');
     final p = ChildProfile.fromRow(row);
     expect(p.gesturesDone, 0);
-    expect(p.companionStageAt(DateTime(2030)), 0);
+    expect(p.companionStage, 0);
+  });
+
+  test('cambiare compagno non perde niente: tutto resta sul profilo', () {
+    final before = ChildProfile.fromRow({
+      ...fresh.copyWith(storiesCompleted: 4, gesturesDone: 2, language: 'en').toRow(),
+      'stage_floor': 1,
+      'shelf': 'story:a,game:memory',
+    });
+    final after = before.copyWith(companion: CompanionId.bo);
+    expect(after.companion, CompanionId.bo);
+    final a = after.toRow()..remove('companion');
+    final b = before.toRow()..remove('companion');
+    expect(a, b);
   });
 
   test('lo stesso gesto si segna una volta al giorno e non fa crescere il compagno', () async {

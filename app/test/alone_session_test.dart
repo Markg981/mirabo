@@ -79,7 +79,8 @@ void main() {
   });
 
   testWidgets('insieme non c\'è limite', (tester) async {
-    final (state, advance) = await start(tester, alone.copyWith(lastMode: SessionMode.together));
+    final (state, advance) = await start(tester, alone);
+    await state.setMode(SessionMode.together);
     await advance(const Duration(hours: 2));
     expect(state.aloneGoodbye, isFalse);
   });
@@ -145,8 +146,39 @@ void main() {
   });
 
   testWidgets('insieme non ci sono preavvisi', (tester) async {
-    final (state, advance) = await start(tester, alone.copyWith(lastMode: SessionMode.together));
+    final (state, advance) = await start(tester, alone);
+    await state.setMode(SessionMode.together);
     await advance(const Duration(minutes: 18));
     expect(state.windingDown, isFalse);
+  });
+
+  testWidgets('"insieme" non sopravvive alla chiusura: all avvio si parte da "da solo"', (tester) async {
+    final (state, _) = await start(tester, alone.copyWith(lastMode: SessionMode.together, aloneSessionMinutes: 0));
+    expect(state.mode, SessionMode.alone);
+  });
+
+  testWidgets('"insieme" scade dopo 30 minuti in background, non prima', (tester) async {
+    final (state, advance) = await start(tester, alone.copyWith(aloneSessionMinutes: 0));
+    await state.setMode(SessionMode.together);
+    state.appHidden();
+    await advance(const Duration(minutes: 29));
+    state.appResumed();
+    await tester.pump();
+    expect(state.mode, SessionMode.together);
+
+    state.appHidden();
+    await advance(AppState.togetherLapse);
+    state.appResumed();
+    await tester.pump();
+    expect(state.mode, SessionMode.alone);
+  });
+
+  testWidgets('cambiando bambino "insieme" non passa all altro', (tester) async {
+    final (state, _) = await start(tester, alone.copyWith(aloneSessionMinutes: 0));
+    await state.setMode(SessionMode.together);
+    await state.selectProfile(state.currentProfile!);
+    expect(state.mode, SessionMode.together);
+    await state.selectProfile(const ChildProfile(id: 2, name: 'U', ageBand: AgeBand.b3to5, companion: CompanionId.bo, aloneSessionMinutes: 0));
+    expect(state.mode, SessionMode.alone);
   });
 }

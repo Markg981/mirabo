@@ -88,8 +88,12 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       profile: _profile,
       companionName: _state.companionOf(_profile).name,
       say: (t) async {
-        await _tts.stop();
-        await _tts.speak(_ctx.withName(t));
+        try {
+          await _tts.stop();
+          await _tts.speak(_ctx.withName(t));
+        } catch (_) {
+          // Senza voce di sistema il testo resta in vista (vedi MiraboTokens.voiceMissing).
+        }
       },
     );
     _state.db.progress(_profile.id, widget.activity.id).then((p) {
@@ -152,7 +156,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
           companion: companion,
           stage: _profile.companionStage,
           text: _ctx.withName(widget.activity.outro.forCompanion(_profile.companion)),
-          button: context.l10n.seeYouTomorrow,
+          button: context.l10n.outroDone,
           onPressed: () => Navigator.of(context).pop(),
           extra: _LevelChoices(
             canEasier: progress.level > 1,
@@ -165,6 +169,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     };
 
     return ExitGuard(
+      say: _ctx.say,
       child: Scaffold(
       body: SceneBackdrop(
         child: SafeArea(
@@ -177,7 +182,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
                     RoundIconButton(
                       icon: Icons.close_rounded,
                       tooltip: context.l10n.close,
-                      onPressed: () => leaveChildPage(context),
+                      onPressed: () => leaveChildPage(context, say: _ctx.say),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -229,8 +234,8 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
   }
 }
 
-/// "Più semplice / Ancora così / Più sfida": tre icone con la voce (tenendo
-/// premuto si ascolta), mai obbligatorie: "A domani" chiude comunque.
+/// "Più semplice / Ancora così / Più sfida": tre bottoni con il loro
+/// altoparlante, mai obbligatori: "Fatto" chiude comunque.
 class _LevelChoices extends StatelessWidget {
   const _LevelChoices({required this.canEasier, required this.canHarder, required this.onChoose, required this.say});
   final bool canEasier;
@@ -241,23 +246,16 @@ class _LevelChoices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    Widget choice(IconData icon, String label, int delta, bool enabled, Color color) => Padding(
-          padding: const EdgeInsets.only(left: 14, right: 4),
-          child: Semantics(
-            label: label,
-            button: true,
-            child: GestureDetector(
-              onLongPress: () => say(label),
-              child: ChunkyButton(
-                label: label,
-                icon: icon,
-                color: color,
-                onPressed: enabled ? () => onChoose(delta) : null,
-              ),
-            ),
-          ),
+    Widget choice(IconData icon, String label, int delta, bool enabled, Color color) => SpokenButton(
+          label: label,
+          icon: icon,
+          color: color,
+          onPressed: enabled ? () => onChoose(delta) : null,
+          onListen: () => say(label),
         );
     return Wrap(
+      spacing: 18,
+      runSpacing: 12,
       children: [
         choice(Icons.arrow_downward_rounded, l.levelEasier, -1, canEasier, MiraboColors.navy),
         choice(Icons.replay_rounded, l.levelSame, 0, true, MiraboColors.leaf),

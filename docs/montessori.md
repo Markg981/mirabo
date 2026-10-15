@@ -151,8 +151,9 @@ vuole rifarla): serve all'idea del giorno nel diario e non dà niente in cambio.
 Fino a qui il compagno cresceva solo quando il genitore segnava nel diario il gesto di una storia:
 una conferma che dava un premio. Tre delle nove attività pratiche sono proprio quei gesti. Ora:
 
-- il compagno cresce con le **settimane** dalla creazione del profilo (2, 6, 12), uguale per tutti,
-  qualunque cosa il bambino faccia o l'adulto segni (`ChildProfile.companionStageAt`);
+- il compagno non cresce più per conferme; nell'MVP non cresce nemmeno con le settimane (la crescita
+  a soglie è fuori dall'MVP, [child-paths.md](child-paths.md)): resta com'è, qualunque cosa il
+  bambino faccia o l'adulto segni (`ChildProfile.companionStage`);
 - il gesto segnato resta nel diario come voce descrittiva; l'area genitore non dice più "mancano N
   gesti alla prossima tappa" e spiega che segnarlo non sblocca nulla;
 - chi era già cresciuto con le regole di prima resta allo stadio raggiunto (migrazione v12 del

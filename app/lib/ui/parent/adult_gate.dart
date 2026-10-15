@@ -21,7 +21,8 @@ class AdultGate {
   }
 
   /// Chiede sempre il PIN, anche se l'adulto è già dentro: per le operazioni
-  /// sensibili (eliminare un profilo, backup su Drive, cambio PIN) e per il
+  /// sensibili (eliminare un profilo, backup su Drive, cambio PIN, codice e
+  /// recupero con il blocco del tablet, cancellazione dei dati) e per il
   /// rientro dopo che l'app è stata in background.
   static Future<bool> confirm(BuildContext context) async {
     final setup = !await pin.isSet;
@@ -45,6 +46,31 @@ class AdultGate {
     return ok == true;
   }
 
+  /// Un nuovo codice di recupero (il vecchio smette di valere), dopo il PIN.
+  static Future<void> newRecoveryCode(BuildContext context) async {
+    if (!await confirm(context) || !context.mounted) return;
+    final code = await pin.newRecoveryCode();
+    if (!context.mounted) return;
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AdultLocale(
+        child: AlertDialog(
+          title: Text(context.l10n.gateRecoveryTitle),
+          content: _RecoveryCodeBody(code: code),
+          actions: [FilledButton(onPressed: () => Navigator.of(context).pop(), child: Text(context.l10n.gateRecoveryWritten))],
+        ),
+      ),
+    );
+  }
+
+  /// Accende o spegne il recupero con il blocco del tablet, dopo il PIN.
+  static Future<bool> setDeviceRecovery(BuildContext context, bool on) async {
+    if (!await confirm(context)) return false;
+    await pin.setDeviceRecovery(on);
+    return true;
+  }
+
   static Future<bool> _localAuth(String reason) async {
     try {
       final auth = LocalAuthentication();
@@ -56,6 +82,8 @@ class AdultGate {
   }
 }
 
+enum _Phase { setup, verify, recover, showCode }
+
 class _GateDialog extends StatefulWidget {
   const _GateDialog({required this.setup});
   final bool setup;
@@ -66,8 +94,10 @@ class _GateDialog extends StatefulWidget {
 class _GateDialogState extends State<_GateDialog> {
   final _pin = TextEditingController();
   final _confirm = TextEditingController();
-  late bool _setup = widget.setup;
+  late _Phase _phase = widget.setup ? _Phase.setup : _Phase.verify;
   String? _error;
+  String? _code;
+  bool _deviceRecovery = true;
   Duration _lock = Duration.zero;
   Timer? _timer;
   bool _busy = false;
@@ -75,7 +105,7 @@ class _GateDialogState extends State<_GateDialog> {
   @override
   void initState() {
     super.initState();
-    if (!_setup) _refreshLock();
+    if (_phase == _Phase.verify) _refreshLock();
   }
 
   @override
@@ -109,54 +139,89 @@ class _GateDialogState extends State<_GateDialog> {
     final l = context.l10n;
     if (_busy) return;
     final text = _pin.text.trim();
-    if (_setup) {
-      if (!AdultPin.isValidFormat(text)) return setState(() => _error = l.gatePinFormat);
-      if (text != _confirm.text.trim()) return setState(() => _error = l.gatePinMismatch);
-      setState(() => _busy = true);
-      await AdultGate.pin.set(text);
-      if (mounted) Navigator.of(context).pop(true);
-      return;
-    }
-    setState(() => _busy = true);
-    final r = await AdultGate.pin.verify(text);
-    if (!mounted) return;
-    _pin.clear();
-    switch (r) {
-      case PinResult.ok:
+    switch (_phase) {
+      case _Phase.showCode:
         Navigator.of(context).pop(true);
         return;
-      case PinResult.wrong:
-        setState(() {
+      case _Phase.setup:
+        if (!AdultPin.isValidFormat(text)) return setState(() => _error = l.gatePinFormat);
+        if (text != _confirm.text.trim()) return setState(() => _error = l.gatePinMismatch);
+        setState(() => _busy = true);
+        await AdultGate.pin.set(text);
+        // Senza codice di recupero (primo PIN, o codice appena usato) se ne
+        // crea uno e si mostra una volta sola.
+        final code = await AdultGate.pin.hasRecoveryCode ? null : await AdultGate.pin.newRecoveryCode();
+        if (!mounted) return;
+        if (code == null) {
+          Navigator.of(context).pop(true);
+          return;
+        }
+        return setState(() {
+          _code = code;
+          _phase = _Phase.showCode;
+          _error = null;
           _busy = false;
-          _error = l.gatePinWrong;
         });
-      case PinResult.locked:
-        await _refreshLock();
-        if (mounted) {
-          setState(() {
-            _busy = false;
-            _error = null;
-          });
+      case _Phase.verify:
+      case _Phase.recover:
+        setState(() => _busy = true);
+        final recovering = _phase == _Phase.recover;
+        final r = recovering ? await AdultGate.pin.recover(text) : await AdultGate.pin.verify(text);
+        if (!mounted) return;
+        _pin.clear();
+        switch (r) {
+          case PinResult.ok when recovering:
+            return _chooseNewPin();
+          case PinResult.ok:
+            Navigator.of(context).pop(true);
+            return;
+          case PinResult.wrong:
+            setState(() {
+              _busy = false;
+              _error = recovering ? l.gateRecoveryWrong : l.gatePinWrong;
+            });
+          case PinResult.locked:
+            await _refreshLock();
+            if (mounted) {
+              setState(() {
+                _busy = false;
+                _error = null;
+              });
+            }
         }
     }
   }
 
-  /// Recupero: l'autenticazione del dispositivo (se c'è) permette di scegliere
-  /// un PIN nuovo. Non cancella nulla del bambino.
-  Future<void> _forgot() async {
-    final l = context.l10n;
-    final ok = await AdultGate.deviceAuth(l.gateDeviceReason);
-    if (!mounted) return;
-    if (!ok) return setState(() => _error = l.gateForgotUnavailable);
-    await AdultGate.pin.reset();
-    if (!mounted) return;
+  void _chooseNewPin() {
     _timer?.cancel();
     setState(() {
-      _setup = true;
+      _phase = _Phase.setup;
       _lock = Duration.zero;
       _error = null;
       _busy = false;
     });
+  }
+
+  /// "Ho dimenticato il PIN": il codice di recupero c'è sempre; il blocco del
+  /// tablet solo se l'adulto non l'ha spento. Non si cancella nulla del bambino.
+  Future<void> _forgot() async {
+    final device = await AdultGate.pin.deviceRecovery;
+    if (!mounted) return;
+    _pin.clear();
+    setState(() {
+      _phase = _Phase.recover;
+      _deviceRecovery = device;
+      _error = null;
+    });
+  }
+
+  Future<void> _deviceRecover() async {
+    final l = context.l10n;
+    final ok = await AdultGate.deviceAuth(l.gateDeviceReason);
+    if (!mounted) return;
+    if (!ok) return setState(() => _error = l.gateForgotUnavailable);
+    await AdultGate.pin.reset(how: RecoveryChannel.device);
+    if (mounted) _chooseNewPin();
   }
 
   @override
@@ -164,59 +229,99 @@ class _GateDialogState extends State<_GateDialog> {
     final l = context.l10n;
     final locked = _lock > Duration.zero;
     InputDecoration deco(String label) => InputDecoration(labelText: label, counterText: '');
-    final formatters = [FilteringTextInputFormatter.digitsOnly];
+    final digits = [FilteringTextInputFormatter.digitsOnly];
+    TextField pinField(TextEditingController c, String label, {bool autofocus = false, VoidCallback? onDone}) => TextField(
+          controller: c,
+          enabled: !locked && !_busy,
+          autofocus: autofocus,
+          obscureText: true,
+          enableSuggestions: false,
+          autocorrect: false,
+          maxLength: AdultPin.maxLength,
+          keyboardType: TextInputType.number,
+          inputFormatters: digits,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 24, letterSpacing: 6),
+          onSubmitted: (_) => onDone?.call(),
+          decoration: deco(label),
+        );
+    final title = switch (_phase) {
+      _Phase.setup => l.gateSetupTitle,
+      _Phase.verify => l.gateTitle,
+      _Phase.recover => l.gateForgot,
+      _Phase.showCode => l.gateRecoveryTitle,
+    };
     return AlertDialog(
-      title: Text(_setup ? l.gateSetupTitle : l.gateTitle),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (_setup) Padding(padding: const EdgeInsets.only(bottom: 12), child: Text(l.gateSetupBody)),
-          TextField(
-            controller: _pin,
-            enabled: !locked && !_busy,
-            autofocus: true,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            maxLength: AdultPin.maxLength,
-            keyboardType: TextInputType.number,
-            inputFormatters: formatters,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 24, letterSpacing: 6),
-            onSubmitted: (_) => _setup ? null : _submit(),
-            decoration: deco(l.gatePinLabel),
-          ),
-          if (_setup) ...[
-            const SizedBox(height: 8),
-            TextField(
-              controller: _confirm,
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-              maxLength: AdultPin.maxLength,
-              keyboardType: TextInputType.number,
-              inputFormatters: formatters,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 24, letterSpacing: 6),
-              onSubmitted: (_) => _submit(),
-              decoration: deco(l.gatePinConfirmLabel),
-            ),
+      title: Text(title),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            switch (_phase) {
+              _Phase.setup => Column(mainAxisSize: MainAxisSize.min, children: [
+                  Padding(padding: const EdgeInsets.only(bottom: 12), child: Text(l.gateSetupBody)),
+                  pinField(_pin, l.gatePinLabel, autofocus: true),
+                  const SizedBox(height: 8),
+                  pinField(_confirm, l.gatePinConfirmLabel, onDone: _submit),
+                ]),
+              _Phase.verify => pinField(_pin, l.gatePinLabel, autofocus: true, onDone: _submit),
+              _Phase.recover => Column(mainAxisSize: MainAxisSize.min, children: [
+                  Padding(padding: const EdgeInsets.only(bottom: 12), child: Text(l.gateRecoveryAsk)),
+                  TextField(
+                    key: const Key('recovery-code'),
+                    controller: _pin,
+                    enabled: !locked && !_busy,
+                    autofocus: true,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    textCapitalization: TextCapitalization.characters,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 22, letterSpacing: 3),
+                    onSubmitted: (_) => _submit(),
+                    decoration: deco(l.gateRecoveryLabel),
+                  ),
+                  if (_deviceRecovery)
+                    TextButton(onPressed: _busy ? null : _deviceRecover, child: Text(l.gateUseDevice))
+                  else
+                    Padding(padding: const EdgeInsets.only(top: 8), child: Text(l.gateDeviceOff)),
+                ]),
+              _Phase.showCode => _RecoveryCodeBody(code: _code ?? ''),
+            },
+            if (locked) Padding(padding: const EdgeInsets.only(top: 8), child: Text(l.gatePinWait(_fmt(_lock)))),
+            if (_error != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
+              ),
+            if (_phase == _Phase.verify) TextButton(onPressed: _forgot, child: Text(l.gateForgot)),
           ],
-          if (locked) Padding(padding: const EdgeInsets.only(top: 8), child: Text(l.gatePinWait(_fmt(_lock)))),
-          if (_error != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-            ),
-          if (!_setup) TextButton(onPressed: _forgot, child: Text(l.gateForgot)),
-        ],
+        ),
       ),
       actions: [
-        TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(l.cancel)),
-        FilledButton(onPressed: locked || _busy ? null : _submit, child: Text(l.gateEnter)),
+        if (_phase != _Phase.showCode) TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(l.cancel)),
+        FilledButton(
+          onPressed: locked || _busy ? null : _submit,
+          child: Text(_phase == _Phase.showCode ? l.gateRecoveryWritten : l.gateEnter),
+        ),
       ],
     );
   }
+}
+
+/// Il codice di recupero appena creato, mostrato una volta sola.
+class _RecoveryCodeBody extends StatelessWidget {
+  const _RecoveryCodeBody({required this.code});
+  final String code;
+
+  @override
+  Widget build(BuildContext context) => Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(context.l10n.gateRecoveryBody),
+        const SizedBox(height: 16),
+        Center(
+          child: SelectableText(code,
+              key: const Key('recovery-shown'), style: const TextStyle(fontSize: 30, letterSpacing: 4, fontWeight: FontWeight.w700)),
+        ),
+      ]);
 }
 
 /// Avvolge le pagine di ingresso all'area adulta: se l'app resta in background

@@ -588,7 +588,7 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
                       RoundIconButton(icon: Icons.arrow_back_rounded, tooltip: l.back, size: 64, onPressed: () => _go(_index - 1)),
                     const Spacer(),
                     ChunkyButton(
-                      label: _onEnd ? l.seeYouTomorrow : l.next,
+                      label: _onEnd ? l.outroDone : l.next,
                       icon: _onEnd ? Icons.waving_hand_rounded : Icons.arrow_forward_rounded,
                       iconAfter: !_onEnd,
                       color: _onEnd ? MiraboColors.apricot : MiraboColors.leaf,

@@ -15,7 +15,7 @@ import 'package:mirabo/ui/child/closing_screen.dart';
 class _FakeDb implements LocalDb {
   @override
   Future<List<ChildProfile>> profiles() async =>
-      [const ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b6to7, companion: CompanionId.bo)];
+      [const ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b6to7, companion: CompanionId.bo, aloneSessionMinutes: 0)];
   @override
   Future<String?> setting(String key) async => null;
 

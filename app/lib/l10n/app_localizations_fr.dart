@@ -42,7 +42,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get readAgain => 'Relire';
 
   @override
-  String get seeYouTomorrow => 'Salut !';
+  String get outroDone => 'Fini';
 
   @override
   String get go => 'C\'est parti !';
@@ -82,7 +82,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get goodbyeBody =>
-      'C\'était chouette. Va chercher un grand : à la prochaine !';
+      'Pour aujourd\'hui, on a fini. Va chercher un grand.';
 
   @override
   String closingTitle(Object name) {
@@ -775,7 +775,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get parentHowUseHint =>
-      'En mode « ensemble », des pauses de dialogue apparaissent pour vous deux. En mode « tout seul », l\'enfant répond en touchant et les histoires sur la sécurité et le corps restent cachées.';
+      'C\'est une déclaration de votre part, pas une vérification : l\'app ne sait pas si un adulte est vraiment là. « Ensemble » affiche les pauses de dialogue pour vous deux et les histoires à lire avec un adulte, sans limite de temps. « Tout seul » les masque (avec celles sur la sécurité et le corps, si vous l\'avez choisi dans le profil) et applique la limite de temps du profil. « Ensemble » vaut pour cette fois : au lancement de l\'app, quand l\'enfant change ou après 30 minutes l\'app fermée, on revient à « tout seul ».';
 
   @override
   String get parentPlace => 'Où vous vivez';
@@ -964,10 +964,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get diaryEmpty => 'Aucune histoire ces 30 derniers jours.';
 
   @override
-  String get diaryTogether => 'ensemble';
+  String get diaryTogether => 'en mode ensemble';
 
   @override
-  String get diaryAlone => 'tout seul';
+  String get diaryAlone => 'en mode tout seul';
 
   @override
   String diaryChose(Object answer) {
@@ -979,7 +979,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String gesturesIntro(String companion, String name) {
-    return 'Le geste d\'une histoire se fait dans la vraie vie, quand l\'occasion se présente. Si vous voulez, notez-le ici : il reste dans le journal de $name. Le noter ne débloque rien : $companion grandit avec les semaines, pas avec les gestes notés.';
+    return 'Le geste d\'une histoire se fait dans la vraie vie, quand l\'occasion se présente. Si vous voulez, notez-le ici : il reste dans le journal de $name. Le noter ne débloque rien et ne change pas $companion : c\'est juste un souvenir.';
   }
 
   @override
@@ -1124,7 +1124,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get weekAllTogether => 'Vous les avez toujours écoutées ensemble.';
+  String get weekAllTogether => 'Toujours écoutées en mode « ensemble ».';
 
   @override
   String get weekAllAlone =>
@@ -1135,8 +1135,8 @@ class AppLocalizationsFr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       together,
       locale: localeName,
-      other: '$together fois sur $total, vous étiez ensemble.',
-      one: 'Une fois sur $total, vous étiez ensemble.',
+      other: '$together fois sur $total en mode « ensemble ».',
+      one: 'Une fois sur $total en mode « ensemble ».',
     );
     return '$_temp0';
   }
@@ -1339,11 +1339,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profileCompanionEditHint =>
-      'Le compagnon se choisit une seule fois : c\'est son meilleur ami.';
+      'Vous pouvez le changer quand vous voulez : histoires, dessins et progrès restent.';
 
   @override
   String get profileCompanionNewHint =>
-      'Laissez l\'enfant choisir. On le choisit une seule fois et on ne le change pas.';
+      'Laissez l\'enfant choisir. On pourra le changer sans rien perdre.';
 
   @override
   String get profileWorlds => 'Mondes des histoires';
@@ -2142,7 +2142,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String usageLimit(Object minutes) {
-    return 'En mode « seul », le compagnon dit au revoir après $minutes min (à modifier dans le profil).';
+    return 'En mode « tout seul », le compagnon dit au revoir après environ $minutes min : l\'histoire ou l\'activité ouverte se termine d\'abord calmement, ce n\'est donc pas un arrêt à la seconde (à modifier dans le profil).';
   }
 
   @override
@@ -2201,14 +2201,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get winddownHint =>
-      'Peu avant la fin, le compagnon prévient calmement et ne propose rien de nouveau. Ce qui est ouvert peut se terminer.';
+      'Peu avant la fin, le compagnon prévient calmement et ne propose rien de nouveau. Ce qui est ouvert se termine, puis il dit au revoir : ce n\'est pas un arrêt à la seconde, cela peut prendre quelques minutes de plus.';
 
   @override
   String get gateSetupTitle => 'Choisis un code PIN pour les grands';
 
   @override
   String get gateSetupBody =>
-      '4 à 6 chiffres. Il ouvre l\'espace des adultes et protège les actions délicates. Si tu l\'oublies, tu pourras en choisir un nouveau sans rien perdre.';
+      '4 à 6 chiffres. Il ouvre l\'espace des adultes et protège les actions délicates. Juste après, tu reçois un code de récupération à noter sur papier : si tu oublies le PIN, tu en choisis un nouveau sans rien perdre.';
 
   @override
   String get gatePinLabel => 'Code PIN';
@@ -2356,4 +2356,65 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get dataOutsideBody =>
       'Mirabò ne peut pas supprimer les sauvegardes du système (sauvegarde du téléphone ou de la tablette sur iCloud ou Google), ni les fichiers déjà exportés, imprimés ou partagés. Pour ceux-ci : ouvrez les réglages iCloud ou Google de l\'appareil et supprimez les anciennes sauvegardes, puis retirez à la main les fichiers enregistrés ou envoyés. S\'il reste quelque chose dans votre Drive, vous le trouvez et le supprimez dans Drive > Paramètres > Gérer les applications.';
+
+  @override
+  String get gateRecoveryTitle => 'Le code de récupération';
+
+  @override
+  String get gateRecoveryBody =>
+      'Note-le sur papier et garde-le loin de la tablette : il sert si tu oublies le PIN. Il ne sera plus affiché.';
+
+  @override
+  String get gateRecoveryWritten => 'Je l\'ai noté';
+
+  @override
+  String get gateRecoveryAsk =>
+      'Saisis le code de récupération reçu quand tu as choisi le PIN.';
+
+  @override
+  String get gateRecoveryLabel => 'Code de récupération';
+
+  @override
+  String get gateRecoveryWrong => 'Code incorrect';
+
+  @override
+  String get gateUseDevice => 'Utiliser le verrouillage de la tablette';
+
+  @override
+  String get gateDeviceOff =>
+      'La récupération avec le verrouillage de la tablette est désactivée : il faut le code de récupération.';
+
+  @override
+  String get gateDeviceRecovery =>
+      'Récupération du PIN avec le verrouillage de la tablette';
+
+  @override
+  String get gateDeviceRecoveryHint =>
+      'Désactive-la si l\'enfant connaît le code de la tablette ou y a enregistré son empreinte : le PIN ne se récupère alors qu\'avec le code de récupération.';
+
+  @override
+  String get gateNewRecovery => 'Nouveau code de récupération';
+
+  @override
+  String gateResetNotice(String date, String how) {
+    return 'Le PIN a été réinitialisé le $date $how. Si ce n\'était pas toi, change-le et désactive la récupération avec le verrouillage de la tablette.';
+  }
+
+  @override
+  String get gateResetHowCode => 'avec le code de récupération';
+
+  @override
+  String get gateResetHowDevice => 'avec le verrouillage de la tablette';
+
+  @override
+  String get gateResetSeen => 'OK';
+
+  @override
+  String get voiceMissingChild =>
+      'Il n\'y a pas de voix : demande à un grand de lire avec toi';
+
+  @override
+  String voiceMissingParent(String language) {
+    return 'Cette tablette n\'a pas de voix de synthèse pour $language. Un enfant qui ne lit pas encore a besoin d\'un adulte qui lit avec lui : en attendant, le texte reste affiché. Installe la voix dans les réglages de la tablette (Synthèse vocale sur Android, Contenu énoncé sur iPad). Les histoires avec audio enregistré s\'entendent quand même.';
+  }
 }
