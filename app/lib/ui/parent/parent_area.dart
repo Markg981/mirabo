@@ -4,10 +4,10 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
+import '../../features.dart';
 import '../../data/adult_pin.dart';
 import '../../data/exploration_diary.dart';
 import '../../data/usage_tracker.dart';
-import '../../data/interaction_advice.dart';
 import '../../data/parent_digest.dart';
 import '../../models/activity.dart';
 import '../../models/made_story.dart';
@@ -120,8 +120,6 @@ class _SessionTab extends StatelessWidget {
               trailing: IconButton(icon: const Icon(Icons.refresh_rounded), tooltip: context.l10n.listenAgain, onPressed: state.checkVoices),
             ),
           ),
-        _InteractionAdviceCard(state: state, profile: profile),
-        _AdviceSwitch(state: state, profile: profile),
         FormSection(
           icon: Icons.people_rounded,
           color: MiraboColors.sky,
@@ -166,14 +164,17 @@ class _SessionTab extends StatelessWidget {
             DataDeletionSection(state: state),
           ],
         ),
-        const SizedBox(height: 20),
-        FormSection(
-          icon: Icons.cloud_rounded,
-          color: MiraboColors.sky,
-          title: context.l10n.backupTitle,
-          subtitle: context.l10n.backupHint,
-          children: [BackupSection(state: state)],
-        ),
+        // Il backup su Drive è fuori dall'MVP (Features.cloudBackup).
+        if (Features.cloudBackup) ...[
+          const SizedBox(height: 20),
+          FormSection(
+            icon: Icons.cloud_rounded,
+            color: MiraboColors.sky,
+            title: context.l10n.backupTitle,
+            subtitle: context.l10n.backupHint,
+            children: [BackupSection(state: state)],
+          ),
+        ],
       ],
     );
   }
@@ -303,87 +304,6 @@ class _BandConfirmCard extends StatelessWidget {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-/// "Negli ultimi giorni traccia le lettere al primo tentativo: vuoi provare i
-/// tracciati più fini?". Compare solo quando i dati lo suggeriscono; il passo
-/// lo fa il genitore.
-class _InteractionAdviceCard extends StatelessWidget {
-  const _InteractionAdviceCard({required this.state, required this.profile});
-  final AppState state;
-  final ChildProfile profile;
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<InteractionAdvice?>(
-      future: state.interactionAdvice(profile),
-      builder: (context, snap) {
-        final advice = snap.data;
-        if (advice == null) return const SizedBox.shrink();
-        final l = context.l10n;
-        final message = switch (advice.axis) {
-          InteractionAxis.hands => l.adviceHands(profile.name, advice.rounds),
-          InteractionAxis.reading => l.adviceReading(profile.name, advice.rounds),
-          InteractionAxis.autonomy => l.adviceAutonomy(profile.name, advice.rounds),
-        };
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: SoftPanel(
-            padding: const EdgeInsets.all(20),
-            color: MiraboColors.pale(MiraboTokens.of(context).tint(MiraboColors.sun), 0.8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const IconBadge(icon: Icons.lightbulb_rounded, color: MiraboColors.sun, size: 48),
-                    const SizedBox(width: 14),
-                    Expanded(child: Text(message, style: Theme.of(context).textTheme.titleMedium)),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 12,
-                  children: [
-                    FilledButton(
-                      onPressed: () => state.updateProfile(profile.copyWith(interaction: advice.next)),
-                      child: Text(l.adviceYes),
-                    ),
-                    TextButton(onPressed: () => state.dismissAdvice(profile, advice), child: Text(l.adviceNo)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-/// Interruttore: spegne le proposte sul profilo di interazione (docs/adaptivity.md).
-class _AdviceSwitch extends StatelessWidget {
-  const _AdviceSwitch({required this.state, required this.profile});
-  final AppState state;
-  final ChildProfile profile;
-
-  @override
-  Widget build(BuildContext context) {
-    final l = context.l10n;
-    return FutureBuilder<bool>(
-      future: state.adviceEnabled(profile),
-      builder: (context, snap) => Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: SwitchListTile(
-          contentPadding: EdgeInsets.zero,
-          title: Text(l.adviceSwitchTitle),
-          subtitle: Text(l.adviceSwitchHint),
-          value: snap.data ?? true,
-          onChanged: (on) => state.setAdviceEnabled(profile, on),
         ),
       ),
     );
@@ -640,28 +560,14 @@ class _DiaryTabState extends State<_DiaryTab> {
   }
 
   Widget _entryTile(BuildContext context, DiaryEntry e, Story? story) {
-    final answer = _answerLabel(story, e.dialogueAnswer);
     return _carded(ListTile(
       leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
       title: Text(story?.title ?? e.storyId),
       subtitle: Text([
         '${e.when.day}/${e.when.month}/${e.when.year}',
         e.mode == SessionMode.together ? context.l10n.diaryTogether : context.l10n.diaryAlone,
-        if (answer != null) context.l10n.diaryChose(answer),
       ].join(' · ')),
     ));
-  }
-
-  String? _answerLabel(Story? story, String? answerId) {
-    if (story == null || answerId == null) return null;
-    for (final v in story.variants.values) {
-      for (final s in v.screens) {
-        for (final o in s.dialogue?.options ?? const <DialogueOption>[]) {
-          if (o.id == answerId) return o.label;
-        }
-      }
-    }
-    return answerId;
   }
 }
 
@@ -776,7 +682,6 @@ class _WeekSection extends StatelessWidget {
           l10n.weekAllAlone
         else
           l10n.weekTogether(week.together, week.sessions),
-        for (final (story, answer) in week.choices) l10n.weekChoice(story.title, answer),
       ],
       if (week.gestures.isNotEmpty)
         l10n.weekGestures(week.gestures.length, titles(week.gestures.map((s) => s.title)))

@@ -125,10 +125,11 @@
               "id": "spingo",
               "icon": "push",
               "label": "Spingo Teo",
+              "contain": true,
               "reaction": {
-                "bo": "Capisco, il vulcano è forte. Vediamo cosa fa Lia, poi mi dici se ti piace.",
-                "pilu": "Mmh, forse. Guardiamo cosa succede a Lia e poi ci pensiamo.",
-                "tango": "Lo so, anch'io vorrei! Ma aspetta, guardiamo."
+                "bo": "Il vulcano è forte, lo capisco. Ma spingere fa male a Teo. Vediamo cosa fa Lia.",
+                "pilu": "Arrabbiarsi si può. Spingere no: Teo si fa male. Guardiamo cosa fa Lia.",
+                "tango": "Anch'io lo sento, il vulcano! Ma spingere no, Teo si fa male. Guardiamo Lia."
               }
             },
             {
@@ -189,7 +190,7 @@
       },
       "text": "Dentro: uno, due, tre. Fuori: ssssssh, piano, come la lava che scende. Ancora. Dentro: uno, due, tre. Fuori: sssssh. Il vulcano è ancora lì. Ma non esplode più. Sta scendendo.",
       "companionLines": {
-        "bo": "Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.",
+        "bo": "Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Il mio vulcano scende piano.",
         "pilu": "Proviamolo insieme, {nome}: mani sulla pancia, dentro uno due tre, fuori sssssh. Funziona anche con le ali, sai.",
         "tango": "Dai {nome}, facciamolo! Mani sulla pancia. Dentro uno, due, tre. Fuori ssssh. Oh. È più difficile che correre."
       },
@@ -198,9 +199,9 @@
         "seconds": 20,
         "together": "Fatelo insieme, seduti o in piedi: mani sulla pancia, dentro contando fino a tre, fuori soffiando piano. Tre volte, senza fretta.",
         "back": {
-          "bo": "Eccoci, {nome}. Il mio vulcano adesso è piccolo piccolo.",
+          "bo": "Eccoci, {nome}. Il mio vulcano scende, ma ci vuole un po'.",
           "pilu": "Senti com'è lenta la pancia adesso, {nome}? Torniamo da Lia.",
-          "tango": "Fatto. Cioè... fatto piano! Il mio vulcano dorme. Andiamo da Lia, {nome}."
+          "tango": "Fatto. Cioè... fatto piano! Il mio vulcano scende. Andiamo da Lia, {nome}."
         }
       }
     },

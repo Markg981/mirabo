@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../models/activity.dart';
@@ -36,6 +38,43 @@ abstract final class MiraboColors {
 
   /// Tono chiaro per sfondi e superfici colorate.
   static Color pale(Color c, [double amount = 0.82]) => Color.lerp(c, paper, amount)!;
+
+  /// Contrasto tra due colori opachi secondo WCAG 2.x, da 1 a 21.
+  static double contrast(Color a, Color b) {
+    final la = a.computeLuminance(), lb = b.computeLuminance();
+    return (math.max(la, lb) + 0.05) / (math.min(la, lb) + 0.05);
+  }
+
+  /// Riferimento di progetto (WCAG 1.4.3): 4,5:1 per il testo normale, 3:1 per
+  /// il testo grande (almeno 24 px, o 18,67 px in grassetto). docs/accessibility.md.
+  static const minContrast = 4.5;
+  static const minContrastLarge = 3.0;
+
+  /// Il testo da mettere su [bg]: bianco se basta, altrimenti quello fra bianco
+  /// e inchiostro che si legge meglio (giallo, verde, arancio, ciano: inchiostro).
+  static Color onColor(Color bg, {bool large = false}) {
+    final white = contrast(paper, bg);
+    if (white >= (large ? minContrastLarge : minContrast)) return paper;
+    return contrast(ink, bg) > white ? ink : paper;
+  }
+
+  /// Fondo e testo per una selezione con scritte normali: il colore resta se
+  /// bianco o inchiostro ci arrivano a 4,5:1, altrimenti si scurisce.
+  static ({Color bg, Color fg}) readable(Color c) {
+    final fg = onColor(c);
+    if (contrast(fg, c) >= minContrast) return (bg: c, fg: fg);
+    return (bg: forWhiteText(c), fg: paper);
+  }
+
+  /// [bg] scurito quanto basta perché il testo bianco normale arrivi a 4,5:1:
+  /// per le selezioni che portano scritte piccole.
+  static Color forWhiteText(Color bg) {
+    var c = bg;
+    for (var i = 0; i < 30 && contrast(paper, c) < minContrast; i++) {
+      c = deep(c, 0.02);
+    }
+    return c;
+  }
 }
 
 /// Il mondo di una storia: nome breve, icona, colore.
@@ -150,6 +189,11 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
   }
 
   bool get animate => !lowStimulation;
+
+  /// Quante volte la consegna si ripete da sola (autonomia 1) se il bambino non
+  /// tocca niente: in bassa stimolazione una sola, perché anche la voce che
+  /// ritorna è uno stimolo.
+  int get maxPromptRepeats => lowStimulation ? 1 : 2;
 
   /// Le stesse scelte d'aspetto, ma senza adattamenti: per le pagine dei grandi.
   MiraboTokens get adult => MiraboTokens(lowStimulation: lowStimulation);

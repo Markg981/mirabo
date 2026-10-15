@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../audio/child_name.dart';
 import '../../../l10n/l10n.dart';
 import '../../../models/activity.dart';
 import '../../design/palette.dart';
@@ -116,7 +117,7 @@ class _PresentationRoundState extends State<PresentationRound> {
                     onPressed: () {
                       if (last) {
                         setState(() => _phase = _Step.done);
-                        widget.ctx.say(context.l10n.presentationYourTurnSay(widget.ctx.profile.name));
+                        widget.ctx.say(spokenWithName(context.l10n.presentationYourTurnSay, widget.ctx.profile.name));
                       } else {
                         setState(() => _step++);
                         widget.ctx.say(_steps[_step]['text'] as String);
@@ -156,7 +157,7 @@ class _PresentationRoundState extends State<PresentationRound> {
                       color: MiraboColors.sky,
                       height: 60,
                       onPressed: () {
-                        widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'presentation=$code'));
+                        widget.onRound(RoundResult(choice: 'presentation=$code'));
                         widget.onFinished();
                       },
                     ),

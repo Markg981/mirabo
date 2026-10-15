@@ -120,14 +120,14 @@ class Activity {
       );
 }
 
-/// Progresso di un profilo su un'attività. Nessun punteggio visibile al bambino:
-/// serve all'adattività e alle statistiche del genitore.
+/// Stato di un profilo su un'attività, quello che serve a riprenderla: il
+/// livello scelto dal bambino, quante volte l'ha aperta e quando. Nessun
+/// punteggio e nessuna serie di risposte giuste (docs/privacy/mvp-data.md).
 class ActivityProgress {
   const ActivityProgress({
     required this.profileId,
     required this.activityId,
     this.level = 1,
-    this.streak = 0,
     this.sessions = 0,
     this.lastPlayed,
   });
@@ -135,30 +135,26 @@ class ActivityProgress {
   final int profileId;
   final String activityId;
   final int level;
-
-  /// Round consecutivi riusciti al primo tentativo (non fa salire di livello da solo).
-  final int streak;
   final int sessions;
   final DateTime? lastPlayed;
 
-  ActivityProgress copyWith({int? level, int? streak, int? sessions, DateTime? lastPlayed}) => ActivityProgress(
+  ActivityProgress copyWith({int? level, int? sessions, DateTime? lastPlayed}) => ActivityProgress(
         profileId: profileId,
         activityId: activityId,
         level: level ?? this.level,
-        streak: streak ?? this.streak,
         sessions: sessions ?? this.sessions,
         lastPlayed: lastPlayed ?? this.lastPlayed,
       );
 }
 
-/// Esito di un round: quanti tentativi ci sono voluti e quanti aiuti.
+/// Un round finito, come si conserva. Tentativi, aiuti, tempi ed errori restano
+/// nel round mentre si gioca (servono all'aiuto a passi) e non si salvano: non
+/// sono indicatori di niente (analisi 7C, docs/privacy/mvp-data.md).
 class RoundResult {
-  const RoundResult({required this.attempts, required this.hints, this.choice});
-  final int attempts;
-  final int hints;
+  const RoundResult({this.choice});
 
-  /// Per sceneChoice/checklist/hunt/project: cosa è stato scelto (nessuna risposta sbagliata).
+  /// Solo le scelte che l'app usa: la nota di un passo dei piccoli progetti
+  /// (diario dell'adulto) e la scelta a fine presentazione ("lo rifaccio",
+  /// "da solo"), da cui nascono le idee per l'adulto. Nessuna risposta sbagliata.
   final String? choice;
-
-  bool get firstTry => attempts == 1 && hints == 0;
 }

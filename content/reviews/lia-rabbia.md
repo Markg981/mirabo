@@ -76,9 +76,9 @@ Nessuno.
 
 *Insieme:* Fatelo insieme: mani sulla pancia, dentro fino a tre, fuori ssssh. Tre volte.
 
-- **bo** al ritorno: Il mio vulcano adesso è piccolo.
+- **bo** al ritorno: Il mio vulcano scende, piano piano.
 - **pilu** al ritorno: Senti? La pancia va piano piano.
-- **tango** al ritorno: Ssssh... Il vulcano dorme. Torniamo da Lia!
+- **tango** al ritorno: Ssssh... Il vulcano scende. Torniamo da Lia!
 
 ### 7. closing
 
@@ -86,9 +86,9 @@ Nessuno.
 
 > Il vulcano scende piano piano. Lia e Teo fanno una torre nuova, larga larga.
 
-- **bo**: Il mio vulcano adesso è calmo, {nome}. A domani!
-- **pilu**: Stasera provo il respiro del vulcano, {nome}. A domani.
-- **tango**: Domani respiro prima di correre, {nome}. A domani!
+- **bo**: Il mio vulcano adesso è calmo, {nome}.
+- **pilu**: Stasera provo il respiro del vulcano, {nome}.
+- **tango**: Domani respiro prima di correre, {nome}.
 
 ## La storia (6-7 anni)
 
@@ -139,10 +139,10 @@ Nessuno.
 - **bo** chiede: Tu cosa faresti, {nome}?
 - **pilu** chiede: Tu cosa faresti, {nome}?
 - **tango** chiede: Tu cosa faresti, {nome}?
-- Opzione **Spingo Teo**
-  - bo: Capisco, il vulcano è forte. Vediamo cosa fa Lia, poi mi dici se ti piace.
-  - pilu: Mmh, forse. Guardiamo cosa succede a Lia e poi ci pensiamo.
-  - tango: Lo so, anch'io vorrei! Ma aspetta, guardiamo.
+- Opzione **Spingo Teo** (comportamento da contenere: ogni reazione riconosce l'emozione e dice il limite, senza approvare)
+  - bo: Il vulcano è forte, lo capisco. Ma spingere fa male a Teo. Vediamo cosa fa Lia.
+  - pilu: Arrabbiarsi si può. Spingere no: Teo si fa male. Guardiamo cosa fa Lia.
+  - tango: Anch'io lo sento, il vulcano! Ma spingere no, Teo si fa male. Guardiamo Lia.
 - Opzione **Urlo forte**
   - bo: Urlare fa uscire un po' di vulcano, è vero. Guardiamo cosa fa Lia.
   - pilu: Urlare si può. Vediamo se Lia trova anche un altro modo.
@@ -164,7 +164,7 @@ Nessuno.
 
 > Dentro: uno, due, tre. Fuori: ssssssh, piano, come la lava che scende. Ancora. Dentro: uno, due, tre. Fuori: sssssh. Il vulcano è ancora lì. Ma non esplode più. Sta scendendo.
 
-- **bo**: Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Io mi sento già meglio.
+- **bo**: Facciamolo anche noi, {nome}. Mani sulla pancia. Dentro... uno, due, tre. Fuori... ssssh. Il mio vulcano scende piano.
 - **pilu**: Proviamolo insieme, {nome}: mani sulla pancia, dentro uno due tre, fuori sssssh. Funziona anche con le ali, sai.
 - **tango**: Dai {nome}, facciamolo! Mani sulla pancia. Dentro uno, due, tre. Fuori ssssh. Oh. È più difficile che correre.
 
@@ -172,9 +172,9 @@ Nessuno.
 
 *Insieme:* Fatelo insieme, seduti o in piedi: mani sulla pancia, dentro contando fino a tre, fuori soffiando piano. Tre volte, senza fretta.
 
-- **bo** al ritorno: Eccoci, {nome}. Il mio vulcano adesso è piccolo piccolo.
+- **bo** al ritorno: Eccoci, {nome}. Il mio vulcano scende, ma ci vuole un po'.
 - **pilu** al ritorno: Senti com'è lenta la pancia adesso, {nome}? Torniamo da Lia.
-- **tango** al ritorno: Fatto. Cioè... fatto piano! Il mio vulcano dorme. Andiamo da Lia, {nome}.
+- **tango** al ritorno: Fatto. Cioè... fatto piano! Il mio vulcano scende. Andiamo da Lia, {nome}.
 
 ### 9. turn
 
@@ -188,9 +188,9 @@ Nessuno.
 
 > La torre nuova non è la più alta del mondo. È la più larga, perché l'hanno fatta in due. E il vulcano di Lia? È ancora lì dentro, tranquillo. Tornerà, un giorno. Ma adesso Lia sa aspettarlo.
 
-- **bo**: Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde. Ci vediamo domani?
-- **pilu**: Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno. A domani.
-- **tango**: Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio. A domani!
+- **bo**: Ce l'abbiamo fatta, {nome}. Il mio vulcano ora è tutto verde.
+- **pilu**: Ora lo sai anche tu, {nome}: il vulcano passa. Vado a dormire un po', che è giorno.
+- **tango**: Me lo ricordo, {nome}: dentro uno due tre, fuori sssh. Lo provo oggi pomeriggio.
 
 ## Scheda genitore
 

@@ -23,7 +23,7 @@ class _FakeDb implements LocalDb {
   @override
   Future<void> updateProfile(ChildProfile p) async => profile = p;
   @override
-  Future<void> addRounds(int profileId, Activity a, int level, List<RoundResult> r) async {}
+  Future<void> addRounds(int profileId, Activity a, List<RoundResult> r) async {}
   @override
   Future<ActivityProgress> progress(int profileId, String activityId) async =>
       ActivityProgress(profileId: profileId, activityId: activityId);
@@ -174,7 +174,7 @@ void main() {
         offscreen: '',
         levels: const [{}, {}, {}],
       );
-      const ok = RoundResult(attempts: 1, hints: 0);
+      const ok = RoundResult();
       for (var i = 0; i < 5; i++) {
         await state.recordActivity(a, const ActivityProgress(profileId: 1, activityId: 'x', level: 3), List.filled(8, ok));
       }

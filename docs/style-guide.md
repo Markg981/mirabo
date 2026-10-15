@@ -60,6 +60,12 @@ I limiti **[V]** di questa tabella vengono dalle schede delle fasce (`content/ed
 - `label` in prima persona, dal punto di vista del bambino, al massimo 5 parole.
 - `reaction` riconosce la scelta senza giudicarla e riporta alla storia: "Vediamo cosa fa Emma".
   Il compagno non dice mai "giusto", "sbagliato", "brava".
+- Se l'impulso fa male a qualcuno o espone a un rischio (spingere, prendere in braccio un animale
+  selvatico, entrare nell'acqua da soli), l'opzione ha `"contain": true` e la reazione riconosce
+  l'emozione e dice il limite: "Il vulcano è forte, lo capisco. Ma spingere fa male a Teo". Mai
+  "bella idea", "anch'io vorrei", "forse" ([content-safety.md](content-safety.md)).
+- Respirare, contare, un abbraccio aiutano ad aspettare: non spengono un'emozione all'istante.
+  Niente "mi sento già meglio" dopo un respiro.
 - `together` è per il genitore: comincia con "Chiedi:" e contiene due domande, una sul
   personaggio e una sul bambino ("E tu, cosa faresti?").
 - In 3–5, se la storia è `togetherOnly`, la pausa non c'è **[V]**.

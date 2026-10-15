@@ -63,7 +63,7 @@ class _ExploreRoundState extends State<ExploreRound> {
             onPressed: _seen.isEmpty
                 ? null
                 : () {
-                    widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'seen=${_seen.length};of=${_spots.length}'));
+                    widget.onRound(const RoundResult());
                     widget.onFinished();
                   },
             label: _seen.length == _spots.length ? context.l10n.exploreAllSeen : context.l10n.exploreEnough,

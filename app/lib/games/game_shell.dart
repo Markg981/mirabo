@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+import '../audio/child_name.dart';
 import '../l10n/l10n.dart';
 import '../app_state.dart';
 import '../ui/child/companion_widget.dart';
@@ -66,7 +67,7 @@ class _GameShellState extends State<GameShell> {
     if (!mounted || _done) return;
     final name = AppStateScope.read(context).currentProfile!.name;
     setState(() => _done = true);
-    _say(context.l10n.gameWellDoneSay(name));
+    _say(spokenWithName(context.l10n.gameWellDoneSay, name));
   }
 
   void _again() => setState(() {

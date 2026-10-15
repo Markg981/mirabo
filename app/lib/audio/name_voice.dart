@@ -5,6 +5,7 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../features.dart';
 import '../l10n/l10n.dart';
 import '../models/profile.dart';
 
@@ -19,10 +20,16 @@ typedef NameSynth = Future<bool> Function(String text, String language, String p
 /// Un file per profilo: `name_<id>_<impronta>.<ext>`. L'impronta cambia con
 /// nome, lingua e velocità; il nome non compare nel nome del file. Quando cambia,
 /// il file vecchio del profilo si cancella.
+///
+/// Fuori dall'MVP ([Features.spokenName] spento): nessun file si genera e il
+/// nome non va al motore TTS; [forget] resta, per togliere i file lasciati da
+/// una versione precedente.
 class NameVoice {
-  NameVoice({NameSynth? synth, Future<Directory> Function()? cacheDir})
+  NameVoice({NameSynth? synth, Future<Directory> Function()? cacheDir, this.enabled = Features.spokenName})
       : _synth = synth ?? _systemSynth,
         _cacheDir = cacheDir ?? _defaultCacheDir;
+
+  final bool enabled;
 
   /// Stessa velocità del TTS dei lettori: il nome non deve stonare.
   static const speechRate = 0.45;
@@ -35,6 +42,7 @@ class NameVoice {
   /// Il file con il nome del bambino; lo genera la prima volta.
   /// Null se la piattaforma non sa sintetizzare su file: chi chiama ripiega sul TTS.
   Future<File?> fileFor(ChildProfile p) {
+    if (!enabled) return Future.value();
     final ttsCode = AppLanguage.fromCode(p.language).ttsCode;
     final key = '${p.id}|${p.name}|$ttsCode';
     return _pending.putIfAbsent(key, () async {

@@ -95,10 +95,11 @@
               "id": "pulisco",
               "icon": "pick-up",
               "label": "Tolgo la plastica",
+              "contain": true,
               "reaction": {
-                "bo": "Così ai piedi è più pulito. Vediamo se ci pensa anche Emma.",
-                "pilu": "Prima si toglie quello che fa male. Vediamo cosa fa Emma.",
-                "tango": "Via la plastica! Subito! ...Vediamo come fa Emma."
+                "bo": "Così ai piedi è più pulito. Con i guanti, però. Vediamo se ci pensa anche Emma.",
+                "pilu": "Prima si toglie quello che fa male, con i guanti. Vediamo cosa fa Emma.",
+                "tango": "Via la plastica! Con i guanti, eh! ...Vediamo come fa Emma."
               }
             },
             {

@@ -56,9 +56,9 @@
             {
               "label": "Ich schubse Teo",
               "reaction": {
-                "bo": "Ich verstehe, der Vulkan ist stark. Schauen wir, was Lia macht, dann sagst du mir, ob es dir gefällt.",
-                "pilu": "Hmm, vielleicht. Schauen wir, was mit Lia passiert, und dann denken wir darüber nach.",
-                "tango": "Ich weiß, das würde ich auch gern! Aber warte, schauen wir."
+                "bo": "Der Vulkan ist stark, das verstehe ich. Aber Schubsen tut Teo weh. Schauen wir, was Lia macht.",
+                "pilu": "Wütend sein ist in Ordnung. Schubsen nicht: Teo tut sich weh. Schauen wir, was Lia macht.",
+                "tango": "Ich spüre den Vulkan auch! Aber Schubsen nicht, Teo tut sich weh. Schauen wir zu Lia."
               }
             },
             {
@@ -93,16 +93,16 @@
       },
       "text": "Einatmen: eins, zwei, drei. Ausatmen: schschschsch, langsam, wie Lava, die herunterfließt. Noch einmal. Einatmen: eins, zwei, drei. Ausatmen: schschsch. Der Vulkan ist noch da. Aber er bricht nicht mehr aus. Er wird kleiner.",
       "companionLines": {
-        "bo": "Machen wir es auch, {nome}. Hände auf den Bauch. Einatmen... eins, zwei, drei. Ausatmen... schschsch. Mir geht es schon besser.",
+        "bo": "Machen wir es auch, {nome}. Hände auf den Bauch. Einatmen... eins, zwei, drei. Ausatmen... schschsch. Mein Vulkan geht langsam runter.",
         "pilu": "Probieren wir es zusammen, {nome}: Hände auf den Bauch, einatmen eins zwei drei, ausatmen schschsch. Das klappt auch mit Flügeln, weißt du.",
         "tango": "Los, {nome}, machen wir es! Hände auf den Bauch. Einatmen: eins, zwei, drei. Ausatmen: schschsch. Oh. Das ist schwerer als Rennen."
       },
       "gesture": {
         "together": "Macht es zusammen, im Sitzen oder im Stehen: Hände auf den Bauch, einatmen und bis drei zählen, ausatmen und sanft pusten. Dreimal, ganz ohne Eile.",
         "back": {
-          "bo": "Da sind wir, {nome}. Mein Vulkan ist jetzt ganz klein.",
+          "bo": "Da sind wir, {nome}. Mein Vulkan geht runter, aber das dauert ein bisschen.",
           "pilu": "Spürst du, wie langsam dein Bauch jetzt ist, {nome}? Gehen wir zurück zu Lia.",
-          "tango": "Fertig. Also... langsam fertig! Mein Vulkan schläft. Gehen wir zu Lia, {nome}."
+          "tango": "Fertig. Also... langsam fertig! Mein Vulkan geht runter. Gehen wir zu Lia, {nome}."
         }
       }
     },

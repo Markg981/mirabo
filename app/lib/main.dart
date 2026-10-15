@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'app_state.dart';
+import 'features.dart';
 import 'data/usage_tracker.dart';
 import 'content/story_repository.dart';
 import 'data/local_db.dart';
@@ -24,15 +25,22 @@ Future<void> main() async {
   await repo.load();
   final state = AppState(db: db, repo: repo);
   await state.init();
-  await state.backup.load();
-  // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
-  unawaited(state.backup.autoBackup());
+  if (Features.cloudBackup) {
+    await state.backup.load();
+    // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
+    unawaited(state.backup.autoBackup());
+  } else {
+    // Fuori dall'MVP: nessun accesso a Google. Account e chiave lasciati da una
+    // versione precedente si tolgono dal deposito sicuro (la copia su Drive resta
+    // del genitore: l'area adulta dice come eliminarla).
+    await state.backup.forget();
+  }
   // "Insieme" scade se l'app resta a lungo in background (AppState.togetherLapse).
   AppLifecycleListener(
     onHide: state.appHidden,
     onResume: () {
       state.appResumed();
-      unawaited(state.backup.autoBackup());
+      if (Features.cloudBackup) unawaited(state.backup.autoBackup());
     },
   );
   unawaited(state.checkVoices());

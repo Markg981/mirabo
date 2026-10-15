@@ -44,9 +44,9 @@
             {
               "label": "I'll take the plastic away",
               "reaction": {
-                "bo": "That way it's cleaner around her. Let's see if Emma thinks of it too.",
-                "pilu": "First you take away what hurts. Let's see what Emma does.",
-                "tango": "Plastic, out! Right now! ...Let's see how Emma does it."
+                "bo": "That way it's cleaner around her. With gloves on, though. Let's see if Emma thinks of it too.",
+                "pilu": "First you take away what hurts, with gloves on. Let's see what Emma does.",
+                "tango": "Plastic, out! With gloves, okay? ...Let's see how Emma does it."
               }
             },
             {

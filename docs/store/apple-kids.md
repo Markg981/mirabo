@@ -4,7 +4,7 @@
 
 Fonti: App Store Review Guidelines 1.3 (Kids Category), 5.1.1 e 5.1.4 (bambini); modulo App Privacy di App Store Connect. Dettagli del modulo e delle fasce: **da verificare** nella versione corrente di App Store Connect prima dell'invio.
 
-Pratiche reali ricavate dal codice: vedi `app/pubspec.yaml`, `app/lib/data/*`, `docs/backup.md`. Inventario completo dei dati: `docs/privacy/data-inventory.md` (altro lavoro in corso, qui non ne dipendiamo).
+Pratiche reali: build MVP (`app/lib/features.dart`, database v13). Dati: `docs/privacy/mvp-data.md`; inventario tecnico: `docs/privacy/data-inventory.md`. Backup su Drive e nome sintetizzato sono fuori dall'MVP.
 
 ## 1. Fascia d'età Apple
 
@@ -23,10 +23,10 @@ Le fasce Apple per la Kids Category sono "5 and under", "6–8", "9–11".
 | Requisito (Guidelines 1.3 / 5.1.4) | Stato nel codice |
 | --- | --- |
 | Niente link fuori dall'app, acquisti o altre distrazioni commerciali accessibili al bambino, a meno che dietro un gate per adulti | Nessun URL nel codice di `app/lib` (esclusi i testi localizzati), nessun acquisto in-app, nessun link a store o social. Se in futuro se ne aggiungono, vanno dietro `AdultGate` |
-| Gate per adulti | Esiste `AdultGate` (`app/lib/ui/parent/adult_gate.dart`): una moltiplicazione da risolvere. **Non c'è un PIN.** Da verificare con Apple se questo tipo di gate sia accettabile (le guidelines citano come esempio il chiedere di tenere premuto o di risolvere un problema di matematica: da verificare sul testo corrente). Non è un metodo di verifica del consenso |
+| Gate per adulti | PIN dell'area adulta di 4-6 cifre (`app/lib/ui/parent/adult_gate.dart`, `docs/adult-gate.md`), richiesto di nuovo per le operazioni delicate e al ritorno dal background; recupero con codice o con lo sblocco del dispositivo. Non è un metodo di verifica del consenso |
 | Niente pubblicità di terzi, niente analytics di terzi che raccolgano o trasmettano dati identificabili | Nessun SDK di pubblicità o analytics tra le dipendenze (`pubspec.yaml`). Nessun crash reporter. Da rifare a ogni release (vedi checklist) |
 | Privacy policy raggiungibile | Bozza in `docs/privacy/privacy-policy.it.md` / `.en.md`; va pubblicata a un URL e il link va nell'area genitori (dietro gate) e in App Store Connect |
-| Google Sign-In | Presente solo per il backup opt-in nell'area adulta. Le guidelines 4.8 chiedono un'opzione di accesso equivalente quando si usa un login di terzi per l'account principale: qui non c'è un account dell'app, il login serve solo a un backup facoltativo. Da verificare con la revisione |
+| Google Sign-In | Nella build ma inattivo: il backup è fuori dall'MVP e nessuna schermata lo apre. **Consigliato**: togliere `google_sign_in` e `googleapis` dal `pubspec.yaml` prima dell'invio, così il privacy manifest dello SDK non entra nell'app |
 | Dati sensibili e posizione | Nessuna posizione, nessun contatto, nessuna foto, nessun microfono, nessuna fotocamera |
 | Notifiche push, tracciamento (ATT) | Nessuna notifica, nessun tracciamento: non serve la richiesta ATT |
 
@@ -34,19 +34,19 @@ Azioni consigliate: nel `Info.plist` non dichiarare chiavi `NS...UsageDescriptio
 
 ## 3. Area adulta
 
-- Tutto ciò che esce dal dispositivo (accesso Google, backup/ripristino, stampa e condivisione dei PDF, eliminazione dati) sta nell'area genitori dietro `AdultGate`.
+- Tutto ciò che esce dal dispositivo (stampa e condivisione dei PDF) e l'eliminazione dei dati stanno nell'area genitori dietro il PIN.
 - Stampa e condivisione: `Printing.layoutPdf` apre il pannello di sistema; il PDF è generato sul tablet e va dove il genitore sceglie (AirPrint, file, app di condivisione). L'app non lo invia a nessun server.
-- La lettura vocale usa la voce di sistema (flutter_tts) e può sintetizzare il nome del bambino in un file nella cache locale (`name_voice.dart`). Se la voce scelta sul dispositivo sia di rete o locale dipende dal sistema: **da verificare** su iOS.
+- La lettura vocale usa la voce di sistema (flutter_tts, su iOS `AVSpeechSynthesizer`). Il nome del bambino non viene detto né sintetizzato: le battute si dicono senza nome (`docs/privacy/mvp-data.md`).
 
 ## 4. Bozza risposte App Privacy (nutrition label)
 
-Assunzione: l'app non invia al titolare alcun dato. L'accesso Google serve solo al backup sul Drive del genitore; i dati arrivano a Google, non a noi, e sono cifrati con la password del genitore (AES-256-GCM, `docs/backup.md`).
+L'app non invia dati a nessuno: niente backend, niente backup in rete nella build MVP.
 
 | Domanda | Risposta proposta | Motivo / da verificare |
 | --- | --- | --- |
-| Raccogliete dati dall'app? | "No, non raccogliamo dati da questa app" | Il titolare non riceve nulla. **Da verificare** con consulenza: Apple definisce "raccolta" come trasmissione fuori dal dispositivo in modo che noi o partner terzi possiamo accedervi; un file cifrato sul Drive del genitore, che non possiamo leggere, dovrebbe restare fuori. Se la consulenza ritiene il contrario, dichiarare: Contact Info (indirizzo email dell'account Google) e User Content, "collegati all'utente", "non usati per tracciamento", finalità "funzionalità dell'app" |
+| Raccogliete dati dall'app? | "No, non raccogliamo dati da questa app" | Apple definisce "raccolta" la trasmissione fuori dal dispositivo: nella build MVP non ce n'è. Se si riaccende il backup, rivalutare (email dell'account Google, file cifrato) |
 | Tracking | Nessuno | Nessun ATT, nessun identificatore pubblicitario |
-| Dati di terzi (Google Sign-In SDK) | Controllare il privacy manifest dello SDK alla versione in uso | Da verificare a ogni aggiornamento di `google_sign_in` |
+| Dati di terzi (SDK) | Nessuno SDK di terzi attivo | Finché `google_sign_in` resta nel `pubspec.yaml`, controllarne il privacy manifest |
 
 Il testo mostrato in pagina deve restare coerente con la privacy policy e con `docs/store/google-families.md`.
 

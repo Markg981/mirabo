@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/app_state.dart';
 import 'package:mirabo/audio/name_voice.dart';
 import 'package:mirabo/content/story_repository.dart';
-import 'package:mirabo/data/interaction_advice.dart';
 import 'package:mirabo/data/local_db.dart';
 import 'package:mirabo/models/activity.dart';
 import 'package:mirabo/models/profile.dart';
@@ -27,7 +26,7 @@ class _FakeDb implements LocalDb {
   @override
   Future<void> updateProfile(ChildProfile p) async => profile = p;
   @override
-  Future<void> addRounds(int profileId, Activity a, int level, List<RoundResult> r) async {}
+  Future<void> addRounds(int profileId, Activity a, List<RoundResult> r) async {}
   @override
   Future<ActivityProgress> progress(int profileId, String activityId) async =>
       progresses[activityId] ?? ActivityProgress(profileId: profileId, activityId: activityId);
@@ -69,7 +68,7 @@ Activity _activity(String id, ActivityType type) => Activity(
 
 void main() {
   const base = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b6to7, companion: CompanionId.bo);
-  const ok = RoundResult(attempts: 1, hints: 0);
+  const round = RoundResult();
 
   Future<(AppState, _FakeDb, _Repo)> make() async {
     final db = _FakeDb(base);
@@ -83,15 +82,14 @@ void main() {
     return (state, db, repo);
   }
 
-  test('il livello non cambia da solo, nemmeno dopo molti successi o molti errori', () async {
+  test('il livello non cambia da solo: i round non portano né successi né errori', () async {
     final (state, db, _) = await make();
     final a = _activity('x', ActivityType.count);
     const before = ActivityProgress(profileId: 1, activityId: 'x', level: 2);
-    await state.recordActivity(a, before, [ok, ok, ok, ok, ok, ok]);
+    await state.recordActivity(a, before, [round, round, round, round, round, round]);
     expect(db.saved.single.level, 2);
     expect(db.saved.single.sessions, 1);
-    const hard = RoundResult(attempts: 4, hints: 2);
-    await state.recordActivity(a, before, [hard, hard, hard]);
+    await state.recordActivity(a, before, [round, round, round]);
     expect(db.saved.last.level, 2);
   });
 
@@ -107,27 +105,6 @@ void main() {
     expect((await state.setActivityLevel(p.copyWith(level: 1), 0, 3)).level, 1);
     // Non toccano né il profilo né la fascia né il profilo di interazione.
     expect(db.profile, base);
-  });
-
-  test('la proposta dice su quanti round e giorni si basa, e si può spegnere', () async {
-    final (state, db, repo) = await make();
-    repo.acts.add(_activity('traccia', ActivityType.trace));
-    db.roundRows = [
-      for (final d in ['2026-10-10', '2026-10-11'])
-        for (var i = 0; i < 4; i++) {'activity_id': 'traccia', 'attempts': 1, 'hints': 0, 'at': '${d}T10:00:00.000'},
-    ];
-    final p = state.currentProfile!;
-    final advice = await state.interactionAdvice(p);
-    expect(advice?.axis, InteractionAxis.hands);
-    expect(advice?.rounds, 8);
-    expect(advice?.days, 2);
-
-    expect(await state.adviceEnabled(p), isTrue);
-    await state.setAdviceEnabled(p, false);
-    expect(await state.adviceEnabled(p), isFalse);
-    expect(await state.interactionAdvice(p), isNull);
-    await state.setAdviceEnabled(p, true);
-    expect(await state.interactionAdvice(p), isNotNull);
   });
 
   test('nessuna promozione di fascia al compleanno: la fascia e il profilo restano quelli scelti', () {

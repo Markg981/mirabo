@@ -47,7 +47,7 @@ Da un profilo "5-7" non si sa se il bambino abbia cinque o sette anni, e da "7-1
 Cambiare fascia (dal modulo del profilo o confermando quella di prima) cambia solo i contenuti proposti:
 
 - **Dati**: restano diario, gesti, stadio del compagno, livelli delle attività, mensola scelta dal genitore. La mensola automatica si rifà con i materiali della nuova fascia.
-- **Aiuti**: il profilo di interazione resta quello che era, quindi voce, lettura karaoke, testo, font per la dislessia e bassa stimolazione non cambiano. In un profilo esistente cambiare fascia non tocca gli assi.
+- **Aiuti**: il profilo di interazione resta quello che era, quindi voce, lettura karaoke, testo, testo ad alta leggibilità e bassa stimolazione non cambiano. In un profilo esistente cambiare fascia non tocca gli assi.
 - **Nessuna promozione automatica**: la fascia la sceglie solo l'adulto. Nessuna data di nascita, nessun passaggio al compleanno, nessun passaggio per prestazioni (`docs/adaptivity.md`). Il test `age_bands_test.dart` lo fissa insieme ai confini, alla migrazione e alla conferma.
 
 ## Stato dei contenuti (ottobre 2026)

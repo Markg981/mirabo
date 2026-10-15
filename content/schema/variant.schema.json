@@ -207,6 +207,10 @@
                         "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
                         "icon": { "type": "string" },
                         "label": { "type": "string", "minLength": 1 },
+                        "contain": {
+                          "description": "Comportamento da contenere (fa male a qualcuno o espone a un rischio): ogni reazione riconosce l'emozione e dice il limite, senza approvare (docs/content-safety.md)",
+                          "type": "boolean"
+                        },
                         "reaction": { "$ref": "#/$defs/companionLines" }
                       }
                     }

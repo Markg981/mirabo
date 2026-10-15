@@ -8,7 +8,7 @@
 
 ## Avvisi della pre-revisione automatica
 
-- 6-7: 5 schermate, la fascia ne prevede 8-10
+- 6-7: 6 schermate, la fascia ne prevede 7-10
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Materiali di educazione all'aperto e all'ascolto della natura per l'infanzia (da verificare)
 
@@ -70,9 +70,9 @@
 
 > Emma mette Pietrolino nel taschino e torna dalla nonna. Dal taschino, una vocina: "Anche un sassolino piccolo fa cerchi grandi."
 
-- **bo**: Domani ascolto il bosco con te, {nome}. A domani.
-- **pilu**: Domani chiudo gli occhi e ascolto, {nome}. A domani.
-- **tango**: Domani mi fermo un minuto e ascolto, {nome}. A domani!
+- **bo**: Domani ascolto il bosco con te, {nome}.
+- **pilu**: Domani chiudo gli occhi e ascolto, {nome}.
+- **tango**: Domani mi fermo un minuto e ascolto, {nome}.
 
 ## La storia (6-7 anni)
 
@@ -106,14 +106,20 @@
 
 > "Sono Pietrolino," dice il sassolino. "Parlo solo con chi si ferma ad ascoltare. Tu ti sei fermata." Emma si siede sull'erba. "Io ho visto delle cartacce nel ruscello," dice piano. "Ma sono solo una bambina." "Anche un sassolino piccolo fa cerchi grandi nell'acqua," risponde Pietrolino.
 
-### 5. closing
+### 5. consequence
+
+*Illustrazione:* Emma in ginocchio sulla riva guarda alcune cartacce che galleggiano nel ruscello; Pietrolino sul palmo della sua mano; in lontananza la nonna sul tronco.
+
+> Emma guarda le cartacce che galleggiano nel ruscello. L'acqua le porta piano piano più in giù. "Io cosa posso fare?" si chiede.
+
+### 6. closing
 
 *Illustrazione:* Emma torna dalla nonna con il cestino; Pietrolino sbuca dal taschino del cappotto; cerchi nell'acqua dietro di loro.
 
 > Emma mette Pietrolino nel taschino del cappotto e torna dalla nonna. "Nonna, ho trovato un amico. Domani torniamo nel bosco." Dal taschino arriva una vocina: "Il bosco ha tante cose da dire. Basta ascoltare."
 
 - **bo**: Un amico sassolino. Anch'io ne vorrei uno, {nome}. Domani cerco un sasso che sorride.
-- **pilu**: Domani prova a fermarti un minuto e ascoltare, {nome}. Chissà cosa senti. A domani.
+- **pilu**: Domani prova a fermarti un minuto e ascoltare, {nome}. Chissà cosa senti.
 - **tango**: Domani torniamo con Emma, {nome}! E stavolta mi fermo prima di lanciare. Promesso!
 
 ## Scheda genitore

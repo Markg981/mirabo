@@ -6,6 +6,7 @@ Percorso per il genitore: area genitore › scheda Sessione › **I tuoi dati**.
 
 "Elimina tutti i dati di Mirabò su questo tablet" chiede due conferme: un nuovo passaggio dal gate adulto (`AdultGate.open`) e la digitazione di una parola (ELIMINA / DELETE / SUPPRIMER / LÖSCHEN / ELIMINAR). Poi:
 
+- PIN dell'area adulta, codice di recupero, attese e avvisi (`AdultPin.forget`): l'app torna davvero al primo avvio;
 - il backup su Drive viene dimenticato **sul tablet** (chiave e account), senza toccare Drive (`CloudBackup.forget`);
 - la cache della voce del nome (`names/` in application support);
 - il file del database con `-journal`, `-wal`, `-shm` e la chiave `mirabo_db_key` nel secure storage;
@@ -14,7 +15,13 @@ Percorso per il genitore: area genitore › scheda Sessione › **I tuoi dati**.
 
 Profili, progressi, diario, creazioni e calendario della natura stanno solo nel database, quindi spariscono con il file. I PDF stampabili si generano in memoria e vanno al sistema di stampa: l'app non ne tiene copia.
 
+## Eliminare un profilo
+
+Dall'area adulta, con il PIN. `LocalDb.deleteProfile` toglie in una transazione le righe del bambino da ogni tabella (diario, attività, gesti, storie inventate, calendario della natura, mensola, idee del giorno) e le sue impostazioni (`resume.*`, `usage.<id>.*`, `parent_notes_<id>`, `dismissed_ideas.<id>`), senza toccare gli altri profili né le impostazioni della famiglia; poi il file del nome, se c'è. Fino allo schema v12 le chiavi esterne erano spente e la cascata non scattava: la migrazione v13 cancella le righe rimaste. Verifica: `app/test/local_db_test.dart`.
+
 ## Eliminare anche il backup su Google Drive
+
+Fuori dall'MVP (`backup.md`): nella release questo bottone non c'è.
 
 Se il backup è collegato compare "Elimina anche il backup su Google Drive" (stesso gate adulto, poi conferma). Cancella il file nella cartella nascosta dell'app, scollega l'account e revoca il permesso (`CloudBackup.disable(deleteRemote: true)`). L'esito è sempre mostrato in un dialogo. Senza rete (o con l'accesso scaduto) il file remoto non viene cancellato e **non cambia niente** sul tablet: il backup resta collegato e si può riprovare. Il percorso è separato dal precedente apposta: chi elimina i dati del tablet può voler tenere il backup per ripristinarlo.
 

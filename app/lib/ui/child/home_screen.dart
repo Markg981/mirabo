@@ -152,6 +152,7 @@ class _SwitchChild extends StatelessWidget {
     return Semantics(
       button: true,
       label: context.l10n.switchChildA11y(name),
+      onTap: onTap,
       excludeSemantics: true,
       child: Material(
         color: Colors.white,

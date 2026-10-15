@@ -56,9 +56,9 @@
             {
               "label": "Empujo a Teo",
               "reaction": {
-                "bo": "Lo entiendo, el volcán es fuerte. Veamos qué hace Lía y luego me dices si te gusta.",
-                "pilu": "Mmm, quizá. Veamos qué le pasa a Lía y luego lo pensamos.",
-                "tango": "¡Lo sé, yo también querría! Pero espera, miremos."
+                "bo": "El volcán es fuerte, lo entiendo. Pero empujar le hace daño a Teo. Veamos qué hace Lía.",
+                "pilu": "Enfadarse se puede. Empujar no: Teo se hace daño. Veamos qué hace Lía.",
+                "tango": "¡Yo también siento el volcán! Pero empujar no, Teo se hace daño. Miremos a Lía."
               }
             },
             {
@@ -93,16 +93,16 @@
       },
       "text": "Dentro: uno, dos, tres. Fuera: ssssssh, despacio, como la lava que baja. Otra vez. Dentro: uno, dos, tres. Fuera: sssssh. El volcán sigue ahí. Pero ya no explota. Está bajando.",
       "companionLines": {
-        "bo": "Hagámoslo también nosotros, {nome}. Manos en la barriga. Dentro... uno, dos, tres. Fuera... ssssh. Yo ya me siento mejor.",
+        "bo": "Hagámoslo también nosotros, {nome}. Manos en la barriga. Dentro... uno, dos, tres. Fuera... ssssh. Mi volcán baja despacio.",
         "pilu": "Probémoslo juntos, {nome}: manos en la barriga, dentro uno dos tres, fuera sssssh. También funciona con alas, ¿sabes?",
         "tango": "¡Venga, {nome}, hagámoslo! Manos en la barriga. Dentro uno, dos, tres. Fuera ssssh. Oh. Es más difícil que correr."
       },
       "gesture": {
         "together": "Hacedlo juntos, sentados o de pie: manos en la barriga, dentro contando hasta tres, fuera soplando despacio. Tres veces, sin prisa.",
         "back": {
-          "bo": "Ya está, {nome}. Mi volcán ahora es pequeñito.",
+          "bo": "Ya está, {nome}. Mi volcán baja, pero tarda un poco.",
           "pilu": "¿Notas qué lenta va la barriga ahora, {nome}? Volvamos con Lia.",
-          "tango": "Hecho. Bueno... ¡hecho despacio! Mi volcán duerme. Vamos con Lia, {nome}."
+          "tango": "Hecho. Bueno... ¡hecho despacio! Mi volcán baja. Vamos con Lia, {nome}."
         }
       }
     },

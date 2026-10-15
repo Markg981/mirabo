@@ -1,5 +1,7 @@
 # Backup su Google Drive (opt-in)
 
+> **Fuori dall'MVP.** La release non contiene il backup: è spento a compilazione (`Features.cloudBackup`, `app/lib/features.dart`) e il manifest Android della release non ha il permesso `INTERNET`. Per riaccenderlo servono `--dart-define=MIRABO_CLOUD_BACKUP=true`, togliere la rimozione di `INTERNET` dal manifest e una nuova valutazione privacy ([privacy/mvp-data.md](privacy/mvp-data.md)). Il resto di questa pagina descrive la funzione quando è accesa.
+
 Di base i dati restano solo sul tablet, nel database cifrato. Il genitore può attivare dall'area genitore (scheda *Sessione*) un backup sul **proprio** Google Drive.
 
 ## Come funziona

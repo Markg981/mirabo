@@ -16,7 +16,6 @@ class SceneChoiceRound extends RoundWidget {
 class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
   List<Map<String, dynamic>> get _scenes => (widget.level['scenes'] as List).cast<Map<String, dynamic>>();
   int? _chosen;
-  String? _firstChoice;
 
   @override
   int get roundCount => _scenes.length;
@@ -24,7 +23,6 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
   @override
   void next() {
     _chosen = null;
-    _firstChoice = null;
     super.next();
   }
 
@@ -75,10 +73,7 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                     size: 170,
                     selected: chosen == i,
                     onTap: () {
-                      setState(() {
-                        _chosen = i;
-                        _firstChoice ??= options[i]['label'] as String;
-                      });
+                      setState(() => _chosen = i);
                       widget.ctx.say(options[i]['outcome'] as String);
                     },
                   ),
@@ -103,7 +98,7 @@ class _SceneChoiceRoundState extends RoundState<SceneChoiceRound> {
                       color: MiraboColors.leaf,
                       icon: Icons.arrow_forward_rounded,
                       iconAfter: true,
-                      onPressed: () => complete(choice: _firstChoice),
+                      onPressed: () => complete(),
                       label: index + 1 >= roundCount ? context.l10n.finish : context.l10n.next,
                     ),
                   ],

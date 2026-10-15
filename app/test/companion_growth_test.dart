@@ -90,7 +90,8 @@ void main() {
     expect(await state.recordGesture(base, 'notte-lucciole', now: day), isTrue);
     expect(await state.recordGesture(base, 'albero-silenzioso', now: day.add(const Duration(days: 1))), isTrue);
 
-    expect(db.profile.gesturesDone, 3);
+    // Nessun contatore sul profilo: il compagno non cresce e niente si conta.
+    expect(db.profile.gesturesDone, 0);
     expect(state.currentProfile!.companionStage, 0);
   });
 }

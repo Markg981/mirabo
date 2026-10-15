@@ -632,6 +632,18 @@ abstract class AppLocalizations {
   /// **'Ricomincio'**
   String get traceRestart;
 
+  /// No description provided for @traceOtherWay.
+  ///
+  /// In it, this message translates to:
+  /// **'Lo faccio con il dito sul tavolo'**
+  String get traceOtherWay;
+
+  /// No description provided for @shapeHole.
+  ///
+  /// In it, this message translates to:
+  /// **'Buco: {shape}'**
+  String shapeHole(Object shape);
+
   /// No description provided for @gameWellDone.
   ///
   /// In it, this message translates to:

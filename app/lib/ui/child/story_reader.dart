@@ -6,6 +6,7 @@ import 'package:just_audio/just_audio.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
+import '../../audio/child_name.dart';
 import '../../audio/narration.dart';
 import '../../content/story_repository.dart';
 import '../../models/profile.dart';
@@ -134,7 +135,7 @@ class _StoryReaderState extends State<StoryReader> {
     _player.dispose();
     if (!_recorded) {
       // Uscita a metà: resta nel diario come non completata.
-      _state.recordStory(widget.story, completed: false, dialogueAnswer: _dialogueAnswer);
+      _state.recordStory(widget.story, completed: false);
     }
     super.dispose();
   }
@@ -142,7 +143,7 @@ class _StoryReaderState extends State<StoryReader> {
   StoryScreen get _screen => _variant.screens[_index];
   bool get _isLast => _index == _variant.screens.length - 1;
 
-  String _withName(String s) => s.replaceAll('{nome}', _profile.name);
+  String _withName(String s) => fillName(s, _profile.name);
 
   /// Solo da soli: la lezione in tre tempi di questa schermata.
   LessonRun? get _lessonRun => _screen.lesson != null && _mode == SessionMode.alone
@@ -190,7 +191,9 @@ class _StoryReaderState extends State<StoryReader> {
       if (bytes == null) return false;
       final narration = await storyAudioFile(widget.story.id, audio.file, bytes);
       final name = audio.nameSlots.isEmpty ? null : await _state.nameVoice.fileFor(_profile);
-      if (audio.nameSlots.isNotEmpty && name == null) return false;
+      // Con il nome nella voce spento (fuori dall'MVP) la registrazione si sente
+      // intera, senza nome; acceso e non disponibile, si ripiega sul TTS.
+      if (audio.nameSlots.isNotEmpty && name == null && _state.nameVoice.enabled) return false;
       // Il bambino è già andato avanti: questa schermata non si legge più.
       if (!mounted || index != _index) return true;
       _offsets = narrationOffsets(audio.nameSlots);
@@ -273,7 +276,7 @@ class _StoryReaderState extends State<StoryReader> {
     if (_isLast) {
       _recorded = true;
       await _state.saveStoryPosition(_profile, widget.story.id, 0);
-      await _state.recordStory(widget.story, completed: true, dialogueAnswer: _dialogueAnswer);
+      await _state.recordStory(widget.story, completed: true);
       if (mounted) Navigator.of(context).pop();
       return;
     }
@@ -608,7 +611,7 @@ class _StoryReaderState extends State<StoryReader> {
                 child: Text(
                   o.label,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: _tryId == o.id ? Colors.white : MiraboColors.ink,
+                        color: _tryId == o.id ? MiraboColors.onColor(tokens.tint(MiraboColors.sky), large: true) : MiraboColors.ink,
                       ),
                 ),
               ),
@@ -692,7 +695,9 @@ class _StoryReaderState extends State<StoryReader> {
                 child: Text(
                   o.label,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: _dialogueAnswer == o.id ? Colors.white : MiraboColors.ink,
+                        color: _dialogueAnswer == o.id
+                            ? MiraboColors.onColor(MiraboTokens.of(context).tint(MiraboColors.sky), large: true)
+                            : MiraboColors.ink,
                       ),
                 ),
               ),

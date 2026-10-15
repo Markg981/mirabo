@@ -56,9 +56,9 @@
             {
               "label": "Ich räume selbst auf",
               "reaction": {
-                "bo": "Mutig. Aber der Schuh ist schmutzig... schauen wir, wie Emma es macht.",
-                "pilu": "Gute Idee. Vielleicht braucht sie vorher etwas. Schauen wir.",
-                "tango": "Ja! Sofort! ...Warte, schauen wir, was Emma macht."
+                "bo": "Du willst dem Bach helfen. Aber ins Wasser geht man nicht allein: Ein Erwachsener muss dabei sein. Schauen wir, wie Emma es macht.",
+                "pilu": "Helfen geht, mit einem Erwachsenen daneben und mit Handschuhen. Schauen wir, was Emma macht.",
+                "tango": "Ja, helfen wir! ...Warte, nicht allein ins Wasser. Schauen wir, was Emma macht."
               }
             },
             {

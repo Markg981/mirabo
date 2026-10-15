@@ -102,10 +102,24 @@ class _TraceRoundState extends RoundState<TraceRound> {
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 12),
-          child: TextButton.icon(
-            icon: const Icon(Icons.refresh_rounded),
-            label: Text(context.l10n.traceRestart),
-            onPressed: lastCorrect == true ? null : () => setState(_strokes.clear),
+          child: Wrap(
+            spacing: 16,
+            alignment: WrapAlignment.center,
+            children: [
+              TextButton.icon(
+                icon: const Icon(Icons.refresh_rounded),
+                label: Text(context.l10n.traceRestart),
+                onPressed: lastCorrect == true ? null : () => setState(_strokes.clear),
+              ),
+              // Chi non riesce a trascinare il dito sullo schermo (o usa lo screen
+              // reader) traccia la lettera sul tavolo: il round va avanti senza
+              // giudizio, come nelle cacce (docs/accessibility.md).
+              TextButton.icon(
+                icon: const Icon(Icons.pan_tool_alt_rounded),
+                label: Text(context.l10n.traceOtherWay),
+                onPressed: lastCorrect == true ? null : complete,
+              ),
+            ],
           ),
         ),
       ],

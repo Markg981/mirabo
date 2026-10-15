@@ -17,6 +17,9 @@
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 - `adaptivity.md`: adattività esplicita (livello scelto a fine attività, proposte al genitore, dati e base giuridica).
 - `adult-gate.md`: PIN dell'area adulta, tentativi, recupero (codice di recupero, blocco del tablet che l'adulto può spegnere, avviso dopo un reset) e percorsi di ingresso verificati.
+- `content-safety.md`: qualità e sicurezza dei contenuti (analisi 7A): comportamenti da contenere con il limite detto (`contain`), nessuna strategia miracolosa, audio legato al testo approvato, diritti di immagini e audio (`rights.json`), temi sensibili solo con una competenza appropriata; controlli `studio/check_messages.py` e `studio/catalog.py --release`.
+- `accessibility.md`: accessibilità dei percorsi essenziali (analisi 7B): contrasto, testo ingrandito, nomi e azioni per lo screen reader, alternative ai trascinamenti, bassa stimolazione oltre i colori, registro degli esiti con TalkBack e VoiceOver; nessuna CAA né beneficio per la dislessia dichiarati.
+- `privacy/mvp-data.md`: dati della release MVP (analisi 7C): finalità e cancellazione di ogni dato, raccolta tolta (tentativi, aiuti, risposte), backup cloud e nome sintetizzato fuori dall'MVP, cancellazione del profilo; campi del titolare controllati da `studio/check_privacy.py`.
 - `child-paths.md`: i percorsi essenziali bambino-genitore (avvio, scelta, aiuto, errore, cambio esperienza, uscita, ripresa, accesso adulto); "insieme" e "da solo" definiti; cosa si salva per ogni esperienza; nessun invito a restare o tornare (controllo `studio/check_retention.py`).
 - `compliance/`: bozze di governance di privacy e sicurezza (DPIA, programma di sicurezza, conservazione, incidenti e richieste, fornitori, checklist MASVS), da validare con un consulente.
 - `onboarding.md`: onboarding dell'adulto al primo avvio (60 secondi), stato e criterio di test.
@@ -37,9 +40,9 @@
 | Età | 3–10, tre fasce (3–5, 6–7, 8–10), profili per bambino |
 | Insieme / da solo | Dichiarazione dell'adulto, non verifica: cambia cosa si propone e cosa si apre. Ogni avvio parte da "da solo"; "insieme" scade cambiando bambino o dopo 30 minuti in background (`child-paths.md`) |
 | Piattaforma | Flutter, iOS 15+ e Android 8+, tablet prima di tutto |
-| Dati | Locale di default (SQLite cifrato); Drive personale o account cloud opt-in |
+| Dati | Solo sul dispositivo (SQLCipher cifrato): profilo minimo, preferenze, stato per riprendere, ciò che la famiglia crea o segna. Niente tentativi, aiuti né risposte ai dialoghi. Backup su Drive fuori dall'MVP, release senza rete (`privacy/mvp-data.md`) |
 | Compagno | Uno per bambino, scelto tra Bo (mammut), Pilù (civetta), Tango (volpe). L'adulto lo cambia dal profilo senza perdere niente: storie, preferenze e lavori stanno sul profilo |
-| Nome del bambino | Pronunciato con TTS di sistema, generato una volta e messo in cache |
+| Nome del bambino | Fuori dall'MVP nella voce: non va al motore TTS, le battute si dicono senza nome (`Features.spokenName`) |
 | Motivazione | Progressione narrativa; nessun punto, stella, streak o notifica |
 | Ponte con il mondo reale | Pausa di gesto nelle storie (il bambino fa il gesto del protagonista, poi si riprende) e cacce al tesoro (si cerca con le mani, si dice a voce, si rimette a posto); nel catalogo di lancio nove attività pratiche con la loro scheda, tre delle quali Montessori (`montessori.md`). Il tablet non verifica e non premia |
 | Crescita del compagno | Fuori dall'MVP: il compagno non cresce a soglie, né con le settimane né con l'uso né con i gesti segnati (nessuna conferma porta un premio). Chi era già cresciuto resta allo stadio raggiunto |

@@ -44,9 +44,9 @@
             {
               "label": "Ich räume das Plastik weg",
               "reaction": {
-                "bo": "Dann ist es an ihrem Fuß sauberer. Mal sehen, ob Emma auch daran denkt.",
-                "pilu": "Zuerst nimmt man weg, was wehtut. Mal sehen, was Emma macht.",
-                "tango": "Weg mit dem Plastik! Sofort! ...Mal sehen, wie Emma es macht."
+                "bo": "Dann ist es an ihrem Fuß sauberer. Aber mit Handschuhen. Mal sehen, ob Emma auch daran denkt.",
+                "pilu": "Zuerst nimmt man weg, was wehtut, mit Handschuhen. Mal sehen, was Emma macht.",
+                "tango": "Weg mit dem Plastik! Mit Handschuhen, ja? ...Mal sehen, wie Emma es macht."
               }
             },
             {

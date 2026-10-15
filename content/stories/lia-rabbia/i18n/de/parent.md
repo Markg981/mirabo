@@ -22,6 +22,7 @@ Die Version für die Kleinsten hat eine Pause, um drei Gesichtern einen Namen zu
 - Die Wut bestrafen statt der Handlung: Wütend sein ist erlaubt, schlagen nicht.
 - Es an seiner Stelle lösen (den Turm wieder aufbauen): Das nimmt ihm die Wiedergutmachung.
 - Den Atem verlangen, wenn der Vulkan schon ausgebrochen ist: Die Geste lernt man in Ruhe und nutzt sie, wenn die Wut steigt.
+- Erwarten, dass der Atem die Wut sofort löscht: Er hilft zu warten, bis sie sinkt. Manchmal braucht es viele Atemzüge, manchmal reicht es nicht. Dann bleibt man in der Nähe, ohne Eile.
 
 ## Wenn Sie sich Sorgen machen
 

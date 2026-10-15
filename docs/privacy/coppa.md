@@ -10,7 +10,9 @@ Il §312.2 definisce "web site or online service directed to children" in base a
 
 Conseguenze:
 - Una dichiarazione "ho più di 13 anni" non cambia la natura dell'app: l'age screen neutro serve ai servizi *mixed audience*, non a quelli diretti ai bambini. Non lo implementiamo.
-- Il gate per adulti (`AdultGate`, moltiplicazione; **non c'è un PIN**) tiene il bambino fuori dall'area genitori, ma non è un metodo di consenso verificabile: non verifica che chi risponde sia un genitore.
+- Il PIN dell'area adulta (`docs/adult-gate.md`) tiene il bambino fuori dall'area genitori, ma non è un metodo di consenso verificabile: non verifica che chi lo digita sia un genitore.
+
+**Distribuzione.** La release MVP non è distribuita negli Stati Uniti. È una scelta di distribuzione, non una dichiarazione di conformità COPPA: questa pagina resta l'analisi da completare prima di un'eventuale distribuzione.
 
 ## 2. Raccolte attuali e consenso
 
@@ -19,8 +21,8 @@ COPPA si applica a chi *raccoglie* informazioni personali da bambini under 13 (i
 | Raccolta | Chi la riceve | Valutazione |
 | --- | --- | --- |
 | Profili, diario, progressi, tempi d'uso, osservazioni | Solo il dispositivo; il titolare non li riceve | Nessuna raccolta da parte dell'operatore: il consenso verificabile non scatta. **Da verificare**: se la sola presenza dei dati nell'app senza trasmissione sia "collection" (§312.2 parla di raccolta online o richiesta al bambino di inviare) |
-| Voce del nome con TTS di sistema | Dispositivo | Come sopra; il testo è fornito dal genitore |
-| Login Google del genitore per il backup | Google; il file cifrato sta sul Drive del genitore | Il titolare non riceve email né file. L'account è del genitore, adulto. Non è raccolta del titolare da un bambino. Se invece la consulenza ritenesse che il file sul Drive è "controllato" dal titolare, il file è cifrato con la password del genitore e comunque riguarda dati dei figli: servirebbe consenso del genitore, che il genitore dà attivando il backup con il suo account. **Da verificare** se l'attivazione con login Google basti come metodo di §312.5(b) (probabilmente no) |
+| Voce del nome con TTS di sistema | Fuori dall'MVP: non esiste nella release | — |
+| Login Google del genitore per il backup (fuori dall'MVP) | Google; il file cifrato sta sul Drive del genitore | Il titolare non riceve email né file. L'account è del genitore, adulto. Non è raccolta del titolare da un bambino. Se invece la consulenza ritenesse che il file sul Drive è "controllato" dal titolare, il file è cifrato con la password del genitore e comunque riguarda dati dei figli: servirebbe consenso del genitore, che il genitore dà attivando il backup con il suo account. **Da verificare** se l'attivazione con login Google basti come metodo di §312.5(b) (probabilmente no) |
 | Stampa/condivisione PDF | Scelta del genitore verso app di terzi | Il PDF contiene i contenuti scelti dal genitore; il titolare non riceve nulla |
 | Analytics, pubblicità, ID | Non esistono | Nessun consenso da chiedere. Resta fermo il divieto di aggiungerli senza revisione |
 
@@ -50,4 +52,4 @@ Il PIN o gate del genitore **non** è consenso verificabile: nessun metodo sopra
 
 - Se il backup Drive sia o no raccolta del titolare.
 - Se serva un contatto di privacy per gli USA e una dichiarazione apposita nella policy inglese.
-- Se il gate matematico sia sufficiente per gli store o se serva un PIN dell'adulto (che comunque non sarebbe un consenso).
+- Il PIN dell'adulto c'è: valutare se basta agli store (non è comunque un consenso).

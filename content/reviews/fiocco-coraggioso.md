@@ -85,7 +85,7 @@
 > "Anche le cose che durano poco possono essere meravigliose, vero?" chiede Emma. "Proprio così," risponde Pietrolino. "Il coraggio non sta nel restare fermi, ma nel provarci." Emma torna a casa, lasciando le impronte nella neve. La nonna l'aspetta sulla porta.
 
 - **bo**: Domani provo una cosa che mi fa un po' paura, {nome}. Una cosa piccola. Ci provo.
-- **pilu**: Quando una cosa nuova ti fa paura, prova a dire "ci provo", {nome}. Come il fiocco. A domani.
+- **pilu**: Quando una cosa nuova ti fa paura, prova a dire "ci provo", {nome}. Come il fiocco.
 - **tango**: Domani provo a fare una cosa nuova, {nome}! E se sbaglio, riprovo. Ciao!
 
 ## Scheda genitore
@@ -102,6 +102,7 @@ Da leggere in `content/stories/fiocco-coraggioso/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

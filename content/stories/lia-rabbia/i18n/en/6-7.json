@@ -56,9 +56,9 @@
             {
               "label": "I push Teo",
               "reaction": {
-                "bo": "I understand, the volcano is strong. Let's see what Lia does, then tell me if you like it.",
-                "pilu": "Hmm, maybe. Let's see what happens to Lia and then we'll think about it.",
-                "tango": "I know, I'd like to as well! But wait, let's watch."
+                "bo": "The volcano is strong, I understand. But pushing hurts Teo. Let's see what Lia does.",
+                "pilu": "It's okay to be angry. Pushing isn't: Teo gets hurt. Let's see what Lia does.",
+                "tango": "I can feel the volcano too! But no pushing, Teo gets hurt. Let's watch Lia."
               }
             },
             {
@@ -93,16 +93,16 @@
       },
       "text": "In: one, two, three. Out: ssssssh, gently, like lava flowing down. Again. In: one, two, three. Out: sssssh. The volcano is still there. But it doesn't erupt any more. It's going down.",
       "companionLines": {
-        "bo": "Let's do it too, {nome}. Hands on your tummy. In... one, two, three. Out... ssssh. I feel better already.",
+        "bo": "Let's do it too, {nome}. Hands on your tummy. In... one, two, three. Out... ssssh. My volcano is going down slowly.",
         "pilu": "Let's try it together, {nome}: hands on your tummy, in one two three, out sssssh. It works with wings too, you know.",
         "tango": "Come on {nome}, let's do it! Hands on your tummy. In one, two, three. Out ssssh. Oh. It's harder than running."
       },
       "gesture": {
         "together": "Do it together, sitting or standing: hands on your tummies, breathe in counting to three, breathe out blowing gently. Three times, no rush.",
         "back": {
-          "bo": "Here we are, {nome}. My volcano is teeny tiny now.",
+          "bo": "Here we are, {nome}. My volcano is going down, but it takes a while.",
           "pilu": "Can you feel how slow your tummy is now, {nome}? Let's go back to Lia.",
-          "tango": "Done. I mean... done slowly! My volcano is asleep. Let's go to Lia, {nome}."
+          "tango": "Done. I mean... done slowly! My volcano is going down. Let's go to Lia, {nome}."
         }
       }
     },

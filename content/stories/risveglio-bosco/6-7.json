@@ -94,6 +94,7 @@
               "id": "in-braccio",
               "icon": "hold",
               "label": "Prendo il riccio in braccio",
+              "contain": true,
               "reaction": {
                 "bo": "Ha gli aculei... e forse ha paura di noi. Vediamo cosa fa Emma.",
                 "pilu": "Gli animali del bosco a volte si spaventano se li tocchiamo. Vediamo cosa fa Emma.",

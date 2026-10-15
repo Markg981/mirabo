@@ -303,7 +303,6 @@ class DiaryEntry {
     required this.mode,
     required this.completed,
     required this.when,
-    this.dialogueAnswer,
   });
 
   final int profileId;
@@ -311,7 +310,6 @@ class DiaryEntry {
   final SessionMode mode;
   final bool completed;
   final DateTime when;
-  final String? dialogueAnswer;
 }
 
 /// Un gesto di una storia fatto davvero, segnato dal genitore nel diario.

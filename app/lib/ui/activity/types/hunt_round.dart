@@ -37,10 +37,11 @@ class _HuntRoundState extends RoundState<HuntRound> {
     widget.ctx.say(context.l10n.huntTellMe);
   }
 
-  void _nextItem({required bool found}) {
+  /// Trovata o no, si va avanti uguale: l'esito non si salva (docs/privacy/mvp-data.md).
+  void _nextItem() {
     final last = index + 1 >= roundCount;
     setState(() => _found = false);
-    complete(choice: found ? 'hunt=found' : 'hunt=skip');
+    complete();
     if (!last) _ask(index);
   }
 
@@ -88,7 +89,7 @@ class _HuntRoundState extends RoundState<HuntRound> {
                       icon: Icons.arrow_forward_rounded,
                       iconAfter: true,
                       color: MiraboColors.leaf,
-                      onPressed: () => _nextItem(found: true),
+                      onPressed: _nextItem,
                     ),
                   ]
                 : [
@@ -110,7 +111,7 @@ class _HuntRoundState extends RoundState<HuntRound> {
                     ChunkyButton(
                       label: context.l10n.huntNotFound,
                       color: MiraboColors.sky,
-                      onPressed: () => _nextItem(found: false),
+                      onPressed: _nextItem,
                     ),
                   ],
           ),

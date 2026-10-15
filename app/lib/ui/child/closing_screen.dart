@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app_state.dart';
+import '../../audio/child_name.dart';
 import '../../l10n/l10n.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
@@ -38,7 +39,7 @@ class _ClosingScreenState extends State<ClosingScreen> {
   void _say() {
     if (!mounted) return;
     final profile = AppStateScope.read(context).currentProfile!;
-    _voice.say(profile.language, '${context.l10n.closingTitle(profile.name)} ${context.l10n.closingBody}');
+    _voice.say(profile.language, '${spokenWithName(context.l10n.closingTitle, profile.name)} ${context.l10n.closingBody}');
   }
 
   @override

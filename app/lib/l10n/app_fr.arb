@@ -97,6 +97,8 @@
   "spellWord": "Compose le mot",
   "tracePrompt": "Suis avec le doigt : {label}",
   "traceRestart": "Je recommence",
+  "traceOtherWay": "Je le trace du doigt sur la table",
+  "shapeHole": "Trou : {shape}",
 
   "gameWellDone": "Bravo, {name} !",
   "gameNiceGame": "Quelle belle partie.",

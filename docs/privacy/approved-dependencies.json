@@ -21,7 +21,8 @@
     "printing": {"network": "none", "note": "Dialogo di stampa/condivisione del sistema; la sua dipendenza http serve a networkImage, che il codice non usa"},
     "local_auth": {"network": "none", "note": "Sblocco del dispositivo solo per recuperare il PIN adulti (docs/adult-gate.md); l'app riceve solo l'esito"},
     "flutter_test": {"network": "none", "dev": true, "note": "Solo test"},
-    "flutter_lints": {"network": "none", "dev": true, "note": "Solo analisi"}
+    "flutter_lints": {"network": "none", "dev": true, "note": "Solo analisi"},
+    "sqflite_common_ffi": {"network": "none", "dev": true, "note": "Solo test: SQLite vero per test/local_db_test.dart, non entra nell'app. Il pacchetto sqlite3 procura la libreria nativa alla build dei test (macchina di sviluppo o CI)"}
   },
   "transitive": {
     "_discoveryapis_commons": "googleapis",
@@ -37,6 +38,7 @@
     "collection": "flutter",
     "fake_async": "flutter_test",
     "ffi": "plugin nativi",
+    "file": "sqflite_common_ffi",
     "fixnum": "protobuf/cryptography",
     "flutter_plugin_android_lifecycle": "local_auth",
     "flutter_secure_storage_linux": "flutter_secure_storage",
@@ -45,6 +47,7 @@
     "flutter_secure_storage_web": "flutter_secure_storage",
     "flutter_secure_storage_windows": "flutter_secure_storage",
     "flutter_web_plugins": "flutter",
+    "glob": "sqflite_common_ffi",
     "google_cloud": "googleapis_auth",
     "google_identity_services_web": "google_sign_in",
     "google_sign_in_android": "google_sign_in",
@@ -75,6 +78,7 @@
     "matcher": "flutter_test",
     "material_color_utilities": "flutter",
     "meta": "flutter",
+    "native_toolchain_c": "sqflite_common_ffi",
     "objective_c": "plugin iOS",
     "package_config": "toolchain native",
     "path_parsing": "pdf",
@@ -94,6 +98,7 @@
     "sky_engine": "flutter",
     "source_span": "flutter_test",
     "sqflite_common": "sqflite_sqlcipher",
+    "sqlite3": "sqflite_common_ffi",
     "stack_trace": "flutter_test",
     "stream_channel": "flutter_test",
     "string_scanner": "flutter_test",
@@ -111,7 +116,7 @@
     "yaml": "toolchain native"
   },
   "android_permissions": {
-    "android.permission.INTERNET": "Solo per il backup opt-in su Google Drive. Nei manifest debug e profile e' aggiunto dal template Flutter (hot reload)",
+    "android.permission.INTERNET": "Tolto dalla release con tools:node=\"remove\" nel manifest main finché il backup su Drive è fuori dall'MVP (app/lib/features.dart). Resta nei manifest debug e profile del template Flutter (hot reload). Riaccendere il backup richiede di togliere la rimozione",
     "android.permission.USE_BIOMETRIC": "Recupero del PIN adulti con lo sblocco del dispositivo (local_auth); nessuna rete"
   },
   "ios_privacy_keys": ["NSFaceIDUsageDescription"],

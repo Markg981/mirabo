@@ -50,10 +50,10 @@
 - **bo** chiede: Tu cosa faresti, {nome}?
 - **pilu** chiede: Tu cosa faresti, {nome}?
 - **tango** chiede: Tu cosa faresti, {nome}?
-- Opzione **Tolgo la plastica**
-  - bo: Così ai piedi è più pulito. Vediamo se ci pensa anche Emma.
-  - pilu: Prima si toglie quello che fa male. Vediamo cosa fa Emma.
-  - tango: Via la plastica! Subito! ...Vediamo come fa Emma.
+- Opzione **Tolgo la plastica** (comportamento da contenere: ogni reazione riconosce l'emozione e dice il limite, senza approvare)
+  - bo: Così ai piedi è più pulito. Con i guanti, però. Vediamo se ci pensa anche Emma.
+  - pilu: Prima si toglie quello che fa male, con i guanti. Vediamo cosa fa Emma.
+  - tango: Via la plastica! Con i guanti, eh! ...Vediamo come fa Emma.
 - Opzione **Le sto vicino**
   - bo: Stare vicino è già tanto. Anch'io lo vorrei, se fossi triste.
   - pilu: A volte chi è triste ha bisogno di compagnia, non di parole. Guardiamo Emma.
@@ -92,7 +92,7 @@
 > Emma rimette Pietrolino nel taschino. "Torno presto, quercia. Promesso." E mentre lei e la nonna tornano a casa, vicino alle radici spunta un piccolo germoglio verde.
 
 - **bo**: Un germoglio! Piccolo come me. Domani cerco un seme anch'io, {nome}.
-- **pilu**: Hai visto, {nome}? Nessuna magia: guanti, semi, un po' d'acqua e un po' di compagnia. A domani.
+- **pilu**: Hai visto, {nome}? Nessuna magia: guanti, semi, un po' d'acqua e un po' di compagnia.
 - **tango**: Domani pianto un seme in un vaso, {nome}! E lo guardo ogni giorno. Anche se ci mette tanto!
 
 ## Scheda genitore
@@ -109,6 +109,7 @@ Da leggere in `content/stories/albero-silenzioso/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

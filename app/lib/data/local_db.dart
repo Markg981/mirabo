@@ -25,7 +25,7 @@ class LocalDb {
   LocalDb._(this._db);
   Database _db;
 
-  static const _version = 12;
+  static const _version = 13;
   static const _keyName = 'mirabo_db_key';
 
   /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
@@ -43,106 +43,159 @@ class LocalDb {
     final dir = await getApplicationSupportDirectory();
     final path = p.join(dir.path, 'mirabo.db');
     final key = await _databaseKey(path);
+    var minimized = false;
     final db = await openDatabase(
       path,
       password: key,
       version: _version,
-      onCreate: (db, _) async {
-        await db.execute('''
-          CREATE TABLE profiles (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            age_band TEXT NOT NULL,
-            companion TEXT NOT NULL,
-            enabled_worlds TEXT NOT NULL,
-            safety_together_only INTEGER NOT NULL DEFAULT 1,
-            last_mode TEXT NOT NULL DEFAULT 'together',
-            dyslexia_font INTEGER NOT NULL DEFAULT 0,
-            low_stimulation INTEGER NOT NULL DEFAULT 0,
-            alone_minutes INTEGER NOT NULL DEFAULT 20,
-            stories_completed INTEGER NOT NULL DEFAULT 0,
-            language TEXT NOT NULL DEFAULT 'it',
-            gestures_done INTEGER NOT NULL DEFAULT 0,
-            stage_floor INTEGER NOT NULL DEFAULT 0,
-            shelf TEXT,
-            read_along INTEGER NOT NULL DEFAULT 1,
-            shelf_auto TEXT,
-            shelf_rotated_at TEXT,
-            hands INTEGER,
-            reading TEXT,
-            autonomy INTEGER,
-            band_to_confirm TEXT,
-            growth_since TEXT
-          )''');
-        await db.execute('''
-          CREATE TABLE diary (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
-            story_id TEXT NOT NULL,
-            mode TEXT NOT NULL,
-            completed INTEGER NOT NULL,
-            dialogue_answer TEXT,
-            at TEXT NOT NULL
-          )''');
-        await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
-        await _createActivityTables(db);
-        await _createGesturesTable(db);
-        await _createMakeTables(db);
-        await _createShelfHistory(db);
-        await _createDailyIdeas(db);
-        await _createSettings(db);
-      },
+      onConfigure: configure,
+      onCreate: createSchema,
       onUpgrade: (db, from, to) async {
-        if (from < 2) await _createActivityTables(db);
-        // v3: lingua per bambino. I profili esistenti restano in italiano.
-        if (from < 3) await db.execute("ALTER TABLE profiles ADD COLUMN language TEXT NOT NULL DEFAULT 'it'");
-        // v4: il compagno cresce con i gesti fatti davvero, non con le storie.
-        // Chi era già cresciuto con le storie resta allo stadio raggiunto.
-        if (from < 4) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN gestures_done INTEGER NOT NULL DEFAULT 0');
-          await db.execute('ALTER TABLE profiles ADD COLUMN stage_floor INTEGER NOT NULL DEFAULT 0');
-          await db.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
-          await _createGesturesTable(db);
-        }
-        // v5: la mensola scelta dal genitore. NULL: si riempie da sola.
-        if (from < 5) await db.execute('ALTER TABLE profiles ADD COLUMN shelf TEXT');
-        // v6: lettura karaoke, storie inventate, calendario della natura.
-        if (from < 6) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
-          await _createMakeTables(db);
-        }
-        // v7: la mensola automatica si salva e ruota una volta a settimana.
-        if (from < 7) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN shelf_auto TEXT');
-          await db.execute('ALTER TABLE profiles ADD COLUMN shelf_rotated_at TEXT');
-          await _createShelfHistory(db);
-        }
-        // v8: profilo di interazione (mani, lettura, autonomia), dalla fascia d'età.
-        if (from < 8) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN hands INTEGER');
-          await db.execute('ALTER TABLE profiles ADD COLUMN reading TEXT');
-          await db.execute('ALTER TABLE profiles ADD COLUMN autonomy INTEGER');
-          await db.execute(_interactionFromAgeSql);
-        }
-        // v9: l'idea del giorno si salva, così resta la stessa e non torna per 14 giorni.
-        if (from < 9) await _createDailyIdeas(db);
-        // v10: impostazioni della famiglia (per ora l'emisfero del calendario della natura).
-        if (from < 10) await _createSettings(db);
-        // v11: fasce 3-5, 6-7, 8-10. Chi era in 5-7 o 7-10 resta sugli stessi
-        // contenuti e l'adulto conferma la fascia (vedi docs/age-bands.md).
-        if (from < 11) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN band_to_confirm TEXT');
-          await db.execute(_legacyBandSql);
-        }
-        // v12: il compagno cresce con il calendario, non con i gesti segnati.
-        // Chi era già cresciuto resta allo stadio raggiunto.
-        if (from < 12) {
-          await db.execute('ALTER TABLE profiles ADD COLUMN growth_since TEXT');
-          await db.execute(_growthFromNowSql());
-        }
+        await upgradeSchema(db, from, to);
+        minimized = from < 13;
       },
     );
+    // Le righe tolte dalla v13 non restano nelle pagine libere del file.
+    if (minimized) await db.execute('VACUUM');
     return LocalDb._(db);
+  }
+
+  /// Versione dello schema (per i test di migrazione).
+  @visibleForTesting
+  static const schemaVersion = _version;
+
+  /// Un database già aperto, con [configure], [createSchema] e [upgradeSchema] (test).
+  @visibleForTesting
+  factory LocalDb.forTest(Database db) => LocalDb._(db);
+
+  /// Le cancellazioni in cascata (`ON DELETE CASCADE`) valgono solo con le
+  /// chiavi esterne accese, e SQLite le tiene spente se non glielo si chiede.
+  static Future<void> configure(Database db) => db.execute('PRAGMA foreign_keys = ON');
+
+  /// Le tabelle con le righe di un bambino (`profile_id`), oltre a `profiles`.
+  static const childTables = [
+    'diary',
+    'activity_progress',
+    'activity_rounds',
+    'gestures',
+    'made_stories',
+    'nature_days',
+    'shelf_history',
+    'daily_ideas',
+  ];
+
+  static Future<void> createSchema(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE profiles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        age_band TEXT NOT NULL,
+        companion TEXT NOT NULL,
+        enabled_worlds TEXT NOT NULL,
+        safety_together_only INTEGER NOT NULL DEFAULT 1,
+        last_mode TEXT NOT NULL DEFAULT 'together',
+        dyslexia_font INTEGER NOT NULL DEFAULT 0,
+        low_stimulation INTEGER NOT NULL DEFAULT 0,
+        alone_minutes INTEGER NOT NULL DEFAULT 20,
+        stories_completed INTEGER NOT NULL DEFAULT 0,
+        language TEXT NOT NULL DEFAULT 'it',
+        gestures_done INTEGER NOT NULL DEFAULT 0,
+        stage_floor INTEGER NOT NULL DEFAULT 0,
+        shelf TEXT,
+        read_along INTEGER NOT NULL DEFAULT 1,
+        shelf_auto TEXT,
+        shelf_rotated_at TEXT,
+        hands INTEGER,
+        reading TEXT,
+        autonomy INTEGER,
+        band_to_confirm TEXT,
+        growth_since TEXT
+      )''');
+    await db.execute('''
+      CREATE TABLE diary (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+        story_id TEXT NOT NULL,
+        mode TEXT NOT NULL,
+        completed INTEGER NOT NULL,
+        at TEXT NOT NULL
+      )''');
+    await db.execute('CREATE INDEX diary_profile ON diary(profile_id, at)');
+    await _createActivityTables(db);
+    await db.execute('CREATE INDEX rounds_profile ON activity_rounds(profile_id, skill, at)');
+    await _createGesturesTable(db);
+    await _createMakeTables(db);
+    await _createShelfHistory(db);
+    await _createDailyIdeas(db);
+    await _createSettings(db);
+  }
+
+  static Future<void> upgradeSchema(Database db, int from, int to) async {
+    if (from < 2) {
+      await _createActivityTables(db);
+      await db.execute('CREATE INDEX rounds_profile ON activity_rounds(profile_id, skill, at)');
+    }
+    // v3: lingua per bambino. I profili esistenti restano in italiano.
+    if (from < 3) await db.execute("ALTER TABLE profiles ADD COLUMN language TEXT NOT NULL DEFAULT 'it'");
+    // v4: il compagno cresce con i gesti fatti davvero, non con le storie.
+    // Chi era già cresciuto con le storie resta allo stadio raggiunto.
+    if (from < 4) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN gestures_done INTEGER NOT NULL DEFAULT 0');
+      await db.execute('ALTER TABLE profiles ADD COLUMN stage_floor INTEGER NOT NULL DEFAULT 0');
+      await db.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
+      await _createGesturesTable(db);
+    }
+    // v5: la mensola scelta dal genitore. NULL: si riempie da sola.
+    if (from < 5) await db.execute('ALTER TABLE profiles ADD COLUMN shelf TEXT');
+    // v6: lettura karaoke, storie inventate, calendario della natura.
+    if (from < 6) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN read_along INTEGER NOT NULL DEFAULT 1');
+      await _createMakeTables(db);
+    }
+    // v7: la mensola automatica si salva e ruota una volta a settimana.
+    if (from < 7) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN shelf_auto TEXT');
+      await db.execute('ALTER TABLE profiles ADD COLUMN shelf_rotated_at TEXT');
+      await _createShelfHistory(db);
+    }
+    // v8: profilo di interazione (mani, lettura, autonomia), dalla fascia d'età.
+    if (from < 8) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN hands INTEGER');
+      await db.execute('ALTER TABLE profiles ADD COLUMN reading TEXT');
+      await db.execute('ALTER TABLE profiles ADD COLUMN autonomy INTEGER');
+      await db.execute(_interactionFromAgeSql);
+    }
+    // v9: l'idea del giorno si salva, così resta la stessa e non torna per 14 giorni.
+    if (from < 9) await _createDailyIdeas(db);
+    // v10: impostazioni della famiglia (per ora l'emisfero del calendario della natura).
+    if (from < 10) await _createSettings(db);
+    // v11: fasce 3-5, 6-7, 8-10. Chi era in 5-7 o 7-10 resta sugli stessi
+    // contenuti e l'adulto conferma la fascia (vedi docs/age-bands.md).
+    if (from < 11) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN band_to_confirm TEXT');
+      await db.execute(_legacyBandSql);
+    }
+    // v12: il compagno cresce con il calendario, non con i gesti segnati.
+    // Chi era già cresciuto resta allo stadio raggiunto.
+    if (from < 12) {
+      await db.execute('ALTER TABLE profiles ADD COLUMN growth_since TEXT');
+      await db.execute(_growthFromNowSql());
+    }
+    // v13: si conserva solo ciò che serve (analisi 7C, docs/privacy/mvp-data.md).
+    // Via tentativi, aiuti, livello dei round, serie di risposte giuste, esiti
+    // e scelte che nessuno legge, risposte ai dialoghi delle storie.
+    if (from >= 2 && from < 13) await _minimizeActivityTables(db);
+    // La colonna resta nei database di prima, vuota e mai più scritta.
+    if (from < 13) await db.execute('UPDATE diary SET dialogue_answer = NULL');
+    // Le proposte sul profilo di interazione (dai tentativi) non ci sono più.
+    if (from < 13) await db.execute("DELETE FROM settings WHERE key LIKE 'advice_off.%'");
+    // Prima della v13 le chiavi esterne erano spente: un profilo eliminato lasciava
+    // diario, round, creazioni e il resto. Via le righe senza più un profilo.
+    if (from < 13) {
+      for (final t in childTables) {
+        await db.execute('DELETE FROM $t WHERE profile_id NOT IN (SELECT id FROM profiles)');
+      }
+    }
   }
 
   /// Legge la chiave dal secure storage o ne crea una nuova. Un database già
@@ -210,29 +263,46 @@ class LocalDb {
     }
   }
 
-  static Future<void> _createActivityTables(Database db) async {
+  /// Attività: lo stato per riprendere (livello scelto, sessioni, ultima volta)
+  /// e un round per riga con abilità, istante e, solo se serve, la scelta.
+  /// Niente tentativi, aiuti né serie di risposte giuste (docs/privacy/mvp-data.md).
+  static Future<void> _createActivityTables(Database db, {String suffix = ''}) async {
     await db.execute('''
-      CREATE TABLE activity_progress (
+      CREATE TABLE activity_progress$suffix (
         profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
         activity_id TEXT NOT NULL,
         level INTEGER NOT NULL DEFAULT 1,
-        streak INTEGER NOT NULL DEFAULT 0,
         sessions INTEGER NOT NULL DEFAULT 0,
         last_played TEXT,
         PRIMARY KEY (profile_id, activity_id)
       )''');
     await db.execute('''
-      CREATE TABLE activity_rounds (
+      CREATE TABLE activity_rounds$suffix (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
         activity_id TEXT NOT NULL,
         skill TEXT NOT NULL,
-        level INTEGER NOT NULL,
-        attempts INTEGER NOT NULL,
-        hints INTEGER NOT NULL,
         choice TEXT,
         at TEXT NOT NULL
       )''');
+  }
+
+  /// Le scelte dei round che l'app legge: note dei piccoli progetti e scelta a
+  /// fine presentazione. Le altre (esito delle cacce, scelta nelle scene, voci
+  /// spuntate, giorno del conto alla rovescia) non si conservano.
+  static const keptChoiceSql = "(choice LIKE 'project=%' OR choice LIKE 'presentation=%')";
+
+  /// v12 → v13: le tabelle delle attività rifatte senza le colonne tolte.
+  static Future<void> _minimizeActivityTables(Database db) async {
+    await _createActivityTables(db, suffix: '_v13');
+    await db.execute('INSERT INTO activity_progress_v13 (profile_id, activity_id, level, sessions, last_played) '
+        'SELECT profile_id, activity_id, level, sessions, last_played FROM activity_progress');
+    await db.execute('INSERT INTO activity_rounds_v13 (id, profile_id, activity_id, skill, choice, at) '
+        'SELECT id, profile_id, activity_id, skill, CASE WHEN $keptChoiceSql THEN choice END, at FROM activity_rounds');
+    for (final t in ['activity_progress', 'activity_rounds']) {
+      await db.execute('DROP TABLE $t');
+      await db.execute('ALTER TABLE ${t}_v13 RENAME TO $t');
+    }
     await db.execute('CREATE INDEX rounds_profile ON activity_rounds(profile_id, skill, at)');
   }
 
@@ -344,7 +414,6 @@ class LocalDb {
       profileId: profileId,
       activityId: activityId,
       level: r['level'] as int,
-      streak: r['streak'] as int,
       sessions: r['sessions'] as int,
       lastPlayed: r['last_played'] == null ? null : DateTime.parse(r['last_played'] as String),
     );
@@ -358,8 +427,7 @@ class LocalDb {
           profileId: profileId,
           activityId: r['activity_id'] as String,
           level: r['level'] as int,
-          streak: r['streak'] as int,
-          sessions: r['sessions'] as int,
+              sessions: r['sessions'] as int,
           lastPlayed: r['last_played'] == null ? null : DateTime.parse(r['last_played'] as String),
         )
     };
@@ -371,14 +439,15 @@ class LocalDb {
           'profile_id': p.profileId,
           'activity_id': p.activityId,
           'level': p.level,
-          'streak': p.streak,
           'sessions': p.sessions,
           'last_played': p.lastPlayed?.toIso8601String(),
         },
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
 
-  Future<void> addRounds(int profileId, Activity activity, int level, List<RoundResult> results) async {
+  /// I round di una sessione: abilità e istante (i temi esplorati nel diario,
+  /// la mensola) e la scelta quando serve. Niente tentativi né aiuti.
+  Future<void> addRounds(int profileId, Activity activity, List<RoundResult> results) async {
     final batch = _db.batch();
     final now = DateTime.now().toIso8601String();
     for (final r in results) {
@@ -386,9 +455,6 @@ class LocalDb {
         'profile_id': profileId,
         'activity_id': activity.id,
         'skill': activity.skill,
-        'level': level,
-        'attempts': r.attempts,
-        'hints': r.hints,
         'choice': r.choice,
         'at': now,
       });
@@ -396,7 +462,7 @@ class LocalDb {
     await batch.commit(noResult: true);
   }
 
-  /// Round per abilità in una finestra temporale: base delle statistiche genitore.
+  /// Round in una finestra temporale: temi esplorati, diario dei progetti, idee per l'adulto.
   Future<List<Map<String, Object?>>> rounds(int profileId, {required DateTime from, DateTime? to}) =>
       _db.query('activity_rounds',
           where: 'profile_id = ? AND at >= ? AND at < ?',
@@ -417,10 +483,28 @@ class LocalDb {
   Future<void> updateProfile(ChildProfile profile) =>
       _db.update('profiles', profile.toRow(), where: 'id = ?', whereArgs: [profile.id]);
 
-  /// Toglie il profilo e i punti di ripresa di quel bambino (storie a metà, disegno).
+  /// Le impostazioni di un bambino, in `settings`: punti di ripresa (storie a
+  /// metà, disegno), minuti per giorno, osservazioni dell'adulto, idee scartate,
+  /// proposte spente (versioni di prima). Ogni chiave ha l'id del profilo seguito
+  /// da un punto o in fondo: `usage.1.` non prende `usage.12.`.
+  static List<(String, List<Object>)> profileSettings(int id) => [
+        ('key LIKE ? OR key LIKE ?', ['resume.story.$id.%', 'usage.$id.%']),
+        ('key IN (?, ?, ?, ?)', ['resume.drawing.$id', 'parent_notes_$id', '$dismissedIdeasKey.$id', 'advice_off.$id']),
+      ];
+
+  /// Toglie il profilo, le righe collegate (in cascata) e le sue impostazioni,
+  /// senza toccare gli altri bambini né le impostazioni della famiglia.
   Future<void> deleteProfile(int id) async {
-    await _db.delete('profiles', where: 'id = ?', whereArgs: [id]);
-    await _db.delete('settings', where: 'key LIKE ? OR key = ?', whereArgs: ['resume.story.$id.%', 'resume.drawing.$id']);
+    await _db.transaction((tx) async {
+      // Anche senza contare sulla cascata: ogni tabella del bambino, poi il profilo.
+      for (final t in childTables) {
+        await tx.delete(t, where: 'profile_id = ?', whereArgs: [id]);
+      }
+      await tx.delete('profiles', where: 'id = ?', whereArgs: [id]);
+      for (final (where, args) in profileSettings(id)) {
+        await tx.delete('settings', where: where, whereArgs: args);
+      }
+    });
   }
 
   Future<void> addDiaryEntry(DiaryEntry e) => _db.insert('diary', {
@@ -428,7 +512,6 @@ class LocalDb {
         'story_id': e.storyId,
         'mode': e.mode.name,
         'completed': e.completed ? 1 : 0,
-        'dialogue_answer': e.dialogueAnswer,
         'at': e.when.toIso8601String(),
       });
 
@@ -442,7 +525,6 @@ class LocalDb {
               storyId: r['story_id'] as String,
               mode: SessionMode.values.byName(r['mode'] as String),
               completed: (r['completed'] as int) == 1,
-              dialogueAnswer: r['dialogue_answer'] as String?,
               when: DateTime.parse(r['at'] as String),
             ))
         .toList();
@@ -653,11 +735,22 @@ class LocalDb {
       for (final t in _tables.reversed) {
         await tx.delete(t);
       }
+      // Un backup di prima della v13 può avere righe di profili già eliminati:
+      // con le chiavi esterne accese non entrerebbero, e non devono tornare.
+      final ids = {for (final r in (data['profiles'] as List? ?? const [])) (r as Map)['id']};
       for (final t in _tables) {
+        // Un backup di prima della v13 ha colonne tolte (tentativi, aiuti, risposte
+        // ai dialoghi): non tornano, si tengono solo quelle che la tabella ha oggi.
+        final columns = {for (final c in await tx.rawQuery('PRAGMA table_info($t)')) c['name'] as String};
         for (final row in (data[t] as List? ?? const [])) {
-          await tx.insert(t, Map<String, Object?>.from(row as Map));
+          if (childTables.contains(t) && !ids.contains((row as Map)['profile_id'])) continue;
+          await tx.insert(t, {
+            for (final e in Map<String, Object?>.from(row as Map).entries)
+              if (columns.contains(e.key) && e.key != 'dialogue_answer') e.key: e.value,
+          });
         }
       }
+      if (schema < 13) await tx.execute('UPDATE activity_rounds SET choice = NULL WHERE NOT $keptChoiceSql');
       // Come nella migrazione v4: chi era cresciuto con le storie non torna indietro.
       if (schema < 4) await tx.execute('UPDATE profiles SET stage_floor = $_legacyStageSql');
       // Backup di prima del profilo di interazione: si parte dalla fascia d'età.
