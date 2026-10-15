@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "status": "proposta",
+  "reviewedBy": null,
+  "themes": {
+    "emozioni-relazioni": "Emozioni e relazioni",
+    "natura-viventi": "Natura e viventi",
+    "autonomia-scuola": "Autonomia e scuola"
+  },
+  "cells": [
+    {
+      "theme": "emozioni-relazioni",
+      "band": "3-5",
+      "experience": "Quando una cosa non va come vuole (il gioco che serve a un altro, una costruzione che cade) il bambino sente arrivare la rabbia tutta insieme e ha un gesto da fare mentre passa, con un adulto vicino.",
+      "goal": "Riconoscere una situazione di frustrazione e fare il respiro del vulcano invece di colpire o lanciare.",
+      "secondary": [],
+      "notGoal": "Non insegna a non arrabbiarsi e non chiede di nascondere la rabbia.",
+      "modes": {
+        "story": {
+          "status": "ok",
+          "contribution": "Lia mostra la situazione da fuori: cosa la fa arrabbiare, cosa sente nel corpo, il gesto che la aiuta. Dà al bambino un nome e un'immagine (il vulcano).",
+          "content": ["story:lia-rabbia"]
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Nel gioco di Omar il bambino prova più strade davanti allo stesso gioco conteso (aspettare, chiedere, fare a turno) e vede cosa succede con ciascuna, senza una risposta che vince.",
+          "content": ["activity:il-gioco-di-omar"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Il respiro del vulcano si fa col corpo, a casa, nel momento in cui serve: è l'unica parte che il bambino può portarsi nella vita vera.",
+          "content": ["gesture:lia-rabbia", "offscreen:il-gioco-di-omar"]
+        }
+      },
+      "adult": {
+        "presents": "Legge la storia insieme e fa il respiro del vulcano una volta, a mente calma, come gioco.",
+        "asks": "\"Ti è mai venuto il vulcano? Dove lo senti?\" Una domanda, non un interrogatorio.",
+        "helpsWhen": "Durante una rabbia vera: si mette vicino, abbassa la voce e fa il respiro per primo, senza chiederlo a parole.",
+        "letsTry": "Nel gioco di Omar lascia scegliere ogni strada, anche quella che non funziona, e non commenta la scelta."
+      }
+    },
+    {
+      "theme": "emozioni-relazioni",
+      "band": "5-7",
+      "experience": "Davanti a una cosa nuova (un compito, uno sport, una lettera difficile) il bambino ha paura di sbagliare e vorrebbe non cominciare.",
+      "goal": "Cominciare un compito nuovo facendone solo il primo pezzetto, anche se non viene subito.",
+      "secondary": ["Chiedere aiuto con una frase propria quando da solo non ci riesce."],
+      "notGoal": "Non promette che le cose verranno bene e non premia chi ci riesce.",
+      "modes": {
+        "story": {
+          "status": "ok",
+          "contribution": "Fiocco ha paura di sbagliare e prova lo stesso un pezzetto: la storia rende pensabile che si possa cominciare senza essere sicuri.",
+          "content": ["story:fiocco-coraggioso"]
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Chiedo aiuto mette il bambino davanti a scene in cui non riesce: esplora quando riprovare e quando chiedere, e con quali parole.",
+          "content": ["activity:chiedo-aiuto"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Dire \"ci provo\" e fare il primo pezzetto di un compito vero della giornata; provare a casa la frase per chiedere aiuto.",
+          "content": ["gesture:fiocco-coraggioso", "offscreen:chiedo-aiuto"]
+        }
+      },
+      "adult": {
+        "presents": "Sceglie un compito vero e piccolo della giornata in cui il bambino esita.",
+        "asks": "\"Qual è il primo pezzetto?\" e non \"ce la fai?\".",
+        "helpsWhen": "Se dopo il primo pezzetto il bambino chiede aiuto, aiuta su quel passo e lascia a lui il successivo.",
+        "letsTry": "Non corregge il primo pezzetto mentre lo fa e non lo rifà al posto suo."
+      }
+    },
+    {
+      "theme": "emozioni-relazioni",
+      "band": "7-10",
+      "experience": "Un amico si trasferisce, si cambia scuola o classe: il bambino deve salutare qualcuno o qualcosa e prova insieme tristezza e curiosità.",
+      "goal": "Dare un nome a quello che prova davanti a un distacco e scegliere un modo concreto per tenere il legame.",
+      "secondary": [],
+      "notGoal": "Non elabora lutti né separazioni familiari: per quelle serve un adulto, non un'app.",
+      "modes": {
+        "story": {
+          "status": "ok",
+          "contribution": "Il segreto di Pietrolino racconta un saluto in cui le emozioni stanno insieme e il legame resta in un oggetto e in un gesto.",
+          "content": ["story:segreto-pietrolino"]
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Cambio scuola fa esplorare cosa cambia e cosa resta uguale, e quali scelte rendono il passaggio più leggero.",
+          "content": ["activity:cambio-scuola"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Scegliere un oggetto o un gesto che ricordi la persona lontana e raccontarlo; fare con l'adulto la lista di tre cose che restano.",
+          "content": ["gesture:segreto-pietrolino", "offscreen:cambio-scuola"]
+        }
+      },
+      "adult": {
+        "presents": "Propone la storia quando il cambiamento è vicino o appena successo, non come preparazione a un evento lontano.",
+        "asks": "\"Cosa ti mancherà? Cosa resta uguale?\"",
+        "helpsWhen": "Se il bambino si chiude o la tristezza dura, ne parla con lui fuori dall'app e, se serve, con la scuola.",
+        "letsTry": "Lascia che sia il bambino a scegliere l'oggetto o il gesto, anche se all'adulto sembra piccolo."
+      }
+    },
+    {
+      "theme": "natura-viventi",
+      "band": "3-5",
+      "experience": "L'acqua del rubinetto, della pioggia, della brocca: il bambino scopre che l'acqua si può raccogliere, versare e anche sprecare.",
+      "goal": "Accorgersi di quando l'acqua scorre senza servire e chiudere il rubinetto.",
+      "secondary": [],
+      "notGoal": "Non spiega il ciclo dell'acqua e non carica il bambino di responsabilità per l'ambiente.",
+      "modes": {
+        "story": {
+          "status": "ok",
+          "contribution": "La goccia ribelle introduce l'acqua come qualcosa che va e viene, e il gesto del rubinetto chiuso.",
+          "content": ["story:goccia-ribelle"]
+        },
+        "game": {
+          "status": "da-progettare",
+          "contribution": "Manca un gioco che faccia esplorare dove l'acqua serve e dove scorre per niente (per esempio una scena del bagno da riordinare). Le attività sull'acqua che esistono sono tutte pratiche.",
+          "content": []
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Versare l'acqua dalla brocca e raccogliere la pioggia in una ciotola per le piante: l'acqua diventa una quantità che si tiene in mano.",
+          "content": ["gesture:goccia-ribelle", "activity:versare-acqua"]
+        }
+      },
+      "adult": {
+        "presents": "Fa vedere una volta, lentamente, come si versa dalla brocca, senza parlare durante il gesto.",
+        "asks": "\"Dove va l'acqua quando il rubinetto resta aperto?\"",
+        "helpsWhen": "Se l'acqua si rovescia, mostra dov'è lo straccio; non asciuga al posto del bambino.",
+        "letsTry": "Lascia ripetere il travaso quante volte vuole, anche se bagna il tavolo."
+      }
+    },
+    {
+      "theme": "natura-viventi",
+      "band": "5-7",
+      "experience": "Un seme in un vasetto o nel cotone: il bambino lo bagna, aspetta e lo vede cambiare nei giorni.",
+      "goal": "Prendersi cura di una pianta ogni giorno e notare che per crescere le servono acqua e tempo.",
+      "secondary": ["Nominare le parti della pianta (radici, fusto, foglie)."],
+      "notGoal": "Non è una lezione di botanica e non c'è un risultato da raggiungere: il seme può anche non germogliare.",
+      "modes": {
+        "story": {
+          "status": "ok",
+          "contribution": "L'albero che non parlava più presenta la cura come gesto paziente (\"non con la forza, con la cura\").",
+          "content": ["story:albero-silenzioso"]
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Le parti della pianta fa abbinare nome e parte: dà le parole per raccontare cosa si vede nel vasetto.",
+          "content": ["activity:parti-della-pianta"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Il fagiolo nel cotone e la cura di una pianta: l'attesa e il cambiamento si vedono solo nella vita vera.",
+          "content": ["gesture:albero-silenzioso", "activity:germoglio-fagiolo", "activity:cura-pianta"]
+        }
+      },
+      "adult": {
+        "presents": "Prepara con il bambino il vasetto o il cotone e mostra quanta acqua serve.",
+        "asks": "\"Cos'è cambiato da ieri?\"",
+        "helpsWhen": "Se dopo una settimana non succede niente, si guarda insieme e si prova con un altro seme, senza cercare colpe.",
+        "letsTry": "Lascia al bambino il compito di bagnare il seme ogni giorno, anche se a volte se ne dimentica."
+      }
+    },
+    {
+      "theme": "natura-viventi",
+      "band": "7-10",
+      "experience": "Un fenomeno vicino che cambia nel tempo: l'ombra di un albero alle diverse ore, un germoglio nei giorni.",
+      "goal": "Osservare un cambiamento nel tempo e descriverlo con un confronto (prima e dopo, più lunga e più corta).",
+      "secondary": [],
+      "notGoal": "Non spiega l'astronomia né chiede misure precise.",
+      "modes": {
+        "story": {
+          "status": "da-progettare",
+          "contribution": "Manca una storia per questa fascia: dovrebbe introdurre il gusto di tornare a guardare la stessa cosa e trovarla diversa.",
+          "content": []
+        },
+        "game": {
+          "status": "da-progettare",
+          "contribution": "Manca un gioco che faccia ordinare osservazioni nel tempo (per esempio tre foto di un'ombra da mettere in ordine). Non va sostituito con un quiz di nozioni.",
+          "content": []
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Segnare con un sasso la stessa ombra alla stessa ora per più giorni; seguire un germoglio. Il confronto nasce da cose viste davvero.",
+          "content": ["activity:caccia-ombre-fuori", "activity:germoglio-fagiolo"]
+        }
+      },
+      "adult": {
+        "presents": "Sceglie con il bambino un punto all'aperto e un'ora in cui tornarci.",
+        "asks": "\"Com'era ieri? Cosa pensi che vedremo domani?\"",
+        "helpsWhen": "Se il bambino non trova le parole per il confronto, propone due parole (più lunga, più corta) e lascia scegliere.",
+        "letsTry": "Non spiega subito perché l'ombra cambia: lascia che il bambino faccia la sua ipotesi."
+      }
+    },
+    {
+      "theme": "autonomia-scuola",
+      "band": "3-5",
+      "experience": "Il mattino prima di uscire: vestirsi, lavarsi i denti, prendere lo zaino, con i tempi della famiglia.",
+      "goal": "Seguire nell'ordine i passi della routine del mattino.",
+      "secondary": ["Abbottonare da solo un bottone grande."],
+      "notGoal": "Non chiede di fare tutto da solo né di fare in fretta.",
+      "modes": {
+        "story": {
+          "status": "da-progettare",
+          "contribution": "Manca una storia del mattino: dovrebbe mostrare una routine che si inceppa e si riprende, senza un bambino \"lento\" da correggere.",
+          "content": []
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Il mattino in ordine e Mi vesto da solo fanno rimettere in sequenza i passi: il bambino esplora cosa viene prima e cosa dopo.",
+          "content": ["activity:mattino-in-ordine", "activity:mi-vesto-da-solo"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Le foto dei passi appese in bagno e il telaio dei bottoni: la sequenza diventa una cosa che si fa con le mani.",
+          "content": ["offscreen:mattino-in-ordine", "activity:telaio-bottoni"]
+        }
+      },
+      "adult": {
+        "presents": "Fa le foto dei passi insieme al bambino e le appende all'altezza dei suoi occhi.",
+        "asks": "\"Cosa viene dopo?\" guardando le foto, non \"cosa ti sei dimenticato?\".",
+        "helpsWhen": "Se un passo si blocca (il bottone che non entra), aiuta su quel passo solo e lascia finire gli altri.",
+        "letsTry": "Accetta tempi più lunghi nei giorni senza fretta e non rifà i passi già fatti."
+      }
+    },
+    {
+      "theme": "autonomia-scuola",
+      "band": "5-7",
+      "experience": "La sera prima di scuola: preparare lo zaino e le cose per il giorno dopo.",
+      "goal": "Organizzare i materiali prima di un'attività: preparare la sera lo zaino per il giorno dopo.",
+      "secondary": [],
+      "notGoal": "Non insegna l'ordine in generale né valuta quanto è ordinato il bambino.",
+      "modes": {
+        "story": {
+          "status": "da-progettare",
+          "contribution": "Manca una storia che racconti cosa succede quando una cosa resta a casa e come ci si organizza la volta dopo, senza vergogna.",
+          "content": []
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Domani a scuola è una lista da spuntare: il bambino esplora cosa serve e cosa no per il giorno dopo.",
+          "content": ["activity:domani-a-scuola"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "La stessa lista, disegnata dal bambino, appesa vicino alla porta e usata davvero con lo zaino vero.",
+          "content": ["offscreen:domani-a-scuola"]
+        }
+      },
+      "adult": {
+        "presents": "Disegna la lista con il bambino la prima volta e decide con lui dove appenderla.",
+        "asks": "\"Cosa ti serve domani?\"",
+        "helpsWhen": "Se manca qualcosa la mattina, lo nota insieme a lui senza rimprovero e lo aggiunge alla lista.",
+        "letsTry": "Non controlla lo zaino al posto suo dopo che l'ha preparato."
+      }
+    },
+    {
+      "theme": "autonomia-scuola",
+      "band": "7-10",
+      "experience": "Un piccolo progetto aperto: costruire con un foglio e due libri un ponte che regga qualche moneta.",
+      "goal": "Provare una soluzione, vedere dove non regge e cambiarla.",
+      "secondary": [],
+      "notGoal": "Non c'è un ponte giusto né un numero di monete da raggiungere.",
+      "modes": {
+        "story": {
+          "status": "da-progettare",
+          "contribution": "Manca una storia in cui un tentativo crolla e il personaggio riprova cambiando una cosa sola.",
+          "content": []
+        },
+        "game": {
+          "status": "ok",
+          "contribution": "Il ponte di carta sullo schermo propone la sfida e raccoglie le idee del bambino prima di costruire.",
+          "content": ["activity:ponte-di-carta"]
+        },
+        "practice": {
+          "status": "ok",
+          "contribution": "Il ponte si costruisce davvero, con monete messe una alla volta: il crollo è un'informazione, non un errore.",
+          "content": ["offscreen:ponte-di-carta"]
+        }
+      },
+      "adult": {
+        "presents": "Prepara il materiale e legge la sfida, poi si siede di lato.",
+        "asks": "\"Cosa cambi questa volta?\"",
+        "helpsWhen": "Solo se il bambino chiede, e con una domanda più che con una soluzione.",
+        "letsTry": "Lascia crollare il ponte senza anticipare il problema."
+      }
+    }
+  ],
+  "parked": [
+    {
+      "reason": "Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti.",
+      "content": [
+        "activity:alfabeto-mobile", "activity:aste-in-ordine", "activity:aste-numeriche", "activity:caccia-quantita",
+        "activity:caccia-suoni", "activity:conta-semi", "activity:copio-la-parola", "activity:forme-in-fila",
+        "activity:gioco-del-suono", "activity:incastri-ferro", "activity:lettere-smerigliate", "activity:numeri-e-quantita",
+        "activity:perle-decine", "activity:pregrafismo-linee", "activity:suoni-iniziali", "activity:traccia-lettere"
+      ]
+    },
+    {
+      "reason": "Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella.",
+      "content": [
+        "activity:caccia-colori", "activity:caccia-forme", "activity:caccia-superfici", "activity:caccia-tatto",
+        "activity:cilindri-suoni", "activity:forme-geometriche", "activity:sacchetto-misterioso", "activity:scala-marrone",
+        "activity:tavolette-colori", "activity:torre-rosa"
+      ]
+    },
+    {
+      "reason": "Vita pratica che sostiene una cella senza esserne il centro (apparecchiare, piegare, travasi): candidati come attività pratiche alternative di Autonomia e scuola 3-5.",
+      "content": ["activity:apparecchiare", "activity:piegare", "activity:travaso-secco"]
+    },
+    {
+      "reason": "Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/5-7, alternativa a quella scelta. Da decidere quale delle due tenere.",
+      "content": [
+        "activity:aspetto-il-mio-turno", "activity:com-e-fatta-una-scuola", "activity:conto-alla-rovescia",
+        "activity:il-primo-giorno", "activity:il-saluto", "activity:la-mensa"
+      ]
+    },
+    {
+      "reason": "Storie del mondo Emozioni 5-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate.",
+      "content": ["story:bosco-addormentato", "story:civetta-silenzio", "story:notte-lucciole"]
+    },
+    {
+      "reason": "Storie del mondo Ambiente oltre a quella della cella: la cella Natura 5-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto.",
+      "content": ["story:risveglio-bosco", "story:ruscello-triste", "story:sassolino-magico"]
+    },
+    {
+      "reason": "Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 7-10 se si sceglie un obiettivo di osservazione più ampio.",
+      "content": ["activity:caccia-natura", "activity:caccia-ombre", "activity:continenti", "activity:nomenclature-animali"]
+    }
+  ]
+}

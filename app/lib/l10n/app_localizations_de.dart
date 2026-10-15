@@ -676,7 +676,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get parentTabDiary => 'Tagebuch';
 
   @override
-  String get parentTabGrowth => 'Entwicklung';
+  String get parentTabGrowth => 'Wachstum';
 
   @override
   String get parentTabShelf => 'Regal';

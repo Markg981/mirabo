@@ -13,7 +13,7 @@ risposta non giusta fa riprovare con un aiuto progressivo.
 | `version` | int | |
 | `title` | string | |
 | `area` | `cognitivo` \| `autonomia` \| `sociale` \| `paure` | area del modulo scuola |
-| `skill` | string | abilità misurata nelle statistiche (es. `suoni-iniziali`, `numeri`, `routine-mattino`) |
+| `skill` | string | abilità a cui si rivolge; nel diario dell'esplorazione raggruppa ciò che il bambino ha esplorato, senza misurarlo (es. `suoni-iniziali`, `numeri`, `routine-mattino`) |
 | `type` | vedi sotto | tipo eseguito dal motore |
 | `ageBands` | string[] | fasce in cui compare |
 | `togetherSuggested` | bool | consigliata con il genitore |

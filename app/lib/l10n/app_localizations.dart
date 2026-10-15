@@ -989,7 +989,7 @@ abstract class AppLocalizations {
   /// No description provided for @parentTabGrowth.
   ///
   /// In it, this message translates to:
-  /// **'Sviluppo'**
+  /// **'Crescita'**
   String get parentTabGrowth;
 
   /// No description provided for @parentTabShelf.
