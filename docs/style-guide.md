@@ -101,8 +101,11 @@ in più: è il momento della storia in cui il gesto si prova davvero, prima di p
 
 ## I compagni
 
-Tre compagni, uno per bambino, scelto all'inizio e non sostituibile. In ogni schermata con
-`companionLines` servono le battute di tutti e tre.
+Tre compagni, uno per bambino, scelto all'inizio e cambiabile dall'adulto nel profilo senza perdere
+niente: storie, preferenze e lavori stanno sul profilo, non sul personaggio. In ogni schermata con
+`companionLines` servono le battute di tutti e tre. Il compagno non dà appuntamenti, non aspetta il
+bambino e non gli chiede di restare: `studio/check_retention.py` lo controlla in tutte le lingue
+([child-paths.md](child-paths.md)).
 
 | | Bo | Pilù | Tango |
 | --- | --- | --- | --- |
@@ -114,10 +117,10 @@ Tre compagni, uno per bambino, scelto all'inizio e non sostituibile. In ogni sch
 | Come cresce | Sciarpa rossa, uccellino, casa nel ghiaccio che si scalda | Occhi aperti di notte, primo volo, nido più grande | La tana si riempie di cose trovate nelle storie |
 
 Le tappe di crescita sono in `content/companions/companions.json`: le storie non le nominano, la
-crescita si vede solo nella casa del compagno. Il compagno cresce con le settimane dalla creazione
-del profilo (2, 6, 12), uguale per tutti: né leggere o giocare di più né il `gesture` segnato dal
-genitore lo fanno crescere, perché nessuna conferma deve portare un premio
-([montessori.md](montessori.md)). Ogni storia ha comunque un gesto semplice, ripetibile e senza
+crescita si vede solo nella casa del compagno. Nell'MVP la crescita a soglie non c'è: il compagno
+resta com'è (chi era già cresciuto resta dov'era), e né leggere o giocare di più né il `gesture`
+segnato dal genitore lo cambiano, perché nessuna conferma deve portare un premio
+([montessori.md](montessori.md), [child-paths.md](child-paths.md)). Ogni storia ha comunque un gesto semplice, ripetibile e senza
 schermo: è il ponte con la vita vera, non il prezzo di una ricompensa.
 
 ### Regole comuni

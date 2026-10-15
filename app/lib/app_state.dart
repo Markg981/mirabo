@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 import 'audio/name_voice.dart';
 import 'content/story_repository.dart';
@@ -30,10 +31,46 @@ class AppState extends ChangeNotifier {
     NameVoice? nameVoice,
     DateTime Function()? clock,
     String? Function()? region,
+    Future<bool> Function(String ttsCode)? voiceCheck,
   })  : backup = backup ?? CloudBackup(db: db),
         nameVoice = nameVoice ?? NameVoice(),
         _now = clock ?? DateTime.now,
-        _region = region ?? (() => PlatformDispatcher.instance.locale.countryCode);
+        _region = region ?? (() => PlatformDispatcher.instance.locale.countryCode),
+        _voiceCheck = voiceCheck ?? _systemVoice;
+
+  static Future<bool> _systemVoice(String ttsCode) async {
+    try {
+      return await FlutterTts().isLanguageAvailable(ttsCode) != false;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  /// Le lingue dei profili senza voce di sistema. Lo chiama main all'avvio;
+  /// l'area adulta lo richiama quando l'adulto torna dopo aver installato una voce.
+  Future<void> checkVoices() async {
+    final missing = <String>{};
+    for (final code in {for (final p in profiles) p.language}) {
+      if (!await _voiceCheck(AppLanguage.fromCode(code).ttsCode)) missing.add(code);
+    }
+    if (missing.length == voicesMissing.length && missing.containsAll(voicesMissing)) return;
+    voicesMissing = missing;
+    notifyListeners();
+  }
+
+  bool voiceMissingFor(ChildProfile p) => voicesMissing.contains(p.language);
+
+  /// L'app va in background (o si spegne lo schermo).
+  void appHidden() => _hiddenAt ??= _now();
+
+  /// L'app torna in primo piano: dopo [togetherLapse] "insieme" scade.
+  void appResumed() {
+    final hidden = _hiddenAt;
+    _hiddenAt = null;
+    if (hidden != null && mode == SessionMode.together && _now().difference(hidden) >= togetherLapse) {
+      unawaited(setMode(SessionMode.alone));
+    }
+  }
 
   final LocalDb db;
   final StoryRepository repo;
@@ -49,7 +86,29 @@ class AppState extends ChangeNotifier {
 
   List<ChildProfile> profiles = const [];
   ChildProfile? currentProfile;
-  SessionMode mode = SessionMode.together;
+
+  /// "Insieme" o "da solo" (docs/child-paths.md). È una dichiarazione
+  /// dell'adulto, non una verifica: l'app non sa chi c'è accanto al bambino.
+  /// Cambia cosa si propone e cosa si apre, non certifica una presenza. Per
+  /// questo "insieme" vale per questa volta: all'avvio, quando cambia il
+  /// bambino o dopo [togetherLapse] in background si torna a "da solo".
+  SessionMode mode = SessionMode.alone;
+
+  /// Dopo quanto tempo in background "insieme" scade.
+  static const togetherLapse = Duration(minutes: 30);
+  DateTime? _hiddenAt;
+
+  /// Il bambino per cui l'adulto ha scelto la modalità.
+  int? _modeFor;
+
+  /// Lingue (codici it, en…) per cui il dispositivo non ha la voce di sistema.
+  /// Senza voce chi non legge ha bisogno di un adulto: il testo si mostra e
+  /// l'area adulta lo dice (docs/child-paths.md, "Errori").
+  Set<String> voicesMissing = const {};
+
+  /// Controlla se la voce di sistema di una lingua c'è; sostituibile nei test.
+  /// Un errore del controllo vale come "c'è": meglio non allarmare per niente.
+  final Future<bool> Function(String ttsCode) _voiceCheck;
 
   /// Con più figli, a ogni avvio il bambino sceglie chi gioca ("Chi gioca oggi?").
   /// Vale per la sessione: non si salva.
@@ -189,7 +248,8 @@ class AppState extends ChangeNotifier {
     onboardingSeen = profiles.isNotEmpty || await db.setting(onboardingSeenKey) != null;
     hemisphere = Hemisphere.byName(await db.setting(LocalDb.hemisphereKey)) ?? Hemisphere.fromRegion(_region());
     currentProfile = profiles.isEmpty ? null : profiles.first;
-    if (currentProfile != null) mode = currentProfile!.lastMode;
+    // Ogni avvio parte da "da solo": "insieme" lo dichiara l'adulto ogni volta.
+    mode = SessionMode.alone;
     _syncAloneClock();
     notifyListeners();
     // Profili nati prima della cache, o ripristinati da Drive su un tablet nuovo.
@@ -285,7 +345,7 @@ class AppState extends ChangeNotifier {
   Future<void> setShelf(ChildProfile p, List<String>? keys) => updateProfile(p.withShelf(keys));
 
   /// Chiude una sessione di attività: salva i round e applica l'adattività.
-  /// Il compagno non cresce: cresce solo con i gesti fatti davvero.
+  /// Il compagno non cresce (docs/child-paths.md).
   Future<void> recordActivity(Activity activity, ActivityProgress before, List<RoundResult> results) async {
     final p = currentProfile;
     if (p == null || results.isEmpty) return;
@@ -335,7 +395,8 @@ class AppState extends ChangeNotifier {
 
   Future<void> selectProfile(ChildProfile p) async {
     currentProfile = p;
-    mode = p.lastMode;
+    // Un altro bambino: "insieme" valeva per chi c'era prima.
+    if (p.id != _modeFor) mode = SessionMode.alone;
     _syncAloneClock();
     notifyListeners();
   }
@@ -343,6 +404,7 @@ class AppState extends ChangeNotifier {
   /// Solo il genitore cambia modalità: chiude la sessione "da solo" in corso
   /// e, se si torna "da solo", ne apre una nuova.
   Future<void> setMode(SessionMode m) async {
+    _modeFor = currentProfile?.id;
     mode = SessionMode.together;
     _syncAloneClock();
     mode = m;
@@ -361,7 +423,7 @@ class AppState extends ChangeNotifier {
     profiles = await db.profiles();
     currentProfile = saved;
     _childChosen = true;
-    mode = saved.lastMode;
+    mode = SessionMode.alone;
     _syncAloneClock();
     notifyListeners();
     nameVoice.prepare(saved);
@@ -399,8 +461,8 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Registra una storia nel diario. Il compagno non cresce: cresce con il
-  /// calendario (vedi [ChildProfile.companionStage]).
+  /// Registra una storia nel diario. Il compagno non cresce (vedi
+  /// [ChildProfile.companionStage]).
   Future<void> recordStory(Story story, {required bool completed, String? dialogueAnswer}) async {
     final p = currentProfile;
     if (p == null) return;
@@ -428,6 +490,27 @@ class AppState extends ChangeNotifier {
     await updateProfile(fresh.copyWith(gesturesDone: fresh.gesturesDone + 1));
     return true;
   }
+
+  /// Ripresa (docs/child-paths.md, "Uscita e ripresa"): la schermata della
+  /// storia a cui il bambino si è fermato, per bambino, storia e fascia. Una
+  /// storia finita riparte dall'inizio.
+  static String storyResumeKey(int profileId, String storyId, AgeBand band) => 'resume.story.$profileId.$storyId.${band.key}';
+
+  Future<int> storyPosition(ChildProfile p, String storyId) async =>
+      int.tryParse(await db.setting(storyResumeKey(p.id, storyId, p.ageBand)) ?? '') ?? 0;
+
+  Future<void> saveStoryPosition(ChildProfile p, String storyId, int screen) =>
+      db.setSetting(storyResumeKey(p.id, storyId, p.ageBand), screen <= 0 ? '' : '$screen');
+
+  /// Il disegno lasciato a metà (JSON di DrawingGame), uno per bambino.
+  static String drawingKey(int profileId) => 'resume.drawing.$profileId';
+
+  Future<String?> savedDrawing(ChildProfile p) async {
+    final raw = await db.setting(drawingKey(p.id));
+    return raw == null || raw.isEmpty ? null : raw;
+  }
+
+  Future<void> saveDrawing(ChildProfile p, String? json) => db.setSetting(drawingKey(p.id), json ?? '');
 
   /// Salva una storia della fabbrica. Come le altre storie, non fa crescere il compagno.
   Future<MadeStory> saveMadeStory(MadeStory story) => db.addMadeStory(story);
@@ -475,6 +558,8 @@ class AppStateScope extends InheritedWidget {
 
   /// Senza dipendenza: per initState e callback.
   static AppState read(BuildContext context) => context.getInheritedWidgetOfExactType<AppStateScope>()!.state;
+
+  static AppState? maybeRead(BuildContext context) => context.getInheritedWidgetOfExactType<AppStateScope>()?.state;
 
   @override
   bool updateShouldNotify(AppStateScope oldWidget) => state != oldWidget.state;

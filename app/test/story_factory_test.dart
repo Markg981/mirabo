@@ -69,7 +69,7 @@ void main() {
     tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    final db = _FakeDb(ChildProfile(id: 1, name: 'Emma', ageBand: band, companion: CompanionId.bo));
+    final db = _FakeDb(ChildProfile(id: 1, name: 'Emma', ageBand: band, companion: CompanionId.bo, aloneSessionMinutes: 0));
     final state = AppState(
       db: db,
       repo: _Repo(),
@@ -132,7 +132,7 @@ void main() {
     expect(find.text('Una storia inventata da Emma'), findsOneWidget);
     expect(spoken.last, contains('La metto tra le tue storie'));
 
-    await tester.tap(find.text('Ciao!'));
+    await tester.tap(find.text('Fatto'));
     await tester.pumpAndSettle();
     expect(find.text('Il piccolo drago'), findsOneWidget, reason: 'la storia è tra "Le mie storie"');
   });

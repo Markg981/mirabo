@@ -5,6 +5,7 @@ import '../../l10n/l10n.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'category_screen.dart';
+import 'child_top_bar.dart';
 import 'companion_widget.dart';
 
 /// Fine della sessione "da solo": il compagno saluta. Arriva solo quando la
@@ -18,13 +19,30 @@ class GoodbyeScreen extends StatefulWidget {
 }
 
 class _GoodbyeScreenState extends State<GoodbyeScreen> {
+  final _voice = ShortVoice();
+
   @override
   void initState() {
     super.initState();
-    // Le pagine sopra la casa (mensola, giochi) si chiudono: resta il saluto.
+    // Le pagine sopra la casa (mensola, giochi) si chiudono: resta il saluto,
+    // detto a voce per chi non legge.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
+      if (!mounted) return;
+      Navigator.of(context).popUntil((r) => r.isFirst);
+      _say();
     });
+  }
+
+  @override
+  void dispose() {
+    _voice.dispose();
+    super.dispose();
+  }
+
+  void _say() {
+    if (!mounted) return;
+    final profile = AppStateScope.read(context).currentProfile!;
+    _voice.say(profile.language, '${context.l10n.goodbyeTitle(profile.name)} ${context.l10n.goodbyeBody}');
   }
 
   @override
@@ -45,6 +63,7 @@ class _GoodbyeScreenState extends State<GoodbyeScreen> {
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
                   child: Row(
                     children: [
+                      RoundIconButton(icon: Icons.volume_up_rounded, tooltip: context.l10n.listenAgain, color: MiraboColors.navy, onPressed: _say),
                       const Spacer(),
                       RoundIconButton(
                         icon: Icons.lock_rounded,

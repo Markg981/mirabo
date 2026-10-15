@@ -27,7 +27,15 @@ Future<void> main() async {
   await state.backup.load();
   // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
   unawaited(state.backup.autoBackup());
-  AppLifecycleListener(onResume: () => unawaited(state.backup.autoBackup()));
+  // "Insieme" scade se l'app resta a lungo in background (AppState.togetherLapse).
+  AppLifecycleListener(
+    onHide: state.appHidden,
+    onResume: () {
+      state.appResumed();
+      unawaited(state.backup.autoBackup());
+    },
+  );
+  unawaited(state.checkVoices());
   // Tempo con l'app in primo piano, per bambino (solo per l'area genitori).
   state.usage = UsageTracker(db: db, profileId: () => state.currentProfile?.id)..start();
   // Quando cambia il bambino il tratto fin lì va a quello di prima.
@@ -54,6 +62,7 @@ class MiraboApp extends StatelessWidget {
               dyslexiaFont: profile?.dyslexiaFont ?? false,
               lowStimulation: profile?.lowStimulation ?? false,
               interaction: profile?.interaction ?? const InteractionProfile(),
+              voiceMissing: profile != null && state.voiceMissingFor(profile),
             ),
             // Lato bambino: la lingua del bambino che gioca. Prima di sceglierlo
             // (primo avvio, "Chi gioca oggi?") quella del tablet.

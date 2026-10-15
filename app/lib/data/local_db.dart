@@ -408,7 +408,7 @@ class LocalDb {
 
   Future<ChildProfile> insertProfile(ChildProfile profile) async {
     final row = profile.toRow()..remove('id');
-    // Da qui il compagno cresce con il calendario.
+    // Data di creazione del profilo (il compagno non cresce più con il calendario).
     row['growth_since'] ??= DateTime.now().toIso8601String();
     final id = await _db.insert('profiles', row);
     return (await _db.query('profiles', where: 'id = ?', whereArgs: [id])).map(ChildProfile.fromRow).first;
@@ -417,7 +417,11 @@ class LocalDb {
   Future<void> updateProfile(ChildProfile profile) =>
       _db.update('profiles', profile.toRow(), where: 'id = ?', whereArgs: [profile.id]);
 
-  Future<void> deleteProfile(int id) => _db.delete('profiles', where: 'id = ?', whereArgs: [id]);
+  /// Toglie il profilo e i punti di ripresa di quel bambino (storie a metà, disegno).
+  Future<void> deleteProfile(int id) async {
+    await _db.delete('profiles', where: 'id = ?', whereArgs: [id]);
+    await _db.delete('settings', where: 'key LIKE ? OR key = ?', whereArgs: ['resume.story.$id.%', 'resume.drawing.$id']);
+  }
 
   Future<void> addDiaryEntry(DiaryEntry e) => _db.insert('diary', {
         'profile_id': e.profileId,

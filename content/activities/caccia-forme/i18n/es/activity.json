@@ -40,7 +40,7 @@
     }
   ],
   "intro": {
-    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas y yo te espero aquí. Una cosa cada vez.",
+    "bo": "{nome}, ¿hacemos una búsqueda del tesoro? Tú buscas con calma, una cosa cada vez.",
     "pilu": "{nome}, te digo una cosa que buscar. Mira bien a tu alrededor: hay tesoros por todas partes.",
     "tango": "¡Búsqueda del tesoro, {nome}! ¡Voy contigo! ...No, yo me quedo aquí. Tú busca, despacio."
   },

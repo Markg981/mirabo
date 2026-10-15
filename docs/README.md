@@ -16,7 +16,8 @@
 - `data-deletion.md`: cancellazione dei dati su questo tablet e del backup su Drive.
 - `creo-e-scopro.md`: lettura karaoke, fabbrica di storie, calendario della natura, stampabili.
 - `adaptivity.md`: adattività esplicita (livello scelto a fine attività, proposte al genitore, dati e base giuridica).
-- `adult-gate.md`: PIN dell'area adulta, tentativi, recupero e percorsi di ingresso verificati.
+- `adult-gate.md`: PIN dell'area adulta, tentativi, recupero (codice di recupero, blocco del tablet che l'adulto può spegnere, avviso dopo un reset) e percorsi di ingresso verificati.
+- `child-paths.md`: i percorsi essenziali bambino-genitore (avvio, scelta, aiuto, errore, cambio esperienza, uscita, ripresa, accesso adulto); "insieme" e "da solo" definiti; cosa si salva per ogni esperienza; nessun invito a restare o tornare (controllo `studio/check_retention.py`).
 - `compliance/`: bozze di governance di privacy e sicurezza (DPIA, programma di sicurezza, conservazione, incidenti e richieste, fornitori, checklist MASVS), da validare con un consulente.
 - `onboarding.md`: onboarding dell'adulto al primo avvio (60 secondi), stato e criterio di test.
 - `business/model-decision.md`: proposta di modello di business (non una decisione: l'app resta gratuita), con `entitlements-offline.md` e `schools-pilot.md`; calcolatore in `studio/economics.py`.
@@ -34,14 +35,15 @@
 | Ambito | Decisione |
 | --- | --- |
 | Età | 3–10, tre fasce (3–5, 6–7, 8–10), profili per bambino |
+| Insieme / da solo | Dichiarazione dell'adulto, non verifica: cambia cosa si propone e cosa si apre. Ogni avvio parte da "da solo"; "insieme" scade cambiando bambino o dopo 30 minuti in background (`child-paths.md`) |
 | Piattaforma | Flutter, iOS 15+ e Android 8+, tablet prima di tutto |
 | Dati | Locale di default (SQLite cifrato); Drive personale o account cloud opt-in |
-| Compagno | Uno per bambino, scelto tra Bo (mammut), Pilù (civetta), Tango (volpe), non sostituibile |
+| Compagno | Uno per bambino, scelto tra Bo (mammut), Pilù (civetta), Tango (volpe). L'adulto lo cambia dal profilo senza perdere niente: storie, preferenze e lavori stanno sul profilo |
 | Nome del bambino | Pronunciato con TTS di sistema, generato una volta e messo in cache |
 | Motivazione | Progressione narrativa; nessun punto, stella, streak o notifica |
 | Ponte con il mondo reale | Pausa di gesto nelle storie (il bambino fa il gesto del protagonista, poi si riprende) e cacce al tesoro (si cerca con le mani, si dice a voce, si rimette a posto); nel catalogo di lancio nove attività pratiche con la loro scheda, tre delle quali Montessori (`montessori.md`). Il tablet non verifica e non premia |
-| Crescita del compagno | Con le settimane dalla creazione del profilo (2, 6, 12), uguale per tutti. Né il tempo sullo schermo né i gesti segnati dal genitore la fanno avanzare: nessuna conferma porta un premio. Chi era già cresciuto resta allo stadio raggiunto |
-| Uscita | "Ho finito" (la manina in casa) c'è sempre: una chiusura breve riconosce quello che ha fatto, non avvia nulla e il compagno è sereno, mai triste. Storie e disegni si salvano mentre si fanno, quindi si riprende da dove ci si era fermati. Il saluto del limite "da solo" arriva solo a storia o attività finita (mai a metà) |
+| Crescita del compagno | Fuori dall'MVP: il compagno non cresce a soglie, né con le settimane né con l'uso né con i gesti segnati (nessuna conferma porta un premio). Chi era già cresciuto resta allo stadio raggiunto |
+| Uscita | "Ho finito" (la manina in casa) c'è sempre: una chiusura breve, detta a voce, riconosce quello che ha fatto, non avvia nulla e il compagno è sereno, mai triste. Cosa si salva e da dove si riprende è scritto per ogni esperienza in `child-paths.md` (storie dalla schermata lasciata, disegno com'era; attività e giochi ripartono). Il saluto del limite "da solo" arriva solo a storia o attività finita (mai a metà): non è un blocco al secondo |
 | Diario del genitore | "Un'idea per oggi" (dalla sezione *Nella vita vera* delle schede delle storie finite e dalle presentazioni Montessori per la sua età; cambia ogni giorno; ogni idea dice perché la proponiamo, cosa serve, quanto ci vuole a prepararla e una variante; il genitore può scartarla con "non abbiamo questi materiali" o "non ci interessa" e non torna più, salvata in `settings`) e "La settimana di …", gli ultimi 7 giorni raccontati in poche frasi. Senza voti e senza notifiche: si legge quando si apre l'area genitore |
 | Aiuto nelle attività | Un comando fisso (lampadina, in basso a destra) a richiesta, a passi: ripete la consegna, indica l'elemento, la dice a voce con un invito a provare. Non completa mai il round al posto del bambino |
 | Contenuti | Scritti da Marco con l'AI, revisione pedagogica prima della pubblicazione (`pedagogical-review.md`); proprietari |

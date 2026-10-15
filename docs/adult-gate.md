@@ -15,9 +15,14 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 
 ## Recupero ("Ho dimenticato il PIN")
 
-Autenticazione del dispositivo (`local_auth`: biometria o blocco schermo). Se riesce, il vecchio PIN viene eliminato e l'adulto ne sceglie uno nuovo. **Non si cancella nulla del bambino** (profili, progressi, database, backup).
+Due canali; nessuno dei due cancella qualcosa del bambino (profili, progressi, database, backup).
 
-**Limite**: l'autenticazione del dispositivo aiuta solo se le credenziali del dispositivo sono sotto controllo adulto. Se il bambino conosce il codice di sblocco del tablet o ha le proprie impronte registrate, può azzerare il PIN. Se il dispositivo non ha alcun blocco, il recupero non è disponibile e non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
+1. **Codice di recupero.** Quando l'adulto sceglie il PIN la prima volta (o dopo aver usato il codice), l'app mostra una volta sola un codice di 8 caratteri (`ABCD-EFGH`, senza 0/O e 1/I/L) da scrivere su un foglio lontano dal tablet. Se ne conservano solo sale e hash PBKDF2, come per il PIN. I tentativi contano come tentativi di PIN (stesse attese). Usato una volta, il codice non vale più: con il PIN nuovo se ne crea un altro. Dall'area adulta si può generare un codice nuovo (dopo il PIN); il vecchio smette di valere.
+2. **Blocco del tablet** (`local_auth`: biometria o blocco schermo). **Acceso salvo scelta dell'adulto**, che lo spegne nell'area adulta (sezione dati, dopo il PIN) se il bambino conosce il codice di sblocco del tablet o ha la sua impronta registrata. Spento, "Ho dimenticato il PIN" offre solo il codice di recupero.
+
+Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è stato reimpostato il … con il blocco del tablet"), finché l'adulto non lo chiude: un reset fatto dal bambino si vede.
+
+**Il caso del bambino che conosce il codice del tablet.** Con il recupero dal blocco acceso il bambino può azzerare il PIN, ma l'avviso lo rende visibile al primo ingresso dell'adulto. Spegnendolo, l'unica via resta il codice di recupero scritto su carta. Se l'adulto perde anche quello, non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
 
 ## Operazioni che richiedono di nuovo il PIN
 
@@ -25,7 +30,9 @@ Autenticazione del dispositivo (`local_auth`: biometria o blocco schermo). Se ri
 
 - eliminazione di un profilo (`profile_form.dart`);
 - collegamento del backup Drive e ripristino da Drive (`backup_section.dart`);
-- cambio del PIN (`AdultGate.changePin`, pulsante nella sezione dati dell'area genitori).
+- cambio del PIN (`AdultGate.changePin`, pulsante nella sezione dati dell'area genitori);
+- nuovo codice di recupero (`AdultGate.newRecoveryCode`) e recupero con il blocco del tablet acceso o spento (`AdultGate.setDeviceRecovery`);
+- cancellazione dei dati su questo tablet e del backup su Drive (`data_deletion.dart`, via `AdultGate.open`).
 
 `AdultGate.open(context, then: ...)` mantiene la firma: ora chiede il PIN (o ne fa creare uno) e poi esegue `then`.
 
@@ -46,4 +53,4 @@ I 60 s sono un compromesso: una stampa lunga può richiedere di reinserire il PI
 
 ## Test
 
-`app/test/adult_pin_test.dart` (formato, hash e sale, attese, reset) e `app/test/widget_test.dart` (creazione, verifica, recupero con e senza autenticazione del dispositivo).
+`app/test/adult_pin_test.dart` (formato, hash e sale, attese, reset, codice di recupero monouso con le stesse attese, avviso del reset, recupero dal blocco acceso o spento) e `app/test/widget_test.dart` (creazione con codice mostrato una volta, verifica, recupero con il codice, con e senza autenticazione del dispositivo, recupero dal blocco spento).

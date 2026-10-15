@@ -35,6 +35,15 @@ class MemoryPinStore implements PinStore {
 
 enum PinResult { ok, wrong, locked }
 
+/// Come è stato reimpostato il PIN.
+enum RecoveryChannel { code, device }
+
+class PinResetNotice {
+  const PinResetNotice(this.at, this.how);
+  final DateTime at;
+  final RecoveryChannel how;
+}
+
 /// PIN dell'adulto (docs/adult-gate.md). Si conservano solo sale casuale e
 /// hash PBKDF2-HMAC-SHA256; il PIN non è mai salvato in chiaro. Dopo ogni
 /// errore oltre la soglia, l'attesa cresce. Il PIN non cancella né tocca i
@@ -50,6 +59,16 @@ class AdultPin {
   static const _kSalt = 'adult_pin_salt';
   static const _kFails = 'adult_pin_fails';
   static const _kLockUntil = 'adult_pin_lock_until';
+  static const _kRecHash = 'adult_pin_recovery_hash';
+  static const _kRecSalt = 'adult_pin_recovery_salt';
+  static const _kDeviceRecovery = 'adult_pin_device_recovery';
+  static const _kResetAt = 'adult_pin_reset_at';
+  static const _kResetHow = 'adult_pin_reset_how';
+
+  /// Lettere e cifre del codice di recupero, senza quelle che si confondono
+  /// scrivendole a mano (0/O, 1/I/L).
+  static const _recoveryAlphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  static const recoveryLength = 8;
 
   /// Errori consecutivi tollerati prima della prima attesa.
   static const freeAttempts = 3;
@@ -96,6 +115,73 @@ class AdultPin {
       await _clearFails();
       return PinResult.ok;
     }
+    return _fail();
+  }
+
+  /// Dopo un recupero riuscito tramite un canale adulto: toglie il vecchio PIN
+  /// e le attese. I dati del bambino (database, profili, progressi) non si toccano.
+  /// Resta un avviso con data e canale ([resetNotice]), che l'area adulta
+  /// mostra finché l'adulto non lo chiude: un reset fatto da altri si vede.
+  Future<void> reset({RecoveryChannel how = RecoveryChannel.device}) async {
+    await _store.delete(_kHash);
+    await _store.delete(_kSalt);
+    await _clearFails();
+    await _store.write(_kResetAt, '${_now().millisecondsSinceEpoch}');
+    await _store.write(_kResetHow, how.name);
+  }
+
+  /// Codice di recupero: si mostra una volta sola, alla creazione, e se ne
+  /// conserva solo l'hash. Un codice nuovo sostituisce il vecchio.
+  Future<String> newRecoveryCode() async {
+    final rnd = Random.secure();
+    final code = String.fromCharCodes(
+        List.generate(recoveryLength, (_) => _recoveryAlphabet.codeUnitAt(rnd.nextInt(_recoveryAlphabet.length))));
+    final salt = List<int>.generate(16, (_) => rnd.nextInt(256));
+    await _store.write(_kRecSalt, base64.encode(salt));
+    await _store.write(_kRecHash, base64.encode(_derive(code, salt)));
+    return '${code.substring(0, 4)}-${code.substring(4)}';
+  }
+
+  Future<bool> get hasRecoveryCode async => (await _store.read(_kRecHash)) != null;
+
+  /// Il codice di recupero al posto del PIN dimenticato. Conta come un
+  /// tentativo di PIN (stesse attese). Se è giusto toglie il PIN e il codice,
+  /// che vale una volta: con il PIN nuovo se ne crea un altro.
+  Future<PinResult> recover(String code) async {
+    if ((await remainingLock()) > Duration.zero) return PinResult.locked;
+    final h = await _store.read(_kRecHash);
+    final s = await _store.read(_kRecSalt);
+    final normalized = code.toUpperCase().replaceAll(RegExp('[^A-Z0-9]'), '');
+    if (h != null && s != null && _constantTimeEquals(base64.encode(_derive(normalized, base64.decode(s))), h)) {
+      await _store.delete(_kRecHash);
+      await _store.delete(_kRecSalt);
+      await reset(how: RecoveryChannel.code);
+      return PinResult.ok;
+    }
+    return _fail();
+  }
+
+  /// Recupero con il blocco del tablet: acceso salvo scelta dell'adulto, che
+  /// lo spegne se il bambino conosce il codice del tablet o ha l'impronta registrata.
+  Future<bool> get deviceRecovery async => (await _store.read(_kDeviceRecovery)) != '0';
+
+  Future<void> setDeviceRecovery(bool on) => _store.write(_kDeviceRecovery, on ? '1' : '0');
+
+  /// L'ultimo reset non ancora visto dall'adulto, o null.
+  Future<PinResetNotice?> resetNotice() async {
+    final at = int.tryParse(await _store.read(_kResetAt) ?? '');
+    if (at == null) return null;
+    final name = await _store.read(_kResetHow);
+    final how = RecoveryChannel.values.where((c) => c.name == name).firstOrNull;
+    return PinResetNotice(DateTime.fromMillisecondsSinceEpoch(at), how ?? RecoveryChannel.device);
+  }
+
+  Future<void> clearResetNotice() async {
+    await _store.delete(_kResetAt);
+    await _store.delete(_kResetHow);
+  }
+
+  Future<PinResult> _fail() async {
     final fails = (int.tryParse(await _store.read(_kFails) ?? '') ?? 0) + 1;
     await _store.write(_kFails, '$fails');
     final wait = waitAfter(fails);
@@ -104,14 +190,6 @@ class AdultPin {
       return PinResult.locked;
     }
     return PinResult.wrong;
-  }
-
-  /// Dopo un recupero riuscito tramite un canale adulto: toglie il vecchio PIN
-  /// e le attese. I dati del bambino (database, profili, progressi) non si toccano.
-  Future<void> reset() async {
-    await _store.delete(_kHash);
-    await _store.delete(_kSalt);
-    await _clearFails();
   }
 
   Future<void> _clearFails() async {

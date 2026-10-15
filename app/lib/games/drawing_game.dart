@@ -1,12 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
+import '../app_state.dart';
 import '../l10n/l10n.dart';
 import '../ui/design/palette.dart';
 import '../ui/design/widgets.dart';
 import 'game.dart';
 
 /// Disegno libero con il dito: colori grandi, tre punte, gomma, timbri.
-/// Non ha una fine: si esce con la X quando si vuole.
+/// Non ha una fine: si esce con la X quando si vuole. Il foglio si salva a
+/// ogni tratto e si ritrova riaprendo il gioco; "Foglio nuovo" lo svuota
+/// (docs/child-paths.md, "Uscita e ripresa").
 class DrawingGame extends StatefulWidget {
   const DrawingGame({super.key, required this.ctx});
   final GameContext ctx;
@@ -53,7 +58,36 @@ class _DrawingGameState extends State<DrawingGame> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(context.l10n.drawingIntro));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      widget.ctx.say(context.l10n.drawingIntro);
+      _load();
+    });
+  }
+
+  @override
+  void dispose() {
+    _save();
+    super.dispose();
+  }
+
+  /// Letto al primo frame; null dove il gioco gira senza stato (test, anteprime).
+  AppState? _state;
+
+  Future<void> _load() async {
+    final state = _state = AppStateScope.maybeRead(context);
+    final profile = state?.currentProfile;
+    if (state == null || profile == null) return;
+    final raw = await state.savedDrawing(profile);
+    if (!mounted || raw == null || _marks.isNotEmpty) return;
+    setState(() => _marks.addAll(decodeMarks(raw).cast<_Mark>()));
+  }
+
+  void _save() {
+    final state = _state;
+    final profile = state?.currentProfile;
+    if (state == null || profile == null) return;
+    state.saveDrawing(profile, _marks.isEmpty ? null : encodeMarks(_marks));
   }
 
   void _start(Offset p) {
@@ -127,6 +161,8 @@ class _DrawingGameState extends State<DrawingGame> {
                 // onPanDown arriva al tocco, anche senza movimento: un tocco lascia un punto o un timbro.
                 onPanDown: (d) => _start(d.localPosition),
                 onPanUpdate: (d) => _move(d.localPosition),
+                onPanEnd: (_) => _save(),
+                onPanCancel: _save,
                 child: Semantics(
                   label: context.l10n.drawingSheet,
                   child: CustomPaint(painter: _SheetPainter(_marks), size: Size.infinite),
@@ -163,13 +199,23 @@ class _DrawingGameState extends State<DrawingGame> {
                   _ToolButton(
                     selected: false,
                     tooltip: context.l10n.drawingUndo,
-                    onTap: _marks.isEmpty ? null : () => setState(_marks.removeLast),
+                    onTap: _marks.isEmpty
+                        ? null
+                        : () {
+                            setState(_marks.removeLast);
+                            _save();
+                          },
                     child: const Icon(Icons.undo_rounded, size: 30, color: MiraboColors.ink),
                   ),
                   _ToolButton(
                     selected: false,
                     tooltip: context.l10n.drawingNewSheet,
-                    onTap: _marks.isEmpty ? null : () => setState(_marks.clear),
+                    onTap: _marks.isEmpty
+                        ? null
+                        : () {
+                            setState(_marks.clear);
+                            _save();
+                          },
                     child: const Icon(Icons.note_add_rounded, size: 30, color: MiraboColors.ink),
                   ),
                 ],
@@ -180,6 +226,39 @@ class _DrawingGameState extends State<DrawingGame> {
       ),
     );
   }
+}
+
+/// Il foglio in JSON per i `settings`: tratti (colore, spessore, punti) e timbri.
+String encodeMarks(List<Object> marks) => jsonEncode([
+      for (final m in marks.cast<_Mark>())
+        switch (m) {
+          _Stroke s => {'c': s.color.toARGB32(), 'w': s.width, 'p': [for (final p in s.points) ...[p.dx.roundToDouble(), p.dy.roundToDouble()]]},
+          _Stamp t => {'e': t.emoji, 'x': t.at.dx.roundToDouble(), 'y': t.at.dy.roundToDouble()},
+        },
+    ]);
+
+/// Il contrario di [encodeMarks]; un foglio illeggibile riparte vuoto.
+List<Object> decodeMarks(String raw) {
+  try {
+    return [
+      for (final m in (jsonDecode(raw) as List).cast<Map<String, dynamic>>())
+        if (m['e'] is String)
+          _Stamp(m['e'] as String, Offset((m['x'] as num).toDouble(), (m['y'] as num).toDouble()))
+        else
+          _strokeFrom(m),
+    ];
+  } catch (_) {
+    return [];
+  }
+}
+
+_Stroke _strokeFrom(Map<String, dynamic> m) {
+  final s = _Stroke(Color(m['c'] as int), (m['w'] as num).toDouble());
+  final p = (m['p'] as List).cast<num>();
+  for (var i = 0; i + 1 < p.length; i += 2) {
+    s.points.add(Offset(p[i].toDouble(), p[i + 1].toDouble()));
+  }
+  return s;
 }
 
 class _Swatch extends StatelessWidget {

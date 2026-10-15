@@ -14,8 +14,9 @@ ThemeData miraboTheme({
   required bool dyslexiaFont,
   required bool lowStimulation,
   InteractionProfile interaction = const InteractionProfile(),
+  bool voiceMissing = false,
 }) {
-  final tokens = MiraboTokens.forProfile(lowStimulation: lowStimulation, interaction: interaction);
+  final tokens = MiraboTokens.forProfile(lowStimulation: lowStimulation, interaction: interaction, voiceMissing: voiceMissing);
   final m = tokens.minTarget;
   final primary = tokens.tint(MiraboColors.sky);
   final secondary = tokens.tint(MiraboColors.teal);

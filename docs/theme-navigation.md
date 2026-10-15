@@ -24,7 +24,7 @@ casa ──► tema ──► storia | gioco | lo provo ──► esperienza ─
    | Posto | Casa | Tema, mensola | Storia, attività | Lo provo | Gioco |
    | --- | --- | --- | --- | --- | --- |
    | In alto a sinistra: esci verso il livello sopra | cambia bambino | casa | chiudi (con conferma se serve) | chiudi | chiudi |
-   | In alto a destra: riascolta | — | nome del tema (o della capacità) e delle modalità | riascolta la schermata | riascolta l'indicazione | vuoto |
+   | In alto a destra: riascolta | — | nome del tema (o della capacità) e delle modalità | riascolta la schermata | riascolta l'indicazione | riascolta l'ultima consegna del gioco |
    | Ho finito, area adulti | in alto a destra, solo qui | — | — | — | — |
    | Pausa | — | — | la pausa del gesto dentro la storia | — | — |
 

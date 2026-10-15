@@ -118,7 +118,7 @@
       },
       "text": "Der neue Turm ist nicht der höchste der Welt. Er ist der breiteste, weil sie ihn zu zweit gebaut haben. Und Lias Vulkan? Der ist immer noch da drin, ganz ruhig. Eines Tages kommt er wieder. Aber jetzt weiß Lia, wie sie auf ihn warten kann.",
       "companionLines": {
-        "bo": "Wir haben es geschafft, {nome}. Mein Vulkan ist jetzt ganz grün. Sehen wir uns morgen?",
+        "bo": "Wir haben es geschafft, {nome}. Mein Vulkan ist jetzt ganz grün.",
         "pilu": "Jetzt weißt du es auch, {nome}: Der Vulkan geht vorbei. Ich schlafe jetzt ein bisschen, es ist ja Tag.",
         "tango": "Ich merke es mir, {nome}: einatmen eins zwei drei, ausatmen schschsch. Ich probiere es heute Nachmittag."
       }

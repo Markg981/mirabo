@@ -10,7 +10,7 @@
     "8-10"
   ],
   "intro": {
-    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi, io ti aspetto qui. Una cosa alla volta.",
+    "bo": "{nome}, facciamo una caccia al tesoro? Tu cerchi con calma, una cosa alla volta.",
     "pilu": "{nome}, ti dico una cosa da cercare. Guarda bene intorno a te: i tesori sono dappertutto.",
     "tango": "Caccia al tesoro, {nome}! Vengo anch'io! ...No, io resto qui. Tu cerca, piano."
   },

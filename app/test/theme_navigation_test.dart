@@ -164,7 +164,7 @@ void main() {
 
   test('completamenti, mensola vuota e cambio di settimana non tolgono niente dal tema', () async {
     var now = DateTime(2026, 10, 1);
-    const fresh = ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b3to5, companion: CompanionId.bo);
+    const fresh = ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b3to5, companion: CompanionId.bo, aloneSessionMinutes: 0);
     final state = AppState(
       db: _Db(fresh),
       repo: _repo(),
@@ -210,7 +210,7 @@ void main() {
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
     // Mensola scelta dal genitore (vuota): la casa non deve ruotarla.
-    final p = const ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b3to5, companion: CompanionId.bo).withShelf(const []);
+    final p = const ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b3to5, companion: CompanionId.bo, aloneSessionMinutes: 0).withShelf(const []);
     final state = AppState(db: _Db(p), repo: _repo(), nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')));
     await state.init();
     addTearDown(state.dispose);

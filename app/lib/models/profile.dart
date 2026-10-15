@@ -39,9 +39,12 @@ class ChildProfile {
   final CompanionId companion;
   final Set<World> enabledWorlds;
 
+  /// Ultima modalità scelta dall'adulto. Si salva ma non si ripristina: ogni
+  /// avvio parte da "da solo" (vedi AppState.mode).
+  final SessionMode lastMode;
+
   /// Default: il mondo Sicurezza e corpo solo in modalità insieme.
   final bool safetyTogetherOnly;
-  final SessionMode lastMode;
   final bool dyslexiaFont;
   final bool lowStimulation;
 
@@ -61,8 +64,8 @@ class ChildProfile {
   /// compagno non torna indietro.
   final int stageFloor;
 
-  /// Da quando il compagno cresce con il calendario. Lo scrive il database alla
-  /// creazione del profilo (o alla migrazione v12); null solo in righe di prima.
+  /// Data scritta dal database alla creazione del profilo (o alla migrazione
+  /// v12), quando il compagno cresceva con il calendario. Non decide più niente.
   final DateTime? growthSince;
 
   /// Codice della lingua del bambino (it, en, es, fr, de): interfaccia lato
@@ -85,20 +88,11 @@ class ChildProfile {
   InteractionProfile get interaction => _interaction ?? InteractionProfile.forAge(ageBand);
   final InteractionProfile? _interaction;
 
-  /// Settimane dalla creazione del profilo per ogni stadio del compagno (1, 2, 3).
-  /// Il compagno cresce con il tempo, uguale per tutti: non dipende da quanto si
-  /// usa l'app né da quello che l'adulto segna.
-  static const stageThresholdWeeks = [2, 6, 12];
-
-  static int stageForWeeks(int weeks) => stageThresholdWeeks.where((t) => weeks >= t).length;
-
-  int companionStageAt(DateTime now) {
-    final since = growthSince;
-    final s = since == null ? 0 : stageForWeeks(now.difference(since).inDays ~/ 7);
-    return s > stageFloor ? s : stageFloor;
-  }
-
-  int get companionStage => companionStageAt(DateTime.now());
+  /// Lo stadio del compagno. Nell'MVP il compagno non cresce a soglie: né con
+  /// l'uso, né con i gesti segnati, né con le settimane (docs/child-paths.md).
+  /// Chi era già cresciuto con le regole di prima resta dov'era ([stageFloor]):
+  /// niente torna indietro. [growthSince] resta salvato ma non si usa.
+  int get companionStage => stageFloor;
 
   bool canOpen(Story story, SessionMode mode) {
     if (!enabledWorlds.contains(story.world)) return false;

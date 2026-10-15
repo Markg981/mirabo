@@ -65,4 +65,42 @@ void main() {
     await pin.set('9999');
     expect(await pin.verify('9999'), PinResult.ok);
   });
+
+  test('codice di recupero: solo hash, vale una volta, toglie il PIN e lascia un avviso', () async {
+    await pin.set('1234');
+    final code = await pin.newRecoveryCode();
+    expect(code, matches(RegExp(r'^[A-Z2-9]{4}-[A-Z2-9]{4}$')));
+    expect(store.data.values.any((v) => v.contains(code.replaceAll('-', ''))), isFalse);
+    expect(await pin.hasRecoveryCode, isTrue);
+
+    expect(await pin.recover('AAAA-AAAA'), PinResult.wrong);
+    expect(await pin.recover(' ${code.toLowerCase()} '), PinResult.ok);
+    expect(await pin.isSet, isFalse);
+    expect(await pin.hasRecoveryCode, isFalse);
+    expect(await pin.recover(code), PinResult.wrong);
+
+    final notice = await pin.resetNotice();
+    expect(notice?.how, RecoveryChannel.code);
+    expect(notice?.at, clock);
+    await pin.clearResetNotice();
+    expect(await pin.resetNotice(), isNull);
+  });
+
+  test('il codice di recupero ha le stesse attese del PIN: niente tentativi a raffica', () async {
+    await pin.set('1234');
+    await pin.newRecoveryCode();
+    for (var i = 0; i < AdultPin.freeAttempts - 1; i++) {
+      expect(await pin.recover('AAAA-AAAA'), PinResult.wrong);
+    }
+    expect(await pin.recover('AAAA-AAAA'), PinResult.locked);
+    expect(await pin.verify('1234'), PinResult.locked);
+  });
+
+  test('recupero con il blocco del tablet: acceso salvo scelta dell\'adulto', () async {
+    expect(await pin.deviceRecovery, isTrue);
+    await pin.setDeviceRecovery(false);
+    expect(await pin.deviceRecovery, isFalse);
+    await pin.setDeviceRecovery(true);
+    expect(await pin.deviceRecovery, isTrue);
+  });
 }
