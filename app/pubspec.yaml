@@ -5,7 +5,10 @@ version: 0.1.0+1
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
-  flutter: ">=3.27.0"
+  # Versione esatta: la CI la legge da qui (flutter-version-file) e le build di
+  # release non cambiano quando il canale stable avanza. Insieme a pubspec.lock,
+  # che è nel repository (docs/release-engineering.md).
+  flutter: 3.47.7
 
 dependencies:
   flutter:

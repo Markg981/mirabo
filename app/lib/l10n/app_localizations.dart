@@ -3199,6 +3199,48 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Su questo tablet manca la voce di sintesi per {language}. Chi non legge ancora ha bisogno di un adulto che legga con lui: per ora il testo resta in vista. Installala dalle impostazioni del tablet (Sintesi vocale su Android, Contenuti letti ad alta voce su iPad). Le storie con l\'audio registrato si sentono lo stesso.'**
   String voiceMissingParent(String language);
+
+  /// No description provided for @saveFailedBanner.
+  ///
+  /// In it, this message translates to:
+  /// **'Non sono riuscito a salvare l\'ultima modifica: potrebbe non essere conservata. Di solito dipende dallo spazio libero sul tablet.'**
+  String get saveFailedBanner;
+
+  /// No description provided for @saveFailedDismiss.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho capito'**
+  String get saveFailedDismiss;
+
+  /// No description provided for @startupFailedTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Mirabò non riesce ad aprire i dati salvati'**
+  String get startupFailedTitle;
+
+  /// No description provided for @startupFailedBody.
+  ///
+  /// In it, this message translates to:
+  /// **'Non è stato cancellato niente. Riprova; se succede ancora, controlla lo spazio libero sul tablet e riavvialo.'**
+  String get startupFailedBody;
+
+  /// No description provided for @startupTooNewBody.
+  ///
+  /// In it, this message translates to:
+  /// **'I dati su questo tablet sono di una versione più recente di Mirabò. Non è stato cancellato niente: aggiorna l\'app dallo store.'**
+  String get startupTooNewBody;
+
+  /// No description provided for @startupRetry.
+  ///
+  /// In it, this message translates to:
+  /// **'Riprova'**
+  String get startupRetry;
+
+  /// No description provided for @storageResetNotice.
+  ///
+  /// In it, this message translates to:
+  /// **'Il {date} Mirabò è ripartito da zero: i dati che c\'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.'**
+  String storageResetNotice(String date);
 }
 
 class _AppLocalizationsDelegate

@@ -10,6 +10,12 @@ app/assets/ è ignorata da git: la fonte di verità resta content/.
 Uso:
   python studio/sync_assets.py                    # esegue pack.py --sign (solo storie pubblicate)
   python studio/sync_assets.py --include-drafts   # anche le storie non ancora revisionate
+  python studio/sync_assets.py --release [--theme T]  # build di distribuzione: solo il catalogo
+                                                      # approvato (pack.py --release)
+
+In app/assets/build.json resta che cosa è stato copiato (sviluppo o release, con
+o senza bozze): studio/check_release.py rifiuta una distribuzione che non viene
+da --release (docs/release-engineering.md).
 """
 from __future__ import annotations
 
@@ -31,7 +37,11 @@ import pack  # noqa: E402
 
 
 def main() -> int:
-    sys.argv = ["pack.py", "--sign"] + [a for a in sys.argv[1:] if a == "--include-drafts"]
+    args = sys.argv[1:]
+    forwarded = [a for a in args if a in ("--include-drafts", "--release")]
+    if "--theme" in args:
+        forwarded += ["--theme", args[args.index("--theme") + 1]]
+    sys.argv = ["pack.py", "--sign"] + forwarded
     if pack.main() != 0:
         return 1
     if STORIES_OUT.exists():
@@ -47,6 +57,8 @@ def main() -> int:
     EDUCATION_OUT.mkdir(parents=True, exist_ok=True)
     themes = check_goals.navigation(check_goals.read_json(check_goals.MATRIX))
     (EDUCATION_OUT / "themes.json").write_text(json.dumps(themes, ensure_ascii=False, indent=2), encoding="utf-8")
+    build = {"build": "release" if "--release" in args else "development", "drafts": "--include-drafts" in args}
+    (ASSETS / "build.json").write_text(json.dumps(build, indent=2) + "\n", encoding="utf-8")
     print(f"{len(index)} pacchetti copiati in {STORIES_OUT.relative_to(ROOT)}")
     return 0
 

@@ -2407,4 +2407,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String voiceMissingParent(String language) {
     return 'This tablet has no text-to-speech voice for $language. A child who can\'t read yet needs an adult to read along: for now the text stays visible. Install the voice from the tablet\'s settings (Text-to-speech on Android, Spoken Content on iPad). Stories with recorded audio still play.';
   }
+
+  @override
+  String get saveFailedBanner =>
+      'The last change couldn\'t be saved and may not be kept. This is usually about free space on the tablet.';
+
+  @override
+  String get saveFailedDismiss => 'Got it';
+
+  @override
+  String get startupFailedTitle => 'Mirabò can\'t open its saved data';
+
+  @override
+  String get startupFailedBody =>
+      'Nothing has been deleted. Try again; if it happens again, check the tablet\'s free space and restart it.';
+
+  @override
+  String get startupTooNewBody =>
+      'The data on this tablet comes from a newer version of Mirabò. Nothing has been deleted: update the app from the store.';
+
+  @override
+  String get startupRetry => 'Try again';
+
+  @override
+  String storageResetNotice(String date) {
+    return 'On $date Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn\'t be read.';
+  }
 }

@@ -2408,4 +2408,30 @@ class AppLocalizationsIt extends AppLocalizations {
   String voiceMissingParent(String language) {
     return 'Su questo tablet manca la voce di sintesi per $language. Chi non legge ancora ha bisogno di un adulto che legga con lui: per ora il testo resta in vista. Installala dalle impostazioni del tablet (Sintesi vocale su Android, Contenuti letti ad alta voce su iPad). Le storie con l\'audio registrato si sentono lo stesso.';
   }
+
+  @override
+  String get saveFailedBanner =>
+      'Non sono riuscito a salvare l\'ultima modifica: potrebbe non essere conservata. Di solito dipende dallo spazio libero sul tablet.';
+
+  @override
+  String get saveFailedDismiss => 'Ho capito';
+
+  @override
+  String get startupFailedTitle => 'Mirabò non riesce ad aprire i dati salvati';
+
+  @override
+  String get startupFailedBody =>
+      'Non è stato cancellato niente. Riprova; se succede ancora, controlla lo spazio libero sul tablet e riavvialo.';
+
+  @override
+  String get startupTooNewBody =>
+      'I dati su questo tablet sono di una versione più recente di Mirabò. Non è stato cancellato niente: aggiorna l\'app dallo store.';
+
+  @override
+  String get startupRetry => 'Riprova';
+
+  @override
+  String storageResetNotice(String date) {
+    return 'Il $date Mirabò è ripartito da zero: i dati che c\'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.';
+  }
 }

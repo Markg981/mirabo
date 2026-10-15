@@ -90,6 +90,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final steps = _steps;
     final step = steps[_i.clamp(0, steps.length - 1)];
     final last = step == _Step.go;
+    // Dati di prima illeggibili: l'app è ripartita da zero e lo dice (LocalDb.storageResetKey).
+    final resetAt = _i == 0 ? AppStateScope.of(context).storageResetAt : null;
     return Scaffold(
       body: SceneBackdrop(
         child: SafeArea(
@@ -100,6 +102,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.fromLTRB(24, 12, 24, 20),
                 child: Column(
                   children: [
+                    if (resetAt != null)
+                      Card(
+                        key: const Key('storage-reset-notice'),
+                        color: Theme.of(context).colorScheme.errorContainer,
+                        child: ListTile(
+                          leading: const Icon(Icons.warning_amber_rounded),
+                          title: Text(l.storageResetNotice(MaterialLocalizations.of(context).formatMediumDate(resetAt))),
+                        ),
+                      ),
                     Row(
                       children: [
                         for (var k = 0; k < steps.length; k++)

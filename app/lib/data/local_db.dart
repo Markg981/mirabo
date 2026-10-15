@@ -15,12 +15,28 @@ import '../models/profile.dart';
 import '../models/shelf.dart';
 import '../models/story.dart' show AgeBand, LegacyAgeBand;
 
+/// Il database c'è ma questa versione dell'app non lo può usare: è stato
+/// scritto da una versione più recente (si torna indietro installando una
+/// build vecchia). Non si cancella niente: serve l'app aggiornata.
+class DatabaseTooNewException implements Exception {
+  const DatabaseTooNewException(this.found, this.supported);
+  final int found;
+  final int supported;
+
+  @override
+  String toString() => 'Database alla versione $found, questa app arriva alla $supported';
+}
+
 /// Database locale: profili (con la loro mensola), diario, gesti fatti nella
 /// vita vera, storie inventate e calendario della natura. Tutto resta sul dispositivo.
 ///
 /// Il file è cifrato a riposo con SQLCipher. La chiave (256 bit casuali) viene
 /// generata al primo avvio e conservata in flutter_secure_storage (Keychain /
 /// Keystore), mai accanto al database.
+///
+/// Un salvataggio che non riesce non si nasconde (docs/release-engineering.md):
+/// l'errore torna a chi ha chiesto di salvare e passa da [onSaveError], che
+/// l'app usa per dirlo all'adulto.
 class LocalDb {
   LocalDb._(this._db);
   Database _db;
@@ -28,8 +44,17 @@ class LocalDb {
   static const _version = 13;
   static const _keyName = 'mirabo_db_key';
 
+  /// Chiamata a ogni scrittura non riuscita, prima che l'errore torni al
+  /// chiamante. Statica: l'app ha un solo database, e così vale anche dopo
+  /// [eraseAndReopen].
+  static void Function(Object error)? onSaveError;
+
   /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
   static const hemisphereKey = 'hemisphere';
+
+  /// Chiave in `settings`: quando l'app è ripartita da zero perché il database
+  /// di prima non si poteva più leggere (chiave di cifratura sparita).
+  static const storageResetKey = 'storage_reset_at';
 
   /// Prefisso in `settings` delle idee scartate dal genitore (poi `.idBambino`).
   static const dismissedIdeasKey = 'dismissed_ideas';
@@ -42,11 +67,15 @@ class LocalDb {
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
     final path = p.join(dir.path, 'mirabo.db');
-    final key = await _databaseKey(path);
+    final key = await resolveKey(
+      path,
+      read: () => _storage.read(key: _keyName),
+      write: (v) => _storage.write(key: _keyName, value: v),
+    );
     var minimized = false;
     final db = await openDatabase(
       path,
-      password: key,
+      password: key.value,
       version: _version,
       onConfigure: configure,
       onCreate: createSchema,
@@ -54,11 +83,18 @@ class LocalDb {
         await upgradeSchema(db, from, to);
         minimized = from < 13;
       },
+      onDowngrade: refuseDowngrade,
     );
     // Le righe tolte dalla v13 non restano nelle pagine libere del file.
     if (minimized) await db.execute('VACUUM');
+    // Si riparte da zero, ma non in silenzio: l'adulto lo legge al primo avvio.
+    if (key.reset) await db.insert('settings', {'key': storageResetKey, 'value': DateTime.now().toIso8601String()});
     return LocalDb._(db);
   }
+
+  /// Un database di una versione più recente non si apre e non si tocca.
+  static Future<void> refuseDowngrade(Database db, int from, int to) =>
+      Future.error(DatabaseTooNewException(from, to));
 
   /// Versione dello schema (per i test di migrazione).
   @visibleForTesting
@@ -198,26 +234,37 @@ class LocalDb {
     }
   }
 
-  /// Legge la chiave dal secure storage o ne crea una nuova. Un database già
-  /// presente viene sistemato prima di aprirlo:
+  /// Legge la chiave dal secure storage ([read], [write]) o ne crea una nuova.
+  /// Un database già presente viene sistemato prima di aprirlo:
   /// - in chiaro (versioni precedenti alla cifratura): convertito con la nuova chiave;
   /// - cifrato ma senza chiave (es. file ripristinato da un backup su un altro
-  ///   dispositivo): illeggibile, quindi eliminato e si riparte da zero.
-  static Future<String> _databaseKey(String path) async {
+  ///   dispositivo): illeggibile, quindi eliminato e si riparte da zero, con
+  ///   `reset` vero perché l'app lo dica.
+  /// Un errore del secure storage non è una chiave mancante: arriva al chiamante
+  /// e il database resta dov'è.
+  static Future<({String value, bool reset})> resolveKey(
+    String path, {
+    required Future<String?> Function() read,
+    required Future<void> Function(String) write,
+  }) async {
     final file = File(path);
     final exists = await file.exists();
     final plaintext = exists && await _isPlaintext(file);
 
-    var key = await _storage.read(key: _keyName);
+    var key = await read();
+    var reset = false;
     if (key == null) {
-      if (exists && !plaintext) await _deleteDatabaseFiles(path);
+      if (exists && !plaintext) {
+        await _deleteDatabaseFiles(path);
+        reset = true;
+      }
       key = _newKey();
       // Salvata prima della conversione: se l'app si chiude a metà, al riavvio
       // il file è ancora in chiaro e la conversione riparte con la stessa chiave.
-      await _storage.write(key: _keyName, value: key);
+      await write(key);
     }
     if (plaintext) await _encryptInPlace(path, key);
-    return key;
+    return (value: key, reset: reset);
   }
 
   static String _newKey() {
@@ -433,7 +480,7 @@ class LocalDb {
     };
   }
 
-  Future<void> saveProgress(ActivityProgress p) => _db.insert(
+  Future<void> saveProgress(ActivityProgress p) => _write(() => _db.insert(
         'activity_progress',
         {
           'profile_id': p.profileId,
@@ -443,11 +490,11 @@ class LocalDb {
           'last_played': p.lastPlayed?.toIso8601String(),
         },
         conflictAlgorithm: ConflictAlgorithm.replace,
-      );
+      ));
 
   /// I round di una sessione: abilità e istante (i temi esplorati nel diario,
   /// la mensola) e la scelta quando serve. Niente tentativi né aiuti.
-  Future<void> addRounds(int profileId, Activity activity, List<RoundResult> results) async {
+  Future<void> addRounds(int profileId, Activity activity, List<RoundResult> results) => _write(() async {
     final batch = _db.batch();
     final now = DateTime.now().toIso8601String();
     for (final r in results) {
@@ -460,7 +507,7 @@ class LocalDb {
       });
     }
     await batch.commit(noResult: true);
-  }
+  });
 
   /// Round in una finestra temporale: temi esplorati, diario dei progetti, idee per l'adulto.
   Future<List<Map<String, Object?>>> rounds(int profileId, {required DateTime from, DateTime? to}) =>
@@ -472,16 +519,16 @@ class LocalDb {
   Future<List<ChildProfile>> profiles() async =>
       (await _db.query('profiles', orderBy: 'id')).map(ChildProfile.fromRow).toList();
 
-  Future<ChildProfile> insertProfile(ChildProfile profile) async {
+  Future<ChildProfile> insertProfile(ChildProfile profile) => _write(() async {
     final row = profile.toRow()..remove('id');
     // Data di creazione del profilo (il compagno non cresce più con il calendario).
     row['growth_since'] ??= DateTime.now().toIso8601String();
     final id = await _db.insert('profiles', row);
     return (await _db.query('profiles', where: 'id = ?', whereArgs: [id])).map(ChildProfile.fromRow).first;
-  }
+  });
 
   Future<void> updateProfile(ChildProfile profile) =>
-      _db.update('profiles', profile.toRow(), where: 'id = ?', whereArgs: [profile.id]);
+      _write(() => _db.update('profiles', profile.toRow(), where: 'id = ?', whereArgs: [profile.id]));
 
   /// Le impostazioni di un bambino, in `settings`: punti di ripresa (storie a
   /// metà, disegno), minuti per giorno, osservazioni dell'adulto, idee scartate,
@@ -494,8 +541,7 @@ class LocalDb {
 
   /// Toglie il profilo, le righe collegate (in cascata) e le sue impostazioni,
   /// senza toccare gli altri bambini né le impostazioni della famiglia.
-  Future<void> deleteProfile(int id) async {
-    await _db.transaction((tx) async {
+  Future<void> deleteProfile(int id) => _write(() => _db.transaction((tx) async {
       // Anche senza contare sulla cascata: ogni tabella del bambino, poi il profilo.
       for (final t in childTables) {
         await tx.delete(t, where: 'profile_id = ?', whereArgs: [id]);
@@ -504,16 +550,15 @@ class LocalDb {
       for (final (where, args) in profileSettings(id)) {
         await tx.delete('settings', where: where, whereArgs: args);
       }
-    });
-  }
+    }));
 
-  Future<void> addDiaryEntry(DiaryEntry e) => _db.insert('diary', {
+  Future<void> addDiaryEntry(DiaryEntry e) => _write(() => _db.insert('diary', {
         'profile_id': e.profileId,
         'story_id': e.storyId,
         'mode': e.mode.name,
         'completed': e.completed ? 1 : 0,
         'at': e.when.toIso8601String(),
-      });
+      }));
 
   Future<List<DiaryEntry>> diary(int profileId, {int days = 30}) async {
     final since = DateTime.now().subtract(Duration(days: days)).toIso8601String();
@@ -530,11 +575,11 @@ class LocalDb {
         .toList();
   }
 
-  Future<void> addGesture(GestureEntry g) => _db.insert('gestures', {
+  Future<void> addGesture(GestureEntry g) => _write(() => _db.insert('gestures', {
         'profile_id': g.profileId,
         'story_id': g.storyId,
         'at': g.when.toIso8601String(),
-      });
+      }));
 
   Future<List<GestureEntry>> gestures(int profileId) async {
     final rows = await _db.query('gestures', where: 'profile_id = ?', whereArgs: [profileId], orderBy: 'at DESC');
@@ -547,10 +592,10 @@ class LocalDb {
         .toList();
   }
 
-  Future<MadeStory> addMadeStory(MadeStory s) async {
-    final id = await _db.insert('made_stories', s.toRow()..remove('id'));
-    return MadeStory.fromRow((await _db.query('made_stories', where: 'id = ?', whereArgs: [id])).first);
-  }
+  Future<MadeStory> addMadeStory(MadeStory s) => _write(() async {
+        final id = await _db.insert('made_stories', s.toRow()..remove('id'));
+        return MadeStory.fromRow((await _db.query('made_stories', where: 'id = ?', whereArgs: [id])).first);
+      });
 
   Future<List<MadeStory>> madeStories(int profileId) async =>
       (await _db.query('made_stories', where: 'profile_id = ?', whereArgs: [profileId], orderBy: 'at DESC'))
@@ -558,9 +603,9 @@ class LocalDb {
           .toList();
 
   /// Un giorno vuoto si cancella: nel calendario resta solo ciò che è stato visto.
-  Future<void> saveNatureDay(NatureDay d) => d.isEmpty
+  Future<void> saveNatureDay(NatureDay d) => _write(() => d.isEmpty
       ? _db.delete('nature_days', where: 'profile_id = ? AND day = ?', whereArgs: [d.profileId, NatureDay.key(d.day)])
-      : _db.insert('nature_days', d.toRow(), conflictAlgorithm: ConflictAlgorithm.replace);
+      : _db.insert('nature_days', d.toRow(), conflictAlgorithm: ConflictAlgorithm.replace));
 
   /// I giorni segnati nel mese di [month].
   Future<List<NatureDay>> natureMonth(int profileId, DateTime month) async {
@@ -606,7 +651,8 @@ class LocalDb {
 
   /// Registra il cambio della mensola automatica da [before] ad [after]:
   /// chi esce chiude il suo periodo, chi entra ne apre uno.
-  Future<void> moveShelf(int profileId, {required List<String> before, required List<String> after, required DateTime at}) async {
+  Future<void> moveShelf(int profileId, {required List<String> before, required List<String> after, required DateTime at}) =>
+      _write(() async {
     final when = at.toIso8601String();
     final batch = _db.batch();
     for (final k in before.where((k) => !after.contains(k))) {
@@ -617,7 +663,7 @@ class LocalDb {
       batch.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
     }
     await batch.commit(noResult: true);
-  }
+  });
 
   /// Le idee proposte da [since] in poi.
   Future<List<({String day, String key})>> dailyIdeas(int profileId, {required DateTime since}) async {
@@ -627,9 +673,9 @@ class LocalDb {
   }
 
   /// Salva l'idea di [day] solo se quel giorno non ne ha già una.
-  Future<void> saveDailyIdea(int profileId, String day, String key) => _db.insert(
+  Future<void> saveDailyIdea(int profileId, String day, String key) => _write(() => _db.insert(
       'daily_ideas', {'profile_id': profileId, 'day': day, 'idea_key': key},
-      conflictAlgorithm: ConflictAlgorithm.ignore);
+      conflictAlgorithm: ConflictAlgorithm.ignore));
 
   /// Le chiavi delle idee che il genitore ha scartato per questo bambino.
   Future<Set<String>> dismissedIdeas(int profileId) async {
@@ -652,7 +698,21 @@ class LocalDb {
   }
 
   Future<void> setSetting(String key, String value) =>
-      _db.insert('settings', {'key': key, 'value': value}, conflictAlgorithm: ConflictAlgorithm.replace);
+      _write(() => _db.insert('settings', {'key': key, 'value': value}, conflictAlgorithm: ConflictAlgorithm.replace));
+
+  /// Toglie un'impostazione (torna a "mai scelta").
+  Future<void> removeSetting(String key) => _write(() => _db.delete('settings', where: 'key = ?', whereArgs: [key]));
+
+  /// Ogni scrittura passa da qui: l'errore torna al chiamante e, prima, a
+  /// [onSaveError]. Niente reset e niente successo dichiarato al posto suo.
+  Future<T> _write<T>(Future<T> Function() op) async {
+    try {
+      return await op();
+    } catch (e) {
+      onSaveError?.call(e);
+      rethrow;
+    }
+  }
 
   /// Cancellazione completa: chiude il database, elimina file e chiave e ne
   /// apre uno nuovo e vuoto, come al primo avvio. Vedi [eraseStorage].
@@ -731,7 +791,7 @@ class LocalDb {
   Future<void> importAll(Map<String, Object?> data) async {
     final schema = data['schema'];
     if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
-    await _db.transaction((tx) async {
+    await _write(() => _db.transaction((tx) async {
       for (final t in _tables.reversed) {
         await tx.delete(t);
       }
@@ -761,6 +821,6 @@ class LocalDb {
       if (schema < 11) await tx.execute(_legacyBandSql);
       // Backup di quando il compagno cresceva con i gesti: come la migrazione v12.
       if (schema < 12) await tx.execute(_growthFromNowSql());
-    });
+    }));
   }
 }

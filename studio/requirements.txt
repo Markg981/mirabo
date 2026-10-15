@@ -1,2 +1,13 @@
-jsonschema>=4.20
-pynacl>=1.5
+# Versioni esatte, anche delle dipendenze indirette: la stessa validazione e
+# la stessa firma dei pacchetti a ogni build (docs/release-engineering.md).
+# Per aggiornare: cambia qui, poi `pip install -r studio/requirements.txt` e CI.
+jsonschema==4.26.0
+pynacl==1.6.2
+# indirette
+attrs==26.1.0
+cffi==2.1.1
+jsonschema-specifications==2025.9.1
+pycparser==3.11
+referencing==0.37.0
+rpds-py==2026.9.1
+typing_extensions==4.16.0

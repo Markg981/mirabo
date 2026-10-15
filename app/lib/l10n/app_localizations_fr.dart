@@ -2425,4 +2425,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String voiceMissingParent(String language) {
     return 'Cette tablette n\'a pas de voix de synthèse pour $language. Un enfant qui ne lit pas encore a besoin d\'un adulte qui lit avec lui : en attendant, le texte reste affiché. Installe la voix dans les réglages de la tablette (Synthèse vocale sur Android, Contenu énoncé sur iPad). Les histoires avec audio enregistré s\'entendent quand même.';
   }
+
+  @override
+  String get saveFailedBanner =>
+      'La dernière modification n\'a pas pu être enregistrée et risque de ne pas être conservée. C\'est souvent une question d\'espace libre sur la tablette.';
+
+  @override
+  String get saveFailedDismiss => 'J\'ai compris';
+
+  @override
+  String get startupFailedTitle =>
+      'Mirabò n\'arrive pas à ouvrir les données enregistrées';
+
+  @override
+  String get startupFailedBody =>
+      'Rien n\'a été effacé. Réessayez ; si cela se reproduit, vérifiez l\'espace libre sur la tablette et redémarrez-la.';
+
+  @override
+  String get startupTooNewBody =>
+      'Les données de cette tablette viennent d\'une version plus récente de Mirabò. Rien n\'a été effacé : mettez l\'app à jour depuis le store.';
+
+  @override
+  String get startupRetry => 'Réessayer';
+
+  @override
+  String storageResetNotice(String date) {
+    return 'Le $date, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n\'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues.';
+  }
 }

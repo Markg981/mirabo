@@ -554,5 +554,12 @@
   "gateResetHowDevice": "with the tablet's screen lock",
   "gateResetSeen": "OK",
   "voiceMissingChild": "There's no voice: ask a grown-up to read with you",
-  "voiceMissingParent": "This tablet has no text-to-speech voice for {language}. A child who can't read yet needs an adult to read along: for now the text stays visible. Install the voice from the tablet's settings (Text-to-speech on Android, Spoken Content on iPad). Stories with recorded audio still play."
+  "voiceMissingParent": "This tablet has no text-to-speech voice for {language}. A child who can't read yet needs an adult to read along: for now the text stays visible. Install the voice from the tablet's settings (Text-to-speech on Android, Spoken Content on iPad). Stories with recorded audio still play.",
+  "saveFailedBanner": "The last change couldn't be saved and may not be kept. This is usually about free space on the tablet.",
+  "saveFailedDismiss": "Got it",
+  "startupFailedTitle": "Mirabò can't open its saved data",
+  "startupFailedBody": "Nothing has been deleted. Try again; if it happens again, check the tablet's free space and restart it.",
+  "startupTooNewBody": "The data on this tablet comes from a newer version of Mirabò. Nothing has been deleted: update the app from the store.",
+  "startupRetry": "Try again",
+  "storageResetNotice": "On {date} Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn't be read."
 }
