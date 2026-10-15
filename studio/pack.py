@@ -108,17 +108,19 @@ def pack_story(folder: Path, do_sign: bool, meta_name: str = "story.json", kind:
     meta = json.loads((folder / meta_name).read_text(encoding="utf-8"))
     files = sorted(p for p in folder.rglob("*") if p.is_file() and p.name != ".gitkeep")
     rel = lambda p: str(p.relative_to(folder)).replace("\\", "/")  # noqa: E731
+    # Fine riga LF nei file di testo, qualunque sia il checkout: stessi byte su ogni macchina.
+    data = {rel(p): approvals.content_bytes(p) for p in files}
     manifest = {
         "id": meta["id"],
         "kind": kind,
         "version": meta["version"],
-        "files": {rel(p): sha256(p) for p in files},
+        "files": {name: hashlib.sha256(b).hexdigest() for name, b in data.items()},
         "manifestVersion": MANIFEST_FORMAT,
         "formatVersion": CONTENT_FORMAT,
         "minAppVersion": meta.get("minAppVersion", MIN_APP_VERSION),
         "languages": languages_of(folder),
-        "sizes": {rel(p): p.stat().st_size for p in files},
-        "size": sum(p.stat().st_size for p in files),
+        "sizes": {name: len(b) for name, b in data.items()},
+        "size": sum(len(b) for b in data.values()),
         "parts": parts_of([rel(p) for p in files]),
         "editorial": editorial(kind, meta),
     }
@@ -129,14 +131,14 @@ def pack_story(folder: Path, do_sign: bool, meta_name: str = "story.json", kind:
         manifest["signature"] = sign({k: v for k, v in manifest.items() if k != "signature"})
     DIST.mkdir(exist_ok=True)
     out = DIST / f"{meta['id']}-v{meta['version']}.mirabo"
-    entries = [(rel(p), p.read_bytes()) for p in files]
+    entries = list(data.items())
     entries.append(("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2).encode("utf-8")))
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        for name, data in entries:
+        for name, content in entries:
             info = zipfile.ZipInfo(name, date_time=ZIP_DATE)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
-            z.writestr(info, data)
+            z.writestr(info, content)
     return out
 
 

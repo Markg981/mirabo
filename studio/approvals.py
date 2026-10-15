@@ -36,6 +36,16 @@ ELEMENTS = {
 }
 
 
+TEXT_SUFFIXES = {".json", ".md", ".txt", ".svg"}
+
+
+def content_bytes(path: Path) -> bytes:
+    """I byte di un file così come si approvano e si impacchettano: nei file di testo i fine riga
+    sono sempre LF, così impronta e pacchetto non cambiano tra un checkout Windows (CRLF) e la CI."""
+    data = path.read_bytes()
+    return data.replace(b"\r\n", b"\n") if path.suffix.lower() in TEXT_SUFFIXES else data
+
+
 def folder_of(kind: str, content_id: str) -> Path:
     return FOLDERS[kind] / content_id
 
@@ -54,7 +64,7 @@ def fingerprint(kind: str, content_id: str) -> str:
             meta = {k: v for k, v in json.loads(p.read_text(encoding="utf-8")).items() if k not in APPROVAL_FIELDS}
             data = json.dumps(meta, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
         else:
-            data = p.read_bytes()
+            data = content_bytes(p)
         h.update(f"{rel}\0{hashlib.sha256(data).hexdigest()}\n".encode("utf-8"))
     return h.hexdigest()
 

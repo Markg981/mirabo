@@ -123,7 +123,9 @@ e la voce ricorda cosa è già chiuso.
 ## Pacchetti riproducibili
 
 Lo stesso contenuto dà lo stesso pacchetto, byte per byte: file in ordine, date fisse nello zip,
-manifest con chiavi in ordine e firma Ed25519 deterministica. Il manifest porta revisore, versione
+manifest con chiavi in ordine e firma Ed25519 deterministica. Nei file di testo (`.json`, `.md`,
+`.txt`, `.svg`) i fine riga diventano LF sia nell'impronta sia nel pacchetto, così un'approvazione
+registrata da un checkout Windows (CRLF) vale anche in CI. Il manifest porta revisore, versione
 approvata e impronta. `pack.py --release` scrive anche `dist/release.json`: per ogni contenuto id,
 versione, impronta, revisore, data dell'approvazione, nome e sha256 del pacchetto. Chi ripete la
 release dallo stesso commit ottiene gli stessi sha256.
