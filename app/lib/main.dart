@@ -16,15 +16,30 @@ import 'ui/child/goodbye_screen.dart';
 import 'ui/child/home_screen.dart';
 import 'ui/parent/onboarding_screen.dart';
 import 'ui/parent/profile_form.dart';
+import 'ui/startup_failure.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-  final db = await LocalDb.open();
-  final repo = StoryRepository();
-  await repo.load();
-  final state = AppState(db: db, repo: repo);
-  await state.init();
+  await start();
+}
+
+/// Apre i dati e avvia l'app. Se i dati salvati non si aprono non si cancella
+/// niente e non si riparte da zero: una schermata lo dice e si può riprovare.
+Future<void> start() async {
+  final LocalDb db;
+  final AppState state;
+  try {
+    db = await LocalDb.open();
+    final repo = StoryRepository();
+    await repo.load();
+    state = AppState(db: db, repo: repo);
+    await state.init();
+  } catch (e, st) {
+    debugPrint('Avvio non riuscito: $e\n$st');
+    runApp(StartupFailureApp(error: e, onRetry: start));
+    return;
+  }
   if (Features.cloudBackup) {
     await state.backup.load();
     // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
@@ -79,6 +94,13 @@ class MiraboApp extends StatelessWidget {
                 : AppLanguage.fromCode(profile.language).locale,
             supportedLocales: [for (final l in AppLanguage.values) l.locale],
             localizationsDelegates: AppLocalizations.localizationsDelegates,
+            // Un salvataggio non riuscito si vede su ogni schermata, finché l'adulto non lo chiude.
+            builder: (context, child) => state.saveFailure == null
+                ? child!
+                : Column(children: [
+                    SaveFailureBanner(onDismiss: state.dismissSaveFailure),
+                    Expanded(child: child!),
+                  ]),
             home: profile == null
                 ? (state.onboardingSeen
                     ? ProfileForm(

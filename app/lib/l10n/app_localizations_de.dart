@@ -2419,4 +2419,31 @@ class AppLocalizationsDe extends AppLocalizations {
   String voiceMissingParent(String language) {
     return 'Auf diesem Tablet fehlt die Sprachausgabe für $language. Ein Kind, das noch nicht liest, braucht einen Erwachsenen, der mitliest: Vorerst bleibt der Text sichtbar. Installiere die Stimme in den Einstellungen des Tablets (Sprachausgabe bei Android, Gesprochene Inhalte beim iPad). Geschichten mit aufgenommenem Ton laufen trotzdem.';
   }
+
+  @override
+  String get saveFailedBanner =>
+      'Die letzte Änderung konnte nicht gespeichert werden und bleibt vielleicht nicht erhalten. Meist liegt es am freien Speicher des Tablets.';
+
+  @override
+  String get saveFailedDismiss => 'Verstanden';
+
+  @override
+  String get startupFailedTitle =>
+      'Mirabò kann die gespeicherten Daten nicht öffnen';
+
+  @override
+  String get startupFailedBody =>
+      'Es wurde nichts gelöscht. Versuche es noch einmal; passiert es wieder, prüfe den freien Speicher des Tablets und starte es neu.';
+
+  @override
+  String get startupTooNewBody =>
+      'Die Daten auf diesem Tablet stammen von einer neueren Version von Mirabò. Es wurde nichts gelöscht: Aktualisiere die App im Store.';
+
+  @override
+  String get startupRetry => 'Erneut versuchen';
+
+  @override
+  String storageResetNotice(String date) {
+    return 'Am $date hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden.';
+  }
 }

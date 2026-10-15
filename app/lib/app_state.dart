@@ -35,7 +35,30 @@ class AppState extends ChangeNotifier {
         nameVoice = nameVoice ?? NameVoice(),
         _now = clock ?? DateTime.now,
         _region = region ?? (() => PlatformDispatcher.instance.locale.countryCode),
-        _voiceCheck = voiceCheck ?? _systemVoice;
+        _voiceCheck = voiceCheck ?? _systemVoice {
+    LocalDb.onSaveError = _saveFailed;
+  }
+
+  /// L'ultimo salvataggio non riuscito (docs/release-engineering.md). Finché
+  /// l'adulto non lo chiude, una fascia in alto dice che qualcosa non è stato
+  /// conservato: un errore non diventa un successo né un reset silenzioso.
+  Object? saveFailure;
+
+  void _saveFailed(Object error) {
+    debugPrint('Salvataggio non riuscito: $error');
+    saveFailure = error;
+    // Può arrivare mentre si disegna (una scrittura partita da un build).
+    scheduleMicrotask(notifyListeners);
+  }
+
+  void dismissSaveFailure() {
+    saveFailure = null;
+    notifyListeners();
+  }
+
+  /// Quando l'app è ripartita da zero perché i dati di prima, cifrati, non si
+  /// potevano più leggere (chiave sparita). L'onboarding lo dice all'adulto.
+  DateTime? storageResetAt;
 
   static Future<bool> _systemVoice(String ttsCode) async {
     try {
@@ -237,14 +260,19 @@ class AppState extends ChangeNotifier {
   Future<void> finishOnboarding({AppLanguage? language, AgeBand? band}) async {
     onboardingLanguage = language ?? onboardingLanguage;
     onboardingBand = band ?? onboardingBand;
+    // Prima si salva, poi si va avanti: se il salvataggio non riesce
+    // l'onboarding non risulta fatto.
+    await db.setSetting(onboardingSeenKey, '1');
+    if (storageResetAt != null) await db.removeSetting(LocalDb.storageResetKey);
+    storageResetAt = null;
     onboardingSeen = true;
     notifyListeners();
-    await db.setSetting(onboardingSeenKey, '1');
   }
 
   Future<void> init() async {
     profiles = await db.profiles();
     onboardingSeen = profiles.isNotEmpty || await db.setting(onboardingSeenKey) != null;
+    storageResetAt = DateTime.tryParse(await db.setting(LocalDb.storageResetKey) ?? '');
     hemisphere = Hemisphere.byName(await db.setting(LocalDb.hemisphereKey)) ?? Hemisphere.fromRegion(_region());
     currentProfile = profiles.isEmpty ? null : profiles.first;
     // Ogni avvio parte da "da solo": "insieme" lo dichiara l'adulto ogni volta.
@@ -505,9 +533,9 @@ class AppState extends ChangeNotifier {
 
   /// Il genitore sceglie dove vive la famiglia: vale per tutti i bambini.
   Future<void> setHemisphere(Hemisphere h) async {
+    await db.setSetting(LocalDb.hemisphereKey, h.name);
     hemisphere = h;
     notifyListeners();
-    await db.setSetting(LocalDb.hemisphereKey, h.name);
   }
 
   /// Cancella tutto da questo tablet: profili, diario, creazioni, file generati,
