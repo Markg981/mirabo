@@ -1,6 +1,6 @@
 # Incidenti e richieste degli interessati – bozza
 
-> **Bozza da validare con un consulente.** Non dichiara conformità. Fonti: GDPR artt. 12, 15–21, 33–34; COPPA §312.6 (il genitore può rivedere ed eliminare i dati del figlio) e §312.8. Responsabile: vedi `security-program.md` §1. Contatto pubblico per segnalazioni e richieste: _da definire_ (indirizzo dedicato, indicato nella privacy policy e negli store).
+> **Bozza da validare con un consulente.** Non dichiara conformità. Fonti: GDPR artt. 12, 15–21, 33–34; COPPA §312.6 (il genitore può rivedere ed eliminare i dati del figlio) e §312.8. Responsabile: vedi `security-program.md` §1. Contatto pubblico per segnalazioni e richieste: _da definire_ (indirizzo dedicato, indicato nella privacy policy e negli store); è il canale di assistenza di `content/release/support.json` ([release.md](../launch/release.md)).
 
 ## 1. Incidenti di sicurezza
 

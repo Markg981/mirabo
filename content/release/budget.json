@@ -1,0 +1,31 @@
+{
+  "about": "Budget del primo anno dopo la pubblicazione (docs/launch/release.md). Importi in euro; null = da stimare. Il tempo personale si conta anche se non produce una fattura. Coprono il budget solo i fondi confermati; i ricavi solo se contrattualizzati.",
+  "budget": {
+    "firstYear": null,
+    "currency": "EUR",
+    "approved": null,
+    "items": [
+      { "category": "asset", "item": "Illustrazioni definitive del catalogo di lancio (9 storie, 3 giochi, 9 attività pratiche)", "amount": null, "basis": "stima", "note": "Dalle ore reali del tema pilota (validation.py --estimate) o da preventivi." },
+      { "category": "asset", "item": "Voce registrata o sintetizzata sul dispositivo, per lingua del catalogo", "amount": null, "basis": "stima" },
+      { "category": "asset", "item": "Diritti d'uso di immagini, audio e caratteri (rights.json)", "amount": null, "basis": "stima" },
+      { "category": "revisione", "item": "Revisione pedagogica e di sicurezza per fascia e lingua (pedagogical-review.md)", "amount": null, "basis": "stima" },
+      { "category": "revisione", "item": "Revisione Montessori delle attività pratiche e prove in famiglia (montessori.md)", "amount": null, "basis": "stima" },
+      { "category": "revisione", "item": "Prove di accessibilità con TalkBack e VoiceOver (accessibility.md)", "amount": null, "basis": "stima" },
+      { "category": "consulenze", "item": "Consulenza privacy: DPIA, informativa, schede degli store (compliance/, privacy/)", "amount": null, "basis": "preventivo" },
+      { "category": "consulenze", "item": "Riesame annuale della consulenza privacy", "amount": null, "basis": "preventivo" },
+      { "category": "dispositivi", "item": "Tablet Android e iPad di prova (versioni minime dichiarate: Android 8, iOS 15)", "amount": null, "basis": "stima" },
+      { "category": "dispositivi", "item": "Computer macOS per la firma e l'invio iOS, se non già disponibile", "amount": null, "basis": "stima" },
+      { "category": "account-distribuzione", "item": "Apple Developer Program, quota annuale", "amount": null, "basis": "fattura", "note": "Importo da leggere sul sito Apple al momento dell'iscrizione, non da questo file." },
+      { "category": "account-distribuzione", "item": "Google Play Console, registrazione", "amount": null, "basis": "fattura", "note": "Importo da leggere su Play Console al momento della registrazione." },
+      { "category": "account-distribuzione", "item": "Dominio e casella dell'assistenza (support.json)", "amount": null, "basis": "stima" },
+      { "category": "supporto", "item": "Risposta alle famiglie secondo support.json (ore annue × valore orario, se non coperte dal tempo personale)", "amount": null, "basis": "stima" },
+      { "category": "manutenzione", "item": "Aggiornamenti di piattaforma e dipendenze, nuove build e reinvio agli store (maintenance.json)", "amount": null, "basis": "stima" },
+      { "category": "manutenzione", "item": "Correzioni editoriali dopo le segnalazioni, con nuova revisione", "amount": null, "basis": "stima" },
+      { "category": "tempo-personale", "item": "Tempo del titolare: sviluppo, contenuti, coordinamento, assistenza", "amount": null, "basis": "tempo-personale", "hours": null, "hourlyValue": null, "note": "Le ore dal registro del tema pilota e dalla stima degli altri temi; il valore orario è quello che si rinuncia a guadagnare." }
+    ],
+    "funding": [
+      { "source": "Risorse proprie del titolare", "kind": "proprio", "amount": null, "status": "ipotesi", "evidence": null },
+      { "source": "Pilota con le scuole (docs/business/schools-pilot.md)", "kind": "ricavi-scuole", "amount": 0, "status": "ipotesi", "evidence": null }
+    ]
+  }
+}

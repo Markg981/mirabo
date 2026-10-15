@@ -1,0 +1,62 @@
+{
+  "about": "Canale di assistenza, tempi di risposta e procedure (docs/launch/release.md). Proposta finché approved è null. L'app non ha server: l'assistenza non vede i dati della famiglia e lo dice.",
+  "support": {
+    "channel": {
+      "kind": "email",
+      "address": null,
+      "publishedIn": ["docs/privacy/privacy-policy.it.md", "docs/privacy/privacy-policy.en.md", "scheda App Store", "scheda Google Play", "area adulta, Informazioni"]
+    },
+    "owner": "titolare del prodotto",
+    "hoursPerWeek": null,
+    "approved": null,
+    "procedures": [
+      {
+        "id": "contenuto-problematico",
+        "when": "Un genitore, un revisore o chiunque segnala che una storia, un'attività o un gioco può spaventare, confondere, far male o insegnare un comportamento rischioso.",
+        "firstReplyWorkingDays": 2,
+        "steps": [
+          "Registrare la segnalazione: data, contenuto e versione (manifest), fascia, cosa è stato notato. Nessun dato del bambino.",
+          "Entro 2 giorni lavorativi decidere se il rischio è possibile: se sì, il contenuto torna in revisione (pedagogical-review.md) e si toglie dal catalogo con una versione ritirata in content/retired.json.",
+          "Con l'MVP senza rete il ritiro arriva con un aggiornamento dell'app: preparare la build senza il contenuto e inviarla agli store senza aspettare la release successiva.",
+          "Rispondere a chi ha segnalato con l'esito e, se il contenuto è ritirato, con la versione dell'app che lo toglie.",
+          "Dopo la nuova revisione il contenuto torna solo con una nuova approvazione legata alla versione (launch-catalog.md)."
+        ],
+        "limits": "L'assistenza non può togliere un contenuto da un tablet già installato: lo toglie l'aggiornamento dell'app."
+      },
+      {
+        "id": "perdita-dati",
+        "when": "Profili, diario, disegni o stato di ripresa non ci sono più dopo un aggiornamento, un crash, la memoria piena o una reinstallazione.",
+        "firstReplyWorkingDays": 2,
+        "steps": [
+          "Chiedere versione dell'app e del sistema, modello del tablet, cosa è successo prima. Nessun dato del bambino, nessuna copia del database.",
+          "Se l'app è ancora installata: non disinstallare, non cancellare i dati dell'app, aggiornare all'ultima versione; i file cifrati restano sul tablet.",
+          "Se l'app è stata disinstallata: dire con chiarezza che nell'MVP non c'è backup (privacy/mvp-data.md) e i dati non si possono recuperare.",
+          "Riprodurre con i casi OFF-2, OFF-3, OFF-5, OFF-7 di launch/risk-matrix.md; un difetto confermato è un problema bloccante per la release successiva."
+        ],
+        "limits": "Il titolare non conserva copie: non esiste un recupero dal server."
+      },
+      {
+        "id": "accesso-adulto",
+        "when": "L'adulto ha dimenticato il PIN, il bambino è entrato nell'area adulta o compare l'avviso di un reset che l'adulto non ha fatto.",
+        "firstReplyWorkingDays": 2,
+        "steps": [
+          "PIN dimenticato: usare il codice di recupero scritto al primo PIN o, se acceso, il blocco del tablet (adult-gate.md).",
+          "Reset non fatto dall'adulto: spegnere il recupero dal blocco del tablet nell'area adulta e scegliere un nuovo PIN; dire che l'avviso serve proprio a vederlo.",
+          "Bambino entrato senza reset: chiedere percorso e versione; è un bypass del gate e va riprodotto, un bypass confermato blocca la release successiva (readiness.md, passaggio 2).",
+          "Senza codice di recupero e senza blocco del tablet: l'unica via è cancellare i dati dell'app dalle impostazioni del sistema o reinstallare, e si perde tutto; dirlo prima che l'adulto lo faccia."
+        ],
+        "limits": "L'assistenza non può reimpostare il PIN da remoto e non verifica chi è l'adulto."
+      },
+      {
+        "id": "privacy-sicurezza",
+        "when": "Richieste degli interessati, segnalazioni di vulnerabilità, sospetto incidente.",
+        "firstReplyWorkingDays": 7,
+        "steps": [
+          "Seguire docs/compliance/incident-and-requests.md: incidente con contenimento entro 24 ore e valutazione entro 48; notifica al Garante entro 72 ore se serve.",
+          "Richieste degli interessati: risposta entro un mese con i modelli di quel documento."
+        ],
+        "limits": "I tempi di legge prevalgono su quelli di questo file."
+      }
+    ]
+  }
+}

@@ -6,6 +6,6 @@
     { "id": "primo-tema", "step": "Primo tema completo", "condition": "Tutte e tre le modalità funzionano nelle tre fasce.", "owner": "sviluppo e responsabile contenuti", "status": "aperto", "evidence": null, "date": null },
     { "id": "altri-temi", "step": "Altri due temi", "condition": "Processo produttivo misurato e sostenibile.", "owner": "referente prodotto", "status": "aperto", "evidence": null, "date": null },
     { "id": "beta", "step": "Beta del catalogo", "condition": "Nessun problema critico aperto nei percorsi essenziali.", "owner": "referente prodotto e sviluppo", "status": "aperto", "evidence": null, "date": null },
-    { "id": "pubblicazione", "step": "Pubblicazione", "condition": "Criteri di pubblicazione soddisfatti (punto 10, docs/launch/readiness.md).", "owner": "referente prodotto", "status": "aperto", "evidence": null, "date": null }
+    { "id": "pubblicazione", "step": "Pubblicazione", "condition": "Criteri di pubblicazione soddisfatti e decisione 'pubblicare' registrata (python studio/release.py --decide, docs/launch/release.md).", "owner": "titolare del prodotto", "status": "aperto", "evidence": null, "date": null }
   ]
 }

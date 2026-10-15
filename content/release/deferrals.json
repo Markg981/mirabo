@@ -1,0 +1,94 @@
+{
+  "about": "Rinvii con le condizioni di riapertura (docs/launch/release.md). Un rinvio si riapre solo quando tutte le sue condizioni sono soddisfatte, con l'evidenza in 'reopened'.",
+  "deferrals": [
+    {
+      "id": "backup-cloud",
+      "what": "Backup cifrato sul Google Drive del genitore (docs/backup.md).",
+      "reason": "Porta rete, accesso Google e un consenso nell'MVP; il recupero e la cancellazione della copia su Drive vanno ancora progettati e sostenuti dall'assistenza.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto",
+      "feature": "cloudBackup",
+      "reopenWhen": [
+        { "kind": "bisogno", "condition": "Richieste di famiglie registrate dall'assistenza per dati persi senza backup, non un'ipotesi." },
+        { "kind": "budget", "condition": "Voci di manutenzione OAuth, assistenza ai ripristini e riesame privacy coperte nel budget." },
+        { "kind": "progettazione", "condition": "Recupero, cambio di dispositivo e cancellazione della copia su Drive progettati e provati, con la DPIA aggiornata." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "nome-detto",
+      "what": "Il nome del bambino detto dalla voce (privacy/mvp-data.md).",
+      "reason": "Il nome andrebbe al motore di sintesi del sistema, che su Android può usare la rete.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto",
+      "feature": "spokenName",
+      "reopenWhen": [
+        { "kind": "bisogno", "condition": "Le sessioni con le famiglie mostrano che le battute senza nome non bastano." },
+        { "kind": "budget", "condition": "Costo di verifica della sintesi su ogni piattaforma e lingua coperto nel budget." },
+        { "kind": "progettazione", "condition": "Sintesi solo sul dispositivo verificata in modalità aereo, con cancellazione dei file del nome." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "crescita-compagno",
+      "what": "Il compagno che cresce con l'uso.",
+      "reason": "Una crescita a soglie diventa un premio per il tempo passato sullo schermo.",
+      "decided": "2026-10-15",
+      "owner": "referente prodotto",
+      "reopenWhen": [
+        { "kind": "progettazione", "condition": "Una crescita narrativa senza soglie d'uso, giorni consecutivi né gesti contati, approvata dalla revisione pedagogica." },
+        { "kind": "bisogno", "condition": "Verificata con le famiglie in un ciclo di validazione, senza effetti di richiamo." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "distribuzione-usa",
+      "what": "Distribuzione negli Stati Uniti.",
+      "reason": "L'analisi COPPA non è completa (privacy/coppa.md); la release MVP non è distribuita negli USA.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto con la consulenza privacy",
+      "reopenWhen": [
+        { "kind": "legale", "condition": "Analisi COPPA completata con una consulenza, informativa inglese con il contatto per gli USA." },
+        { "kind": "budget", "condition": "Consulenza e assistenza in inglese coperte nel budget." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "acquisti",
+      "what": "Sblocco a pagamento di un catalogo delimitato (business/model-decision.md, modello C).",
+      "reason": "È una proposta non approvata; i ripristini offline richiedono assistenza e un catalogo che giustifichi il prezzo.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto",
+      "reopenWhen": [
+        { "kind": "progettazione", "condition": "Decisione di modello approvata e diritti offline progettati e provati (business/entitlements-offline.md)." },
+        { "kind": "budget", "condition": "Commissioni dello store verificate e inserite in studio/economics.py con un contributo positivo nello scenario prudente." },
+        { "kind": "capacita", "condition": "Catalogo pubblicato e completo per tutte le fasce dichiarate." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "abbonamento",
+      "what": "Abbonamento familiare.",
+      "reason": "Senza un flusso continuo di contenuti non c'è il valore continuativo che gli store richiedono.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto",
+      "reopenWhen": [
+        { "kind": "capacita", "condition": "Ore reali per tema misurate (validation.py --estimate non provvisoria) e calendario di uscite sostenibile per un anno." },
+        { "kind": "budget", "condition": "Produzione e assistenza di un anno coperte senza contare gli abbonamenti futuri." }
+      ],
+      "status": "rinviato"
+    },
+    {
+      "id": "scuole",
+      "what": "Offerta e ricavi dalle scuole (business/schools-pilot.md).",
+      "reason": "Nessun contratto: nel caso base i ricavi dalle scuole valgono zero.",
+      "decided": "2026-10-15",
+      "owner": "titolare del prodotto",
+      "reopenWhen": [
+        { "kind": "esterno", "condition": "Contratto o accordo di pilota firmato con almeno una scuola, con i termini di trattamento dei dati." },
+        { "kind": "legale", "condition": "Ruoli privacy con la scuola definiti con la consulenza (e FTC/COPPA se negli USA)." }
+      ],
+      "status": "rinviato"
+    }
+  ]
+}
