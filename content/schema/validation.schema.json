@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "validation.schema.json",
+  "title": "Validazione con le famiglie: sessioni, rilievi, ore del primo tema, sequenza del lavoro",
+  "$defs": {
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "band": { "enum": ["3-5", "6-7", "8-10"] },
+    "code": { "type": "string", "pattern": "^F\\d{2,3}$" },
+    "session": {
+      "type": "object",
+      "description": "Solo questi campi: niente nomi, età esatte, contatti, foto, audio o video. Il codice F01, F02… lo assegna chi coordina e il legame con il modulo di consenso resta su carta.",
+      "additionalProperties": false,
+      "required": ["code", "cycle", "band", "date", "parentConsent", "childAssent", "stoppedBy", "tasks", "comprehension"],
+      "properties": {
+        "code": { "$ref": "#/$defs/code" },
+        "cycle": { "type": "integer", "minimum": 1 },
+        "band": { "$ref": "#/$defs/band" },
+        "date": { "$ref": "#/$defs/date" },
+        "parentConsent": { "type": "boolean" },
+        "childAssent": { "type": "boolean" },
+        "stoppedBy": { "enum": [null, "bambino", "genitore", "osservatore"] },
+        "tasks": {
+          "type": "object",
+          "additionalProperties": { "enum": ["da-solo", "dopo-domanda-neutra", "con-aiuto", "non-riuscito", "non-proposto"] }
+        },
+        "comprehension": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["story", "mode", "outcome"],
+            "properties": {
+              "story": { "type": "string", "pattern": "^story:[a-z0-9-]+$" },
+              "mode": { "enum": ["parole", "immagini", "sequenza"] },
+              "outcome": { "enum": ["compreso", "parziale", "non-compreso", "interpretazione-pericolosa"] },
+              "note": { "type": "string", "maxLength": 300 }
+            }
+          }
+        },
+        "notes": { "type": "string", "maxLength": 500 }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "cycle", "band", "kind", "description", "sessions", "action", "recheck"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^R\\d+$" },
+        "cycle": { "type": "integer", "minimum": 1 },
+        "band": { "$ref": "#/$defs/band" },
+        "kind": { "enum": ["pericolo", "ostacolo", "osservazione"] },
+        "task": { "type": "string" },
+        "story": { "type": "string", "pattern": "^story:[a-z0-9-]+$" },
+        "description": { "type": "string", "minLength": 10 },
+        "sessions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/code" } },
+        "action": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "change", "date"],
+              "properties": {
+                "type": { "enum": ["revisione", "modifica"] },
+                "change": { "type": "string", "minLength": 3, "description": "Cosa è cambiato e dove: PR, commit o voce del registro delle approvazioni." },
+                "date": { "$ref": "#/$defs/date" }
+              }
+            }
+          ]
+        },
+        "recheck": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["cycle", "sessions", "outcome"],
+              "properties": {
+                "cycle": { "type": "integer", "minimum": 2 },
+                "sessions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/code" } },
+                "outcome": { "enum": ["risolto", "non-risolto"] },
+                "note": { "type": "string" }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "effort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["theme", "phase", "hours", "date"],
+      "properties": {
+        "theme": { "type": "string" },
+        "phase": { "enum": ["sviluppo", "scrittura", "asset", "revisione", "correzioni"] },
+        "hours": { "type": "number", "exclusiveMinimum": 0 },
+        "date": { "$ref": "#/$defs/date" },
+        "reusable": { "type": "boolean" },
+        "note": { "type": "string" }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "step", "condition", "owner", "status", "evidence", "date"],
+      "properties": {
+        "id": { "enum": ["perimetro", "prototipi", "primo-tema", "altri-temi", "beta", "pubblicazione"] },
+        "step": { "type": "string" },
+        "condition": { "type": "string" },
+        "owner": { "type": "string" },
+        "status": { "enum": ["aperto", "superato"] },
+        "evidence": { "type": ["string", "null"] },
+        "date": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/date" }] }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "entries": { "type": "array", "items": { "$ref": "#/$defs/effort" } },
+    "steps": { "type": "array", "items": { "$ref": "#/$defs/step" } }
+  }
+}

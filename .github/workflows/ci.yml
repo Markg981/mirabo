@@ -32,6 +32,8 @@ jobs:
         run: python studio/check_messages.py
       - name: Campi provvisori di informativa e store (informativo; la release usa --release)
         run: python studio/check_privacy.py
+      - name: Validazione con le famiglie, soglie di correzione e sequenza del lavoro (docs/launch/validation.md)
+        run: python studio/validation.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
       - uses: actions/upload-artifact@v4

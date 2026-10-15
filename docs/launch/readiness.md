@@ -48,12 +48,12 @@ Evidenza: `feature/analisi-17-pacchetti-versionati`; `feature/analisi-18-diffico
 Responsabili: LX Designer e Product.
 
 - [ ] Sessioni svolte secondo [family-testing-protocol.md](family-testing-protocol.md)
-- [ ] Due cicli di test sul passaggio di fascia, con correzioni tra l'uno e l'altro
+- [ ] Due cicli, quattro famiglie per fascia in ciascuno, con correzioni tra l'uno e l'altro; `python studio/validation.py --close` passa ([validation.md](validation.md))
 - [ ] Almeno 8 genitori su 10 avviano da soli la prova entro 60 secondi e sanno spiegare l'offerta
 - [ ] Zero contenuti bloccati per attività offline non fatte
 - [ ] Onboarding provato con bambino e genitore
 
-Evidenza: sintesi anonima delle sessioni; `feature/analisi-20-onboarding`.
+Evidenza: `content/validation/` (sessioni anonime, rilievi con modifica e nuova verifica); `feature/analisi-20-onboarding`.
 
 ## 5. Lancio commerciale limitato
 Responsabili: CPO e Operations.
