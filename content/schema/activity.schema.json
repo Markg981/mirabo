@@ -74,6 +74,17 @@
       "type": "integer",
       "minimum": 1
     },
+    "status": {
+      "description": "Come per le storie: solo 'published' (approvata nel registro content/reviews/approvals.json) viene impacchettata",
+      "enum": [
+        "draft",
+        "review",
+        "published"
+      ]
+    },
+    "reviewedBy": {
+      "type": "string"
+    },
     "title": {
       "type": "string",
       "minLength": 1

@@ -13,6 +13,9 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import approvals  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 SCHEMA_DIR = CONTENT / "schema"
@@ -140,13 +143,15 @@ def check_home_activity(folder: Path, meta: dict) -> list[str]:
 
 
 def check_review(folder: Path, meta: dict) -> list[str]:
-    """Una storia si pubblica solo dopo la revisione pedagogica, con le fonti verificate."""
+    """Una storia si pubblica solo dopo la revisione pedagogica, con le fonti verificate e
+    un'approvazione nel registro sulla versione esatta (docs/launch-catalog.md)."""
     if meta.get("status") != "published":
         UNREVIEWED.append(folder.name)
         return []
     errors: list[str] = []
     if not meta.get("reviewedBy"):
         errors.append(f"{folder.name}: pubblicata senza revisione pedagogica ('reviewedBy')")
+    errors += approvals.problems("story", folder.name)
     if any("da verificare" in s for s in meta.get("sources", [])):
         errors.append(f"{folder.name}: pubblicata con fonti ancora da verificare")
     card = folder / meta.get("parentCard", "parent.md")
@@ -163,6 +168,7 @@ LESSON_TEXT_KEYS = {"together", "items", "ask", "done"}
 LESSON_ITEM_TEXT_KEYS = {"name", "this", "show"}
 DRAFTS: list[str] = []
 UNREVIEWED: list[str] = []
+UNREVIEWED_ACTIVITIES: list[str] = []
 REDESIGN: list[str] = []
 
 
@@ -467,6 +473,10 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
             if re.search(rf"\b{re.escape(word)}\b", text, flags=re.IGNORECASE):
                 errors.append(f"{folder.name}: parola da evitare: '{word}'")
     errors += check_activity_translations(folder, a)
+    if a.get("status") == "published":
+        errors += approvals.problems("activity", folder.name)
+    else:
+        UNREVIEWED_ACTIVITIES.append(folder.name)
     return errors
 
 
@@ -606,6 +616,8 @@ def main(argv: list[str]) -> int:
             print("  -", r)
     if UNREVIEWED:
         print(f"\nStorie in attesa di revisione pedagogica ({len(UNREVIEWED)}): " + ", ".join(UNREVIEWED))
+    if UNREVIEWED_ACTIVITIES:
+        print(f"\nAttività non pubblicate, quindi non impacchettate ({len(UNREVIEWED_ACTIVITIES)}): python studio/catalog.py")
     print(f"\n{len(stories)} storie, {len(activities)} attività, {len(all_errors)} errori")
     return 1 if all_errors else 0
 

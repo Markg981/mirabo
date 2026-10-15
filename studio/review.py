@@ -4,8 +4,9 @@
 Uso:
   python studio/review.py                          # stato della revisione di tutte le storie
   python studio/review.py --sheet <id>|--all       # scrive content/reviews/<id>.md per il revisore
-  python studio/review.py --approve <id> --by "Nome Cognome, qualifica"
-                                                   # registra l'esito positivo in story.json
+  python studio/review.py --approve <id> --by "Nome Cognome, qualifica" --elements all|text,images,...
+                                                   # registra l'esito positivo nel registro delle approvazioni
+                                                   # (content/reviews/approvals.json), legato alla versione esatta
 
 La pre-revisione segnala le regole della guida di stile che validate.py non controlla (lunghezze,
 toni del compagno, pausa di dialogo, scheda genitore, fonti). Sono avvisi per l'autore e per il
@@ -16,10 +17,10 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import catalog  # noqa: E402
 from validate import COMPANIONS, NAME_PLACEHOLDER, STORIES, read_json  # noqa: E402
 
 REVIEWS = STORIES.parent / "reviews"
@@ -275,18 +276,17 @@ def write_sheets(ids: list[str]) -> int:
     return 0
 
 
-def approve(story_id: str, by: str) -> int:
-    path = STORIES / story_id / "story.json"
-    meta = read_json(path)
+def approve(argv: list[str]) -> int:
+    """Le fonti prima di tutto; poi l'approvazione va nel registro, legata alla versione esatta."""
+    story_id = argv[argv.index("--approve") + 1]
+    if not (STORIES / story_id / "story.json").exists():
+        print(f"storia '{story_id}' inesistente")
+        return 1
     pending = [n for n in prereview(STORIES / story_id) if TO_VERIFY in n or "da verificare" in n]
     if pending:
         print("Prima di approvare, verifica le fonti:\n  - " + "\n  - ".join(pending))
         return 1
-    meta["reviewedBy"] = f"{by}, {date.today().isoformat()}"
-    meta["status"] = "published"
-    path.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{story_id}: revisione registrata ({meta['reviewedBy']}). Ricorda di aumentare 'version' se era già pubblicata.")
-    return 0
+    return catalog.approve(["catalog.py", "--approve", f"story:{story_id}"] + argv[argv.index("--approve") + 2:])
 
 
 def main(argv: list[str]) -> int:
@@ -296,10 +296,7 @@ def main(argv: list[str]) -> int:
     if "--all" in argv:
         return write_sheets([p.name for p in stories()])
     if "--approve" in argv:
-        if "--by" not in argv:
-            print("Serve --by \"Nome Cognome, qualifica\"")
-            return 1
-        return approve(argv[argv.index("--approve") + 1], argv[argv.index("--by") + 1])
+        return approve(argv)
     return status()
 
 

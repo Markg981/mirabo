@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "date": "2026-10-15",
+  "states": {
+    "riutilizzabile": "Testo e struttura vanno bene: mancano solo gli elementi di produzione (immagini, audio, revisione).",
+    "da-adattare": "Il contenuto serve, ma va cambiato prima della produzione (una fascia mancante, una parte da rifare).",
+    "da-riscrivere": "Il posto nel catalogo è giusto, il contenuto no: si riscrive.",
+    "fuori-mvp": "Non entra nel lancio. Resta in repository come bozza e non viene impacchettato per la release."
+  },
+  "items": [
+    {
+      "ref": "story:albero-silenzioso",
+      "state": "riutilizzabile",
+      "note": "Variante 6-7 nel lancio (Natura 6-7). Mancano immagini definitive, audio e revisione."
+    },
+    {
+      "ref": "story:bosco-addormentato",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Emozioni 6-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate."
+    },
+    {
+      "ref": "story:civetta-silenzio",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Emozioni 6-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate."
+    },
+    {
+      "ref": "story:fiocco-coraggioso",
+      "state": "riutilizzabile",
+      "note": "Variante 6-7 nel lancio (Emozioni 6-7). Mancano immagini definitive, audio, attività dalla storia e revisione."
+    },
+    {
+      "ref": "story:goccia-ribelle",
+      "state": "riutilizzabile",
+      "note": "Variante 3-5 nel lancio (Natura 3-5). Mancano immagini definitive, audio e revisione. La variante 6-7 resta fuori lancio."
+    },
+    {
+      "ref": "story:lia-rabbia",
+      "state": "riutilizzabile",
+      "note": "Variante 3-5 nel lancio (Emozioni 3-5). Testo e struttura nella scheda della fascia; mancano immagini definitive (oggi scene composte), audio, attività dalla storia e revisione. La variante 6-7 resta fuori lancio."
+    },
+    {
+      "ref": "story:notte-lucciole",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Emozioni 6-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate."
+    },
+    {
+      "ref": "story:risveglio-bosco",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Ambiente oltre a quella della cella: la cella Natura 6-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto."
+    },
+    {
+      "ref": "story:ruscello-triste",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Ambiente oltre a quella della cella: la cella Natura 6-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto."
+    },
+    {
+      "ref": "story:sassolino-magico",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Storie del mondo Ambiente oltre a quella della cella: la cella Natura 6-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto."
+    },
+    {
+      "ref": "story:segreto-pietrolino",
+      "state": "da-riscrivere",
+      "note": "Variante 8-10 nel lancio (Emozioni 8-10), ma fuori scheda: segue solo Emma. Va riscritta con la prospettiva e la struttura della fascia prima della produzione."
+    },
+    {
+      "ref": "activity:alfabeto-mobile",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:apparecchiare",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Vita pratica che sostiene una cella senza esserne il centro (apparecchiare, piegare, travasi): candidati come attività pratiche alternative di Autonomia e scuola 3-5."
+    },
+    {
+      "ref": "activity:aspetto-il-mio-turno",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:aste-in-ordine",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:aste-numeriche",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:caccia-colori",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:caccia-forme",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:caccia-natura",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio."
+    },
+    {
+      "ref": "activity:caccia-ombre",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio."
+    },
+    {
+      "ref": "activity:caccia-ombre-fuori",
+      "state": "riutilizzabile",
+      "note": "Attività pratica Natura 8-10."
+    },
+    {
+      "ref": "activity:caccia-quantita",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:caccia-suoni",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:caccia-superfici",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:caccia-tatto",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:cambio-scuola",
+      "state": "fuori-mvp",
+      "note": "Gioco della cella Emozioni 8-10 (solo 8-10): al lancio il gioco del tema è Chiedo aiuto."
+    },
+    {
+      "ref": "activity:chiedo-aiuto",
+      "state": "riutilizzabile",
+      "note": "Gioco del tema Emozioni e relazioni per le tre fasce. Da rivedere che le scene cambino davvero tra 3-5 e 8-10."
+    },
+    {
+      "ref": "activity:cilindri-suoni",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:com-e-fatta-una-scuola",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:conta-semi",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:continenti",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio."
+    },
+    {
+      "ref": "activity:conto-alla-rovescia",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:copio-la-parola",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:cura-pianta",
+      "state": "fuori-mvp",
+      "note": "Attività pratica alternativa della cella Natura 6-7: al lancio c'è Germoglio di fagiolo."
+    },
+    {
+      "ref": "activity:domani-a-scuola",
+      "state": "riutilizzabile",
+      "note": "Gioco del tema Autonomia e scuola per le tre fasce."
+    },
+    {
+      "ref": "activity:forme-geometriche",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:forme-in-fila",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:germoglio-fagiolo",
+      "state": "riutilizzabile",
+      "note": "Attività pratica Natura 6-7."
+    },
+    {
+      "ref": "activity:gioco-del-suono",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:il-gioco-di-omar",
+      "state": "fuori-mvp",
+      "note": "Gioco della cella Emozioni 3-5, ma copre solo 3-5 e 6-7: al lancio il gioco del tema è Chiedo aiuto. Entra dopo."
+    },
+    {
+      "ref": "activity:il-primo-giorno",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:il-saluto",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:incastri-ferro",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:la-mensa",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere."
+    },
+    {
+      "ref": "activity:lettere-smerigliate",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:mattino-in-ordine",
+      "state": "fuori-mvp",
+      "note": "Gioco della cella Autonomia 3-5: al lancio il gioco del tema è Domani a scuola."
+    },
+    {
+      "ref": "activity:mi-vesto-da-solo",
+      "state": "fuori-mvp",
+      "note": "Gioco della cella Autonomia 3-5: al lancio il gioco del tema è Domani a scuola."
+    },
+    {
+      "ref": "activity:nomenclature-animali",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio."
+    },
+    {
+      "ref": "activity:numeri-e-quantita",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:parti-della-pianta",
+      "state": "da-adattare",
+      "note": "Gioco del tema Natura e viventi: copre 6-7 e 8-10, manca la variante 3-5 (parti grandi e nominabili, due o tre alla volta)."
+    },
+    {
+      "ref": "activity:perle-decine",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:piegare",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Vita pratica che sostiene una cella senza esserne il centro (apparecchiare, piegare, travasi): candidati come attività pratiche alternative di Autonomia e scuola 3-5."
+    },
+    {
+      "ref": "activity:ponte-di-carta",
+      "state": "fuori-mvp",
+      "note": "Gioco-progetto della cella Autonomia 8-10: al lancio il gioco del tema è Domani a scuola."
+    },
+    {
+      "ref": "activity:pregrafismo-linee",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:sacchetto-misterioso",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:scala-marrone",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:suoni-iniziali",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:tavolette-colori",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:telaio-bottoni",
+      "state": "riutilizzabile",
+      "note": "Attività pratica Autonomia 3-5."
+    },
+    {
+      "ref": "activity:torre-rosa",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Materiale sensoriale Montessori: esperienze per sé, senza storia né gioco collegati. Da decidere con il revisore se restano come attività pratiche libere fuori matrice o se entrano in una cella."
+    },
+    {
+      "ref": "activity:traccia-lettere",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
+    },
+    {
+      "ref": "activity:travaso-secco",
+      "state": "fuori-mvp",
+      "note": "Parcheggiato nella matrice: Vita pratica che sostiene una cella senza esserne il centro (apparecchiare, piegare, travasi): candidati come attività pratiche alternative di Autonomia e scuola 3-5."
+    },
+    {
+      "ref": "activity:versare-acqua",
+      "state": "riutilizzabile",
+      "note": "Attività pratica Natura 3-5."
+    }
+  ]
+}

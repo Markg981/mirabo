@@ -287,14 +287,14 @@ Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la li
   "sizes": { "story.json": 1234, "i18n/en/audio/01.m4a": 55000 },
   "size": 56234,
   "parts": { "base": ["story.json"], "en": ["i18n/en/audio/01.m4a"] },
-  "editorial": { "author": "Studio Mirabò", "reviewer": "Nome, 2026-05-01", "approvedVersion": 3 },
+  "editorial": { "author": "Studio Mirabò", "reviewer": "Nome, qualifica", "approvedVersion": 3, "fingerprint": "<sha256 del contenuto approvato>" },
   "signature": "<hex Ed25519 della forma canonica del manifest senza firma>"
 }
 ```
 
 - **Compatibilità**: l'app installa solo se `formatVersion` è minore o uguale al formato che conosce e la sua versione è almeno `minAppVersion` (in `story.json` si può alzare con `minAppVersion`, default `0.1.0`).
 - **Dimensioni e hash**: `sizes` e `size` (byte non compressi) servono al controllo preventivo dello spazio; ogni file ha il suo sha256 in `files`.
-- **Tracciabilità editoriale**: `author` (campo facoltativo `author` di `story.json`), `reviewer` (`reviewedBy`, scritto da `review.py --approve`) e `approvedVersion` (versione nell'intestazione della scheda in `content/reviews/`, altrimenti quella pubblicata). Le attività non hanno revisione: `reviewer` e `approvedVersion` sono `null`.
+- **Tracciabilità editoriale**: `author` (campo facoltativo `author` di `story.json` o `activity.json`); `reviewer`, `approvedVersion` e `fingerprint` vengono dal registro delle approvazioni `content/reviews/approvals.json` e ci sono solo se l'approvazione vale per la versione e l'impronta esatte del contenuto impacchettato, per storie e attività (vedi [launch-catalog.md](launch-catalog.md)). Nei pacchetti di sviluppo (`--include-drafts`) sono `null` e `fingerprint` manca.
 - **Lingue e audio**: vedi `docs/content-distribution.md`.
 - I manifest senza i campi nuovi (formato 1) restano leggibili dall'app.
 

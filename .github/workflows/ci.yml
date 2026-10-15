@@ -22,6 +22,8 @@ jobs:
         run: python studio/validate.py
       - name: Matrice educativa e promesse vietate
         run: python studio/check_goals.py
+      - name: Inventario e catalogo di lancio (coerenza; la release si controlla con --release)
+        run: python studio/catalog.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
       - uses: actions/upload-artifact@v4
@@ -72,8 +74,8 @@ jobs:
       - run: pip install -r studio/requirements.txt
       - name: Chiave di firma effimera per la CI
         run: python studio/keygen.py
-      - name: Sincronizza gli asset
-        run: python studio/sync_assets.py
+      - name: "Sincronizza gli asset (APK di debug e test, non una release: anche le bozze)"
+        run: python studio/sync_assets.py --include-drafts
       - name: Genera le cartelle piattaforma
         working-directory: app
         run: flutter create . --org com.markg981 --project-name mirabo --platforms android,ios

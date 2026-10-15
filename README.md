@@ -36,9 +36,11 @@ Ogni storia è una cartella in `content/stories/<id>/` con un `story.json` (meta
 ```
 python studio/validate.py            # controlla tutti i pacchetti
 python studio/keygen.py              # una volta sola: genera la coppia di chiavi (privata fuori dal repo!)
-python studio/pack.py --sign         # produce i pacchetti firmati in dist/ (solo storie published)
+python studio/pack.py --sign         # produce i pacchetti firmati in dist/ (solo storie e attività published)
+python studio/catalog.py             # inventario, catalogo di lancio e cosa manca a ogni posto
+python studio/pack.py --release --sign   # solo il catalogo di lancio, tutto approvato sulla versione esatta
 ```
 
-`pack.py` impacchetta solo le storie con `status: published` (vedi `docs/pedagogical-review.md`). Per provare in sviluppo le storie non ancora revisionate: `--include-drafts` (anche su `sync_assets.py`).
+`pack.py` impacchetta solo storie e attività con `status: published` e un'approvazione valida nel registro (vedi `docs/pedagogical-review.md` e `docs/launch-catalog.md`). Per provare in sviluppo i contenuti non ancora revisionati: `--include-drafts` (anche su `sync_assets.py`).
 
 L'app accetta solo pacchetti firmati con la chiave pubblica inclusa in `app/lib/content/trusted_key.dart`.
