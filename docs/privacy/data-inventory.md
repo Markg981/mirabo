@@ -1,10 +1,12 @@
 # Inventario dei dati, delle dipendenze e dei flussi di rete
 
-Bozza tecnica ricavata dal codice (stato: schema DB v10, `app/pubspec.yaml` 0.1.0+1), non dalle intenzioni. Non è una dichiarazione di conformità né un testo legale: serve da base per le dichiarazioni degli store e per la privacy policy, che vanno validate da un professionista. Il controllo automatico è `python studio/check_inventory.py` (CI), che legge l'elenco approvato in `approved-dependencies.json`. Il traffico reale si verifica con `network-observation.md`.
+Bozza tecnica ricavata dal codice (stato: schema DB v13, `app/pubspec.yaml` 0.1.0+1), non dalle intenzioni. Non è una dichiarazione di conformità né un testo legale: serve da base per le dichiarazioni degli store e per la privacy policy, che vanno validate da un professionista. Il controllo automatico è `python studio/check_inventory.py` (CI), che legge l'elenco approvato in `approved-dependencies.json`. Il traffico reale si verifica con `network-observation.md`.
 
 **Principio.** "Locale" non vuol dire "nessuna raccolta": qui sotto ogni dato dice dove vive e se esce. Anche un identificatore pseudonimo (id profilo, impronta del nome, account Google) resta un dato personale.
 
-**Esito in breve.** L'app non ha backend, analytics, pubblicità, crash reporting, CDN né account del bambino. L'unica destinazione di rete nel codice è Google (accesso e Drive), e solo dopo che il genitore attiva il backup. Restano due punti da verificare sul dispositivo: il motore TTS (sezione *flutter_tts*) e il comportamento di Play services.
+**Esito in breve.** L'app non ha backend, analytics, pubblicità, crash reporting, CDN né account del bambino. L'unica destinazione di rete nel codice è Google (accesso e Drive), solo per il backup.
+
+**Release MVP (analisi 7C).** Backup su Drive e nome sintetizzato sono spenti a compilazione (`app/lib/features.dart`) e la release Android non ha il permesso `INTERNET`; tentativi, aiuti, serie, risposte ai dialoghi e scelte che nessuno legge non si conservano più (schema v13). Le righe qui sotto che parlano di backup e voce del nome descrivono le funzioni quando sono accese. Il registro dei dati della release, con finalità e cancellazione, è [mvp-data.md](mvp-data.md).
 
 ## 1. Dati
 
@@ -13,8 +15,8 @@ Tutti i percorsi sono quelli di `path_provider`: `getApplicationSupportDirectory
 | Dato | Dove nasce | Dove è conservato | Cifrato | Lascia il dispositivo | Finalità | Per quanto | Come si cancella |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Profilo del bambino**: nome (testo libero), fascia d'età, compagno, lingua, mensola, opzioni (font, bassa stimolazione, "da solo" e minuti, lettura karaoke), profilo di interazione (mani, lettura, autonomia) | Form del genitore (`profile_form.dart`) → `LocalDb`, tabella `profiles` | `mirabo.db` (SQLCipher, Application Support) | Sì, a riposo (AES-256 SQLCipher) | Solo nel backup Drive opt-in, cifrato con la password del genitore | Personalizzare storie, voce e limiti | Finché il profilo esiste | Elimina profilo (cascata sulle tabelle collegate); *Elimina tutti i dati* (`AppState.wipeAll` → `LocalDb.wipe`) |
-| **Progressi**: storie finite, gesti fatti (`gestures_done`, `stage_floor`, tabella `gestures`), `activity_progress` (livello, serie, sessioni), `activity_rounds` (competenza, tentativi, suggerimenti, scelta) | Giochi e attività, gesti segnati dal genitore | `mirabo.db` | Sì | Solo backup Drive opt-in | Far procedere il compagno e le attività; diario descrittivo | Finché il profilo esiste | Come sopra |
-| **Diario e osservazioni**: tabella `diary` (storia, modo, completata, risposta al dialogo, data), `parent_notes_<id>` (testo libero del genitore), tempi d'uso `usage.<profilo>.<aaaa-mm-gg>` (minuti con app in primo piano), `dismissed_ideas.*`, `daily_ideas`, `shelf_history`, `nature_days` (meteo, osservazioni), emisfero | Uso dell'app e area genitore; l'emisfero si deduce dalla regione del tablet (nessuna posizione) | `mirabo.db` (tabelle e `settings`) | Sì | Solo backup Drive opt-in | Diario descrittivo, idee del giorno, calendario della natura | Finché il profilo / la famiglia esiste | `wipeAll` svuota anche `settings` |
+| **Progressi**: storie finite, gesti segnati (tabella `gestures`; `gestures_done` e `stage_floor` restano solo per lo stadio raggiunto prima), `activity_progress` (livello scelto, sessioni, ultima volta), `activity_rounds` (attività, abilità, istante, scelta solo per note dei progetti e fine presentazione) | Giochi e attività, gesti segnati dal genitore | `mirabo.db` | Sì | Solo backup Drive opt-in | Far procedere il compagno e le attività; diario descrittivo | Finché il profilo esiste | Come sopra |
+| **Diario e osservazioni**: tabella `diary` (storia, modo, completata, data; la risposta al dialogo non si conserva più), `parent_notes_<id>` (testo libero del genitore), tempi d'uso `usage.<profilo>.<aaaa-mm-gg>` (minuti con app in primo piano), `dismissed_ideas.*`, `daily_ideas`, `shelf_history`, `nature_days` (meteo, osservazioni), emisfero | Uso dell'app e area genitore; l'emisfero si deduce dalla regione del tablet (nessuna posizione) | `mirabo.db` (tabelle e `settings`) | Sì | Solo backup Drive opt-in | Diario descrittivo, idee del giorno, calendario della natura | Finché il profilo / la famiglia esiste | `wipeAll` svuota anche `settings` |
 | **Creazioni**: storie inventate (`made_stories`: sei scelte, eventuale titolo, data) | Fabbrica di storie | `mirabo.db` | Sì | Backup Drive opt-in; su carta se il genitore stampa il libretto | Conservare "Le mie storie" | Finché il profilo esiste | Cascata con il profilo; `wipeAll` |
 | **Disegni** (gioco "Disegna") | `drawing_game.dart` | **Solo in memoria** (`_marks`); non salvati su file né nel DB, non esportati né stampati (nessun `toImage`/scrittura nel codice) | n/d | No | Gioco libero | Fino alla chiusura del foglio o dell'app | Si perdono da soli |
 | **Nome del bambino come voce (TTS)** | `NameVoice` (`name_voice.dart`) sintetizza il nome con il TTS di sistema e lo scrive su file | `<Application Support>/names/name_<idProfilo>_<impronta>.wav` (`.caf` su iOS). L'impronta è SHA-1 troncato di nome, lingua e velocità: pseudonima, non reversibile ma verificabile per tentativi | **No** (file audio in chiaro, protezione di default del sistema) | Non nel backup Drive (`exportAll` esporta solo il DB). Il testo del nome va al motore TTS di sistema (vedi *flutter_tts*) | Dire il nome nelle storie registrate | Finché il nome non cambia | Cambio nome: il file vecchio si cancella; elimina profilo e `wipeAll` chiamano `nameVoice.forget` |
@@ -44,7 +46,7 @@ Le cartelle `app/android` e `app/ios` **sono tracciate** nel repo; `flutter crea
 
 | Piattaforma | Permesso / chiave | Dove | Motivo |
 | --- | --- | --- | --- |
-| Android | `INTERNET` | manifest `main` (aggiunto qui) | Solo backup Drive. Prima era presente solo nei manifest `debug` e `profile`: una build release avrebbe avuto il backup non funzionante |
+| Android | `INTERNET` | manifest `main`, con `tools:node="remove"` | Tolto dalla release finché il backup è fuori dall'MVP, anche se un plugin lo chiedesse. `check_inventory.py` fallisce se la rimozione manca |
 | Android | `INTERNET` | manifest `debug`, `profile` | Template Flutter (hot reload, DevTools); non in release |
 | Android | `USE_BIOMETRIC` | manifest `main` | Recupero del PIN adulti con lo sblocco del dispositivo (`local_auth`); nessuna rete |
 | Android | (nessun altro) | | Niente microfono, fotocamera, posizione, contatti, archivio esterno, notifiche. Plugin: i manifest uniti dei plugin possono aggiungere permessi: controllare con `aapt dump permissions` sulla release (vedi osservazione, passo 0) |
@@ -89,6 +91,8 @@ Cosa **non** c'è: analytics, crash reporting, pubblicità, remote config, push,
 | Servizi di stampa/condivisione scelti dal genitore | Dopo "Stampa" | PDF | Azione del genitore | Fuori dall'app |
 
 Non ci sono CDN: contenuti, immagini e font sono negli asset. Non c'è canale di assistenza nell'app (nessun form o `mailto`); un indirizzo di assistenza, se ci sarà, è nelle schede degli store. Statistiche e crash che Google Play o Apple raccolgono dagli utenti che le abilitano sono dei fornitori, non dell'app.
+
+Nella release MVP nessuna delle destinazioni Google è raggiungibile (backup spento, niente `INTERNET`); il motore TTS non riceve il nome.
 
 **Criterio di accettazione**: zero destinazioni di rete non documentate. Sezione *Risultati* di `network-observation.md` da compilare sulla build distribuita.
 

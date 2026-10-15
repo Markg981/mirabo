@@ -140,8 +140,8 @@ void main() {
     // Non trovata: va bene uguale, e la caccia finisce.
     await tester.tap(find.text(l10nIt.huntNotFound));
     await tester.pump();
-    expect(results.map((r) => r.choice), ['hunt=found', 'hunt=skip']);
-    expect(results.every((r) => r.firstTry), isTrue);
+    // Trovata o no non si salva: due round, nessun esito (docs/privacy/mvp-data.md).
+    expect(results.map((r) => r.choice), [null, null]);
     expect(finished, isTrue);
   });
 

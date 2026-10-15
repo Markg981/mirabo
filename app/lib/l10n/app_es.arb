@@ -97,6 +97,8 @@
   "spellWord": "Forma la palabra",
   "tracePrompt": "Repasa con el dedo: {label}",
   "traceRestart": "Empiezo de nuevo",
+  "traceOtherWay": "Lo hago con el dedo en la mesa",
+  "shapeHole": "Hueco: {shape}",
 
   "gameWellDone": "¡Muy bien, {name}!",
   "gameNiceGame": "¡Qué buena partida!",

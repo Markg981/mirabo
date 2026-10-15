@@ -93,7 +93,7 @@
 > Emma stringe la foglia tra le mani e si gira verso casa. "Nonna, anch'io stasera ho voglia di dormire un po' di più." "Brava," dice Pietrolino dalla tasca. "Anche i cuori coraggiosi sanno quando fermarsi."
 
 - **bo**: Stasera mi metto sotto la coperta come il riccio, {nome}. Buonanotte.
-- **pilu**: Stasera, prima di dormire, prova tre respiri lenti, {nome}. Come il bosco. A domani.
+- **pilu**: Stasera, prima di dormire, prova tre respiri lenti, {nome}. Come il bosco.
 - **tango**: Stasera dormo prestissimo, {nome}! ...Forse. Domani ti racconto se ci sono riuscita. Ciao!
 
 ## Scheda genitore

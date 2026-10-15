@@ -28,6 +28,10 @@ jobs:
         run: python studio/practice.py
       - name: Nessun invito a restare o a tornare (battute del compagno e frasi lato bambino)
         run: python studio/check_retention.py
+      - name: Comportamenti da contenere e strategie non miracolose (docs/content-safety.md)
+        run: python studio/check_messages.py
+      - name: Campi provvisori di informativa e store (informativo; la release usa --release)
+        run: python studio/check_privacy.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
       - uses: actions/upload-artifact@v4

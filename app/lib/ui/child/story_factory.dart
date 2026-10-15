@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../app_state.dart';
+import '../../audio/child_name.dart';
+import '../../features.dart';
 import '../../l10n/l10n.dart';
 import '../../models/made_story.dart';
 import '../../models/profile.dart';
@@ -450,8 +452,9 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
     } else {
       _say([
         l.factoryEnd,
-        l.factoryBy(_profile.name),
-        if (widget.justMade) l.factoryDone(_profile.name),
+        // "Una storia inventata da …" senza nome non dice niente: si salta.
+        if (Features.spokenName) l.factoryBy(_profile.name),
+        if (widget.justMade) spokenWithName(l.factoryDone, _profile.name),
       ].join('. '));
     }
   }

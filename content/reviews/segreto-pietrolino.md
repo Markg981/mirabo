@@ -91,7 +91,7 @@
 > Emma e la nonna scendono dalla collina tenendosi per mano. Il vento muove l'erba, leggero come una carezza, e sembra sussurrare: "Grazie, Emma." Emma non si gira. Sa che Pietrolino è lì, al suo posto. E sa che domani, nel bosco, ascolterà ancora.
 
 - **bo**: Mi mancherà Pietrolino, {nome}. Domani, quando vedo un sasso tondo, lo saluto.
-- **pilu**: Chi ci ha insegnato qualcosa resta con noi, {nome}. Domani, se vuoi, raccontami chi ti ha insegnato qualcosa. A domani.
+- **pilu**: Chi ci ha insegnato qualcosa resta con noi, {nome}. Domani, se vuoi, raccontami chi ti ha insegnato qualcosa.
 - **tango**: Domani vado nel bosco ad ascoltare, {nome}. Come Emma. Così Pietrolino è contento. Ciao!
 
 ## Scheda genitore
@@ -108,6 +108,7 @@ Da leggere in `content/stories/segreto-pietrolino/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

@@ -14,7 +14,7 @@ Titolare: da definire con il consulente (chi pubblica l'app). Interessati: bambi
 
 | # | Trattamento | Dati | Dove | Codice |
 | --- | --- | --- | --- | --- |
-| T1 | Profili | nome scelto dal genitore, fascia d'età, compagno, lingua, preferenze di accessibilità (font per dislessia, bassa stimolazione), minuti del limite "da solo", mano/lettura/autonomia | DB SQLCipher locale, tabella `profiles` | `local_db.dart` |
+| T1 | Profili | nome scelto dal genitore, fascia d'età, compagno, lingua, preferenze di accessibilità (testo ad alta leggibilità, bassa stimolazione), minuti del limite "da solo", mano/lettura/autonomia | DB SQLCipher locale, tabella `profiles` | `local_db.dart` |
 | T2 | Progressi | storie completate, round e attività (`activity_progress`, `activity_rounds`), scaffale, calendario della natura | DB locale | `local_db.dart` |
 | T3 | Diario del genitore | gesti segnati, osservazioni libere (`settings.parent_notes_<id>`), idee scartate, tempi d'uso per giorno (`usage.<profilo>.<data>`) | DB locale | `exploration_diary.dart`, `usage_tracker.dart` |
 | T4 | Creazioni | storie inventate (`made_stories`), disegni e stampabili | DB locale / dispositivo | `made_story.dart` |
@@ -25,6 +25,8 @@ Titolare: da definire con il consulente (chi pubblica l'app). Interessati: bambi
 Il contenuto libero del diario (T3) può contenere informazioni sullo sviluppo o sul comportamento del bambino: va trattato come potenzialmente particolare (art. 9) anche se l'app non lo richiede.
 
 Il motore TTS di sistema può essere in cloud su alcuni dispositivi (lo decide il produttore del sistema, non l'app): vedi rischio R5.
+
+**Release MVP (analisi 7C, [privacy/mvp-data.md](../privacy/mvp-data.md)).** T5 e T6 sono spenti a compilazione: il nome non va al motore TTS e non c'è backup né accesso alla rete (R2, R3, R4, R5, R9 non si applicano finché restano spenti). In T2 non si conservano più tentativi, aiuti, serie né risposte ai dialoghi (schema v13). Da rivedere con il consulente su questi flussi effettivi.
 
 ## 3. Necessità e proporzionalità
 

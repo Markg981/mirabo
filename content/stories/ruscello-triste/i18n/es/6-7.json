@@ -56,9 +56,9 @@
             {
               "label": "Lo limpio yo",
               "reaction": {
-                "bo": "¡Qué valiente! Pero el zapato está sucio... veamos cómo lo hace Emma.",
-                "pilu": "Buena idea. A lo mejor antes necesita algo. Miremos.",
-                "tango": "¡Sí! ¡Ya! ...Espera, veamos qué hace Emma."
+                "bo": "Quieres ayudar al arroyo. Pero al agua no se va solo: hace falta un adulto. Veamos cómo lo hace Emma.",
+                "pilu": "Se puede ayudar, con un adulto cerca y guantes. Veamos qué hace Emma.",
+                "tango": "¡Sí, ayudemos! ...Espera, al agua solo no. Veamos qué hace Emma."
               }
             },
             {

@@ -113,7 +113,7 @@ class _CountdownRoundState extends State<CountdownRound> {
                     icon: Icons.check_rounded,
                     color: MiraboColors.leaf,
                     onPressed: () {
-                      widget.onRound(RoundResult(attempts: 1, hints: 0, choice: 'day=$dayIndex'));
+                      widget.onRound(const RoundResult());
                       widget.onFinished();
                     },
                   ),

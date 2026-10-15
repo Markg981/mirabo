@@ -22,6 +22,7 @@ Nella versione per i più piccoli c'è una pausa per dare un nome a tre facce: a
 - Punire la rabbia invece del gesto: si può essere arrabbiati, non si può picchiare.
 - Risolvere al posto suo (ricostruire la torre): toglie la riparazione.
 - Pretendere il respiro quando è già esploso: il gesto si impara da calmi, si usa quando sale.
+- Aspettarsi che il respiro spenga la rabbia subito: aiuta ad aspettare che scenda, a volte ci vogliono molti respiri, a volte non basta. Allora si resta vicini, senza fretta.
 
 ## Se qualcosa ti preoccupa
 

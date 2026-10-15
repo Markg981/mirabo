@@ -22,6 +22,7 @@ The version for the youngest has a pause to name three faces: angry, sad, happy.
 - Punishing the anger instead of the action: being angry is allowed, hitting is not.
 - Fixing things for them (rebuilding the tower): it takes away the repair.
 - Demanding the breath once it has already erupted: the gesture is learnt when calm and used when it rises.
+- Expecting the breath to switch the anger off straight away: it helps to wait while it goes down. Sometimes it takes many breaths, sometimes it is not enough. Then you stay close, without hurry.
 
 ## If something worries you
 

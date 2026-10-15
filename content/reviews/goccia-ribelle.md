@@ -75,9 +75,9 @@
 
 > A casa, Emma e la nonna mettono una ciotola sul balcone. "Questa è per la pioggia," dice Emma.
 
-- **bo**: Stasera chiudo il rubinetto, {nome}. A domani.
-- **pilu**: Domani guardo se la ciotola è piena, {nome}. A domani.
-- **tango**: Stasera chiudo il rubinetto, svelto, {nome}! A domani!
+- **bo**: Stasera chiudo il rubinetto, {nome}.
+- **pilu**: Domani guardo se la ciotola è piena, {nome}.
+- **tango**: Stasera chiudo il rubinetto, svelto, {nome}!
 
 ## La storia (6-7 anni)
 
@@ -148,7 +148,7 @@
 > A casa, Emma e la nonna mettono una ciotola sul balcone. "Questa è per la pioggia," dice Emma. "Così domani do da bere ai fiori." Pietrolino sorride dal taschino. "Hai dato valore a una sola goccia. Ogni cambiamento comincia proprio così."
 
 - **bo**: Una ciotola per la pioggia. Domani la metto anch'io fuori, {nome}. E poi bagno i fiori.
-- **pilu**: Stasera, quando ti lavi i denti, prova a chiudere il rubinetto, {nome}. Goccia sarebbe contenta. A domani.
+- **pilu**: Stasera, quando ti lavi i denti, prova a chiudere il rubinetto, {nome}. Goccia sarebbe contenta.
 - **tango**: Domani cerco Goccia in ogni pozzanghera, {nome}! Magari è tornata giù. Ciao!
 
 ## Scheda genitore

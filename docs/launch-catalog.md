@@ -76,11 +76,12 @@ li conferma uno per uno; alcuni `catalog.py` li controlla anche dai file:
 | --- | --- | --- |
 | Testo | `text` | `validate.py`, avvisi di `review.py` |
 | Immagini definitive | `images` | ogni schermata della variante ha `illustration.file` e il file esiste (la scena composta non basta); per le attività, le immagini citate esistono |
-| Audio | `audio` | se la storia ha il formato `audio`, ogni schermata con testo ha il suo file |
+| Audio | `audio` | se la storia ha il formato `audio`, ogni schermata con testo ha il suo file, con una voce in `rights.json` che dice chi legge e l'impronta del testo registrato: se il testo è cambiato, l'audio va rifatto ([content-safety.md](content-safety.md)) |
 | Interazioni | `interactions` | schema e regole di `validate.py` |
 | Scheda adulta | `adultCard` | `parent.md` presente e senza fonti "da verificare" |
 | Sicurezza | `safety` | nessuno: lo legge il revisore |
-| Diritti d'uso | `rights` | nessuno: fonte, licenza e permesso di testi, immagini, voci e musiche si annotano prima di approvare |
+| Diritti d'uso | `rights` | ogni immagine e ogni audio distribuiti hanno in `rights.json` autore, fonte e licenza |
+| Temi sensibili | `safety` | un contenuto su paura, rabbia, perdita, salute o sicurezza del corpo richiede un revisore con quell'area in `sensitive` nel registro ([content-safety.md](content-safety.md)) |
 | Scheda dell'attività pratica | `practice` | solo per chi ha `practice.json`: `practice.py` controlla la scheda; con `--release` il revisore deve essere nel registro con la competenza per la fascia e servono due prove in famiglia ([montessori.md](montessori.md)) |
 
 Per le attività la conferma dell'audio vale anche quando non c'è audio registrato: il revisore
@@ -122,7 +123,7 @@ la scheda dell'attività pratica.
 | `validate.py` (CI) | storia o attività `published` senza approvazione, con approvazione su un'altra versione, con impronta diversa (contenuto cambiato dopo l'approvazione) o con elementi non confermati |
 | `catalog.py` (CI) | inventario o catalogo incoerenti: posti doppi o mancanti, contenuti inesistenti, fuori dalla cella della matrice o segnati fuori MVP |
 | `practice.py` (CI) | attività pratica del catalogo senza scheda, con la scheda incompleta, con l'etichetta Montessori diversa da quella dell'app, con un tipo che usa lo schermo per più di presentare, con richieste di prove o promesse di premi |
-| `catalog.py --release` | qualunque posto del catalogo (o del tema) non pronto: vuoto, senza approvazione valida, con immagini o audio mancanti, con varianti di storia fuori catalogo (il pacchetto le distribuirebbe), con un gioco che non copre le tre fasce; per le attività pratiche anche la scheda non approvata, un revisore senza la competenza per la fascia o meno di due prove in famiglia |
+| `catalog.py --release` | qualunque posto del catalogo (o del tema) non pronto: vuoto, senza approvazione valida, con immagini o audio mancanti, con varianti di storia fuori catalogo (il pacchetto le distribuirebbe), con un gioco che non copre le tre fasce, con immagini o audio senza diritti in `rights.json` o con audio registrato su un testo diverso, con un tema sensibile non approvato da una competenza appropriata; per le attività pratiche anche la scheda non approvata, un revisore senza la competenza per la fascia o meno di due prove in famiglia |
 | `pack.py` | senza `--include-drafts`, impacchetta solo contenuti `published` (storie e attività), dopo `validate.py` |
 | `pack.py --release` | tutto quello sopra; poi impacchetta solo i contenuti del catalogo, anche se in repository ci sono altri contenuti pubblicati, e rifiuta `--include-drafts` |
 

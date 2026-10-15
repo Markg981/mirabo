@@ -109,6 +109,7 @@ Ogni `Screen` ha:
         "id": "spingo",
         "icon": "push",
         "label": "Spingo Teo",
+        "contain": true,
         "reaction": { "bo": "...", "pilu": "...", "tango": "..." }
       }
     ]
@@ -116,7 +117,9 @@ Ogni `Screen` ha:
 }
 ```
 
-Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del compagno. L'`id` scelto va nel diario del genitore.
+Le opzioni non hanno un valore "giusto": `reaction` è solo il commento del compagno. La scelta non si conserva: serve solo alla reazione (docs/privacy/mvp-data.md).
+
+`contain: true` segna un comportamento da contenere (fa male a qualcuno o espone a un rischio): ogni reazione riconosce l'emozione e dice il limite, senza approvare. Lo controlla `studio/check_messages.py` ([content-safety.md](content-safety.md)).
 
 ### Invito al dialogo "Leggiamo insieme" (`sharedPrompt`)
 

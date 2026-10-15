@@ -12,7 +12,8 @@ void main() {
   late List<(String, String)> calls;
   late bool synthWorks;
 
-  NameVoice voice() => NameVoice(
+  NameVoice voice({bool enabled = true}) => NameVoice(
+        enabled: enabled,
         cacheDir: () async => tmp,
         synth: (text, language, path) async {
           calls.add((text, language));
@@ -86,6 +87,20 @@ void main() {
       expect(teo!.existsSync(), isTrue);
       await v.forget();
       expect(teo.existsSync(), isFalse);
+    });
+
+    test("fuori dall'MVP non genera nulla e il nome non arriva al motore", () async {
+      final v = voice(enabled: false);
+      expect(await v.fileFor(profile()), isNull);
+      await v.prepare(profile());
+      expect(calls, isEmpty);
+      expect(Directory('${tmp.path}/names').existsSync(), isFalse);
+    });
+
+    test('spento, forget toglie comunque i file di una versione precedente', () async {
+      final old = await voice().fileFor(profile());
+      await voice(enabled: false).forget();
+      expect(old!.existsSync(), isFalse);
     });
 
     test('prepare non fallisce mai', () async {

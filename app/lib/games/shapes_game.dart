@@ -22,7 +22,9 @@ class _Piece {
   String get nameKey => scale < 1 ? '${kind.name}Small' : kind.name;
 }
 
-/// Incastri: i pezzi colorati si trascinano nei buchi della tavola.
+/// Incastri: i pezzi colorati si trascinano nei buchi della tavola. Chi non
+/// riesce a trascinare (o usa lo screen reader) tocca il pezzo, che si sente e
+/// si illumina, e poi il buco (docs/accessibility.md).
 /// 3-5: tre forme, buchi dritti come i pezzi; 6-7: cinque forme e i buchi sono
 /// girati, la stessa forma va riconosciuta in un'altra posizione; 8-10: sei
 /// forme girate, con grandi e piccole da distinguere.
@@ -48,6 +50,9 @@ class _ShapesGameState extends State<ShapesGame> {
   late final List<double> _turns;
   final Set<int> _placed = {};
   int? _wrongHole;
+
+  /// Il pezzo toccato, in attesa del buco: l'alternativa al trascinamento.
+  int? _selected;
 
   @override
   void initState() {
@@ -99,6 +104,7 @@ class _ShapesGameState extends State<ShapesGame> {
       setState(() {
         _placed.add(hole);
         _wrongHole = null;
+        _selected = null;
       });
       widget.ctx.say(context.l10n.shapeName(p.nameKey));
       if (_placed.length == _pieces.length) {
@@ -141,7 +147,23 @@ class _ShapesGameState extends State<ShapesGame> {
                                 data: i,
                                 feedback: _shape(_pieces[i], cell * 1.08, tokens),
                                 childWhenDragging: Opacity(opacity: 0.25, child: _shape(_pieces[i], cell, tokens)),
-                                child: Semantics(label: context.l10n.shapeName(_pieces[i].nameKey), child: _shape(_pieces[i], cell, tokens)),
+                                child: Semantics(
+                                  button: true,
+                                  selected: _selected == i,
+                                  label: context.l10n.shapeName(_pieces[i].nameKey),
+                                  onTap: () => _select(i),
+                                  excludeSemantics: true,
+                                  child: GestureDetector(
+                                    onTap: () => _select(i),
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(24),
+                                        border: Border.all(color: _selected == i ? MiraboColors.navy : Colors.transparent, width: 5),
+                                      ),
+                                      child: _shape(_pieces[i], cell, tokens),
+                                    ),
+                                  ),
+                                ),
                               ),
                       ),
                   ],
@@ -176,21 +198,31 @@ class _ShapesGameState extends State<ShapesGame> {
                             builder: (context, candidates, _) {
                               final placed = _placed.contains(hole);
                               final hovering = candidates.isNotEmpty;
-                              return AnimatedScale(
-                                scale: hovering ? 1.06 : 1,
-                                duration: const Duration(milliseconds: 120),
-                                child: Transform.rotate(
-                                  angle: _turns[hole] * 2 * math.pi,
-                                  child: placed
-                                    ? _shape(_pieces[hole], cell, tokens)
-                                    : CustomPaint(
-                                        painter: _ShapePainter(
-                                          _pieces[hole].kind,
-                                          _pieces[hole].scale,
-                                          _wrongHole == hole ? const Color(0x55C6384C) : const Color(0x553A2A10),
-                                          hole: true,
-                                        ),
-                                      ),
+                              final tap = placed || _selected == null ? null : () => _drop(hole, _selected!);
+                              return Semantics(
+                                button: !placed,
+                                label: context.l10n.shapeHole(context.l10n.shapeName(_pieces[hole].nameKey)),
+                                onTap: tap,
+                                excludeSemantics: true,
+                                child: GestureDetector(
+                                  onTap: tap,
+                                  child: AnimatedScale(
+                                    scale: hovering ? 1.06 : 1,
+                                    duration: tokens.animate ? const Duration(milliseconds: 120) : Duration.zero,
+                                    child: Transform.rotate(
+                                      angle: _turns[hole] * 2 * math.pi,
+                                      child: placed
+                                          ? _shape(_pieces[hole], cell, tokens)
+                                          : CustomPaint(
+                                              painter: _ShapePainter(
+                                                _pieces[hole].kind,
+                                                _pieces[hole].scale,
+                                                _wrongHole == hole ? const Color(0x55C6384C) : const Color(0x553A2A10),
+                                                hole: true,
+                                              ),
+                                            ),
+                                    ),
+                                  ),
                                 ),
                               );
                             },
@@ -205,6 +237,13 @@ class _ShapesGameState extends State<ShapesGame> {
         ),
       );
     });
+  }
+
+  /// Tocca un pezzo: si sente il nome e resta scelto finché non si tocca un buco
+  /// (o di nuovo il pezzo, per lasciarlo).
+  void _select(int i) {
+    setState(() => _selected = _selected == i ? null : i);
+    if (_selected != null) widget.ctx.say(context.l10n.shapeName(_pieces[i].nameKey));
   }
 
   /// Un pezzo è "usato" quando un buco identico l'ha già accolto: nel vassoio

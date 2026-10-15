@@ -6,6 +6,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
+import '../../audio/child_name.dart';
 import '../../models/activity.dart';
 import '../../models/profile.dart';
 import '../../content/story_repository.dart';
@@ -34,7 +35,8 @@ class ActivityContext {
   final String companionName;
   final Future<void> Function(String text) say;
 
-  String withName(String s) => s.replaceAll('{nome}', profile.name);
+  /// Il testo con il nome del bambino; fuori dall'MVP senza nome (audio/child_name.dart).
+  String withName(String s) => fillName(s, profile.name);
 }
 
 /// Al massimo [max] opzioni per round (asse autonomia): le giuste restano
@@ -356,7 +358,6 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   /// Ogni quanto si ripete la consegna se il bambino non tocca niente
   /// (autonomia 1), e quante volte al massimo.
   static const repeatEvery = Duration(seconds: 15);
-  static const maxRepeats = 2;
 
   int _announcedFor = -1;
   String? _prompt;
@@ -380,8 +381,9 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) widget.ctx.say(text);
     });
-    if (MiraboTokens.of(context).repeatPrompt) {
-      var left = maxRepeats;
+    final tokens = MiraboTokens.of(context);
+    if (tokens.repeatPrompt) {
+      var left = tokens.maxPromptRepeats;
       _repeat = Timer.periodic(repeatEvery, (t) {
         if (!mounted || lastCorrect == true || left-- <= 0) return t.cancel();
         widget.ctx.say(text);
@@ -425,7 +427,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
     _repeat?.cancel();
     if (correct) {
       setState(() => lastCorrect = true);
-      widget.onRound(RoundResult(attempts: attempts, hints: hints, choice: choice));
+      widget.onRound(RoundResult(choice: choice));
       Future.delayed(const Duration(milliseconds: 900), next);
     } else {
       setState(() {
@@ -438,7 +440,7 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
 
   /// Per i tipi senza risposta giusta (scene, checklist, esplora).
   void complete({String? choice}) {
-    widget.onRound(RoundResult(attempts: 1, hints: 0, choice: choice));
+    widget.onRound(RoundResult(choice: choice));
     next();
   }
 
@@ -509,12 +511,13 @@ class PicTile extends StatelessWidget {
     final tokens = MiraboTokens.of(context);
     final green = tokens.tint(MiraboColors.leaf);
     final gold = tokens.tint(MiraboColors.sun);
-    final fg = selected ? Colors.white : MiraboColors.ink;
+    // Scritta grande (20 px in grassetto): sul verde si legge l'inchiostro.
+    final fg = selected ? MiraboColors.onColor(green, large: true) : MiraboColors.ink;
     // Per chi non legge solo la figura; la scritta resta per lo screen reader.
     final label = tokens.textMode.showsLabels ? this.label : null;
     final size = onTap == null ? this.size : math.max(this.size, tokens.minTarget);
     return AnimatedOpacity(
-      duration: const Duration(milliseconds: 250),
+      duration: tokens.animate ? const Duration(milliseconds: 250) : Duration.zero,
       opacity: dimmed ? 0.3 : 1,
       child: Stack(
         clipBehavior: Clip.none,

@@ -86,7 +86,7 @@
 > Emma resta lì a lungo. Non ha bisogno di parlare. Nel petto ha una felicità leggera, come ali che battono piano. Poi lei e la nonna tornano a casa per mano, con la lanterna spenta, e alcune lucciole le seguono come una piccola costellazione.
 
 - **bo**: Il buio era pieno di luci, {nome}. Stasera spengo la luce e guardo fuori dalla finestra. Con te.
-- **pilu**: Stasera prova anche tu, {nome}: spegni la luce, aspetta un po', e guarda cosa si accende. A domani.
+- **pilu**: Stasera prova anche tu, {nome}: spegni la luce, aspetta un po', e guarda cosa si accende.
 - **tango**: Domani torno al buio a contare le lucciole, {nome}! Ferma ferma, però. Ciao!
 
 ## Scheda genitore
@@ -103,6 +103,7 @@ Da leggere in `content/stories/notte-lucciole/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

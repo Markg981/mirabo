@@ -103,4 +103,14 @@ void main() {
     await pin.setDeviceRecovery(true);
     expect(await pin.deviceRecovery, isTrue);
   });
+
+  test('"Elimina tutti i dati" toglie PIN, codice, attese e avvisi: come al primo avvio', () async {
+    await pin.set('1234');
+    await pin.newRecoveryCode();
+    await pin.setDeviceRecovery(false);
+    await pin.verify('0000');
+    await pin.reset();
+    await pin.forget();
+    expect(store.data, isEmpty);
+  });
 }

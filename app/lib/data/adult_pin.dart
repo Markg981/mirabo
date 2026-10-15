@@ -181,6 +181,14 @@ class AdultPin {
     await _store.delete(_kResetHow);
   }
 
+  /// *Elimina tutti i dati*: il tablet torna come al primo avvio, quindi senza
+  /// PIN, codice di recupero, attese, scelta sul recupero e avvisi.
+  Future<void> forget() async {
+    for (final k in [_kHash, _kSalt, _kFails, _kLockUntil, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow]) {
+      await _store.delete(k);
+    }
+  }
+
   Future<PinResult> _fail() async {
     final fails = (int.tryParse(await _store.read(_kFails) ?? '') ?? 0) + 1;
     await _store.write(_kFails, '$fails');

@@ -28,6 +28,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import approvals  # noqa: E402
 import practice  # noqa: E402
+import sensitive  # noqa: E402
 
 ROOT = approvals.ROOT
 CATALOG = ROOT / "content" / "catalog"
@@ -153,7 +154,10 @@ def story_problems(story_id: str, bands: set[str]) -> list[str]:
         for s in screens:
             for rel, what in ((s["illustration"].get("file"), "immagine"), ((s.get("audio") or {}).get("file"), "audio")):
                 if rel:
+                    recorded = s.get("text", "") if what == "audio" else None
                     out += [f"{where} #{s['n']}: {p}" for p in media_problems(folder, rel, what)]
+                    out += [f"{where} #{s['n']}: {p}" for p in sensitive.rights_problems(folder, rel, what, recorded)]
+    out += sensitive.reviewer_problems(f"story {story_id}", meta, approvals.latest("story", story_id), bands)
     card = folder / meta.get("parentCard", "parent.md")
     if not card.exists():
         out.append(f"story {story_id}: scheda adulta mancante")
@@ -181,6 +185,8 @@ def activity_problems(activity_id: str, bands: set[str]) -> list[str]:
     walk(meta)
     for rel in sorted(set(images)):
         out += [f"activity {activity_id}: {p}" for p in media_problems(folder, rel, "immagine")]
+        out += [f"activity {activity_id}: {p}" for p in sensitive.rights_problems(folder, rel, "immagine")]
+    out += sensitive.reviewer_problems(f"activity {activity_id}", meta, approvals.latest("activity", activity_id), bands)
     return out
 
 

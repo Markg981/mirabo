@@ -56,9 +56,9 @@
             {
               "label": "I'll clean it up",
               "reaction": {
-                "bo": "Brave. But the shoe is dirty... let's see what Emma does.",
-                "pilu": "Good idea. I wonder if she needs something first. Let's watch.",
-                "tango": "Yes! Right now! ...Wait, let's see what Emma does."
+                "bo": "You want to help the stream. But the water is not for going in alone: you need a grown-up. Let's see what Emma does.",
+                "pilu": "You can help, with a grown-up close by and gloves on. Let's see what Emma does.",
+                "tango": "Yes, let's help! ...Wait, not in the water alone. Let's see what Emma does."
               }
             },
             {

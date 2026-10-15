@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'adult_gate.dart';
 
 import '../../app_state.dart';
+import '../../features.dart';
 import '../../content/story_repository.dart';
 import '../../l10n/l10n.dart';
 import '../../models/profile.dart';
@@ -126,15 +127,17 @@ class _ProfileFormState extends State<ProfileForm> {
                 if (widget.firstRun) ...[
                   _WelcomeHeader(title: title),
                   const SizedBox(height: 8),
-                  // Tablet nuovo o app reinstallata: si riparte dal backup su Drive.
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton.icon(
-                      icon: const Icon(Icons.settings_backup_restore_rounded),
-                      label: Text(l.profileRestoreLink),
-                      onPressed: () => restoreFromDrive(context),
+                  // Tablet nuovo o app reinstallata: si riparte dal backup su Drive
+                  // (fuori dall'MVP, Features.cloudBackup).
+                  if (Features.cloudBackup)
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton.icon(
+                        icon: const Icon(Icons.settings_backup_restore_rounded),
+                        label: Text(l.profileRestoreLink),
+                        onPressed: () => restoreFromDrive(context),
+                      ),
                     ),
-                  ),
                   const SizedBox(height: 16),
                 ],
                 FormSection(
@@ -519,7 +522,8 @@ class _AgeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = MiraboTokens.of(context).tint(MiraboColors.sky);
+    // Selezionata porta anche gli anni in piccolo: il fondo si scurisce quanto basta.
+    final c = MiraboColors.forWhiteText(MiraboTokens.of(context).tint(MiraboColors.sky));
     final text = Theme.of(context).textTheme;
     return BlockTile(
       onTap: onTap,
@@ -533,7 +537,7 @@ class _AgeOption extends StatelessWidget {
         children: [
           Text(label, style: text.titleMedium?.copyWith(color: selected ? Colors.white : MiraboColors.ink)),
           Text(years,
-              style: text.labelMedium?.copyWith(color: selected ? Colors.white.withValues(alpha: 0.9) : MiraboColors.inkSoft)),
+              style: text.labelMedium?.copyWith(color: selected ? Colors.white : MiraboColors.inkSoft)),
         ],
       ),
     );
@@ -599,24 +603,26 @@ class _WorldChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = worldStyle(world);
     final c = MiraboTokens.of(context).tint(style.color);
+    final on = MiraboColors.readable(c);
     return Semantics(
       checked: selected,
       button: true,
       label: label,
+      onTap: onTap,
       excludeSemantics: true,
       child: Material(
-        color: selected ? c : MiraboColors.paper,
-        shape: StadiumBorder(side: BorderSide(color: selected ? c : MiraboColors.line, width: 1.5)),
+        color: selected ? on.bg : MiraboColors.paper,
+        shape: StadiumBorder(side: BorderSide(color: selected ? on.bg : MiraboColors.line, width: 1.5)),
         child: InkWell(
           customBorder: const StadiumBorder(),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(14, 10, 18, 10),
             child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Icon(selected ? Icons.check_circle_rounded : style.icon, color: selected ? Colors.white : c, size: 24),
+              Icon(selected ? Icons.check_circle_rounded : style.icon, color: selected ? on.fg : c, size: 24),
               const SizedBox(width: 8),
               Text(label,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: selected ? Colors.white : MiraboColors.ink)),
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: selected ? on.fg : MiraboColors.ink)),
             ]),
           ),
         ),

@@ -14,7 +14,6 @@ class WeekDigest {
     required this.stories,
     required this.sessions,
     required this.together,
-    required this.choices,
     required this.gestures,
     required this.home,
   });
@@ -27,9 +26,6 @@ class WeekDigest {
 
   /// Quante di quelle sessioni erano "insieme".
   final int together;
-
-  /// Per storia, l'ultima scelta fatta alla pausa (etichetta già tradotta).
-  final List<(Story, String)> choices;
 
   /// Gesti segnati nella vita vera, uno per storia.
   final List<Story> gestures;
@@ -50,14 +46,10 @@ class WeekDigest {
     final from = now.subtract(const Duration(days: 7));
     final done = [for (final e in diary) if (e.completed && e.when.isAfter(from)) e]..sort((a, b) => b.when.compareTo(a.when));
     final stories = <Story>[];
-    final choices = <(Story, String)>[];
     for (final e in done) {
       final s = story(e.storyId);
       if (s == null || stories.any((x) => x.id == s.id)) continue;
       stories.add(s);
-      final answer = done.firstWhere((x) => x.storyId == s.id && x.dialogueAnswer != null, orElse: () => e).dialogueAnswer;
-      final label = answer == null ? null : _answerLabel(s, answer);
-      if (label != null) choices.add((s, label));
     }
     final gestures = <Story>[];
     for (final g in gestureEntries) {
@@ -76,21 +68,9 @@ class WeekDigest {
       stories: stories,
       sessions: done.where((e) => story(e.storyId) != null).length,
       together: done.where((e) => story(e.storyId) != null && e.mode == SessionMode.together).length,
-      choices: choices,
       gestures: gestures,
       home: home,
     );
-  }
-
-  static String? _answerLabel(Story story, String answerId) {
-    for (final v in story.variants.values) {
-      for (final s in v.screens) {
-        for (final o in s.dialogue?.options ?? const <DialogueOption>[]) {
-          if (o.id == answerId) return o.label;
-        }
-      }
-    }
-    return null;
   }
 }
 

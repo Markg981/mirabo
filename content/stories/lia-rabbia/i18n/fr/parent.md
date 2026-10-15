@@ -22,6 +22,7 @@ La version pour les plus petits contient une pause pour nommer trois visages : e
 - Punir la colère au lieu du geste : on a le droit d'être en colère, pas de frapper.
 - Régler les choses à sa place (reconstruire la tour) : cela lui enlève la réparation.
 - Exiger la respiration quand il a déjà explosé : le geste s'apprend au calme et s'utilise quand ça monte.
+- S'attendre à ce que la respiration éteigne la colère tout de suite : elle aide à attendre qu'elle redescende. Parfois il faut beaucoup de respirations, parfois cela ne suffit pas. Alors on reste à côté, sans se presser.
 
 ## Si quelque chose vous inquiète
 

@@ -1,6 +1,6 @@
 {
   "ageBand": "3-5",
-  "design": {"perspective": "protagonist", "structure": "one-problem", "note": "La torre cade, arriva la rabbia, il respiro del vulcano la calma."},
+  "design": {"perspective": "protagonist", "structure": "one-problem", "note": "La torre cade, arriva la rabbia, il respiro del vulcano la aiuta ad aspettare che scenda."},
   "screens": [
     {
       "n": 1,
@@ -140,9 +140,9 @@
         "seconds": 15,
         "together": "Fatelo insieme: mani sulla pancia, dentro fino a tre, fuori ssssh. Tre volte.",
         "back": {
-          "bo": "Il mio vulcano adesso è piccolo.",
+          "bo": "Il mio vulcano scende, piano piano.",
           "pilu": "Senti? La pancia va piano piano.",
-          "tango": "Ssssh... Il vulcano dorme. Torniamo da Lia!"
+          "tango": "Ssssh... Il vulcano scende. Torniamo da Lia!"
         }
       }
     },

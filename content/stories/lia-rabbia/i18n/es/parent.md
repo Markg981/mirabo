@@ -22,6 +22,7 @@ La versión para los más pequeños tiene una pausa para poner nombre a tres car
 - Castigar el enfado en lugar del gesto: se puede estar enfadado, no se puede pegar.
 - Resolverlo en su lugar (reconstruir la torre): le quita la reparación.
 - Exigir la respiración cuando ya ha explotado: el gesto se aprende en calma y se usa cuando sube.
+- Esperar que la respiración apague el enfado enseguida: ayuda a esperar a que baje. A veces hacen falta muchas respiraciones, a veces no basta. Entonces se queda uno cerca, sin prisa.
 
 ## Si algo te preocupa
 

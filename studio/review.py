@@ -197,7 +197,8 @@ def sheet(folder: Path) -> str:
                 for c, p in d["alone"]["prompt"].items():
                     out += [f"- **{c}** chiede: {p}"]
                 for o in d["alone"]["options"]:
-                    out += [f"- Opzione **{o['label']}**"]
+                    contain = " (comportamento da contenere: ogni reazione riconosce l'emozione e dice il limite, senza approvare)" if o.get("contain") else ""
+                    out += [f"- Opzione **{o['label']}**{contain}"]
                     out += [f"  - {c}: {r}" for c, r in o["reaction"].items()]
                 out += [""]
             les = s.get("lesson")

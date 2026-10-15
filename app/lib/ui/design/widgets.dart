@@ -15,6 +15,9 @@ List<BoxShadow> softShadow([double strength = 1]) => [
 /// Mai più basso del target minimo del profilo; per chi non legge, se ha
 /// un'icona, mostra solo quella (la scritta resta per lo screen reader).
 class ChunkyButton extends StatefulWidget {
+  /// Corpo minimo della scritta: testo grande per WCAG (18,67 px in grassetto).
+  static const labelMinSize = 19.0;
+
   const ChunkyButton({
     super.key,
     required this.label,
@@ -54,20 +57,29 @@ class _ChunkyButtonState extends State<ChunkyButton> {
     final enabled = widget.onPressed != null;
     final base = enabled ? tokens.tint(widget.color ?? Theme.of(context).colorScheme.primary) : MiraboColors.disabled;
     final edge = MiraboColors.deep(base, enabled ? 0.16 : 0.08);
-    final fg = enabled ? widget.foreground : MiraboColors.inkSoft;
+    // La scritta è sempre testo grande (almeno 19 px in grassetto): basta 3:1, e
+    // se il colore chiesto non ci arriva sul fondo (bianco sul giallo) si cambia.
+    final fg = !enabled
+        ? MiraboColors.inkSoft
+        : MiraboColors.contrast(widget.foreground, base) >= MiraboColors.minContrastLarge
+            ? widget.foreground
+            : MiraboColors.onColor(base, large: true);
     final down = _down && enabled;
     final height = math.max(widget.height, tokens.minTarget);
     final iconOnly = widget.icon != null && !tokens.textMode.showsLabels;
     final icon = widget.icon == null ? null : Icon(widget.icon, color: fg, size: height * (iconOnly ? 0.56 : 0.44));
     final text = Text(
       widget.label,
-      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: fg, fontSize: height * 0.32),
+      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: fg, fontSize: math.max(height * 0.32, ChunkyButton.labelMinSize)),
     );
 
     return Semantics(
       button: true,
       enabled: enabled,
       label: widget.label,
+      // Con excludeSemantics il tocco del GestureDetector sparisce dall'albero:
+      // senza onTap qui TalkBack e VoiceOver leggono il bottone ma non lo premono.
+      onTap: widget.onPressed,
       excludeSemantics: true,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,

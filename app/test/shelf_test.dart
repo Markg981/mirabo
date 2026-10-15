@@ -325,6 +325,12 @@ class _Repo implements StoryRepository {
 
 class _SilentVoice implements NameVoice {
   @override
+  bool get enabled => false;
+
+  @override
+  Future<void> forget([int? profileId]) async {}
+
+  @override
   Future<void> prepare(ChildProfile p) async {}
 
   @override

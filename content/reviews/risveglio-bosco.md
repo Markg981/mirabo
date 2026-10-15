@@ -51,7 +51,7 @@
 - **bo** chiede: Tu cosa faresti, {nome}?
 - **pilu** chiede: Tu cosa faresti, {nome}?
 - **tango** chiede: Tu cosa faresti, {nome}?
-- Opzione **Prendo il riccio in braccio**
+- Opzione **Prendo il riccio in braccio** (comportamento da contenere: ogni reazione riconosce l'emozione e dice il limite, senza approvare)
   - bo: Ha gli aculei... e forse ha paura di noi. Vediamo cosa fa Emma.
   - pilu: Gli animali del bosco a volte si spaventano se li tocchiamo. Vediamo cosa fa Emma.
   - tango: Anch'io ci avevo pensato! Ma punge. Vediamo Emma.
@@ -87,7 +87,7 @@
 > Il giorno dopo Emma torna con dei cartelli fatti a mano: "Qui vive un riccio", "Rispetta chi dorme tra le foglie", "Porta a casa i tuoi rifiuti". A scuola ne parla con la maestra e i compagni. E così nasce il Gruppo dei Piccoli Custodi della Natura.
 
 - **bo**: Piccoli Custodi! Posso esserlo anch'io, {nome}? Domani faccio un mucchio di foglie per i ricci.
-- **pilu**: Domani prova a disegnare anche tu un cartello per il tuo parco, {nome}. Cosa ci scriveresti? A domani.
+- **pilu**: Domani prova a disegnare anche tu un cartello per il tuo parco, {nome}. Cosa ci scriveresti?
 - **tango**: Io mi iscrivo subito ai Custodi! E anche tu, {nome}! Domani cerchiamo ricci. Ciao!
 
 ## Scheda genitore
@@ -104,6 +104,7 @@ Da leggere in `content/stories/risveglio-bosco/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

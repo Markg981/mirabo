@@ -64,10 +64,10 @@
 - **bo** chiede: Tu cosa faresti, {nome}?
 - **pilu** chiede: Tu cosa faresti, {nome}?
 - **tango** chiede: Tu cosa faresti, {nome}?
-- Opzione **Pulisco io**
-  - bo: Coraggiosa. Però la scarpa è sporca... vediamo come fa Emma.
-  - pilu: Bella idea. Chissà se le serve qualcosa prima. Guardiamo.
-  - tango: Sì! Subito! ...Aspetta, vediamo cosa fa Emma.
+- Opzione **Pulisco io** (comportamento da contenere: ogni reazione riconosce l'emozione e dice il limite, senza approvare)
+  - bo: Vuoi aiutare il ruscello. Nell'acqua però non si va da soli: serve un grande. Vediamo come fa Emma.
+  - pilu: Aiutare si può, con un grande vicino e i guanti. Vediamo cosa fa Emma.
+  - tango: Sì, aiutiamo! ...Aspetta, nell'acqua da soli no. Vediamo cosa fa Emma.
 - Opzione **Chiamo la nonna**
   - bo: Anch'io avrei chiamato qualcuno. Vediamo cosa fa Emma.
   - pilu: Chiedere aiuto non è arrendersi. Vediamo se anche Emma ci pensa.
@@ -106,8 +106,8 @@
 > Sulla via di casa Emma dice: "Nonna, domani lo racconto a Sara e a Omar. Che il ruscello era triste, e io l'ho aiutato." La nonna annuisce. E dietro di loro il ruscello riprende a cantare: plin... plon... plin.
 
 - **bo**: Ce l'ha fatta, {nome}. Anche con le maniche bagnate. Domani se vedi una cartaccia me lo dici?
-- **pilu**: Hai visto, {nome}? Nessuna magia: solo guanti, un sacchetto e qualcuno che guardava. A domani.
-- **tango**: Plin plon plin! Io domani cerco un ruscello. Vieni anche tu, {nome}? A domani!
+- **pilu**: Hai visto, {nome}? Nessuna magia: solo guanti, un sacchetto e qualcuno che guardava.
+- **tango**: Plin plon plin! Io domani cerco un ruscello. Vieni anche tu, {nome}?
 
 ## Scheda genitore
 
@@ -123,6 +123,7 @@ Da leggere in `content/stories/ruscello-triste/parent.md`.
 - [ ] Nessuna paura usata per convincere; il gesto proposto è piccolo e fattibile.
 - [ ] Le battute dei compagni non giudicano, non premiano, non chiedono di continuare.
 - [ ] Le opzioni della pausa di dialogo sono tutte legittime, "non so" compreso.
+- [ ] La lezione in tre tempi (3-5) nomina cose concrete e adatte all'età; le frasi non correggono e non premiano.
 - [ ] Personaggi e nomi senza stereotipi di genere o provenienza.
 - [ ] La scheda genitore è corretta, non colpevolizza e non fa diagnosi.
 - [ ] "Se qualcosa ti preoccupa" indica segnali e figure giuste (se presente o richiesta).

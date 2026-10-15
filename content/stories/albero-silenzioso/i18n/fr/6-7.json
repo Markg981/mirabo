@@ -44,9 +44,9 @@
             {
               "label": "J'enlève le plastique",
               "reaction": {
-                "bo": "Comme ça, c'est plus propre à son pied. Voyons si Emma y pense aussi.",
-                "pilu": "D'abord on enlève ce qui fait mal. Voyons ce que fait Emma.",
-                "tango": "Dehors, le plastique ! Tout de suite ! ...Voyons comment fait Emma."
+                "bo": "Comme ça, c'est plus propre à son pied. Avec des gants, quand même. Voyons si Emma y pense aussi.",
+                "pilu": "D'abord on enlève ce qui fait mal, avec des gants. Voyons ce que fait Emma.",
+                "tango": "Dehors, le plastique ! Avec des gants, hein ! ...Voyons comment fait Emma."
               }
             },
             {

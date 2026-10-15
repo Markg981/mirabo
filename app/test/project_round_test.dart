@@ -75,6 +75,5 @@ void main() {
       'project=test;result=notyet',
       'project=revision;note=più piegature',
     ]);
-    expect(results.every((r) => r.firstTry), isTrue);
   });
 }

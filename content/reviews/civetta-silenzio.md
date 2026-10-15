@@ -93,7 +93,7 @@
 > La nonna riaccompagna Emma a letto. Emma mette la piuma sul comodino, vicino a Pietrolino. Respira piano, come ha imparato. E stavolta si addormenta tranquilla.
 
 - **bo**: Stasera ascolto il mio respiro prima di dormire, {nome}. Shhh. Buonanotte.
-- **pilu**: Stasera prova anche tu un minuto di silenzio, {nome}. Ascolta cosa si sente. A domani.
+- **pilu**: Stasera prova anche tu un minuto di silenzio, {nome}. Ascolta cosa si sente.
 - **tango**: Stasera provo a stare zitta un minuto intero, {nome}! ...Shhh. Ciao!
 
 ## Scheda genitore

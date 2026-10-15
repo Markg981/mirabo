@@ -8,7 +8,6 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'audio/name_voice.dart';
 import 'content/story_repository.dart';
 import 'data/cloud_backup.dart';
-import 'data/interaction_advice.dart';
 import 'data/local_db.dart';
 import 'data/usage_tracker.dart';
 import 'games/game.dart';
@@ -252,6 +251,12 @@ class AppState extends ChangeNotifier {
     mode = SessionMode.alone;
     _syncAloneClock();
     notifyListeners();
+    if (!nameVoice.enabled) {
+      // Fuori dall'MVP: via i file del nome lasciati da una versione precedente.
+      // Senza attendere, come prepare: l'avvio non dipende dal file system.
+      unawaited(nameVoice.forget());
+      return;
+    }
     // Profili nati prima della cache, o ripristinati da Drive su un tablet nuovo.
     for (final p in profiles) {
       nameVoice.prepare(p);
@@ -349,7 +354,7 @@ class AppState extends ChangeNotifier {
   Future<void> recordActivity(Activity activity, ActivityProgress before, List<RoundResult> results) async {
     final p = currentProfile;
     if (p == null || results.isEmpty) return;
-    await db.addRounds(p.id, activity, before.level, results);
+    await db.addRounds(p.id, activity, results);
     // Il livello non cambia da solo: lo sceglie il bambino a fine attività
     // (più semplice / ancora così / più sfida), vedi setActivityLevel.
     await db.saveProgress(before.copyWith(sessions: before.sessions + 1, lastPlayed: DateTime.now()));
@@ -359,38 +364,9 @@ class AppState extends ChangeNotifier {
   /// (una dimensione per volta, sempre in [1, maxLevel]) e si può annullare
   /// con la scelta opposta. Non tocca fascia, profilo di interazione né audio.
   Future<ActivityProgress> setActivityLevel(ActivityProgress p, int level, int maxLevel) async {
-    final next = p.copyWith(level: level.clamp(1, maxLevel), streak: 0);
+    final next = p.copyWith(level: level.clamp(1, maxLevel));
     await db.saveProgress(next);
     return next;
-  }
-
-  static String adviceOffKey(int profileId) => 'advice_off.$profileId';
-
-  /// Le proposte al genitore sono accese salvo scelta contraria (per bambino).
-  Future<bool> adviceEnabled(ChildProfile p) async => await db.setting(adviceOffKey(p.id)) != '1';
-
-  Future<void> setAdviceEnabled(ChildProfile p, bool on) async {
-    await db.setSetting(adviceOffKey(p.id), on ? '0' : '1');
-    notifyListeners();
-  }
-
-  /// Proposte a cui il genitore ha detto "non ora": per questa apertura dell'app
-  /// non tornano.
-  final Set<String> _dismissedAdvice = {};
-
-  /// Se i round dell'ultima settimana dicono che il bambino è pronto, propone
-  /// di spostare un asse del profilo di interazione. Non cambia niente da sola.
-  Future<InteractionAdvice?> interactionAdvice(ChildProfile p, {DateTime? now}) async {
-    if (!await adviceEnabled(p)) return null;
-    final rounds = await db.rounds(p.id, from: (now ?? DateTime.now()).subtract(const Duration(days: 7)), to: now);
-    final types = {for (final a in repo.activities) a.id: a.type};
-    final advice = adviseInteraction(p.interaction, rounds, (id) => types[id]);
-    return advice == null || _dismissedAdvice.contains(advice.key(p.id)) ? null : advice;
-  }
-
-  void dismissAdvice(ChildProfile p, InteractionAdvice advice) {
-    _dismissedAdvice.add(advice.key(p.id));
-    notifyListeners();
   }
 
   Future<void> selectProfile(ChildProfile p) async {
@@ -461,9 +437,10 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Registra una storia nel diario. Il compagno non cresce (vedi
-  /// [ChildProfile.companionStage]).
-  Future<void> recordStory(Story story, {required bool completed, String? dialogueAnswer}) async {
+  /// Registra una storia nel diario: quale, quando, in che modalità, se è finita.
+  /// La risposta alla pausa di dialogo non si conserva (docs/privacy/mvp-data.md).
+  /// Il compagno non cresce (vedi [ChildProfile.companionStage]).
+  Future<void> recordStory(Story story, {required bool completed}) async {
     final p = currentProfile;
     if (p == null) return;
     await db.addDiaryEntry(DiaryEntry(
@@ -471,7 +448,6 @@ class AppState extends ChangeNotifier {
       storyId: story.id,
       mode: mode,
       completed: completed,
-      dialogueAnswer: dialogueAnswer,
       when: DateTime.now(),
     ));
     if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
@@ -486,8 +462,8 @@ class AppState extends ChangeNotifier {
     final done = await db.gestures(p.id);
     if (done.any((g) => g.storyId == storyId && g.when.year == when.year && g.when.month == when.month && g.when.day == when.day)) return false;
     await db.addGesture(GestureEntry(profileId: p.id, storyId: storyId, when: when));
-    final fresh = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
-    await updateProfile(fresh.copyWith(gesturesDone: fresh.gesturesDone + 1));
+    // Nessun contatore sul profilo: i gesti stanno nel diario e basta
+    // (gestures_done resta solo per lo stadio raggiunto con le regole di prima).
     return true;
   }
 

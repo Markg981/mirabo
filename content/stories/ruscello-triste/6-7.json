@@ -130,10 +130,11 @@
               "id": "pulisco",
               "icon": "pick-up",
               "label": "Pulisco io",
+              "contain": true,
               "reaction": {
-                "bo": "Coraggiosa. Però la scarpa è sporca... vediamo come fa Emma.",
-                "pilu": "Bella idea. Chissà se le serve qualcosa prima. Guardiamo.",
-                "tango": "Sì! Subito! ...Aspetta, vediamo cosa fa Emma."
+                "bo": "Vuoi aiutare il ruscello. Nell'acqua però non si va da soli: serve un grande. Vediamo come fa Emma.",
+                "pilu": "Aiutare si può, con un grande vicino e i guanti. Vediamo cosa fa Emma.",
+                "tango": "Sì, aiutiamo! ...Aspetta, nell'acqua da soli no. Vediamo cosa fa Emma."
               }
             },
             {

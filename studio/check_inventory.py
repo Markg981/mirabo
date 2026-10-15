@@ -31,6 +31,19 @@ NETWORK_API = re.compile(
 URL = re.compile(r"https?://")
 
 
+def features_on() -> set[str]:
+    """Funzioni fuori dall'MVP accese per default in app/lib/features.dart: una build
+    distribuita non passa --dart-define, quindi conta solo il default."""
+    text = (APP / "lib" / "features.dart").read_text(encoding="utf-8")
+    on = set()
+    if re.search(r"cloudBackup\s*=\s*bool\.fromEnvironment\([^)]*defaultValue:\s*true", text):
+        on.add("backup")
+    return on
+
+
+FEATURES_ON = features_on()
+
+
 def pubspec_deps(text: str) -> dict[str, set[str]]:
     """Nomi sotto dependencies / dev_dependencies (senza dipendere da PyYAML)."""
     out: dict[str, set[str]] = {}
@@ -91,12 +104,22 @@ def main() -> int:
     else:
         warnings.append("app/pubspec.lock assente: transitive non controllate (usa --require-lock in CI dopo pub get)")
 
-    # 3. permessi piattaforma
+    # 3. permessi piattaforma. Una riga con tools:node="remove" toglie il permesso
+    # dal manifest unito (anche se lo chiede un plugin): non è una richiesta.
     ok_perms = set(approved.get("android_permissions", {}))
     for manifest in (APP / "android").glob("**/src/main/AndroidManifest.xml"):
-        for perm in re.findall(r'<uses-permission[^>]*android:name="([^"]+)"', manifest.read_text(encoding="utf-8")):
-            if perm not in ok_perms:
+        removed = set()
+        for tag in re.findall(r"<uses-permission[^>]*>", manifest.read_text(encoding="utf-8")):
+            perm = re.search(r'android:name="([^"]+)"', tag).group(1)
+            if 'tools:node="remove"' in tag:
+                removed.add(perm)
+            elif perm not in ok_perms:
                 errors.append(f"{manifest.relative_to(ROOT)}: permesso Android non documentato: {perm}")
+        # MVP senza rete (docs/privacy/mvp-data.md): finché il backup è spento,
+        # la release non deve poter aprire connessioni.
+        if manifest.parent.name == "main" and "backup" not in FEATURES_ON and "android.permission.INTERNET" not in removed:
+            errors.append(f"{manifest.relative_to(ROOT)}: con il backup fuori dall'MVP INTERNET va tolto "
+                          '(<uses-permission android:name="android.permission.INTERNET" tools:node="remove"/>)')
     plist = APP / "ios" / "Runner" / "Info.plist"
     if plist.exists():
         for key in re.findall(r"<key>(NS\w+UsageDescription)</key>", plist.read_text(encoding="utf-8")):

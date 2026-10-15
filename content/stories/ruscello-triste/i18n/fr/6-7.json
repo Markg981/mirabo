@@ -56,9 +56,9 @@
             {
               "label": "Je nettoie moi-même",
               "reaction": {
-                "bo": "Quel courage ! Mais la chaussure est sale... voyons comment fait Emma.",
-                "pilu": "Bonne idée. Elle a peut-être besoin de quelque chose avant. Regardons.",
-                "tango": "Oui ! Tout de suite ! ...Attends, voyons ce que fait Emma."
+                "bo": "Tu veux aider le ruisseau. Mais on ne va pas dans l'eau tout seul : il faut un grand. Voyons comment fait Emma.",
+                "pilu": "On peut aider, avec un grand à côté et des gants. Voyons ce que fait Emma.",
+                "tango": "Oui, aidons ! ...Attends, pas dans l'eau tout seul. Voyons ce que fait Emma."
               }
             },
             {

@@ -85,6 +85,9 @@ class _DockButton extends StatelessWidget {
         button: true,
         selected: selected,
         label: category.label(context.l10n),
+        // Le azioni vanno ripetute qui: excludeSemantics toglie quelle dei figli.
+        onTap: onTap,
+        onLongPress: onListen,
         excludeSemantics: true,
         child: GestureDetector(
           onTap: onTap,
@@ -163,7 +166,7 @@ class BigCard extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
             child: Text(
               title.toUpperCase(),
-              style: text.titleLarge?.copyWith(color: Colors.white, fontSize: 21, letterSpacing: 0.6),
+              style: text.titleLarge?.copyWith(color: MiraboColors.onColor(c, large: true), fontSize: 21, letterSpacing: 0.6),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

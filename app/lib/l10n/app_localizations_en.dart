@@ -399,6 +399,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get traceRestart => 'Start again';
 
   @override
+  String get traceOtherWay => 'I\'ll trace it on the table';
+
+  @override
+  String shapeHole(Object shape) {
+    return 'Hole: $shape';
+  }
+
+  @override
   String gameWellDone(Object name) {
     return 'Well done, $name!';
   }

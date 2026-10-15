@@ -97,6 +97,8 @@
   "spellWord": "Lege das Wort",
   "tracePrompt": "Fahr mit dem Finger nach: {label}",
   "traceRestart": "Nochmal von vorn",
+  "traceOtherWay": "Ich fahre es mit dem Finger auf dem Tisch nach",
+  "shapeHole": "Loch: {shape}",
 
   "gameWellDone": "Super, {name}!",
   "gameNiceGame": "Was für ein schönes Spiel.",

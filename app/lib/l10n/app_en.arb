@@ -97,6 +97,8 @@
   "spellWord": "Make the word",
   "tracePrompt": "Trace the {label} with your finger",
   "traceRestart": "Start again",
+  "traceOtherWay": "I'll trace it on the table",
+  "shapeHole": "Hole: {shape}",
 
   "gameWellDone": "Well done, {name}!",
   "gameNiceGame": "What a great game.",
