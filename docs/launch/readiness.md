@@ -18,7 +18,8 @@ Responsabili: CPO e referente privacy.
 - [ ] Catalogo: elenco delle raccolte incluse, per lingua e fascia (3–5, 6–7, 8–10)
 - [ ] Offerta: cosa è gratuito, cosa no, in una frase che un genitore sa ripetere
 - [ ] Dati necessari: solo quelli dell'inventario, nessun dato in più
-- [ ] Funzioni rinviate: elenco scritto, con motivo
+- [ ] Funzioni rinviate: elenco scritto, con motivo e condizioni di riapertura (`content/release/deferrals.json`, [release.md](release.md))
+- [ ] Budget del primo anno approvato, con chi lo finanzia (`content/release/budget.json`)
 
 Evidenza: documento di perimetro firmato; `feature/analisi-13-inventario-dati`; `feature/analisi-21-modello-business-scuole`.
 
@@ -59,9 +60,10 @@ Evidenza: `content/validation/` (sessioni anonime, rilievi con modifica e nuova 
 Responsabili: CPO e Operations.
 
 - [ ] Margini calcolati su transazioni adulte e coorti, mai su dati del bambino
-- [ ] Supporto pronto: canale, tempi di risposta, testi
+- [ ] Supporto pronto: canale, tempi di risposta, procedure per contenuti problematici, perdita dati e accesso adulto (`content/release/support.json`)
 - [ ] Misure di fiducia: pagina privacy, dichiarazioni store coerenti con i flussi
-- [ ] Piano di manutenzione: aggiornamenti dei contenuti, scadenze, revisioni periodiche
+- [ ] Piano di manutenzione: piattaforme, dipendenze, correzioni editoriali, riesame privacy (`content/release/maintenance.json`)
 - [ ] Coorte iniziale limitata e criterio per allargarla
+- [ ] Decisione di pubblicazione registrata: `python studio/release.py --decide` passa sulla build di distribuzione
 
-Evidenza: `feature/analisi-21-modello-business-scuole`; `feature/analisi-14-dichiarazioni-store`; piano di manutenzione.
+Evidenza: `feature/analisi-21-modello-business-scuole`; `feature/analisi-14-dichiarazioni-store`; `content/release/` ([release.md](release.md)).

@@ -133,7 +133,7 @@ con evidenza e data, e solo dopo il precedente.
 | Primo tema completo | Tutte e tre le modalità funzionano nelle tre fasce. | evidenza (`catalog.py --release --theme emozioni-relazioni` pulito) |
 | Altri due temi | Processo produttivo misurato e sostenibile. | ore del primo tema per tutte le fasi |
 | Beta del catalogo | Nessun problema critico aperto nei percorsi essenziali. | nessun pericolo o ostacolo aperto |
-| Pubblicazione | Criteri del punto 10 soddisfatti ([readiness.md](readiness.md)). | evidenza e data |
+| Pubblicazione | Criteri di pubblicazione soddisfatti ([release.md](release.md)). | decisione `pubblicare` in `content/release/decision.json`, che richiede `release.py --decide` pulito |
 
 ## Responsabili
 

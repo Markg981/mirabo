@@ -1,0 +1,13 @@
+{
+  "about": "Decisione esplicita di pubblicazione (docs/launch/release.md). 'pubblicare' si registra solo se python studio/release.py --decide passa sulla stessa build; la data prevista non è un'evidenza.",
+  "decision": {
+    "decision": null,
+    "date": null,
+    "by": null,
+    "build": null,
+    "contentVersion": null,
+    "storeChecklist": null,
+    "offline": [],
+    "basis": null
+  }
+}

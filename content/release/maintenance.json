@@ -1,0 +1,13 @@
+{
+  "about": "Manutenzione minima dopo la pubblicazione (docs/launch/release.md). Una voce scaduta si vede con python studio/release.py --status.",
+  "maintenance": {
+    "approved": null,
+    "tasks": [
+      { "id": "piattaforme", "task": "Leggere i requisiti nuovi di App Store e Google Play (SDK minimo e di destinazione, pagine da 16 KB, Kids e Families) e rifare la build quando cambiano.", "cadenceMonths": 6, "trigger": "Avviso di uno store o scadenza di un requisito di destinazione.", "owner": "sviluppo", "check": "python studio/check_release.py --aab FILE", "lastDone": null, "evidence": null },
+      { "id": "dipendenze", "task": "Aggiornare Flutter e le dipendenze fissate, rileggere l'inventario e le vulnerabilità note.", "cadenceMonths": 3, "trigger": "Vulnerabilità nota in una dipendenza (job dipendenze della CI) o aggiornamento di piattaforma.", "owner": "sviluppo", "check": "python studio/check_inventory.py --require-lock; pip-audit; flutter pub outdated", "lastDone": null, "evidence": null },
+      { "id": "correzioni-editoriali", "task": "Raccogliere le segnalazioni sui contenuti, correggere, far rivedere e pubblicare la nuova versione.", "cadenceMonths": 3, "trigger": "Segnalazione di contenuto problematico (support.json): non aspetta la cadenza.", "owner": "responsabile contenuti", "check": "python studio/catalog.py --release", "lastDone": null, "evidence": null },
+      { "id": "riesame-privacy", "task": "Rileggere informativa, schede degli store e DPIA contro la build in uscita e il registro delle richieste.", "cadenceMonths": 12, "trigger": "Nuova dipendenza, nuovo dato, nuovo flusso di rete, riapertura di un rinvio, cambio di legge o delle regole degli store.", "owner": "titolare del prodotto con la consulenza privacy", "check": "docs/store/checklist-release.md; python studio/check_privacy.py --release", "lastDone": null, "evidence": null },
+      { "id": "chiave-e-account", "task": "Rinnovare gli account di distribuzione, controllare la custodia della chiave di firma dei pacchetti e della firma Android.", "cadenceMonths": 12, "trigger": "Scadenza dell'iscrizione Apple o sospetto di compromissione (incident-and-requests.md).", "owner": "titolare del prodotto", "check": "docs/compliance/security-program.md", "lastDone": null, "evidence": null }
+    ]
+  }
+}
