@@ -113,11 +113,15 @@ tentativo senza aiuti) lo propone nell'area genitori.
 ## Modulo Montessori (`"module": "montessori"`)
 
 Aree: `vita-pratica`, `sensoriale`, `linguaggio` (include la scrittura), `matematica`, `cultura`.
-Le attività sono generate da `studio/seed_montessori.py`. Quattro tipi in più:
+Le attività sono generate da `studio/seed_montessori.py`. Stare in quest'area non basta a renderle
+Montessori: per le attività pratiche del catalogo di lancio lo decide la scheda `practice.json`, e una
+scheda che dice "no" non può stare nel modulo ([montessori.md](montessori.md)). Quattro tipi in più:
 
 ### `presentation` — presentazione da fare a casa
 Il cuore del modulo: materiali di casa, passi mostrati dal grande una volta sola, controllo
-dell'errore nel materiale, cosa osservare. Il bambino poi lavora da solo; alla fine il
+dell'errore nel materiale, cosa osservare. Si usa anche fuori dal modulo, nelle aree scuola, per le
+attività pratiche che non sono Montessori (*Lo zaino per domani*, *L'ombra che cammina*, *Il ponte
+tra due libri*): è il solo tipo in cui lo schermo presenta e poi resta da parte. Il bambino poi lavora da solo; alla fine il
 genitore segna "l'ha fatto" / "da solo" / "vuole rifarla".
 ```json
 { "materials": [ { "emoji": "🥣", "label": "Due ciotole uguali" } ],

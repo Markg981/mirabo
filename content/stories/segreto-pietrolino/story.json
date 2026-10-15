@@ -12,6 +12,7 @@
   "keyPhrase": "Chi ci ha insegnato qualcosa resta con noi, in quello che facciamo.",
   "gesture": "Scegliere un oggetto o un gesto che ricordi una persona o un amico lontano, e raccontarlo a qualcuno.",
   "parentCard": "parent.md",
+  "homeActivity": "home-activity.json",
   "sources": [
     "Letteratura per l'infanzia e indicazioni psicologiche su separazioni e saluti (da verificare)"
   ],

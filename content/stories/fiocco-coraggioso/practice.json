@@ -1,0 +1,46 @@
+{
+  "content": "home:fiocco-coraggioso",
+  "band": "6-7",
+  "method": {
+    "montessori": false,
+    "why": "Attività educativa sul cominciare una cosa nuova e sul chiedere aiuto, legata alla storia. Non usa un materiale né una presentazione del metodo Montessori."
+  },
+  "purpose": "Cominciare un compito vero e nuovo facendone solo il primo pezzetto, anche se non viene subito, e chiedere aiuto con parole proprie se serve.",
+  "prerequisites": [
+    "Ha letto la storia di Fiocco.",
+    "Nella sua giornata c'è una cosa nuova che vuole fare ma che lo fa esitare."
+  ],
+  "materials": [
+    {
+      "item": "Gli oggetti del compito scelto",
+      "size": "quelli di tutti i giorni",
+      "alternatives": ["Un compito senza oggetti: dire una frase nuova, salutare per primo"],
+      "precautions": ["Niente compiti con coltelli, fornelli o acqua calda"]
+    }
+  ],
+  "preparation": [
+    "Pensa a una cosa vera della giornata in cui il bambino esita: non serve inventarne una.",
+    "Tieni qualche minuto senza fretta."
+  ],
+  "presentation": [
+    "L'adulto mostra con una cosa sua come si trova il primo pezzetto: \"Devo imparare a... Il primo pezzetto è...\".",
+    "Poi chiede al bambino qual è il suo primo pezzetto, senza suggerirlo subito."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "Vicino mentre il bambino prova, senza correggere. Se chiede aiuto, l'adulto aiuta su quel passo e lascia a lui il successivo."
+  },
+  "errorControl": {
+    "how": "Il compito vero dice da solo se il pezzetto è riuscito (la scarpa resta allacciata, il latte è nel bicchiere): non serve il giudizio dell'adulto."
+  },
+  "repetition": "Il giorno dopo si riparte dallo stesso compito con il pezzetto successivo, oppure si sceglie un'altra cosa nuova. Non c'è un traguardo da raggiungere.",
+  "tidyUp": [
+    "Si rimette a posto insieme quello che è servito.",
+    "L'adulto dice solo che cosa è stato fatto (\"hai fatto il primo pezzetto\"), senza voti."
+  ],
+  "screen": "Nessuno: l'attività è nella scheda genitore della storia e si fa a tablet spento.",
+  "feasibility": {
+    "prepMinutes": 2,
+    "materialsAtHome": true
+  }
+}

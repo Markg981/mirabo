@@ -1385,20 +1385,8 @@ abstract class AppLocalizations {
   /// No description provided for @gesturesIntro.
   ///
   /// In it, this message translates to:
-  /// **'{companion} cresce solo quando {name} fa davvero il gesto di una storia, non con il tempo passato sull\'app. Quando l\'avete fatto, segnalo qui.'**
+  /// **'Il gesto di una storia si fa nella vita vera, quando capita. Se volete, segnatelo qui: resta nel diario di {name}. Segnarlo non sblocca nulla: {companion} cresce con le settimane, non con i gesti segnati.'**
   String gesturesIntro(String companion, String name);
-
-  /// No description provided for @gesturesNext.
-  ///
-  /// In it, this message translates to:
-  /// **'{count, plural, =1{Manca 1 gesto} other{Mancano {count} gesti}} alla prossima tappa di {companion}.'**
-  String gesturesNext(int count, String companion);
-
-  /// No description provided for @gesturesAllGrown.
-  ///
-  /// In it, this message translates to:
-  /// **'{companion} ha raggiunto l\'ultima tappa: i gesti restano belli da fare.'**
-  String gesturesAllGrown(String companion);
 
   /// No description provided for @gesturesEmpty.
   ///
@@ -1451,7 +1439,7 @@ abstract class AppLocalizations {
   /// No description provided for @ideaHomeHint.
   ///
   /// In it, this message translates to:
-  /// **'La presentazione passo per passo è tra le attività Montessori.'**
+  /// **'La presentazione passo per passo si trova tra le attività, nell\'area indicata qui sopra.'**
   String get ideaHomeHint;
 
   /// No description provided for @ideaReasonRepeat.

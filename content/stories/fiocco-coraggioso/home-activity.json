@@ -1,0 +1,25 @@
+{
+  "title": "Il primo pezzetto",
+  "intro": "Fiocco ha paura di cadere e prova lo stesso, un pezzetto alla volta. A casa si sceglie una cosa nuova e vera della giornata e se ne fa solo l'inizio: l'attività si fa senza il tablet.",
+  "bands": {
+    "6-7": {
+      "goal": "Cominciare una cosa nuova facendone solo il primo pezzetto, anche se non viene subito.",
+      "steps": [
+        "Scegliete insieme una cosa nuova e piccola che il bambino vuole fare (allacciare una scarpa, versare il latte, scrivere il suo nome).",
+        "Chiedete: \"Qual è il primo pezzetto?\" e lasciate che lo dica lui.",
+        "Il bambino dice \"ci provo\" ad alta voce e fa solo quel pezzetto.",
+        "Se vuole continuare continua; se si ferma va bene così: domani si riparte dal pezzetto dopo."
+      ],
+      "materials": ["quello che serve per la cosa scelta, niente di più"],
+      "preparation": [
+        "Pensa a una cosa vera della giornata in cui il bambino esita: non serve inventarne una.",
+        "Tieni qualche minuto senza fretta."
+      ],
+      "supervision": { "level": "nearby", "note": "Resta vicino e non correggere mentre prova. Se chiede aiuto, aiuta su quel passo e lascia a lui il successivo." },
+      "alternatives": [
+        "Se non c'è una cosa nuova, una cosa solita fatta in un modo nuovo (con l'altra mano, da solo invece che insieme).",
+        "Se dire \"ci provo\" ad alta voce lo imbarazza, può dirlo sottovoce o alzare il pollice."
+      ]
+    }
+  }
+}

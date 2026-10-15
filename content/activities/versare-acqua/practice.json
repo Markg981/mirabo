@@ -1,0 +1,70 @@
+{
+  "content": "activity:versare-acqua",
+  "band": "3-5",
+  "method": {
+    "montessori": true,
+    "area": "vita-pratica",
+    "why": "Vita pratica, cura dell'ambiente: è il versare dalla brocca della tradizione Montessori, che viene dopo il travaso di secco, con oggetti veri e il controllo dell'errore nelle gocce sul vassoio."
+  },
+  "purpose": "Versare l'acqua da una brocca piccola in un bicchiere e fermarsi prima del bordo: l'acqua diventa una quantità che si tiene in mano e che si può sprecare o no.",
+  "prerequisites": [
+    "Ha già fatto il travaso di fagioli (secco) o sa portare un oggetto con due mani.",
+    "Sa restare seduto al tavolo qualche minuto."
+  ],
+  "materials": [
+    {
+      "item": "Una brocchina con il manico",
+      "size": "piccola, che il bambino tiene con una mano: 200-250 ml, riempita a metà",
+      "alternatives": ["Un bricco del latte", "Una tazza con il beccuccio"],
+      "precautions": ["Non di vetro sottile", "Acqua fredda o a temperatura ambiente"]
+    },
+    {
+      "item": "Un bicchiere trasparente",
+      "size": "basso e largo, della stessa capacità della brocca",
+      "alternatives": ["Un bicchiere di plastica dura trasparente"],
+      "precautions": ["Trasparente, così il livello dell'acqua si vede"]
+    },
+    {
+      "item": "Una spugnetta",
+      "size": "piccola, che stia nella mano del bambino",
+      "alternatives": ["Un panno piegato in quattro"],
+      "precautions": []
+    },
+    {
+      "item": "Un vassoio con il bordo",
+      "size": "grande abbastanza per brocca e bicchiere",
+      "alternatives": ["Una teglia da forno bassa"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Prepara tutto sul vassoio, sempre nello stesso ordine: brocca a destra, bicchiere a sinistra, spugnetta davanti.",
+    "Metti il vassoio su uno scaffale basso, dove il bambino lo ritrova da solo."
+  ],
+  "presentation": [
+    "Porta il vassoio al tavolo con due mani e siediti accanto al bambino.",
+    "Senza parlare, prendi la brocca dal manico e sostienila sotto con l'altra mano.",
+    "Versa lentamente fino a un dito dal bordo, fermati e guarda il livello.",
+    "Asciuga una goccia con la spugnetta e strizzala sul vassoio.",
+    "Riversa l'acqua nella brocca e passa il vassoio al bambino: \"Adesso puoi tu\"."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "Vicino durante la presentazione e le prime volte; poi il bambino lavora da solo, con l'adulto nella stessa stanza."
+  },
+  "errorControl": {
+    "how": "Le gocce sul vassoio e il bicchiere troppo pieno si vedono da soli: il bambino asciuga e riprova senza che nessuno glielo dica."
+  },
+  "repetition": "Il vassoio resta sullo scaffale e il bambino lo prende quando vuole, quante volte vuole. Una variante (due bicchieri, una caraffa più grande) arriva solo se è lui a cercarla: non è una tappa da superare.",
+  "tidyUp": [
+    "L'acqua usata va in una pianta, non nel lavandino.",
+    "Il bambino asciuga il vassoio con la spugnetta.",
+    "Rimette tutto sul vassoio nello stesso ordine e il vassoio sullo scaffale."
+  ],
+  "screen": "Il tablet mostra una volta all'adulto materiali e passi, e il bambino può rivederli se vuole. Durante il lavoro il tablet resta lontano: non serve tornarci tra un passaggio e l'altro.",
+  "feasibility": {
+    "prepMinutes": 5,
+    "materialsAtHome": true,
+    "notes": "Oggetti di cucina; se manca una brocchina piccola va bene un bricco del latte."
+  }
+}

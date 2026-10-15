@@ -1,0 +1,49 @@
+{
+  "title": "The walking shadow",
+  "offscreen": "It works indoors too: a bottle of water on a sunny windowsill, and its shadow marked on the floor with a piece of masking tape.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "A stone or a piece of chalk to mark with"
+        },
+        {
+          "label": "Something outdoors that doesn't move: a post, a tree, a big flowerpot"
+        },
+        {
+          "label": "A notebook and a pencil"
+        },
+        {
+          "label": "A clock"
+        }
+      ],
+      "steps": [
+        {
+          "text": "With a grown-up, choose something outdoors that always stays put, and a time of day."
+        },
+        {
+          "text": "Put the stone right on the tip of its shadow."
+        },
+        {
+          "text": "In the notebook draw the object and the shadow, and write the time."
+        },
+        {
+          "text": "Come back on the next days at the same time: is the shadow longer or shorter? Nearer or further than the stone?"
+        }
+      ],
+      "control": "Yesterday's stone: today's shadow is compared with it, no measuring needed.",
+      "observe": "Whether they make a prediction for the next day on their own, and what words they use to compare."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, today we look outside, not here. Call a grown-up: you need a stone and a spot.",
+    "pilu": "{nome}, shadows change slowly. You only find out by coming back to look, day after day.",
+    "tango": "{nome}! A walking shadow! I'll stay here on guard. You go outside with a grown-up."
+  },
+  "outro": {
+    "bo": "The stone stays there, {nome}. Tomorrow you go back at the same time.",
+    "pilu": "The time is written in your notebook, {nome}: tomorrow you'll need it to compare.",
+    "tango": "Done! {nome}, will you tell me tomorrow if the shadow has moved?"
+  },
+  "reviewed": false
+}

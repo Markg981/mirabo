@@ -1,0 +1,30 @@
+{
+  "title": "Las cosas que se quedan",
+  "intro": "Pietrolino se despide de un amigo y descubre que lo que aprendió de él se queda. En casa el niño elige un objeto o un gesto que le recuerde a una persona lejana y lo cuenta: la actividad se hace sin la tableta.",
+  "bands": {
+    "8-10": {
+      "goal": "Poner nombre a lo que se siente por una persona lejana y elegir una forma concreta de mantener el vínculo.",
+      "steps": [
+        "El niño piensa en una persona o un amigo al que ve menos que antes.",
+        "Elige un objeto de casa o un gesto que se la recuerde.",
+        "Con el adulto escribe o dibuja tres cosas que se quedan, aunque os veáis menos.",
+        "Se lo cuenta a alguien de la familia, cuando él quiera."
+      ],
+      "materials": [
+        "una hoja y un lápiz o colores",
+        "el objeto elegido por el niño"
+      ],
+      "preparation": [
+        "Piensa antes en quién podría venirle a la mente, para que no te pille por sorpresa.",
+        "Elige un momento sin prisa."
+      ],
+      "supervision": {
+        "note": "Escucha y escribe tú si te lo pide. Si la despedida es un duelo o una separación familiar, esta actividad no basta: hace falta una persona de referencia a su lado."
+      },
+      "alternatives": [
+        "En lugar del objeto, una canción, un plato o una palabra que usabais juntos.",
+        "En lugar de la lista, una carta o un dibujo para mandar a esa persona, si se puede."
+      ]
+    }
+  }
+}

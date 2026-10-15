@@ -1,0 +1,66 @@
+{
+  "content": "activity:zaino-per-domani",
+  "band": "6-7",
+  "method": {
+    "montessori": false,
+    "why": "Organizzazione e autonomia nella routine della scuola, con una lista disegnata dal bambino: è un'attività educativa, non un'attività di vita pratica Montessori con un materiale preparato."
+  },
+  "purpose": "Preparare la sera lo zaino per il giorno dopo con una lista disegnata da sé, appesa vicino alla porta e usata davvero.",
+  "prerequisites": [
+    "Riconosce i propri libri e quaderni.",
+    "Sa disegnare un oggetto in modo che lui lo riconosca."
+  ],
+  "materials": [
+    {
+      "item": "Lo zaino di scuola",
+      "size": "quello di tutti i giorni",
+      "alternatives": ["La borsa delle attività del pomeriggio"],
+      "precautions": []
+    },
+    {
+      "item": "Un foglio e dei pennarelli",
+      "size": "un foglio A4 in verticale",
+      "alternatives": ["Un cartoncino", "Un foglietto adesivo per ogni cosa"],
+      "precautions": []
+    },
+    {
+      "item": "Nastro di carta",
+      "size": "un pezzo per angolo",
+      "alternatives": ["Una calamita sul frigorifero"],
+      "precautions": ["Appendere la lista all'altezza degli occhi del bambino"]
+    },
+    {
+      "item": "Il diario o l'orario della classe",
+      "size": "quello della scuola",
+      "alternatives": ["L'adulto dice a voce che cosa c'è il giorno dopo"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Scegli con il bambino dove appendere la lista: vicino alla porta della sua stanza, alla sua altezza.",
+    "La prima sera tieni dieci minuti liberi prima di cena."
+  ],
+  "presentation": [
+    "La prima sera l'adulto disegna una riga della lista insieme al bambino (\"domani c'è ginnastica: disegno le scarpe\").",
+    "Lascia al bambino le altre righe.",
+    "Mostra una volta come si mette una cosa nello zaino e si tocca il suo disegno.",
+    "Poi guarda senza intervenire e non ricontrolla lo zaino dopo."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "Vicino la prima sera; dalle sere seguenti il bambino prepara da solo e chiede se gli serve aiuto."
+  },
+  "errorControl": {
+    "how": "La lista e la mattina dopo: se manca qualcosa lo si nota insieme, senza rimprovero, e la cosa si aggiunge alla lista."
+  },
+  "repetition": "Ogni sera la stessa lista, finché serve. Quando cambia l'orario si rifà la lista; non si aggiungono compiti nuovi.",
+  "tidyUp": [
+    "Lo zaino pronto va vicino alla porta.",
+    "I pennarelli tornano al loro posto; la lista resta appesa."
+  ],
+  "screen": "Il tablet mostra una volta la presentazione, la prima sera. Le sere seguenti la lista appesa sostituisce il tablet.",
+  "feasibility": {
+    "prepMinutes": 10,
+    "materialsAtHome": true
+  }
+}

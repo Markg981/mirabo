@@ -1,0 +1,29 @@
+{
+  "title": "El primer trocito",
+  "intro": "Fiocco tiene miedo de caer y lo intenta igual, un trocito cada vez. En casa se elige una cosa nueva y real del día y se hace solo el principio: la actividad se hace sin la tableta.",
+  "bands": {
+    "6-7": {
+      "goal": "Empezar una cosa nueva haciendo solo el primer trocito, aunque no salga enseguida.",
+      "steps": [
+        "Elegid juntos una cosa nueva y pequeña que el niño quiera hacer (atarse un zapato, servir la leche, escribir su nombre).",
+        "Preguntad: \"¿Cuál es el primer trocito?\" y dejad que lo diga él.",
+        "El niño dice \"lo intento\" en voz alta y hace solo ese trocito.",
+        "Si quiere seguir, sigue; si se para, está bien: mañana se empieza por el trocito siguiente."
+      ],
+      "materials": [
+        "lo que haga falta para la cosa elegida, nada más"
+      ],
+      "preparation": [
+        "Piensa en un momento real del día en que el niño duda: no hace falta inventarlo.",
+        "Reserva unos minutos sin prisa."
+      ],
+      "supervision": {
+        "note": "Quédate cerca y no corrijas mientras lo intenta. Si pide ayuda, ayuda en ese paso y déjale el siguiente."
+      },
+      "alternatives": [
+        "Si no hay nada nuevo, una cosa de siempre hecha de otra manera (con la otra mano, solo en vez de juntos).",
+        "Si decir \"lo intento\" en voz alta le da vergüenza, puede susurrarlo o levantar el pulgar."
+      ]
+    }
+  }
+}

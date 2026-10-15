@@ -1,0 +1,49 @@
+{
+  "title": "La sombra que camina",
+  "offscreen": "También se puede hacer en casa: una botella de agua en una ventana al sol, y la sombra marcada en el suelo con un trozo de cinta de papel.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Una piedra o una tiza para marcar"
+        },
+        {
+          "label": "Algo al aire libre que no se mueve: un poste, un árbol, una maceta grande"
+        },
+        {
+          "label": "Un cuaderno y un lápiz"
+        },
+        {
+          "label": "Un reloj"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Elige con un adulto algo al aire libre que siempre esté ahí, y una hora del día."
+        },
+        {
+          "text": "Pon la piedra justo en la punta de su sombra."
+        },
+        {
+          "text": "En el cuaderno dibuja el objeto y la sombra, y escribe la hora."
+        },
+        {
+          "text": "Vuelve los días siguientes a la misma hora: ¿la sombra es más larga o más corta? ¿Más acá o más allá de la piedra?"
+        }
+      ],
+      "control": "La piedra de ayer: la sombra de hoy se compara con ella, sin necesidad de medir.",
+      "observe": "Si hace por su cuenta una predicción para el día siguiente, y con qué palabras describe la comparación."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, hoy se mira fuera, no aquí. Llama a un adulto: hacen falta una piedra y un sitio.",
+    "pilu": "{nome}, las sombras cambian despacio. Solo se descubre volviendo a mirarlas, día tras día.",
+    "tango": "{nome}! ¡Una sombra que camina! Yo me quedo aquí de guardia. Tú sal con un adulto."
+  },
+  "outro": {
+    "bo": "La piedra se queda ahí, {nome}. Mañana volvéis a la misma hora.",
+    "pilu": "La hora está escrita en el cuaderno, {nome}: mañana te servirá para comparar.",
+    "tango": "¡Hecho! {nome}, ¿mañana me cuentas si la sombra se ha movido?"
+  },
+  "reviewed": false
+}

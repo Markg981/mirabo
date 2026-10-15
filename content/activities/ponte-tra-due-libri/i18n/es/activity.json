@@ -1,0 +1,49 @@
+{
+  "title": "El puente entre dos libros",
+  "offscreen": "El mismo reto se repite con otros materiales: pajitas y cinta, dos sillas y una cuerda.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Dos libros de la misma altura"
+        },
+        {
+          "label": "Unas cuantas hojas de papel"
+        },
+        {
+          "label": "Un puñado de monedas iguales"
+        },
+        {
+          "label": "Tijeras y un poco de cinta adhesiva"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pon los dos libros en la mesa, a un palmo de distancia."
+        },
+        {
+          "text": "Con una sola hoja construye un puente de un libro al otro: puedes doblarla, enrollarla, cortarla."
+        },
+        {
+          "text": "Apoya una moneda cada vez en el centro del puente, despacio."
+        },
+        {
+          "text": "Si cede, mira dónde ha cedido, cambia una cosa y vuelve a probar."
+        }
+      ],
+      "control": "El propio puente: aguanta o cede, y dónde cede se ve. Nadie tiene que decir si está bien.",
+      "observe": "Qué cambia de una prueba a otra, y si lo dice antes de probar."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, hoy se construye de verdad. Hacen falta dos libros, una hoja y unas monedas.",
+    "pilu": "{nome}, un puente de papel puede aguantar más de lo que piensas. Solo se descubre probando.",
+    "tango": "{nome}! ¡Un puente! Si se cae, te dice dónde reforzarlo. Me lo han dicho."
+  },
+  "outro": {
+    "bo": "Has probado y cambiado, {nome}. Los libros vuelven a la estantería, las monedas al bote.",
+    "pilu": "Cada puente que cede te ha dicho algo, {nome}. Ahora lo ordenamos todo.",
+    "tango": "¡Qué puentes! {nome}, ¿ordenamos? Yo cuento las monedas. Una, dos... muchas."
+  },
+  "reviewed": false
+}

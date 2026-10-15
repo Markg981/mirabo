@@ -1,0 +1,49 @@
+{
+  "title": "Le pont entre deux livres",
+  "offscreen": "Le même défi se refait avec d'autres matériaux : des pailles et du ruban adhésif, deux chaises et une ficelle.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Deux livres de la même hauteur"
+        },
+        {
+          "label": "Quelques feuilles de papier"
+        },
+        {
+          "label": "Une poignée de pièces identiques"
+        },
+        {
+          "label": "Des ciseaux et un peu de ruban adhésif"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pose les deux livres sur la table, à un empan l'un de l'autre."
+        },
+        {
+          "text": "Avec une seule feuille, construis un pont d'un livre à l'autre : tu peux la plier, la rouler, la découper."
+        },
+        {
+          "text": "Pose une pièce à la fois au milieu du pont, doucement."
+        },
+        {
+          "text": "S'il cède, regarde où il a cédé, change une chose et réessaie."
+        }
+      ],
+      "control": "Le pont lui-même : il tient ou il cède, et on voit où. Personne n'a besoin de dire si c'est juste.",
+      "observe": "Ce qui change d'un essai à l'autre, et s'il le dit avant d'essayer."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, aujourd'hui on construit pour de vrai. Il faut deux livres, une feuille et quelques pièces.",
+    "pilu": "{nome}, un pont en papier peut tenir plus que tu ne crois. On ne le découvre qu'en essayant.",
+    "tango": "{nome} ! Un pont ! S'il s'écroule, il te dit où le renforcer. On me l'a dit."
+  },
+  "outro": {
+    "bo": "Tu as essayé et changé, {nome}. Les livres retournent sur l'étagère, les pièces dans le pot.",
+    "pilu": "Chaque pont qui cède t'a appris quelque chose, {nome}. Maintenant on range tout.",
+    "tango": "Quels ponts ! {nome}, on range ? Moi je compte les pièces. Une, deux... plein."
+  },
+  "reviewed": false
+}

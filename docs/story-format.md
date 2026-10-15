@@ -26,7 +26,7 @@ lia-rabbia/
 | `formats` | string[] | `illustrated`, `audio`, `choices`, `animation` |
 | `togetherOnly` | bool | disponibile solo in modalità insieme |
 | `keyPhrase` | string | frase-chiave della storia |
-| `gesture` | string? | gesto da fare nella vita vera; il genitore lo segna nel diario ed è ciò che fa crescere il compagno |
+| `gesture` | string? | gesto da fare nella vita vera; il genitore, se vuole, lo segna nel diario (voce descrittiva: non fa crescere il compagno e non sblocca nulla) |
 | `parentCard` | string | file markdown della scheda genitore |
 | `homeActivity` | string? | file JSON dell'attività dalla storia (facoltativo, vedi sotto); le storie senza restano valide |
 | `sources` | string[] | fonti pedagogiche |
@@ -189,8 +189,8 @@ protagonista che fa il gesto, `companionLines` è l'invito del compagno ("Faccia
 
 Da solo, il bambino preme "Pronti? Via!": per `seconds` il compagno tace e un cerchio si gonfia e si
 sgonfia piano (fermo con la bassa stimolazione), con un anello che si riempie; nessun numero. Poi il
-compagno dice `back` e si può andare avanti. Il tablet non controlla se il gesto è stato fatto e la
-pausa non fa crescere il compagno: lo fa solo il gesto nella vita vera, segnato dal genitore.
+compagno dice `back` e si può andare avanti. Il tablet non controlla se il gesto è stato fatto e
+niente fa crescere il compagno se non il tempo (vedi [montessori.md](montessori.md)).
 Insieme, la pausa la guida il genitore con `together` e si va avanti quando si vuole. Negli overlay
 tradotti si traducono `together` e `back`.
 

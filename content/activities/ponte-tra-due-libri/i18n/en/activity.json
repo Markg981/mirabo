@@ -1,0 +1,49 @@
+{
+  "title": "A bridge between two books",
+  "offscreen": "The same challenge works with other materials: straws and tape, two chairs and some string.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Two books of the same height"
+        },
+        {
+          "label": "A few sheets of paper"
+        },
+        {
+          "label": "A handful of identical coins"
+        },
+        {
+          "label": "Scissors and a little sticky tape"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Put the two books on the table, a hand's span apart."
+        },
+        {
+          "text": "With just one sheet build a bridge from one book to the other: you can fold it, roll it, cut it."
+        },
+        {
+          "text": "Place one coin at a time in the middle of the bridge, gently."
+        },
+        {
+          "text": "If it gives way, look at where it gave way, change one thing and try again."
+        }
+      ],
+      "control": "The bridge itself: it holds or it gives way, and you can see where. Nobody needs to say if it's right.",
+      "observe": "What changes from one try to the next, and whether they say it before trying."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, today we really build something. You need two books, a sheet of paper and a few coins.",
+    "pilu": "{nome}, a paper bridge can hold more than you think. You only find out by trying.",
+    "tango": "{nome}! A bridge! If it falls down, it tells you where to make it stronger. Someone told me."
+  },
+  "outro": {
+    "bo": "You tried and changed things, {nome}. The books go back on the shelf, the coins in the jar.",
+    "pilu": "Every bridge that gave way told you something, {nome}. Now let's put everything away.",
+    "tango": "What bridges! {nome}, shall we tidy up? I'll count the coins. One, two... lots."
+  },
+  "reviewed": false
+}

@@ -15,9 +15,19 @@ void main() {
   dynamic readJson(String path) => jsonDecode(File(path).readAsStringSync());
 
   test('una storia senza attività resta valida (retrocompatibilità)', () {
-    final meta = Story.fromJson(readJson('${root.path}/content/stories/lia-rabbia/story.json') as Map<String, dynamic>);
+    final meta = Story.fromJson(readJson('${root.path}/content/stories/bosco-addormentato/story.json') as Map<String, dynamic>);
     expect(meta.homeActivityFile, isNull);
     expect(meta.homeActivity, isNull);
+  });
+
+  test('le attività dalla storia del tema pilota si caricano per la loro fascia', () {
+    for (final (id, band) in [('lia-rabbia', AgeBand.b3to5), ('fiocco-coraggioso', AgeBand.b6to7), ('segreto-pietrolino', AgeBand.b8to10)]) {
+      final dir = '${root.path}/content/stories/$id';
+      final meta = Story.fromJson(readJson('$dir/story.json') as Map<String, dynamic>);
+      final a = HomeActivity.fromJson(readJson('$dir/${meta.homeActivityFile}') as Map<String, dynamic>);
+      expect(a.bands.keys, [band], reason: id);
+      expect(a.bands[band]!.steps, isNotEmpty, reason: id);
+    }
   });
 
   test('l\'attività del sassolino ha le tre fasce con tutti i campi strutturati', () {

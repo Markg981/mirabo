@@ -1,0 +1,49 @@
+{
+  "title": "L'ombre qui marche",
+  "offscreen": "Ça marche aussi à la maison : une bouteille d'eau sur un rebord de fenêtre au soleil, et l'ombre marquée au sol avec un bout de ruban de masquage.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Un caillou ou une craie pour marquer"
+        },
+        {
+          "label": "Quelque chose dehors qui ne bouge pas : un poteau, un arbre, un grand pot"
+        },
+        {
+          "label": "Un cahier et un crayon"
+        },
+        {
+          "label": "Une horloge"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Choisis avec un grand quelque chose dehors qui reste toujours là, et une heure de la journée."
+        },
+        {
+          "text": "Pose le caillou juste au bout de son ombre."
+        },
+        {
+          "text": "Dans le cahier, dessine l'objet et l'ombre, et écris l'heure."
+        },
+        {
+          "text": "Reviens les jours suivants à la même heure : l'ombre est-elle plus longue ou plus courte ? Plus près ou plus loin que le caillou ?"
+        }
+      ],
+      "control": "Le caillou d'hier : l'ombre d'aujourd'hui se compare avec lui, sans rien mesurer.",
+      "observe": "S'il fait tout seul une prévision pour le lendemain, et avec quels mots il décrit la comparaison."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, aujourd'hui on regarde dehors, pas ici. Appelle un grand : il faut un caillou et un endroit.",
+    "pilu": "{nome}, les ombres changent doucement. On ne le découvre qu'en revenant les regarder, jour après jour.",
+    "tango": "{nome} ! Une ombre qui marche ! Moi je reste ici de garde. Toi, sors avec un grand."
+  },
+  "outro": {
+    "bo": "Le caillou reste là, {nome}. Demain vous revenez à la même heure.",
+    "pilu": "L'heure est écrite dans le cahier, {nome} : demain elle te servira pour comparer.",
+    "tango": "Fini ! {nome}, tu me raconteras demain si l'ombre a bougé ?"
+  },
+  "reviewed": false
+}

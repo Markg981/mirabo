@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mirabo/practice",
+  "title": "Mirabò scheda dell'attività pratica (per il revisore, vedi docs/montessori.md)",
+  "type": "object",
+  "required": [
+    "content",
+    "band",
+    "method",
+    "purpose",
+    "prerequisites",
+    "materials",
+    "preparation",
+    "presentation",
+    "supervision",
+    "errorControl",
+    "repetition",
+    "tidyUp",
+    "screen",
+    "feasibility"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "textList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "properties": {
+    "content": {
+      "description": "Il posto del catalogo: activity:<id> o home:<id della storia>",
+      "type": "string",
+      "pattern": "^(activity|home):[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "band": { "enum": ["3-5", "6-7", "8-10"] },
+    "method": {
+      "type": "object",
+      "required": ["montessori", "why"],
+      "additionalProperties": false,
+      "properties": {
+        "montessori": { "type": "boolean" },
+        "area": { "enum": ["vita-pratica", "sensoriale", "linguaggio", "matematica", "cultura"] },
+        "why": { "type": "string", "minLength": 1 }
+      }
+    },
+    "purpose": { "description": "Finalità: quale esperienza permette di fare", "type": "string", "minLength": 1 },
+    "prerequisites": { "$ref": "#/$defs/textList" },
+    "materials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["item", "size", "alternatives", "precautions"],
+        "additionalProperties": false,
+        "properties": {
+          "item": { "type": "string", "minLength": 1 },
+          "size": { "type": "string", "minLength": 1 },
+          "alternatives": { "$ref": "#/$defs/textList" },
+          "precautions": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "preparation": { "$ref": "#/$defs/textList" },
+    "presentation": { "$ref": "#/$defs/textList" },
+    "supervision": {
+      "type": "object",
+      "required": ["level", "when"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "enum": ["together", "nearby", "free"] },
+        "when": { "type": "string", "minLength": 1 }
+      }
+    },
+    "errorControl": {
+      "description": "Come il bambino riconosce da solo una difficoltà (how) o perché non è previsto (none)",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "how": { "type": "string", "minLength": 1 },
+        "none": { "type": "string", "minLength": 1 }
+      },
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+    "repetition": { "type": "string", "minLength": 1 },
+    "tidyUp": { "$ref": "#/$defs/textList" },
+    "screen": { "description": "Che cosa fa il tablet: solo presentazione e richiamo", "type": "string", "minLength": 1 },
+    "feasibility": {
+      "type": "object",
+      "required": ["prepMinutes", "materialsAtHome"],
+      "additionalProperties": false,
+      "properties": {
+        "prepMinutes": { "type": "integer", "minimum": 0 },
+        "materialsAtHome": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "forReviewer": { "$ref": "#/$defs/textList" }
+  }
+}

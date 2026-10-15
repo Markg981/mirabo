@@ -184,7 +184,7 @@
         "practice": {
           "status": "ok",
           "contribution": "Segnare con un sasso la stessa ombra alla stessa ora per più giorni; seguire un germoglio. Il confronto nasce da cose viste davvero.",
-          "content": ["activity:caccia-ombre-fuori", "activity:germoglio-fagiolo"]
+          "content": ["activity:ombra-che-cammina", "activity:caccia-ombre-fuori", "activity:germoglio-fagiolo"]
         }
       },
       "adult": {
@@ -246,7 +246,7 @@
         "practice": {
           "status": "ok",
           "contribution": "La stessa lista, disegnata dal bambino, appesa vicino alla porta e usata davvero con lo zaino vero.",
-          "content": ["offscreen:domani-a-scuola"]
+          "content": ["activity:zaino-per-domani", "offscreen:domani-a-scuola"]
         }
       },
       "adult": {
@@ -277,7 +277,7 @@
         "practice": {
           "status": "ok",
           "contribution": "Il ponte si costruisce davvero, con monete messe una alla volta: il crollo è un'informazione, non un errore.",
-          "content": ["offscreen:ponte-di-carta"]
+          "content": ["activity:ponte-tra-due-libri", "offscreen:ponte-di-carta"]
         }
       },
       "adult": {

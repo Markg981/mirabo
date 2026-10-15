@@ -1,0 +1,49 @@
+{
+  "title": "La mochila para mañana",
+  "offscreen": "La lista se queda colgada junto a la puerta y se usa cada tarde con la mochila de verdad, sin la tableta.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "La mochila del cole"
+        },
+        {
+          "label": "Una hoja y unos rotuladores"
+        },
+        {
+          "label": "Cinta de papel para colgar la lista"
+        },
+        {
+          "label": "La agenda o el horario de la clase"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Mira el horario con un adulto: ¿qué hay mañana?"
+        },
+        {
+          "text": "Dibuja en la lista las cosas que hacen falta mañana, una por línea."
+        },
+        {
+          "text": "Coge una cosa cada vez, métela en la mochila y toca su dibujo."
+        },
+        {
+          "text": "Cuelga la lista junto a la puerta: mañana por la tarde la encuentras ahí."
+        }
+      ],
+      "control": "La lista: si un dibujo todavía no tiene su cosa en la mochila, se ve.",
+      "observe": "Si la tarde siguiente coge la lista él solo, y si añade algo que faltaba."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, ¿preparamos mañana ya esta noche? Hacen falta la mochila de verdad y un adulto cerca.",
+    "pilu": "{nome}, una lista dibujada por ti ayuda a recordar. El adulto te enseña cómo.",
+    "tango": "{nome}! ¡La mochila! Yo cabría entero... Tú mete solo lo que hace falta."
+  },
+  "outro": {
+    "bo": "La mochila está lista, {nome}. Mañana por la mañana no tienes que pensar en ella.",
+    "pilu": "La lista se queda colgada, {nome}: mañana por la tarde ya está ahí.",
+    "tango": "¡Hecho! {nome}, la lista se acuerda también por mí."
+  },
+  "reviewed": false
+}

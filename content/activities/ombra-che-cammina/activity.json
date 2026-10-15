@@ -1,0 +1,65 @@
+{
+  "id": "ombra-che-cammina",
+  "title": "L'ombra che cammina",
+  "area": "cognitivo",
+  "skill": "ombre",
+  "type": "presentation",
+  "ageBands": [
+    "8-10"
+  ],
+  "offscreen": "Si può fare anche in casa: una bottiglia d'acqua su un davanzale al sole, e l'ombra segnata sul pavimento con un pezzetto di nastro di carta.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🪨",
+          "label": "Un sasso o un gessetto per segnare"
+        },
+        {
+          "emoji": "🌳",
+          "label": "Un oggetto all'aperto che non si sposta: un palo, un albero, un vaso grande"
+        },
+        {
+          "emoji": "📓",
+          "label": "Un quaderno e una matita"
+        },
+        {
+          "emoji": "⏰",
+          "label": "Un orologio"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "🌳",
+          "text": "Scegli con un grande un oggetto all'aperto che resta sempre lì, e un'ora del giorno."
+        },
+        {
+          "emoji": "🪨",
+          "text": "Metti il sasso proprio sulla punta della sua ombra."
+        },
+        {
+          "emoji": "📓",
+          "text": "Sul quaderno disegna l'oggetto e l'ombra, e scrivi l'ora."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Torna nei giorni dopo alla stessa ora: l'ombra è più lunga o più corta? Più in qua o più in là del sasso?"
+        }
+      ],
+      "control": "Il sasso di ieri: l'ombra di oggi si confronta con quello, senza bisogno di misure.",
+      "observe": "Se fa da solo una previsione per il giorno dopo, e con quali parole descrive il confronto."
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "{nome}, oggi si guarda fuori, non qui. Chiama un grande: servono un sasso e un posto.",
+    "pilu": "{nome}, le ombre cambiano piano. Si scopre solo tornando a guardarle, giorno dopo giorno.",
+    "tango": "{nome}! Un'ombra che cammina! Io resto qui di guardia. Tu vai fuori con un grande."
+  },
+  "outro": {
+    "bo": "Il sasso resta lì, {nome}. Domani ci tornate alla stessa ora.",
+    "pilu": "L'ora è scritta sul quaderno, {nome}: domani ti servirà per confrontare.",
+    "tango": "Fatto! {nome}, domani mi racconti se l'ombra si è spostata?"
+  },
+  "togetherSuggested": true
+}

@@ -6,7 +6,8 @@ import '../../design/palette.dart';
 import '../../design/widgets.dart';
 import '../activity_player.dart';
 
-/// Presentazione Montessori da fare a casa. Tre momenti sullo schermo:
+/// Presentazione da fare a casa: Montessori solo se lo dice la scheda
+/// dell'attività (docs/montessori.md). Tre momenti sullo schermo:
 /// 1. i materiali da preparare (per il grande);
 /// 2. i passi, uno alla volta, letti a voce: il grande li mostra in silenzio,
 ///    poi mette via il tablet e il bambino lavora da solo;

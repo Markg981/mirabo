@@ -23,9 +23,9 @@
     { "theme": "emozioni-relazioni", "band": "8-10", "content": "home:segreto-pietrolino" },
     { "theme": "natura-viventi", "band": "3-5", "content": "activity:versare-acqua" },
     { "theme": "natura-viventi", "band": "6-7", "content": "activity:germoglio-fagiolo" },
-    { "theme": "natura-viventi", "band": "8-10", "content": "activity:caccia-ombre-fuori" },
+    { "theme": "natura-viventi", "band": "8-10", "content": "activity:ombra-che-cammina" },
     { "theme": "autonomia-scuola", "band": "3-5", "content": "activity:telaio-bottoni" },
-    { "theme": "autonomia-scuola", "band": "6-7", "content": null, "todo": "Attività dalla storia della cella, quando la storia esiste." },
-    { "theme": "autonomia-scuola", "band": "8-10", "content": null, "todo": "Attività dalla storia della cella, quando la storia esiste." }
+    { "theme": "autonomia-scuola", "band": "6-7", "content": "activity:zaino-per-domani" },
+    { "theme": "autonomia-scuola", "band": "8-10", "content": "activity:ponte-tra-due-libri" }
   ]
 }

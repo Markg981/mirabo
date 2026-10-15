@@ -1,0 +1,49 @@
+{
+  "title": "Le cartable pour demain",
+  "offscreen": "La liste reste accrochée près de la porte et sert chaque soir avec le vrai cartable, sans la tablette.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Le cartable"
+        },
+        {
+          "label": "Une feuille et des feutres"
+        },
+        {
+          "label": "Du ruban de masquage pour accrocher la liste"
+        },
+        {
+          "label": "Le cahier de textes ou l'emploi du temps"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Regarde l'emploi du temps avec un grand : qu'est-ce qu'il y a demain ?"
+        },
+        {
+          "text": "Dessine sur la liste les choses qu'il faut demain, une par ligne."
+        },
+        {
+          "text": "Prends une chose à la fois, mets-la dans le cartable et touche son dessin."
+        },
+        {
+          "text": "Accroche la liste près de la porte : demain soir tu la retrouves là."
+        }
+      ],
+      "control": "La liste : si un dessin n'a pas encore sa chose dans le cartable, ça se voit.",
+      "observe": "Si le lendemain soir il prend la liste tout seul, et s'il ajoute une chose qui manquait."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, on prépare demain dès ce soir ? Il faut le vrai cartable et un grand pas loin.",
+    "pilu": "{nome}, une liste dessinée par toi aide à se souvenir. Le grand te montre comment.",
+    "tango": "{nome} ! Le cartable ! Moi je tiendrais dedans tout entier... Toi, mets seulement ce qu'il faut."
+  },
+  "outro": {
+    "bo": "Le cartable est prêt, {nome}. Demain matin, tu n'as pas à y penser.",
+    "pilu": "La liste reste accrochée, {nome} : demain soir elle est déjà là.",
+    "tango": "Fini ! {nome}, la liste se souvient aussi pour moi."
+  },
+  "reviewed": false
+}

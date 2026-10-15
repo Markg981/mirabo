@@ -43,7 +43,7 @@ l'emozione si accoglie con un respiro, qualunque sia.
   cui il bambino rilegge la stessa storia con finali diversi e li confronta. Il confronto vale solo
   per quella lettura: la storia salvata resta con il finale scelto (nessun cambio di schema).
   Capitoli e cambio di punto di vista restano da fare.
-- Le storie inventate non fanno crescere il compagno, come le altre storie.
+- Le storie inventate non fanno crescere il compagno, come le altre storie: cresce con le settimane.
 
 ## Calendario della natura
 

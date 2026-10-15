@@ -1,0 +1,65 @@
+{
+  "id": "zaino-per-domani",
+  "title": "Lo zaino per domani",
+  "area": "autonomia",
+  "skill": "routine-sera",
+  "type": "presentation",
+  "ageBands": [
+    "6-7"
+  ],
+  "offscreen": "La lista resta appesa vicino alla porta e si usa ogni sera con lo zaino vero, senza tablet.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "🎒",
+          "label": "Lo zaino di scuola"
+        },
+        {
+          "emoji": "📝",
+          "label": "Un foglio e dei pennarelli"
+        },
+        {
+          "emoji": "📌",
+          "label": "Nastro di carta per appendere la lista"
+        },
+        {
+          "emoji": "📚",
+          "label": "Il diario o l'orario della classe"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "📚",
+          "text": "Guarda con il grande l'orario: che cosa c'è domani?"
+        },
+        {
+          "emoji": "📝",
+          "text": "Disegna sulla lista le cose che servono domani, una per riga."
+        },
+        {
+          "emoji": "🎒",
+          "text": "Prendi una cosa alla volta, mettila nello zaino e tocca il suo disegno."
+        },
+        {
+          "emoji": "📌",
+          "text": "Appendi la lista vicino alla porta: domani sera la ritrovi lì."
+        }
+      ],
+      "control": "La lista: se un disegno non ha ancora la sua cosa nello zaino, si vede.",
+      "observe": "Se la sera dopo prende la lista da solo, e se aggiunge lui una cosa che mancava."
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "{nome}, prepariamo domani già stasera? Servono lo zaino vero e un grande vicino.",
+    "pilu": "{nome}, una lista disegnata da te aiuta a ricordare. Il grande ti fa vedere come.",
+    "tango": "{nome}! Lo zaino! Io ci entrerei tutto intero... Tu metti solo quello che serve."
+  },
+  "outro": {
+    "bo": "Lo zaino è pronto, {nome}. Domattina non devi pensarci.",
+    "pilu": "La lista resta appesa, {nome}: domani sera è già lì.",
+    "tango": "Fatto! {nome}, la lista se lo ricorda anche per me."
+  },
+  "togetherSuggested": true
+}

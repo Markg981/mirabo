@@ -724,8 +724,9 @@ class _WeekSection extends StatelessWidget {
   }
 }
 
-/// Il compagno cresce solo con i gesti delle storie fatti davvero: qui il
-/// genitore li segna. Il bambino non ha questo pulsante.
+/// I gesti delle storie fatti davvero: il genitore, se vuole, li segna nel
+/// diario. Non fanno crescere il compagno e non sbloccano nulla. Il bambino
+/// non ha questo pulsante.
 class _GesturesSection extends StatelessWidget {
   const _GesturesSection({
     required this.profile,
@@ -743,16 +744,12 @@ class _GesturesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final toNext = profile.gesturesToNextStage;
     return FormSection(
       icon: Icons.spa_rounded,
       color: MiraboColors.teal,
       title: context.l10n.gesturesTitle,
       subtitle: context.l10n.gesturesIntro(companion, profile.name),
       children: [
-        Text(toNext == null ? context.l10n.gesturesAllGrown(companion) : context.l10n.gesturesNext(toNext, companion),
-            style: Theme.of(context).textTheme.bodyLarge),
-        const SizedBox(height: 8),
         if (stories.isEmpty)
           Text(context.l10n.gesturesEmpty(profile.name))
         else

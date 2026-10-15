@@ -1,0 +1,67 @@
+{
+  "content": "activity:ombra-che-cammina",
+  "band": "8-10",
+  "method": {
+    "montessori": false,
+    "why": "Osservazione di un fenomeno nel tempo (educazione scientifica). Ricorda lo spirito dell'educazione cosmica, ma non è un'attività del metodo e non va presentata come Montessori senza la conferma di un revisore 6-12."
+  },
+  "purpose": "Osservare per qualche giorno la stessa ombra alla stessa ora e descrivere il cambiamento con un confronto (più lunga, più corta, più in qua, più in là).",
+  "prerequisites": [
+    "Legge l'ora, da solo o con l'adulto.",
+    "Conosce le parole del confronto: più lunga, più corta, prima, dopo."
+  ],
+  "materials": [
+    {
+      "item": "Un sasso o un gessetto",
+      "size": "un sasso grande come un pugno, o un gessetto da cortile",
+      "alternatives": ["Un rametto infilato nel terreno", "Nastro di carta, se si fa in casa"],
+      "precautions": ["Il gessetto si usa solo dove è permesso (cortile, terrazzo di casa)"]
+    },
+    {
+      "item": "Un oggetto all'aperto che non si sposta",
+      "size": "alto almeno un metro: un palo, un albero, un vaso grande",
+      "alternatives": ["Una bottiglia d'acqua su un davanzale al sole"],
+      "precautions": ["Un posto lontano dalla strada: giardino, cortile o balcone"]
+    },
+    {
+      "item": "Un quaderno e una matita",
+      "size": "un quaderno qualunque",
+      "alternatives": ["Fogli pinzati"],
+      "precautions": []
+    },
+    {
+      "item": "Un orologio",
+      "size": "quello di casa",
+      "alternatives": ["La sveglia dell'adulto"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Scegli con il bambino un posto raggiungibile ogni giorno e un'ora in cui siete a casa.",
+    "Guarda il meteo: servono almeno tre giorni di sole nella stessa settimana."
+  ],
+  "presentation": [
+    "Leggete insieme i passi sul tablet una volta, in casa; poi il tablet resta dentro.",
+    "Fuori, l'adulto mostra come si mette il sasso proprio sulla punta dell'ombra e lascia fare il secondo segno al bambino.",
+    "Mostra come si scrive l'ora accanto al disegno sul quaderno.",
+    "Chiede: \"Cosa pensi che vedremo domani?\" e non commenta la risposta."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "All'aperto un adulto accompagna e resta vicino; il bambino segna, disegna e confronta da solo. Non serve spiegare subito perché l'ombra cambia."
+  },
+  "errorControl": {
+    "how": "Il sasso del giorno prima: il confronto è con quello che si vede, non con una risposta attesa. Se il sasso è stato spostato, si ricomincia da oggi."
+  },
+  "repetition": "Si torna alla stessa ora per qualche giorno; poi, se il bambino vuole, si prova a un'ora diversa dello stesso giorno. Non si aggiungono misure o compiti più difficili.",
+  "tidyUp": [
+    "Il sasso resta finché dura l'osservazione, poi torna dove l'avete preso.",
+    "Il quaderno torna al suo posto in casa."
+  ],
+  "screen": "Il tablet presenta l'attività una volta, in casa. Fuori non serve: i passi sono pochi e il quaderno tiene il filo dei giorni.",
+  "feasibility": {
+    "prepMinutes": 5,
+    "materialsAtHome": true,
+    "notes": "Serve un posto all'aperto raggiungibile ogni giorno; senza, si usa la variante in casa con la finestra (offscreen dell'attività)."
+  }
+}

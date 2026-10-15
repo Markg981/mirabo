@@ -38,36 +38,33 @@ class _NoRepo implements StoryRepository {
 void main() {
   const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango);
 
-  test('il compagno cresce con i gesti, non con le storie', () {
-    expect(base.copyWith(storiesCompleted: 20).companionStage, 0);
-    expect(base.copyWith(gesturesDone: 3).companionStage, 1);
-    expect(base.copyWith(gesturesDone: 6).companionStage, 2);
-    expect(base.copyWith(gesturesDone: 12).companionStage, 3);
+  final since = DateTime(2026, 10, 1);
+  final fresh = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango, growthSince: since);
+
+  test('il compagno cresce con le settimane, non con storie o gesti segnati', () {
+    expect(fresh.copyWith(storiesCompleted: 20, gesturesDone: 30).companionStageAt(since.add(const Duration(days: 13))), 0);
+    expect(fresh.companionStageAt(since.add(const Duration(days: 14))), 1);
+    expect(fresh.companionStageAt(since.add(const Duration(days: 42))), 2);
+    expect(fresh.companionStageAt(since.add(const Duration(days: 84))), 3);
   });
 
-  test('chi era già cresciuto con le storie non torna indietro', () {
-    final legacy = ChildProfile.fromRow({...base.toRow(), 'stage_floor': 2, 'gestures_done': 0});
-    expect(legacy.companionStage, 2);
-    expect(legacy.gesturesToNextStage, 12);
-    expect(legacy.copyWith(gesturesDone: 12).companionStage, 3);
+  test('chi era già cresciuto non torna indietro', () {
+    final legacy = ChildProfile.fromRow({...fresh.toRow(), 'stage_floor': 2});
+    expect(legacy.companionStageAt(since), 2);
+    expect(legacy.companionStageAt(since.add(const Duration(days: 84))), 3);
   });
 
   test('una riga senza le colonne nuove (backup v3) parte da zero', () {
     final row = base.toRow()
       ..remove('gestures_done')
-      ..remove('stage_floor');
+      ..remove('stage_floor')
+      ..remove('growth_since');
     final p = ChildProfile.fromRow(row);
     expect(p.gesturesDone, 0);
-    expect(p.companionStage, 0);
+    expect(p.companionStageAt(DateTime(2030)), 0);
   });
 
-  test('gesti che mancano alla prossima tappa', () {
-    expect(base.gesturesToNextStage, 3);
-    expect(base.copyWith(gesturesDone: 4).gesturesToNextStage, 2);
-    expect(base.copyWith(gesturesDone: 12).gesturesToNextStage, isNull);
-  });
-
-  test('lo stesso gesto conta una volta al giorno', () async {
+  test('lo stesso gesto si segna una volta al giorno e non fa crescere il compagno', () async {
     final db = _FakeDb(base);
     final state = AppState(
       db: db,
@@ -83,6 +80,6 @@ void main() {
     expect(await state.recordGesture(base, 'albero-silenzioso', now: day.add(const Duration(days: 1))), isTrue);
 
     expect(db.profile.gesturesDone, 3);
-    expect(state.currentProfile!.companionStage, 1);
+    expect(state.currentProfile!.companionStage, 0);
   });
 }

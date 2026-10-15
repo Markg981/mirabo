@@ -1,0 +1,49 @@
+{
+  "title": "Die Brücke zwischen zwei Büchern",
+  "offscreen": "Dieselbe Aufgabe geht auch mit anderem Material: Strohhalme und Klebeband, zwei Stühle und eine Schnur.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Zwei gleich hohe Bücher"
+        },
+        {
+          "label": "Ein paar Blätter Papier"
+        },
+        {
+          "label": "Eine Handvoll gleicher Münzen"
+        },
+        {
+          "label": "Eine Schere und etwas Klebeband"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Leg die zwei Bücher eine Handspanne auseinander auf den Tisch."
+        },
+        {
+          "text": "Bau mit nur einem Blatt eine Brücke von einem Buch zum anderen: Du darfst es falten, rollen, schneiden."
+        },
+        {
+          "text": "Leg eine Münze nach der anderen vorsichtig in die Mitte der Brücke."
+        },
+        {
+          "text": "Wenn sie nachgibt, schau, wo sie nachgegeben hat, ändere eine Sache und probier es noch mal."
+        }
+      ],
+      "control": "Die Brücke selbst: Sie hält oder gibt nach, und wo sie nachgibt, sieht man. Niemand muss sagen, ob es richtig ist.",
+      "observe": "Was sich von einem Versuch zum nächsten ändert und ob es das vor dem Ausprobieren sagt."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, heute wird wirklich gebaut. Du brauchst zwei Bücher, ein Blatt und ein paar Münzen.",
+    "pilu": "{nome}, eine Papierbrücke kann mehr tragen, als du denkst. Das merkt man nur beim Ausprobieren.",
+    "tango": "{nome}! Eine Brücke! Wenn sie einstürzt, zeigt sie dir, wo sie stärker werden muss. Hat man mir gesagt."
+  },
+  "outro": {
+    "bo": "Du hast probiert und verändert, {nome}. Die Bücher kommen ins Regal, die Münzen ins Glas.",
+    "pilu": "Jede Brücke, die nachgegeben hat, hat dir etwas verraten, {nome}. Jetzt räumen wir auf.",
+    "tango": "Was für Brücken! {nome}, räumen wir auf? Ich zähle die Münzen. Eins, zwei... viele."
+  },
+  "reviewed": false
+}
