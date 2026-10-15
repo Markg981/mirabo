@@ -10,7 +10,7 @@ Nomi e immagini dei tre temi (`app/lib/ui/child/themes_style.dart`, testi `theme
 
 ## Come si verifica
 
-- **Chi**: almeno 5 bambini per fascia (3-5, 5-7, 7-10), con il loro adulto vicino. Non si registrano voci né volti; si annotano solo le risposte.
+- **Chi**: almeno 5 bambini per fascia (3-5, 6-7, 8-10), con il loro adulto vicino. Non si registrano voci né volti; si annotano solo le risposte.
 - **Materiale**: l'app sulla casa, con la mensola vuota (area adulti, Mensola, scegli tu e togli tutto), così si vedono solo i temi.
 - **Domande** (una per tema, senza leggere il nome ai più piccoli):
   1. "Secondo te, qui dentro cosa c'è?" Si annota la risposta con le parole del bambino.
@@ -23,8 +23,8 @@ Nomi e immagini dei tre temi (`app/lib/ui/child/themes_style.dart`, testi `theme
 | Fascia | Come mi sento | La natura | Faccio da me | Modalità trovate senza aiuto | Note |
 | --- | --- | --- | --- | --- | --- |
 | 3-5 | | | | | |
-| 5-7 | | | | | |
-| 7-10 | | | | | |
+| 6-7 | | | | | |
+| 8-10 | | | | | |
 
 - Chi ha condotto la verifica (nome, ruolo):
 - Date e luogo:

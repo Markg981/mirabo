@@ -91,7 +91,7 @@ void main() {
   }
 
   testWidgets('si sceglie un pezzo per passo, si salva e si legge', (tester) async {
-    final (db, _) = await pumpFactory(tester, AgeBand.b5to7);
+    final (db, _) = await pumpFactory(tester, AgeBand.b6to7);
     expect(find.text('Qui troverai le storie che inventi.'), findsOneWidget);
 
     await tester.tap(find.text('Inventane una'));
@@ -113,7 +113,7 @@ void main() {
     }
 
     expect(db.saved, hasLength(1));
-    expect(db.saved.single.title, isNull, reason: 'in 5–7 il titolo non si chiede');
+    expect(db.saved.single.title, isNull, reason: 'in 6–7 il titolo non si chiede');
     expect(db.saved.single.part(FactoryStep.helper), 'bear');
     const first = "C'era una volta un piccolo drago, che viveva in un bosco pieno di alberi.";
     expect(find.byType(ReadAlongText), findsOneWidget);
@@ -137,8 +137,8 @@ void main() {
     expect(find.text('Il piccolo drago'), findsOneWidget, reason: 'la storia è tra "Le mie storie"');
   });
 
-  testWidgets('in 7–10 si dà anche il titolo', (tester) async {
-    final (db, _) = await pumpFactory(tester, AgeBand.b7to10);
+  testWidgets('in 8–10 si dà anche il titolo', (tester) async {
+    final (db, _) = await pumpFactory(tester, AgeBand.b8to10);
     await tester.tap(find.text('Inventane una'));
     await tester.pumpAndSettle();
     for (final pick in ['Un robot gentile', 'La notte', 'La stellina caduta', 'Il coraggio', 'Una tartaruga saggia', 'La nanna']) {
@@ -154,7 +154,7 @@ void main() {
     expect(db.saved.single.title, 'La scala per le stelle');
     expect(find.text('La scala per le stelle'), findsOneWidget);
 
-    // Sull'ultima pagina di 7–10 si provano altri finali, senza toccare la storia salvata.
+    // Sull'ultima pagina di 8–10 si provano altri finali, senza toccare la storia salvata.
     for (var i = 0; i < 4; i++) {
       await tester.tap(find.text('Avanti'));
       await tester.pumpAndSettle();

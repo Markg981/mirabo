@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Fiocco che Non Voleva Cadere
 
-`fiocco-coraggioso` v1 · mondo emozioni · tema paura-di-sbagliare · fasce 5-7
+`fiocco-coraggioso` v1 · mondo emozioni · tema paura-di-sbagliare · fasce 6-7
 
 **Frase-chiave.** Il coraggio non sta nel restare fermi, ma nel provarci.
 
@@ -12,7 +12,7 @@
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Letteratura sulla mentalità di crescita e la paura dell'errore nei bambini (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

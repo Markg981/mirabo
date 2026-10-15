@@ -24,12 +24,17 @@ class ChildProfile {
     this.shelf,
     this.shelfAuto,
     this.shelfRotatedAt,
+    this.bandToConfirm,
     InteractionProfile? interaction,
   }) : _interaction = interaction;
 
   final int id;
   final String name;
   final AgeBand ageBand;
+
+  /// Fascia di prima (5-7 o 7-10) ancora da confermare: finché l'adulto non
+  /// sceglie, [ageBand] è la fascia con le stesse varianti di allora.
+  final LegacyAgeBand? bandToConfirm;
   final CompanionId companion;
   final Set<World> enabledWorlds;
 
@@ -104,6 +109,7 @@ class ChildProfile {
   ChildProfile copyWith({
     String? name,
     AgeBand? ageBand,
+    bool bandConfirmed = false,
     CompanionId? companion,
     Set<World>? enabledWorlds,
     bool? safetyTogetherOnly,
@@ -121,6 +127,7 @@ class ChildProfile {
         id: id,
         name: name ?? this.name,
         ageBand: ageBand ?? this.ageBand,
+        bandToConfirm: bandConfirmed ? null : bandToConfirm,
         companion: companion ?? this.companion,
         enabledWorlds: enabledWorlds ?? this.enabledWorlds,
         safetyTogetherOnly: safetyTogetherOnly ?? this.safetyTogetherOnly,
@@ -149,6 +156,7 @@ class ChildProfile {
         id: id,
         name: name,
         ageBand: ageBand,
+        bandToConfirm: bandToConfirm,
         companion: companion,
         enabledWorlds: enabledWorlds,
         safetyTogetherOnly: safetyTogetherOnly,
@@ -171,6 +179,7 @@ class ChildProfile {
         'id': id,
         'name': name,
         'age_band': ageBand.key,
+        'band_to_confirm': bandToConfirm?.key,
         'companion': companion.name,
         'enabled_worlds': enabledWorlds.map((w) => w.name).join(','),
         'safety_together_only': safetyTogetherOnly ? 1 : 0,
@@ -189,27 +198,37 @@ class ChildProfile {
         ...interaction.toRow(),
       };
 
-  factory ChildProfile.fromRow(Map<String, Object?> r) => ChildProfile(
-        id: r['id'] as int,
-        name: r['name'] as String,
-        ageBand: AgeBand.fromKey(r['age_band'] as String),
-        companion: CompanionId.values.byName(r['companion'] as String),
-        enabledWorlds: (r['enabled_worlds'] as String).split(',').where((s) => s.isNotEmpty).map(World.values.byName).toSet(),
-        safetyTogetherOnly: (r['safety_together_only'] as int) == 1,
-        lastMode: SessionMode.values.byName(r['last_mode'] as String),
-        dyslexiaFont: (r['dyslexia_font'] as int) == 1,
-        lowStimulation: (r['low_stimulation'] as int) == 1,
-        readAlong: (r['read_along'] as int? ?? 1) == 1,
-        aloneSessionMinutes: r['alone_minutes'] as int,
-        storiesCompleted: r['stories_completed'] as int,
-        gesturesDone: r['gestures_done'] as int? ?? 0,
-        stageFloor: r['stage_floor'] as int? ?? 0,
-        language: r['language'] as String? ?? 'it',
-        shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
-        shelfAuto: (r['shelf_auto'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
-        shelfRotatedAt: r['shelf_rotated_at'] == null ? null : DateTime.parse(r['shelf_rotated_at'] as String),
-        interaction: InteractionProfile.fromRow(r),
-      );
+  /// Una riga con la fascia di prima (backup o database non ancora migrato)
+  /// resta sui contenuti che aveva e chiede la conferma all'adulto.
+  factory ChildProfile.fromRow(Map<String, Object?> r) {
+    final legacy = LegacyAgeBand.tryKey(r['age_band'] as String);
+    return ChildProfile(
+      id: r['id'] as int,
+      name: r['name'] as String,
+      ageBand: legacy?.content ?? AgeBand.fromKey(r['age_band'] as String),
+      bandToConfirm: legacy ?? LegacyAgeBand.tryKey(r['band_to_confirm'] as String?),
+      companion: CompanionId.values.byName(r['companion'] as String),
+      enabledWorlds: (r['enabled_worlds'] as String).split(',').where((s) => s.isNotEmpty).map(World.values.byName).toSet(),
+      safetyTogetherOnly: (r['safety_together_only'] as int) == 1,
+      lastMode: SessionMode.values.byName(r['last_mode'] as String),
+      dyslexiaFont: (r['dyslexia_font'] as int) == 1,
+      lowStimulation: (r['low_stimulation'] as int) == 1,
+      readAlong: (r['read_along'] as int? ?? 1) == 1,
+      aloneSessionMinutes: r['alone_minutes'] as int,
+      storiesCompleted: r['stories_completed'] as int,
+      gesturesDone: r['gestures_done'] as int? ?? 0,
+      stageFloor: r['stage_floor'] as int? ?? 0,
+      language: r['language'] as String? ?? 'it',
+      shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
+      shelfAuto: (r['shelf_auto'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
+      shelfRotatedAt: r['shelf_rotated_at'] == null ? null : DateTime.parse(r['shelf_rotated_at'] as String),
+      interaction: InteractionProfile.fromRow(r),
+    );
+  }
+
+  /// L'adulto sceglie la fascia: il profilo di interazione resta quello che
+  /// era (audio, testo, grandezza dei comandi non cambiano con la fascia).
+  ChildProfile withConfirmedBand(AgeBand band) => copyWith(ageBand: band, bandConfirmed: true, interaction: interaction);
 }
 
 /// Quanto legge il bambino: decide se e come compare il testo.
@@ -236,8 +255,8 @@ class InteractionProfile {
   /// hanno bisogno di poche scelte e della consegna ripetuta.
   factory InteractionProfile.forAge(AgeBand band) => switch (band) {
         AgeBand.b3to5 => const InteractionProfile(hands: 1, reading: ReadingLevel.none, autonomy: 1),
-        AgeBand.b5to7 => const InteractionProfile(hands: 2, reading: ReadingLevel.letters, autonomy: 2),
-        AgeBand.b7to10 => const InteractionProfile(hands: 3, reading: ReadingLevel.words, autonomy: 3),
+        AgeBand.b6to7 => const InteractionProfile(hands: 2, reading: ReadingLevel.letters, autonomy: 2),
+        AgeBand.b8to10 => const InteractionProfile(hands: 3, reading: ReadingLevel.words, autonomy: 3),
       };
 
   static const maxLevel = 3;

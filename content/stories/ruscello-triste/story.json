@@ -6,7 +6,7 @@
   "topic": "rifiuti",
   "series": "emma-pietrolino",
   "episode": 2,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Anche i ruscelli piccoli fanno grandi viaggi. E anche le mani piccole.",

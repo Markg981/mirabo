@@ -14,7 +14,7 @@
       "supervision": { "level": "together", "note": "I sassolini piccoli si possono mettere in bocca: scegli quelli grandi e resta accanto al bambino per tutto il gioco." },
       "alternatives": ["Senza sassolini: foglie o tappi grandi da lasciar cadere.", "Fuori casa: una pozzanghera o una fontana, tenendo il bambino per mano."]
     },
-    "5-7": {
+    "6-7": {
       "goal": "Scoprire che sassi diversi fanno cerchi diversi.",
       "steps": [
         "Il bambino sceglie tre sassi di grandezza diversa e li mette in fila, dal più piccolo al più grande.",
@@ -27,7 +27,7 @@
       "supervision": { "level": "nearby", "note": "Basta che tu sia nella stanza e che i sassi siano abbastanza grandi da non finire in bocca. Non serve dire se ha indovinato: guardare insieme basta." },
       "alternatives": ["Con il lavandino e poca acqua, se non avete una ciotola.", "Con tre palline di peso diverso al posto dei sassi."]
     },
-    "7-10": {
+    "8-10": {
       "goal": "Fare una prova, guardare cosa succede e raccontarlo.",
       "steps": [
         "Il bambino decide cosa vuole scoprire (per esempio: i cerchi cambiano se il sasso cade da più in alto?).",

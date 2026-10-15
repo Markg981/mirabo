@@ -59,7 +59,7 @@ Activity _activity(String id, ActivityType type) => Activity(
       area: ActivityArea.values.first,
       skill: 's',
       type: type,
-      ageBands: {AgeBand.b5to7},
+      ageBands: {AgeBand.b6to7},
       togetherSuggested: false,
       intro: CompanionLines.fromJson({'bo': 'a', 'pilu': 'a', 'tango': 'a'}),
       outro: CompanionLines.fromJson({'bo': 'a', 'pilu': 'a', 'tango': 'a'}),
@@ -68,7 +68,7 @@ Activity _activity(String id, ActivityType type) => Activity(
     );
 
 void main() {
-  const base = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b5to7, companion: CompanionId.bo);
+  const base = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b6to7, companion: CompanionId.bo);
   const ok = RoundResult(attempts: 1, hints: 0);
 
   Future<(AppState, _FakeDb, _Repo)> make() async {
@@ -134,10 +134,10 @@ void main() {
     final p = ChildProfile.fromRow(base.toRow());
     // Il profilo non ha data di nascita: nessuna rilettura può spostare la fascia.
     expect(p.toRow().keys.where((k) => k.contains('birth') || k.contains('born')), isEmpty);
-    expect(p.ageBand, AgeBand.b5to7);
-    expect(p.interaction, InteractionProfile.forAge(AgeBand.b5to7));
-    expect(ChildProfile.fromRow(p.copyWith(name: 'Ada').toRow()).ageBand, AgeBand.b5to7);
+    expect(p.ageBand, AgeBand.b6to7);
+    expect(p.interaction, InteractionProfile.forAge(AgeBand.b6to7));
+    expect(ChildProfile.fromRow(p.copyWith(name: 'Ada').toRow()).ageBand, AgeBand.b6to7);
     // La fascia cambia solo se lo decide il genitore.
-    expect(p.copyWith(ageBand: AgeBand.b7to10).ageBand, AgeBand.b7to10);
+    expect(p.copyWith(ageBand: AgeBand.b8to10).ageBand, AgeBand.b8to10);
   });
 }

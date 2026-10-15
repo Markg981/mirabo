@@ -1,5 +1,6 @@
 {
   "ageBand": "3-5",
+  "design": {"perspective": "protagonist", "structure": "one-problem", "note": "Goccia vuole dare da bere ai fiori e ci riesce: un desiderio, un'azione."},
   "screens": [
     {
       "n": 1,

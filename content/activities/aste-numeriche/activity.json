@@ -6,7 +6,7 @@
   "type": "count",
   "ageBands": [
     "3-5",
-    "5-7"
+    "6-7"
   ],
   "offscreen": "Dieci strisce di cartone di lunghezza crescente, colorate a segmenti rossi e blu: contare i segmenti e ordinarle.",
   "levels": [

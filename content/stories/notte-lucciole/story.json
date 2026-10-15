@@ -6,7 +6,7 @@
   "topic": "meraviglia",
   "series": "emma-pietrolino",
   "episode": 4,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Alcune meraviglie si vedono solo quando si spegne la luce e si aspetta.",

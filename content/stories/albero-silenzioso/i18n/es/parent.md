@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El árbol que ya no hablaba
 
-**Por qué este tema a los 5–7 años.** Los niños entienden bien que un ser vivo también puede estar mal. La historia muestra que cuidar está hecho de pequeñas acciones repetidas (limpiar, plantar, quedarse cerca), no de un gesto mágico, y que los resultados llegan con el tiempo.
+**Por qué este tema a los 6–7 años.** Los niños entienden bien que un ser vivo también puede estar mal. La historia muestra que cuidar está hecho de pequeñas acciones repetidas (limpiar, plantar, quedarse cerca), no de un gesto mágico, y que los resultados llegan con el tiempo.
 
 ## Tres preguntas después de la historia
 

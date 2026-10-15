@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "Emma sceglie come aiutare la quercia; la cura ripetuta le ridà la voce."},
   "screens": [
     {
       "n": 1,

@@ -1,6 +1,6 @@
 # Comment en parler : Le bois endormi
 
-**Pourquoi ce thème à 5–7 ans.** Beaucoup d'enfants vivent le sommeil comme une perte (« je rate les jeux ») ou l'associent à la tristesse du noir. L'histoire le présente comme une chose que fait toute la nature, pour grandir et recommencer, et montre que s'arrêter, ce n'est pas abandonner.
+**Pourquoi ce thème à 6–7 ans.** Beaucoup d'enfants vivent le sommeil comme une perte (« je rate les jeux ») ou l'associent à la tristesse du noir. L'histoire le présente comme une chose que fait toute la nature, pour grandir et recommencer, et montre que s'arrêter, ce n'est pas abandonner.
 
 ## Trois questions après l'histoire
 

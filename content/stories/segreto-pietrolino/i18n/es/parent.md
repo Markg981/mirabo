@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El secreto de Pietrolino
 
-**Por qué este tema a los 7–10 años.** Es el final de la temporada: Pietrolino se despide de Emma y vuelve a ser una piedrecita del bosque. A esta edad los niños viven las primeras despedidas importantes (un amigo que se muda, el cambio de colegio, un abuelo que ya no está, una mascota) y buscan una manera de dar un lugar a lo que sienten. La historia muestra que se puede estar triste, llorar, dejarse consolar y luego quedarse con lo aprendido. Por eso se lee solo juntos.
+**Por qué este tema a los 8–10 años.** Es el final de la temporada: Pietrolino se despide de Emma y vuelve a ser una piedrecita del bosque. A esta edad los niños viven las primeras despedidas importantes (un amigo que se muda, el cambio de colegio, un abuelo que ya no está, una mascota) y buscan una manera de dar un lugar a lo que sienten. La historia muestra que se puede estar triste, llorar, dejarse consolar y luego quedarse con lo aprendido. Por eso se lee solo juntos.
 
 ## Tres preguntas después de la historia
 

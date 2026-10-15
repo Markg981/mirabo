@@ -12,7 +12,7 @@ void main() {
 
   Story story(String id, {String? gesture, String? card}) => Story.fromJson({
         'id': id, 'version': 1, 'title': 'Titolo $id', 'world': 'ambiente', 'topic': 'cura',
-        'ageBands': {'5-7': '5-7.json'}, 'formats': ['illustrated'], 'togetherOnly': false,
+        'ageBands': {'6-7': '6-7.json'}, 'formats': ['illustrated'], 'togetherOnly': false,
         'keyPhrase': 'Frase $id', 'parentCard': 'parent.md', 'sources': [], if (gesture != null) 'gesture': gesture,
       }).withContent(variants: const {}, parentCard: card);
 

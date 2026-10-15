@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "L'autunno spiega perché il bosco si ferma; Emma collega il riposo del bosco al suo."},
   "screens": [
     {
       "n": 1,

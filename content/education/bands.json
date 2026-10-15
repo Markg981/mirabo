@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "about": "Schede di progetto delle tre fasce d'età. Fonte unica per validate.py e review.py; spiegazione in docs/age-bands.md. Le fasce decidono i contenuti; gli aiuti d'interazione (mani, lettura, autonomia, voce, consegna ripetuta) stanno nel profilo di interazione del bambino e la fascia ne dà solo i valori iniziali.",
+  "perspectives": {
+    "protagonist": "Si segue un solo personaggio, che vive il problema in prima persona.",
+    "other": "Si segue un personaggio che osserva o aiuta un altro: il bambino guarda il problema da fuori.",
+    "several": "Il racconto mostra almeno due punti di vista sullo stesso fatto, e il bambino li confronta."
+  },
+  "structures": {
+    "one-problem": "Un problema concreto e una risposta, nel presente, senza bivi.",
+    "cause-effect": "Una scelta e la sua conseguenza: si vede che cosa succede dopo, e perché.",
+    "dilemma": "Due esigenze che non si possono soddisfare insieme: non c'è una risposta sola, si pesano le ragioni."
+  },
+  "bands": {
+    "3-5": {
+      "ages": [3, 5],
+      "language": {
+        "rule": "Frasi brevi al presente, un'azione per frase, parole concrete (oggetti, sensazioni del corpo). Ripetizioni e suoni (plin, crash). Nessuna metafora da decifrare.",
+        "screens": [5, 7],
+        "wordsPerScreen": 25,
+        "companionWords": 12
+      },
+      "narrative": {
+        "rule": "Un solo protagonista, un solo problema, risolto nella stessa storia. Il tempo scorre in avanti, senza salti.",
+        "perspectives": ["protagonist"],
+        "structures": ["one-problem"],
+        "lesson": "required"
+      },
+      "choices": {
+        "rule": "Al massimo due opzioni, entrambe accettabili; la storia non cambia strada.",
+        "dialogueOptions": 2,
+        "consequenceMoves": 2,
+        "minTries": 1
+      },
+      "gestures": {
+        "rule": "Toccare. Trascinare solo per brevi tratti e verso un bersaglio grande.",
+        "allowed": ["tap", "short-drag"]
+      },
+      "games": {
+        "memory": "Coppie di animali uguali (3 coppie): si guarda e si ricorda.",
+        "shapes": "Tre forme, buchi dritti come i pezzi.",
+        "balloons": "Si scoppiano tutti i palloncini: causa ed effetto.",
+        "xylophone": "Suonare libero, senza una canzone da seguire."
+      },
+      "helps": "Valori iniziali: mani 1, lettura nessuna, autonomia 1. Voce su ogni consegna, consegna ripetuta, testo nascosto.",
+      "adult": "Accanto al bambino. Legge o ascolta con lui, fa la lezione in tre tempi, porta il gesto nella vita vera."
+    },
+    "6-7": {
+      "ages": [6, 7],
+      "language": {
+        "rule": "Frasi semplici, anche coordinate (e, ma, poi). Dialoghi brevi tra personaggi. Emozioni nominate e descritte con il corpo.",
+        "screens": [7, 10],
+        "wordsPerScreen": 60,
+        "companionWords": 25
+      },
+      "narrative": {
+        "rule": "Un problema che nasce da una causa e ha conseguenze visibili. Il protagonista sceglie, e la storia mostra che cosa succede dopo. Si può seguire anche chi aiuta un altro.",
+        "perspectives": ["protagonist", "other"],
+        "structures": ["cause-effect"],
+        "lesson": "forbidden"
+      },
+      "choices": {
+        "rule": "Fino a tre opzioni con conseguenze diverse; nessuna è sbagliata, si guarda che cosa succede.",
+        "dialogueOptions": 3,
+        "consequenceMoves": 3,
+        "minTries": 1
+      },
+      "gestures": {
+        "rule": "Toccare e trascinare verso bersagli più piccoli.",
+        "allowed": ["tap", "drag"]
+      },
+      "games": {
+        "memory": "Coppie animale e cibo (6 coppie): le carte non si somigliano, si cerca una relazione.",
+        "shapes": "Cinque forme, buchi girati: la stessa forma in un'altra posizione.",
+        "balloons": "Si scoppiano solo i palloncini di un colore, che cambia: attenzione e regola.",
+        "xylophone": "Suonare libero o seguire una canzone."
+      },
+      "helps": "Valori iniziali: mani 2, lettura lettere, autonomia 2. Voce disponibile su tutto, testo breve accanto alle immagini.",
+      "adult": "Vicino. Fa la domanda della pausa di dialogo, ascolta la scelta e chiede perché; la scheda genitore propone il gesto."
+    },
+    "8-10": {
+      "ages": [8, 10],
+      "language": {
+        "rule": "Frasi anche subordinate (perché, mentre, se). Lessico più preciso, qualche parola nuova spiegata dal contesto. Pensieri e intenzioni dei personaggi, non solo azioni.",
+        "screens": [8, 10],
+        "wordsPerScreen": 70,
+        "companionWords": 25
+      },
+      "narrative": {
+        "rule": "Almeno due punti di vista sullo stesso fatto, e un dilemma senza risposta unica: il bambino pesa le ragioni dei personaggi. Ammessi perdita, saluto, cambiamento.",
+        "perspectives": ["several"],
+        "structures": ["dilemma"],
+        "lesson": "forbidden"
+      },
+      "choices": {
+        "rule": "Fino a tre opzioni; nella pausa di conseguenza si possono confrontare strategie (minTries fino a 3).",
+        "dialogueOptions": 3,
+        "consequenceMoves": 3,
+        "minTries": 3
+      },
+      "gestures": {
+        "rule": "Toccare, trascinare, sequenze in ordine (numeri, tessere).",
+        "allowed": ["tap", "drag", "sequence"]
+      },
+      "games": {
+        "memory": "Terne animale, cibo e casa (5 terne), tre carte per volta: si tengono aperti più gruppi e si decide quale completare.",
+        "shapes": "Sei forme girate, grandi e piccole: forma, posizione e misura.",
+        "balloons": "I palloncini si scoppiano in ordine di numero: sequenza e pianificazione.",
+        "xylophone": "Suonare libero o seguire una canzone.",
+        "puzzle15": "Gioco del 15: pianificare più mosse in avanti."
+      },
+      "helps": "Valori iniziali: mani 3, lettura parole, autonomia 3. Voce e comandi grandi restano disponibili: li sceglie l'adulto nel profilo di interazione.",
+      "adult": "Interlocutore. Dopo la storia discute i punti di vista e il dilemma; il bambino può fare da solo l'attività e raccontarla."
+    }
+  }
+}

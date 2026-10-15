@@ -6,7 +6,7 @@
   "topic": "cura-del-bosco",
   "series": "emma-pietrolino",
   "episode": 9,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Il mondo non si cambia con gesti enormi, ma con cura continua.",

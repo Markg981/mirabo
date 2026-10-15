@@ -8,7 +8,7 @@ Principio: l'app non valuta il bambino né cambia da sola ciò che gli propone. 
 | --- | --- | --- |
 | Livello di un'attività o gioco | Il bambino, a fine attività: "Più semplice", "Ancora così", "Più sfida" (icone + voce a pressione lunga; facoltativi, "A domani" chiude comunque) | `activity_player.dart`, `AppState.setActivityLevel` |
 | Profilo di interazione (mani, lettura, autonomia) | Il genitore, accettando o rifiutando una proposta, o dal profilo | `interaction_advice.dart`, `parent_area.dart` |
-| Fascia d'età | Il genitore. Nessuna data di nascita, nessuna promozione automatica al compleanno | `profile_form.dart` |
+| Fascia d'età | Il genitore. Nessuna data di nascita, nessuna promozione automatica al compleanno né per prestazioni; i profili con le fasce di prima (5-7, 7-10) li conferma l'adulto (`docs/age-bands.md`) | `profile_form.dart`, `parent_area.dart` |
 | Audio e supporti (voce, consegna, aiuto a passi) | Nessun passaggio li toglie: cambiare livello non tocca profilo, voce né aiuti | |
 
 Prima di questo lavoro `applyAdaptive` alzava o abbassava il livello da solo a fine sessione (3 successi al primo tentativo, due round difficili). È stato rimosso: `recordActivity` salva i round e conta la sessione, ma il livello resta quello. Il test `adaptivity_test.dart` lo fissa.

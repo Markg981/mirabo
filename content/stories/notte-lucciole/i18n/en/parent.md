@@ -1,6 +1,6 @@
 # How to talk about it: The Night of the Fireflies
 
-**Why this topic at 5–7.** Many children are afraid of the dark at this age. The story doesn't deny the fear: it puts it next to curiosity and a hand to hold, and shows that being in the dark with a trusted adult can become a moment of wonder.
+**Why this topic at 6–7.** Many children are afraid of the dark at this age. The story doesn't deny the fear: it puts it next to curiosity and a hand to hold, and shows that being in the dark with a trusted adult can become a moment of wonder.
 
 ## Three questions after the story
 

@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Ruscello Triste
 
-`ruscello-triste` v1 · mondo ambiente · tema rifiuti · fasce 5-7
+`ruscello-triste` v1 · mondo ambiente · tema rifiuti · fasce 6-7
 
 **Frase-chiave.** Anche i ruscelli piccoli fanno grandi viaggi. E anche le mani piccole.
 
@@ -8,14 +8,14 @@
 
 ## Avvisi della pre-revisione automatica
 
-- 5-7 #6 opzione 'non-so': etichetta oltre 5 parole
+- 6-7 #6 opzione 'non-so': etichetta oltre 5 parole
 - scheda genitore, errore comune senza il perché: "Fare tutto al posto suo."
 - scheda genitore, errore comune senza il perché: "Trasformare la passeggiata in un dovere settimanal"
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Legambiente, materiali di educazione ambientale per la primaria (da verificare)
 - fonte da verificare: WWF Italia, programmi scuola (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

@@ -13,8 +13,8 @@ Le fasce Apple per la Kids Category sono "5 and under", "6–8", "9–11".
 | Fascia interna | Fascia Apple | Nota |
 | --- | --- | --- |
 | 3–5 | 5 e meno | Coincide |
-| 5–7 | 6–8 (5 cade nella prima) | Si sovrappone a due fasce |
-| 7–10 | 6–8 e 9–11 | 10 anni cade in 9–11 |
+| 6–7 | 6–8 (5 cade nella prima) | Si sovrappone a due fasce |
+| 8–10 | 6–8 e 9–11 | 10 anni cade in 9–11 |
 
 **Scelta proposta: "5 and under".** Motivi: (1) è la fascia del bambino più piccolo che può usare l'app (3 anni) e le regole più severe valgono per tutti; (2) non scegliamo una fascia più alta per "allargare" il pubblico, perché le linee guida si leggono sul bambino più piccolo; (3) l'app ha già il comportamento più prudente per tutte le età (nessuna pubblicità, nessun account del bambino, nessun link esterno). Da verificare: se App Store Connect consente di indicare più fasce o una sola; se una sola, questa è la scelta. L'età nominale 3–10 va comunque dichiarata nella descrizione.
 

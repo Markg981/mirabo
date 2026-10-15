@@ -1,6 +1,6 @@
 # Comment en parler : Le flocon qui ne voulait pas tomber
 
-**Pourquoi ce thème à 5–7 ans.** Avec l'entrée à l'école arrivent les premières épreuves (lire, écrire, jouer en équipe) et avec elles la peur de se tromper. Certains enfants préfèrent ne pas essayer plutôt que de faire une erreur. Le flocon donne un nom à cette peur et montre qu'on peut avoir peur et essayer quand même.
+**Pourquoi ce thème à 6–7 ans.** Avec l'entrée à l'école arrivent les premières épreuves (lire, écrire, jouer en équipe) et avec elles la peur de se tromper. Certains enfants préfèrent ne pas essayer plutôt que de faire une erreur. Le flocon donne un nom à cette peur et montre qu'on peut avoir peur et essayer quand même.
 
 ## Trois questions après l'histoire
 

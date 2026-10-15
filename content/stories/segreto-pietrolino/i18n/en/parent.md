@@ -1,6 +1,6 @@
 # How to talk about it: Pietrolino's Secret
 
-**Why this topic at 7–10.** This is the season finale: Pietrolino says goodbye to Emma and goes back to being a pebble of the wood. At this age children face their first important goodbyes (a friend who moves away, a change of school, a grandparent who is no longer here, a pet) and look for a way to give a place to what they feel. The story shows that you can be sad, cry, be comforted, and then keep with you what you've learned. That's why it is only read together.
+**Why this topic at 8–10.** This is the season finale: Pietrolino says goodbye to Emma and goes back to being a pebble of the wood. At this age children face their first important goodbyes (a friend who moves away, a change of school, a grandparent who is no longer here, a pet) and look for a way to give a place to what they feel. The story shows that you can be sad, cry, be comforted, and then keep with you what you've learned. That's why it is only read together.
 
 ## Three questions after the story
 

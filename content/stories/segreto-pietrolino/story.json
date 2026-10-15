@@ -6,7 +6,7 @@
   "topic": "salutarsi",
   "series": "emma-pietrolino",
   "episode": 10,
-  "ageBands": { "7-10": "7-10.json" },
+  "ageBands": { "8-10": "8-10.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": true,
   "keyPhrase": "Chi ci ha insegnato qualcosa resta con noi, in quello che facciamo.",

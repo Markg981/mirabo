@@ -6,7 +6,7 @@
   "topic": "silenzio",
   "series": "emma-pietrolino",
   "episode": 8,
-  "ageBands": { "5-7": "5-7.json" },
+  "ageBands": { "6-7": "6-7.json" },
   "formats": ["illustrated", "audio"],
   "togetherOnly": false,
   "keyPhrase": "Le risposte più belle si trovano nel silenzio.",

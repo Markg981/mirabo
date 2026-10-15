@@ -1,6 +1,6 @@
 # How to talk about it: The Sleeping Wood
 
-**Why this topic at 5–7.** Many children experience sleep as a loss ("I'll miss the games") or link it to the sadness of the dark. The story presents it as something all of nature does, to grow and start again, and shows that stopping is not giving up.
+**Why this topic at 6–7.** Many children experience sleep as a loss ("I'll miss the games") or link it to the sadness of the dark. The story presents it as something all of nature does, to grow and start again, and shows that stopping is not giving up.
 
 ## Three questions after the story
 

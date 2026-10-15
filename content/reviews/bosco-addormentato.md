@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Bosco Addormentato
 
-`bosco-addormentato` v1 · mondo emozioni · tema riposo · fasce 5-7
+`bosco-addormentato` v1 · mondo emozioni · tema riposo · fasce 6-7
 
 **Frase-chiave.** Anche i cuori coraggiosi sanno quando fermarsi.
 
@@ -12,7 +12,7 @@
 - fonte da verificare: Raccomandazioni pediatriche sul sonno nell'età prescolare e scolare (da verificare)
 - fonte da verificare: Materiali divulgativi sul letargo degli animali (da verificare)
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

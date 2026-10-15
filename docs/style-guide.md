@@ -23,13 +23,18 @@ controlla `studio/validate.py`: se cambiano qui, vanno cambiate anche lì.
 Valori indicativi, ricavati dalle storie già scritte. In 3–5 le prime varianti sono quelle di
 *Il vulcano di Lia*, *Il Sassolino Magico* e *La Piccola Goccia Ribelle*.
 
-| | 3–5 | 5–7 | 7–10 |
+| | 3–5 | 6–7 | 8–10 |
 | --- | --- | --- | --- |
-| Schermate | 5–7 | 7–10 | 8–10 |
+| Schermate | 6–7 | 8–10 | 8–10 |
 | Parole per schermata | fino a 25 | 30–45, mai oltre 60 | 40–55, mai oltre 70 |
 | Battuta del compagno | 1 frase, fino a 12 parole | 1–3 frasi, fino a 25 parole | 1–3 frasi, fino a 25 parole |
 | Opzioni nella pausa di dialogo | al massimo 2 **[V]** | al massimo 3 **[V]** | al massimo 3 **[V]** |
+| Prospettiva (`design`) | il protagonista **[V]** | il protagonista o chi aiuta un altro **[V]** | almeno due punti di vista sullo stesso fatto **[V]** |
+| Struttura (`design`) | un problema, una risposta **[V]** | una scelta e la sua conseguenza **[V]** | un dilemma senza risposta unica **[V]** |
 | Temi | un'emozione o un gesto | un problema e un gesto per risolverlo | anche perdita, saluto, cambiamento |
+
+I limiti **[V]** di questa tabella vengono dalle schede delle fasce (`content/education/bands.json`,
+[`age-bands.md`](age-bands.md)): se cambiano, si cambia la scheda.
 
 ## Struttura di una storia
 
@@ -204,8 +209,8 @@ Titolo `# Come parlarne: <titolo della storia>`, poi queste sezioni, nell'ordine
    per il genitore, il bambino la fa senza tornare nell'app e il tablet non verifica né premia.
    Per ogni fascia: materiali comuni di casa, preparazione dell'adulto, supervisione (con il
    bambino / vicino / lasciarlo fare) e alternative. Esempio: *La tavola degli ospiti* — 3–5
-   prepara due posti con oggetti messi a disposizione dall'adulto; 5–7 organizza parte della
-   tavola e controlla che persone e oggetti corrispondano; 7–10 disegna un piano, lo prova e
+   prepara due posti con oggetti messi a disposizione dall'adulto; 6–7 organizza parte della
+   tavola e controlla che persone e oggetti corrispondano; 8–10 disegna un piano, lo prova e
    racconta cosa ha modificato. Esempio reale: *I cerchi del sassolino* in `sassolino-magico`.
 4. `## Errori comuni`: tre punti, ognuno con il perché in poche parole.
 5. `## Se qualcosa ti preoccupa` (facoltativa, obbligatoria per paure, rabbia, perdita, sicurezza):

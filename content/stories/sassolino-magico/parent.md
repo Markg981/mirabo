@@ -1,6 +1,6 @@
 # Come parlarne: Il Sassolino Magico
 
-**Perché questo tema a 5–7 anni.** È l'episodio che presenta Emma, la nonna e Pietrolino. Il messaggio è uno solo: le cose si notano quando ci si ferma. A questa età fermarsi è difficile, e proprio per questo diventa un gioco interessante.
+**Perché questo tema a 6–7 anni.** È l'episodio che presenta Emma, la nonna e Pietrolino. Il messaggio è uno solo: le cose si notano quando ci si ferma. A questa età fermarsi è difficile, e proprio per questo diventa un gioco interessante.
 
 ## Tre domande dopo la storia
 

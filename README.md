@@ -31,7 +31,7 @@ La build iOS richiede macOS: la fa la CI (`.github/workflows/ci.yml`) su un runn
 
 ## Contenuti
 
-Ogni storia è una cartella in `content/stories/<id>/` con un `story.json` (metadati) e un file per fascia d'età (`3-5.json`, `5-7.json`, `7-10.json`). Il formato è in `docs/story-format.md` e lo schema in `content/schema/`.
+Ogni storia è una cartella in `content/stories/<id>/` con un `story.json` (metadati) e un file per fascia d'età (`3-5.json`, `6-7.json`, `8-10.json`). Il formato è in `docs/story-format.md` e lo schema in `content/schema/`.
 
 ```
 python studio/validate.py            # controlla tutti i pacchetti

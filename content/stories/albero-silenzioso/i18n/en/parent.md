@@ -1,6 +1,6 @@
 # How to talk about it: The Tree That Stopped Talking
 
-**Why this topic at 5–7.** Children understand well that a living thing can feel unwell too. The story shows that taking care is made of small, repeated actions (cleaning up, planting, staying close), not a magic gesture, and that results come with time.
+**Why this topic at 6–7.** Children understand well that a living thing can feel unwell too. The story shows that taking care is made of small, repeated actions (cleaning up, planting, staying close), not a magic gesture, and that results come with time.
 
 ## Three questions after the story
 

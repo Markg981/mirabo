@@ -1,6 +1,6 @@
 # How to talk about it: The Owl of Silence
 
-**Why this topic at 5–7.** Children today live surrounded by sound: voices, screens, background noise. Silence can seem empty or even frightening. The story turns it into a full experience, shared with an adult, and links it to a simple way to calm down: listening to your own breathing.
+**Why this topic at 6–7.** Children today live surrounded by sound: voices, screens, background noise. Silence can seem empty or even frightening. The story turns it into a full experience, shared with an adult, and links it to a simple way to calm down: listening to your own breathing.
 
 ## Three questions after the story
 

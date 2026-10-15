@@ -1,6 +1,6 @@
 # Come parlarne: Il Risveglio del Bosco
 
-**Perché questo tema a 5–7 anni.** Dopo aver visto il bosco addormentarsi, il bambino lo ritrova sveglio ma ferito. La storia insiste su due cose: le cose pericolose (lattine arrugginite, vetro) le tocca un adulto con i guanti, e gli animali selvatici si aiutano senza prenderli in mano. E porta la cura del bosco a scuola, con i compagni: da soli si fa qualcosa, insieme si fa di più.
+**Perché questo tema a 6–7 anni.** Dopo aver visto il bosco addormentarsi, il bambino lo ritrova sveglio ma ferito. La storia insiste su due cose: le cose pericolose (lattine arrugginite, vetro) le tocca un adulto con i guanti, e gli animali selvatici si aiutano senza prenderli in mano. E porta la cura del bosco a scuola, con i compagni: da soli si fa qualcosa, insieme si fa di più.
 
 ## Tre domande dopo la storia
 

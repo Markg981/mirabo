@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Segreto di Pietrolino
 
-`segreto-pietrolino` v1 · mondo emozioni · tema salutarsi · fasce 7-10 · solo insieme
+`segreto-pietrolino` v1 · mondo emozioni · tema salutarsi · fasce 8-10 · solo insieme
 
 **Frase-chiave.** Chi ci ha insegnato qualcosa resta con noi, in quello che facciamo.
 
@@ -12,7 +12,7 @@
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Letteratura per l'infanzia e indicazioni psicologiche su separazioni e saluti (da verificare)
 
-## La storia (7-10 anni)
+## La storia (8-10 anni)
 
 ### 1. hook
 

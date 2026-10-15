@@ -674,11 +674,35 @@ abstract class AppLocalizations {
   /// **'Trova le coppie: {count} coppie.'**
   String gameMemoryDesc(int count);
 
+  /// No description provided for @gameMemoryDescFood.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} coppie animale e cibo: non si somigliano, vanno insieme.'**
+  String gameMemoryDescFood(Object count);
+
+  /// No description provided for @gameMemoryDescHome.
+  ///
+  /// In it, this message translates to:
+  /// **'{count} terne animale, cibo e casa: tre carte per volta.'**
+  String gameMemoryDescHome(Object count);
+
   /// No description provided for @memoryIntro.
   ///
   /// In it, this message translates to:
   /// **'Trova le coppie di animali uguali.'**
   String get memoryIntro;
+
+  /// No description provided for @memoryIntroFood.
+  ///
+  /// In it, this message translates to:
+  /// **'Trova chi mangia cosa: un animale e il suo cibo.'**
+  String get memoryIntroFood;
+
+  /// No description provided for @memoryIntroHome.
+  ///
+  /// In it, this message translates to:
+  /// **'Gira tre carte: un animale, il suo cibo e la sua casa.'**
+  String get memoryIntroHome;
 
   /// No description provided for @memoryCovered.
   ///
@@ -691,6 +715,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'{animal, select, dog{il cane} cat{il gatto} rabbit{il coniglio} fox{la volpe} bear{l\'orso} panda{il panda} frog{la rana} monkey{la scimmia} lion{il leone} tiger{la tigre} cow{la mucca} pig{il maiale} other{{animal}}}'**
   String animalName(String animal);
+
+  /// No description provided for @memoryItemName.
+  ///
+  /// In it, this message translates to:
+  /// **'{item, select, squirrel{lo scoiattolo} penguin{il pinguino} monkey{la scimmia} rabbit{il coniglio} bear{l\'orso} panda{il panda} chestnut{la castagna} fish{il pesce} banana{la banana} carrot{la carota} honey{il miele} bamboo{il bambù} tree{l\'albero} ice{il ghiaccio} palm{la palma} burrow{la tana} forest{il bosco} mountain{la montagna} other{{item}}}'**
+  String memoryItemName(String item);
 
   /// No description provided for @gameBalloonsTitle.
   ///
@@ -797,13 +827,13 @@ abstract class AppLocalizations {
   /// No description provided for @gameShapesDescMid.
   ///
   /// In it, this message translates to:
-  /// **'Cinque forme da trascinare nel buco giusto.'**
+  /// **'Cinque forme, i buchi sono girati: la stessa forma in un\'altra posizione.'**
   String get gameShapesDescMid;
 
   /// No description provided for @gameShapesDescBig.
   ///
   /// In it, this message translates to:
-  /// **'Sei forme, grandi e piccole: attenzione alla misura.'**
+  /// **'Sei forme girate, grandi e piccole: attenzione alla misura.'**
   String get gameShapesDescBig;
 
   /// No description provided for @shapesIntro.
@@ -812,10 +842,16 @@ abstract class AppLocalizations {
   /// **'Metti ogni forma nel suo buco.'**
   String get shapesIntro;
 
+  /// No description provided for @shapesIntroTurned.
+  ///
+  /// In it, this message translates to:
+  /// **'Metti ogni forma nel suo buco. I buchi sono girati: guarda bene la forma.'**
+  String get shapesIntroTurned;
+
   /// No description provided for @shapesIntroBig.
   ///
   /// In it, this message translates to:
-  /// **'Metti ogni forma nel suo buco. Attenzione alla misura: grandi e piccole.'**
+  /// **'Metti ogni forma nel suo buco. I buchi sono girati, e ci sono forme grandi e piccole.'**
   String get shapesIntroBig;
 
   /// No description provided for @shapesWrong.
@@ -1735,6 +1771,24 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'{band, select, small{Piccoli} mid{Primi passi} big{Grandi} other{{band}}}'**
   String ageBandLabel(String band);
+
+  /// No description provided for @bandConfirmTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Le fasce d\'età sono cambiate: {name} era in {old} anni. In quale fascia è adesso?'**
+  String bandConfirmTitle(Object name, Object old);
+
+  /// No description provided for @bandConfirmHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Finché non scegli, {name} vede le stesse storie e gli stessi giochi di prima. Voce, testo e aiuti restano come li hai impostati.'**
+  String bandConfirmHint(Object name);
+
+  /// No description provided for @profileBandToConfirm.
+  ///
+  /// In it, this message translates to:
+  /// **'Prima era {old} anni: scegli la fascia di adesso.'**
+  String profileBandToConfirm(Object old);
 
   /// No description provided for @profileLanguage.
   ///

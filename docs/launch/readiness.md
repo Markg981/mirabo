@@ -15,7 +15,7 @@ Responsabili: CPO e referente privacy.
 
 - [ ] Mercati: Italia/UE e USA, elenco dei Paesi in cui si pubblica
 - [ ] Piattaforme: iOS 15+ e Android 8+, tablet prima di tutto
-- [ ] Catalogo: elenco delle raccolte incluse, per lingua e fascia (3–5, 5–7, 7–10)
+- [ ] Catalogo: elenco delle raccolte incluse, per lingua e fascia (3–5, 6–7, 8–10)
 - [ ] Offerta: cosa è gratuito, cosa no, in una frase che un genitore sa ripetere
 - [ ] Dati necessari: solo quelli dell'inventario, nessun dato in più
 - [ ] Funzioni rinviate: elenco scritto, con motivo

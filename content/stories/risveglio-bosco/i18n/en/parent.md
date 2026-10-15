@@ -1,6 +1,6 @@
 # How to talk about it: The Wood Wakes Up
 
-**Why this topic at 5–7.** Having watched the wood fall asleep, the child finds it awake again but hurt. The story stresses two things: dangerous things (rusty cans, glass) are handled by an adult wearing gloves, and wild animals are helped without picking them up. And it takes caring for the wood to school, with classmates: alone you can do something, together you can do more.
+**Why this topic at 6–7.** Having watched the wood fall asleep, the child finds it awake again but hurt. The story stresses two things: dangerous things (rusty cans, glass) are handled by an adult wearing gloves, and wild animals are helped without picking them up. And it takes caring for the wood to school, with classmates: alone you can do something, together you can do more.
 
 ## Three questions after the story
 

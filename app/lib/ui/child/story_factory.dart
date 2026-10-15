@@ -172,7 +172,7 @@ class _MadeStoryCard extends StatelessWidget {
 }
 
 /// Le scelte, una alla volta: il compagno fa la domanda, il bambino tocca
-/// una figura e sente il suo nome. In fascia 7–10 alla fine dà il titolo.
+/// una figura e sente il suo nome. In fascia 8–10 alla fine dà il titolo.
 class _FactoryBuilder extends StatefulWidget {
   const _FactoryBuilder();
 
@@ -188,7 +188,7 @@ class _FactoryBuilderState extends State<_FactoryBuilder> {
   int _step = 0;
   bool _saving = false;
 
-  bool get _asksTitle => _profile.ageBand == AgeBand.b7to10;
+  bool get _asksTitle => _profile.ageBand == AgeBand.b8to10;
   int get _count => FactoryStep.values.length + (_asksTitle ? 1 : 0);
   bool get _onTitle => _step == FactoryStep.values.length;
   bool get _isLast => _step == _count - 1;
@@ -461,9 +461,9 @@ class _MadeStoryReaderState extends State<MadeStoryReader> {
     _read();
   }
 
-  /// 7–10: sull'ultima pagina si provano gli altri finali e si confrontano.
+  /// 8–10: sull'ultima pagina si provano gli altri finali e si confrontano.
   /// La scelta resta solo per questa lettura: la storia salvata non cambia.
-  bool get _comparesEndings => _profile.ageBand == AgeBand.b7to10 && _index == _pages.length - 1;
+  bool get _comparesEndings => _profile.ageBand == AgeBand.b8to10 && _index == _pages.length - 1;
 
   void _tryEnding(String id) {
     setState(() {

@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El arroyo triste
 
-**Por qué este tema a los 5–7 años.** A esta edad los niños ven la basura en la naturaleza y a menudo les afecta más que a los adultos; la historia les da un gesto posible y un adulto que lo hace seguro, para que la inquietud se convierta en acción en lugar de en ansiedad.
+**Por qué este tema a los 6–7 años.** A esta edad los niños ven la basura en la naturaleza y a menudo les afecta más que a los adultos; la historia les da un gesto posible y un adulto que lo hace seguro, para que la inquietud se convierta en acción en lugar de en ansiedad.
 
 ## Tres preguntas después de la historia
 

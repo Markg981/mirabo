@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il Sassolino Magico
 
-`sassolino-magico` v1 · mondo ambiente · tema ascolto · fasce 3-5, 5-7
+`sassolino-magico` v1 · mondo ambiente · tema ascolto · fasce 3-5, 6-7
 
 **Frase-chiave.** Anche un sassolino piccolo fa cerchi grandi nell'acqua.
 
@@ -8,7 +8,7 @@
 
 ## Avvisi della pre-revisione automatica
 
-- 5-7: 5 schermate, la fascia ne prevede 7-10
+- 6-7: 5 schermate, la fascia ne prevede 8-10
 - scheda genitore: fonti ancora "da verificare"
 - fonte da verificare: Materiali di educazione all'aperto e all'ascolto della natura per l'infanzia (da verificare)
 
@@ -74,7 +74,7 @@
 - **pilu**: Domani chiudo gli occhi e ascolto, {nome}. A domani.
 - **tango**: Domani mi fermo un minuto e ascolto, {nome}. A domani!
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

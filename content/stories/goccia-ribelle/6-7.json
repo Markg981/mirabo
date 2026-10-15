@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "L'acqua sprecata finisce nei tubi; Emma sceglie un gesto per usarla meglio."},
   "screens": [
     {
       "n": 1,

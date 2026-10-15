@@ -1,6 +1,6 @@
 # Revisione pedagogica: Il vulcano di Lia
 
-`lia-rabbia` v1 · mondo emozioni · tema rabbia · fasce 3-5, 5-7
+`lia-rabbia` v1 · mondo emozioni · tema rabbia · fasce 3-5, 6-7
 
 **Frase-chiave.** La rabbia è un vulcano: sale, esplode e poi si calma. Io posso aspettarla.
 
@@ -90,7 +90,7 @@ Nessuno.
 - **pilu**: Stasera provo il respiro del vulcano, {nome}. A domani.
 - **tango**: Domani respiro prima di correre, {nome}. A domani!
 
-## La storia (5-7 anni)
+## La storia (6-7 anni)
 
 ### 1. hook
 

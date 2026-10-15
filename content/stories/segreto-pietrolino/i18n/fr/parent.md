@@ -1,6 +1,6 @@
 # Comment en parler : Le secret de Pietrolino
 
-**Pourquoi ce thème à 7–10 ans.** C'est le final de la saison : Pietrolino dit au revoir à Emma et redevient un caillou du bois. À cet âge, les enfants vivent leurs premiers au revoir importants (un ami qui déménage, un changement d'école, un grand-parent qui n'est plus là, un animal) et cherchent une façon de donner une place à ce qu'ils ressentent. L'histoire montre qu'on peut être triste, pleurer, se laisser consoler, puis garder avec soi ce qu'on a appris. C'est pour cela qu'elle se lit seulement ensemble.
+**Pourquoi ce thème à 8–10 ans.** C'est le final de la saison : Pietrolino dit au revoir à Emma et redevient un caillou du bois. À cet âge, les enfants vivent leurs premiers au revoir importants (un ami qui déménage, un changement d'école, un grand-parent qui n'est plus là, un animal) et cherchent une façon de donner une place à ce qu'ils ressentent. L'histoire montre qu'on peut être triste, pleurer, se laisser consoler, puis garder avec soi ce qu'on a appris. C'est pour cela qu'elle se lit seulement ensemble.
 
 ## Trois questions après l'histoire
 

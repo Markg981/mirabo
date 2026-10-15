@@ -54,9 +54,9 @@ void main() {
   group('modello', () {
     test("i valori iniziali vengono dalla fascia d'età", () {
       expect(InteractionProfile.forAge(AgeBand.b3to5), _small);
-      expect(InteractionProfile.forAge(AgeBand.b5to7),
+      expect(InteractionProfile.forAge(AgeBand.b6to7),
           const InteractionProfile(hands: 2, reading: ReadingLevel.letters, autonomy: 2));
-      expect(InteractionProfile.forAge(AgeBand.b7to10).hands, 3);
+      expect(InteractionProfile.forAge(AgeBand.b8to10).hands, 3);
       const p = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b3to5, companion: CompanionId.bo);
       expect(p.interaction, _small);
     });

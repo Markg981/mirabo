@@ -22,7 +22,7 @@ Story _story(String id, {String world = 'emozioni', bool togetherOnly = false, S
       'title': 'Storia $id',
       'world': world,
       'topic': 't',
-      'ageBands': {'3-5': 'v.json', '5-7': 'v.json'},
+      'ageBands': {'3-5': 'v.json', '6-7': 'v.json'},
       'formats': ['read'],
       'togetherOnly': togetherOnly,
       'keyPhrase': 'k',
@@ -37,7 +37,7 @@ Activity _activity(String id, {String offscreen = 'Giocare a turni con un timer.
       'area': 'sociale',
       'skill': 'x',
       'type': 'tapMatch',
-      'ageBands': ['3-5', '5-7'],
+      'ageBands': ['3-5', '6-7'],
       'intro': {'bo': 'b', 'pilu': 'p', 'tango': 't'},
       'outro': {'bo': 'b', 'pilu': 'p', 'tango': 't'},
       'offscreen': offscreen,
@@ -127,7 +127,7 @@ void main() {
     expect(_keys(nat, ExperienceMode.practice), ['gesture:goccia', 'activity:versare']);
 
     // Fascia senza cella: tre modalità vuote, nessun errore.
-    final big = _catalog.resolve(ChildTheme.autonomiaScuola, AgeBand.b7to10, stories: r.stories, activities: r.activities);
+    final big = _catalog.resolve(ChildTheme.autonomiaScuola, AgeBand.b8to10, stories: r.stories, activities: r.activities);
     expect(big.keys, ExperienceMode.values);
     expect(big.values.every((l) => l.isEmpty), isTrue);
   });

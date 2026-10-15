@@ -1,6 +1,6 @@
 # How to talk about it: The Snowflake That Didn't Want to Fall
 
-**Why this topic at 5–7.** Starting school brings the first challenges (reading, writing, team games) and with them the fear of getting things wrong. Some children would rather not try than make a mistake. The snowflake gives this fear a name and shows that you can be scared and still have a go.
+**Why this topic at 6–7.** Starting school brings the first challenges (reading, writing, team games) and with them the fear of getting things wrong. Some children would rather not try than make a mistake. The snowflake gives this fear a name and shows that you can be scared and still have a go.
 
 ## Three questions after the story
 

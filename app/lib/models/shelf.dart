@@ -128,8 +128,8 @@ abstract final class Shelf {
   /// Uno sguardo basta per vederli tutti e scegliere davvero.
   static int size(AgeBand band) => switch (band) {
         AgeBand.b3to5 => 4,
-        AgeBand.b5to7 => 6,
-        AgeBand.b7to10 => 8,
+        AgeBand.b6to7 => 6,
+        AgeBand.b8to10 => 8,
       };
 
   /// Dispone i materiali disponibili sulla mensola, capacità per capacità

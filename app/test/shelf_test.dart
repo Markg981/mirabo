@@ -16,7 +16,7 @@ Activity _activity(String id, String area, {String skill = 'x'}) => Activity.fro
       'area': area,
       'skill': skill,
       'type': 'tapMatch',
-      'ageBands': ['5-7'],
+      'ageBands': ['6-7'],
       'intro': {'bo': 'b', 'pilu': 'p', 'tango': 't'},
       'outro': {'bo': 'b', 'pilu': 'p', 'tango': 't'},
       'offscreen': 'o',
@@ -57,7 +57,7 @@ void main() {
 
   test('in automatico pochi materiali per fascia, una capacità per volta', () {
     final available = _items();
-    for (final (band, size) in [(AgeBand.b3to5, 4), (AgeBand.b5to7, 6), (AgeBand.b7to10, 8)]) {
+    for (final (band, size) in [(AgeBand.b3to5, 4), (AgeBand.b6to7, 6), (AgeBand.b8to10, 8)]) {
       final keys = Shelf.keysOf(Shelf.arrange(available, null, band));
       expect(keys, hasLength(size), reason: band.key);
       expect(_perCapacity(keys, available).values.every((n) => n <= Shelf.maxPerCapacity), isTrue);
@@ -65,8 +65,8 @@ void main() {
     // 3-5: le prime quattro capacità, una ciascuna.
     expect(Shelf.arrange(available, null, AgeBand.b3to5).keys,
         [Capacity.insieme, Capacity.mani, Capacity.sensi, Capacity.parole]);
-    // 7-10: un giro completo, poi il secondo riparte dalla prima capacità.
-    final big = Shelf.arrange(available, null, AgeBand.b7to10);
+    // 8-10: un giro completo, poi il secondo riparte dalla prima capacità.
+    final big = Shelf.arrange(available, null, AgeBand.b8to10);
     expect(big[Capacity.insieme]!.length, 2);
     expect(big[Capacity.mani]!.length, 2);
     expect(big[Capacity.mondo]!.length, 1);
@@ -79,7 +79,7 @@ void main() {
       _game('drawing'),
       ActivityItem(_activity('cu0', 'cultura')),
     ];
-    final shelf = Shelf.arrange(available, null, AgeBand.b7to10);
+    final shelf = Shelf.arrange(available, null, AgeBand.b8to10);
 
     expect(shelf.keys, [Capacity.mani, Capacity.mondo]);
     expect(shelf[Capacity.mani]!.map((i) => i.key), ['activity:vp0', 'activity:au0']);
@@ -101,11 +101,11 @@ void main() {
           'activity:vp1',
           'activity:vp0',
         ],
-        AgeBand.b5to7);
+        AgeBand.b6to7);
 
     expect(shelf[Capacity.mani]!.map((i) => i.key), ['activity:vp4', 'activity:vp2']);
     expect(shelf[Capacity.pensare]!.map((i) => i.key), ['game:memory']);
-    expect(Shelf.arrange(available, const [], AgeBand.b5to7), isEmpty);
+    expect(Shelf.arrange(available, const [], AgeBand.b6to7), isEmpty);
 
     // Il tetto totale vale anche per la scelta del genitore.
     final all = _items();
@@ -119,7 +119,7 @@ void main() {
             {List<ShelfUse> usage = const [], List<ShelfStint> history = const [], DateTime? now}) =>
         Shelf.rotate(
           available: available,
-          band: AgeBand.b5to7,
+          band: AgeBand.b6to7,
           current: current,
           usage: usage,
           history: history,
@@ -127,7 +127,7 @@ void main() {
         );
 
     test('la prima mensola è quella che si riempie da sola', () {
-      expect(rotate(const []), Shelf.keysOf(Shelf.arrange(available, null, AgeBand.b5to7)));
+      expect(rotate(const []), Shelf.keysOf(Shelf.arrange(available, null, AgeBand.b6to7)));
     });
 
     test('dopo una settimana cambia, ma un materiale usato tre volte resta', () {
@@ -197,7 +197,7 @@ void main() {
     test('con un catalogo piccolo la mensola non resta vuota', () {
       final few = available.where((i) => i.capacity == Capacity.mani).toList();
       List<String> turn(List<String> current, DateTime now) => Shelf.rotate(
-          available: few, band: AgeBand.b5to7, current: current, usage: const [], history: const [], now: now);
+          available: few, band: AgeBand.b6to7, current: current, usage: const [], history: const [], now: now);
       final first = turn(const [], t0);
       final next = turn(first, t0.add(const Duration(days: 7)));
       expect(first, hasLength(2));
@@ -210,7 +210,7 @@ void main() {
     late DateTime now;
     late _FakeDb db;
     late AppState state;
-    const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b5to7, companion: CompanionId.tango);
+    const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango);
 
     setUp(() async {
       now = DateTime(2026, 10, 5, 9);
@@ -238,7 +238,7 @@ void main() {
       final second = shown();
       expect(second, isNot(first));
       expect(second, contains(worked));
-      expect(second.length, lessThanOrEqualTo(Shelf.size(AgeBand.b5to7)));
+      expect(second.length, lessThanOrEqualTo(Shelf.size(AgeBand.b6to7)));
       expect(state.currentProfile!.shelfRotatedAt, now);
     });
 
@@ -263,7 +263,7 @@ void main() {
   });
 
   test('la mensola resta nel profilo; senza colonna (backup v4) è automatica', () {
-    const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b5to7, companion: CompanionId.tango, readAlong: false);
+    const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango, readAlong: false);
     final chosen = base.withShelf(['activity:vp0', 'game:memory']);
 
     expect(ChildProfile.fromRow(chosen.toRow()).shelf, ['activity:vp0', 'game:memory']);

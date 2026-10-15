@@ -10,8 +10,9 @@ import 'shapes_game.dart';
 import 'slide_puzzle_game.dart';
 import 'xylophone_game.dart';
 
-/// Quello che un gioco riceve dal guscio: la fascia d'età (decide la
-/// difficoltà), la voce del compagno, il segnale di fine partita.
+/// Quello che un gioco riceve dal guscio: la fascia d'età (decide il problema
+/// da risolvere, vedi content/education/bands.json), la voce del compagno, il
+/// segnale di fine partita.
 class GameContext {
   const GameContext({required this.band, required this.say, required this.onFinished, required this.calm});
 
@@ -51,7 +52,7 @@ class GameInfo {
   final Widget Function(GameContext ctx) build;
 }
 
-const _all = {AgeBand.b3to5, AgeBand.b5to7, AgeBand.b7to10};
+const _all = {AgeBand.b3to5, AgeBand.b6to7, AgeBand.b8to10};
 
 final List<GameInfo> gameCatalog = [
   GameInfo(
@@ -60,7 +61,11 @@ final List<GameInfo> gameCatalog = [
     emojis: const ['🐶', '🐱', '🐰'],
     color: MiraboColors.plum,
     bands: _all,
-    describe: (l, b) => l.gameMemoryDesc(MemoryGame.pairsFor(b)),
+    describe: (l, b) => switch (MemoryGame.ruleFor(b)) {
+      MemoryRule.same => l.gameMemoryDesc(MemoryGame.groupsFor(b)),
+      MemoryRule.food => l.gameMemoryDescFood(MemoryGame.groupsFor(b)),
+      MemoryRule.foodAndHome => l.gameMemoryDescHome(MemoryGame.groupsFor(b)),
+    },
     build: (ctx) => MemoryGame(ctx: ctx),
   ),
   GameInfo(
@@ -71,8 +76,8 @@ final List<GameInfo> gameCatalog = [
     bands: _all,
     describe: (l, b) => switch (b) {
       AgeBand.b3to5 => l.gameBalloonsDescSmall,
-      AgeBand.b5to7 => l.gameBalloonsDescMid,
-      AgeBand.b7to10 => l.gameBalloonsDescBig,
+      AgeBand.b6to7 => l.gameBalloonsDescMid,
+      AgeBand.b8to10 => l.gameBalloonsDescBig,
     },
     build: (ctx) => BalloonGame(ctx: ctx),
   ),
@@ -84,8 +89,8 @@ final List<GameInfo> gameCatalog = [
     bands: _all,
     describe: (l, b) => switch (b) {
       AgeBand.b3to5 => l.gameShapesDescSmall,
-      AgeBand.b5to7 => l.gameShapesDescMid,
-      AgeBand.b7to10 => l.gameShapesDescBig,
+      AgeBand.b6to7 => l.gameShapesDescMid,
+      AgeBand.b8to10 => l.gameShapesDescBig,
     },
     build: (ctx) => ShapesGame(ctx: ctx),
   ),
@@ -112,7 +117,7 @@ final List<GameInfo> gameCatalog = [
     title: (l) => l.gamePuzzleTitle,
     emojis: const ['🔢', '🧩', '➡️'],
     color: MiraboColors.teal,
-    bands: const {AgeBand.b7to10},
+    bands: const {AgeBand.b8to10},
     describe: (l, _) => l.gamePuzzleDesc,
     build: (ctx) => SlidePuzzleGame(ctx: ctx),
   ),

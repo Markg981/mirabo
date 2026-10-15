@@ -1,6 +1,6 @@
 # Comment en parler : L'arbre qui ne parlait plus
 
-**Pourquoi ce thème à 5–7 ans.** Les enfants comprennent bien qu'un être vivant peut aussi aller mal. L'histoire montre que prendre soin, ce sont de petites actions répétées (nettoyer, planter, rester près), pas un geste magique, et que les résultats viennent avec le temps.
+**Pourquoi ce thème à 6–7 ans.** Les enfants comprennent bien qu'un être vivant peut aussi aller mal. L'histoire montre que prendre soin, ce sont de petites actions répétées (nettoyer, planter, rester près), pas un geste magique, et que les résultats viennent avec le temps.
 
 ## Trois questions après l'histoire
 

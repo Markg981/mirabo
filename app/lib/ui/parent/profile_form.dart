@@ -29,7 +29,11 @@ class ProfileForm extends StatefulWidget {
 
 class _ProfileFormState extends State<ProfileForm> {
   late final _name = TextEditingController(text: widget.existing?.name ?? '');
-  late AgeBand _band = widget.existing?.ageBand ?? widget.initialBand ?? AgeBand.b5to7;
+  late AgeBand _band = widget.existing?.ageBand ?? widget.initialBand ?? AgeBand.b6to7;
+
+  /// Un profilo con la fascia di prima (5-7, 7-10): nessuna fascia è scelta
+  /// finché l'adulto non ne tocca una, e salvare senza sceglierla non la conferma.
+  late bool _bandConfirmed = widget.existing?.bandToConfirm == null;
   CompanionId? _companion;
   late Set<World> _worlds = widget.existing?.enabledWorlds ?? World.values.toSet();
   late bool _safetyTogetherOnly = widget.existing?.safetyTogetherOnly ?? true;
@@ -45,6 +49,7 @@ class _ProfileFormState extends State<ProfileForm> {
 
   void _setBand(AgeBand b) => setState(() {
         _band = b;
+        _bandConfirmed = true;
         if (!_interactionChosen) _interaction = InteractionProfile.forAge(b);
       });
 
@@ -83,6 +88,7 @@ class _ProfileFormState extends State<ProfileForm> {
       await state.updateProfile(existing.copyWith(
         name: _name.text.trim(),
         ageBand: _band,
+        bandConfirmed: _bandConfirmed,
         enabledWorlds: _worlds,
         safetyTogetherOnly: _safetyTogetherOnly,
         dyslexiaFont: _dyslexia,
@@ -143,6 +149,10 @@ class _ProfileFormState extends State<ProfileForm> {
                     ),
                     const SizedBox(height: 20),
                     Text(l.profileAge, style: text.titleSmall),
+                    if (widget.existing?.bandToConfirm case final old? when !_bandConfirmed) ...[
+                      const SizedBox(height: 6),
+                      Text(l.profileBandToConfirm(old.key.replaceAll('-', '–')), style: text.bodyMedium),
+                    ],
                     const SizedBox(height: 10),
                     Row(
                       children: [
@@ -151,7 +161,7 @@ class _ProfileFormState extends State<ProfileForm> {
                             child: _AgeOption(
                               label: l.ageBandLabel(_bandKey(b)),
                               years: l.profileYears(b.key),
-                              selected: _band == b,
+                              selected: _bandConfirmed && _band == b,
                               onTap: () => _setBand(b),
                             ),
                           ),
@@ -374,8 +384,8 @@ class _ProfileFormState extends State<ProfileForm> {
 
   static String _bandKey(AgeBand b) => switch (b) {
         AgeBand.b3to5 => 'small',
-        AgeBand.b5to7 => 'mid',
-        AgeBand.b7to10 => 'big',
+        AgeBand.b6to7 => 'mid',
+        AgeBand.b8to10 => 'big',
       };
 }
 

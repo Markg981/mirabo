@@ -19,8 +19,8 @@
       "additionalProperties": false,
       "properties": {
         "3-5": { "type": "string" },
-        "5-7": { "type": "string" },
-        "7-10": { "type": "string" }
+        "6-7": { "type": "string" },
+        "8-10": { "type": "string" }
       }
     },
     "formats": {

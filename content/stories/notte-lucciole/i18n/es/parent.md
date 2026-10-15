@@ -1,6 +1,6 @@
 # Cómo hablar de ello: La noche de las luciérnagas
 
-**Por qué este tema a los 5–7 años.** A esta edad muchos niños tienen miedo a la oscuridad. La historia no niega el miedo: lo pone junto a la curiosidad y a una mano que coger, y muestra que estar a oscuras con un adulto de confianza puede convertirse en un momento de maravilla.
+**Por qué este tema a los 6–7 años.** A esta edad muchos niños tienen miedo a la oscuridad. La historia no niega el miedo: lo pone junto a la curiosidad y a una mano que coger, y muestra que estar a oscuras con un adulto de confianza puede convertirse en un momento de maravilla.
 
 ## Tres preguntas después de la historia
 

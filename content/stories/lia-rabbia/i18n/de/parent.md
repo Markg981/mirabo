@@ -1,6 +1,6 @@
 # Darüber sprechen: Lias Vulkan
 
-**Warum dieses Thema mit 5–7 Jahren.** In diesem Alter kommt die Wut noch auf einen Schlag, und das Kind hat noch nicht die Mittel, sie allein aufzuhalten; sie soll nicht weg, sie soll erkannt und begleitet werden. Ein Name und ein Bild (der Vulkan) und eine Geste (der Atem) geben ihm etwas zu tun, während sie vorbeigeht.
+**Warum dieses Thema mit 6–7 Jahren.** In diesem Alter kommt die Wut noch auf einen Schlag, und das Kind hat noch nicht die Mittel, sie allein aufzuhalten; sie soll nicht weg, sie soll erkannt und begleitet werden. Ein Name und ein Bild (der Vulkan) und eine Geste (der Atem) geben ihm etwas zu tun, während sie vorbeigeht.
 
 ## Drei Fragen nach der Geschichte
 

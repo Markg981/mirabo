@@ -1,6 +1,6 @@
 # Darüber sprechen: Die Schneeflocke, die nicht fallen wollte
 
-**Warum dieses Thema mit 5–7 Jahren.** Mit dem Schulanfang kommen die ersten Herausforderungen (lesen, schreiben, im Team spielen) und mit ihnen die Angst, Fehler zu machen. Manche Kinder versuchen es lieber gar nicht, als einen Fehler zu riskieren. Die Schneeflocke gibt dieser Angst einen Namen und zeigt, dass man Angst haben und es trotzdem versuchen kann.
+**Warum dieses Thema mit 6–7 Jahren.** Mit dem Schulanfang kommen die ersten Herausforderungen (lesen, schreiben, im Team spielen) und mit ihnen die Angst, Fehler zu machen. Manche Kinder versuchen es lieber gar nicht, als einen Fehler zu riskieren. Die Schneeflocke gibt dieser Angst einen Namen und zeigt, dass man Angst haben und es trotzdem versuchen kann.
 
 ## Drei Fragen nach der Geschichte
 

@@ -1,6 +1,6 @@
 # Come parlarne: La Civetta del Silenzio
 
-**Perché questo tema a 5–7 anni.** I bambini di oggi vivono immersi nei suoni: voci, schermi, rumori di fondo. Il silenzio può sembrare vuoto o perfino spaventoso. La storia lo trasforma in un'esperienza piena, da fare insieme a un adulto, e lo collega a un gesto semplice per calmarsi: ascoltare il proprio respiro.
+**Perché questo tema a 6–7 anni.** I bambini di oggi vivono immersi nei suoni: voci, schermi, rumori di fondo. Il silenzio può sembrare vuoto o perfino spaventoso. La storia lo trasforma in un'esperienza piena, da fare insieme a un adulto, e lo collega a un gesto semplice per calmarsi: ascoltare il proprio respiro.
 
 ## Tre domande dopo la storia
 

@@ -41,7 +41,7 @@
     },
     {
       "theme": "emozioni-relazioni",
-      "band": "5-7",
+      "band": "6-7",
       "experience": "Davanti a una cosa nuova (un compito, uno sport, una lettera difficile) il bambino ha paura di sbagliare e vorrebbe non cominciare.",
       "goal": "Cominciare un compito nuovo facendone solo il primo pezzetto, anche se non viene subito.",
       "secondary": ["Chiedere aiuto con una frase propria quando da solo non ci riesce."],
@@ -72,7 +72,7 @@
     },
     {
       "theme": "emozioni-relazioni",
-      "band": "7-10",
+      "band": "8-10",
       "experience": "Un amico si trasferisce, si cambia scuola o classe: il bambino deve salutare qualcuno o qualcosa e prova insieme tristezza e curiosità.",
       "goal": "Dare un nome a quello che prova davanti a un distacco e scegliere un modo concreto per tenere il legame.",
       "secondary": [],
@@ -134,7 +134,7 @@
     },
     {
       "theme": "natura-viventi",
-      "band": "5-7",
+      "band": "6-7",
       "experience": "Un seme in un vasetto o nel cotone: il bambino lo bagna, aspetta e lo vede cambiare nei giorni.",
       "goal": "Prendersi cura di una pianta ogni giorno e notare che per crescere le servono acqua e tempo.",
       "secondary": ["Nominare le parti della pianta (radici, fusto, foglie)."],
@@ -165,7 +165,7 @@
     },
     {
       "theme": "natura-viventi",
-      "band": "7-10",
+      "band": "8-10",
       "experience": "Un fenomeno vicino che cambia nel tempo: l'ombra di un albero alle diverse ore, un germoglio nei giorni.",
       "goal": "Osservare un cambiamento nel tempo e descriverlo con un confronto (prima e dopo, più lunga e più corta).",
       "secondary": [],
@@ -227,7 +227,7 @@
     },
     {
       "theme": "autonomia-scuola",
-      "band": "5-7",
+      "band": "6-7",
       "experience": "La sera prima di scuola: preparare lo zaino e le cose per il giorno dopo.",
       "goal": "Organizzare i materiali prima di un'attività: preparare la sera lo zaino per il giorno dopo.",
       "secondary": [],
@@ -258,7 +258,7 @@
     },
     {
       "theme": "autonomia-scuola",
-      "band": "7-10",
+      "band": "8-10",
       "experience": "Un piccolo progetto aperto: costruire con un foglio e due libri un ponte che regga qualche moneta.",
       "goal": "Provare una soluzione, vedere dove non regge e cambiarla.",
       "secondary": [],
@@ -311,22 +311,22 @@
       "content": ["activity:apparecchiare", "activity:piegare", "activity:travaso-secco"]
     },
     {
-      "reason": "Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/5-7, alternativa a quella scelta. Da decidere quale delle due tenere.",
+      "reason": "Scuola, ingresso e relazioni in classe: candidati a un'esperienza \"il primo giorno\" di Autonomia e scuola 3-5/6-7, alternativa a quella scelta. Da decidere quale delle due tenere.",
       "content": [
         "activity:aspetto-il-mio-turno", "activity:com-e-fatta-una-scuola", "activity:conto-alla-rovescia",
         "activity:il-primo-giorno", "activity:il-saluto", "activity:la-mensa"
       ]
     },
     {
-      "reason": "Storie del mondo Emozioni 5-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate.",
+      "reason": "Storie del mondo Emozioni 6-7 con un obiettivo diverso da quello della cella (calmarsi, riposare, ascoltare il silenzio): o diventano l'esperienza di una nuova cella, o vanno ripensate.",
       "content": ["story:bosco-addormentato", "story:civetta-silenzio", "story:notte-lucciole"]
     },
     {
-      "reason": "Storie del mondo Ambiente oltre a quella della cella: la cella Natura 5-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto.",
+      "reason": "Storie del mondo Ambiente oltre a quella della cella: la cella Natura 6-7 ne usa una sola. Ruscello triste e Il risveglio del bosco toccano la cura dell'ambiente fuori casa; Il sassolino magico l'ascolto.",
       "content": ["story:risveglio-bosco", "story:ruscello-triste", "story:sassolino-magico"]
     },
     {
-      "reason": "Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 7-10 se si sceglie un obiettivo di osservazione più ampio.",
+      "reason": "Natura e cultura per i più grandi, senza un'esperienza propria: candidati alla cella Natura 8-10 se si sceglie un obiettivo di osservazione più ampio.",
       "content": ["activity:caccia-natura", "activity:caccia-ombre", "activity:continenti", "activity:nomenclature-animali"]
     }
   ]

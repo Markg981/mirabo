@@ -1,6 +1,6 @@
 # Come parlarne: Il Ruscello Triste
 
-**Perché questo tema a 5–7 anni.** A questa età i bambini vedono i rifiuti nella natura e spesso ne sono più turbati degli adulti; la storia dà un gesto possibile e un adulto che lo rende sicuro, così il turbamento diventa azione invece che ansia.
+**Perché questo tema a 6–7 anni.** A questa età i bambini vedono i rifiuti nella natura e spesso ne sono più turbati degli adulti; la storia dà un gesto possibile e un adulto che lo rende sicuro, così il turbamento diventa azione invece che ansia.
 
 ## Tre domande dopo la storia
 

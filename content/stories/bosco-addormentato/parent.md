@@ -1,6 +1,6 @@
 # Come parlarne: Il Bosco Addormentato
 
-**Perché questo tema a 5–7 anni.** Molti bambini vivono il sonno come una perdita ("mi perdo i giochi") o lo collegano alla tristezza del buio. La storia lo presenta come una cosa che fa tutta la natura, per crescere e ricominciare, e mostra che fermarsi non è arrendersi.
+**Perché questo tema a 6–7 anni.** Molti bambini vivono il sonno come una perdita ("mi perdo i giochi") o lo collegano alla tristezza del buio. La storia lo presenta come una cosa che fa tutta la natura, per crescere e ricominciare, e mostra che fermarsi non è arrendersi.
 
 ## Tre domande dopo la storia
 

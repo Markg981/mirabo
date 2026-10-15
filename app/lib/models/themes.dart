@@ -96,7 +96,7 @@ class ThemeCatalog {
       // Un tema che l'app non conosce ancora si ignora: non si indovina.
       final theme = ChildTheme.byId(c['theme'] as String);
       if (theme == null) continue;
-      out[(theme, AgeBand.fromKey(c['band'] as String))] = {
+      out[(theme, AgeBand.fromContentKey(c['band'] as String))] = {
         for (final m in ExperienceMode.values) m: ((c[m.name] as List?) ?? const []).cast<String>(),
       };
     }

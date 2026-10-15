@@ -102,12 +102,12 @@ class MadeStory {
   final int id;
   final int profileId;
 
-  /// Il titolo scritto dal bambino (7–10); se manca si usa il protagonista.
+  /// Il titolo scritto dal bambino (8–10); se manca si usa il protagonista.
   final String? title;
   final Map<FactoryStep, String> parts;
   final DateTime when;
 
-  /// La stessa storia con un altro finale, per confrontarli (7–10). Non si salva.
+  /// La stessa storia con un altro finale, per confrontarli (8–10). Non si salva.
   MadeStory withEnding(String endingId) => MadeStory(
         id: id,
         profileId: profileId,

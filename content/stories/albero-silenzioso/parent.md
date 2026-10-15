@@ -1,6 +1,6 @@
 # Come parlarne: L'Albero che Non Parlava Più
 
-**Perché questo tema a 5–7 anni.** I bambini capiscono bene che anche un essere vivente può stare male. La storia mostra che prendersi cura è fatto di piccole azioni ripetute (pulire, piantare, restare vicino), non di un gesto magico, e che i risultati arrivano con il tempo.
+**Perché questo tema a 6–7 anni.** I bambini capiscono bene che anche un essere vivente può stare male. La storia mostra che prendersi cura è fatto di piccole azioni ripetute (pulire, piantare, restare vicino), non di un gesto magico, e che i risultati arrivano con il tempo.
 
 ## Tre domande dopo la storia
 

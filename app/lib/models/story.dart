@@ -4,10 +4,14 @@ library;
 
 enum World { emozioni, inclusione, ambiente, sicurezza }
 
+/// Le tre fasce concordate, senza sovrapposizioni: 3–5, 6–7, 8–10. Decidono i
+/// contenuti (storie, attività, giochi); gli aiuti d'interazione stanno
+/// nell'InteractionProfile e non cambiano con la fascia. Le schede di progetto
+/// sono in content/education/bands.json e docs/age-bands.md.
 enum AgeBand {
   b3to5('3-5', 'Piccoli', 3, 5),
-  b5to7('5-7', 'Primi passi', 5, 7),
-  b7to10('7-10', 'Grandi', 7, 10);
+  b6to7('6-7', 'Primi passi', 6, 7),
+  b8to10('8-10', 'Grandi', 8, 10);
 
   const AgeBand(this.key, this.label, this.minAge, this.maxAge);
   final String key;
@@ -15,14 +19,40 @@ enum AgeBand {
   final int minAge;
   final int maxAge;
 
-  static AgeBand fromKey(String key) =>
-      AgeBand.values.firstWhere((b) => b.key == key, orElse: () => throw ArgumentError('Fascia sconosciuta: $key'));
+  static AgeBand? tryKey(String? key) => AgeBand.values.where((b) => b.key == key).firstOrNull;
 
+  static AgeBand fromKey(String key) => tryKey(key) ?? (throw ArgumentError('Fascia sconosciuta: $key'));
+
+  /// Per i contenuti: un pacchetto di prima delle fasce attuali usa ancora le
+  /// chiavi 5-7 e 7-10, e quelle varianti sono le stesse che oggi stanno in
+  /// 6-7 e 8-10. Per un profilo non vale: lì decide l'adulto (LegacyAgeBand).
+  static AgeBand fromContentKey(String key) => tryKey(key) ?? LegacyAgeBand.tryKey(key)?.content ?? fromKey(key);
+
+  /// Cinque anni nella prima fascia, sei e sette nella seconda, da otto in su nella terza.
   static AgeBand forAge(int age) {
-    if (age < 5) return AgeBand.b3to5;
-    if (age < 7) return AgeBand.b5to7;
-    return AgeBand.b7to10;
+    if (age <= 5) return AgeBand.b3to5;
+    if (age <= 7) return AgeBand.b6to7;
+    return AgeBand.b8to10;
   }
+}
+
+/// Le fasce sovrapposte di prima (3-5, 5-7, 7-10). Da "5-7" non si sa se il
+/// bambino abbia cinque o sette anni: il profilo resta sui contenuti che aveva
+/// ([content]) finché l'adulto non sceglie una delle due fasce possibili.
+enum LegacyAgeBand {
+  b5to7('5-7', AgeBand.b6to7, [AgeBand.b3to5, AgeBand.b6to7]),
+  b7to10('7-10', AgeBand.b8to10, [AgeBand.b6to7, AgeBand.b8to10]);
+
+  const LegacyAgeBand(this.key, this.content, this.choices);
+  final String key;
+
+  /// La fascia che ha oggi le varianti di allora: il bambino non vede cambiare nulla.
+  final AgeBand content;
+
+  /// Le fasce attuali in cui può cadere un bambino di quella fascia.
+  final List<AgeBand> choices;
+
+  static LegacyAgeBand? tryKey(String? key) => LegacyAgeBand.values.where((b) => b.key == key).firstOrNull;
 }
 
 enum ScreenKind { hook, situation, dialogue, lesson, gesture, consequence, turn, closing }
@@ -387,7 +417,7 @@ class StoryVariant {
   final List<StoryScreen> screens;
 
   factory StoryVariant.fromJson(Map<String, dynamic> j) => StoryVariant(
-        ageBand: AgeBand.fromKey(j['ageBand'] as String),
+        ageBand: AgeBand.fromContentKey(j['ageBand'] as String),
         screens: (j['screens'] as List).map((s) => StoryScreen.fromJson(s as Map<String, dynamic>)).toList(),
       );
 }
@@ -452,7 +482,7 @@ class HomeActivity {
         title: j['title'] as String,
         intro: j['intro'] as String?,
         bands: (j['bands'] as Map<String, dynamic>)
-            .map((k, v) => MapEntry(AgeBand.fromKey(k), HomeActivityBand.fromJson(v as Map<String, dynamic>))),
+            .map((k, v) => MapEntry(AgeBand.fromContentKey(k), HomeActivityBand.fromJson(v as Map<String, dynamic>))),
       );
 }
 
@@ -508,7 +538,7 @@ class Story {
         topic: j['topic'] as String,
         series: j['series'] as String?,
         episode: j['episode'] as int?,
-        variantFiles: (j['ageBands'] as Map<String, dynamic>).map((k, v) => MapEntry(AgeBand.fromKey(k), v as String)),
+        variantFiles: (j['ageBands'] as Map<String, dynamic>).map((k, v) => MapEntry(AgeBand.fromContentKey(k), v as String)),
         formats: (j['formats'] as List).cast<String>(),
         togetherOnly: j['togetherOnly'] as bool,
         keyPhrase: j['keyPhrase'] as String,

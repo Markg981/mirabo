@@ -35,7 +35,8 @@ CONTENT = ROOT / "content"
 MATRIX = CONTENT / "education" / "matrix.json"
 SHEET = CONTENT / "reviews" / "matrice-educativa.md"
 
-BANDS = ["3-5", "5-7", "7-10"]
+# Le fasce delle schede di progetto (docs/age-bands.md).
+BANDS = list(json.loads((ROOT / "content" / "education" / "bands.json").read_text(encoding="utf-8"))["bands"])
 # Identificatori stabili dei temi: l'app li usa per nome, immagine e colore (ChildTheme in
 # app/lib/models/themes.dart). Si cambia il nome mostrato, non l'identificatore.
 THEME_IDS = ["emozioni-relazioni", "natura-viventi", "autonomia-scuola"]

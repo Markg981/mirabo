@@ -32,7 +32,7 @@ void main() {
       expect(b.supervisionNote, isNotEmpty);
     }
     expect(a.bands[AgeBand.b3to5]!.supervision, Supervision.together);
-    expect(a.bands[AgeBand.b7to10]!.supervision, Supervision.free);
+    expect(a.bands[AgeBand.b8to10]!.supervision, Supervision.free);
   });
 
   test('le traduzioni conservano la supervisione e le liste', () {

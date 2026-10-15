@@ -383,6 +383,13 @@ class AppState extends ChangeNotifier {
     }
   }
 
+  /// L'adulto sceglie la fascia di un profilo creato con le fasce di prima
+  /// (5-7, 7-10). L'app non la deduce: né dall'età, né dalle prestazioni.
+  Future<void> confirmBand(ChildProfile p, AgeBand band) {
+    assert(p.bandToConfirm?.choices.contains(band) ?? true);
+    return updateProfile(p.withConfirmedBand(band));
+  }
+
   Future<void> deleteProfile(int id) async {
     await db.deleteProfile(id);
     await nameVoice.forget(id);

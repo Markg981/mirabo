@@ -1,6 +1,6 @@
 # Comment en parler : Le ruisseau triste
 
-**Pourquoi ce thème à 5–7 ans.** À cet âge, les enfants voient les déchets dans la nature et en sont souvent plus troublés que les adultes ; l'histoire leur donne un geste possible et un adulte qui le rend sûr, pour que le trouble devienne action plutôt qu'anxiété.
+**Pourquoi ce thème à 6–7 ans.** À cet âge, les enfants voient les déchets dans la nature et en sont souvent plus troublés que les adultes ; l'histoire leur donne un geste possible et un adulte qui le rend sûr, pour que le trouble devienne action plutôt qu'anxiété.
 
 ## Trois questions après l'histoire
 

@@ -1,6 +1,6 @@
 # Cómo hablar de ello: La lechuza del silencio
 
-**Por qué este tema a los 5–7 años.** Los niños de hoy viven rodeados de sonidos: voces, pantallas, ruido de fondo. El silencio puede parecer vacío o incluso dar miedo. La historia lo convierte en una experiencia llena, para vivir junto a un adulto, y lo une a un gesto sencillo para calmarse: escuchar la propia respiración.
+**Por qué este tema a los 6–7 años.** Los niños de hoy viven rodeados de sonidos: voces, pantallas, ruido de fondo. El silencio puede parecer vacío o incluso dar miedo. La historia lo convierte en una experiencia llena, para vivir junto a un adulto, y lo une a un gesto sencillo para calmarse: escuchar la propia respiración.
 
 ## Tres preguntas después de la historia
 

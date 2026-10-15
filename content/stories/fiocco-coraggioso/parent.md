@@ -1,6 +1,6 @@
 # Come parlarne: Il Fiocco che Non Voleva Cadere
 
-**Perché questo tema a 5–7 anni.** Con l'inizio della scuola arrivano le prime prove (leggere, scrivere, giocare in squadra) e con loro la paura di sbagliare. Alcuni bambini preferiscono non provare piuttosto che fare un errore. Il fiocco dà un nome a questa paura e mostra che si può avere paura e provare lo stesso.
+**Perché questo tema a 6–7 anni.** Con l'inizio della scuola arrivano le prime prove (leggere, scrivere, giocare in squadra) e con loro la paura di sbagliare. Alcuni bambini preferiscono non provare piuttosto che fare un errore. Il fiocco dà un nome a questa paura e mostra che si può avere paura e provare lo stesso.
 
 ## Tre domande dopo la storia
 

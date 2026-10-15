@@ -1,5 +1,6 @@
 {
-  "ageBand": "5-7",
+  "ageBand": "6-7",
+  "design": {"perspective": "protagonist", "structure": "cause-effect", "note": "Emma non dorme, ascolta il silenzio con la civetta e si addormenta tranquilla."},
   "screens": [
     {
       "n": 1,

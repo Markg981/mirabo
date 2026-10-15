@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El bosque dormido
 
-**Por qué este tema a los 5–7 años.** Muchos niños viven el sueño como una pérdida ("me pierdo los juegos") o lo relacionan con la tristeza de la oscuridad. La historia lo presenta como algo que hace toda la naturaleza, para crecer y volver a empezar, y muestra que pararse no es rendirse.
+**Por qué este tema a los 6–7 años.** Muchos niños viven el sueño como una pérdida ("me pierdo los juegos") o lo relacionan con la tristeza de la oscuridad. La historia lo presenta como algo que hace toda la naturaleza, para crecer y volver a empezar, y muestra que pararse no es rendirse.
 
 ## Tres preguntas después de la historia
 

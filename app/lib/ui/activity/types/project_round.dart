@@ -5,7 +5,7 @@ import '../../design/palette.dart';
 import '../../design/widgets.dart';
 import '../activity_player.dart';
 
-/// Piccolo progetto aperto (7–10): idea → previsione → prova → revisione. Ogni
+/// Piccolo progetto aperto (8–10): idea → previsione → prova → revisione. Ogni
 /// passaggio è un round. Il tablet non verifica niente: il criterio ("il ponte
 /// regge una moneta?") si controlla nel mondo vero e ammette più soluzioni. Nei
 /// passaggi di idea, previsione e revisione il bambino può scrivere due righe

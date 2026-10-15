@@ -36,7 +36,7 @@ class _NoRepo implements StoryRepository {
 }
 
 void main() {
-  const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b5to7, companion: CompanionId.tango);
+  const base = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b6to7, companion: CompanionId.tango);
 
   test('il compagno cresce con i gesti, non con le storie', () {
     expect(base.copyWith(storiesCompleted: 20).companionStage, 0);

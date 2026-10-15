@@ -1,6 +1,6 @@
 # Cómo hablar de ello: El despertar del bosque
 
-**Por qué este tema a los 5–7 años.** Después de ver dormirse el bosque, el niño lo encuentra despierto pero herido. La historia insiste en dos cosas: las cosas peligrosas (latas oxidadas, cristal) las toca un adulto con guantes, y a los animales salvajes se les ayuda sin cogerlos. Y lleva el cuidado del bosque al colegio, con los compañeros: solo se hace algo, juntos se hace más.
+**Por qué este tema a los 6–7 años.** Después de ver dormirse el bosque, el niño lo encuentra despierto pero herido. La historia insiste en dos cosas: las cosas peligrosas (latas oxidadas, cristal) las toca un adulto con guantes, y a los animales salvajes se les ayuda sin cogerlos. Y lleva el cuidado del bosque al colegio, con los compañeros: solo se hace algo, juntos se hace más.
 
 ## Tres preguntas después de la historia
 

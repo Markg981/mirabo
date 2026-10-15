@@ -1,6 +1,6 @@
 # Comment en parler : Le volcan de Lia
 
-**Pourquoi ce thème à 5–7 ans.** À cet âge, la colère arrive encore d'un seul coup et l'enfant n'a pas les outils pour l'arrêter seul ; il ne faut pas la supprimer, il faut la reconnaître et l'accompagner. Un nom et une image (le volcan) et un geste (la respiration) lui donnent quelque chose à faire pendant qu'elle passe.
+**Pourquoi ce thème à 6–7 ans.** À cet âge, la colère arrive encore d'un seul coup et l'enfant n'a pas les outils pour l'arrêter seul ; il ne faut pas la supprimer, il faut la reconnaître et l'accompagner. Un nom et une image (le volcan) et un geste (la respiration) lui donnent quelque chose à faire pendant qu'elle passe.
 
 ## Trois questions après l'histoire
 

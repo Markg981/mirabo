@@ -17,10 +17,10 @@ import 'package:mirabo/ui/activity/types/project_round.dart';
 void main() {
   final root = Directory.current.path.endsWith('app') ? Directory.current.parent : Directory.current;
 
-  test('il progetto in content/ è per la fascia 7–10 e ha i quattro passaggi in ordine', () {
+  test('il progetto in content/ è per la fascia 8–10 e ha i quattro passaggi in ordine', () {
     final a = Activity.fromJson(jsonDecode(File('${root.path}/content/activities/ponte-di-carta/activity.json').readAsStringSync()));
     expect(a.type, ActivityType.project);
-    expect(a.supports(AgeBand.b7to10), isTrue);
+    expect(a.supports(AgeBand.b8to10), isTrue);
     expect(a.supports(AgeBand.b3to5), isFalse);
     for (final level in a.levels) {
       expect([for (final p in level['phases'] as List) p['phase']], ['idea', 'prediction', 'test', 'revision']);
@@ -48,7 +48,7 @@ void main() {
     final level = (raw['levels'] as List).first as Map<String, dynamic>;
     final results = <RoundResult>[];
     var finished = false;
-    const profile = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b7to10, companion: CompanionId.bo);
+    const profile = ChildProfile(id: 1, name: 'Ada', ageBand: AgeBand.b8to10, companion: CompanionId.bo);
     final ctx = ActivityContext(profile: profile, companionName: 'Bo', say: (_) async {});
     await tester.pumpWidget(MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,

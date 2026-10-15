@@ -8,17 +8,51 @@ import '../ui/design/palette.dart';
 import '../ui/design/widgets.dart';
 import 'game.dart';
 
-/// Memory con gli animali. Le carte si girano a due a due; le coppie trovate
-/// restano scoperte. Il numero di coppie cresce con la fascia d'età.
+/// Come si accoppiano le carte: con la fascia cambia la regola, non solo il numero.
+enum MemoryRule {
+  /// 3-5: due animali uguali. Si guarda e si ricorda.
+  same,
+
+  /// 6-7: un animale e il suo cibo. Le due carte non si somigliano: si cerca una relazione.
+  food,
+
+  /// 8-10: animale, cibo e casa, tre carte per volta. Bisogna tenere a mente più
+  /// gruppi aperti insieme e decidere quale completare.
+  foodAndHome,
+}
+
+/// Una carta: l'emoji, il gruppo a cui appartiene e la chiave del nome detto
+/// dalla voce (animalName per le coppie uguali, memoryItemName per le relazioni).
+@immutable
+class MemoryCard {
+  const MemoryCard(this.emoji, this.group, this.nameKey);
+  final String emoji;
+  final String group;
+  final String nameKey;
+}
+
+/// Memory con gli animali. Le carte si girano a gruppi (due o tre); i gruppi
+/// trovati restano scoperti. Di fascia in fascia cambia il problema:
+/// uguaglianza, relazione animale-cibo, terne animale-cibo-casa.
 class MemoryGame extends StatefulWidget {
   const MemoryGame({super.key, required this.ctx});
   final GameContext ctx;
 
-  static int pairsFor(AgeBand b) => switch (b) {
-        AgeBand.b3to5 => 3,
-        AgeBand.b5to7 => 6,
-        AgeBand.b7to10 => 8,
+  static MemoryRule ruleFor(AgeBand b) => switch (b) {
+        AgeBand.b3to5 => MemoryRule.same,
+        AgeBand.b6to7 => MemoryRule.food,
+        AgeBand.b8to10 => MemoryRule.foodAndHome,
       };
+
+  /// Quanti gruppi ci sono sul tavolo.
+  static int groupsFor(AgeBand b) => switch (b) {
+        AgeBand.b3to5 => 3,
+        AgeBand.b6to7 => 6,
+        AgeBand.b8to10 => 5,
+      };
+
+  /// Quante carte formano un gruppo.
+  static int groupSize(MemoryRule r) => r == MemoryRule.foodAndHome ? 3 : 2;
 
   /// Emoji e chiave del nome (tradotto in animalName).
   static const _animals = {
@@ -36,36 +70,71 @@ class MemoryGame extends StatefulWidget {
     '🐷': 'pig',
   };
 
+  /// Animale, cibo, casa (nomi in memoryItemName). Ogni cibo e ogni casa sta in
+  /// un solo gruppo, così c'è sempre una sola risposta.
+  static const relations = [
+    [MemoryCard('🐿️', 'squirrel', 'squirrel'), MemoryCard('🌰', 'squirrel', 'chestnut'), MemoryCard('🌳', 'squirrel', 'tree')],
+    [MemoryCard('🐧', 'penguin', 'penguin'), MemoryCard('🐟', 'penguin', 'fish'), MemoryCard('🧊', 'penguin', 'ice')],
+    [MemoryCard('🐵', 'monkey', 'monkey'), MemoryCard('🍌', 'monkey', 'banana'), MemoryCard('🌴', 'monkey', 'palm')],
+    [MemoryCard('🐰', 'rabbit', 'rabbit'), MemoryCard('🥕', 'rabbit', 'carrot'), MemoryCard('🕳️', 'rabbit', 'burrow')],
+    [MemoryCard('🐻', 'bear', 'bear'), MemoryCard('🍯', 'bear', 'honey'), MemoryCard('🌲', 'bear', 'forest')],
+    [MemoryCard('🐼', 'panda', 'panda'), MemoryCard('🎋', 'panda', 'bamboo'), MemoryCard('⛰️', 'panda', 'mountain')],
+  ];
+
+  /// Le carte di una partita, già mescolate.
+  static List<MemoryCard> deal(AgeBand band, math.Random rnd) {
+    final rule = ruleFor(band);
+    final groups = groupsFor(band);
+    final cards = switch (rule) {
+      MemoryRule.same => [
+          for (final e in (_animals.entries.toList()..shuffle(rnd)).take(groups)) ...[
+            MemoryCard(e.key, e.value, e.value),
+            MemoryCard(e.key, e.value, e.value),
+          ],
+        ],
+      MemoryRule.food || MemoryRule.foodAndHome => [
+          for (final g in (relations.toList()..shuffle(rnd)).take(groups)) ...g.take(groupSize(rule)),
+        ],
+    };
+    return cards..shuffle(rnd);
+  }
+
   @override
   State<MemoryGame> createState() => _MemoryGameState();
 }
 
 class _MemoryGameState extends State<MemoryGame> {
-  late final List<String> _cards;
-  final Set<int> _open = {};
+  late final MemoryRule _rule = MemoryGame.ruleFor(widget.ctx.band);
+  late final List<MemoryCard> _cards;
+  final List<int> _open = [];
   final Set<int> _matched = {};
   bool _busy = false;
 
   @override
   void initState() {
     super.initState();
-    final rnd = math.Random();
-    final pairs = MemoryGame.pairsFor(widget.ctx.band);
-    final pool = MemoryGame._animals.keys.toList()..shuffle(rnd);
-    _cards = [...pool.take(pairs), ...pool.take(pairs)]..shuffle(rnd);
-    WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(context.l10n.memoryIntro));
+    _cards = MemoryGame.deal(widget.ctx.band, math.Random());
+    WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(switch (_rule) {
+          MemoryRule.same => context.l10n.memoryIntro,
+          MemoryRule.food => context.l10n.memoryIntroFood,
+          MemoryRule.foodAndHome => context.l10n.memoryIntroHome,
+        }));
   }
+
+  String _name(MemoryCard c) =>
+      _rule == MemoryRule.same ? context.l10n.animalName(c.nameKey) : context.l10n.memoryItemName(c.nameKey);
 
   Future<void> _tap(int i) async {
     if (_busy || _open.contains(i) || _matched.contains(i)) return;
     setState(() => _open.add(i));
-    widget.ctx.say(context.l10n.animalName(MemoryGame._animals[_cards[i]]!));
-    if (_open.length < 2) return;
+    widget.ctx.say(_name(_cards[i]));
+    // Nelle terne ci si ferma appena una carta non va con le altre.
+    final sameGroup = _open.every((j) => _cards[j].group == _cards[_open.first].group);
+    if (sameGroup && _open.length < MemoryGame.groupSize(_rule)) return;
 
-    final [a, b] = _open.toList();
-    if (_cards[a] == _cards[b]) {
+    if (sameGroup) {
       setState(() {
-        _matched.addAll([a, b]);
+        _matched.addAll(_open);
         _open.clear();
       });
       if (_matched.length == _cards.length) {
@@ -86,7 +155,7 @@ class _MemoryGameState extends State<MemoryGame> {
   @override
   Widget build(BuildContext context) {
     final n = _cards.length;
-    final cols = n <= 6 ? 3 : 4;
+    final cols = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
     final rows = (n / cols).ceil();
     return LayoutBuilder(builder: (context, c) {
       const gap = 18.0;
@@ -104,7 +173,7 @@ class _MemoryGameState extends State<MemoryGame> {
               SizedBox(
                 width: side,
                 child: _Card(
-                  emoji: _cards[i],
+                  emoji: _cards[i].emoji,
                   faceUp: _open.contains(i) || _matched.contains(i),
                   matched: _matched.contains(i),
                   size: side,
