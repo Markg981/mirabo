@@ -19,9 +19,15 @@ e guarda quello che una regola non vede.
 "(da verificare)", in `sources` o nella scheda genitore. Le storie non ancora pubblicate compaiono
 in fondo all'output come "in attesa di revisione pedagogica".
 
-`pack.py` impacchetta e firma solo le storie `published`: una storia in `draft` o `review` non
-arriva ai bambini. Per provarla nell'app durante lo sviluppo: `pack.py --include-drafts` (o
-`sync_assets.py --include-drafts`).
+Le **attività** hanno gli stessi stati (`status` in `activity.json`, assente = `draft`). Una storia o
+un'attività `published` deve avere nel registro `content/reviews/approvals.json` un'approvazione
+sulla sua versione e sulla sua impronta esatte (vedi [launch-catalog.md](launch-catalog.md)):
+altrimenti `validate.py` la rifiuta.
+
+`pack.py` impacchetta e firma solo storie e attività `published`: in `draft` o `review` non
+arrivano ai bambini. Per provarle nell'app durante lo sviluppo: `pack.py --include-drafts` (o
+`sync_assets.py --include-drafts`). La release si fa con `pack.py --release`, che impacchetta solo
+il catalogo di lancio.
 
 ## Il giro
 
@@ -41,9 +47,15 @@ arriva ai bambini. Per provarla nell'app durante lo sviluppo: `pack.py --include
 4. **Fonti.** Ogni fonte segnata "(da verificare)" va controllata e scritta per intero, in
    `sources` e in "Per approfondire": il revisore conferma che dice quello che la scheda le
    attribuisce.
-5. **Registrazione.** `python studio/review.py --approve <id> --by "Nome Cognome, qualifica"`
-   scrive `reviewedBy` (con la data) e porta la storia a `published`. Si rifiuta se restano fonti
-   da verificare. Se la storia era già pubblicata, aumentare `version`.
+5. **Registrazione.** `python studio/review.py --approve <id> --by "Nome Cognome, qualifica"
+   --elements all` aggiunge l'approvazione al registro `content/reviews/approvals.json` con versione e
+   impronta del contenuto, scrive `reviewedBy` (con la data) e porta la storia a `published`. Si
+   rifiuta se restano fonti da verificare. `--elements` dice quali elementi della versione distribuita
+   il revisore conferma (testo, immagini, audio, interazioni, scheda adulta, sicurezza, diritti): se
+   ne manca qualcuno la storia resta in `review`. Per le attività:
+   `python studio/catalog.py --approve activity:<id> ...`. Se dopo l'approvazione cambia un file
+   qualsiasi del contenuto, l'approvazione non vale più: si rivede e si registra di nuovo (e si
+   aumenta `version` se era già distribuito).
 
 La scheda compilata resta in `content/reviews/` come traccia: non entra nel pacchetto `.mirabo`.
 
@@ -74,13 +86,15 @@ la scheda della storia si legge sapendo quale obiettivo deve servire.
 - Le **traduzioni** hanno la loro revisione, da madrelingua (`"reviewed": true` nell'overlay, vedi
   la guida di stile). Una storia si rivede in italiano; le modifiche chieste dal revisore si
   riportano poi nelle traduzioni.
-- Le **attività** dei moduli scuola e Montessori non passano da questo giro.
+- Le **attività** non hanno la scheda di `review.py`: si leggono dal JSON e dall'app. Passano però
+  dallo stesso registro delle approvazioni e dagli stessi stati, e senza approvazione non si
+  impacchettano.
 - Le **illustrazioni** definitive, quando arriveranno, vanno riviste insieme alla storia: la
   scheda riporta gli `alt`, che sono il brief per chi disegna.
 
 ## Copertura del processo editoriale
 
-Cosa copre già il giro e cosa si aggiunge qui. Non cambia `studio/review.py` né `pack.py`.
+Cosa copre già il giro e cosa si aggiunge qui. Le aree della tabella sono gli elementi che il revisore conferma nel registro delle approvazioni.
 
 | Area | Dove è coperta |
 | --- | --- |
@@ -92,4 +106,4 @@ Cosa copre già il giro e cosa si aggiunge qui. Non cambia `studio/review.py` n�
 
 ### Registro per raccolta
 
-Per ogni raccolta si tiene in `content/reviews/` una riga con **autore**, **revisore** (nome, qualifica), esito per area (pedagogica, linguistica, audio, accessibilità, sicurezza, diritti), **lingua e fascia** e **versione approvata**. Si pubblica solo con tutte le aree chiuse sulla stessa versione. L'inserimento di autore e revisore nel manifest dei pacchetti è del lavoro `feature/analisi-17-pacchetti-versionati`.
+Il registro è `content/reviews/approvals.json`: per ogni approvazione **id**, **versione**, **impronta** del contenuto, **revisore** (nome, qualifica), **data** ed **elementi confermati** (testo, immagini, audio, interazioni, scheda adulta, sicurezza, diritti d'uso). Si pubblica solo con tutti gli elementi chiusi sulla stessa versione e sulla stessa impronta; revisore, versione approvata e impronta finiscono nel manifest del pacchetto. Il funzionamento è in [launch-catalog.md](launch-catalog.md).

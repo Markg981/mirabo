@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "pilotTheme": "emozioni-relazioni",
+  "stories": [
+    { "theme": "emozioni-relazioni", "band": "3-5", "content": "story:lia-rabbia" },
+    { "theme": "emozioni-relazioni", "band": "6-7", "content": "story:fiocco-coraggioso" },
+    { "theme": "emozioni-relazioni", "band": "8-10", "content": "story:segreto-pietrolino" },
+    { "theme": "natura-viventi", "band": "3-5", "content": "story:goccia-ribelle" },
+    { "theme": "natura-viventi", "band": "6-7", "content": "story:albero-silenzioso" },
+    { "theme": "natura-viventi", "band": "8-10", "content": null, "todo": "Storia da scrivere per la cella Natura 8-10, dopo averne fissato l'obiettivo nella matrice." },
+    { "theme": "autonomia-scuola", "band": "3-5", "content": null, "todo": "Storia da scrivere per la cella Autonomia 3-5 (la mattina prima di uscire)." },
+    { "theme": "autonomia-scuola", "band": "6-7", "content": null, "todo": "Storia da scrivere per la cella Autonomia 6-7 (preparare la cartella)." },
+    { "theme": "autonomia-scuola", "band": "8-10", "content": null, "todo": "Storia da scrivere per la cella Autonomia 8-10 (un progetto che non riesce al primo colpo)." }
+  ],
+  "games": [
+    { "theme": "emozioni-relazioni", "content": "activity:chiedo-aiuto" },
+    { "theme": "natura-viventi", "content": "activity:parti-della-pianta" },
+    { "theme": "autonomia-scuola", "content": "activity:domani-a-scuola" }
+  ],
+  "practice": [
+    { "theme": "emozioni-relazioni", "band": "3-5", "content": "home:lia-rabbia" },
+    { "theme": "emozioni-relazioni", "band": "6-7", "content": "home:fiocco-coraggioso" },
+    { "theme": "emozioni-relazioni", "band": "8-10", "content": "home:segreto-pietrolino" },
+    { "theme": "natura-viventi", "band": "3-5", "content": "activity:versare-acqua" },
+    { "theme": "natura-viventi", "band": "6-7", "content": "activity:germoglio-fagiolo" },
+    { "theme": "natura-viventi", "band": "8-10", "content": "activity:caccia-ombre-fuori" },
+    { "theme": "autonomia-scuola", "band": "3-5", "content": "activity:telaio-bottoni" },
+    { "theme": "autonomia-scuola", "band": "6-7", "content": null, "todo": "Attività dalla storia della cella, quando la storia esiste." },
+    { "theme": "autonomia-scuola", "band": "8-10", "content": null, "todo": "Attività dalla storia della cella, quando la storia esiste." }
+  ]
+}
