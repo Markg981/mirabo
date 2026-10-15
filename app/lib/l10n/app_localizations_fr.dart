@@ -142,6 +142,41 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String themeLabel(String theme) {
+    String _temp0 = intl.Intl.selectLogic(
+      theme,
+      {
+        'emozioniRelazioni': 'Ce que je ressens',
+        'naturaViventi': 'La nature',
+        'autonomiaScuola': 'Je le fais moi-même',
+        'other': '$theme',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String experienceModeLabel(String mode) {
+    String _temp0 = intl.Intl.selectLogic(
+      mode,
+      {
+        'story': 'Une histoire',
+        'game': 'Un jeu',
+        'practice': 'J\'essaie',
+        'other': '$mode',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get modeComing => 'Bientôt';
+
+  @override
+  String get practiceHint =>
+      'À essayer dans la vraie vie, avec la personne qui est avec toi';
+
+  @override
   String get badgeAtHome => 'À la maison';
 
   @override
@@ -1336,6 +1371,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String shelfHint(String name, int max, int per) {
     return 'Peu de matériel à la fois, comme sur les étagères d\'une ambiance Montessori : $name choisit librement parmi ce que tu poses ici. $max au plus en tout et $per par capacité ; change-les quand ils ont été explorés.';
   }
+
+  @override
+  String get shelfShortcutNote =>
+      'L\'étagère est un raccourci : ce qui n\'y est pas reste toujours accessible depuis les trois thèmes de l\'accueil.';
 
   @override
   String shelfCount(int count, int max) {

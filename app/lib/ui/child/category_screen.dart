@@ -11,6 +11,7 @@ import '../parent/adult_gate.dart';
 import '../parent/parent_area.dart';
 import 'categories.dart';
 import 'category_widgets.dart';
+import 'child_top_bar.dart';
 import 'nature_calendar.dart';
 import 'story_factory.dart';
 import 'story_reader.dart';
@@ -21,7 +22,8 @@ void openParentArea(BuildContext context) => AdultGate.open(
     );
 
 /// Una capacità della mensola: i suoi pochi materiali come carte grandi, la
-/// barra delle capacità in basso per cambiare senza tornare alla casa.
+/// barra delle capacità in basso per cambiare senza tornare alla casa. La
+/// mensola è una scorciatoia: il catalogo completo sta nei temi.
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key, required this.initial});
   final Capacity initial;
@@ -33,10 +35,12 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   late Capacity _category = widget.initial;
   final _scroll = ScrollController();
+  final _voice = ShortVoice();
 
   @override
   void dispose() {
     _scroll.dispose();
+    _voice.dispose();
     super.dispose();
   }
 
@@ -105,45 +109,25 @@ class _CategoryScreenState extends State<CategoryScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // Barra in alto: casa, titolo, area genitori
-              Container(
-                margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.94),
-                  borderRadius: BorderRadius.circular(40),
-                  boxShadow: softShadow(),
-                ),
-                child: Row(
+              // Barra in alto come in tema e storie: a sinistra la casa, a destra il
+              // riascolta. L'area genitori si apre dalla casa.
+              ChildTopBar(
+                exitIcon: Icons.home_rounded,
+                exitTooltip: context.l10n.home,
+                onExit: () => Navigator.of(context).pop(),
+                onListen: () => _voice.say(state.currentProfile!.language, _category.label(context.l10n)),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _CircleAction(
-                      icon: Icons.home_rounded,
-                      tooltip: context.l10n.home,
-                      color: MiraboColors.sky,
-                      onTap: () => Navigator.of(context).pop(),
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(_category.emoji, style: const TextStyle(fontSize: 32)),
-                          const SizedBox(width: 12),
-                          Flexible(
-                            child: Text(
-                              _category.label(context.l10n),
-                              style: text.headlineMedium?.copyWith(color: MiraboColors.navy),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+                    Text(_category.emoji, style: const TextStyle(fontSize: 32)),
+                    const SizedBox(width: 12),
+                    Flexible(
+                      child: Text(
+                        _category.label(context.l10n),
+                        style: text.headlineMedium?.copyWith(color: MiraboColors.navy),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    _CircleAction(
-                      icon: Icons.lock_rounded,
-                      tooltip: context.l10n.parentArea,
-                      color: MiraboColors.sun,
-                      onTap: () => openParentArea(context),
                     ),
                   ],
                 ),
@@ -172,31 +156,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
               CategoryDock(categories: shelf.keys.toList(), selected: _category, onSelect: _select),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _CircleAction extends StatelessWidget {
-  const _CircleAction({required this.icon, required this.tooltip, required this.color, required this.onTap});
-  final IconData icon;
-  final String tooltip;
-  final Color color;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final c = MiraboTokens.of(context).tint(color);
-    return Tooltip(
-      message: tooltip,
-      child: Material(
-        color: c,
-        shape: const CircleBorder(),
-        child: InkWell(
-          customBorder: const CircleBorder(),
-          onTap: onTap,
-          child: SizedBox(width: 60, height: 60, child: Icon(icon, color: Colors.white, size: 32)),
         ),
       ),
     );

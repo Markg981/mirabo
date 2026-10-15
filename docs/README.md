@@ -4,6 +4,7 @@
 - `story-format.md`: formato dei pacchetti storia (contratto studio ↔ app).
 - `style-guide.md`: voce, struttura delle storie, compagni, serie *Emma e Pietrolino*, regole editoriali, scheda genitore e traduzioni.
 - `educational-goals.md`: matrice educativa (tre temi per tre fasce), un obiettivo per esperienza, ruolo delle tre modalità e dell'adulto, promesse vietate; dati in `content/education/matrix.json`, controllo `studio/check_goals.py`.
+- `theme-navigation.md`: navigazione per temi (casa → tema → storia, gioco o "lo provo" → ritorno al tema), nessun prerequisito, mensola come scorciatoia separata dal catalogo, posto fisso dei comandi; esperienze raggiungibili per fascia da `studio/check_goals.py`, verifica con i bambini in `content/reviews/temi-bambini.md`.
 - `pedagogical-review.md`: revisione pedagogica delle storie (stati, schede in `content/reviews/`, `studio/review.py`).
 - `content-distribution.md`: raccolte versionate, installazione atomica, ritiro delle versioni, lingue e audio, "Mantieni offline".
 - `launch/readiness.md`: prontezza al lancio (Italia/UE e USA), matrice di rischio e protocollo di test con le famiglie.

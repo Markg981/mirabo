@@ -142,6 +142,41 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String themeLabel(String theme) {
+    String _temp0 = intl.Intl.selectLogic(
+      theme,
+      {
+        'emozioniRelazioni': 'Wie ich mich fühle',
+        'naturaViventi': 'Die Natur',
+        'autonomiaScuola': 'Ich kann das selbst',
+        'other': '$theme',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String experienceModeLabel(String mode) {
+    String _temp0 = intl.Intl.selectLogic(
+      mode,
+      {
+        'story': 'Eine Geschichte',
+        'game': 'Ein Spiel',
+        'practice': 'Ich probier\'s',
+        'other': '$mode',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get modeComing => 'Kommt bald';
+
+  @override
+  String get practiceHint =>
+      'Im echten Leben ausprobieren, mit der Person, die bei dir ist';
+
+  @override
   String get badgeAtHome => 'Zu Hause';
 
   @override
@@ -1329,6 +1364,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String shelfHint(String name, int max, int per) {
     return 'Wenige Materialien auf einmal, wie in den Regalen einer Montessori-Umgebung: $name wählt frei unter denen, die du hier hinstellst. Höchstens $max insgesamt und $per pro Fähigkeit; tausche sie aus, wenn sie erkundet sind.';
   }
+
+  @override
+  String get shelfShortcutNote =>
+      'Das Regal ist eine Abkürzung: Was nicht darauf steht, ist über die drei Themen auf dem Startbildschirm immer erreichbar.';
 
   @override
   String shelfCount(int count, int max) {

@@ -11,7 +11,12 @@ Controlla:
   4. che ogni storia e attività sia in una cella o tra i "parked" con un motivo:
      nessun contenuto resta solo perché c'è;
   5. che matrice, contenuti, testi dell'app e schede degli store non promettano di misurare
-     lo sviluppo, prevenire difficoltà o garantire la crescita.
+     lo sviluppo, prevenire difficoltà o garantire la crescita;
+  6. che i temi usino gli identificatori stabili che l'app conosce (THEME_IDS).
+
+Riporta anche, per fascia, quante delle nove esperienze (tre temi per tre modalità) il
+bambino può raggiungere dalla navigazione per temi (vedi docs/theme-navigation.md) e quali
+mancano: una modalità senza contenuti, o con sole storie non ancora pubblicate.
 
 Uso: python studio/check_goals.py [--sheet]
   --sheet  scrive content/reviews/matrice-educativa.md per il revisore pedagogico
@@ -31,6 +36,9 @@ MATRIX = CONTENT / "education" / "matrix.json"
 SHEET = CONTENT / "reviews" / "matrice-educativa.md"
 
 BANDS = ["3-5", "5-7", "7-10"]
+# Identificatori stabili dei temi: l'app li usa per nome, immagine e colore (ChildTheme in
+# app/lib/models/themes.dart). Si cambia il nome mostrato, non l'identificatore.
+THEME_IDS = ["emozioni-relazioni", "natura-viventi", "autonomia-scuola"]
 MODES = {"story": "Storia", "game": "Gioco", "practice": "Attività pratica"}
 ADULT = {"presents": "Cosa presenta", "asks": "Cosa può chiedere", "helpsWhen": "Quando aiuta", "letsTry": "Quando lascia provare"}
 STATUSES = {"ok", "da-progettare", "da-riprogettare"}
@@ -61,7 +69,12 @@ def catalog() -> dict[str, dict]:
     out: dict[str, dict] = {}
     for f in sorted((CONTENT / "stories").glob("*/story.json")):
         meta = read_json(f)
-        out[f"story:{meta['id']}"] = {"bands": set(meta["ageBands"]), "gesture": meta.get("gesture", ""), "title": meta["title"]}
+        out[f"story:{meta['id']}"] = {
+            "bands": set(meta["ageBands"]),
+            "gesture": meta.get("gesture", ""),
+            "title": meta["title"],
+            "published": meta.get("status") == "published",
+        }
     for f in sorted((CONTENT / "activities").glob("*/activity.json")):
         meta = read_json(f)
         out[f"activity:{meta['id']}"] = {"bands": set(meta["ageBands"]), "offscreen": meta.get("offscreen", ""), "title": meta["title"]}
@@ -93,6 +106,8 @@ def check_matrix(matrix: dict, items: dict[str, dict]) -> tuple[list[str], set[s
     themes = matrix.get("themes", {})
     if len(themes) != 3:
         errors.append(f"servono tre temi, ce ne sono {len(themes)}")
+    if sorted(themes) != sorted(THEME_IDS):
+        errors.append(f"i temi devono avere gli identificatori stabili {', '.join(THEME_IDS)}: l'app li riconosce da quelli")
     seen: set[tuple[str, str]] = set()
     for cell in matrix.get("cells", []):
         where = f"{cell.get('theme')} {cell.get('band')}"
@@ -146,6 +161,41 @@ def check_matrix(matrix: dict, items: dict[str, dict]) -> tuple[list[str], set[s
     for key in sorted(set(items) - used - parked):
         errors.append(f"'{key}' non è in nessuna cella né tra i parked: va collocato con un obiettivo o tolto")
     return errors, parked
+
+
+def navigation(matrix: dict) -> dict:
+    """La parte della matrice che serve all'app per la navigazione per temi: per ogni tema e
+    fascia i riferimenti stabili dei contenuti di ogni modalità. I testi per il revisore
+    (esperienza, obiettivi, ruolo dell'adulto) restano fuori dall'app."""
+    return {
+        "version": matrix.get("version"),
+        "themes": list(matrix["themes"]),
+        "cells": [
+            {"theme": c["theme"], "band": c["band"], **{mode: list(c["modes"][mode].get("content", [])) for mode in MODES}}
+            for c in matrix["cells"]
+        ],
+    }
+
+
+def reachability(matrix: dict, items: dict[str, dict]) -> dict[str, list[str]]:
+    """Per fascia, le esperienze (tema per modalità) che il bambino non può raggiungere: la
+    modalità non ha contenuti, oppure li ha ma sono solo storie non pubblicate (in una build
+    di rilascio non ci sono)."""
+    labels = matrix.get("themes", {})
+    missing: dict[str, list[str]] = {band: [] for band in BANDS}
+    for c in matrix.get("cells", []):
+        if c.get("band") not in missing:
+            continue
+        for mode, mlabel in MODES.items():
+            refs = c.get("modes", {}).get(mode, {}).get("content", [])
+            where = f"{labels.get(c['theme'], c['theme'])}: {mlabel}"
+            if not refs:
+                missing[c["band"]].append(f"{where} (da progettare)")
+                continue
+            keys = [resolve(r, c["band"], items)[0] for r in refs]
+            if all(k and k.startswith("story:") and not items[k].get("published") for k in keys):
+                missing[c["band"]].append(f"{where} (solo storie non ancora pubblicate)")
+    return missing
 
 
 def promise_files() -> list[Path]:
@@ -229,6 +279,11 @@ def main(argv: list[str]) -> int:
     print(f"Matrice educativa ({matrix.get('status')}): {len(matrix.get('cells', []))} celle, {len(parked)} contenuti in attesa di una cella.")
     if gaps:
         print("Modalità da progettare o riprogettare:\n  - " + "\n  - ".join(gaps))
+    # Informativo: la criticità della navigazione si chiude quando ogni fascia arriva a 9 su 9.
+    total = len(THEME_IDS) * len(MODES)
+    print("Navigazione per temi, esperienze raggiungibili in una build di rilascio:")
+    for band, miss in reachability(matrix, items).items():
+        print(f"  {band}: {total - len(miss)} di {total}" + "".join(f"\n    - manca {m}" for m in miss))
     if errors:
         print("Errori:\n  - " + "\n  - ".join(errors))
         return 1

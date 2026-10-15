@@ -50,6 +50,7 @@ flutter:
     # Copiati da content/ con `python studio/sync_assets.py` (cartella ignorata da git)
     - assets/stories/
     - assets/companions/
+    - assets/education/
   # Font con licenza OFL (testi in fonts/OFL-*.txt). Fredoka per i titoli,
   # Nunito per i testi, Lexend per l'opzione "testo ad alta leggibilità".
   fonts:

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Copia i pacchetti firmati e i compagni in app/assets/ per lo sviluppo.
+"""Copia i pacchetti firmati, i compagni e i temi in app/assets/ per lo sviluppo.
 
 Flutter non può caricare asset fuori dalla cartella dell'app, quindi i file di
 content/ vengono copiati (non spostati) in app/assets/stories e app/assets/companions.
+Dalla matrice educativa va in app/assets/education/themes.json solo ciò che serve alla
+navigazione per temi (vedi check_goals.navigation).
 app/assets/ è ignorata da git: la fonte di verità resta content/.
 
 Uso:
@@ -21,8 +23,10 @@ DIST = ROOT / "dist"
 ASSETS = ROOT / "app" / "assets"
 STORIES_OUT = ASSETS / "stories"
 COMPANIONS_OUT = ASSETS / "companions"
+EDUCATION_OUT = ASSETS / "education"
 
 sys.path.insert(0, str(ROOT / "studio"))
+import check_goals  # noqa: E402
 import pack  # noqa: E402
 
 
@@ -40,6 +44,9 @@ def main() -> int:
     (STORIES_OUT / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
     COMPANIONS_OUT.mkdir(parents=True, exist_ok=True)
     shutil.copy(ROOT / "content" / "companions" / "companions.json", COMPANIONS_OUT / "companions.json")
+    EDUCATION_OUT.mkdir(parents=True, exist_ok=True)
+    themes = check_goals.navigation(check_goals.read_json(check_goals.MATRIX))
+    (EDUCATION_OUT / "themes.json").write_text(json.dumps(themes, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{len(index)} pacchetti copiati in {STORIES_OUT.relative_to(ROOT)}")
     return 0
 

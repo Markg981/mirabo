@@ -40,6 +40,10 @@
 
   "catEmpty": "Aquí no hay nada para hoy.",
   "capacityLabel": "{capacity, select, insieme{Yo y los demás} mani{Las manos} sensi{Los sentidos} parole{Las palabras} pensare{Contar y pensar} mondo{El mundo} other{{capacity}}}",
+  "themeLabel": "{theme, select, emozioniRelazioni{Cómo me siento} naturaViventi{La naturaleza} autonomiaScuola{Lo hago yo} other{{theme}}}",
+  "experienceModeLabel": "{mode, select, story{Un cuento} game{Un juego} practice{Lo pruebo} other{{mode}}}",
+  "modeComing": "Muy pronto",
+  "practiceHint": "Para probar en la vida real, con quien esté contigo",
   "badgeAtHome": "En casa",
   "badgeTogether": "Juntos",
   "areaLabel": "{area, select, cognitivo{Preparación} autonomia{Autonomía} sociale{En clase} paure{Primer día} vitaPratica{Vida práctica} sensoriale{Sensorial} linguaggio{Lenguaje y escritura} matematica{Matemáticas} cultura{Cultura} other{{area}}}",
@@ -323,6 +327,7 @@
 
   "shelfTitle": "El estante de {name}",
   "shelfHint": "Pocos materiales a la vez, como en los estantes de un ambiente Montessori: {name} elige libremente entre los que pongas aquí. Como máximo {max} en total y {per} por capacidad; cámbialos cuando los haya explorado.",
+  "shelfShortcutNote": "La estantería es un atajo: lo que no está en ella siempre se puede abrir desde los tres temas de la pantalla de inicio.",
   "shelfCount": "{count} de {max}",
   "shelfAuto": "Elección automática",
   "shelfAutoOn": "Ahora el estante se llena solo y cambia una vez por semana.",

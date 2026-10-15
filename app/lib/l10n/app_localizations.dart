@@ -314,6 +314,30 @@ abstract class AppLocalizations {
   /// **'{capacity, select, insieme{Io e gli altri} mani{Le mani} sensi{I sensi} parole{Le parole} pensare{Contare e pensare} mondo{Il mondo} other{{capacity}}}'**
   String capacityLabel(String capacity);
 
+  /// No description provided for @themeLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{theme, select, emozioniRelazioni{Come mi sento} naturaViventi{La natura} autonomiaScuola{Faccio da me} other{{theme}}}'**
+  String themeLabel(String theme);
+
+  /// No description provided for @experienceModeLabel.
+  ///
+  /// In it, this message translates to:
+  /// **'{mode, select, story{Una storia} game{Un gioco} practice{Lo provo} other{{mode}}}'**
+  String experienceModeLabel(String mode);
+
+  /// No description provided for @modeComing.
+  ///
+  /// In it, this message translates to:
+  /// **'Arriva presto'**
+  String get modeComing;
+
+  /// No description provided for @practiceHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Da provare nella vita vera, con chi è con te'**
+  String get practiceHint;
+
   /// No description provided for @badgeAtHome.
   ///
   /// In it, this message translates to:
@@ -1873,6 +1897,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: {name} sceglie liberamente tra quelli che metti qui. Al massimo {max} in tutto e {per} per capacità; cambiali quando li ha esplorati.'**
   String shelfHint(String name, int max, int per);
+
+  /// No description provided for @shelfShortcutNote.
+  ///
+  /// In it, this message translates to:
+  /// **'La mensola è una scorciatoia: quello che non c\'è resta raggiungibile dai tre temi della casa, sempre.'**
+  String get shelfShortcutNote;
 
   /// No description provided for @shelfCount.
   ///

@@ -40,6 +40,10 @@
 
   "catEmpty": "Nothing here for today.",
   "capacityLabel": "{capacity, select, insieme{Me and others} mani{Hands} sensi{Senses} parole{Words} pensare{Counting and thinking} mondo{The world} other{{capacity}}}",
+  "themeLabel": "{theme, select, emozioniRelazioni{How I feel} naturaViventi{Nature} autonomiaScuola{I can do it} other{{theme}}}",
+  "experienceModeLabel": "{mode, select, story{A story} game{A game} practice{I try it} other{{mode}}}",
+  "modeComing": "Coming soon",
+  "practiceHint": "To try in real life, with whoever is with you",
   "badgeAtHome": "At home",
   "badgeTogether": "Together",
   "areaLabel": "{area, select, cognitivo{Getting ready} autonomia{Independence} sociale{In class} paure{First day} vitaPratica{Practical life} sensoriale{Sensorial} linguaggio{Language and writing} matematica{Maths} cultura{Culture} other{{area}}}",
@@ -323,6 +327,7 @@
 
   "shelfTitle": "{name}'s shelf",
   "shelfHint": "A few materials at a time, like the shelves of a Montessori environment: {name} freely chooses among the ones you put here. At most {max} in all and {per} per ability; change them once they've been explored.",
+  "shelfShortcutNote": "The shelf is a shortcut: anything not on it can always be reached from the three themes on the home screen.",
   "shelfCount": "{count} of {max}",
   "shelfAuto": "Automatic choice",
   "shelfAutoOn": "The shelf now fills itself and changes once a week.",
