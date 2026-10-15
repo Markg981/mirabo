@@ -40,6 +40,10 @@
 
   "catEmpty": "Heute gibt es hier nichts.",
   "capacityLabel": "{capacity, select, insieme{Ich und die anderen} mani{Die Hände} sensi{Die Sinne} parole{Die Wörter} pensare{Zählen und denken} mondo{Die Welt} other{{capacity}}}",
+  "themeLabel": "{theme, select, emozioniRelazioni{Wie ich mich fühle} naturaViventi{Die Natur} autonomiaScuola{Ich kann das selbst} other{{theme}}}",
+  "experienceModeLabel": "{mode, select, story{Eine Geschichte} game{Ein Spiel} practice{Ich probier's} other{{mode}}}",
+  "modeComing": "Kommt bald",
+  "practiceHint": "Im echten Leben ausprobieren, mit der Person, die bei dir ist",
   "badgeAtHome": "Zu Hause",
   "badgeTogether": "Zusammen",
   "areaLabel": "{area, select, cognitivo{Vorbereitung} autonomia{Selbstständigkeit} sociale{In der Klasse} paure{Erster Schultag} vitaPratica{Praktisches Leben} sensoriale{Sinne} linguaggio{Sprache und Schreiben} matematica{Mathematik} cultura{Kultur} other{{area}}}",
@@ -323,6 +327,7 @@
 
   "shelfTitle": "{name}s Regal",
   "shelfHint": "Wenige Materialien auf einmal, wie in den Regalen einer Montessori-Umgebung: {name} wählt frei unter denen, die du hier hinstellst. Höchstens {max} insgesamt und {per} pro Fähigkeit; tausche sie aus, wenn sie erkundet sind.",
+  "shelfShortcutNote": "Das Regal ist eine Abkürzung: Was nicht darauf steht, ist über die drei Themen auf dem Startbildschirm immer erreichbar.",
   "shelfCount": "{count} von {max}",
   "shelfAuto": "Automatische Auswahl",
   "shelfAutoOn": "Das Regal füllt sich jetzt von selbst und wechselt einmal pro Woche.",

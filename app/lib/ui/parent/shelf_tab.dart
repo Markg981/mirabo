@@ -58,6 +58,8 @@ class ShelfTab extends StatelessWidget {
                   const SizedBox(height: 6),
                   Text(l.shelfHint(profile.name, size, Shelf.maxPerCapacity),
                       style: text.bodyMedium?.copyWith(color: MiraboColors.inkSoft)),
+                  const SizedBox(height: 6),
+                  Text(l.shelfShortcutNote, style: text.bodyMedium?.copyWith(color: MiraboColors.inkSoft)),
                   const SizedBox(height: 10),
                   Text(l.shelfTotal(onShelf.length, size), style: text.titleSmall?.copyWith(color: MiraboColors.navy)),
                   const SizedBox(height: 14),

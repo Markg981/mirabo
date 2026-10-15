@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 import '../../l10n/l10n.dart';
 import '../../app_state.dart';
 import '../../models/profile.dart';
-import '../../models/shelf.dart';
+import '../../models/themes.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
-import 'categories.dart';
 import 'category_screen.dart';
 import 'category_widgets.dart';
 import 'closing_screen.dart';
 import 'companion_widget.dart';
+import 'theme_screen.dart';
+import 'themes_style.dart';
 
 /// Casa del bambino: il compagno nella sua casa che chiede "cosa facciamo
-/// oggi?" e, in basso, la mensola divisa per capacità. Ci sono solo i
-/// materiali che l'adulto ha preparato, non tutto il catalogo.
+/// oggi?", sotto i tre temi e, in basso, la mensola divisa per capacità.
+/// I temi sono il catalogo completo della sua fascia, sempre nello stesso
+/// ordine; la mensola è una scorciatoia con i pochi materiali che l'adulto ha
+/// preparato (o quella automatica della settimana), e non nasconde niente.
 /// Nessun testo di configurazione; il genitore entra dal lucchetto.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,10 +28,10 @@ class HomeScreen extends StatelessWidget {
     final profile = state.currentProfile!;
     final companion = state.companionOf(profile);
     final shelf = state.shelfFor(profile);
-    final hasStory = shelf[Capacity.insieme]?.any((i) => i is StoryItem) ?? false;
+    final hasThemes = !state.repo.themes.isEmpty;
     final text = Theme.of(context).textTheme;
 
-    void open(Capacity c) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoryScreen(initial: c)));
+    void open(Widget page) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
 
     return Scaffold(
       body: SceneBackdrop(
@@ -97,13 +100,26 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              if (hasStory) ...[
-                                const SizedBox(height: 22),
-                                ChunkyButton(
-                                  label: context.l10n.homeOneStory,
-                                  icon: Icons.auto_stories_rounded,
-                                  color: Capacity.insieme.color,
-                                  onPressed: () => open(Capacity.insieme),
+                              if (hasThemes) ...[
+                                const SizedBox(height: 18),
+                                Row(
+                                  children: [
+                                    for (final t in ChildTheme.values)
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                                          child: SizedBox(
+                                            height: (size * 0.5).clamp(130.0, 190.0),
+                                            child: BigCard(
+                                              title: t.label(context.l10n),
+                                              color: t.color,
+                                              emojis: t.emojis,
+                                              onTap: () => open(ThemeScreen(theme: t)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
                                 ),
                               ],
                             ],
@@ -114,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 }),
               ),
-              CategoryDock(categories: shelf.keys.toList(), onSelect: open),
+              CategoryDock(categories: shelf.keys.toList(), onSelect: (c) => open(CategoryScreen(initial: c))),
             ],
           ),
         ),

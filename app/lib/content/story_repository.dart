@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/activity.dart';
 import '../models/story.dart';
+import '../models/themes.dart';
 import 'package_verifier.dart';
 
 /// Descrizione di un compagno, da companions.json.
@@ -35,6 +36,9 @@ class StoryRepository {
   final Map<String, VerifiedPackage> _activityPkgs = {};
   final List<String> rejected = [];
   Map<String, dynamic> _companionsJson = const {};
+
+  /// I temi della matrice educativa, con i riferimenti stabili dei contenuti.
+  ThemeCatalog themes = ThemeCatalog.empty;
 
   // Modelli già costruiti, per lingua.
   final Map<String, Map<String, Story>> _storiesByLang = {};
@@ -95,6 +99,12 @@ class StoryRepository {
       } on PackageVerificationException catch (e) {
         rejected.add('$file: ${e.message}');
       }
+    }
+    try {
+      themes = ThemeCatalog.fromJson(jsonDecode(await rootBundle.loadString('assets/education/themes.json')) as Map<String, dynamic>);
+    } catch (_) {
+      // Asset non sincronizzati (vedi studio/sync_assets.py): resta la mensola.
+      themes = ThemeCatalog.empty;
     }
     // Costruisce subito l'italiano: un pacchetto con un JSON rotto si vede all'avvio.
     _stories('it');

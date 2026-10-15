@@ -142,6 +142,41 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String themeLabel(String theme) {
+    String _temp0 = intl.Intl.selectLogic(
+      theme,
+      {
+        'emozioniRelazioni': 'Cómo me siento',
+        'naturaViventi': 'La naturaleza',
+        'autonomiaScuola': 'Lo hago yo',
+        'other': '$theme',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String experienceModeLabel(String mode) {
+    String _temp0 = intl.Intl.selectLogic(
+      mode,
+      {
+        'story': 'Un cuento',
+        'game': 'Un juego',
+        'practice': 'Lo pruebo',
+        'other': '$mode',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get modeComing => 'Muy pronto';
+
+  @override
+  String get practiceHint =>
+      'Para probar en la vida real, con quien esté contigo';
+
+  @override
   String get badgeAtHome => 'En casa';
 
   @override
@@ -1330,6 +1365,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String shelfHint(String name, int max, int per) {
     return 'Pocos materiales a la vez, como en los estantes de un ambiente Montessori: $name elige libremente entre los que pongas aquí. Como máximo $max en total y $per por capacidad; cámbialos cuando los haya explorado.';
   }
+
+  @override
+  String get shelfShortcutNote =>
+      'La estantería es un atajo: lo que no está en ella siempre se puede abrir desde los tres temas de la pantalla de inicio.';
 
   @override
   String shelfCount(int count, int max) {

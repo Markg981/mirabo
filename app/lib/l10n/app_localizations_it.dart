@@ -142,6 +142,40 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String themeLabel(String theme) {
+    String _temp0 = intl.Intl.selectLogic(
+      theme,
+      {
+        'emozioniRelazioni': 'Come mi sento',
+        'naturaViventi': 'La natura',
+        'autonomiaScuola': 'Faccio da me',
+        'other': '$theme',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String experienceModeLabel(String mode) {
+    String _temp0 = intl.Intl.selectLogic(
+      mode,
+      {
+        'story': 'Una storia',
+        'game': 'Un gioco',
+        'practice': 'Lo provo',
+        'other': '$mode',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get modeComing => 'Arriva presto';
+
+  @override
+  String get practiceHint => 'Da provare nella vita vera, con chi è con te';
+
+  @override
   String get badgeAtHome => 'A casa';
 
   @override
@@ -1328,6 +1362,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String shelfHint(String name, int max, int per) {
     return 'Pochi materiali alla volta, come sugli scaffali di un ambiente Montessori: $name sceglie liberamente tra quelli che metti qui. Al massimo $max in tutto e $per per capacità; cambiali quando li ha esplorati.';
   }
+
+  @override
+  String get shelfShortcutNote =>
+      'La mensola è una scorciatoia: quello che non c\'è resta raggiungibile dai tre temi della casa, sempre.';
 
   @override
   String shelfCount(int count, int max) {

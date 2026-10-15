@@ -142,6 +142,40 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String themeLabel(String theme) {
+    String _temp0 = intl.Intl.selectLogic(
+      theme,
+      {
+        'emozioniRelazioni': 'How I feel',
+        'naturaViventi': 'Nature',
+        'autonomiaScuola': 'I can do it',
+        'other': '$theme',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String experienceModeLabel(String mode) {
+    String _temp0 = intl.Intl.selectLogic(
+      mode,
+      {
+        'story': 'A story',
+        'game': 'A game',
+        'practice': 'I try it',
+        'other': '$mode',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get modeComing => 'Coming soon';
+
+  @override
+  String get practiceHint => 'To try in real life, with whoever is with you';
+
+  @override
   String get badgeAtHome => 'At home';
 
   @override
@@ -1325,6 +1359,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String shelfHint(String name, int max, int per) {
     return 'A few materials at a time, like the shelves of a Montessori environment: $name freely chooses among the ones you put here. At most $max in all and $per per ability; change them once they\'ve been explored.';
   }
+
+  @override
+  String get shelfShortcutNote =>
+      'The shelf is a shortcut: anything not on it can always be reached from the three themes on the home screen.';
 
   @override
   String shelfCount(int count, int max) {

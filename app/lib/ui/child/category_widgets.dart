@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../app_state.dart';
 import '../../l10n/l10n.dart';
@@ -7,6 +6,7 @@ import '../../models/shelf.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
 import 'categories.dart';
+import 'child_top_bar.dart';
 
 /// Barra in basso con le capacità che hanno qualcosa sulla mensola: bottoni
 /// rotondi colorati con un'emoji e, sotto, il nome. Quella scelta si alza e
@@ -24,29 +24,16 @@ class CategoryDock extends StatefulWidget {
 }
 
 class _CategoryDockState extends State<CategoryDock> {
-  FlutterTts? _tts;
+  final _voice = ShortVoice();
 
   @override
   void dispose() {
-    _tts?.stop();
+    _voice.dispose();
     super.dispose();
   }
 
-  Future<void> _say(Capacity c) async {
-    final profile = AppStateScope.of(context).currentProfile;
-    final name = c.label(context.l10n);
-    try {
-      final tts = _tts ??= FlutterTts();
-      if (profile != null) {
-        await tts.setLanguage(AppLanguage.fromCode(profile.language).ttsCode);
-      }
-      await tts.setSpeechRate(0.45);
-      await tts.stop();
-      await tts.speak(name);
-    } catch (_) {
-      // Senza voce di sistema il nome resta scritto sotto il bottone.
-    }
-  }
+  // Senza voce di sistema il nome resta scritto sotto il bottone.
+  Future<void> _say(Capacity c) => _voice.say(AppStateScope.of(context).currentProfile?.language, c.label(context.l10n));
 
   @override
   Widget build(BuildContext context) {

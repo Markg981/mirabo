@@ -18,6 +18,7 @@ import 'models/nature_day.dart';
 import 'models/profile.dart';
 import 'models/shelf.dart';
 import 'models/story.dart';
+import 'models/themes.dart';
 
 /// Stato dell'app: profili, profilo attivo, modalità della sessione.
 /// Volutamente semplice (ChangeNotifier) finché non serve di più.
@@ -244,6 +245,13 @@ class AppState extends ChangeNotifier {
     if (p.shelf == null && _shelfDue(p)) scheduleMicrotask(() => rotateShelf(p));
     return Shelf.arrange(shelfCandidates(p, mode: mode), p.shelf ?? p.shelfAuto, p.ageBand);
   }
+
+  /// Le esperienze di un tema per il bambino, modalità per modalità: tutte
+  /// quelle della sua fascia che l'adulto permette (mondi, modalità della
+  /// sessione). Non dipende dalla mensola, da cosa ha finito o dalla
+  /// settimana: niente si sblocca e niente sparisce perché poco usato.
+  Map<ExperienceMode, List<ThemeExperience>> themeFor(ChildProfile p, ChildTheme theme, {SessionMode? mode}) =>
+      repo.themes.resolve(theme, p.ageBand, stories: storiesFor(p, mode: mode), activities: activitiesFor(p));
 
   bool _shelfDue(ChildProfile p) =>
       p.shelfAuto == null || p.shelfRotatedAt == null || !_now().isBefore(p.shelfRotatedAt!.add(Shelf.rotation));
