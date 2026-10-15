@@ -1,0 +1,69 @@
+{
+  "content": "activity:ponte-tra-due-libri",
+  "band": "8-10",
+  "method": {
+    "montessori": false,
+    "why": "Progetto aperto di prova e revisione (educazione tecnologica): è un'attività educativa, non del metodo Montessori."
+  },
+  "purpose": "Provare una soluzione, vedere dove non regge e cambiarla: il crollo è un'informazione, non un errore.",
+  "prerequisites": [
+    "Usa le forbici da solo.",
+    "Accetta che una cosa possa non riuscire la prima volta."
+  ],
+  "materials": [
+    {
+      "item": "Due libri della stessa altezza",
+      "size": "alti almeno 3 cm",
+      "alternatives": ["Due scatole o due pile di quaderni"],
+      "precautions": []
+    },
+    {
+      "item": "Fogli di carta",
+      "size": "A4 normali",
+      "alternatives": ["Fogli di giornale", "Cartoncino, per una seconda sfida"],
+      "precautions": []
+    },
+    {
+      "item": "Monete tutte uguali",
+      "size": "10-20 monete piccole",
+      "alternatives": ["Tappi di bottiglia", "Mollette"],
+      "precautions": ["Con fratelli sotto i 3 anni monete e tappi restano sul tavolo e si contano alla fine: si possono mettere in bocca"]
+    },
+    {
+      "item": "Forbici e nastro adesivo",
+      "size": "forbici con la punta arrotondata, nastro di carta",
+      "alternatives": ["Colla stick al posto del nastro"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Prepara tutto in una scatola, su un tavolo libero.",
+    "Leggi la sfida con il bambino una volta, poi siediti di lato."
+  ],
+  "presentation": [
+    "L'adulto legge la sfida: \"Un ponte da un libro all'altro, con un solo foglio. Quante monete regge?\".",
+    "Mostra i materiali uno per uno, senza mostrare come si costruisce il ponte.",
+    "Chiede: \"Come pensi di farlo?\" e lascia cominciare."
+  ],
+  "supervision": {
+    "level": "free",
+    "when": "Il bambino lavora da solo; l'adulto è in casa e interviene solo se chiamato, con una domanda più che con una soluzione. Lascia crollare il ponte senza anticipare il problema."
+  },
+  "errorControl": {
+    "how": "Il ponte regge o cede, e il punto in cui cede mostra dove intervenire. Non c'è un numero di monete da raggiungere."
+  },
+  "repetition": "Si riprova cambiando una cosa alla volta (forma, piega, distanza). Un altro giorno la sfida può cambiare (due fogli, libri più lontani) se è il bambino a proporlo: non è una tappa da superare.",
+  "tidyUp": [
+    "Le monete tornano nel barattolo, contate.",
+    "I fogli usati vanno nella carta e i libri sullo scaffale.",
+    "Se vuole, il bambino tiene il ponte che gli è piaciuto di più."
+  ],
+  "screen": "Il tablet presenta la sfida una volta. Le prove si fanno sul tavolo, senza tornare al tablet tra una prova e l'altra.",
+  "feasibility": {
+    "prepMinutes": 5,
+    "materialsAtHome": true
+  },
+  "forReviewer": [
+    "In repository c'è anche ponte-di-carta, la stessa sfida come progetto in quattro passaggi sul tablet: resta fuori dal lancio perché chiede di tornare al tablet a ogni passaggio."
+  ]
+}

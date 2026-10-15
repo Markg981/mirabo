@@ -1,0 +1,47 @@
+{
+  "content": "home:lia-rabbia",
+  "band": "3-5",
+  "method": {
+    "montessori": false,
+    "why": "Regolazione emotiva legata alla storia: non c'è un materiale con controllo dell'errore né una presentazione di vita pratica. È un'attività educativa e non va presentata come Montessori."
+  },
+  "purpose": "Imparare a mente calma il respiro del vulcano, per avere un gesto da fare quando arriva la rabbia invece di colpire o lanciare.",
+  "prerequisites": [
+    "Conosce la storia di Lia o almeno l'immagine del vulcano.",
+    "Sa soffiare dalla bocca (spegnere una candelina, fare le bolle)."
+  ],
+  "materials": [
+    {
+      "item": "Un cuscino o un tappeto",
+      "size": "abbastanza grande per sedersi comodi in due",
+      "alternatives": ["Il divano o il letto", "Un pupazzo da appoggiare sulla pancia"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Scegli un momento tranquillo, non subito dopo una lite.",
+    "Prova il respiro una volta da solo, per mostrarlo senza leggere."
+  ],
+  "presentation": [
+    "L'adulto si siede di fronte al bambino, mette le mani sulla pancia e fa il respiro una volta in silenzio, lentamente.",
+    "Poi dice: \"Questo è il respiro del vulcano. Lo facciamo insieme?\" e lo rifà con il bambino, contando fino a tre."
+  ],
+  "supervision": {
+    "level": "together",
+    "when": "Sempre insieme: è un gesto di relazione. Durante una rabbia vera l'adulto si mette vicino e respira per primo, senza chiederlo a parole."
+  },
+  "errorControl": {
+    "none": "Non c'è un modo sbagliato da riconoscere: il respiro non si corregge e non si giudica."
+  },
+  "repetition": "Si rifà nei giorni seguenti quando capita un momento calmo (prima di dormire, dopo il bagno), sempre uguale: non diventa più lungo né più difficile.",
+  "tidyUp": [
+    "Si rimette a posto il cuscino.",
+    "Si chiude con il respiro, senza commentare com'è andata."
+  ],
+  "screen": "Nessuno: l'attività è nella scheda genitore della storia e si fa a tablet spento.",
+  "feasibility": {
+    "prepMinutes": 1,
+    "materialsAtHome": true,
+    "notes": "Nessun materiale da procurarsi."
+  }
+}

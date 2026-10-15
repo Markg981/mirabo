@@ -10,6 +10,7 @@
   "keyPhrase": "La rabbia è un vulcano: sale, esplode e poi si calma. Io posso aspettarla.",
   "gesture": "Il respiro del vulcano: mani sulla pancia, dentro contando fino a 3, fuori soffiando piano come lava che scende.",
   "parentCard": "parent.md",
+  "homeActivity": "home-activity.json",
   "sources": [
     "CASEL, Core SEL competencies — self-management",
     "Mireille d'Allancé, Che rabbia!, Babalibri (albo consigliato, non riprodotto)"

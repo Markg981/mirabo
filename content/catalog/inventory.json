@@ -26,7 +26,7 @@
     {
       "ref": "story:fiocco-coraggioso",
       "state": "riutilizzabile",
-      "note": "Variante 6-7 nel lancio (Emozioni 6-7). Mancano immagini definitive, audio, attività dalla storia e revisione."
+      "note": "Variante 6-7 nel lancio (Emozioni 6-7). Mancano immagini definitive, audio e revisione (l'attività dalla storia c'è, con la sua scheda)."
     },
     {
       "ref": "story:goccia-ribelle",
@@ -36,7 +36,7 @@
     {
       "ref": "story:lia-rabbia",
       "state": "riutilizzabile",
-      "note": "Variante 3-5 nel lancio (Emozioni 3-5). Testo e struttura nella scheda della fascia; mancano immagini definitive (oggi scene composte), audio, attività dalla storia e revisione. La variante 6-7 resta fuori lancio."
+      "note": "Variante 3-5 nel lancio (Emozioni 3-5). Testo e struttura nella scheda della fascia; mancano immagini definitive (oggi scene composte), audio e revisione (l'attività dalla storia c'è, con la sua scheda). La variante 6-7 resta fuori lancio."
     },
     {
       "ref": "story:notte-lucciole",
@@ -110,8 +110,8 @@
     },
     {
       "ref": "activity:caccia-ombre-fuori",
-      "state": "riutilizzabile",
-      "note": "Attività pratica Natura 8-10."
+      "state": "fuori-mvp",
+      "note": "Fuori lancio dall'analisi 05: la caccia dà una cosa alla volta e chiede di tornare al tablet a ogni cosa trovata. L'attività pratica Natura 8-10 è L'ombra che cammina."
     },
     {
       "ref": "activity:caccia-quantita",
@@ -196,7 +196,7 @@
     {
       "ref": "activity:germoglio-fagiolo",
       "state": "riutilizzabile",
-      "note": "Attività pratica Natura 6-7."
+      "note": "Attività pratica Natura 6-7. Classificata Montessori (cultura): da confermare con un revisore 6-12."
     },
     {
       "ref": "activity:gioco-del-suono",
@@ -254,6 +254,11 @@
       "note": "Parcheggiato nella matrice: Prerequisiti scolastici (lettere, suoni, numeri, scrittura): non hanno ancora un'esperienza della matrice. Vanno collocati nel tema Autonomia e scuola con un obiettivo per fascia, o tolti."
     },
     {
+      "ref": "activity:ombra-che-cammina",
+      "state": "riutilizzabile",
+      "note": "Nuova (analisi 05). Attività pratica Natura 8-10, non Montessori: osservazione dell'ombra per più giorni. Mancano revisione, prove in famiglia e traduzioni."
+    },
+    {
       "ref": "activity:parti-della-pianta",
       "state": "da-adattare",
       "note": "Gioco del tema Natura e viventi: copre 6-7 e 8-10, manca la variante 3-5 (parti grandi e nominabili, due o tre alla volta)."
@@ -272,6 +277,11 @@
       "ref": "activity:ponte-di-carta",
       "state": "fuori-mvp",
       "note": "Gioco-progetto della cella Autonomia 8-10: al lancio il gioco del tema è Domani a scuola."
+    },
+    {
+      "ref": "activity:ponte-tra-due-libri",
+      "state": "riutilizzabile",
+      "note": "Nuova (analisi 05). Attività pratica Autonomia 8-10, non Montessori: la sfida del ponte come presentazione, senza tornare al tablet. Mancano revisione, prove in famiglia e traduzioni."
     },
     {
       "ref": "activity:pregrafismo-linee",
@@ -301,7 +311,7 @@
     {
       "ref": "activity:telaio-bottoni",
       "state": "riutilizzabile",
-      "note": "Attività pratica Autonomia 3-5."
+      "note": "Attività pratica Autonomia 3-5. Montessori (vita pratica); il revisore decide l'ordine dei passi (vedi practice.json)."
     },
     {
       "ref": "activity:torre-rosa",
@@ -321,7 +331,12 @@
     {
       "ref": "activity:versare-acqua",
       "state": "riutilizzabile",
-      "note": "Attività pratica Natura 3-5."
+      "note": "Attività pratica Natura 3-5. Montessori (vita pratica)."
+    },
+    {
+      "ref": "activity:zaino-per-domani",
+      "state": "riutilizzabile",
+      "note": "Nuova (analisi 05). Attività pratica Autonomia 6-7, non Montessori: la lista disegnata dello zaino. Mancano revisione, prove in famiglia e traduzioni."
     }
   ]
 }

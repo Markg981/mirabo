@@ -11,8 +11,9 @@ Uso:
   python studio/catalog.py --release [--theme T] # controllo di pubblicazione: esce con 1 se il catalogo
                                                  # (o il solo tema T) non è pronto per la release
   python studio/catalog.py --approve story:<id>|activity:<id> --by "Nome Cognome, qualifica"
-                           --elements all|text,images,audio,interactions,adultCard,safety,rights [--note "..."]
-                                                 # registra l'approvazione della versione esatta
+                           --elements all|text,images,audio,interactions,adultCard,safety,rights[,practice] [--note "..."]
+                                                 # registra l'approvazione della versione esatta; 'practice'
+                                                 # (la scheda dell'attività pratica) solo per chi ha practice.json
 
 Senza --release esce con 1 solo se inventario o catalogo sono incoerenti (posti doppi, contenuti
 inesistenti, contenuti fuori dalla cella della matrice o segnati fuori MVP): i posti ancora da
@@ -26,6 +27,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import approvals  # noqa: E402
+import practice  # noqa: E402
 
 ROOT = approvals.ROOT
 CATALOG = ROOT / "content" / "catalog"
@@ -214,6 +216,9 @@ def release_plan(launch: dict, theme: str | None = None) -> tuple[list[tuple[str
         problems += approvals.problems("story", story_id) + story_problems(story_id, bands)
     for activity_id, bands in sorted(activity_bands.items()):
         problems += approvals.problems("activity", activity_id) + activity_problems(activity_id, bands)
+    for mode, slot in slots(launch, theme):
+        if mode == "practice" and slot.get("content"):
+            problems += practice.release_problems(slot["content"], slot["band"])
     contents = [("story", i) for i in sorted(story_bands)] + [("activity", i) for i in sorted(activity_bands)]
     return contents, problems
 
@@ -229,19 +234,20 @@ def report(launch: dict) -> None:
 
 def approve(argv: list[str]) -> int:
     if "--by" not in argv or "--elements" not in argv:
-        print("Servono --by \"Nome Cognome, qualifica\" e --elements all|" + ",".join(approvals.ELEMENTS))
+        print("Servono --by \"Nome Cognome, qualifica\" e --elements all|" + ",".join({**approvals.ELEMENTS, **approvals.PRACTICE}))
         return 1
     kind, content_id = split(argv[argv.index("--approve") + 1])
     if kind not in approvals.META or not exists(f"{kind}:{content_id}"):
         print(f"Contenuto sconosciuto: {kind}:{content_id} (story:<id> o activity:<id>)")
         return 1
     raw = argv[argv.index("--elements") + 1]
-    elements = list(approvals.ELEMENTS) if raw == "all" else [e.strip() for e in raw.split(",") if e.strip()]
+    required = approvals.elements_for(kind, content_id)
+    elements = list(required) if raw == "all" else [e.strip() for e in raw.split(",") if e.strip()]
     note = argv[argv.index("--note") + 1] if "--note" in argv else ""
     entry = approvals.record(kind, content_id, argv[argv.index("--by") + 1], elements, note)
     print(f"{kind} {content_id} v{entry['version']}: approvazione registrata ({entry['reviewer']}, {entry['date']}),"
           f" impronta {entry['fingerprint'][:12]}")
-    missing = [approvals.ELEMENTS[e] for e in approvals.ELEMENTS if e not in entry["elements"]]
+    missing = [required[e] for e in required if e not in entry["elements"]]
     if missing:
         print(f"Non confermati: {', '.join(missing)}. Resta in 'review': non si impacchetta finché non sono confermati.")
     print("Se il contenuto cambia, anche di un file, serve una nuova approvazione (e una nuova 'version' se era già distribuito).")

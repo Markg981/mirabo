@@ -1,0 +1,29 @@
+{
+  "title": "Das erste Stückchen",
+  "intro": "Fiocco hat Angst zu fallen und versucht es trotzdem, Stückchen für Stückchen. Zu Hause wählt ihr etwas Neues und Echtes aus dem Tag und macht nur den Anfang: Die Aktivität geht ohne Tablet.",
+  "bands": {
+    "6-7": {
+      "goal": "Etwas Neues anfangen und nur das erste Stückchen machen, auch wenn es nicht sofort klappt.",
+      "steps": [
+        "Wählt gemeinsam etwas Kleines und Neues, das das Kind machen möchte (einen Schuh binden, Milch eingießen, den eigenen Namen schreiben).",
+        "Fragt: „Was ist das erste Stückchen?“ und lasst es das Kind selbst sagen.",
+        "Das Kind sagt laut „ich probier's“ und macht nur dieses Stückchen.",
+        "Wenn es weitermachen will, macht es weiter; wenn es aufhört, ist das gut so: Morgen geht es mit dem nächsten Stückchen weiter."
+      ],
+      "materials": [
+        "was für die gewählte Sache nötig ist, nicht mehr"
+      ],
+      "preparation": [
+        "Denk an einen echten Moment des Tages, in dem das Kind zögert: Du musst keinen erfinden.",
+        "Plane ein paar Minuten ohne Eile ein."
+      ],
+      "supervision": {
+        "note": "Bleib in der Nähe und korrigiere nicht, während es probiert. Wenn es um Hilfe bittet, hilf bei diesem Schritt und überlass ihm den nächsten."
+      },
+      "alternatives": [
+        "Wenn es nichts Neues gibt, etwas Gewohntes auf neue Art (mit der anderen Hand, allein statt gemeinsam).",
+        "Wenn ihm das laute „ich probier's“ peinlich ist, kann es flüstern oder den Daumen heben."
+      ]
+    }
+  }
+}

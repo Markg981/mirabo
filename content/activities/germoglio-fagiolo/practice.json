@@ -1,0 +1,67 @@
+{
+  "content": "activity:germoglio-fagiolo",
+  "band": "6-7",
+  "method": {
+    "montessori": true,
+    "area": "cultura",
+    "why": "Area culturale (botanica) e cura dei viventi: il bambino prepara, cura e osserva un seme vero e ne disegna i cambiamenti. A quest'età conta l'osservazione nel tempo più della presentazione di un materiale: la classificazione va confermata da un revisore con formazione 6-12."
+  },
+  "purpose": "Prendersi cura di un seme ogni giorno e vedere che per cambiare gli servono acqua e tempo; il seme può anche non germogliare.",
+  "prerequisites": [
+    "Sa versare l'acqua senza rovesciarla, o lo fa con l'adulto.",
+    "Sa disegnare quello che vede, anche in modo semplice."
+  ],
+  "materials": [
+    {
+      "item": "Un barattolo trasparente",
+      "size": "alto 10-15 cm, come un barattolo di marmellata",
+      "alternatives": ["Un bicchiere di plastica trasparente"],
+      "precautions": ["Se il bambino lo sposta da solo, meglio la plastica del vetro"]
+    },
+    {
+      "item": "Cotone idrofilo",
+      "size": "quanto basta a riempire il barattolo",
+      "alternatives": ["Carta assorbente o tovaglioli di carta"],
+      "precautions": []
+    },
+    {
+      "item": "Fagioli secchi",
+      "size": "2 o 3 fagioli grandi (borlotti, cannellini)",
+      "alternatives": ["Ceci o lenticchie"],
+      "precautions": ["Crudi non si mangiano; lontano dai fratelli sotto i 3 anni, che li possono mettere in bocca"]
+    },
+    {
+      "item": "Un quaderno e una matita",
+      "size": "un quaderno qualunque",
+      "alternatives": ["Fogli pinzati"],
+      "precautions": []
+    }
+  ],
+  "preparation": [
+    "Tieni barattolo, cotone e fagioli in una scatola su uno scaffale basso.",
+    "Scegli con il bambino una finestra luminosa ma non al sole diretto del pomeriggio."
+  ],
+  "presentation": [
+    "Riempi il barattolo di cotone e bagnalo poco per volta: umido, non zuppo (premendo con un dito non deve uscire acqua).",
+    "Infila un fagiolo tra il cotone e il vetro, così si vede da fuori; il secondo lo mette il bambino.",
+    "Fai il primo disegno del barattolo sul quaderno, con la data, e lascia il secondo giorno al bambino.",
+    "Mostra dove mettete il barattolo e dite insieme chi lo controlla ogni giorno: il bambino."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "Insieme il primo giorno; poi il bambino controlla e bagna da solo. L'adulto guarda con lui il quaderno una volta alla settimana."
+  },
+  "errorControl": {
+    "how": "Il seme stesso: se germoglia, acqua e cotone andavano bene; se fa la muffa c'era troppa acqua; se dopo dieci giorni non succede niente, si prova con un altro seme, senza cercare colpe."
+  },
+  "repetition": "Si riprova con altri semi (lenticchie, ceci) o si mette un secondo barattolo al buio per confrontare. Ogni prova è un'osservazione nuova, non una tappa.",
+  "tidyUp": [
+    "Dopo circa due settimane il germoglio va nella terra, in un vaso.",
+    "Il cotone usato si butta; il barattolo si lava e torna nella scatola."
+  ],
+  "screen": "Il tablet mostra una volta la presentazione e i passi. L'osservazione dei giorni seguenti si fa sul quaderno, non sul tablet.",
+  "feasibility": {
+    "prepMinutes": 5,
+    "materialsAtHome": true
+  }
+}

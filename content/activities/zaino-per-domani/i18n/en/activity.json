@@ -1,0 +1,49 @@
+{
+  "title": "Tomorrow's school bag",
+  "offscreen": "The list stays up by the door and is used every evening with the real school bag, without the tablet.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "The school bag"
+        },
+        {
+          "label": "A sheet of paper and some felt-tip pens"
+        },
+        {
+          "label": "Masking tape to hang up the list"
+        },
+        {
+          "label": "The class planner or timetable"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Look at the timetable with a grown-up: what's on tomorrow?"
+        },
+        {
+          "text": "Draw on the list the things you need tomorrow, one per line."
+        },
+        {
+          "text": "Take one thing at a time, put it in the bag and touch its drawing."
+        },
+        {
+          "text": "Hang the list by the door: tomorrow evening you'll find it there."
+        }
+      ],
+      "control": "The list: if a drawing doesn't have its thing in the bag yet, you can see it.",
+      "observe": "Whether the next evening they take the list on their own, and whether they add something that was missing."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, shall we get tomorrow ready tonight? You need the real school bag and a grown-up nearby.",
+    "pilu": "{nome}, a list you draw yourself helps you remember. The grown-up will show you how.",
+    "tango": "{nome}! The school bag! I'd fit in it whole... You only put in what you need."
+  },
+  "outro": {
+    "bo": "The bag is ready, {nome}. Tomorrow morning you don't have to think about it.",
+    "pilu": "The list stays up, {nome}: tomorrow evening it's already there.",
+    "tango": "Done! {nome}, the list remembers for me too."
+  },
+  "reviewed": false
+}

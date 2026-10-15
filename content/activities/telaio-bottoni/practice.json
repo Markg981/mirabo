@@ -1,0 +1,53 @@
+{
+  "content": "activity:telaio-bottoni",
+  "band": "3-5",
+  "method": {
+    "montessori": true,
+    "area": "vita-pratica",
+    "why": "Vita pratica, cura della persona: è il telaio delle allacciature (bottoni), adattato con un indumento di casa steso sul tavolo. Il bambino lavora prima fuori dal corpo, poi su di sé."
+  },
+  "purpose": "Abbottonare e sbottonare con le proprie mani, prima su un indumento steso e poi addosso: un passo del vestirsi da soli la mattina.",
+  "prerequisites": [
+    "Sa fare la pinza con pollice e indice (prende un fagiolo con due dita).",
+    "Ha visto un adulto abbottonarsi con calma."
+  ],
+  "materials": [
+    {
+      "item": "Una camicia o un cardigan con bottoni grandi",
+      "size": "bottoni di almeno 2 cm e asole morbide, 4 o 5 bottoni; va bene un capo da adulto",
+      "alternatives": ["Una federa con i bottoni", "Due pezzi di stoffa con bottoni e asole cuciti su un cartone"],
+      "precautions": ["Controlla che i bottoni siano cuciti bene: un bottone che si stacca si mette in bocca"]
+    }
+  ],
+  "preparation": [
+    "Stendi il capo sul tavolo, abbottonato, con il collo in alto.",
+    "Quando non si usa, tienilo piegato su uno scaffale basso dove il bambino lo ritrova."
+  ],
+  "presentation": [
+    "Siediti accanto al bambino, con il capo steso davanti a voi.",
+    "Lentamente e senza parlare, tieni il bottone con due dita e il bordo dell'asola con le altre.",
+    "Infila metà bottone nell'asola, poi tiralo dall'altra parte; fai così con tutti, dall'alto in basso.",
+    "Poi sbottona tutti, dal basso in alto, e apri i due lembi.",
+    "Passa il capo al bambino: \"Adesso puoi tu\"."
+  ],
+  "supervision": {
+    "level": "nearby",
+    "when": "Vicino durante la presentazione; poi il bambino lavora da solo, con l'adulto nella stanza. Se un bottone non entra, l'adulto aiuta solo su quel bottone."
+  },
+  "errorControl": {
+    "how": "Se un bottone finisce nell'asola sbagliata, i lembi non combaciano e in fondo resta un bottone o un'asola senza compagno: il bambino lo vede da solo."
+  },
+  "repetition": "Il capo resta sullo scaffale e il bambino lo riprende quando vuole. Quando è lui a provarci con la giacca addosso, si passa a quella: non è una tappa da superare, è il motivo per cui il telaio esiste.",
+  "tidyUp": [
+    "Il capo si ripone sempre nello stesso modo, deciso una volta sola (abbottonato o aperto).",
+    "Il bambino lo piega come riesce e lo rimette sullo scaffale."
+  ],
+  "screen": "Il tablet mostra una volta all'adulto materiali e passi, e il bambino può rivederli. Durante il lavoro il tablet resta lontano.",
+  "feasibility": {
+    "prepMinutes": 3,
+    "materialsAtHome": true
+  },
+  "forReviewer": [
+    "Nella tradizione si presenta prima lo sbottonare, che è più facile. L'app oggi mostra prima l'abbottonare: decidere se invertire i passi (activity.json e traduzioni) prima dell'approvazione."
+  ]
+}

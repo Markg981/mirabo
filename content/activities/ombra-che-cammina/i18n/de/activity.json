@@ -1,0 +1,49 @@
+{
+  "title": "Der wandernde Schatten",
+  "offscreen": "Es geht auch drinnen: eine Wasserflasche auf einer sonnigen Fensterbank und ihr Schatten mit einem Stück Malerkrepp auf dem Boden markiert.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Ein Stein oder eine Kreide zum Markieren"
+        },
+        {
+          "label": "Etwas draußen, das sich nicht bewegt: ein Pfosten, ein Baum, ein großer Blumentopf"
+        },
+        {
+          "label": "Ein Heft und ein Bleistift"
+        },
+        {
+          "label": "Eine Uhr"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Wähle mit einem Erwachsenen etwas draußen, das immer an seinem Platz bleibt, und eine Tageszeit."
+        },
+        {
+          "text": "Leg den Stein genau an die Spitze seines Schattens."
+        },
+        {
+          "text": "Zeichne ins Heft den Gegenstand und den Schatten und schreib die Uhrzeit dazu."
+        },
+        {
+          "text": "Komm an den nächsten Tagen zur selben Zeit wieder: Ist der Schatten länger oder kürzer? Näher oder weiter weg als der Stein?"
+        }
+      ],
+      "control": "Der Stein von gestern: Der Schatten von heute wird damit verglichen, ohne zu messen.",
+      "observe": "Ob es von sich aus eine Vermutung für den nächsten Tag äußert und mit welchen Worten es vergleicht."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, heute schauen wir nach draußen, nicht hierher. Ruf einen Erwachsenen: Ihr braucht einen Stein und einen Platz.",
+    "pilu": "{nome}, Schatten verändern sich langsam. Das merkt man nur, wenn man Tag für Tag wieder hinschaut.",
+    "tango": "{nome}! Ein wandernder Schatten! Ich bleibe hier und passe auf. Du gehst mit einem Erwachsenen raus."
+  },
+  "outro": {
+    "bo": "Der Stein bleibt liegen, {nome}. Morgen kommt ihr zur selben Zeit wieder.",
+    "pilu": "Die Uhrzeit steht im Heft, {nome}: Morgen brauchst du sie zum Vergleichen.",
+    "tango": "Fertig! {nome}, erzählst du mir morgen, ob der Schatten gewandert ist?"
+  },
+  "reviewed": false
+}

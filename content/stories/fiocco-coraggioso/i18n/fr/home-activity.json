@@ -1,0 +1,29 @@
+{
+  "title": "Le premier petit bout",
+  "intro": "Fiocco a peur de tomber et essaie quand même, un petit bout à la fois. À la maison on choisit une chose nouvelle et vraie de la journée et on n'en fait que le début : l'activité se fait sans la tablette.",
+  "bands": {
+    "6-7": {
+      "goal": "Commencer une chose nouvelle en n'en faisant que le premier petit bout, même si ça ne marche pas tout de suite.",
+      "steps": [
+        "Choisissez ensemble une petite chose nouvelle que l'enfant veut faire (lacer une chaussure, verser le lait, écrire son prénom).",
+        "Demandez : « Quel est le premier petit bout ? » et laissez-le répondre.",
+        "L'enfant dit « j'essaie » à voix haute et ne fait que ce petit bout.",
+        "S'il veut continuer, il continue ; s'il s'arrête, c'est très bien : demain on reprend au petit bout suivant."
+      ],
+      "materials": [
+        "ce qu'il faut pour la chose choisie, rien de plus"
+      ],
+      "preparation": [
+        "Pense à un vrai moment de la journée où l'enfant hésite : inutile d'en inventer un.",
+        "Garde quelques minutes sans te presser."
+      ],
+      "supervision": {
+        "note": "Reste près de lui et ne corrige pas pendant qu'il essaie. S'il demande de l'aide, aide-le pour cette étape et laisse-lui la suivante."
+      },
+      "alternatives": [
+        "S'il n'y a rien de nouveau, une chose habituelle faite autrement (de l'autre main, seul au lieu d'ensemble).",
+        "Si dire « j'essaie » à voix haute le gêne, il peut le chuchoter ou lever le pouce."
+      ]
+    }
+  }
+}

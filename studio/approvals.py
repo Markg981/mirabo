@@ -34,6 +34,10 @@ ELEMENTS = {
     "safety": "sicurezza",
     "rights": "diritti d'uso",
 }
+# Un contenuto con la scheda dell'attività pratica (practice.json, docs/montessori.md) ha un
+# elemento in più: il revisore approva finalità, materiali, presentazione e classificazione.
+PRACTICE_FILE = "practice.json"
+PRACTICE = {"practice": "scheda dell'attività pratica"}
 
 
 TEXT_SUFFIXES = {".json", ".md", ".txt", ".svg"}
@@ -48,6 +52,12 @@ def content_bytes(path: Path) -> bytes:
 
 def folder_of(kind: str, content_id: str) -> Path:
     return FOLDERS[kind] / content_id
+
+
+def elements_for(kind: str, content_id: str) -> dict[str, str]:
+    """Gli elementi che il revisore deve confermare per questo contenuto."""
+    has_sheet = (folder_of(kind, content_id) / PRACTICE_FILE).exists()
+    return {**ELEMENTS, **PRACTICE} if has_sheet else ELEMENTS
 
 
 def read_meta(kind: str, content_id: str) -> dict:
@@ -92,7 +102,8 @@ def problems(kind: str, content_id: str) -> list[str]:
         out.append(f"{label}: approvata la v{entry['version']}, il contenuto è alla v{meta['version']}")
     if entry["fingerprint"] != fingerprint(kind, content_id):
         out.append(f"{label}: il contenuto è cambiato dopo l'approvazione del {entry['date']} (impronta diversa)")
-    missing = [ELEMENTS[e] for e in ELEMENTS if e not in entry.get("elements", [])]
+    required = elements_for(kind, content_id)
+    missing = [required[e] for e in required if e not in entry.get("elements", [])]
     if missing:
         out.append(f"{label}: approvazione senza conferma di {', '.join(missing)}")
     if meta.get("status") != "published":
@@ -103,13 +114,14 @@ def problems(kind: str, content_id: str) -> list[str]:
 def record(kind: str, content_id: str, by: str, elements: list[str], note: str = "") -> dict:
     """Aggiunge un'approvazione al registro. Il contenuto passa a `published` solo se il revisore
     conferma tutti gli elementi; altrimenti resta in `review` e la voce ricorda cosa è già chiuso."""
-    unknown = sorted(set(elements) - set(ELEMENTS))
+    required = elements_for(kind, content_id)
+    unknown = sorted(set(elements) - set(required))
     if unknown:
-        raise SystemExit(f"Elementi sconosciuti: {', '.join(unknown)} (ammessi: {', '.join(ELEMENTS)})")
+        raise SystemExit(f"Elementi sconosciuti: {', '.join(unknown)} (ammessi: {', '.join(required)})")
     path = folder_of(kind, content_id) / META[kind]
     meta = json.loads(path.read_text(encoding="utf-8"))
     today = date.today().isoformat()
-    if set(ELEMENTS) <= set(elements):
+    if set(required) <= set(elements):
         meta["reviewedBy"] = f"{by}, {today}"
         meta["status"] = "published"
     else:
@@ -122,7 +134,7 @@ def record(kind: str, content_id: str, by: str, elements: list[str], note: str =
         "fingerprint": fingerprint(kind, content_id),
         "reviewer": by,
         "date": today,
-        "elements": [e for e in ELEMENTS if e in elements],
+        "elements": [e for e in required if e in elements],
     }
     if note:
         entry["note"] = note

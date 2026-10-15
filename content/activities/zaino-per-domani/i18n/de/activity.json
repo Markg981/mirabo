@@ -1,0 +1,49 @@
+{
+  "title": "Der Schulranzen für morgen",
+  "offscreen": "Die Liste bleibt an der Tür hängen und wird jeden Abend mit dem echten Ranzen benutzt, ohne Tablet.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "label": "Der Schulranzen"
+        },
+        {
+          "label": "Ein Blatt Papier und Filzstifte"
+        },
+        {
+          "label": "Malerkrepp zum Aufhängen der Liste"
+        },
+        {
+          "label": "Das Hausaufgabenheft oder der Stundenplan"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Schau mit einem Erwachsenen auf den Stundenplan: Was ist morgen dran?"
+        },
+        {
+          "text": "Mal auf die Liste die Dinge, die du morgen brauchst, eins pro Zeile."
+        },
+        {
+          "text": "Nimm ein Ding nach dem anderen, steck es in den Ranzen und tipp auf seine Zeichnung."
+        },
+        {
+          "text": "Häng die Liste an die Tür: Morgen Abend findest du sie dort."
+        }
+      ],
+      "control": "Die Liste: Wenn zu einer Zeichnung das Ding noch nicht im Ranzen ist, sieht man es.",
+      "observe": "Ob es am nächsten Abend die Liste von selbst nimmt und ob es etwas ergänzt, das gefehlt hat."
+    }
+  ],
+  "intro": {
+    "bo": "{nome}, packen wir für morgen schon heute Abend? Du brauchst den echten Ranzen und einen Erwachsenen in der Nähe.",
+    "pilu": "{nome}, eine Liste, die du selbst malst, hilft beim Erinnern. Der Erwachsene zeigt dir, wie.",
+    "tango": "{nome}! Der Ranzen! Ich würde ganz hineinpassen... Du packst nur ein, was du brauchst."
+  },
+  "outro": {
+    "bo": "Der Ranzen ist fertig, {nome}. Morgen früh musst du nicht daran denken.",
+    "pilu": "Die Liste bleibt hängen, {nome}: Morgen Abend ist sie schon da.",
+    "tango": "Fertig! {nome}, die Liste denkt auch für mich mit."
+  },
+  "reviewed": false
+}

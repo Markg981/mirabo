@@ -16,8 +16,10 @@ catalogo piccolo, lo si completa e si controlla che la release contenga quello e
 | `da-riscrivere` | il posto nel catalogo è giusto, il contenuto no |
 | `fuori-mvp` | non entra nel lancio: resta in repository come bozza e la release non lo impacchetta |
 
-Inventario al 15 ottobre 2026: 10 riutilizzabili, 1 da adattare (*Parti della pianta*, manca la
-3-5), 1 da riscrivere (*Il segreto di Pietrolino* 8-10, fuori scheda), 51 fuori MVP. Ogni voce ha
+Inventario al 15 ottobre 2026: 12 riutilizzabili, 1 da adattare (*Parti della pianta*, manca la
+3-5), 1 da riscrivere (*Il segreto di Pietrolino* 8-10, fuori scheda), 52 fuori MVP. Con
+l'[analisi 05](montessori.md) entrano tre attività pratiche nuove e *Caccia alle ombre all'aperto*
+esce dal lancio, perché chiede di tornare al tablet a ogni cosa trovata. Ogni voce ha
 una nota che spiega il perché. Le scelte vengono dalla [matrice educativa](educational-goals.md): un
 contenuto parcheggiato nella matrice è fuori MVP.
 
@@ -34,9 +36,10 @@ deve avere un posto nel catalogo.
 - **nove attività pratiche**, una per tema e fascia: un'attività (`activity:<id>`) o l'attività dalla
   storia (`home:<id>`, il `homeActivity` della storia, che viaggia nel suo pacchetto).
 
-Un posto ancora senza contenuto ha `content: null` e un `todo` che dice cosa produrre. Oggi 15 posti
-su 21 hanno un contenuto; mancano le quattro storie di Natura 8-10 e Autonomia e scuola e due
-attività pratiche di Autonomia.
+Un posto ancora senza contenuto ha `content: null` e un `todo` che dice cosa produrre. Oggi 17 posti
+su 21 hanno un contenuto; mancano le quattro storie di Natura 8-10 e Autonomia e scuola. Ognuna
+delle nove attività pratiche ha la sua scheda (`practice.json`), che dice anche se è Montessori:
+vedi [montessori.md](montessori.md).
 
 `python studio/catalog.py` stampa, tema per tema, cosa manca a ciascun posto prima della release.
 
@@ -78,6 +81,7 @@ li conferma uno per uno; alcuni `catalog.py` li controlla anche dai file:
 | Scheda adulta | `adultCard` | `parent.md` presente e senza fonti "da verificare" |
 | Sicurezza | `safety` | nessuno: lo legge il revisore |
 | Diritti d'uso | `rights` | nessuno: fonte, licenza e permesso di testi, immagini, voci e musiche si annotano prima di approvare |
+| Scheda dell'attività pratica | `practice` | solo per chi ha `practice.json`: `practice.py` controlla la scheda; con `--release` il revisore deve essere nel registro con la competenza per la fascia e servono due prove in famiglia ([montessori.md](montessori.md)) |
 
 Per le attività la conferma dell'audio vale anche quando non c'è audio registrato: il revisore
 conferma che quello che l'attività dice è giusto così.
@@ -108,7 +112,8 @@ python studio/catalog.py --approve story:<id> --by "..." --elements text,interac
 ```
 
 Con tutti gli elementi il contenuto passa a `published`; con una conferma parziale resta in `review`
-e la voce ricorda cosa è già chiuso.
+e la voce ricorda cosa è già chiuso. `--elements all` comprende `practice` per i contenuti che hanno
+la scheda dell'attività pratica.
 
 ## I controlli
 
@@ -116,7 +121,8 @@ e la voce ricorda cosa è già chiuso.
 | --- | --- |
 | `validate.py` (CI) | storia o attività `published` senza approvazione, con approvazione su un'altra versione, con impronta diversa (contenuto cambiato dopo l'approvazione) o con elementi non confermati |
 | `catalog.py` (CI) | inventario o catalogo incoerenti: posti doppi o mancanti, contenuti inesistenti, fuori dalla cella della matrice o segnati fuori MVP |
-| `catalog.py --release` | qualunque posto del catalogo (o del tema) non pronto: vuoto, senza approvazione valida, con immagini o audio mancanti, con varianti di storia fuori catalogo (il pacchetto le distribuirebbe), con un gioco che non copre le tre fasce |
+| `practice.py` (CI) | attività pratica del catalogo senza scheda, con la scheda incompleta, con l'etichetta Montessori diversa da quella dell'app, con un tipo che usa lo schermo per più di presentare, con richieste di prove o promesse di premi |
+| `catalog.py --release` | qualunque posto del catalogo (o del tema) non pronto: vuoto, senza approvazione valida, con immagini o audio mancanti, con varianti di storia fuori catalogo (il pacchetto le distribuirebbe), con un gioco che non copre le tre fasce; per le attività pratiche anche la scheda non approvata, un revisore senza la competenza per la fascia o meno di due prove in famiglia |
 | `pack.py` | senza `--include-drafts`, impacchetta solo contenuti `published` (storie e attività), dopo `validate.py` |
 | `pack.py --release` | tutto quello sopra; poi impacchetta solo i contenuti del catalogo, anche se in repository ci sono altri contenuti pubblicati, e rifiuta `--include-drafts` |
 

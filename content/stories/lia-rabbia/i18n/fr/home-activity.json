@@ -1,0 +1,29 @@
+{
+  "title": "La respiration du volcan",
+  "intro": "Dans l'histoire, Lia sent la colère monter comme un volcan et la laisse redescendre en respirant. La respiration s'apprend à tête reposée, comme un jeu, pour qu'elle soit déjà là dans le moment difficile : l'activité se fait sans la tablette.",
+  "bands": {
+    "3-5": {
+      "goal": "Essayer la respiration du volcan quand on est calme, pour la retrouver quand la colère arrive.",
+      "steps": [
+        "Asseyez-vous par terre face à face et posez les mains sur le ventre.",
+        "Inspirez par le nez en comptant ensemble jusqu'à trois : le ventre gonfle comme le volcan.",
+        "Soufflez doucement par la bouche, longtemps, comme de la lave qui descend lentement.",
+        "Recommencez trois fois, puis levez-vous et c'est fini."
+      ],
+      "materials": [
+        "un coussin ou un tapis pour s'asseoir"
+      ],
+      "preparation": [
+        "Choisis un moment calme, pas juste après une dispute.",
+        "Essaie d'abord la respiration toi-même, pour la montrer sans lire."
+      ],
+      "supervision": {
+        "note": "Toujours ensemble. Pendant une vraie colère, ne la demande pas avec des mots : approche-toi, baisse la voix et respire le premier."
+      },
+      "alternatives": [
+        "Avec une peluche sur le ventre qui monte et descend.",
+        "En soufflant sur une plume ou un bout de papier posé sur la table."
+      ]
+    }
+  }
+}

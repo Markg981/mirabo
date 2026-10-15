@@ -1,0 +1,25 @@
+{
+  "title": "Il respiro del vulcano",
+  "intro": "Nella storia Lia sente la rabbia salire come un vulcano e la lascia scendere respirando. Il respiro si impara a mente calma, come un gioco, così nel momento difficile c'è già: l'attività si fa senza il tablet.",
+  "bands": {
+    "3-5": {
+      "goal": "Provare il respiro del vulcano quando si è tranquilli, per ritrovarlo quando arriva la rabbia.",
+      "steps": [
+        "Vi sedete per terra uno di fronte all'altro e mettete le mani sulla pancia.",
+        "Prendete aria dal naso contando insieme fino a tre: la pancia si gonfia come il vulcano.",
+        "Soffiate piano dalla bocca, a lungo, come lava che scende lenta.",
+        "Lo rifate tre volte, poi vi alzate e finisce lì."
+      ],
+      "materials": ["un cuscino o un tappeto per sedersi"],
+      "preparation": [
+        "Scegli un momento tranquillo, non subito dopo una lite.",
+        "Prova tu il respiro una volta prima, così lo mostri senza leggere."
+      ],
+      "supervision": { "level": "together", "note": "Si fa sempre insieme. Durante una rabbia vera non lo chiedere a parole: mettiti vicino, abbassa la voce e fai il respiro per primo." },
+      "alternatives": [
+        "Con un pupazzo sulla pancia che sale e scende.",
+        "Soffiando su una piuma o un pezzetto di carta appoggiato sul tavolo."
+      ]
+    }
+  }
+}

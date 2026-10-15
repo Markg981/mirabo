@@ -969,23 +969,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String gesturesIntro(String companion, String name) {
-    return '$companion only grows when $name really does the gesture from a story, not with time spent on the app. When you\'ve done it, mark it here.';
-  }
-
-  @override
-  String gesturesNext(int count, String companion) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count more gestures',
-      one: '1 more gesture',
-    );
-    return '$_temp0 until $companion\'s next step.';
-  }
-
-  @override
-  String gesturesAllGrown(String companion) {
-    return '$companion has reached the last step: the gestures are still worth doing.';
+    return 'A story\'s gesture happens in real life, when the moment comes. If you like, mark it here: it stays in $name\'s diary. Marking it unlocks nothing: $companion grows with the weeks, not with marked gestures.';
   }
 
   @override
@@ -1031,7 +1015,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ideaHomeHint =>
-      'The step-by-step presentation is in the Montessori activities.';
+      'The step-by-step presentation is among the activities, in the area shown above.';
 
   @override
   String ideaReasonRepeat(String name) {

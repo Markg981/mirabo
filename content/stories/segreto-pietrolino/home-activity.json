@@ -1,0 +1,25 @@
+{
+  "title": "Le cose che restano",
+  "intro": "Pietrolino saluta un amico e scopre che quello che ha imparato da lui resta. A casa il bambino sceglie un oggetto o un gesto che gli ricordi una persona lontana e lo racconta: l'attività si fa senza il tablet.",
+  "bands": {
+    "8-10": {
+      "goal": "Dare un nome a quello che si prova per una persona lontana e scegliere un modo concreto per tenere il legame.",
+      "steps": [
+        "Il bambino pensa a una persona o a un amico che vede meno di prima.",
+        "Sceglie un oggetto di casa o un gesto che gliela ricordi.",
+        "Con l'adulto scrive o disegna tre cose che restano, anche se ci si vede meno.",
+        "Lo racconta a qualcuno della famiglia, quando vuole lui."
+      ],
+      "materials": ["un foglio e una matita o dei colori", "l'oggetto scelto dal bambino"],
+      "preparation": [
+        "Pensa prima a chi potrebbe venirgli in mente, per non essere preso alla sprovvista.",
+        "Scegli un momento senza fretta."
+      ],
+      "supervision": { "level": "together", "note": "Ascolta e scrivi tu se te lo chiede. Se il distacco è un lutto o una separazione in famiglia, questa attività non basta: serve una persona di riferimento accanto al bambino." },
+      "alternatives": [
+        "Al posto dell'oggetto, una canzone, un piatto o una parola che usavate insieme.",
+        "Al posto della lista, una lettera o un disegno da mandare alla persona, se si può."
+      ]
+    }
+  }
+}

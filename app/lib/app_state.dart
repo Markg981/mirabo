@@ -399,8 +399,8 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Registra una storia nel diario. Il compagno non cresce: leggere non basta,
-  /// serve il gesto della storia fatto nella vita vera ([recordGesture]).
+  /// Registra una storia nel diario. Il compagno non cresce: cresce con il
+  /// calendario (vedi [ChildProfile.companionStage]).
   Future<void> recordStory(Story story, {required bool completed, String? dialogueAnswer}) async {
     final p = currentProfile;
     if (p == null) return;
@@ -415,10 +415,10 @@ class AppState extends ChangeNotifier {
     if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
   }
 
-  /// Il genitore segna che il bambino ha fatto il gesto di una storia: è l'unica
-  /// cosa che fa crescere il compagno. Lo stesso gesto conta una volta al giorno,
-  /// così ripeterlo nei giorni (annaffiare il seme) vale, toccare due volte no.
-  /// Restituisce false se oggi era già segnato.
+  /// Il genitore segna nel diario che il bambino ha fatto il gesto di una
+  /// storia. È solo una voce descrittiva: il compagno non cresce e niente si
+  /// sblocca. Lo stesso gesto si segna una volta al giorno, così il diario
+  /// racconta i giorni in cui è successo. Restituisce false se oggi era già segnato.
   Future<bool> recordGesture(ChildProfile p, String storyId, {DateTime? now}) async {
     final when = now ?? DateTime.now();
     final done = await db.gestures(p.id);

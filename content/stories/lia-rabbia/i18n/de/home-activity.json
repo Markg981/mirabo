@@ -1,0 +1,29 @@
+{
+  "title": "Der Vulkan-Atem",
+  "intro": "In der Geschichte spürt Lia die Wut wie einen Vulkan aufsteigen und lässt sie mit dem Atem wieder sinken. Den Atem lernt man in Ruhe, wie ein Spiel, damit er im schwierigen Moment schon da ist: Die Aktivität geht ohne Tablet.",
+  "bands": {
+    "3-5": {
+      "goal": "Den Vulkan-Atem in ruhigen Momenten üben, um ihn wiederzufinden, wenn die Wut kommt.",
+      "steps": [
+        "Ihr setzt euch einander gegenüber auf den Boden und legt die Hände auf den Bauch.",
+        "Ihr atmet durch die Nase ein und zählt gemeinsam bis drei: Der Bauch wird rund wie der Vulkan.",
+        "Ihr pustet langsam und lange durch den Mund aus, wie Lava, die langsam hinunterfließt.",
+        "Das macht ihr dreimal, dann steht ihr auf und fertig."
+      ],
+      "materials": [
+        "ein Kissen oder ein Teppich zum Sitzen"
+      ],
+      "preparation": [
+        "Wähle einen ruhigen Moment, nicht direkt nach einem Streit.",
+        "Probiere den Atem vorher einmal selbst, damit du ihn ohne Ablesen zeigen kannst."
+      ],
+      "supervision": {
+        "note": "Immer gemeinsam. Bei echter Wut nicht mit Worten verlangen: Setz dich dazu, sprich leiser und atme zuerst."
+      },
+      "alternatives": [
+        "Mit einem Kuscheltier auf dem Bauch, das sich hebt und senkt.",
+        "Indem ihr eine Feder oder ein Stück Papier über den Tisch pustet."
+      ]
+    }
+  }
+}

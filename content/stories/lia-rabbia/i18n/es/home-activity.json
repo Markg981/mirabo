@@ -1,0 +1,29 @@
+{
+  "title": "La respiración del volcán",
+  "intro": "En la historia Lia siente la rabia subir como un volcán y la deja bajar respirando. La respiración se aprende con calma, como un juego, para que en el momento difícil ya esté ahí: la actividad se hace sin la tableta.",
+  "bands": {
+    "3-5": {
+      "goal": "Probar la respiración del volcán cuando se está tranquilo, para encontrarla cuando llega la rabia.",
+      "steps": [
+        "Os sentáis en el suelo uno frente al otro y ponéis las manos en la barriga.",
+        "Tomáis aire por la nariz contando juntos hasta tres: la barriga se hincha como el volcán.",
+        "Soplad despacio por la boca, mucho rato, como lava que baja lenta.",
+        "Lo repetís tres veces, os levantáis y se acabó."
+      ],
+      "materials": [
+        "un cojín o una alfombra para sentarse"
+      ],
+      "preparation": [
+        "Elige un momento tranquilo, no justo después de una pelea.",
+        "Prueba tú la respiración una vez antes, así la enseñas sin leer."
+      ],
+      "supervision": {
+        "note": "Se hace siempre juntos. Durante una rabia de verdad no la pidas con palabras: ponte cerca, baja la voz y respira tú primero."
+      },
+      "alternatives": [
+        "Con un peluche sobre la barriga que sube y baja.",
+        "Soplando una pluma o un trocito de papel sobre la mesa."
+      ]
+    }
+  }
+}

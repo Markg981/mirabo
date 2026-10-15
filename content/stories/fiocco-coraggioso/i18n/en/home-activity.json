@@ -1,0 +1,29 @@
+{
+  "title": "The first little piece",
+  "intro": "Fiocco is afraid of falling and tries anyway, one little piece at a time. At home you pick something new and real from the day and do only its beginning: this activity is done without the tablet.",
+  "bands": {
+    "6-7": {
+      "goal": "Start something new by doing only its first little piece, even if it doesn't work straight away.",
+      "steps": [
+        "Choose together a small new thing the child wants to do (tie a shoe, pour the milk, write their name).",
+        "Ask: \"What's the first little piece?\" and let the child say it.",
+        "The child says \"I'll try\" out loud and does only that piece.",
+        "If they want to go on, they go on; if they stop, that's fine: tomorrow they start from the next piece."
+      ],
+      "materials": [
+        "whatever the chosen thing needs, nothing more"
+      ],
+      "preparation": [
+        "Think of a real moment of the day when the child hesitates: no need to invent one.",
+        "Keep a few unhurried minutes."
+      ],
+      "supervision": {
+        "note": "Stay close and don't correct while they try. If they ask for help, help with that step and leave the next one to them."
+      },
+      "alternatives": [
+        "If there's nothing new, a usual thing done a new way (with the other hand, alone instead of together).",
+        "If saying \"I'll try\" out loud is embarrassing, they can whisper it or give a thumbs up."
+      ]
+    }
+  }
+}

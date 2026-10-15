@@ -20,6 +20,7 @@ class ChildProfile {
     this.storiesCompleted = 0,
     this.gesturesDone = 0,
     this.stageFloor = 0,
+    this.growthSince,
     this.language = 'it',
     this.shelf,
     this.shelfAuto,
@@ -51,13 +52,18 @@ class ChildProfile {
   /// Storie completate: solo un dato per il genitore, non fa crescere il compagno.
   final int storiesCompleted;
 
-  /// Gesti delle storie fatti nella vita vera, confermati dal genitore: sono
-  /// l'unica cosa che fa crescere il compagno. Il tempo sullo schermo non conta.
+  /// Gesti delle storie segnati dal genitore nel diario: solo un dato per il
+  /// genitore, come le storie. Non fanno crescere il compagno: nessuna conferma
+  /// porta un premio (docs/montessori.md).
   final int gesturesDone;
 
-  /// Stadio già raggiunto prima che la crescita passasse ai gesti: il compagno
-  /// non torna indietro.
+  /// Stadio già raggiunto con le regole di prima (storie, poi gesti): il
+  /// compagno non torna indietro.
   final int stageFloor;
+
+  /// Da quando il compagno cresce con il calendario. Lo scrive il database alla
+  /// creazione del profilo (o alla migrazione v12); null solo in righe di prima.
+  final DateTime? growthSince;
 
   /// Codice della lingua del bambino (it, en, es, fr, de): interfaccia lato
   /// bambino, contenuti e voce del compagno.
@@ -79,23 +85,20 @@ class ChildProfile {
   InteractionProfile get interaction => _interaction ?? InteractionProfile.forAge(ageBand);
   final InteractionProfile? _interaction;
 
-  /// Gesti necessari per ogni stadio del compagno (1, 2, 3).
-  static const stageThresholds = [3, 6, 12];
+  /// Settimane dalla creazione del profilo per ogni stadio del compagno (1, 2, 3).
+  /// Il compagno cresce con il tempo, uguale per tutti: non dipende da quanto si
+  /// usa l'app né da quello che l'adulto segna.
+  static const stageThresholdWeeks = [2, 6, 12];
 
-  static int stageFor(int count) => stageThresholds.where((t) => count >= t).length;
+  static int stageForWeeks(int weeks) => stageThresholdWeeks.where((t) => weeks >= t).length;
 
-  int get companionStage {
-    final s = stageFor(gesturesDone);
+  int companionStageAt(DateTime now) {
+    final since = growthSince;
+    final s = since == null ? 0 : stageForWeeks(now.difference(since).inDays ~/ 7);
     return s > stageFloor ? s : stageFloor;
   }
 
-  /// Quanti gesti mancano al prossimo stadio; null se il compagno è già grande.
-  int? get gesturesToNextStage {
-    for (final t in stageThresholds) {
-      if (stageFor(t) > companionStage) return t - gesturesDone;
-    }
-    return null;
-  }
+  int get companionStage => companionStageAt(DateTime.now());
 
   bool canOpen(Story story, SessionMode mode) {
     if (!enabledWorlds.contains(story.world)) return false;
@@ -139,6 +142,7 @@ class ChildProfile {
         storiesCompleted: storiesCompleted ?? this.storiesCompleted,
         gesturesDone: gesturesDone ?? this.gesturesDone,
         stageFloor: stageFloor,
+        growthSince: growthSince,
         language: language ?? this.language,
         shelf: shelf,
         interaction: interaction ?? _interaction,
@@ -168,6 +172,7 @@ class ChildProfile {
         storiesCompleted: storiesCompleted,
         gesturesDone: gesturesDone,
         stageFloor: stageFloor,
+        growthSince: growthSince,
         language: language,
         shelf: shelf,
         shelfAuto: shelfAuto,
@@ -191,6 +196,7 @@ class ChildProfile {
         'stories_completed': storiesCompleted,
         'gestures_done': gesturesDone,
         'stage_floor': stageFloor,
+        'growth_since': growthSince?.toIso8601String(),
         'language': language,
         'shelf': shelf?.join(','),
         'shelf_auto': shelfAuto?.join(','),
@@ -218,6 +224,7 @@ class ChildProfile {
       storiesCompleted: r['stories_completed'] as int,
       gesturesDone: r['gestures_done'] as int? ?? 0,
       stageFloor: r['stage_floor'] as int? ?? 0,
+      growthSince: r['growth_since'] == null ? null : DateTime.parse(r['growth_since'] as String),
       language: r['language'] as String? ?? 'it',
       shelf: (r['shelf'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
       shelfAuto: (r['shelf_auto'] as String?)?.split(',').where((s) => s.isNotEmpty).toList(),
@@ -314,6 +321,7 @@ class DiaryEntry {
 }
 
 /// Un gesto di una storia fatto davvero, segnato dal genitore nel diario.
+/// È una voce descrittiva: non fa crescere il compagno e non sblocca nulla.
 class GestureEntry {
   const GestureEntry({required this.profileId, required this.storyId, required this.when});
 

@@ -1,0 +1,65 @@
+{
+  "id": "ponte-tra-due-libri",
+  "title": "Il ponte tra due libri",
+  "area": "cognitivo",
+  "skill": "costruire",
+  "type": "presentation",
+  "ageBands": [
+    "8-10"
+  ],
+  "offscreen": "La stessa sfida si rifà con altri materiali: cannucce e nastro, due sedie e uno spago.",
+  "levels": [
+    {
+      "materials": [
+        {
+          "emoji": "📚",
+          "label": "Due libri della stessa altezza"
+        },
+        {
+          "emoji": "📄",
+          "label": "Qualche foglio di carta"
+        },
+        {
+          "emoji": "🪙",
+          "label": "Una manciata di monete uguali"
+        },
+        {
+          "emoji": "✂️",
+          "label": "Forbici e un po' di nastro adesivo"
+        }
+      ],
+      "steps": [
+        {
+          "emoji": "📚",
+          "text": "Metti i due libri sul tavolo, a una spanna di distanza."
+        },
+        {
+          "emoji": "📄",
+          "text": "Con un solo foglio costruisci un ponte da un libro all'altro: puoi piegarlo, arrotolarlo, tagliarlo."
+        },
+        {
+          "emoji": "🪙",
+          "text": "Appoggia una moneta alla volta al centro del ponte, piano."
+        },
+        {
+          "emoji": "🔁",
+          "text": "Se cede, guarda dove ha ceduto, cambia una cosa e riprova."
+        }
+      ],
+      "control": "Il ponte stesso: regge o cede, e dove cede si vede. Nessuno deve dire se è giusto.",
+      "observe": "Che cosa cambia tra una prova e l'altra, e se lo dice prima di provare."
+    }
+  ],
+  "version": 1,
+  "intro": {
+    "bo": "{nome}, oggi si costruisce davvero. Servono due libri, un foglio e qualche moneta.",
+    "pilu": "{nome}, un ponte di carta può reggere più di quanto pensi. Si scopre solo provando.",
+    "tango": "{nome}! Un ponte! Se crolla ti dice dove rinforzarlo. Me l'hanno detto."
+  },
+  "outro": {
+    "bo": "Hai provato e cambiato, {nome}. I libri tornano sullo scaffale, le monete nel barattolo.",
+    "pilu": "Ogni ponte che cede ti ha detto qualcosa, {nome}. Ora rimettiamo tutto a posto.",
+    "tango": "Che ponti! {nome}, rimettiamo a posto? Io conto le monete. Una, due... tante."
+  },
+  "togetherSuggested": false
+}

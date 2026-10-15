@@ -46,7 +46,12 @@ void main() {
       expect(a.id, d.uri.pathSegments.where((s) => s.isNotEmpty).last);
       expect(a.levels, isNotEmpty);
       expect(a.level(99), a.levels.last);
-      if (a.type == ActivityType.presentation) expect(a.module, ActivityModule.montessori);
+      // Montessori solo se lo dice la scheda dell'attività pratica (docs/montessori.md).
+      final sheet = File('${d.path}/practice.json');
+      if (sheet.existsSync()) {
+        final montessori = (jsonDecode(sheet.readAsStringSync())['method'] as Map)['montessori'] as bool;
+        expect(a.module == ActivityModule.montessori, montessori, reason: a.id);
+      }
     }
   });
 
@@ -67,11 +72,10 @@ void main() {
     expect(p.canOpen(safety, SessionMode.alone), isFalse);
   });
 
-  test('il compagno cresce con i gesti fatti davvero', () {
-    const p = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b3to5, companion: CompanionId.pilu);
+  test('i gesti segnati non fanno crescere il compagno', () {
+    final p = ChildProfile(id: 1, name: 'T', ageBand: AgeBand.b3to5, companion: CompanionId.pilu, growthSince: DateTime.now());
     expect(p.companionStage, 0);
-    expect(p.copyWith(gesturesDone: 3).companionStage, 1);
-    expect(p.copyWith(gesturesDone: 12).companionStage, 3);
+    expect(p.copyWith(gesturesDone: 12).companionStage, 0);
   });
 
   test('un pacchetto firmato dallo studio viene accettato, uno manomesso no', () async {

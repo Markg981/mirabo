@@ -1,0 +1,55 @@
+{
+  "content": "home:segreto-pietrolino",
+  "band": "8-10",
+  "method": {
+    "montessori": false,
+    "why": "Attività educativa sul distacco e sul legame, legata alla storia. Non è un'attività del metodo Montessori."
+  },
+  "purpose": "Dare un nome a quello che si prova per una persona lontana e scegliere un modo concreto per tenere il legame: un oggetto, un gesto, tre cose che restano.",
+  "prerequisites": [
+    "Ha letto Il segreto di Pietrolino.",
+    "C'è una persona o un amico che vede meno di prima (trasloco, cambio di classe o di scuola)."
+  ],
+  "materials": [
+    {
+      "item": "Un foglio e una matita o dei colori",
+      "size": "un foglio A4",
+      "alternatives": ["Un quaderno"],
+      "precautions": []
+    },
+    {
+      "item": "Un oggetto scelto dal bambino",
+      "size": "qualsiasi, purché stia in mano",
+      "alternatives": ["Una canzone, un piatto o una parola al posto dell'oggetto"],
+      "precautions": ["Un oggetto di altri si usa solo chiedendo prima"]
+    }
+  ],
+  "preparation": [
+    "Pensa prima a chi potrebbe venirgli in mente, per non essere preso alla sprovvista.",
+    "Scegli un momento senza fretta."
+  ],
+  "presentation": [
+    "L'adulto racconta in due frasi una persona che vede poco e l'oggetto che gliela ricorda.",
+    "Poi lascia il foglio e chiede: \"C'è qualcuno a cui pensi così?\". Se il bambino non vuole, si chiude lì."
+  ],
+  "supervision": {
+    "level": "together",
+    "when": "L'adulto c'è per tutta l'attività: ascolta e scrive se il bambino lo chiede. Se il distacco è un lutto o una separazione in famiglia, l'attività non basta e serve una persona di riferimento."
+  },
+  "errorControl": {
+    "none": "Non c'è un modo giusto di ricordare qualcuno: niente da correggere."
+  },
+  "repetition": "Si riprende quando il bambino lo chiede o quando arriva un nuovo saluto. La lista si può allungare, non deve.",
+  "tidyUp": [
+    "Il bambino decide dove tenere il foglio e l'oggetto (un cassetto, una mensola).",
+    "L'adulto ringrazia del racconto, senza commentare la tristezza."
+  ],
+  "screen": "Nessuno: l'attività è nella scheda genitore della storia e si fa a tablet spento.",
+  "feasibility": {
+    "prepMinutes": 2,
+    "materialsAtHome": true
+  },
+  "forReviewer": [
+    "Il limite con lutti e separazioni familiari è scritto anche nella matrice: confermare che la nota di supervisione basta."
+  ]
+}

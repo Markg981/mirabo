@@ -25,7 +25,7 @@ class LocalDb {
   LocalDb._(this._db);
   Database _db;
 
-  static const _version = 11;
+  static const _version = 12;
   static const _keyName = 'mirabo_db_key';
 
   /// Chiave in `settings` dell'emisfero della famiglia (vedi [Hemisphere]).
@@ -71,7 +71,8 @@ class LocalDb {
             hands INTEGER,
             reading TEXT,
             autonomy INTEGER,
-            band_to_confirm TEXT
+            band_to_confirm TEXT,
+            growth_since TEXT
           )''');
         await db.execute('''
           CREATE TABLE diary (
@@ -132,6 +133,12 @@ class LocalDb {
         if (from < 11) {
           await db.execute('ALTER TABLE profiles ADD COLUMN band_to_confirm TEXT');
           await db.execute(_legacyBandSql);
+        }
+        // v12: il compagno cresce con il calendario, non con i gesti segnati.
+        // Chi era già cresciuto resta allo stadio raggiunto.
+        if (from < 12) {
+          await db.execute('ALTER TABLE profiles ADD COLUMN growth_since TEXT');
+          await db.execute(_growthFromNowSql());
         }
       },
     );
@@ -314,6 +321,16 @@ class LocalDb {
     'END WHERE age_band IN (${LegacyAgeBand.values.map((b) => "'${b.key}'").join(', ')})',
   ].join(' ');
 
+  /// Il compagno smette di crescere con i gesti segnati: lo stadio raggiunto
+  /// resta come minimo e da oggi cresce con le settimane.
+  static String _growthFromNowSql() =>
+      "UPDATE profiles SET stage_floor = MAX(stage_floor, $_gestureStageSql), growth_since = '${DateTime.now().toIso8601String()}' "
+      'WHERE growth_since IS NULL';
+
+  /// Stadio che il compagno aveva quando cresceva con i gesti segnati (v4–v11).
+  static const _gestureStageSql =
+      'CASE WHEN gestures_done >= 12 THEN 3 WHEN gestures_done >= 6 THEN 2 WHEN gestures_done >= 3 THEN 1 ELSE 0 END';
+
   /// Stadio che il compagno aveva quando cresceva con le storie completate.
   static const _legacyStageSql =
       'CASE WHEN stories_completed >= 12 THEN 3 WHEN stories_completed >= 6 THEN 2 WHEN stories_completed >= 3 THEN 1 ELSE 0 END';
@@ -391,6 +408,8 @@ class LocalDb {
 
   Future<ChildProfile> insertProfile(ChildProfile profile) async {
     final row = profile.toRow()..remove('id');
+    // Da qui il compagno cresce con il calendario.
+    row['growth_since'] ??= DateTime.now().toIso8601String();
     final id = await _db.insert('profiles', row);
     return (await _db.query('profiles', where: 'id = ?', whereArgs: [id])).map(ChildProfile.fromRow).first;
   }
@@ -643,6 +662,8 @@ class LocalDb {
       if (schema < 10) await tx.insert('settings', {'key': hemisphereKey, 'value': 'north'});
       // Backup con le fasce di prima: come la migrazione v11.
       if (schema < 11) await tx.execute(_legacyBandSql);
+      // Backup di quando il compagno cresceva con i gesti: come la migrazione v12.
+      if (schema < 12) await tx.execute(_growthFromNowSql());
     });
   }
 }
