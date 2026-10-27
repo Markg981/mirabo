@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import '../../l10n/l10n.dart';
@@ -10,6 +11,25 @@ List<BoxShadow> softShadow([double strength = 1]) => [
       BoxShadow(color: const Color(0xFF5A3E1E).withValues(alpha: 0.07 * strength), blurRadius: 24, offset: const Offset(0, 10)),
       BoxShadow(color: const Color(0xFF5A3E1E).withValues(alpha: 0.05 * strength), blurRadius: 4, offset: const Offset(0, 2)),
     ];
+
+/// Ignora i tocchi ripetuti entro una finestra breve: un doppio tocco del
+/// bambino non deve aprire due schermate, due dialoghi o due letture.
+class TapGate {
+  TapGate([this.window = const Duration(milliseconds: 600)]);
+  final Duration window;
+  Timer? _timer;
+
+  VoidCallback? wrap(VoidCallback? f) {
+    if (f == null) return null;
+    return () {
+      if (_timer?.isActive ?? false) return;
+      _timer = Timer(window, () {});
+      f();
+    };
+  }
+
+  void dispose() => _timer?.cancel();
+}
 
 /// Bottone grande "a rilievo" per il bambino: si abbassa quando lo tocchi.
 /// Mai più basso del target minimo del profilo; per chi non legge, se ha
@@ -45,6 +65,13 @@ class ChunkyButton extends StatefulWidget {
 
 class _ChunkyButtonState extends State<ChunkyButton> {
   bool _down = false;
+  final _gate = TapGate();
+
+  @override
+  void dispose() {
+    _gate.dispose();
+    super.dispose();
+  }
   static const _depth = 6.0;
 
   void _set(bool v) {
@@ -79,14 +106,14 @@ class _ChunkyButtonState extends State<ChunkyButton> {
       label: widget.label,
       // Con excludeSemantics il tocco del GestureDetector sparisce dall'albero:
       // senza onTap qui TalkBack e VoiceOver leggono il bottone ma non lo premono.
-      onTap: widget.onPressed,
+      onTap: _gate.wrap(widget.onPressed),
       excludeSemantics: true,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTapDown: enabled ? (_) => _set(true) : null,
         onTapUp: enabled ? (_) => _set(false) : null,
         onTapCancel: () => _set(false),
-        onTap: widget.onPressed,
+        onTap: _gate.wrap(widget.onPressed),
         child: Padding(
           padding: const EdgeInsets.only(bottom: _depth),
           child: AnimatedContainer(
@@ -218,7 +245,7 @@ class SpokenButton extends StatelessWidget {
 }
 
 /// Bottone rotondo bianco con icona, per le azioni secondarie (chiudi, ascolta).
-class RoundIconButton extends StatelessWidget {
+class RoundIconButton extends StatefulWidget {
   const RoundIconButton({
     super.key,
     required this.icon,
@@ -235,10 +262,23 @@ class RoundIconButton extends StatelessWidget {
   final Color? color;
 
   @override
+  State<RoundIconButton> createState() => _RoundIconButtonState();
+}
+
+class _RoundIconButtonState extends State<RoundIconButton> {
+  final _gate = TapGate();
+
+  @override
+  void dispose() {
+    _gate.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final size = math.max(this.size, MiraboTokens.of(context).minTarget);
+    final size = math.max(widget.size, MiraboTokens.of(context).minTarget);
     return Tooltip(
-      message: tooltip,
+      message: widget.tooltip,
       child: Container(
         width: size,
         height: size,
@@ -248,8 +288,8 @@ class RoundIconButton extends StatelessWidget {
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
-            onTap: onPressed,
-            child: Icon(icon, size: size * 0.5, color: color ?? MiraboColors.ink),
+            onTap: _gate.wrap(widget.onPressed),
+            child: Icon(widget.icon, size: size * 0.5, color: widget.color ?? MiraboColors.ink),
           ),
         ),
       ),
@@ -583,6 +623,13 @@ class BlockTile extends StatefulWidget {
 }
 
 class _BlockTileState extends State<BlockTile> {
+  final _gate = TapGate();
+
+  @override
+  void dispose() {
+    _gate.dispose();
+    super.dispose();
+  }
   bool _down = false;
 
   void _set(bool v) {
@@ -605,7 +652,7 @@ class _BlockTileState extends State<BlockTile> {
         onTapDown: enabled ? (_) => _set(true) : null,
         onTapUp: enabled ? (_) => _set(false) : null,
         onTapCancel: () => _set(false),
-        onTap: widget.onTap,
+        onTap: _gate.wrap(widget.onTap),
         child: Padding(
           padding: EdgeInsets.only(bottom: d),
           child: AnimatedContainer(

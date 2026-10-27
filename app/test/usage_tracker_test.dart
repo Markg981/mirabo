@@ -5,10 +5,17 @@ import 'package:mirabo/data/usage_tracker.dart';
 /// Solo la parte di LocalDb che usano le impostazioni.
 class _FakeDb implements LocalDb {
   final map = <String, String>{};
+  int failWrites = 0;
   @override
   Future<String?> setting(String key) async => map[key];
   @override
-  Future<void> setSetting(String key, String value) async => map[key] = value;
+  Future<void> setSetting(String key, String value) async {
+    if (failWrites > 0) {
+      failWrites--;
+      throw StateError('disco pieno');
+    }
+    map[key] = value;
+  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -72,5 +79,40 @@ void main() {
     final r = await t.lastDays(1);
     expect(r.last.seconds, 0);
     expect(db.map.keys.where((k) => k.startsWith('usage.')), isEmpty);
+  });
+
+  test('un salvataggio fallito non ferma il conteggio: il tempo non salvato arriva al giro dopo', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    final t = UsageTracker(db: db, profileId: () => 1, clock: () => now);
+
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    db.failWrites = 1;
+    t.pause(); // il salvataggio fallisce: l'errore non resta non gestito e non ferma nulla
+    await Future<void>.delayed(Duration.zero);
+    expect(db.map, isEmpty);
+    t.resume();
+
+    now = now.add(const Duration(minutes: 2));
+    final days = await t.lastDays(1); // il disco ora risponde: 5 + 2 minuti
+    expect(days.last.minutes, 7);
+  });
+
+  test('forget durante un salvataggio che fallisce: niente errore, niente secondi del bambino eliminato', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    int? child = 1;
+    final t = UsageTracker(db: db, profileId: () => child, clock: () => now);
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    db.failWrites = 1;
+    t.tick(force: true); // il salvataggio parte e fallirà
+    await t.forget(1); // non rilancia l'errore del salvataggio
+    child = null;
+    db.failWrites = 0;
+    t.tick(force: true);
+    await t.flush();
+    expect(db.map.keys.where((k) => k.startsWith('usage.1.')), isEmpty);
   });
 }

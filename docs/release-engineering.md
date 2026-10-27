@@ -42,7 +42,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 | Ritorno a una versione precedente | Il database di una versione più recente non si apre e non si tocca: schermata "aggiorna l'app" | `data_lifecycle_test` |
 | Cambio fascia | Il punto della storia resta della fascia di prima; mensola automatica rifatta | `data_lifecycle_test`, `child_paths_test` |
 | Chiusura forzata o memoria finita | Ogni scrittura è subito su disco: al riavvio profilo, mensola e punto della storia ci sono; si riparte "da solo" | `data_lifecycle_test` (seconda connessione senza chiudere la prima) |
-| Chiave sparita (ripristino su un altro dispositivo) | Il database illeggibile si elimina, ma l'onboarding lo dice con la data | `data_lifecycle_test` |
+| Chiave sparita (ripristino su un altro dispositivo) | Il database illeggibile va in quarantena (una copia, eliminata da "Elimina tutti i dati"), si riparte da zero e l'onboarding lo dice con la data | `data_lifecycle_test` |
 | Secure storage che non risponde | Nessuna cancellazione: schermata d'errore con "Riprova" | `data_lifecycle_test` |
 | Cancellazione | Profilo o tutti i dati, compresa la chiave | `data_deletion_test`, `local_db_test` |
 

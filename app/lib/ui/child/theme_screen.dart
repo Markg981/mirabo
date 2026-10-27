@@ -35,7 +35,10 @@ class _ThemeScreenState extends State<ThemeScreen> {
     super.dispose();
   }
 
-  void _open(Widget page) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+  void _open(Widget page) {
+    if (ModalRoute.of(context)?.isCurrent == false) return;
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+  }
 
   void _openExperience(ThemeExperience e) => switch (e) {
         ThemeStory(:final story) => _open(SessionHold(child: StoryReader(story: story))),

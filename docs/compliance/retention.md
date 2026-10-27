@@ -14,7 +14,7 @@ Principio: **i dati restano finché la famiglia usa l'app o fino alla cancellazi
 | Idee scartate, cache calendario | `settings`, `daily_ideas` | Finché il profilo esiste | Evitano di riproporre idee | idem |
 | Storie inventate | DB locale | Finché le tiene la famiglia | Contenuto della famiglia | idem |
 | Audio del nome (TTS) | `names/name_<id>_*` | Finché il profilo esiste e il nome non cambia | Evita di rigenerarlo | Cambio nome, eliminazione profilo, *Elimina tutti i dati* (`forget`) |
-| Chiave del DB | Secure storage | Finché esiste il DB | Senza chiave il DB è illeggibile | Disinstallazione; cancellare la chiave rende il DB irrecuperabile |
+| Chiave del DB | Secure storage | Finché esiste il DB | Senza chiave il DB è illeggibile: si rinomina in `mirabo.db.illeggibile-<istante>` (una sola copia, finché non si elimina tutto) e se ne apre uno vuoto | Disinstallazione; "Elimina tutti i dati" (cancella anche la quarantena); cancellare la chiave rende il DB irrecuperabile |
 | Chiave derivata, account, data del backup | Secure storage | Finché il backup è attivo | Evita di chiedere la password | Disattivazione del backup, *Elimina tutti i dati* |
 | Backup cifrato `mirabo-backup.json` | Drive del genitore (`appDataFolder`) | Finché il genitore lo tiene; un solo file sovrascritto a ogni backup (nessuna cronologia nostra) | Ripristino su un nuovo dispositivo | Vedi sotto |
 

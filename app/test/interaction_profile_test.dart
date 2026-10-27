@@ -321,12 +321,15 @@ void main() {
       final first = said.first;
       final help = find.byIcon(Icons.lightbulb_outline_rounded);
       await tester.tap(help);
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pump();
       expect(said.last, first);
       await tester.tap(help);
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pump();
       expect(said.last, isNot(first));
       await tester.tap(help);
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pump();
       expect(said, hasLength(4));
       expect(rounds, 0);
@@ -371,26 +374,32 @@ void main() {
           interaction: p,
         ));
         await tester.tap(find.text('apri'));
+        await tester.pump(const Duration(milliseconds: 650));
         await tester.pumpAndSettle();
       }
 
       await open(_small);
       await tester.tap(find.byIcon(Icons.close_rounded));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       // Chi non legge vede solo le icone; resto.
       expect(find.text(l10nIt.exitAsk), findsNothing);
       await tester.tap(find.byIcon(Icons.play_arrow_rounded));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.close_rounded), findsOneWidget);
       // Esco.
       await tester.tap(find.byIcon(Icons.close_rounded));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.home_rounded));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.close_rounded), findsNothing);
 
       await open(const InteractionProfile());
       await tester.tap(find.byIcon(Icons.close_rounded));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.close_rounded), findsNothing);
     });

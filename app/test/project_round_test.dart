@@ -59,14 +59,17 @@ void main() {
     ));
     await tester.enterText(find.byType(TextField), 'due fogli a fisarmonica');
     await tester.tap(find.text('Avanti'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pump();
     await tester.tap(find.text('Avanti')); // previsione senza nota
     await tester.pump();
     expect(find.byType(TextField), findsNothing); // la prova non ha note
     await tester.tap(find.text('Non ancora'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pump();
     await tester.enterText(find.byType(TextField), 'più piegature');
     await tester.tap(find.text('Ho finito'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pump();
     expect(finished, isTrue);
     expect([for (final r in results) r.choice], [

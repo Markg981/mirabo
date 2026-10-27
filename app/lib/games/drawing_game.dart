@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'game.dart';
 
 /// Disegno libero con il dito: colori grandi, tre punte, gomma, timbri.
 /// Non ha una fine: si esce con la X quando si vuole. Il foglio si salva a
-/// ogni tratto e si ritrova riaprendo il gioco; "Foglio nuovo" lo svuota
+/// a fine tratto (raggruppando i salvataggi ravvicinati) e si ritrova riaprendo il gioco; "Foglio nuovo" lo svuota
 /// (docs/child-paths.md, "Uscita e ripresa").
 class DrawingGame extends StatefulWidget {
   const DrawingGame({super.key, required this.ctx});
@@ -46,10 +47,23 @@ class _DrawingGameState extends State<DrawingGame> {
     Color(0xFF8D5A3B),
     MiraboColors.ink,
   ];
+  // Chiavi dei nomi dei colori (drawColorName), nello stesso ordine di _palette.
+  static const _paletteNames = ['rose', 'apricot', 'sun', 'leaf', 'sky', 'plum', 'brown', 'ink'];
   static const _stamps = ['⭐', '❤️', '🌸', '🐞', '☀️', '🐟'];
   static const _widths = [8.0, 18.0, 34.0];
 
+  /// Limiti del foglio, perché lista, JSON salvato e ridisegno non crescano
+  /// senza fine: oltre [_maxMarks] segni si scartano i più vecchi, oltre
+  /// [_maxPointsPerStroke] punti un tratto smette di allungarsi.
+  static const _maxMarks = 300;
+  static const _maxPointsPerStroke = 2000;
+  static const _saveDelay = Duration(milliseconds: 700);
+
   final _marks = <_Mark>[];
+  // Cresce a ogni modifica del foglio: il painter ridisegna solo se cambia.
+  int _version = 0;
+  bool _loaded = false;
+  Timer? _saveTimer;
   Color _color = MiraboColors.sky;
   double _width = 18;
   bool _eraser = false;
@@ -67,7 +81,10 @@ class _DrawingGameState extends State<DrawingGame> {
 
   @override
   void dispose() {
-    _save();
+    _saveTimer?.cancel();
+    // Uscendo prima che il caricamento finisca il foglio in memoria è vuoto:
+    // salvarlo cancellerebbe quello vero.
+    if (_loaded || _marks.isNotEmpty) _saveNow();
     super.dispose();
   }
 
@@ -79,11 +96,21 @@ class _DrawingGameState extends State<DrawingGame> {
     final profile = state?.currentProfile;
     if (state == null || profile == null) return;
     final raw = await state.savedDrawing(profile);
-    if (!mounted || raw == null || _marks.isNotEmpty) return;
-    setState(() => _marks.addAll(decodeMarks(raw).cast<_Mark>()));
+    if (!mounted) return;
+    _loaded = true;
+    if (raw == null || _marks.isNotEmpty) return;
+    setState(() {
+      _marks.addAll(decodeMarks(raw).cast<_Mark>());
+      _version++;
+    });
   }
 
   void _save() {
+    _saveTimer?.cancel();
+    _saveTimer = Timer(_saveDelay, _saveNow);
+  }
+
+  void _saveNow() {
     final state = _state;
     final profile = state?.currentProfile;
     if (state == null || profile == null) return;
@@ -92,6 +119,8 @@ class _DrawingGameState extends State<DrawingGame> {
 
   void _start(Offset p) {
     setState(() {
+      _version++;
+      if (_marks.length >= _maxMarks) _marks.removeAt(0);
       if (_stamp != null) {
         _marks.add(_Stamp(_stamp!, p));
       } else {
@@ -102,7 +131,12 @@ class _DrawingGameState extends State<DrawingGame> {
 
   void _move(Offset p) {
     final last = _marks.lastOrNull;
-    if (_stamp == null && last is _Stroke) setState(() => last.points.add(p));
+    if (_stamp == null && last is _Stroke && last.points.length < _maxPointsPerStroke) {
+      setState(() {
+        _version++;
+        last.points.add(p);
+      });
+    }
   }
 
   @override
@@ -119,12 +153,13 @@ class _DrawingGameState extends State<DrawingGame> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  for (final c in _palette)
+                  for (var i = 0; i < _palette.length; i++)
                     _Swatch(
-                      color: tokens.tint(c),
-                      selected: !_eraser && _stamp == null && _color == c,
+                      name: context.l10n.drawColorName(_paletteNames[i]),
+                      color: tokens.tint(_palette[i]),
+                      selected: !_eraser && _stamp == null && _color == _palette[i],
                       onTap: () => setState(() {
-                        _color = c;
+                        _color = _palette[i];
                         _eraser = false;
                         _stamp = null;
                       }),
@@ -165,7 +200,7 @@ class _DrawingGameState extends State<DrawingGame> {
                 onPanCancel: _save,
                 child: Semantics(
                   label: context.l10n.drawingSheet,
-                  child: CustomPaint(painter: _SheetPainter(_marks), size: Size.infinite),
+                  child: CustomPaint(painter: _SheetPainter(_marks, _version), size: Size.infinite),
                 ),
               ),
             ),
@@ -202,7 +237,10 @@ class _DrawingGameState extends State<DrawingGame> {
                     onTap: _marks.isEmpty
                         ? null
                         : () {
-                            setState(_marks.removeLast);
+                            setState(() {
+                              _marks.removeLast();
+                              _version++;
+                            });
                             _save();
                           },
                     child: const Icon(Icons.undo_rounded, size: 30, color: MiraboColors.ink),
@@ -213,7 +251,10 @@ class _DrawingGameState extends State<DrawingGame> {
                     onTap: _marks.isEmpty
                         ? null
                         : () {
-                            setState(_marks.clear);
+                            setState(() {
+                              _marks.clear();
+                              _version++;
+                            });
                             _save();
                           },
                     child: const Icon(Icons.note_add_rounded, size: 30, color: MiraboColors.ink),
@@ -262,7 +303,8 @@ _Stroke _strokeFrom(Map<String, dynamic> m) {
 }
 
 class _Swatch extends StatelessWidget {
-  const _Swatch({required this.color, required this.selected, required this.onTap});
+  const _Swatch({required this.name, required this.color, required this.selected, required this.onTap});
+  final String name;
   final Color color;
   final bool selected;
   final VoidCallback onTap;
@@ -270,7 +312,12 @@ class _Swatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
-        child: GestureDetector(
+        child: Semantics(
+          button: true,
+          selected: selected,
+          label: name,
+          onTap: onTap,
+          child: GestureDetector(
           onTap: onTap,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
@@ -282,6 +329,7 @@ class _Swatch extends StatelessWidget {
               border: Border.all(color: Colors.white, width: selected ? 5 : 3),
               boxShadow: [BoxShadow(color: MiraboColors.deep(color, 0.15), offset: const Offset(0, 4))],
             ),
+          ),
           ),
         ),
       );
@@ -316,8 +364,9 @@ class _ToolButton extends StatelessWidget {
 }
 
 class _SheetPainter extends CustomPainter {
-  _SheetPainter(this.marks);
+  _SheetPainter(this.marks, this.version);
   final List<_Mark> marks;
+  final int version;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -347,7 +396,7 @@ class _SheetPainter extends CustomPainter {
     }
   }
 
-  // I tratti si allungano sul posto: ridisegna sempre.
+  // I tratti si allungano sul posto (stessa lista): conta la versione.
   @override
-  bool shouldRepaint(_SheetPainter old) => true;
+  bool shouldRepaint(_SheetPainter old) => old.version != version || !identical(old.marks, marks);
 }

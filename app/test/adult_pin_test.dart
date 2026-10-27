@@ -5,11 +5,13 @@ void main() {
   late MemoryPinStore store;
   late DateTime clock;
   late AdultPin pin;
+  late Duration mono; // tempo monotono simulato: avanza solo col tempo vero
 
   setUp(() {
     store = MemoryPinStore();
     clock = DateTime(2026, 1, 1, 12);
-    pin = AdultPin(store: store, now: () => clock, iterations: 50);
+    mono = Duration.zero;
+    pin = AdultPin(store: store, now: () => clock, monotonic: () => mono, iterations: 50);
   });
 
   test('formato: 4-6 cifre', () {
@@ -39,6 +41,7 @@ void main() {
     expect(await pin.verify('4821'), PinResult.locked);
     expect((await pin.remainingLock()).inSeconds, inInclusiveRange(29, 30));
     clock = clock.add(const Duration(seconds: 31));
+    mono += const Duration(seconds: 31);
     expect(await pin.verify('0000'), PinResult.locked);
     expect((await pin.remainingLock()).inSeconds, inInclusiveRange(59, 60));
     expect(AdultPin.waitAfter(99), const Duration(hours: 1));
@@ -112,5 +115,46 @@ void main() {
     await pin.reset();
     await pin.forget();
     expect(store.data, isEmpty);
+  });
+
+  Future<void> lockOut() async {
+    await pin.set('4821');
+    for (var i = 0; i < 3; i++) {
+      await pin.verify('0000');
+    }
+  }
+
+  test("orologio spostato in avanti con app aperta: l'attesa non sparisce", () async {
+    await lockOut();
+    clock = clock.add(const Duration(days: 2));
+    mono += const Duration(seconds: 5);
+    expect((await pin.remainingLock()).inSeconds, inInclusiveRange(24, 25));
+    expect(await pin.verify('4821'), PinResult.locked);
+  });
+
+  test("orologio indietro: non annulla né allunga l'attesa", () async {
+    await lockOut();
+    clock = clock.subtract(const Duration(days: 2));
+    expect((await pin.remainingLock()).inSeconds, inInclusiveRange(29, 30));
+    // Dopo il riallineamento l'attesa scorre normalmente.
+    clock = clock.add(const Duration(seconds: 10));
+    mono += const Duration(seconds: 10);
+    expect((await pin.remainingLock()).inSeconds, inInclusiveRange(19, 20));
+    clock = clock.add(const Duration(seconds: 21));
+    mono += const Duration(seconds: 21);
+    expect(await pin.remainingLock(), Duration.zero);
+  });
+
+  test("dopo il riavvio l'attesa è una durata residua e gli errori restano", () async {
+    await lockOut();
+    clock = clock.subtract(const Duration(hours: 5));
+    final restarted = AdultPin(store: store, now: () => clock, monotonic: () => mono, iterations: 50);
+    expect((await restarted.remainingLock()).inSeconds, inInclusiveRange(29, 30));
+    clock = clock.add(const Duration(minutes: 1));
+    mono += const Duration(minutes: 1);
+    expect(await restarted.remainingLock(), Duration.zero);
+    // Il quarto errore consecutivo vale 60 s, non si riparte da 30.
+    expect(await restarted.verify('0000'), PinResult.locked);
+    expect((await restarted.remainingLock()).inSeconds, inInclusiveRange(59, 60));
   });
 }

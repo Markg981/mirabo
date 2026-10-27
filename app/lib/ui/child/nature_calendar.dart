@@ -35,23 +35,31 @@ class _NatureCalendarState extends State<NatureCalendar> {
   @override
   void initState() {
     super.initState();
-    _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
-    _tts.setSpeechRate(0.45);
+    _setupVoice();
     _load();
     WidgetsBinding.instance.addPostFrameCallback((_) => _say(_tip));
   }
 
+  Future<void> _setupVoice() async {
+    try {
+      await _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
+      await _tts.setSpeechRate(0.45);
+    } catch (_) {}
+  }
+
   @override
   void dispose() {
-    _tts.stop();
+    _tts.stop().catchError((_) {});
     super.dispose();
   }
 
   String get _tip => natureTip(context.l10n, _state.hemisphere, month: _month, today: _today);
 
   Future<void> _say(String line) async {
-    await _tts.stop();
-    await _tts.speak(line);
+    try {
+      await _tts.stop();
+      await _tts.speak(line);
+    } catch (_) {}
   }
 
   Future<void> _load() async {

@@ -65,6 +65,8 @@
   "countdownPick": "Datum wählen",
   "countdownToday": "Es ist heute!",
   "countdownTodaySay": "Heute ist der Tag!",
+  "countdownTodayTask": "Heute ist der Tag! Viel Spaß in der Schule, {name}.",
+  "@countdownTodayTask": { "placeholders": { "name": { "type": "String" } } },
   "countdownDaysTo": "{count, plural, =1{Noch 1 Tag bis: {event}} other{Noch {count} Tage bis: {event}}}",
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{Noch 1 Tag. {task}} other{Noch {count} Tage. {task}}}",
@@ -115,6 +117,8 @@
   "memoryIntroFood": "Finde, wer was frisst: ein Tier und sein Futter.",
   "memoryIntroHome": "Dreh drei Karten um: ein Tier, sein Futter und sein Zuhause.",
   "memoryCovered": "Verdeckte Karte",
+  "memoryCardFaceUp": "{name}, aufgedeckt",
+  "drawColorName": "Farbe {color, select, rose{Rosa} apricot{Orange} sun{Gelb} leaf{Grün} sky{Hellblau} plum{Lila} brown{Braun} ink{Schwarz} other{{color}}}",
   "animalName": "{animal, select, dog{der Hund} cat{die Katze} rabbit{das Kaninchen} fox{der Fuchs} bear{der Bär} panda{der Panda} frog{der Frosch} monkey{der Affe} lion{der Löwe} tiger{der Tiger} cow{die Kuh} pig{das Schwein} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{das Eichhörnchen} penguin{der Pinguin} monkey{der Affe} rabbit{das Kaninchen} bear{der Bär} panda{der Panda} chestnut{die Kastanie} fish{der Fisch} banana{die Banane} carrot{die Karotte} honey{der Honig} bamboo{der Bambus} tree{der Baum} ice{das Eis} palm{die Palme} burrow{der Bau} forest{der Wald} mountain{der Berg} other{{item}}}",
 
@@ -187,6 +191,7 @@
   "hemisphere": "{place, select, north{Nordhalbkugel} south{Südhalbkugel} equator{In der Nähe des Äquators} other{{place}}}",
   "parentData": "Deine Daten",
   "parentDataHint": "Profile, Tagebuch und Fortschritte bleiben verschlüsselt auf diesem Gerät. Die Google-Drive-Sicherung unten ist freiwillig.",
+  "parentDataHintLocal": "Profile, Tagebuch und Fortschritte bleiben verschlüsselt auf diesem Gerät.",
   "parentWipe": "Alle Mirabò-Daten auf diesem Tablet löschen",
   "parentWipeConfirmTitle": "Alles löschen?",
   "parentWipeConfirm": "Profile und Tagebuch werden von diesem Gerät gelöscht. Das lässt sich nicht rückgängig machen. Eine Google-Drive-Sicherung bleibt, wo sie ist.",
@@ -509,6 +514,7 @@
   "onbPromiseBody": "Mirabò ist für Kinder von 3 bis 10 Jahren und für die Erwachsenen, die mit ihnen spielen.",
   "onbFactFree": "Kostenlos",
   "onbFactOffline": "Funktioniert offline: die Cloud ist Ihre Entscheidung",
+  "onbFactOfflineLocal": "Funktioniert offline: die Daten bleiben auf dem Gerät",
   "onbFactNoAds": "Ohne Werbung",
   "onbFactNoAccount": "Kein Konto für das Kind",
   "onbSetupTitle": "Sprache und Altersgruppe",
@@ -525,6 +531,7 @@
   "onbClose": "Schließen",
   "dataWipeTitle": "Alles von diesem Tablet löschen?",
   "dataWipeBody": "Profile, Fortschritte, Tagebuch, Kreationen und erzeugte Dateien (auch die Stimme des Namens) werden endgültig gelöscht, ebenso die Datenbank und ihr Schlüssel. Das Tablet ist danach wie beim ersten Start. Das lässt sich nicht rückgängig machen. Eine Google-Drive-Sicherung bleibt unberührt.",
+  "dataWipeBodyLocal": "Profile, Fortschritte, Tagebuch, Kreationen und erzeugte Dateien (auch die Stimme des Namens) werden endgültig gelöscht, ebenso die Datenbank und ihr Schlüssel. Das Tablet ist danach wie beim ersten Start. Das lässt sich nicht rückgängig machen.",
   "dataWipeTypePrompt": "Zur Bestätigung schreibe {word}",
   "@dataWipeTypePrompt": {"placeholders": {"word": {"type": "String"}}},
   "dataWipeWord": "LÖSCHEN",
@@ -538,6 +545,7 @@
   "dataRemoteFailed": "Die Google-Drive-Sicherung wurde NICHT gelöscht (wahrscheinlich kein Netz oder eine neue Google-Anmeldung ist nötig). Nichts hat sich geändert: Verbinde dich mit dem Internet und versuche es erneut.",
   "dataOutsideTitle": "Was die App nicht kontrollieren kann",
   "dataOutsideBody": "Mirabò kann die Sicherungen des Betriebssystems (Gerätesicherung bei iCloud oder Google) nicht löschen, ebenso wenig Dateien, die du schon exportiert, gedruckt oder geteilt hast. Dafür: Öffne die iCloud- oder Google-Einstellungen des Geräts, lösche alte Sicherungen und entferne gespeicherte oder gesendete Dateien von Hand. Was in deinem Drive übrig bleibt, findest und löschst du unter Drive > Einstellungen > Apps verwalten.",
+  "dataOutsideBodyLocal": "Mirabò kann die Sicherungen des Betriebssystems (Gerätesicherung bei iCloud oder Google) nicht löschen, ebenso wenig Dateien, die du schon exportiert, gedruckt oder geteilt hast. Dafür: Öffne die iCloud- oder Google-Einstellungen des Geräts, lösche alte Sicherungen und entferne gespeicherte oder gesendete Dateien von Hand.",
   "gateRecoveryTitle": "Der Wiederherstellungscode",
   "gateRecoveryBody": "Schreib ihn auf Papier und bewahre ihn fern vom Tablet auf: Du brauchst ihn, wenn du die PIN vergisst. Er wird nicht mehr angezeigt.",
   "gateRecoveryWritten": "Ich habe ihn notiert",
@@ -561,5 +569,7 @@
   "startupFailedBody": "Es wurde nichts gelöscht. Versuche es noch einmal; passiert es wieder, prüfe den freien Speicher des Tablets und starte es neu.",
   "startupTooNewBody": "Die Daten auf diesem Tablet stammen von einer neueren Version von Mirabò. Es wurde nichts gelöscht: Aktualisiere die App im Store.",
   "startupRetry": "Erneut versuchen",
-  "storageResetNotice": "Am {date} hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden."
+  "storageResetNotice": "Am {date} hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden.",
+  "rejectedPackagesTitle": "Einige Inhalte wurden nicht geladen",
+  "rejectedPackagesBody": "{count, plural, =1{1 Inhaltspaket wurde verworfen, weil es die Prüfungen (Signatur oder Integrität) nicht bestanden hat. Es wird Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.} other{{count} Inhaltspakete wurden verworfen, weil sie die Prüfungen (Signatur oder Integrität) nicht bestanden haben. Sie werden Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.}}"
 }

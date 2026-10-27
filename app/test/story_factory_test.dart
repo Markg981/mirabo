@@ -95,20 +95,24 @@ void main() {
     expect(find.text('Qui troverai le storie che inventi.'), findsOneWidget);
 
     await tester.tap(find.text('Inventane una'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(spoken.last, 'Chi è il protagonista?');
 
     // Senza scelta non si va avanti.
     await tester.tap(find.text('Avanti'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(find.text('Chi è il protagonista?'), findsOneWidget);
 
     final picks = ['Un piccolo drago', 'Il bosco', 'Il temporale', 'La paura', 'Un orso gentile', 'Una festa'];
     for (final pick in picks) {
       await tester.tap(find.text(pick));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       expect(spoken.last, pick, reason: 'il compagno dice il nome del pezzo');
       await tester.tap(find.text(pick == picks.last ? 'Leggiamo la storia!' : 'Avanti'));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
     }
 
@@ -126,6 +130,7 @@ void main() {
 
     for (var i = 0; i < 5; i++) {
       await tester.tap(find.text('Avanti'));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
     }
     expect(find.text('Fine'), findsOneWidget);
@@ -133,6 +138,7 @@ void main() {
     expect(spoken.last, contains('La metto tra le tue storie'));
 
     await tester.tap(find.text('Fatto'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(find.text('Il piccolo drago'), findsOneWidget, reason: 'la storia è tra "Le mie storie"');
   });
@@ -140,16 +146,20 @@ void main() {
   testWidgets('in 8–10 si dà anche il titolo', (tester) async {
     final (db, _) = await pumpFactory(tester, AgeBand.b8to10);
     await tester.tap(find.text('Inventane una'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     for (final pick in ['Un robot gentile', 'La notte', 'La stellina caduta', 'Il coraggio', 'Una tartaruga saggia', 'La nanna']) {
       await tester.tap(find.text(pick));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Avanti'));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
     }
     expect(find.text('Che titolo diamo alla storia?'), findsOneWidget);
     await tester.enterText(find.byType(TextField), 'La scala per le stelle');
     await tester.tap(find.text('Leggiamo la storia!'));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(db.saved.single.title, 'La scala per le stelle');
     expect(find.text('La scala per le stelle'), findsOneWidget);
@@ -157,10 +167,12 @@ void main() {
     // Sull'ultima pagina di 8–10 si provano altri finali, senza toccare la storia salvata.
     for (var i = 0; i < 4; i++) {
       await tester.tap(find.text('Avanti'));
+      await tester.pump(const Duration(milliseconds: 650));
       await tester.pumpAndSettle();
     }
     expect(find.text('Prova un altro finale'), findsOneWidget);
     await tester.tap(find.byType(ChoiceChip).first);
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(spoken.last, contains('festa'));
     expect(db.saved.single.part(FactoryStep.ending), 'sleep');

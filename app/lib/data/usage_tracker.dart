@@ -88,7 +88,8 @@ class UsageTracker with WidgetsBindingObserver {
     final changed = since != null && _creditId != profileId();
     _creditId = profileId();
     if (force || changed || _lastFlush == null || now.difference(_lastFlush!) >= flushEvery) {
-      unawaited(flush());
+      // L'errore è già passato da LocalDb.onSaveError: qui non resta non gestito.
+      unawaited(flush().catchError((_) {}));
     }
   }
 
@@ -98,26 +99,44 @@ class UsageTracker with WidgetsBindingObserver {
   /// non ancora salvati e smette di accreditare, poi attende i salvataggi già
   /// partiti. Così nessuna riga `usage.*` rinasce dopo l'eliminazione.
   /// Il conteggio riprende al prossimo [tick] sul bambino attuale.
-  Future<void> forget([int? id]) {
-    if (id == null) {
-      _pending.clear();
-    } else {
-      _pending.removeWhere((k, _) => k.startsWith('usage.$id.'));
+  Future<void> forget([int? id]) async {
+    void drop() {
+      if (id == null) {
+        _pending.clear();
+      } else {
+        _pending.removeWhere((k, _) => k.startsWith('usage.$id.'));
+      }
     }
+
+    drop();
     _creditId = null;
-    return _saving;
+    // Un salvataggio fallito non deve fermare l'eliminazione, e rimette i suoi
+    // secondi in _pending: si scartano di nuovo quando ha finito.
+    await _saving.catchError((_) {});
+    drop();
   }
 
   /// Scritture una dopo l'altra: due salvataggi insieme si perderebbero minuti.
-  Future<void> flush() => _saving = _saving.then((_) => _flush());
+  /// Un salvataggio fallito non ferma i successivi (il suo errore torna solo a chi lo ha chiesto).
+  Future<void> flush() => _saving = _saving.catchError((_) {}).then((_) => _flush());
 
   Future<void> _flush() async {
     _lastFlush = _now();
     final todo = Map<String, int>.of(_pending);
     _pending.clear();
     for (final e in todo.entries) {
-      final before = int.tryParse(await db.setting(e.key) ?? '') ?? 0;
-      await db.setSetting(e.key, '${before + e.value}');
+      try {
+        final before = int.tryParse(await db.setting(e.key) ?? '') ?? 0;
+        await db.setSetting(e.key, '${before + e.value}');
+      } catch (_) {
+        // Non salvato: il tempo torna da contare al giro dopo, insieme a quello che resta.
+        var rest = false;
+        for (final r in todo.entries) {
+          if (r.key == e.key) rest = true;
+          if (rest) _pending[r.key] = (_pending[r.key] ?? 0) + r.value;
+        }
+        rethrow; // setSetting ha già avvisato l'adulto via LocalDb.onSaveError
+      }
     }
   }
 

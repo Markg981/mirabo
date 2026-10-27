@@ -49,16 +49,18 @@ class PinResetNotice {
 /// errore oltre la soglia, l'attesa cresce. Il PIN non cancella né tocca i
 /// dati del bambino: il reset sostituisce solo questo segreto.
 class AdultPin {
-  AdultPin({PinStore? store, DateTime Function()? now, this.iterations = 20000})
+  AdultPin({PinStore? store, DateTime Function()? now, Duration Function()? monotonic, this.iterations = 20000})
       : _store = store ?? const SecurePinStore(),
-        _now = now ?? DateTime.now;
+        _now = now ?? DateTime.now,
+        _mono = monotonic ?? _defaultMono;
 
   static const minLength = 4;
   static const maxLength = 6;
   static const _kHash = 'adult_pin_hash';
   static const _kSalt = 'adult_pin_salt';
   static const _kFails = 'adult_pin_fails';
-  static const _kLockUntil = 'adult_pin_lock_until';
+  static const _kLockLeft = 'adult_pin_lock_left_ms';
+  static const _kLockRef = 'adult_pin_lock_ref';
   static const _kRecHash = 'adult_pin_recovery_hash';
   static const _kRecSalt = 'adult_pin_recovery_salt';
   static const _kDeviceRecovery = 'adult_pin_device_recovery';
@@ -76,6 +78,13 @@ class AdultPin {
   final PinStore _store;
   final DateTime Function() _now;
   final int iterations;
+
+  // Orologio monotono del processo: non si sposta cambiando l'ora del
+  // dispositivo. Vale solo finché l'app resta aperta.
+  static final Stopwatch _sw = Stopwatch()..start();
+  static Duration _defaultMono() => _sw.elapsed;
+  final Duration Function() _mono;
+  int? _swAtRef; // lettura del cronometro quando è stato scritto _kLockRef
 
   static bool isValidFormat(String pin) => RegExp('^[0-9]{$minLength,$maxLength}\$').hasMatch(pin);
 
@@ -97,12 +106,38 @@ class AdultPin {
     await _clearFails();
   }
 
-  /// Tempo di attesa residuo (zero se si può provare).
+  /// Tempo di attesa residuo (zero se si può provare). L'attesa è salvata come
+  /// durata residua, non come istante: l'ora del dispositivo conta solo per
+  /// la differenza dall'ultimo controllo. Orologio indietro: non scala nulla e
+  /// il riferimento si riallinea (l'attesa non si allunga né si annulla).
+  /// Con l'app aperta lo scorrere è il minimo fra orologio e cronometro
+  /// monotono, quindi spostare l'ora in avanti non serve. Dopo un riavvio il
+  /// cronometro non c'è: vale l'orologio, ma gli errori accumulati restano
+  /// e fanno salire l'attesa successiva.
   Future<Duration> remainingLock() async {
-    final until = int.tryParse(await _store.read(_kLockUntil) ?? '');
-    if (until == null) return Duration.zero;
-    final left = DateTime.fromMillisecondsSinceEpoch(until).difference(_now());
-    return left.isNegative ? Duration.zero : left;
+    final left = int.tryParse(await _store.read(_kLockLeft) ?? '');
+    if (left == null) return Duration.zero;
+    final ref = int.tryParse(await _store.read(_kLockRef) ?? '') ?? _now().millisecondsSinceEpoch;
+    final nowMs = _now().millisecondsSinceEpoch;
+    var elapsed = max(0, nowMs - ref);
+    final swAt = _swAtRef;
+    if (swAt != null) elapsed = min(elapsed, _mono().inMilliseconds - swAt);
+    final rest = left - elapsed;
+    if (rest <= 0) {
+      await _store.delete(_kLockLeft);
+      await _store.delete(_kLockRef);
+      return Duration.zero;
+    }
+    if (elapsed > 0 || nowMs < ref) {
+      await _writeLock(rest, nowMs);
+    }
+    return Duration(milliseconds: rest);
+  }
+
+  Future<void> _writeLock(int leftMs, int nowMs) async {
+    await _store.write(_kLockLeft, '$leftMs');
+    await _store.write(_kLockRef, '$nowMs');
+    _swAtRef = _mono().inMilliseconds;
   }
 
   Future<PinResult> verify(String pin) async {
@@ -184,7 +219,7 @@ class AdultPin {
   /// *Elimina tutti i dati*: il tablet torna come al primo avvio, quindi senza
   /// PIN, codice di recupero, attese, scelta sul recupero e avvisi.
   Future<void> forget() async {
-    for (final k in [_kHash, _kSalt, _kFails, _kLockUntil, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow]) {
+    for (final k in [_kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow]) {
       await _store.delete(k);
     }
   }
@@ -194,7 +229,7 @@ class AdultPin {
     await _store.write(_kFails, '$fails');
     final wait = waitAfter(fails);
     if (wait > Duration.zero) {
-      await _store.write(_kLockUntil, '${_now().add(wait).millisecondsSinceEpoch}');
+      await _writeLock(wait.inMilliseconds, _now().millisecondsSinceEpoch);
       return PinResult.locked;
     }
     return PinResult.wrong;
@@ -202,7 +237,8 @@ class AdultPin {
 
   Future<void> _clearFails() async {
     await _store.delete(_kFails);
-    await _store.delete(_kLockUntil);
+    await _store.delete(_kLockLeft);
+    await _store.delete(_kLockRef);
   }
 
   List<int> _derive(String pin, List<int> salt) {
