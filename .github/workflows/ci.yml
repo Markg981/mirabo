@@ -40,6 +40,11 @@ jobs:
         run: python studio/release.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
+      - name: Registro delle approvazioni append-only (confronto con la base della PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --depth=1 origin "${{ github.base_ref }}"
+          python studio/check_approvals_append_only.py FETCH_HEAD
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: pacchetti
