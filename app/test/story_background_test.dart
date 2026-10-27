@@ -106,11 +106,11 @@ void main() {
 
     await tester.pumpWidget(AppStateScope(
       state: state,
-      child: MaterialApp(
+      child: const MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale('it'),
-        home: const StoryReader(story: story),
+        locale: Locale('it'),
+        home: StoryReader(story: story),
       ),
     ));
     await tester.pumpAndSettle();
