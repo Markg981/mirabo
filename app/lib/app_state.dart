@@ -95,7 +95,11 @@ class AppState extends ChangeNotifier {
     _hiddenAt = null;
     if (hidden != null && mode == SessionMode.together && _now().difference(hidden) >= togetherLapse) {
       unawaited(setMode(SessionMode.alone));
+      return;
     }
+    // Un Timer sospeso in background può scattare in ritardo (iOS): si
+    // riallinea il conto del limite all'orologio.
+    if (hidden != null && mode == SessionMode.alone) _syncAloneClock();
   }
 
   final LocalDb db;
