@@ -77,12 +77,12 @@ abstract final class MiraboColors {
   }
 }
 
-/// Il mondo di una storia: nome breve, icona, colore.
-({String label, IconData icon, Color color}) worldStyle(World w) => switch (w) {
-      World.emozioni => (label: 'Emozioni', icon: Icons.favorite_rounded, color: MiraboColors.rose),
-      World.inclusione => (label: 'Insieme', icon: Icons.diversity_1_rounded, color: MiraboColors.sky),
-      World.ambiente => (label: 'Il bosco', icon: Icons.park_rounded, color: MiraboColors.leaf),
-      World.sicurezza => (label: 'Il mio corpo', icon: Icons.shield_rounded, color: MiraboColors.sun),
+/// Il mondo di una storia: icona e colore (il nome è localizzato: worldShort/worldLong).
+({IconData icon, Color color}) worldStyle(World w) => switch (w) {
+      World.emozioni => (icon: Icons.favorite_rounded, color: MiraboColors.rose),
+      World.inclusione => (icon: Icons.diversity_1_rounded, color: MiraboColors.sky),
+      World.ambiente => (icon: Icons.park_rounded, color: MiraboColors.leaf),
+      World.sicurezza => (icon: Icons.shield_rounded, color: MiraboColors.sun),
     };
 
 Color areaColor(ActivityArea a) => switch (a) {

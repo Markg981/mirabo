@@ -63,6 +63,7 @@
   "checklistAllDone": "Tout est prêt, bonne nuit",
   "enoughForToday": "Ça suffit pour aujourd'hui",
   "countdownPick": "Choisis la date",
+  "countdownPickHint": "Un grand choisit la date ; ensuite, chaque jour, on colorie un jour.",
   "countdownToday": "C'est aujourd'hui !",
   "countdownTodaySay": "C'est le grand jour !",
   "countdownTodayTask": "C'est le grand jour ! Bonne école, {name}.",
