@@ -7,7 +7,7 @@ Principio: l'app non valuta il bambino né cambia da sola ciò che gli propone. 
 | Cosa | Chi decide | Dove |
 | --- | --- | --- |
 | Livello di un'attività o gioco | Il bambino, a fine attività: "Più semplice", "Ancora così", "Più sfida" (icone + voce a pressione lunga; facoltativi, "A domani" chiude comunque) | `activity_player.dart`, `AppState.setActivityLevel` |
-| Profilo di interazione (mani, lettura, autonomia) | Il genitore, accettando o rifiutando una proposta, o dal profilo | `interaction_advice.dart`, `parent_area.dart` |
+| Profilo di interazione (mani, lettura, autonomia) | Il genitore, dal profilo del bambino. L'app non propone cambiamenti: il calcolo delle proposte dai tentativi è stato tolto (schema v13) | `profile_form.dart`, `parent_area.dart` |
 | Fascia d'età | Il genitore. Nessuna data di nascita, nessuna promozione automatica al compleanno né per prestazioni; i profili con le fasce di prima (5-7, 7-10) li conferma l'adulto (`docs/age-bands.md`) | `profile_form.dart`, `parent_area.dart` |
 | Audio e supporti (voce, consegna, aiuto a passi) | Nessun passaggio li toglie: cambiare livello non tocca profilo, voce né aiuti | |
 
@@ -21,24 +21,14 @@ Prima di questo lavoro `applyAdaptive` alzava o abbassava il livello da solo a f
 
 Ogni scelta cambia una sola dimensione (il livello di quell'attività), non tocca le altre e si annulla con la scelta opposta alla fine del giro successivo. La scelta non è mai obbligatoria e non c'è nessun punteggio o giudizio.
 
-## Proposte al genitore (profilo di interazione)
-
-`adviseInteraction` guarda i round degli ultimi 7 giorni (`activity_rounds`: attività, tentativi, aiuti, data) e propone al massimo un passo su un asse:
-
-- mani: tracciati al primo tentativo senza aiuti → tracciati più fini;
-- lettura: parole composte al primo tentativo → più testo;
-- autonomia: risposte giuste al primo tentativo nei giochi a scelta → più scelte per volta.
-
-Soglie: almeno 6 round per abilità, in almeno 2 giorni, con almeno l'80% di primi tentativi. Il genitore vede una frase che dice perché ("Ti proponiamo X perché nelle ultime N attività …", con N = i round considerati). Se rifiuta, per quell'apertura dell'app la proposta non torna. Un interruttore per bambino (`settings`, chiave `advice_off.<id>`) spegne del tutto le proposte: con l'interruttore spento il calcolo non parte.
-
 ## Dati e dove restano
 
-Tentativi, aiuti e data dei round, il livello per attività e l'interruttore stanno solo sul dispositivo (SQLite, tabelle `activity_rounds`, `activity_progress`, `settings`). Nessun invio a server. Viaggiano solo nel backup che la famiglia sceglie di attivare, e spariscono con "Elimina tutti i dati". Nessun cambio di schema.
+Nessuna proposta viene calcolata: tentativi, aiuti e primi tentativi non si conservano più (analisi 7C, [privacy/mvp-data.md](privacy/mvp-data.md)). `adviseInteraction` e `interaction_advice.dart` sono stati tolti; la migrazione v13 cancella dai database esistenti le colonne dei tentativi e la chiave `advice_off.<id>`. Restano solo sul dispositivo (SQLite, tabelle `activity_rounds`, `activity_progress`) l'abilità e l'istante di ogni round, la scelta solo dove serve (note dei progetti, fine presentazione) e il livello per attività. Nessun invio a server. Il backup su Drive è fuori dall'MVP; *Elimina tutti i dati* cancella tutto.
 
-## Base giuridica (da validare)
+## Base giuridica
 
-Il calcolo delle proposte è un trattamento automatizzato di dati del minore, anche se locale: l'analisi (§2.4, rischio 3) avverte che può configurare profilazione. Mitigazioni adottate: nessuna decisione automatica con effetti sul bambino (propone, decide il genitore), dati minimi e locali, finestra di 7 giorni, trasparenza della frase "perché", interruttore per disattivare. La base (consenso del genitore, legittimo interesse, o assenza di profilazione ai sensi dell'art. 22 GDPR e del considerando 71) è **da validare con un consulente legale** prima della pubblicazione.
+Senza calcolo da tentativi e aiuti non c'è profilazione del minore: ogni cambiamento lo sceglie una persona e il livello scelto è un dato di preferenza. Il consulente privacy conferma questa lettura insieme al resto di `mvp-data.md`.
 
 ## Prossimi passi
 
-Una sperimentazione futura di adattività prestazionale (che regola contenuti o difficoltà in base alle prestazioni) richiede una logica documentata e una base giuridica propria, compresa una valutazione d'impatto (DPIA), prima di essere attivata. Non si introduce estendendo queste soglie.
+Le proposte al genitore calcolate dai tentativi sono rinviate. Una sperimentazione futura di adattività prestazionale (che regola contenuti o difficoltà in base alle prestazioni) richiede una logica documentata e una base giuridica propria, compresa una valutazione d'impatto (DPIA), prima di essere attivata. Non si introduce estendendo queste soglie.

@@ -439,7 +439,8 @@ class LocalDb {
   ].join(' ');
 
   /// Il compagno smette di crescere con i gesti segnati: lo stadio raggiunto
-  /// resta come minimo e da oggi cresce con le settimane.
+  /// resta come minimo (`stage_floor`); `growth_since` si salva ma non si usa
+  /// più, perché la crescita a soglie non è nell'MVP (docs/child-paths.md).
   static String _growthFromNowSql() =>
       "UPDATE profiles SET stage_floor = MAX(stage_floor, $_gestureStageSql), growth_since = '${DateTime.now().toIso8601String()}' "
       'WHERE growth_since IS NULL';

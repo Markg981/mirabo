@@ -29,10 +29,10 @@ Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è sta
 `AdultGate.confirm(context)` chiede sempre il PIN, anche se l'adulto è già dentro:
 
 - eliminazione di un profilo (`profile_form.dart`);
-- collegamento del backup Drive e ripristino da Drive (`backup_section.dart`);
+- collegamento del backup Drive e ripristino da Drive (`backup_section.dart`; fuori dall'MVP, la release non ha la sezione, vedi `backup.md`);
 - cambio del PIN (`AdultGate.changePin`, pulsante nella sezione dati dell'area genitori);
 - nuovo codice di recupero (`AdultGate.newRecoveryCode`) e recupero con il blocco del tablet acceso o spento (`AdultGate.setDeviceRecovery`);
-- cancellazione dei dati su questo tablet e del backup su Drive (`data_deletion.dart`, via `AdultGate.open`).
+- cancellazione dei dati su questo tablet e, se il backup è acceso a compilazione, di quello su Drive (`data_deletion.dart`, via `AdultGate.open`; nella release MVP solo i dati del tablet);
 
 `AdultGate.open(context, then: ...)` mantiene la firma: ora chiede il PIN (o ne fa creare uno) e poi esegue `then`.
 
