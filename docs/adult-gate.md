@@ -10,7 +10,7 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 
 - Primo ingresso nell'area adulta: l'adulto sceglie un PIN di 4-6 cifre e lo ripete.
 - Conservazione: sale casuale (16 byte) e hash PBKDF2-HMAC-SHA256 (20.000 iterazioni) in `flutter_secure_storage` (Keychain / Keystore). Il PIN non è mai salvato in chiaro e non sta nel database né nel backup. Nessun cambio di schema DB.
-- Tentativi: 3 errori liberi, poi attesa di 30 s, 60 s, 5 min, 15 min, 1 h (tetto). L'attesa è salvata e sopravvive alla chiusura dell'app; durante l'attesa anche il PIN giusto è rifiutato.
+- Tentativi: 3 errori liberi, poi attesa di 30 s, 60 s, 5 min, 15 min, 1 h (tetto). L'attesa è salvata e sopravvive alla chiusura dell'app; durante l'attesa anche il PIN giusto è rifiutato. L'attesa è salvata come durata residua, non come ora di fine: spostare l'orologio indietro non la annulla né la allunga; con l'app aperta spostarlo avanti non serve, perché scorre solo col tempo monotono. Dopo un riavvio vale l'orologio, ma gli errori consecutivi restano e l'attesa successiva sale.
 - Il PIN giusto azzera il contatore.
 
 ## Recupero ("Ho dimenticato il PIN")
