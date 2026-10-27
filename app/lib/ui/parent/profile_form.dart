@@ -67,7 +67,21 @@ class _ProfileFormState extends State<ProfileForm> {
 
   bool get _valid => _name.text.trim().isNotEmpty && _companion != null;
 
+  // Evita il doppio tocco su "Salva": senza, ogni tap lancia un altro
+  // createProfile mentre il DB è ancora occupato e nascono profili doppi.
+  bool _saving = false;
+
   Future<void> _save() async {
+    if (_saving) return;
+    setState(() => _saving = true);
+    try {
+      await _doSave();
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
+  }
+
+  Future<void> _doSave() async {
     final state = AppStateScope.read(context);
     final existing = widget.existing;
     if (existing == null) {
@@ -373,7 +387,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       iconAfter: widget.firstRun,
                       color: MiraboColors.leaf,
                       height: 62,
-                      onPressed: _valid ? _save : null,
+                      onPressed: _valid && !_saving ? _save : null,
                     ),
                   ],
                 ),
