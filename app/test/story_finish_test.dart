@@ -87,21 +87,21 @@ void main() {
     await state.init();
     addTearDown(state.dispose);
 
-    final story = Story(
+    const story = Story(
       id: 'prova',
       version: 1,
       title: 'Prova',
       world: World.emozioni,
       topic: 't',
-      variantFiles: const {},
-      formats: const [],
+      variantFiles: {},
+      formats: [],
       togetherOnly: false,
       keyPhrase: 'k',
       parentCardFile: '',
-      sources: const [],
+      sources: [],
       variants: {
         AgeBand.b3to5: StoryVariant(ageBand: AgeBand.b3to5, screens: [
-          StoryScreen(n: 1, kind: ScreenKind.closing, illustration: const Illustration(alt: 'a'), text: 'Fine'),
+          StoryScreen(n: 1, kind: ScreenKind.closing, illustration: Illustration(alt: 'a'), text: 'Fine'),
         ]),
       },
     );
@@ -116,7 +116,7 @@ void main() {
         navigatorObservers: [_Obs(popped)],
         home: Builder(
           builder: (context) => TextButton(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => StoryReader(story: story))),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const StoryReader(story: story))),
             child: const Text('apri'),
           ),
         ),
