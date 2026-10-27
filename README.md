@@ -15,17 +15,24 @@ docs/      Specifica, formato delle storie, guida di stile
 
 ## Primi passi su Windows
 
-1. Installa Flutter (stable) seguendo <https://docs.flutter.dev/get-started/install/windows>, Android Studio e un emulatore tablet (es. Pixel Tablet API 34) oppure collega un tablet Android con il debug USB.
-2. Genera le cartelle piattaforma, che non sono nel repository:
+1. Installa Flutter nella versione esatta indicata in `app/pubspec.yaml` (campo `flutter:` sotto `environment`, la stessa che usa la CI) seguendo <https://docs.flutter.dev/get-started/install/windows>, più Android Studio e un emulatore tablet (es. Pixel Tablet API 34) oppure un tablet Android con il debug USB. Serve anche Python 3.12.
+2. Le cartelle `app/android/` e `app/ios/` sono già nel repository: non eseguire `flutter create .`.
+3. Prepara i contenuti. `app/assets/` è ignorata da git e `pubspec.yaml` ne dichiara le cartelle, quindi senza questo passo l'app parte senza storie (o la build fallisce). Dalla radice del repository:
+
+   ```
+   pip install -r studio/requirements.txt
+   python studio/keygen.py                        # una volta sola: coppia di chiavi di firma
+   python studio/sync_assets.py --include-drafts  # sviluppo: anche le storie non ancora revisionate
+   ```
+
+   Senza `--include-drafts` vengono copiate solo le storie pubblicate. Rilanciare il comando quando cambia `content/`.
+4. Dipendenze e avvio:
 
    ```
    cd app
-   flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
    flutter pub get
+   flutter run
    ```
-
-   `flutter create .` aggiunge `android/` e `ios/` senza toccare `lib/` e `pubspec.yaml`.
-3. Avvia: `flutter run`.
 
 La build iOS richiede macOS: la fa la CI (`.github/workflows/ci.yml`) su un runner macOS.
 
