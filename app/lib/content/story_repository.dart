@@ -35,6 +35,8 @@ class StoryRepository {
   final Map<String, VerifiedPackage> _storyPkgs = {};
   final Map<String, VerifiedPackage> _activityPkgs = {};
   final List<String> rejected = [];
+  // Pacchetti illeggibili trovati mentre si costruiscono i modelli, da scartare a fine load().
+  final Map<String, Object> _pendingDiscard = {};
   Map<String, dynamic> _companionsJson = const {};
 
   /// I temi della matrice educativa, con i riferimenti stabili dei contenuti.
@@ -98,6 +100,9 @@ class StoryRepository {
         }
       } on PackageVerificationException catch (e) {
         rejected.add('$file: ${e.message}');
+      } catch (e) {
+        // Un pacchetto firmato ma incoerente (tipi errati, JSON rotto) si scarta da solo.
+        rejected.add('$file: $e');
       }
     }
     try {
@@ -106,9 +111,18 @@ class StoryRepository {
       // Asset non sincronizzati (vedi studio/sync_assets.py): resta la mensola.
       themes = ThemeCatalog.empty;
     }
-    // Costruisce subito l'italiano: un pacchetto con un JSON rotto si vede all'avvio.
+    // Costruisce subito l'italiano: un pacchetto con un JSON rotto si scarta
+    // e si registra, senza fermare gli altri.
     _stories('it');
     _activities('it');
+    _pendingDiscard.forEach((id, error) {
+      rejected.add('$id: $error');
+      _storyPkgs.remove(id);
+      _activityPkgs.remove(id);
+    });
+    _pendingDiscard.clear();
+    _storiesByLang.clear();
+    _activitiesByLang.clear();
   }
 
   /// Un file del pacchetto nella lingua chiesta: la base italiana con sopra
@@ -121,27 +135,45 @@ class StoryRepository {
 
   Map<String, Activity> _activities(String lang) => _activitiesByLang.putIfAbsent(lang, () {
         final out = <String, Activity>{};
+        final bad = <String, Object>{};
         _activityPkgs.forEach((id, pkg) {
           try {
             out[id] = Activity.fromJson(_localized(pkg, 'activity.json', lang)!);
           } catch (e) {
-            if (lang == 'it') rethrow;
-            out[id] = Activity.fromJson(pkg.json('activity.json')!);
+            try {
+              if (lang == 'it') rethrow;
+              out[id] = Activity.fromJson(pkg.json('activity.json')!);
+            } catch (e2) {
+              bad[id] = e2;
+            }
           }
         });
+        for (final id in bad.keys) {
+          out.remove(id);
+        }
+        _pendingDiscard.addAll(bad);
         return out;
       });
 
   Map<String, Story> _stories(String lang) => _storiesByLang.putIfAbsent(lang, () {
         final out = <String, Story>{};
+        final bad = <String, Object>{};
         _storyPkgs.forEach((id, pkg) {
           try {
             out[id] = _storyFromPackage(pkg, lang);
           } catch (e) {
-            if (lang == 'it') rethrow;
-            out[id] = _storyFromPackage(pkg, 'it');
+            try {
+              if (lang == 'it') rethrow;
+              out[id] = _storyFromPackage(pkg, 'it');
+            } catch (e2) {
+              bad[id] = e2;
+            }
           }
         });
+        for (final id in bad.keys) {
+          out.remove(id);
+        }
+        _pendingDiscard.addAll(bad);
         return out;
       });
 
@@ -150,8 +182,12 @@ class StoryRepository {
     final variants = <AgeBand, StoryVariant>{};
     for (final entry in meta.variantFiles.entries) {
       final v = _localized(pkg, entry.value, lang);
-      if (v != null) variants[entry.key] = StoryVariant.fromJson(v);
+      if (v == null) continue;
+      final variant = StoryVariant.fromJson(v);
+      // Una variante senza schermate non si può leggere: è come se mancasse.
+      if (variant.screens.isNotEmpty) variants[entry.key] = variant;
     }
+    if (variants.isEmpty) throw const FormatException('nessuna variante leggibile');
     final card = meta.parentCardFile;
     final parentCard = (lang == 'it' ? null : pkg.text('i18n/$lang/$card')) ?? pkg.text(card);
     // L'attività è facoltativa; se l'overlay tradotto è rotto resta quella italiana.
