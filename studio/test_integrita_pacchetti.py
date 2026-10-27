@@ -44,3 +44,31 @@ def test_modifica_rimozione_riordino_sono_violazioni():
     assert aao.violations([E1], [{**E1, "fingerprint": "z"}])
     assert aao.violations([E1, E2], [E1])
     assert aao.violations([E1, E2], [E2, E1])
+
+
+def _prepara(tmp_path, monkeypatch, build):
+    import pack
+    dist = tmp_path / "dist"
+    dist.mkdir()
+    (dist / "vecchio-v1.mirabo").write_text("ok")
+    monkeypatch.setattr(pack, "DIST", dist)
+    monkeypatch.setattr(pack, "validate_main", lambda argv: 0)
+    monkeypatch.setattr(sys, "argv", ["pack.py"])
+    monkeypatch.setattr(pack, "build", build)
+    return pack, dist
+
+
+def test_dist_non_svuotata_se_la_build_fallisce(tmp_path, monkeypatch):
+    pack, dist = _prepara(tmp_path, monkeypatch, lambda *a: 1)
+    assert pack.main() == 1
+    assert (dist / "vecchio-v1.mirabo").exists()
+    assert not (tmp_path / "dist.tmp").exists()
+
+
+def test_dist_sostituita_solo_a_successo(tmp_path, monkeypatch):
+    import pack
+    pack, dist = _prepara(tmp_path, monkeypatch, lambda *a: (pack.DIST / "nuovo-v2.mirabo").write_text("n") and 0)
+    assert pack.main() == 0
+    assert pack.DIST == dist
+    assert [p.name for p in dist.iterdir()] == ["nuovo-v2.mirabo"]
+    assert not (tmp_path / "dist.tmp").exists() and not (tmp_path / "dist.old").exists()

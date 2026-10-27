@@ -3,7 +3,8 @@
 
 Solo storie e attività con status "published" (revisione approvata) vengono
 impacchettate: le altre non devono arrivare ai bambini. Prima di impacchettare,
-i vecchi pacchetti in dist/ vengono rimossi, così non restano bozze di giri precedenti.
+dist/ viene ricostruita da zero (in una cartella di appoggio, sostituita solo a successo),
+così non restano bozze di giri precedenti e una release fallita non svuota dist/.
 
 Uso:
   python studio/pack.py                     # pacchetti non firmati (solo per sviluppo)
@@ -30,6 +31,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
 import sys
 import zipfile
 from pathlib import Path
@@ -197,11 +199,38 @@ def main() -> int:
         if errors:
             print("\n".join(f"ERRORE: {e}" for e in errors) + "\n\nCatalogo incoerente: nessun pacchetto prodotto.")
             return 1
-    DIST.mkdir(exist_ok=True)
-    for old in DIST.glob("*.mirabo"):
-        old.unlink()
-    (DIST / "retired.json").unlink(missing_ok=True)
-    (DIST / "release.json").unlink(missing_ok=True)
+    # Si costruisce in una cartella di appoggio e dist/ viene sostituita solo a successo:
+    # una release fallita non lascia dist/ svuotata né a metà.
+    global DIST
+    final, DIST = DIST, DIST.with_name(DIST.name + ".tmp")
+    shutil.rmtree(DIST, ignore_errors=True)
+    DIST.mkdir()
+    try:
+        status = build(do_sign, include_drafts, is_release)
+        if status == 0:
+            swap_dist(DIST, final)
+        return status
+    finally:
+        shutil.rmtree(DIST, ignore_errors=True)
+        DIST = final
+
+
+def swap_dist(staging: Path, final: Path) -> None:
+    """Sostituisce final con staging; se lo scambio fallisce, final torna com'era."""
+    backup = final.with_name(final.name + ".old")
+    shutil.rmtree(backup, ignore_errors=True)
+    if final.exists():
+        final.rename(backup)
+    try:
+        staging.rename(final)
+    except OSError:
+        if backup.exists():
+            backup.rename(final)
+        raise
+    shutil.rmtree(backup, ignore_errors=True)
+
+
+def build(do_sign: bool, include_drafts: bool, is_release: bool) -> int:
     if is_release:
         return release(do_sign, sys.argv[sys.argv.index("--theme") + 1] if "--theme" in sys.argv else None)
     skipped: list[str] = []
