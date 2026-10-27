@@ -295,11 +295,11 @@ Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la li
 }
 ```
 
-- **Compatibilità**: l'app installa solo se `formatVersion` è minore o uguale al formato che conosce e la sua versione è almeno `minAppVersion` (in `story.json` si può alzare con `minAppVersion`, default `0.1.0`).
+- **Compatibilità**: l'app usa un pacchetto solo se `formatVersion` è minore o uguale al formato che conosce e la sua versione è almeno `minAppVersion` (in `story.json` si può alzare con `minAppVersion`, default `0.1.0`). Il controllo vale già per i pacchetti inclusi negli asset (`StoryRepository.load()` scarta quelli incompatibili e li registra in `rejected`) e, in futuro, per quelli scaricati (`PackageInstaller`). Un `id` già letto da un altro pacchetto incluso non lo sostituisce: il secondo è scartato.
 - **Nomi dei file**: i percorsi in `files` non possono contenere caratteri fuori dal BMP (oltre U+FFFF, es. emoji): la forma canonica ordina le chiavi per code point in Python e per unità UTF-16 in Dart, e i due ordini divergono solo per quei caratteri. `validate.py` (`check_manifest`) li rifiuta.
 - **Dimensioni e hash**: `sizes` e `size` (byte non compressi) servono al controllo preventivo dello spazio; ogni file ha il suo sha256 in `files`.
 - **Tracciabilità editoriale**: `author` (campo facoltativo `author` di `story.json` o `activity.json`); `reviewer`, `approvedVersion` e `fingerprint` vengono dal registro delle approvazioni `content/reviews/approvals.json` e ci sono solo se l'approvazione vale per la versione e l'impronta esatte del contenuto impacchettato, per storie e attività (vedi [launch-catalog.md](launch-catalog.md)). Nei pacchetti di sviluppo (`--include-drafts`) sono `null` e `fingerprint` manca.
 - **Lingue e audio**: vedi `docs/content-distribution.md`.
 - I manifest senza i campi nuovi (formato 1) restano leggibili dall'app.
 
-L'app verifica la firma con la chiave pubblica in `app/lib/content/trusted_key.dart` e rifiuta qualsiasi pacchetto non valido. L'installazione atomica, il ritiro delle versioni (`content/retired.json`) e "Mantieni offline" sono descritti in `docs/content-distribution.md`.
+L'app verifica la firma con la chiave pubblica in `app/lib/content/trusted_key.dart` e rifiuta qualsiasi pacchetto non valido. L'installazione atomica (oggi non usata dall'app, fuori dall'MVP), il ritiro delle versioni (`content/retired.json`) e "Mantieni offline" sono descritti in `docs/content-distribution.md`.

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../models/activity.dart';
 import '../models/story.dart';
 import '../models/themes.dart';
+import 'package_installer.dart' show compareVersions, defaultAppVersion, supportedContentFormat;
 import 'package_verifier.dart';
 
 /// Descrizione di un compagno, da companions.json.
@@ -29,9 +30,16 @@ class Companion {
 /// Carica le storie dai pacchetti firmati inclusi negli asset (MVP) e, in
 /// futuro, da quelli scaricati nella cartella dell'app.
 class StoryRepository {
-  StoryRepository({PackageVerifier? verifier}) : _verifier = verifier ?? PackageVerifier();
+  StoryRepository({
+    PackageVerifier? verifier,
+    this.appVersion = defaultAppVersion,
+    this.supportedFormat = supportedContentFormat,
+  }) : _verifier = verifier ?? PackageVerifier();
 
   final PackageVerifier _verifier;
+  // Versione e formato che l'app sa leggere, per scartare i pacchetti incompatibili.
+  final String appVersion;
+  final int supportedFormat;
   final Map<String, VerifiedPackage> _storyPkgs = {};
   final Map<String, VerifiedPackage> _activityPkgs = {};
   final List<String> rejected = [];
@@ -85,6 +93,18 @@ class StoryRepository {
         }).toList(),
       );
 
+  /// Stesse regole di PackageInstaller: formato e versione minima dell'app.
+  void _checkCompatibility(VerifiedPackage pkg) {
+    final format = pkg.manifest['formatVersion'] as int? ?? 1;
+    if (format > supportedFormat) {
+      throw PackageVerificationException("formato $format non supportato (massimo $supportedFormat): aggiorna l'app");
+    }
+    final min = pkg.manifest['minAppVersion'] as String? ?? '0.0.0';
+    if (compareVersions(appVersion, min) < 0) {
+      throw PackageVerificationException("richiede l'app $min o successiva (questa è la $appVersion)");
+    }
+  }
+
   Future<void> load() async {
     _companionsJson = jsonDecode(await rootBundle.loadString('assets/companions/companions.json')) as Map<String, dynamic>;
 
@@ -93,6 +113,11 @@ class StoryRepository {
       try {
         final data = await rootBundle.load('assets/stories/$file');
         final pkg = await _verifier.open(data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+        _checkCompatibility(pkg);
+        if (_storyPkgs.containsKey(pkg.id) || _activityPkgs.containsKey(pkg.id)) {
+          // Vale il primo letto: un id duplicato non sostituisce in silenzio l'altro.
+          throw PackageVerificationException('id duplicato: ${pkg.id}');
+        }
         if (pkg.kind == 'activity') {
           _activityPkgs[pkg.id] = pkg;
         } else {
