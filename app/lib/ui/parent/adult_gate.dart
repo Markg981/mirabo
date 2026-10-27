@@ -97,7 +97,7 @@ class _GateDialogState extends State<_GateDialog> {
   late _Phase _phase = widget.setup ? _Phase.setup : _Phase.verify;
   String? _error;
   String? _code;
-  bool _deviceRecovery = true;
+  bool _deviceRecovery = false;
   Duration _lock = Duration.zero;
   Timer? _timer;
   bool _busy = false;
@@ -217,6 +217,10 @@ class _GateDialogState extends State<_GateDialog> {
 
   Future<void> _deviceRecover() async {
     final l = context.l10n;
+    // Come PIN e codice di recupero, rispetta l'attesa da blocco.
+    if ((await AdultGate.pin.remainingLock()) > Duration.zero) {
+      return _refreshLock();
+    }
     final ok = await AdultGate.deviceAuth(l.gateDeviceReason);
     if (!mounted) return;
     if (!ok) return setState(() => _error = l.gateForgotUnavailable);

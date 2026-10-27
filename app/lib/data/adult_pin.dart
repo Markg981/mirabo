@@ -205,9 +205,10 @@ class AdultPin {
     return _fail();
   }
 
-  /// Recupero con il blocco del tablet: acceso salvo scelta dell'adulto, che
-  /// lo spegne se il bambino conosce il codice del tablet o ha l'impronta registrata.
-  Future<bool> get deviceRecovery async => (await _store.read(_kDeviceRecovery)) != '0';
+  /// Recupero con il blocco del tablet: spento di default, lo accende solo
+  /// l'adulto. Chi ha il codice del tablet o l'impronta (spesso un bambino)
+  /// altrimenti azzererebbe il PIN e chiuderebbe l'avviso prima dell'adulto.
+  Future<bool> get deviceRecovery async => (await _store.read(_kDeviceRecovery)) == '1';
 
   Future<void> setDeviceRecovery(bool on) => _store.write(_kDeviceRecovery, on ? '1' : '0');
 

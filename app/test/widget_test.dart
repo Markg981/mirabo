@@ -97,6 +97,7 @@ void main() {
 
   testWidgets('PIN dimenticato senza autenticazione del dispositivo: nessun reset', (tester) async {
     await AdultGate.pin.set('1234');
+    await AdultGate.pin.setDeviceRecovery(true);
     await tester.pumpWidget(app());
     await tester.tap(find.text('apri'));
     await tester.pumpAndSettle();
@@ -111,6 +112,7 @@ void main() {
   testWidgets('PIN dimenticato con autenticazione del dispositivo: se ne sceglie uno nuovo', (tester) async {
     await AdultGate.pin.set('1234');
     await AdultGate.pin.newRecoveryCode();
+    await AdultGate.pin.setDeviceRecovery(true);
     AdultGate.deviceAuth = (_) async => true;
     await tester.pumpWidget(app());
     await tester.tap(find.text('apri'));
@@ -126,9 +128,8 @@ void main() {
     expect((await AdultGate.pin.resetNotice())?.how, RecoveryChannel.device);
   });
 
-  testWidgets('il bambino conosce il codice del tablet: con il recupero spento serve il codice di recupero', (tester) async {
+  testWidgets('il bambino conosce il codice del tablet: di default serve il codice di recupero', (tester) async {
     await AdultGate.pin.set('1234');
-    await AdultGate.pin.setDeviceRecovery(false);
     var asked = false;
     AdultGate.deviceAuth = (_) async => asked = true;
     await tester.pumpWidget(app());
@@ -140,5 +141,26 @@ void main() {
     expect(find.textContaining('serve il codice di recupero'), findsOneWidget);
     expect(asked, isFalse);
     expect(await AdultGate.pin.isSet, isTrue);
+  });
+
+  testWidgets('recupero dal tablet acceso durante attesa da blocco: nessun reset', (tester) async {
+    await AdultGate.pin.set('1234');
+    await AdultGate.pin.setDeviceRecovery(true);
+    var asked = false;
+    AdultGate.deviceAuth = (_) async => asked = true;
+    for (var i = 0; i < AdultPin.freeAttempts; i++) {
+      await AdultGate.pin.verify('0000');
+    }
+    expect((await AdultGate.pin.remainingLock()) > Duration.zero, isTrue);
+    await tester.pumpWidget(app());
+    await tester.tap(find.text('apri'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ho dimenticato il PIN'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Usa il blocco del tablet'));
+    await tester.pumpAndSettle();
+    expect(asked, isFalse);
+    expect(await AdultGate.pin.isSet, isTrue);
+    expect(await AdultGate.pin.resetNotice(), isNull);
   });
 }

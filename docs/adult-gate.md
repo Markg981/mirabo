@@ -24,7 +24,7 @@ Il reset è atomico: il vecchio PIN resta valido finché il nuovo non è scritto
 
 Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è stato reimpostato il … con il blocco del tablet"), finché l'adulto non lo chiude: un reset fatto dal bambino si vede.
 
-**Il caso del bambino che conosce il codice del tablet.** Con il recupero dal blocco acceso il bambino può azzerare il PIN, ma l'avviso lo rende visibile al primo ingresso dell'adulto. Spegnendolo, l'unica via resta il codice di recupero scritto su carta. Se l'adulto perde anche quello, non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
+**Il caso del bambino che conosce il codice del tablet.** Il recupero dal blocco è spento di default (lo accende l'adulto dall'area adulta): se fosse acceso, chi ha il codice o l'impronta potrebbe azzerare il PIN, entrare per primo e chiudere l'avviso con "Visto". Quando è acceso rispetta le attese da blocco e l'avviso resta visibile al primo ingresso dell'adulto. Spento, l'unica via resta il codice di recupero scritto su carta. Se l'adulto perde anche quello, non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
 
 ## Operazioni che richiedono di nuovo il PIN
 
