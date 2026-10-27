@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -46,9 +47,10 @@ class _CountingState extends AppState {
           nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')),
         );
   int completed = 0;
+  Completer<int>? savedPosition;
 
   @override
-  Future<int> storyPosition(ChildProfile p, String storyId) async => 0;
+  Future<int> storyPosition(ChildProfile p, String storyId) async => savedPosition?.future ?? 0;
   @override
   Future<void> saveStoryPosition(ChildProfile p, String storyId, int index) async {
     await Future<void>.delayed(const Duration(milliseconds: 50));
@@ -134,5 +136,67 @@ void main() {
     expect(state.completed, 1);
     expect(popped.length, 1);
     expect(find.text('apri'), findsOneWidget);
+  });
+
+  testWidgets('la ripresa che arriva dopo "Avanti" non riporta indietro la schermata', (tester) async {
+    final messenger = tester.binding.defaultBinaryMessenger;
+    const channels = ['flutter_tts', 'com.ryanheise.just_audio.methods'];
+    for (final c in channels) {
+      messenger.setMockMethodCallHandler(MethodChannel(c), (_) async => null);
+    }
+    addTearDown(() {
+      for (final c in channels) {
+        messenger.setMockMethodCallHandler(MethodChannel(c), null);
+      }
+    });
+
+    final state = _CountingState(emma)..savedPosition = Completer<int>();
+    await state.init();
+    addTearDown(state.dispose);
+
+    StoryScreen screen(int n, ScreenKind kind) => StoryScreen(n: n, kind: kind, illustration: const Illustration(alt: 'a'), text: 'Schermata $n');
+    final story = Story(
+      id: 'prova',
+      version: 1,
+      title: 'Prova',
+      world: World.emozioni,
+      topic: 't',
+      variantFiles: const {},
+      formats: const [],
+      togetherOnly: false,
+      keyPhrase: 'k',
+      parentCardFile: '',
+      sources: const [],
+      variants: {
+        AgeBand.b3to5: StoryVariant(ageBand: AgeBand.b3to5, screens: [
+          screen(1, ScreenKind.hook),
+          screen(2, ScreenKind.situation),
+          screen(3, ScreenKind.situation),
+          screen(4, ScreenKind.closing),
+        ]),
+      },
+    );
+
+    await tester.pumpWidget(AppStateScope(
+      state: state,
+      child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('it'),
+        home: StoryReader(story: story),
+      ),
+    ));
+    await tester.pump();
+    expect(find.text('Schermata 1'), findsOneWidget);
+
+    // Tocco rapidissimo su "Avanti" mentre la ripresa è ancora in corso.
+    await tester.tap(find.byType(ChunkyButton).last);
+    await tester.pump();
+    expect(find.text('Schermata 2'), findsOneWidget);
+
+    state.savedPosition!.complete(2);
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.text('Schermata 2'), findsOneWidget);
+    expect(find.text('Schermata 3'), findsNothing);
   });
 }
