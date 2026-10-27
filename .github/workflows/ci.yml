@@ -129,6 +129,9 @@ jobs:
       - name: Dipendenze esatte di app/pubspec.lock
         working-directory: app
         run: flutter pub get --enforce-lockfile
+      - name: Manifest Android unito (letto dal controllo dell'inventario)
+        working-directory: app/android
+        run: ./gradlew :app:processDebugMainManifest
       - name: Inventario dati e dipendenze (docs/privacy)
         run: python studio/check_inventory.py --require-lock
       - name: Analizza e testa (esito riportato come commento sul commit)
