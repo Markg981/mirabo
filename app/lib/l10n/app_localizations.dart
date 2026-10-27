@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -452,6 +452,12 @@ abstract class AppLocalizations {
   /// **'Oggi è il giorno!'**
   String get countdownTodaySay;
 
+  /// No description provided for @countdownTodayTask.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi è il giorno! Buona scuola, {name}.'**
+  String countdownTodayTask(String name);
+
   /// No description provided for @countdownDaysTo.
   ///
   /// In it, this message translates to:
@@ -721,6 +727,18 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Carta coperta'**
   String get memoryCovered;
+
+  /// No description provided for @memoryCardFaceUp.
+  ///
+  /// In it, this message translates to:
+  /// **'{name}, scoperta'**
+  String memoryCardFaceUp(Object name);
+
+  /// No description provided for @drawColorName.
+  ///
+  /// In it, this message translates to:
+  /// **'Colore {color, select, rose{rosa} apricot{arancio} sun{giallo} leaf{verde} sky{azzurro} plum{viola} brown{marrone} ink{nero} other{{color}}}'**
+  String drawColorName(String color);
 
   /// No description provided for @animalName.
   ///
@@ -1111,6 +1129,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Profili, diario e progressi restano su questo dispositivo, cifrati. Il backup su Google Drive qui sotto è facoltativo.'**
   String get parentDataHint;
+
+  /// No description provided for @parentDataHintLocal.
+  ///
+  /// In it, this message translates to:
+  /// **'Profili, diario e progressi restano su questo dispositivo, cifrati.'**
+  String get parentDataHintLocal;
 
   /// No description provided for @parentWipe.
   ///
@@ -2936,6 +2960,12 @@ abstract class AppLocalizations {
   /// **'Funziona offline: il cloud è una scelta tua'**
   String get onbFactOffline;
 
+  /// No description provided for @onbFactOfflineLocal.
+  ///
+  /// In it, this message translates to:
+  /// **'Funziona offline: i dati restano sul tablet'**
+  String get onbFactOfflineLocal;
+
   /// No description provided for @onbFactNoAds.
   ///
   /// In it, this message translates to:
@@ -3032,6 +3062,12 @@ abstract class AppLocalizations {
   /// **'Verranno cancellati per sempre profili, progressi, diario, creazioni e file generati (anche la voce del nome), insieme al database e alla sua chiave. Il tablet tornerà come al primo avvio. Non si può annullare. Un eventuale backup su Google Drive non viene toccato.'**
   String get dataWipeBody;
 
+  /// No description provided for @dataWipeBodyLocal.
+  ///
+  /// In it, this message translates to:
+  /// **'Verranno cancellati per sempre profili, progressi, diario, creazioni e file generati (anche la voce del nome), insieme al database e alla sua chiave. Il tablet tornerà come al primo avvio. Non si può annullare.'**
+  String get dataWipeBodyLocal;
+
   /// No description provided for @dataWipeTypePrompt.
   ///
   /// In it, this message translates to:
@@ -3097,6 +3133,12 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati. Se resta qualcosa sul tuo Drive, lo trovi e lo elimini in Drive › Impostazioni › Gestisci app.'**
   String get dataOutsideBody;
+
+  /// No description provided for @dataOutsideBodyLocal.
+  ///
+  /// In it, this message translates to:
+  /// **'Mirabò non può cancellare le copie di sicurezza del sistema operativo (backup del telefono o del tablet su iCloud o Google), né i file che hai già esportato, stampato o condiviso. Per quelle: apri le impostazioni di iCloud o di Google del dispositivo ed elimina i vecchi backup, e togli a mano i file salvati o inviati.'**
+  String get dataOutsideBodyLocal;
 
   /// No description provided for @gateRecoveryTitle.
   ///
@@ -3241,6 +3283,18 @@ abstract class AppLocalizations {
   /// In it, this message translates to:
   /// **'Il {date} Mirabò è ripartito da zero: i dati che c\'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.'**
   String storageResetNotice(String date);
+
+  /// No description provided for @rejectedPackagesTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Alcuni contenuti non sono stati caricati'**
+  String get rejectedPackagesTitle;
+
+  /// No description provided for @rejectedPackagesBody.
+  ///
+  /// In it, this message translates to:
+  /// **'{count, plural, =1{1 pacchetto di contenuti è stato scartato perché non ha superato i controlli (firma o integrità). Non verrà mostrato ai bambini. Reinstalla o aggiorna Mirabò dallo store.} other{{count} pacchetti di contenuti sono stati scartati perché non hanno superato i controlli (firma o integrità). Non verranno mostrati ai bambini. Reinstalla o aggiorna Mirabò dallo store.}}'**
+  String rejectedPackagesBody(int count);
 }
 
 class _AppLocalizationsDelegate
@@ -3276,8 +3330,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

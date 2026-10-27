@@ -65,6 +65,8 @@
   "countdownPick": "Choisis la date",
   "countdownToday": "C'est aujourd'hui !",
   "countdownTodaySay": "C'est le grand jour !",
+  "countdownTodayTask": "C'est le grand jour ! Bonne école, {name}.",
+  "@countdownTodayTask": { "placeholders": { "name": { "type": "String" } } },
   "countdownDaysTo": "{count, plural, =1{Plus que 1 jour avant : {event}} other{Plus que {count} jours avant : {event}}}",
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{Plus que 1 jour. {task}} other{Plus que {count} jours. {task}}}",
@@ -115,6 +117,8 @@
   "memoryIntroFood": "Trouve qui mange quoi : un animal et sa nourriture.",
   "memoryIntroHome": "Retourne trois cartes : un animal, sa nourriture et sa maison.",
   "memoryCovered": "Carte retournée",
+  "memoryCardFaceUp": "{name}, face visible",
+  "drawColorName": "Couleur {color, select, rose{rose} apricot{orange} sun{jaune} leaf{vert} sky{bleu clair} plum{violet} brown{marron} ink{noir} other{{color}}}",
   "animalName": "{animal, select, dog{le chien} cat{le chat} rabbit{le lapin} fox{le renard} bear{l'ours} panda{le panda} frog{la grenouille} monkey{le singe} lion{le lion} tiger{le tigre} cow{la vache} pig{le cochon} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{l'écureuil} penguin{le manchot} monkey{le singe} rabbit{le lapin} bear{l'ours} panda{le panda} chestnut{la châtaigne} fish{le poisson} banana{la banane} carrot{la carotte} honey{le miel} bamboo{le bambou} tree{l'arbre} ice{la glace} palm{le palmier} burrow{le terrier} forest{la forêt} mountain{la montagne} other{{item}}}",
 
@@ -187,6 +191,7 @@
   "hemisphere": "{place, select, north{Hémisphère nord} south{Hémisphère sud} equator{Près de l'équateur} other{{place}}}",
   "parentData": "Vos données",
   "parentDataHint": "Les profils, le journal et les progrès restent sur cet appareil, chiffrés. La sauvegarde sur Google Drive ci-dessous est facultative.",
+  "parentDataHintLocal": "Les profils, le journal et les progrès restent sur cet appareil, chiffrés.",
   "parentWipe": "Supprimer toutes les données de Mirabò sur cette tablette",
   "parentWipeConfirmTitle": "Tout effacer ?",
   "parentWipeConfirm": "Les profils et le journal seront effacés de cet appareil. C'est irréversible. Une éventuelle sauvegarde sur Google Drive reste où elle est.",
@@ -509,6 +514,7 @@
   "onbPromiseBody": "Mirabò s'adresse aux enfants de 3 à 10 ans et à l'adulte qui joue à leurs côtés.",
   "onbFactFree": "Gratuite",
   "onbFactOffline": "Fonctionne hors ligne : le cloud est votre choix",
+  "onbFactOfflineLocal": "Fonctionne hors ligne : les données restent sur l'appareil",
   "onbFactNoAds": "Sans publicité",
   "onbFactNoAccount": "Aucun compte pour l'enfant",
   "onbSetupTitle": "Langue et tranche d'âge",
@@ -525,6 +531,7 @@
   "onbClose": "Fermer",
   "dataWipeTitle": "Tout supprimer de cette tablette ?",
   "dataWipeBody": "Profils, progrès, journal, créations et fichiers générés (y compris la voix du prénom) seront supprimés définitivement, avec la base de données et sa clé. La tablette reviendra comme au premier lancement. Impossible d'annuler. Une éventuelle sauvegarde Google Drive n'est pas touchée.",
+  "dataWipeBodyLocal": "Profils, progrès, journal, créations et fichiers générés (y compris la voix du prénom) seront supprimés définitivement, avec la base de données et sa clé. La tablette reviendra comme au premier lancement. Impossible d'annuler.",
   "dataWipeTypePrompt": "Pour confirmer, écrivez {word}",
   "@dataWipeTypePrompt": {"placeholders": {"word": {"type": "String"}}},
   "dataWipeWord": "SUPPRIMER",
@@ -538,6 +545,7 @@
   "dataRemoteFailed": "La sauvegarde Google Drive n'a PAS été supprimée (probablement pas de réseau, ou une nouvelle connexion Google est requise). Rien n'a changé : connectez-vous à internet et réessayez.",
   "dataOutsideTitle": "Ce que l'app ne contrôle pas",
   "dataOutsideBody": "Mirabò ne peut pas supprimer les sauvegardes du système (sauvegarde du téléphone ou de la tablette sur iCloud ou Google), ni les fichiers déjà exportés, imprimés ou partagés. Pour ceux-ci : ouvrez les réglages iCloud ou Google de l'appareil et supprimez les anciennes sauvegardes, puis retirez à la main les fichiers enregistrés ou envoyés. S'il reste quelque chose dans votre Drive, vous le trouvez et le supprimez dans Drive > Paramètres > Gérer les applications.",
+  "dataOutsideBodyLocal": "Mirabò ne peut pas supprimer les sauvegardes du système (sauvegarde du téléphone ou de la tablette sur iCloud ou Google), ni les fichiers déjà exportés, imprimés ou partagés. Pour ceux-ci : ouvrez les réglages iCloud ou Google de l'appareil et supprimez les anciennes sauvegardes, puis retirez à la main les fichiers enregistrés ou envoyés.",
   "gateRecoveryTitle": "Le code de récupération",
   "gateRecoveryBody": "Note-le sur papier et garde-le loin de la tablette : il sert si tu oublies le PIN. Il ne sera plus affiché.",
   "gateRecoveryWritten": "Je l'ai noté",
@@ -561,5 +569,7 @@
   "startupFailedBody": "Rien n'a été effacé. Réessayez ; si cela se reproduit, vérifiez l'espace libre sur la tablette et redémarrez-la.",
   "startupTooNewBody": "Les données de cette tablette viennent d'une version plus récente de Mirabò. Rien n'a été effacé : mettez l'app à jour depuis le store.",
   "startupRetry": "Réessayer",
-  "storageResetNotice": "Le {date}, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues."
+  "storageResetNotice": "Le {date}, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues.",
+  "rejectedPackagesTitle": "Certains contenus n'ont pas été chargés",
+  "rejectedPackagesBody": "{count, plural, =1{1 paquet de contenus a été écarté car il n'a pas passé les contrôles (signature ou intégrité). Il ne sera pas montré aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.} other{{count} paquets de contenus ont été écartés car ils n'ont pas passé les contrôles (signature ou intégrité). Ils ne seront pas montrés aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.}}"
 }

@@ -174,6 +174,7 @@ class _MemoryGameState extends State<MemoryGame> {
                 width: side,
                 child: _Card(
                   emoji: _cards[i].emoji,
+                  name: _name(_cards[i]),
                   faceUp: _open.contains(i) || _matched.contains(i),
                   matched: _matched.contains(i),
                   size: side,
@@ -191,6 +192,7 @@ class _MemoryGameState extends State<MemoryGame> {
 class _Card extends StatelessWidget {
   const _Card({
     required this.emoji,
+    required this.name,
     required this.faceUp,
     required this.matched,
     required this.size,
@@ -198,6 +200,7 @@ class _Card extends StatelessWidget {
     required this.onTap,
   });
   final String emoji;
+  final String name;
   final bool faceUp;
   final bool matched;
   final double size;
@@ -227,10 +230,10 @@ class _Card extends StatelessWidget {
             height: size,
             radius: size * 0.16,
             color: showFront ? (matched ? MiraboColors.pale(tokens.tint(MiraboColors.leaf), 0.75) : MiraboColors.paper) : back,
-            semanticLabel: showFront ? emoji : context.l10n.memoryCovered,
+            semanticLabel: faceUp ? context.l10n.memoryCardFaceUp(name) : context.l10n.memoryCovered,
             child: Center(
               child: showFront
-                  ? Text(emoji, style: TextStyle(fontSize: size * 0.55))
+                  ? ExcludeSemantics(child: Text(emoji, style: TextStyle(fontSize: size * 0.55)))
                   : Icon(Icons.star_rounded, color: Colors.white.withValues(alpha: 0.85), size: size * 0.42),
             ),
           ),

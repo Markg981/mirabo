@@ -31,7 +31,10 @@ class HomeScreen extends StatelessWidget {
     final hasThemes = !state.repo.themes.isEmpty;
     final text = Theme.of(context).textTheme;
 
-    void open(Widget page) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+    void open(Widget page) {
+      if (ModalRoute.of(context)?.isCurrent == false) return;
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+    }
 
     return Scaffold(
       body: SceneBackdrop(

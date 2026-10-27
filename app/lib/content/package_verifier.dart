@@ -60,11 +60,27 @@ class PackageVerifier {
     }
     final manifestBytes = files.remove('manifest.json');
     if (manifestBytes == null) throw PackageVerificationException('manifest.json assente');
-    final manifest = jsonDecode(utf8.decode(manifestBytes)) as Map<String, dynamic>;
+    final Map<String, dynamic> manifest;
+    try {
+      manifest = jsonDecode(utf8.decode(manifestBytes)) as Map<String, dynamic>;
+    } catch (_) {
+      throw PackageVerificationException('manifest non leggibile');
+    }
 
     await verifySignedDocument(manifest, what: 'pacchetto');
 
-    final expected = (manifest['files'] as Map<String, dynamic>).cast<String, String>();
+    final Map<String, String> expected;
+    final String id;
+    final String kind;
+    final int version;
+    try {
+      expected = Map<String, String>.from(manifest['files'] as Map);
+      id = manifest['id'] as String;
+      kind = (manifest['kind'] as String?) ?? 'story';
+      version = manifest['version'] as int;
+    } on TypeError {
+      throw PackageVerificationException('manifest malformato');
+    }
     for (final entry in expected.entries) {
       final data = files[entry.key];
       if (data == null && (isOptional?.call(entry.key) ?? false)) continue;
@@ -74,8 +90,7 @@ class PackageVerifier {
       }
     }
     files.removeWhere((k, _) => !expected.containsKey(k));
-    return VerifiedPackage._(
-        manifest['id'] as String, (manifest['kind'] as String?) ?? 'story', manifest['version'] as int, files, manifest);
+    return VerifiedPackage._(id, kind, version, files, manifest);
   }
 
   /// Verifica la firma Ed25519 di un documento JSON (manifest, elenco dei ritirati)

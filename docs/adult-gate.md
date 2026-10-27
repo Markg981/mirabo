@@ -10,7 +10,7 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 
 - Primo ingresso nell'area adulta: l'adulto sceglie un PIN di 4-6 cifre e lo ripete.
 - Conservazione: sale casuale (16 byte) e hash PBKDF2-HMAC-SHA256 (20.000 iterazioni) in `flutter_secure_storage` (Keychain / Keystore). Il PIN non è mai salvato in chiaro e non sta nel database né nel backup. Nessun cambio di schema DB.
-- Tentativi: 3 errori liberi, poi attesa di 30 s, 60 s, 5 min, 15 min, 1 h (tetto). L'attesa è salvata e sopravvive alla chiusura dell'app; durante l'attesa anche il PIN giusto è rifiutato.
+- Tentativi: 3 errori liberi, poi attesa di 30 s, 60 s, 5 min, 15 min, 1 h (tetto). L'attesa è salvata e sopravvive alla chiusura dell'app; durante l'attesa anche il PIN giusto è rifiutato. L'attesa è salvata come durata residua, non come ora di fine: spostare l'orologio indietro non la annulla né la allunga; con l'app aperta spostarlo avanti non serve, perché scorre solo col tempo monotono. Dopo un riavvio vale l'orologio, ma gli errori consecutivi restano e l'attesa successiva sale.
 - Il PIN giusto azzera il contatore.
 
 ## Recupero ("Ho dimenticato il PIN")
@@ -29,10 +29,10 @@ Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è sta
 `AdultGate.confirm(context)` chiede sempre il PIN, anche se l'adulto è già dentro:
 
 - eliminazione di un profilo (`profile_form.dart`);
-- collegamento del backup Drive e ripristino da Drive (`backup_section.dart`);
+- collegamento del backup Drive e ripristino da Drive (`backup_section.dart`; fuori dall'MVP, la release non ha la sezione, vedi `backup.md`);
 - cambio del PIN (`AdultGate.changePin`, pulsante nella sezione dati dell'area genitori);
 - nuovo codice di recupero (`AdultGate.newRecoveryCode`) e recupero con il blocco del tablet acceso o spento (`AdultGate.setDeviceRecovery`);
-- cancellazione dei dati su questo tablet e del backup su Drive (`data_deletion.dart`, via `AdultGate.open`).
+- cancellazione dei dati su questo tablet e, se il backup è acceso a compilazione, di quello su Drive (`data_deletion.dart`, via `AdultGate.open`; nella release MVP solo i dati del tablet);
 
 `AdultGate.open(context, then: ...)` mantiene la firma: ora chiede il PIN (o ne fa creare uno) e poi esegue `then`.
 

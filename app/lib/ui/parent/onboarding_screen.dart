@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app_state.dart';
+import '../../features.dart';
 import '../../l10n/l10n.dart';
 import '../../models/story.dart';
 import '../design/palette.dart';
@@ -181,7 +182,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Claim verificati nel codice: nessuna dipendenza pubblicitaria, nessun account del
           // bambino, dati in locale (cloud opt-in), gratuita (README).
           fact(Icons.card_giftcard_rounded, l.onbFactFree),
-          fact(Icons.cloud_off_rounded, l.onbFactOffline),
+          fact(Icons.cloud_off_rounded, Features.cloudBackup ? l.onbFactOffline : l.onbFactOfflineLocal),
           fact(Icons.block_rounded, l.onbFactNoAds),
           fact(Icons.person_off_rounded, l.onbFactNoAccount),
         ]);
@@ -259,7 +260,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Text(l.onbGoBody, style: text.bodyLarge),
           const SizedBox(height: 16),
           fact(Icons.card_giftcard_rounded, l.onbFactFree),
-          fact(Icons.cloud_off_rounded, l.onbFactOffline),
+          fact(Icons.cloud_off_rounded, Features.cloudBackup ? l.onbFactOffline : l.onbFactOfflineLocal),
           fact(Icons.block_rounded, l.onbFactNoAds),
           fact(Icons.person_off_rounded, l.onbFactNoAccount),
         ]);

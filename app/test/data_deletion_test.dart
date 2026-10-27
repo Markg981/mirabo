@@ -58,6 +58,7 @@ void main() {
       for (final s in ['', '-journal', '-wal', '-shm']) {
         await File('${support.path}/mirabo.db$s').writeAsString('dati');
       }
+      await File('${support.path}/mirabo.db${LocalDb.quarantinePrefix}1700000000000').writeAsString('quarantena');
       await Directory('${support.path}/names').create();
       await File('${support.path}/names/name_1_abc.wav').writeAsString('voce');
       await Directory('${temp.path}/mirabo_audio/storia').create(recursive: true);
@@ -72,6 +73,7 @@ void main() {
       for (final s in ['-journal', '-wal', '-shm']) {
         expect(await File('${support.path}/mirabo.db$s').exists(), isFalse);
       }
+      expect(await File('${support.path}/mirabo.db${LocalDb.quarantinePrefix}1700000000000').exists(), isFalse);
       expect(await Directory('${support.path}/names').exists(), isFalse);
       expect(await temp.list().toList(), isEmpty);
       expect(await LocalDb.hasKey(), isFalse);

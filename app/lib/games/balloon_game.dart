@@ -70,7 +70,9 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
   void initState() {
     super.initState();
     _ticker.start();
-    WidgetsBinding.instance.addPostFrameCallback((_) => widget.ctx.say(_instruction()));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.ctx.say(_instruction());
+    });
   }
 
   @override
@@ -96,6 +98,8 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
     _balloons.removeWhere((b) => _progressOf(b) > 1);
     _pops.removeWhere((p) => _now - p.at > const Duration(milliseconds: 450));
     setState(() {});
+    // A fine gioco il ticker si ferma quando lo scoppio è finito: niente rebuild inutili.
+    if (_over && _pops.isEmpty) _ticker.stop();
   }
 
   void _spawn() {
@@ -152,7 +156,9 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
     }
     if (_progress >= _goal) {
       _over = true;
-      Future.delayed(const Duration(milliseconds: 700), widget.ctx.onFinished);
+      Future.delayed(const Duration(milliseconds: 700), () {
+        if (mounted) widget.ctx.onFinished();
+      });
       return;
     }
     if (_band == AgeBand.b6to7 && _progress % 4 == 0) {
@@ -246,6 +252,7 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
         onTapDown: (_) => _tap(b),
         child: Semantics(
           button: true,
+          onTap: () => _tap(b),
           label: b.number != null ? context.l10n.balloonA11yNumber('${b.number}') : context.l10n.balloonA11yColor(b.color.$1),
           child: SizedBox(
             width: _w,
