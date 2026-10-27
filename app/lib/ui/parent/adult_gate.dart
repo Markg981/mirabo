@@ -6,6 +6,7 @@ import 'package:local_auth/local_auth.dart';
 
 import '../../data/adult_pin.dart';
 import '../../l10n/l10n.dart';
+import 'screen_secure.dart';
 
 /// Gate dell'area adulta con PIN (docs/adult-gate.md). Non è un consenso
 /// genitoriale verificabile: tiene lontano il bambino, nient'altro.
@@ -318,14 +319,17 @@ class _RecoveryCodeBody extends StatelessWidget {
   final String code;
 
   @override
-  Widget build(BuildContext context) => Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(context.l10n.gateRecoveryBody),
-        const SizedBox(height: 16),
-        Center(
-          child: SelectableText(code,
-              key: const Key('recovery-shown'), style: const TextStyle(fontSize: 30, letterSpacing: 4, fontWeight: FontWeight.w700)),
-        ),
-      ]);
+  Widget build(BuildContext context) => ScreenSecure(
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(context.l10n.gateRecoveryBody),
+          const SizedBox(height: 16),
+          Center(
+            // Text, non SelectableText: il codice non si copia negli appunti.
+            child: Text(code,
+                key: const Key('recovery-shown'), style: const TextStyle(fontSize: 30, letterSpacing: 4, fontWeight: FontWeight.w700)),
+          ),
+        ]),
+      );
 }
 
 /// Avvolge le pagine di ingresso all'area adulta: se l'app resta in background

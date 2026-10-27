@@ -48,7 +48,7 @@ void main() {
     await createPin(tester, '1234');
     // Il codice di recupero si vede una volta sola, prima di entrare.
     expect(opened, 0);
-    final code = tester.widget<SelectableText>(find.byKey(const Key('recovery-shown'))).data!;
+    final code = tester.widget<Text>(find.byKey(const Key('recovery-shown'))).data!;
     expect(code, matches(RegExp(r'^[A-Z2-9]{4}-[A-Z2-9]{4}$')));
     await tester.tap(find.text("L'ho scritto"));
     await tester.pumpAndSettle();
@@ -88,6 +88,7 @@ void main() {
     await createPin(tester, '5678');
     // Il codice usato non vale più: se ne mostra uno nuovo.
     expect(find.byKey(const Key('recovery-shown')), findsOneWidget);
+    expect(find.byType(SelectableText), findsNothing);
     await tester.tap(find.text("L'ho scritto"));
     await tester.pumpAndSettle();
     expect(opened, 1);
