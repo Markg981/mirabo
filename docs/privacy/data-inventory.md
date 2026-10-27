@@ -31,7 +31,7 @@ Note.
 
 - **Identificatori.** Il DB usa id numerici locali (`profiles.id`); non c'è alcun ID pubblicitario, ID dispositivo o ID di installazione generato dall'app. Il file del nome contiene l'id profilo e un'impronta del nome.
 - **Account Google.** L'email del genitore resta nel secure storage e transita verso Google solo con il backup attivo. Non ci sono account del bambino.
-- **Keychain su iOS.** Gli elementi del Keychain possono sopravvivere alla disinstallazione e a una reinstallazione (comportamento di piattaforma). Dopo una reinstallazione possono quindi restare `mirabo_backup_account`/`mirabo_backup_key` senza DB. Da verificare su dispositivo; se confermato, l'app dovrà ripulirli al primo avvio. Per le chiavi `adult_pin_*` la pulizia è già fatta (`AdultPin.reconcile`); prova manuale su iPad ancora da eseguire.
+- **Keychain su iOS.** Gli elementi del Keychain possono sopravvivere alla disinstallazione e a una reinstallazione (comportamento di piattaforma). Dopo una reinstallazione possono quindi restare `mirabo_backup_account`/`mirabo_backup_key` senza DB. Da verificare su dispositivo. Oggi l'app non ripulisce queste due chiavi né `mirabo_db_key` (senza DB sono inerti; il backup è fuori dall'MVP). Per le chiavi `adult_pin_*` la pulizia è già fatta (`AdultPin.reconcile`); prova manuale su iPad ancora da eseguire.
 - **Dati dell'area genitore non personali** (`story.parentCard`, testi) sono contenuti degli asset.
 
 ## 2. Backup del sistema operativo
