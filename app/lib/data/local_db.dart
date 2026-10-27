@@ -369,12 +369,16 @@ class LocalDb {
   static const keptChoiceSql = "(choice LIKE 'project=%' OR choice LIKE 'presentation=%')";
 
   /// v12 → v13: le tabelle delle attività rifatte senza le colonne tolte.
+  /// Gli orfani di prima della v13 (chiavi esterne spente) non si copiano: le nuove
+  /// tabelle hanno REFERENCES e a chiavi accese la copia fallirebbe.
   static Future<void> _minimizeActivityTables(Database db) async {
     await _createActivityTables(db, suffix: '_v13');
     await db.execute('INSERT INTO activity_progress_v13 (profile_id, activity_id, level, sessions, last_played) '
-        'SELECT profile_id, activity_id, level, sessions, last_played FROM activity_progress');
+        'SELECT profile_id, activity_id, level, sessions, last_played FROM activity_progress '
+        'WHERE profile_id IN (SELECT id FROM profiles)');
     await db.execute('INSERT INTO activity_rounds_v13 (id, profile_id, activity_id, skill, choice, at) '
-        'SELECT id, profile_id, activity_id, skill, CASE WHEN $keptChoiceSql THEN choice END, at FROM activity_rounds');
+        'SELECT id, profile_id, activity_id, skill, CASE WHEN $keptChoiceSql THEN choice END, at FROM activity_rounds '
+        'WHERE profile_id IN (SELECT id FROM profiles)');
     for (final t in ['activity_progress', 'activity_rounds']) {
       await db.execute('DROP TABLE $t');
       await db.execute('ALTER TABLE ${t}_v13 RENAME TO $t');
