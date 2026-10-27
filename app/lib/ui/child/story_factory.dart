@@ -232,12 +232,19 @@ class _FactoryBuilderState extends State<_FactoryBuilder> {
   Future<void> _finish() async {
     setState(() => _saving = true);
     final state = AppStateScope.read(context);
-    final saved = await state.saveMadeStory(MadeStory(
-      profileId: _profile.id,
-      title: _asksTitle ? _title.text.trim() : null,
-      parts: Map.of(_parts),
-      when: DateTime.now(),
-    ));
+    final MadeStory saved;
+    try {
+      saved = await state.saveMadeStory(MadeStory(
+        profileId: _profile.id,
+        title: _asksTitle ? _title.text.trim() : null,
+        parts: Map.of(_parts),
+        when: DateTime.now(),
+      ));
+    } catch (_) {
+      // Il banner di errore lo dice all'adulto (LocalDb.onSaveError): il bottone si riabilita e si può riprovare.
+      if (mounted) setState(() => _saving = false);
+      return;
+    }
     if (!mounted) return;
     await _tts.stop();
     if (!mounted) return;

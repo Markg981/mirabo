@@ -290,9 +290,14 @@ class _StoryReaderState extends State<StoryReader> {
       if (_finishing) return;
       _finishing = true;
       _recorded = true;
-      await _state.saveStoryPosition(_profile, widget.story.id, 0);
-      await _state.recordStory(widget.story, completed: true);
-      if (mounted) Navigator.of(context).pop();
+      try {
+        await _state.saveStoryPosition(_profile, widget.story.id, 0);
+        await _state.recordStory(widget.story, completed: true);
+      } catch (_) {
+        // Il banner di errore lo dice all'adulto (LocalDb.onSaveError): il bambino esce comunque.
+      } finally {
+        if (mounted) Navigator.of(context).pop();
+      }
       return;
     }
     _go(_index + 1);

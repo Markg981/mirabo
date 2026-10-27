@@ -47,6 +47,7 @@ class _CountingState extends AppState {
           nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')),
         );
   int completed = 0;
+  bool failWrites = false;
   Completer<int>? savedPosition;
 
   @override
@@ -58,6 +59,7 @@ class _CountingState extends AppState {
 
   @override
   Future<void> recordStory(Story story, {required bool completed}) async {
+    if (failWrites) throw const FileSystemException('disco pieno');
     if (completed) this.completed++;
   }
 }
@@ -134,6 +136,71 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(state.completed, 1);
+    expect(popped.length, 1);
+    expect(find.text('apri'), findsOneWidget);
+  });
+
+  testWidgets('se la registrazione fallisce il bambino esce comunque', (tester) async {
+    // TTS e audio non hanno plugin nei test.
+    final messenger = tester.binding.defaultBinaryMessenger;
+    const channels = ['flutter_tts', 'com.ryanheise.just_audio.methods'];
+    for (final c in channels) {
+      messenger.setMockMethodCallHandler(MethodChannel(c), (_) async => null);
+    }
+    addTearDown(() {
+      for (final c in channels) {
+        messenger.setMockMethodCallHandler(MethodChannel(c), null);
+      }
+    });
+
+    final state = _CountingState(emma)..failWrites = true;
+    await state.init();
+    addTearDown(state.dispose);
+
+    const story = Story(
+      id: 'prova',
+      version: 1,
+      title: 'Prova',
+      world: World.emozioni,
+      topic: 't',
+      variantFiles: {},
+      formats: [],
+      togetherOnly: false,
+      keyPhrase: 'k',
+      parentCardFile: '',
+      sources: [],
+      variants: {
+        AgeBand.b3to5: StoryVariant(ageBand: AgeBand.b3to5, screens: [
+          StoryScreen(n: 1, kind: ScreenKind.closing, illustration: Illustration(alt: 'a'), text: 'Fine'),
+        ]),
+      },
+    );
+
+    final popped = <Route<dynamic>>[];
+    await tester.pumpWidget(AppStateScope(
+      state: state,
+      child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('it'),
+        navigatorObservers: [_Obs(popped)],
+        home: Builder(
+          builder: (context) => TextButton(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const StoryReader(story: story))),
+            child: const Text('apri'),
+          ),
+        ),
+      ),
+    ));
+    await tester.tap(find.text('apri'));
+    await tester.pumpAndSettle();
+
+    final done = find.byType(ChunkyButton);
+    await tester.tap(done);
+    await tester.pump(const Duration(milliseconds: 100));
+    await tester.pumpAndSettle();
+
+    expect(state.completed, 0);
     expect(popped.length, 1);
     expect(find.text('apri'), findsOneWidget);
   });
