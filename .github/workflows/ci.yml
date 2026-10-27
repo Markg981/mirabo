@@ -174,10 +174,15 @@ jobs:
         run: python studio/check_native.py app/build/app/outputs/flutter-apk/app-debug.apk
       - name: Dimensioni di pacchetti e APK (informativo; le bozze non sono gli asset definitivi)
         run: python studio/measure.py --apk app/build/app/outputs/flutter-apk/app-debug.apk
+      - name: Avviso accanto all'APK (chiave effimera, bozze incluse)
+        run: |
+          echo "BUILD DI PROVA: chiave di firma effimera, contenuti anche in bozza. NON distribuibile." > app/build/app/outputs/flutter-apk/LEGGIMI-NON-DISTRIBUIBILE.txt
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: mirabo-debug-apk
-          path: app/build/app/outputs/flutter-apk/app-debug.apk
+          name: mirabo-prova-apk-NON-distribuibile
+          path: |
+            app/build/app/outputs/flutter-apk/app-debug.apk
+            app/build/app/outputs/flutter-apk/LEGGIMI-NON-DISTRIBUIBILE.txt
           # Ogni APK pesa circa 100 MB: tenuti 90 giorni riempiono la quota del repository.
           retention-days: 7
 
