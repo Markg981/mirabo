@@ -48,6 +48,12 @@ class _ProfileFormState extends State<ProfileForm> {
   late InteractionProfile _interaction = widget.existing?.interaction ?? InteractionProfile.forAge(_band);
   late bool _interactionChosen = widget.existing != null;
 
+  @override
+  void dispose() {
+    _name.dispose();
+    super.dispose();
+  }
+
   void _setBand(AgeBand b) => setState(() {
         _band = b;
         _bandConfirmed = true;
