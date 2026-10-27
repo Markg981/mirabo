@@ -405,6 +405,12 @@ class _StoryReaderState extends State<StoryReader> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             ScreenText(text: screen.text, current: _word, readAlong: _readAlong, onWord: _say),
+                            // Il resto scorre: con il testo di sistema ingrandito supera l'altezza.
+                            Flexible(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
                             // La frase-chiave resta anche per chi legge solo le lettere.
                             if (screen.isKeyPhrase && tokens.textMode != TextMode.hidden)
                               Padding(
@@ -464,6 +470,10 @@ class _StoryReaderState extends State<StoryReader> {
                                     : 96,
                               ),
                             ],
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
