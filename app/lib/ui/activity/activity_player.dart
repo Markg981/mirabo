@@ -84,8 +84,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     super.initState();
     _state = AppStateScope.read(context);
     _profile = _state.currentProfile!;
-    _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
-    _tts.setSpeechRate(0.45);
+    _setupVoice();
     _ctx = ActivityContext(
       profile: _profile,
       companionName: _state.companionOf(_profile).name,
@@ -98,16 +97,29 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
         }
       },
     );
-    _state.db.progress(_profile.id, widget.activity.id).then((p) {
+    _state.db
+        .progress(_profile.id, widget.activity.id)
+        // Se la lettura fallisce si parte dal livello iniziale: niente spinner infinito.
+        .catchError((_) => ActivityProgress(profileId: _profile.id, activityId: widget.activity.id))
+        .then((p) {
       if (!mounted) return;
       setState(() => _progress = p);
       _ctx.say(widget.activity.intro.forCompanion(_profile.companion));
     });
   }
 
+  Future<void> _setupVoice() async {
+    try {
+      await _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
+      await _tts.setSpeechRate(0.45);
+    } catch (_) {
+      // Senza motore vocale il testo resta in vista (vedi _NoVoiceChip).
+    }
+  }
+
   @override
   void dispose() {
-    _tts.stop();
+    _tts.stop().catchError((_) {});
     if (!_saved && _progress != null) _state.recordActivity(widget.activity, _progress!, _results);
     super.dispose();
   }

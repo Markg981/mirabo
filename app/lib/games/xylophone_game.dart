@@ -40,6 +40,7 @@ class _XylophoneGameState extends State<XylophoneGame> {
 
   final _players = <AudioPlayer>[];
   bool _ready = false;
+  bool _failed = false;
   bool _songMode = false;
   int _songPos = 0;
   int? _down;
@@ -49,14 +50,22 @@ class _XylophoneGameState extends State<XylophoneGame> {
   @override
   void initState() {
     super.initState();
-    _load();
+    _load().catchError((_) {
+      // Niente audio disponibile: si esce dallo spinner invece di restare in attesa.
+      if (mounted) setState(() => _failed = true);
+    });
   }
 
   Future<void> _load() async {
     final dir = await getTemporaryDirectory();
     for (var i = 0; i < _freqs.length; i++) {
       final f = File('${dir.path}/mirabo_xilofono_$i.wav');
-      if (!await f.exists()) await f.writeAsBytes(_tone(_freqs[i]));
+      if (!await f.exists()) {
+        // Scrittura atomica: file temporaneo poi rename, così una chiusura a metà non lascia un WAV troncato.
+        final tmp = File('${f.path}.tmp');
+        await tmp.writeAsBytes(_tone(_freqs[i]), flush: true);
+        await tmp.rename(f.path);
+      }
       final p = AudioPlayer();
       await p.setFilePath(f.path);
       if (!mounted) {
@@ -166,7 +175,7 @@ class _XylophoneGameState extends State<XylophoneGame> {
           ),
         Expanded(
           child: !_ready
-              ? const Center(child: CircularProgressIndicator())
+              ? Center(child: _failed ? const Icon(Icons.volume_off_rounded, size: 48) : const CircularProgressIndicator())
               : LayoutBuilder(builder: (context, c) {
                   final barW = math.min(110.0, (c.maxWidth - 120) / 8 - 14);
                   final maxH = c.maxHeight * 0.82;

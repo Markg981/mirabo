@@ -30,18 +30,20 @@ class _GameShellState extends State<GameShell> {
   @override
   void initState() {
     super.initState();
-    _tts.setSpeechRate(0.45);
+    _tts.setSpeechRate(0.45).catchError((_) {});
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _tts.setLanguage(AppLanguage.fromCode(AppStateScope.read(context).currentProfile!.language).ttsCode);
+    _tts
+        .setLanguage(AppLanguage.fromCode(AppStateScope.read(context).currentProfile!.language).ttsCode)
+        .catchError((_) {});
   }
 
   @override
   void dispose() {
-    _tts.stop();
+    _tts.stop().catchError((_) {});
     super.dispose();
   }
 
