@@ -48,16 +48,18 @@ def main() -> int:
         shutil.rmtree(STORIES_OUT)
     STORIES_OUT.mkdir(parents=True)
     index = []
+    packages = {}
     for f in sorted(DIST.glob("*.mirabo")):
         shutil.copy(f, STORIES_OUT / f.name)
         index.append(f.name)
+        packages[f.name] = pack.sha256(f)
     (STORIES_OUT / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
     COMPANIONS_OUT.mkdir(parents=True, exist_ok=True)
     shutil.copy(ROOT / "content" / "companions" / "companions.json", COMPANIONS_OUT / "companions.json")
     EDUCATION_OUT.mkdir(parents=True, exist_ok=True)
     themes = check_goals.navigation(check_goals.read_json(check_goals.MATRIX))
     (EDUCATION_OUT / "themes.json").write_text(json.dumps(themes, ensure_ascii=False, indent=2), encoding="utf-8")
-    build = {"build": "release" if "--release" in args else "development", "drafts": "--include-drafts" in args}
+    build = {"build": "release" if "--release" in args else "development", "drafts": "--include-drafts" in args, "packages": packages}
     (ASSETS / "build.json").write_text(json.dumps(build, indent=2) + "\n", encoding="utf-8")
     print(f"{len(index)} pacchetti copiati in {STORIES_OUT.relative_to(ROOT)}")
     return 0
