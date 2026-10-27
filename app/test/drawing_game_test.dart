@@ -17,6 +17,8 @@ class _Db implements LocalDb {
   _Db(this.profile);
   final ChildProfile profile;
   final Map<String, String> settings = {};
+  /// Solo i salvataggi del disegno: AppState scrive anche altre impostazioni
+  /// (per esempio l'inizio della sessione da solo).
   int writes = 0;
   Completer<void>? gate;
 
@@ -31,7 +33,7 @@ class _Db implements LocalDb {
 
   @override
   Future<void> setSetting(String key, String value) async {
-    writes++;
+    if (key == AppState.drawingKey(profile.id)) writes++;
     settings[key] = value;
   }
 
