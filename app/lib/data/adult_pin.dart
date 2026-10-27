@@ -13,7 +13,11 @@ abstract class PinStore {
 }
 
 class SecurePinStore implements PinStore {
-  const SecurePinStore([this._s = const FlutterSecureStorage()]);
+  const SecurePinStore([this._s = const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    // Come LocalDb: solo questo dispositivo, niente migrazione via backup.
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock_this_device),
+  )]);
   final FlutterSecureStorage _s;
   @override
   Future<String?> read(String key) => _s.read(key: key);
@@ -56,6 +60,7 @@ class AdultPin {
 
   static const minLength = 4;
   static const maxLength = 6;
+  static const _kMigrated = 'adult_pin_keychain_v2';
   static const _kHash = 'adult_pin_hash';
   static const _kSalt = 'adult_pin_salt';
   static const _kFails = 'adult_pin_fails';
@@ -76,6 +81,35 @@ class AdultPin {
   static const freeAttempts = 3;
 
   final PinStore _store;
+
+  /// Tutte le chiavi scritte da questa classe (esclusa la spia di migrazione).
+  static const _allKeys = [
+    _kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt,
+    _kDeviceRecovery, _kResetAt, _kResetHow,
+  ];
+
+  /// Da chiamare all'apertura del DB. [dbExisted]: il file del database c'era
+  /// già. Il Keychain iOS sopravvive alla reinstallazione, il DB no: senza DB
+  /// le chiavi del PIN sono orfane e si cancellano. Altrimenti, una volta sola,
+  /// le chiavi esistenti si riscrivono con l'accessibilità attuale
+  /// (`first_unlock_this_device`) senza perdere il PIN.
+  static Future<void> reconcile(PinStore store, {required bool dbExisted}) async {
+    if (!dbExisted) {
+      for (final k in _allKeys) {
+        await store.delete(k);
+      }
+      await store.write(_kMigrated, '1');
+      return;
+    }
+    if (await store.read(_kMigrated) != null) return;
+    for (final k in _allKeys) {
+      final v = await store.read(k);
+      if (v == null) continue;
+      await store.delete(k);
+      await store.write(k, v);
+    }
+    await store.write(_kMigrated, '1');
+  }
   final DateTime Function() _now;
   final int iterations;
 
