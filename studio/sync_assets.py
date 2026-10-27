@@ -9,6 +9,7 @@ app/assets/ è ignorata da git: la fonte di verità resta content/.
 
 Uso:
   python studio/sync_assets.py                    # esegue pack.py --sign (solo storie pubblicate)
+  python studio/sync_assets.py --no-sign          # senza firma (nessuna chiave: pacchetti NON firmati)
   python studio/sync_assets.py --include-drafts   # anche le storie non ancora revisionate
   python studio/sync_assets.py --release [--theme T]  # build di distribuzione: solo il catalogo
                                                       # approvato (pack.py --release)
@@ -41,7 +42,13 @@ def main() -> int:
     forwarded = [a for a in args if a in ("--include-drafts", "--release")]
     if "--theme" in args:
         forwarded += ["--theme", args[args.index("--theme") + 1]]
-    sys.argv = ["pack.py", "--sign"] + forwarded
+    # Default: firma (l'app rifiuta i pacchetti non firmati). --no-sign è esplicito, per chi
+    # non ha ancora la chiave (studio/keygen.py); con --release la firma resta obbligatoria.
+    if "--no-sign" in args and "--release" in args:
+        print("--release richiede la firma: --no-sign non è ammesso.")
+        return 1
+    sign = [] if "--no-sign" in args else ["--sign"]
+    sys.argv = ["pack.py"] + sign + forwarded
     if pack.main() != 0:
         return 1
     if STORIES_OUT.exists():
