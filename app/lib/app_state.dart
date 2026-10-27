@@ -86,8 +86,16 @@ class AppState extends ChangeNotifier {
   void appHidden() {
     _hiddenAt ??= _now();
     // Se il bambino chiude l'app, il riavvio entro [aloneGrace] riprende il conto.
-    if (_aloneSince != null) _bestEffort(() => db.setSetting(aloneLeftAtKey, _now().toIso8601String()));
+    final since = _aloneSince;
+    if (since != null) {
+      final now = _now();
+      _bestEffort(() => db.setSetting(aloneLeftAtKey, now.toIso8601String()));
+      // Tempo già consumato oggi: una pausa vera non lo azzera (solo il cambio giorno).
+      _bestEffort(() => db.setSetting(aloneUsedKey, '${_dayKey(now)}|${now.difference(since).inMilliseconds}'));
+    }
   }
+
+  static String _dayKey(DateTime d) => '${d.year}-${d.month}-${d.day}';
 
   /// L'app torna in primo piano: dopo [togetherLapse] "insieme" scade.
   void appResumed() {
@@ -167,6 +175,16 @@ class AppState extends ChangeNotifier {
   static const aloneSinceKey = 'alone_since';
   static const aloneLeftAtKey = 'alone_left_at';
 
+  /// Chiave in `settings`: "giorno|millisecondi" di sessione "da solo" già
+  /// consumati nel giorno. Al riavvio dopo una pausa vera il conto riparte dal
+  /// residuo, non da zero; al cambio giorno si azzera.
+  static const aloneUsedKey = 'alone_used';
+
+  /// Tetto al rinvio del saluto dovuto a una storia o attività lasciata aperta
+  /// ([SessionHold]): scaduto il limite, dopo questo tempo si saluta comunque.
+  static const holdCap = Duration(minutes: 5);
+  Timer? _holdTimer;
+
   /// Un riavvio entro questo tempo dall'uscita mantiene il conto del limite;
   /// oltre, è una sessione nuova (una pausa vera).
   static const aloneGrace = Duration(minutes: 10);
@@ -204,7 +222,10 @@ class AppState extends ChangeNotifier {
       if (_aloneSince != null) {
         _bestEffort(() => db.removeSetting(aloneSinceKey));
         _bestEffort(() => db.removeSetting(aloneLeftAtKey));
+        _bestEffort(() => db.removeSetting(aloneUsedKey));
       }
+      _holdTimer?.cancel();
+      _holdTimer = null;
       _aloneSince = null;
       _aloneExpired = false;
       _goodbye = false;
@@ -245,12 +266,23 @@ class AppState extends ChangeNotifier {
   void _onAloneTimeUp() {
     _aloneTimer = null;
     _aloneExpired = true;
+    if (_holds > 0 && !_goodbye) {
+      _holdTimer?.cancel();
+      _holdTimer = Timer(holdCap, () {
+        _holdTimer = null;
+        if (_goodbye) return;
+        _goodbye = true;
+        notifyListeners();
+      });
+    }
     _sayGoodbyeIfFree();
   }
 
   void _sayGoodbyeIfFree() {
     if (!_aloneExpired || _holds > 0 || _goodbye) return;
     _goodbye = true;
+    _holdTimer?.cancel();
+    _holdTimer = null;
     notifyListeners();
   }
 
@@ -268,6 +300,7 @@ class AppState extends ChangeNotifier {
   void dispose() {
     _aloneTimer?.cancel();
     _nearTimer?.cancel();
+    _holdTimer?.cancel();
     super.dispose();
   }
 
@@ -329,18 +362,27 @@ class AppState extends ChangeNotifier {
   Future<void> _restoreAloneSince() async {
     if (_aloneSince != null) return;
     final DateTime? since, left;
+    final String? used;
     try {
       since = DateTime.tryParse(await db.setting(aloneSinceKey) ?? '');
       left = DateTime.tryParse(await db.setting(aloneLeftAtKey) ?? '');
+      used = await db.setting(aloneUsedKey);
     } catch (_) {
       return;
     }
-    if (since == null || left == null) return;
     final now = _now();
-    if (!left.isBefore(since) && !left.isAfter(now) && now.difference(left) <= aloneGrace) {
+    if (since != null && left != null && !left.isBefore(since) && !left.isAfter(now) && now.difference(left) <= aloneGrace) {
       _aloneSince = since;
       await db.removeSetting(aloneLeftAtKey);
+      return;
     }
+    // Pausa vera: la sessione riparte, ma il tempo già usato oggi resta consumato.
+    final parts = (used ?? '').split('|');
+    final ms = parts.length == 2 ? int.tryParse(parts[1]) : null;
+    if (ms == null || ms <= 0 || parts[0] != _dayKey(now)) return;
+    _aloneSince = now.subtract(Duration(milliseconds: ms));
+    _bestEffort(() => db.setSetting(aloneSinceKey, _aloneSince!.toIso8601String()));
+    _bestEffort(() => db.removeSetting(aloneLeftAtKey));
   }
 
   /// Dopo un ripristino da Drive: ricarica tutto e ripropone "Chi gioca oggi?".
