@@ -14,9 +14,6 @@
     "just_audio": {"network": "none", "note": "Riproduce solo file locali (nessun URL nel codice); il plugin saprebbe leggere URL, il codice non ne passa"},
     "flutter_tts": {"network": "device-dependent", "destination": "motore TTS scelto dal dispositivo", "note": "Chiama il TTS di sistema; su Android un motore (es. Google) puo' sintetizzare in rete se la voce non e' installata. Vedi inventario"},
     "flutter_markdown": {"network": "none", "note": "Schede genitore; nessun link attivabile (nessun onTapLink, nessun url_launcher)"},
-    "google_sign_in": {"network": "google", "destination": "accounts.google.com, oauth2.googleapis.com, Google Play services", "note": "Solo dopo l'attivazione del backup (opt-in)"},
-    "googleapis": {"network": "google", "destination": "www.googleapis.com (Drive v3, appDataFolder)", "note": "Solo backup opt-in"},
-    "extension_google_sign_in_as_googleapis_auth": {"network": "google", "destination": "come google_sign_in", "note": "Collega l'accesso a googleapis"},
     "pdf": {"network": "none", "note": "PDF generati in locale"},
     "printing": {"network": "none", "note": "Dialogo di stampa/condivisione del sistema; la sua dipendenza http serve a networkImage, che il codice non usa"},
     "local_auth": {"network": "none", "note": "Sblocco del dispositivo solo per recuperare il PIN adulti (docs/adult-gate.md); l'app riceve solo l'esito"},
@@ -25,7 +22,6 @@
     "sqflite_common_ffi": {"network": "none", "dev": true, "note": "Solo test: SQLite vero per test/local_db_test.dart, non entra nell'app. Il pacchetto sqlite3 procura la libreria nativa alla build dei test (macchina di sviluppo o CI)"}
   },
   "transitive": {
-    "_discoveryapis_commons": "googleapis",
     "args": "tool",
     "async": "flutter",
     "audio_session": "just_audio",
@@ -48,15 +44,8 @@
     "flutter_secure_storage_windows": "flutter_secure_storage",
     "flutter_web_plugins": "flutter",
     "glob": "sqflite_common_ffi",
-    "google_cloud": "googleapis_auth",
-    "google_identity_services_web": "google_sign_in",
-    "google_sign_in_android": "google_sign_in",
-    "google_sign_in_ios": "google_sign_in",
-    "google_sign_in_platform_interface": "google_sign_in",
-    "google_sign_in_web": "google_sign_in",
-    "googleapis_auth": "extension_google_sign_in_as_googleapis_auth",
     "hooks": "toolchain native",
-    "http": "googleapis_auth, printing",
+    "http": "printing",
     "http_parser": "http",
     "image": "pdf, printing",
     "jni": "plugin nativi",
@@ -117,11 +106,18 @@
   },
   "android_permissions": {
     "android.permission.INTERNET": "Tolto dalla release con tools:node=\"remove\" nel manifest main finché il backup su Drive è fuori dall'MVP (app/lib/features.dart). Resta nei manifest debug e profile del template Flutter (hot reload). Riaccendere il backup richiede di togliere la rimozione",
+    "android.permission.USE_FINGERPRINT": "Alias deprecato aggiunto da local_auth per Android < 9 (sblocco del dispositivo per il PIN adulti); nessuna rete",
     "android.permission.USE_BIOMETRIC": "Recupero del PIN adulti con lo sblocco del dispositivo (local_auth); nessuna rete"
   },
+  "android_component_prefixes": [
+    "com.markg981.mirabo.",
+    "net.nfet.flutter.printing.",
+    "androidx.startup.InitializationProvider",
+    "androidx.profileinstaller.ProfileInstallReceiver"
+  ],
   "ios_privacy_keys": ["NSFaceIDUsageDescription"],
   "network_code_allowlist": {
     "_nota": "File di app/lib autorizzati a usare API di rete (HttpClient, Socket, package:http, WebSocket) o a contenere URL http(s).",
-    "files": ["lib/data/drive_store.dart"]
+    "files": []
   }
 }

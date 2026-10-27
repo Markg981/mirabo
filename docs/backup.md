@@ -41,7 +41,18 @@ flutter run \
 | File | Ruolo |
 | --- | --- |
 | `app/lib/data/backup_codec.dart` | Derivazione della chiave, cifratura e formato del file |
-| `app/lib/data/drive_store.dart` | Accesso Google e file su Drive (`BackupStore`) |
+| `app/lib/data/backup_store.dart` | Interfaccia `BackupStore` e `NullBackupStore` (l'unica nella build MVP) |
+| `app/optional/drive_store.dart.txt` | Implementazione Drive (`DriveStore`), fuori dalla build |
 | `app/lib/data/cloud_backup.dart` | Stato e flussi: attiva, backup, automatico, ripristina, disattiva |
 | `app/lib/ui/parent/backup_section.dart` | Interfaccia nell'area genitore e flusso di ripristino |
 | `app/test/backup_test.dart` | Test con uno store in memoria |
+
+## Riattivare Drive
+
+La build MVP non contiene le librerie Google (analisi M7). Per riattivare il backup:
+
+1. rimettere in `app/pubspec.yaml` `google_sign_in: ^7.2.0`, `googleapis: ^17.0.0` e `extension_google_sign_in_as_googleapis_auth: ^3.0.0` e rigenerare `pubspec.lock`;
+2. spostare `app/optional/drive_store.dart.txt` in `app/lib/data/drive_store.dart`;
+3. in `cloud_backup.dart` usare `DriveStore()` al posto di `NullBackupStore()`;
+4. togliere da `AndroidManifest.xml` la rimozione di `INTERNET` e rimettere le voci Google in `docs/privacy/approved-dependencies.json` (anche `android_component_prefixes` e `network_code_allowlist`);
+5. compilare con `--dart-define=MIRABO_CLOUD_BACKUP=true` e rifare le dichiarazioni degli store.

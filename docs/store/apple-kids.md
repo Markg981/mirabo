@@ -26,7 +26,7 @@ Le fasce Apple per la Kids Category sono "5 and under", "6–8", "9–11".
 | Gate per adulti | PIN dell'area adulta di 4-6 cifre (`app/lib/ui/parent/adult_gate.dart`, `docs/adult-gate.md`), richiesto di nuovo per le operazioni delicate e al ritorno dal background; recupero con codice o con lo sblocco del dispositivo. Non è un metodo di verifica del consenso |
 | Niente pubblicità di terzi, niente analytics di terzi che raccolgano o trasmettano dati identificabili | Nessun SDK di pubblicità o analytics tra le dipendenze (`pubspec.yaml`). Nessun crash reporter. Da rifare a ogni release (vedi checklist) |
 | Privacy policy raggiungibile | Bozza in `docs/privacy/privacy-policy.it.md` / `.en.md`; va pubblicata a un URL e il link va nell'area genitori (dietro gate) e in App Store Connect |
-| Google Sign-In | Nella build ma inattivo: il backup è fuori dall'MVP e nessuna schermata lo apre. **Consigliato**: togliere `google_sign_in` e `googleapis` dal `pubspec.yaml` prima dell'invio, così il privacy manifest dello SDK non entra nell'app |
+| Google Sign-In | Tolto dalla build (analisi M7): `google_sign_in` e `googleapis` non sono più nel `pubspec.yaml`, il codice Drive è in `app/optional/` |
 | Dati sensibili e posizione | Nessuna posizione, nessun contatto, nessuna foto, nessun microfono, nessuna fotocamera |
 | Notifiche push, tracciamento (ATT) | Nessuna notifica, nessun tracciamento: non serve la richiesta ATT |
 
@@ -46,7 +46,7 @@ L'app non invia dati a nessuno: niente backend, niente backup in rete nella buil
 | --- | --- | --- |
 | Raccogliete dati dall'app? | "No, non raccogliamo dati da questa app" | Apple definisce "raccolta" la trasmissione fuori dal dispositivo: nella build MVP non ce n'è. Se si riaccende il backup, rivalutare (email dell'account Google, file cifrato) |
 | Tracking | Nessuno | Nessun ATT, nessun identificatore pubblicitario |
-| Dati di terzi (SDK) | Nessuno SDK di terzi attivo | Finché `google_sign_in` resta nel `pubspec.yaml`, controllarne il privacy manifest |
+| Dati di terzi (SDK) | Nessuno SDK di terzi attivo | `google_sign_in` non è più nel `pubspec.yaml`; ricontrollare i privacy manifest degli SDK rimasti |
 
 Il testo mostrato in pagina deve restare coerente con la privacy policy e con `docs/store/google-families.md`.
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'adult_gate.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 
 import '../../app_state.dart';
 import '../../data/backup_codec.dart';
+import '../../data/backup_store.dart';
 import '../../l10n/l10n.dart';
 
 /// Backup su Google Drive nell'area genitore: stato e comandi.
@@ -210,15 +210,14 @@ Future<void> restoreFromDrive(BuildContext context, {List<int>? file}) async {
   messenger.showSnackBar(SnackBar(content: Text(l.backupRestored)));
 }
 
-/// Esegue un'operazione di rete; l'annullamento di Google non è un errore,
+/// Esegue un'operazione di rete; l'annullamento dell'accesso non è un errore,
 /// tutto il resto diventa un messaggio. False se non è andata a buon fine.
 Future<bool> _guard(BuildContext context, Future<void> Function() f) async {
   try {
     await f();
     return true;
-  } on GoogleSignInException catch (e) {
-    if (e.code != GoogleSignInExceptionCode.canceled && context.mounted) _toast(context, context.l10n.backupError);
-    debugPrint('Accesso a Google: $e');
+  } on BackupCancelled {
+    // Il genitore ha annullato l'accesso: non è un errore.
   } catch (e) {
     debugPrint('Backup: $e');
     if (context.mounted) _toast(context, context.l10n.backupError);

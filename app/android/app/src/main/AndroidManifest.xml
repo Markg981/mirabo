@@ -6,6 +6,8 @@
          debug e profile tengono INTERNET per l'hot reload. Riaccendere il backup
          richiede di togliere questa riga. -->
     <uses-permission android:name="android.permission.INTERNET" tools:node="remove"/>
+    <!-- Aggiunto dal plugin printing, non serve: l'MVP non guarda lo stato della rete. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove"/>
     <!-- Recupero del PIN adulti con lo sblocco del dispositivo (docs/adult-gate.md). -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
     <!-- Politica di backup del sistema: niente. Il database e' cifrato con una
