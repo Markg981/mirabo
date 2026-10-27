@@ -426,7 +426,10 @@ class AppState extends ChangeNotifier {
       now: now,
     );
     await db.moveShelf(fresh.id, before: current, after: next, at: now);
-    await updateProfile(fresh.withAutoShelf(next, now));
+    // Durante gli await il genitore può aver modificato il profilo: si
+    // riparte dalla copia corrente, non da quella presa prima.
+    final latest = profiles.firstWhere((x) => x.id == fresh.id, orElse: () => fresh);
+    await updateProfile(latest.withAutoShelf(next, now));
   }
 
   /// Il genitore cambia la mensola; null la lascia riempire da sola.
@@ -536,7 +539,12 @@ class AppState extends ChangeNotifier {
       completed: completed,
       when: _now(),
     ));
-    if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+    if (completed) {
+      // La copia presa prima dell'await può essere vecchia (profilo
+      // modificato, altra storia chiusa): si rilegge quella corrente.
+      final latest = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
+      await updateProfile(latest.copyWith(storiesCompleted: latest.storiesCompleted + 1));
+    }
   }
 
   /// Il genitore segna nel diario che il bambino ha fatto il gesto di una
