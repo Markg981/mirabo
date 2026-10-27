@@ -300,6 +300,16 @@ void main() {
       expect((await installer().install(_MemorySource(await build(version: 3)))).version, 3);
     });
 
+    test('downgrade rifiutato anche dopo evictCache', () async {
+      final inst = installer();
+      await inst.install(_MemorySource(await build(version: 2)));
+      await inst.evictCache();
+      await expectLater(
+        installer().install(_MemorySource(await build(version: 1))),
+        throwsA(isA<InstallException>().having((e) => e.failure, 'failure', InstallFailure.downgrade)),
+      );
+    });
+
     test('index.json illeggibile: errore e file intatto, mai sovrascritto', () async {
       contentRoot.createSync(recursive: true);
       final index = File(p.join(contentRoot.path, 'index.json'))..writeAsStringSync('{non json');

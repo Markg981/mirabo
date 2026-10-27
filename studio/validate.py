@@ -593,9 +593,10 @@ def check_manifest(manifest: dict) -> list[str]:
     return errors
 
 
-def check_retired() -> list[str]:
-    """content/retired.json: schema e id esistenti; la sequenza deve solo crescere."""
+def check_retired(previous: Path | None = None) -> list[str]:
+    """content/retired.json: schema e id esistenti; la sequenza non deve scendere rispetto a dist/retired.json."""
     path = CONTENT / "retired.json"
+    previous = previous or ROOT / "dist" / "retired.json"
     if not path.exists():
         return []
     doc = read_json(path)
@@ -606,6 +607,14 @@ def check_retired() -> list[str]:
     for entry in doc["retired"]:
         if entry["id"] not in known:
             errors.append(f"retired.json: contenuto sconosciuto '{entry['id']}'")
+    # Senza release precedente il confronto non è possibile: niente da controllare.
+    if previous.exists():
+        try:
+            old = read_json(previous)["sequence"]
+        except (ValueError, KeyError, TypeError):
+            old = None
+        if isinstance(old, int) and doc["sequence"] < old:
+            errors.append(f"retired.json: sequenza {doc['sequence']} inferiore a quella già pubblicata ({old}): i client la ignorerebbero")
     return errors
 
 
