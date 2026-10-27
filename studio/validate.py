@@ -76,6 +76,10 @@ def check_story(folder: Path, story_v: Draft202012Validator, variant_v: Draft202
     errors += check_home_activity(folder, meta)
     errors += check_translations(folder, meta)
     errors += check_review(folder, meta)
+    allowed = {"story.json", "practice.json", meta.get("parentCard", "parent.md"), *meta.get("ageBands", {}).values()}
+    if meta.get("homeActivity"):
+        allowed.add(meta["homeActivity"])
+    errors += check_unreferenced(folder, allowed)
     return errors
 
 
@@ -100,6 +104,22 @@ def check_design(label: str, design: dict | None, band: str, meta: dict) -> list
         REDESIGN.append(f"{label} ({'; '.join(problems)})")
         return []
     return [f"{label}: {p}" for p in problems]
+
+
+def check_unreferenced(folder: Path, allowed: set[str]) -> list[str]:
+    """Ogni file nella cartella finisce nel pacchetto firmato (pack.py): niente file non referenziati
+    (note, .DS_Store). Ammessi i file elencati, le traduzioni con lo stesso nome e assets/."""
+    errors: list[str] = []
+    for p in sorted(x for x in folder.rglob("*") if x.is_file() and x.name != ".gitkeep"):
+        parts = p.relative_to(folder).parts
+        if parts[0] == "assets":
+            continue
+        if len(parts) == 1 and parts[0] in allowed:
+            continue
+        if len(parts) == 3 and parts[0] == "i18n" and parts[2] in allowed:
+            continue
+        errors.append(f"{folder.name}: file non referenziato '{'/'.join(parts)}' (finirebbe nel pacchetto firmato)")
+    return errors
 
 
 BAND_LISTS = ("steps", "materials", "preparation", "alternatives")
@@ -410,6 +430,7 @@ def check_activity(folder: Path, activity_v: Draft202012Validator) -> list[str]:
         errors.append(f"{folder.name}: {e.message} (in {'/'.join(map(str, e.path)) or 'root'})")
     if a.get("id") != folder.name:
         errors.append(f"{folder.name}: id diverso dal nome della cartella")
+    errors += check_unreferenced(folder, {"activity.json", "practice.json"})
     module = a.get("module", "scuola")
     if module == "scuola" and a.get("area") not in SCHOOL_AREAS:
         errors.append(f"{folder.name}: area '{a.get('area')}' non appartiene al modulo scuola")
