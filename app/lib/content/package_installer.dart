@@ -9,7 +9,7 @@ import 'package:path/path.dart' as p;
 
 import 'package_verifier.dart';
 
-/// Versione dell'app, per la compatibilità dei pacchetti (tenere allineata a pubspec.yaml).
+/// Versione dell'app, per la compatibilità dei pacchetti (allineata a pubspec.yaml da test/app_version_test.dart).
 const String defaultAppVersion = '0.1.0';
 
 /// Formato dei contenuti che questa versione dell'app sa leggere.
