@@ -2368,6 +2368,41 @@ class AppLocalizationsIt extends AppLocalizations {
   String get startupRetry => 'Riprova';
 
   @override
+  String get startupAdultOptions => 'Sono un adulto: altre opzioni';
+
+  @override
+  String get startupEraseWarning =>
+      'Se riprovare non basta, si può cancellare tutto e ripartire da zero. Sono cancellati tutti i dati su questo tablet (profili, progressi, impostazioni) e non si possono recuperare.';
+
+  @override
+  String get startupEraseConfirm =>
+      'Ho capito: i dati andranno persi per sempre';
+
+  @override
+  String get startupErase => 'Azzera i dati e riparti';
+
+  @override
+  String startupErrorKind(String kind) {
+    return 'Tipo di errore: $kind';
+  }
+
+  @override
+  String get startupErrKeystore => 'archivio delle chiavi del tablet';
+
+  @override
+  String get startupErrDatabase => 'database (apertura o aggiornamento)';
+
+  @override
+  String get startupErrFormat => 'dati in un formato non valido';
+
+  @override
+  String get startupErrOther => 'errore non previsto';
+
+  @override
+  String get startupEraseFailed =>
+      'Non è stato possibile azzerare i dati. Riprova o riavvia il tablet.';
+
+  @override
   String storageResetNotice(String date) {
     return 'Il $date Mirabò è ripartito da zero: i dati che c\'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.';
   }

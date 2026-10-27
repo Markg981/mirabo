@@ -2371,6 +2371,41 @@ class AppLocalizationsEs extends AppLocalizations {
   String get startupRetry => 'Reintentar';
 
   @override
+  String get startupAdultOptions => 'Soy adulto: más opciones';
+
+  @override
+  String get startupEraseWarning =>
+      'Si reintentar no basta, se puede borrar todo y empezar de cero. Se borran todos los datos de esta tableta (perfiles, progresos, ajustes) y no se pueden recuperar.';
+
+  @override
+  String get startupEraseConfirm =>
+      'Lo entiendo: los datos se perderán para siempre';
+
+  @override
+  String get startupErase => 'Borrar los datos y empezar de cero';
+
+  @override
+  String startupErrorKind(String kind) {
+    return 'Tipo de error: $kind';
+  }
+
+  @override
+  String get startupErrKeystore => 'el almacén de claves de la tableta';
+
+  @override
+  String get startupErrDatabase => 'base de datos (apertura o actualización)';
+
+  @override
+  String get startupErrFormat => 'datos con un formato no válido';
+
+  @override
+  String get startupErrOther => 'error inesperado';
+
+  @override
+  String get startupEraseFailed =>
+      'No se pudieron borrar los datos. Reinténtalo o reinicia la tableta.';
+
+  @override
   String storageResetNotice(String date) {
     return 'El $date Mirabò empezó de cero: los datos de esta tableta estaban cifrados con una clave que la tableta ya no tiene (pasa, por ejemplo, tras restaurar desde otro dispositivo) y no se podían leer.';
   }

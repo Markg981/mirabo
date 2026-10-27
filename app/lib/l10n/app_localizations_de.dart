@@ -2373,6 +2373,41 @@ class AppLocalizationsDe extends AppLocalizations {
   String get startupRetry => 'Erneut versuchen';
 
   @override
+  String get startupAdultOptions => 'Ich bin erwachsen: weitere Optionen';
+
+  @override
+  String get startupEraseWarning =>
+      'Hilft ein neuer Versuch nicht, kann man alles löschen und von vorn beginnen. Alle Daten auf diesem Tablet (Profile, Fortschritte, Einstellungen) werden gelöscht und lassen sich nicht wiederherstellen.';
+
+  @override
+  String get startupEraseConfirm =>
+      'Ich habe verstanden: die Daten gehen endgültig verloren';
+
+  @override
+  String get startupErase => 'Daten löschen und neu starten';
+
+  @override
+  String startupErrorKind(String kind) {
+    return 'Fehlerart: $kind';
+  }
+
+  @override
+  String get startupErrKeystore => 'der Schlüsselspeicher des Tablets';
+
+  @override
+  String get startupErrDatabase => 'Datenbank (Öffnen oder Aktualisieren)';
+
+  @override
+  String get startupErrFormat => 'Daten in ungültigem Format';
+
+  @override
+  String get startupErrOther => 'unerwarteter Fehler';
+
+  @override
+  String get startupEraseFailed =>
+      'Die Daten konnten nicht gelöscht werden. Versuche es erneut oder starte das Tablet neu.';
+
+  @override
   String storageResetNotice(String date) {
     return 'Am $date hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden.';
   }

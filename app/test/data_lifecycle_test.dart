@@ -215,5 +215,50 @@ void main() {
       expect(find.textContaining('update the app'), findsOneWidget);
       expect(find.byKey(const Key('startup-retry')), findsNothing);
     });
+
+    testWidgets('percorso adulto: avviso, conferma esplicita e solo allora azzera e riparte', (tester) async {
+      var retried = 0, erased = 0;
+      await tester.pumpWidget(StartupFailureApp(
+        error: const FormatException('json'),
+        onRetry: () => retried++,
+        onErase: () async => erased++,
+      ));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('startup-error-kind')), findsOneWidget);
+      expect(find.byKey(const Key('startup-erase')), findsNothing);
+      await tester.tap(find.byKey(const Key('startup-adult')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('startup-erase-warning')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('startup-erase')), warnIfMissed: false);
+      expect(erased, 0);
+      await tester.ensureVisible(find.byKey(const Key('startup-erase-confirm')));
+      await tester.tap(find.byKey(const Key('startup-erase-confirm')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const Key('startup-erase')));
+      await tester.tap(find.byKey(const Key('startup-erase')));
+      await tester.pumpAndSettle();
+      expect(erased, 1);
+      expect(retried, 1);
+    });
+
+    testWidgets('azzeramento fallito: lo si dice e non si riparte', (tester) async {
+      var retried = 0;
+      await tester.pumpWidget(StartupFailureApp(
+        error: Exception('x'),
+        onRetry: () => retried++,
+        onErase: () async => throw Exception('disk'),
+      ));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('startup-adult')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const Key('startup-erase-confirm')));
+      await tester.tap(find.byKey(const Key('startup-erase-confirm')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const Key('startup-erase')));
+      await tester.tap(find.byKey(const Key('startup-erase')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('startup-erase-failed')), findsOneWidget);
+      expect(retried, 0);
+    });
   });
 }

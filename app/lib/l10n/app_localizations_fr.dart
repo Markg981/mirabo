@@ -2380,6 +2380,41 @@ class AppLocalizationsFr extends AppLocalizations {
   String get startupRetry => 'Réessayer';
 
   @override
+  String get startupAdultOptions => 'Je suis adulte : autres options';
+
+  @override
+  String get startupEraseWarning =>
+      'Si réessayer ne suffit pas, on peut tout effacer et repartir de zéro. Toutes les données de cette tablette (profils, progrès, réglages) sont effacées et irrécupérables.';
+
+  @override
+  String get startupEraseConfirm =>
+      'J\'ai compris : les données seront perdues définitivement';
+
+  @override
+  String get startupErase => 'Effacer les données et repartir';
+
+  @override
+  String startupErrorKind(String kind) {
+    return 'Type d\'erreur : $kind';
+  }
+
+  @override
+  String get startupErrKeystore => 'le stockage des clés de la tablette';
+
+  @override
+  String get startupErrDatabase => 'base de données (ouverture ou mise à jour)';
+
+  @override
+  String get startupErrFormat => 'données dans un format invalide';
+
+  @override
+  String get startupErrOther => 'erreur inattendue';
+
+  @override
+  String get startupEraseFailed =>
+      'Impossible d\'effacer les données. Réessayez ou redémarrez la tablette.';
+
+  @override
   String storageResetNotice(String date) {
     return 'Le $date, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n\'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues.';
   }

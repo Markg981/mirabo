@@ -2361,6 +2361,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startupRetry => 'Try again';
 
   @override
+  String get startupAdultOptions => 'I\'m an adult: more options';
+
+  @override
+  String get startupEraseWarning =>
+      'If trying again doesn\'t help, you can delete everything and start over. All data on this tablet (profiles, progress, settings) is deleted and cannot be recovered.';
+
+  @override
+  String get startupEraseConfirm =>
+      'I understand: the data will be lost for good';
+
+  @override
+  String get startupErase => 'Erase data and start over';
+
+  @override
+  String startupErrorKind(String kind) {
+    return 'Error type: $kind';
+  }
+
+  @override
+  String get startupErrKeystore => 'the tablet\'s key storage';
+
+  @override
+  String get startupErrDatabase => 'database (opening or update)';
+
+  @override
+  String get startupErrFormat => 'data in an invalid format';
+
+  @override
+  String get startupErrOther => 'unexpected error';
+
+  @override
+  String get startupEraseFailed =>
+      'The data could not be erased. Try again or restart the tablet.';
+
+  @override
   String storageResetNotice(String date) {
     return 'On $date Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn\'t be read.';
   }
