@@ -123,9 +123,6 @@ jobs:
         run: python studio/keygen.py
       - name: "Sincronizza gli asset (APK di debug e test, non una release: anche le bozze)"
         run: python studio/sync_assets.py --include-drafts
-      - name: Genera le cartelle piattaforma
-        working-directory: app
-        run: flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
       - name: Dipendenze esatte di app/pubspec.lock
         working-directory: app
         run: flutter pub get --enforce-lockfile
@@ -184,8 +181,6 @@ jobs:
       - run: python studio/keygen.py
       - name: "Sincronizza gli asset (come Android: anche le bozze, altrimenti si compila con contenuti vuoti)"
         run: python studio/sync_assets.py --include-drafts
-      - working-directory: app
-        run: flutter create . --org com.markg981 --project-name mirabo --platforms android,ios
       - name: Dipendenze esatte di app/pubspec.lock
         working-directory: app
         run: flutter pub get --enforce-lockfile
