@@ -9,6 +9,7 @@ import '../design/palette.dart';
 import '../design/widgets.dart';
 import '../parent/adult_gate.dart';
 import '../parent/parent_area.dart';
+import '../parent/screen_secure.dart';
 import 'categories.dart';
 import 'category_widgets.dart';
 import 'child_top_bar.dart';
@@ -18,7 +19,7 @@ import 'story_reader.dart';
 
 void openParentArea(BuildContext context) => AdultGate.open(
       context,
-      then: () => Navigator.of(context).push(adultRoute((_) => const SessionHold(child: AdultGuard(child: ParentArea())))),
+      then: () => Navigator.of(context).push(adultRoute((_) => const SessionHold(child: AdultGuard(child: ScreenSecure(child: ParentArea()))))),
     );
 
 /// Una capacità della mensola: i suoi pochi materiali come carte grandi, la
