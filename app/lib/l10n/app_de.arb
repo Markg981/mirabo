@@ -115,6 +115,8 @@
   "memoryIntroFood": "Finde, wer was frisst: ein Tier und sein Futter.",
   "memoryIntroHome": "Dreh drei Karten um: ein Tier, sein Futter und sein Zuhause.",
   "memoryCovered": "Verdeckte Karte",
+  "memoryCardFaceUp": "{name}, aufgedeckt",
+  "drawColorName": "Farbe {color, select, rose{Rosa} apricot{Orange} sun{Gelb} leaf{Grün} sky{Hellblau} plum{Lila} brown{Braun} ink{Schwarz} other{{color}}}",
   "animalName": "{animal, select, dog{der Hund} cat{die Katze} rabbit{das Kaninchen} fox{der Fuchs} bear{der Bär} panda{der Panda} frog{der Frosch} monkey{der Affe} lion{der Löwe} tiger{der Tiger} cow{die Kuh} pig{das Schwein} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{das Eichhörnchen} penguin{der Pinguin} monkey{der Affe} rabbit{das Kaninchen} bear{der Bär} panda{der Panda} chestnut{die Kastanie} fish{der Fisch} banana{die Banane} carrot{die Karotte} honey{der Honig} bamboo{der Bambus} tree{der Baum} ice{das Eis} palm{die Palme} burrow{der Bau} forest{der Wald} mountain{der Berg} other{{item}}}",
 

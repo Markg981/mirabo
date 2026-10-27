@@ -46,6 +46,8 @@ class _DrawingGameState extends State<DrawingGame> {
     Color(0xFF8D5A3B),
     MiraboColors.ink,
   ];
+  // Chiavi dei nomi dei colori (drawColorName), nello stesso ordine di _palette.
+  static const _paletteNames = ['rose', 'apricot', 'sun', 'leaf', 'sky', 'plum', 'brown', 'ink'];
   static const _stamps = ['⭐', '❤️', '🌸', '🐞', '☀️', '🐟'];
   static const _widths = [8.0, 18.0, 34.0];
 
@@ -119,12 +121,13 @@ class _DrawingGameState extends State<DrawingGame> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  for (final c in _palette)
+                  for (var i = 0; i < _palette.length; i++)
                     _Swatch(
-                      color: tokens.tint(c),
-                      selected: !_eraser && _stamp == null && _color == c,
+                      name: context.l10n.drawColorName(_paletteNames[i]),
+                      color: tokens.tint(_palette[i]),
+                      selected: !_eraser && _stamp == null && _color == _palette[i],
                       onTap: () => setState(() {
-                        _color = c;
+                        _color = _palette[i];
                         _eraser = false;
                         _stamp = null;
                       }),
@@ -262,7 +265,8 @@ _Stroke _strokeFrom(Map<String, dynamic> m) {
 }
 
 class _Swatch extends StatelessWidget {
-  const _Swatch({required this.color, required this.selected, required this.onTap});
+  const _Swatch({required this.name, required this.color, required this.selected, required this.onTap});
+  final String name;
   final Color color;
   final bool selected;
   final VoidCallback onTap;
@@ -270,7 +274,12 @@ class _Swatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
-        child: GestureDetector(
+        child: Semantics(
+          button: true,
+          selected: selected,
+          label: name,
+          onTap: onTap,
+          child: GestureDetector(
           onTap: onTap,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
@@ -282,6 +291,7 @@ class _Swatch extends StatelessWidget {
               border: Border.all(color: Colors.white, width: selected ? 5 : 3),
               boxShadow: [BoxShadow(color: MiraboColors.deep(color, 0.15), offset: const Offset(0, 4))],
             ),
+          ),
           ),
         ),
       );

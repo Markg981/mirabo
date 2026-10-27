@@ -246,6 +246,7 @@ class _BalloonGameState extends State<BalloonGame> with SingleTickerProviderStat
         onTapDown: (_) => _tap(b),
         child: Semantics(
           button: true,
+          onTap: () => _tap(b),
           label: b.number != null ? context.l10n.balloonA11yNumber('${b.number}') : context.l10n.balloonA11yColor(b.color.$1),
           child: SizedBox(
             width: _w,

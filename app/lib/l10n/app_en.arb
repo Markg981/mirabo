@@ -115,6 +115,8 @@
   "memoryIntroFood": "Find who eats what: an animal and its food.",
   "memoryIntroHome": "Turn three cards: an animal, its food and its home.",
   "memoryCovered": "Face-down card",
+  "memoryCardFaceUp": "{name}, face-up",
+  "drawColorName": "Colour {color, select, rose{pink} apricot{orange} sun{yellow} leaf{green} sky{light blue} plum{purple} brown{brown} ink{black} other{{color}}}",
   "animalName": "{animal, select, dog{dog} cat{cat} rabbit{rabbit} fox{fox} bear{bear} panda{panda} frog{frog} monkey{monkey} lion{lion} tiger{tiger} cow{cow} pig{pig} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{the squirrel} penguin{the penguin} monkey{the monkey} rabbit{the rabbit} bear{the bear} panda{the panda} chestnut{the chestnut} fish{the fish} banana{the banana} carrot{the carrot} honey{the honey} bamboo{the bamboo} tree{the tree} ice{the ice} palm{the palm tree} burrow{the burrow} forest{the forest} mountain{the mountain} other{{item}}}",
 
