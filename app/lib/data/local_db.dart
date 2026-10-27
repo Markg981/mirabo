@@ -678,20 +678,22 @@ class LocalDb {
   }
 
   /// Registra il cambio della mensola automatica da [before] ad [after]:
-  /// chi esce chiude il suo periodo, chi entra ne apre uno.
-  Future<void> moveShelf(int profileId, {required List<String> before, required List<String> after, required DateTime at}) =>
-      _write(() async {
-    final when = at.toIso8601String();
-    final batch = _db.batch();
-    for (final k in before.where((k) => !after.contains(k))) {
-      batch.update('shelf_history', {'to_at': when},
-          where: 'profile_id = ? AND item_key = ? AND to_at IS NULL', whereArgs: [profileId, k]);
-    }
-    for (final k in after.where((k) => !before.contains(k))) {
-      batch.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
-    }
-    await batch.commit(noResult: true);
-  });
+  /// chi esce chiude il suo periodo, chi entra ne apre uno. Con [save] anche
+  /// il profilo si aggiorna nella stessa transazione: o tutto o niente, così
+  /// un nuovo tentativo non aggiunge righe a `shelf_history`.
+  Future<void> moveShelf(int profileId,
+          {required List<String> before, required List<String> after, required DateTime at, ChildProfile? save}) =>
+      _write(() => _db.transaction((tx) async {
+        final when = at.toIso8601String();
+        for (final k in before.where((k) => !after.contains(k))) {
+          await tx.update('shelf_history', {'to_at': when},
+              where: 'profile_id = ? AND item_key = ? AND to_at IS NULL', whereArgs: [profileId, k]);
+        }
+        for (final k in after.where((k) => !before.contains(k))) {
+          await tx.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
+        }
+        if (save != null) await tx.update('profiles', save.toRow(), where: 'id = ?', whereArgs: [save.id]);
+      }));
 
   /// Le idee proposte da [since] in poi.
   Future<List<({String day, String key})>> dailyIdeas(int profileId, {required DateTime since}) async {

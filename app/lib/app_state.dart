@@ -390,7 +390,12 @@ class AppState extends ChangeNotifier {
   /// settimana è finita la mensola automatica ruota; quando ha finito arriva
   /// una notifica e la casa si ridisegna.
   Map<Capacity, List<ShelfItem>> shelfFor(ChildProfile p, {SessionMode? mode}) {
-    if (p.shelf == null && _shelfDue(p)) scheduleMicrotask(() => rotateShelf(p));
+    if (p.shelf == null && _shelfDue(p) && !_shelfTried.contains(p.id)) {
+      // Un solo tentativo per profilo e sessione: se fallisce non riparte a ogni
+      // rebuild; si riprova solo da "Cambia adesso" o a un nuovo avvio.
+      _shelfTried.add(p.id);
+      scheduleMicrotask(() => rotateShelf(p).catchError((Object _) {}));
+    }
     return Shelf.arrange(shelfCandidates(p, mode: mode), p.shelf ?? p.shelfAuto, p.ageBand);
   }
 
@@ -404,13 +409,19 @@ class AppState extends ChangeNotifier {
   bool _shelfDue(ChildProfile p) =>
       p.shelfAuto == null || p.shelfRotatedAt == null || !_now().isBefore(p.shelfRotatedAt!.add(Shelf.rotation));
 
-  Future<void>? _rotating;
+  /// Un rinnovo alla volta per profilo; i profili già tentati in questa sessione.
+  final Map<int, Future<void>> _rotating = {};
+  final Set<int> _shelfTried = {};
 
   /// Ruota la mensola automatica (vedi [Shelf.rotate]) e la salva. Senza
   /// [force] solo se la settimana è finita; con [force] è il "Cambia adesso"
   /// del genitore. La scelta del genitore non si tocca.
-  Future<void> rotateShelf(ChildProfile p, {bool force = false}) =>
-      _rotating ??= _rotateShelf(p, force).whenComplete(() => _rotating = null);
+  Future<void> rotateShelf(ChildProfile p, {bool force = false}) {
+    if (force) _shelfTried.remove(p.id);
+    return _rotating[p.id] ??= _rotateShelf(p, force).whenComplete(() {
+      _rotating.remove(p.id);
+    });
+  }
 
   Future<void> _rotateShelf(ChildProfile p, bool force) async {
     final fresh = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
@@ -425,11 +436,15 @@ class AppState extends ChangeNotifier {
       history: await db.shelfHistory(fresh.id),
       now: now,
     );
-    await db.moveShelf(fresh.id, before: current, after: next, at: now);
     // Durante gli await il genitore può aver modificato il profilo: si
     // riparte dalla copia corrente, non da quella presa prima.
     final latest = profiles.firstWhere((x) => x.id == fresh.id, orElse: () => fresh);
-    await updateProfile(latest.withAutoShelf(next, now));
+    final saved = latest.withAutoShelf(next, now);
+    // Storico e profilo in una sola transazione (lingua e fascia non cambiano).
+    await db.moveShelf(fresh.id, before: current, after: next, at: now, save: saved);
+    profiles = await db.profiles();
+    if (currentProfile?.id == saved.id) currentProfile = saved;
+    notifyListeners();
   }
 
   /// Il genitore cambia la mensola; null la lascia riempire da sola.
