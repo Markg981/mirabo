@@ -74,7 +74,10 @@ class _TraceRoundState extends RoundState<TraceRound> {
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(color: Theme.of(context).colorScheme.outlineVariant, width: 2),
                 ),
-                child: GestureDetector(
+                // Dopo la risposta giusta il foglio non accetta altri tratti.
+                child: IgnorePointer(
+                  ignoring: lastCorrect == true,
+                  child: GestureDetector(
                   onPanStart: (d) => setState(() => _strokes.add([d.localPosition])),
                   onPanUpdate: (d) => setState(() => _strokes.last.add(d.localPosition)),
                   onPanEnd: (_) {
@@ -94,6 +97,7 @@ class _TraceRoundState extends RoundState<TraceRound> {
                       strokeColor: Theme.of(context).colorScheme.primary,
                       done: lastCorrect == true,
                     ),
+                  ),
                   ),
                 ),
               );
