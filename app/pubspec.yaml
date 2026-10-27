@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: any
+  intl: ^0.20.2
   # Dati locali
   # SQLite cifrato (SQLCipher); la chiave sta in flutter_secure_storage
   sqflite_sqlcipher: ^3.1.0
