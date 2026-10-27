@@ -25,7 +25,7 @@ void main() {
   setUp(() {
     store = MemoryPinStore();
     opened = 0;
-    AdultGate.pin = AdultPin(store: store, iterations: 10);
+    AdultGate.pin = AdultPin(store: store, iterations: 10, derive: AdultPin.syncKdf);
     AdultGate.deviceAuth = (_) async => false;
     TestWidgetsFlutterBinding.ensureInitialized();
     TestWidgetsFlutterBinding.instance.platformDispatcher.localeTestValue = const Locale('it');

@@ -54,10 +54,16 @@ class PinResetNotice {
 /// errore oltre la soglia, l'attesa cresce. Il PIN non cancella né tocca i
 /// dati del bambino: il reset sostituisce solo questo segreto.
 class AdultPin {
-  AdultPin({PinStore? store, DateTime Function()? now, Duration Function()? monotonic, this.iterations = 20000})
-      : _store = store ?? const SecurePinStore(),
+  AdultPin({
+    PinStore? store,
+    DateTime Function()? now,
+    Duration Function()? monotonic,
+    this.iterations = 20000,
+    Future<List<int>> Function(String pin, List<int> salt, int iterations)? derive,
+  })  : _store = store ?? const SecurePinStore(),
         _now = now ?? DateTime.now,
-        _mono = monotonic ?? _defaultMono;
+        _mono = monotonic ?? _defaultMono,
+        _kdf = derive ?? _isolateKdf;
 
   static const minLength = 4;
   static const maxLength = 6;
@@ -119,6 +125,13 @@ class AdultPin {
   }
   final DateTime Function() _now;
   final int iterations;
+  final Future<List<int>> Function(String, List<int>, int) _kdf;
+
+  /// Sotto testWidgets il clock finto non vede il ritorno dell'isolate: i test
+  /// di widget passano [derive] con [syncKdf].
+  static Future<List<int>> _isolateKdf(String pin, List<int> salt, int it) =>
+      Isolate.run(() => pbkdf2Sha256(pin, salt, it));
+  static Future<List<int>> syncKdf(String pin, List<int> salt, int it) async => pbkdf2Sha256(pin, salt, it);
 
   // Orologio monotono del processo: non si sposta cambiando l'ora del
   // dispositivo. Vale solo finché l'app resta aperta.
@@ -327,10 +340,7 @@ class AdultPin {
 
   /// PBKDF2 in un isolate separato: 20000 HMAC sul thread UI possono far
   /// scattare l'interfaccia sui tablet economici. Output identico a prima.
-  Future<List<int>> _derive(String pin, List<int> salt) {
-    final it = iterations;
-    return Isolate.run(() => pbkdf2Sha256(pin, salt, it));
-  }
+  Future<List<int>> _derive(String pin, List<int> salt) => _kdf(pin, salt, iterations);
 
   bool _constantTimeEquals(String a, String b) {
     if (a.length != b.length) return false;
