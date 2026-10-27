@@ -66,3 +66,13 @@ def test_build_json_scritto_a_mano_blocca(release_dir):
 def test_impronta_diversa_dall_approvazione_blocca(release_dir, monkeypatch):
     monkeypatch.setattr(check_release.approvals, "latest", lambda kind, cid: {"fingerprint": "altra"})
     assert any("impronta" in p for p in check_release.assets())
+
+
+def test_catalogo_senza_storie_blocca(release_dir):
+    assets, release_json = release_dir
+    release = json.loads(release_json.read_text(encoding="utf-8"))
+    release["contents"] = []
+    release_json.write_text(json.dumps(release), encoding="utf-8")
+    (assets / "stories" / "index.json").write_text("[]", encoding="utf-8")
+    problems = check_release.assets()
+    assert any("nessuna storia" in p for p in problems)
