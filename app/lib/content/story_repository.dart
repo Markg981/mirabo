@@ -132,8 +132,9 @@ class StoryRepository {
     }
     try {
       themes = ThemeCatalog.fromJson(jsonDecode(await rootBundle.loadString('assets/education/themes.json')) as Map<String, dynamic>);
-    } catch (_) {
-      // Asset non sincronizzati (vedi studio/sync_assets.py): resta la mensola.
+    } catch (e) {
+      // Asset non sincronizzati (vedi studio/sync_assets.py): resta la mensola, e si segnala.
+      rejected.add('themes.json: $e');
       themes = ThemeCatalog.empty;
     }
     // Costruisce subito l'italiano: un pacchetto con un JSON rotto si scarta
@@ -165,12 +166,8 @@ class StoryRepository {
           try {
             out[id] = Activity.fromJson(_localized(pkg, 'activity.json', lang)!);
           } catch (e) {
-            try {
-              if (lang == 'it') rethrow;
-              out[id] = Activity.fromJson(pkg.json('activity.json')!);
-            } catch (e2) {
-              bad[id] = e2;
-            }
+            // Traduzione rotta: fuori dalla mensola di quella lingua, senza ripiegare sull'italiano.
+            if (lang == 'it') bad[id] = e;
           }
         });
         for (final id in bad.keys) {
@@ -187,12 +184,8 @@ class StoryRepository {
           try {
             out[id] = _storyFromPackage(pkg, lang);
           } catch (e) {
-            try {
-              if (lang == 'it') rethrow;
-              out[id] = _storyFromPackage(pkg, 'it');
-            } catch (e2) {
-              bad[id] = e2;
-            }
+            // Traduzione rotta: fuori dalla mensola di quella lingua, senza ripiegare sull'italiano.
+            if (lang == 'it') bad[id] = e;
           }
         });
         for (final id in bad.keys) {
@@ -215,15 +208,10 @@ class StoryRepository {
     if (variants.isEmpty) throw const FormatException('nessuna variante leggibile');
     final card = meta.parentCardFile;
     final parentCard = (lang == 'it' ? null : pkg.text('i18n/$lang/$card')) ?? pkg.text(card);
-    // L'attività è facoltativa; se l'overlay tradotto è rotto resta quella italiana.
+    // L'attività è facoltativa; se è rotta anche in traduzione, la storia non è offerta in quella lingua.
     HomeActivity? homeActivity;
     if (meta.homeActivityFile case final file?) {
-      try {
-        homeActivity = HomeActivity.fromJson(_localized(pkg, file, lang)!);
-      } catch (_) {
-        final base = pkg.json(file);
-        if (base != null) homeActivity = HomeActivity.fromJson(base);
-      }
+      homeActivity = HomeActivity.fromJson(_localized(pkg, file, lang)!);
     }
     return meta.withContent(variants: variants, parentCard: parentCard, homeActivity: homeActivity);
   }
