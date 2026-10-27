@@ -25,6 +25,6 @@ Principio: **i dati restano finché la famiglia usa l'app o fino alla cancellazi
 3. **Revoca**: la disattivazione chiama `disconnect()` (revoca il permesso concesso su Google).
 4. **Ciclo dei backup**: il backup è un solo file sovrascritto, senza versioni nostre. Dopo l'eliminazione, Google applica i propri tempi di cancellazione dai sistemi di backup (da verificare e citare dai termini del fornitore, vedi `vendors.md`). Le copie scaricate dal genitore fuori dall'app restano sotto il suo controllo e senza password non sono leggibili.
 5. **Cambio password**: un nuovo backup con nuova password sovrascrive il precedente.
-6. **Disinstallazione**: dati e chiave del DB sono rimossi dal sistema; il backup su Drive resta (per scelta).
+6. **Disinstallazione**: i dati e il DB sono rimossi dal sistema; su Android anche la chiave. Su iOS il Keychain può sopravvivere: restano `mirabo_db_key` (inutile senza il DB) e, se c'erano, le chiavi del backup, mentre le chiavi `adult_pin_*` orfane si cancellano al primo avvio dopo la reinstallazione (`AdultPin.reconcile`). Prova su iPad ancora da eseguire; il backup su Drive resta (per scelta).
 
 Se in futuro nascesse un backend o un servizio di assistenza con ticket, vanno definiti qui tempi propri (proposta: ticket cancellati 12 mesi dopo la chiusura).
