@@ -156,6 +156,9 @@
   "drawingEraser": "Gomme",
   "drawingUndo": "Annuler",
   "drawingNewSheet": "Nouvelle feuille",
+  "drawingBrushThin": "Pinceau fin",
+  "drawingBrushMedium": "Pinceau moyen",
+  "drawingBrushThick": "Pinceau épais",
 
   "gameXyloTitle": "Le xylophone",
   "gameXyloDescSmall": "Joue librement.",

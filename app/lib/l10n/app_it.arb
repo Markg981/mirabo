@@ -156,6 +156,9 @@
   "drawingEraser": "Gomma",
   "drawingUndo": "Torna indietro",
   "drawingNewSheet": "Foglio nuovo",
+  "drawingBrushThin": "Pennello sottile",
+  "drawingBrushMedium": "Pennello medio",
+  "drawingBrushThick": "Pennello spesso",
 
   "gameXyloTitle": "Lo xilofono",
   "gameXyloDescSmall": "Suona libero.",

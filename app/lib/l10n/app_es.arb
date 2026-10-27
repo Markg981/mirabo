@@ -156,6 +156,9 @@
   "drawingEraser": "Goma",
   "drawingUndo": "Deshacer",
   "drawingNewSheet": "Hoja nueva",
+  "drawingBrushThin": "Pincel fino",
+  "drawingBrushMedium": "Pincel medio",
+  "drawingBrushThick": "Pincel grueso",
 
   "gameXyloTitle": "El xilófono",
   "gameXyloDescSmall": "Toca libremente.",

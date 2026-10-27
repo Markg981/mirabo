@@ -156,6 +156,9 @@
   "drawingEraser": "Radiergummi",
   "drawingUndo": "Rückgängig",
   "drawingNewSheet": "Neues Blatt",
+  "drawingBrushThin": "Dünner Pinsel",
+  "drawingBrushMedium": "Mittlerer Pinsel",
+  "drawingBrushThick": "Dicker Pinsel",
 
   "gameXyloTitle": "Das Xylofon",
   "gameXyloDescSmall": "Frei spielen.",
