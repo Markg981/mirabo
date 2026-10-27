@@ -39,7 +39,10 @@ void main() {
     final state = AppState(
       db: _FakeDb(),
       repo: _NoRepo(),
-      nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')),
+      nameVoice: NameVoice(
+        cacheDir: () async => throw const FileSystemException('no'),
+        playDir: () async => throw const FileSystemException('no'),
+      ),
     );
     await state.init();
     addTearDown(state.dispose);
