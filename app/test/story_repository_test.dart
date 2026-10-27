@@ -1,0 +1,115 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:archive/archive.dart';
+import 'package:crypto/crypto.dart';
+import 'package:cryptography/cryptography.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mirabo/content/package_verifier.dart';
+import 'package:mirabo/content/story_repository.dart';
+import 'package:mirabo/models/story.dart';
+
+String _hex(List<int> b) => b.map((x) => x.toRadixString(16).padLeft(2, '0')).join();
+
+/// Un pacchetto incoerente non deve fermare l'avvio né lasciare storie illeggibili.
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  final root = Directory.current.path.endsWith('app') ? Directory.current.parent : Directory.current;
+  final variant6 = File('${root.path}/content/stories/albero-silenzioso/6-7.json').readAsStringSync();
+  late SimpleKeyPair key;
+  late String keyHex;
+
+  setUpAll(() async {
+    key = await Ed25519().newKeyPair();
+    keyHex = _hex((await key.extractPublicKey()).bytes);
+  });
+
+  Uint8List u(String s) => Uint8List.fromList(utf8.encode(s));
+
+  Future<Uint8List> pack(Map<String, Uint8List> files, {Object? manifestFiles, required String id}) async {
+    final manifest = <String, dynamic>{
+      'id': id,
+      'kind': 'story',
+      'version': 1,
+      'files': manifestFiles ?? {for (final e in files.entries) e.key: sha256.convert(e.value).toString()},
+    };
+    final sig = await Ed25519().sign(utf8.encode(PackageVerifier.canonicalJson(manifest)), keyPair: key);
+    final archive = Archive()
+      ..addFile(ArchiveFile('manifest.json', 1, u(jsonEncode({...manifest, 'signature': _hex(sig.bytes)}))));
+    files.forEach((n, b) => archive.addFile(ArchiveFile(n, b.length, b)));
+    return Uint8List.fromList(ZipEncoder().encode(archive)!);
+  }
+
+  Map<String, Uint8List> story(String id, Map<String, String> bands, {Map<String, String> variants = const {}}) => {
+        'story.json': u(jsonEncode({
+          'id': id,
+          'version': 1,
+          'title': id,
+          'world': 'ambiente',
+          'topic': 't',
+          'ageBands': bands,
+          'formats': ['illustrated'],
+          'togetherOnly': false,
+          'keyPhrase': 'k',
+          'parentCard': 'parent.md',
+          'sources': [],
+        })),
+        'parent.md': u('x'),
+        for (final e in variants.entries) e.key: u(e.value),
+      };
+
+  Future<StoryRepository> load(Map<String, Uint8List> pkgs) async {
+    final assets = <String, Uint8List>{
+      'assets/companions/companions.json': u('{"companions":[]}'),
+      'assets/stories/index.json': u(jsonEncode(pkgs.keys.toList())),
+      for (final e in pkgs.entries) 'assets/stories/${e.key}': e.value,
+    };
+    final messenger = TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMessageHandler('flutter/assets', (m) async {
+      final b = assets[utf8.decode(m!.buffer.asUint8List())];
+      return b == null ? null : ByteData.sublistView(b);
+    });
+    addTearDown(() => messenger.setMockMessageHandler('flutter/assets', null));
+    for (final k in assets.keys) {
+      rootBundle.evict(k);
+    }
+    final repo = StoryRepository(verifier: PackageVerifier(publicKeyHex: keyHex));
+    await repo.load();
+    return repo;
+  }
+
+  test('un pacchetto con il manifest di tipo errato viene scartato e registrato, gli altri restano', () async {
+    final repo = await load({
+      'ok.mirabo': await pack(story('ok', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'ok'),
+      'rotto.mirabo': await pack(story('rotto', {'6-7': '6-7.json'}), manifestFiles: 5, id: 'rotto'),
+    });
+    expect(repo.stories.map((s) => s.id), ['ok']);
+    expect(repo.rejected.single, contains('rotto.mirabo'));
+  });
+
+  test('un JSON italiano illeggibile scarta solo quel pacchetto', () async {
+    final repo = await load({
+      'ok.mirabo': await pack(story('ok', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'ok'),
+      'json.mirabo': await pack(story('json', {'6-7': '6-7.json'}, variants: {'6-7.json': '{"ageBand": 7}'}), id: 'json'),
+    });
+    expect(repo.stories.map((s) => s.id), ['ok']);
+    expect(repo.rejected, hasLength(1));
+  });
+
+  test('una variante assente non è offerta; senza varianti leggibili la storia è scartata', () async {
+    final repo = await load({
+      'meta.mirabo': await pack(
+          story('meta', {'6-7': '6-7.json', '8-10': '8-10.json'}, variants: {'6-7.json': variant6}),
+          id: 'meta'),
+      'vuota.mirabo': await pack(
+          story('vuota', {'6-7': '6-7.json'}, variants: {'6-7.json': '{"ageBand":"6-7","screens":[]}'}),
+          id: 'vuota'),
+    });
+    final s = repo.byId('meta')!;
+    expect(s.supports(AgeBand.b6to7), isTrue);
+    expect(s.supports(AgeBand.b8to10), isFalse);
+    expect(repo.byId('vuota'), isNull);
+    expect(repo.rejected.single, contains('vuota'));
+  });
+}
