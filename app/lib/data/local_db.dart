@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
 import 'adult_pin.dart';
+import 'retention.dart';
 import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
@@ -90,6 +91,7 @@ class LocalDb {
     );
     // Le righe tolte dalla v13 non restano nelle pagine libere del file.
     if (minimized) await db.execute('VACUUM');
+    await pruneExpired(db);
     // Si riparte da zero, ma non in silenzio: l'adulto lo legge al primo avvio.
     if (key.reset) await db.insert('settings', {'key': storageResetKey, 'value': DateTime.now().toIso8601String()});
     return LocalDb._(db);
