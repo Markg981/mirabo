@@ -269,6 +269,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get countdownPick => 'Pick the date';
 
   @override
+  String get countdownPickHint =>
+      'A grown-up picks the date; then each day one more day gets colored in.';
+
+  @override
   String get countdownToday => 'It\'s today!';
 
   @override

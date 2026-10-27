@@ -270,6 +270,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get countdownPick => 'Elige la fecha';
 
   @override
+  String get countdownPickHint =>
+      'Un mayor elige la fecha; luego cada día se colorea un día.';
+
+  @override
   String get countdownToday => '¡Es hoy!';
 
   @override
