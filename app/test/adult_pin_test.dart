@@ -55,21 +55,33 @@ void main() {
     expect(await pin.verify('1'), PinResult.wrong);
   });
 
-  test('reset: toglie PIN e attese senza toccare altro', () async {
+  test('reset: toglie le attese senza toccare altro; il PIN cambia solo con set', () async {
     store.data['altro'] = 'dato del bambino';
     await pin.set('4821');
     for (var i = 0; i < 3; i++) {
       await pin.verify('0000');
     }
     await pin.reset();
-    expect(await pin.isSet, isFalse);
     expect(await pin.remainingLock(), Duration.zero);
     expect(store.data['altro'], 'dato del bambino');
     await pin.set('9999');
     expect(await pin.verify('9999'), PinResult.ok);
+    expect(await pin.verify('4821'), PinResult.wrong);
   });
 
-  test('codice di recupero: solo hash, vale una volta, toglie il PIN e lascia un avviso', () async {
+  test('reset annullato: il tablet non resta senza PIN, il vecchio vale ancora', () async {
+    await pin.set('4821');
+    final code = await pin.newRecoveryCode();
+    expect(await pin.recover(code), PinResult.ok);
+    // l'adulto annulla la scelta del PIN nuovo
+    expect(await pin.isSet, isTrue);
+    expect(await pin.verify('4821'), PinResult.ok);
+    expect(await pin.hasRecoveryCode, isTrue);
+    await pin.reset(how: RecoveryChannel.device);
+    expect(await pin.isSet, isTrue);
+  });
+
+  test('codice di recupero: solo hash, vale una volta, si consuma col PIN nuovo e lascia un avviso', () async {
     await pin.set('1234');
     final code = await pin.newRecoveryCode();
     expect(code, matches(RegExp(r'^[A-Z2-9]{4}-[A-Z2-9]{4}$')));
@@ -78,7 +90,9 @@ void main() {
 
     expect(await pin.recover('AAAA-AAAA'), PinResult.wrong);
     expect(await pin.recover(' ${code.toLowerCase()} '), PinResult.ok);
-    expect(await pin.isSet, isFalse);
+    expect(await pin.isSet, isTrue);
+    expect(await pin.hasRecoveryCode, isTrue);
+    await pin.set('5555');
     expect(await pin.hasRecoveryCode, isFalse);
     expect(await pin.recover(code), PinResult.wrong);
 
