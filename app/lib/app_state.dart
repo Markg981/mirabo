@@ -522,7 +522,11 @@ class AppState extends ChangeNotifier {
     await db.deleteProfile(id);
     await nameVoice.forget(id);
     profiles = await db.profiles();
-    if (currentProfile?.id == id) currentProfile = profiles.isEmpty ? null : profiles.first;
+    if (currentProfile?.id == id) {
+      currentProfile = profiles.isEmpty ? null : profiles.first;
+      // Un altro bambino: "insieme" valeva per chi è stato eliminato.
+      mode = SessionMode.alone;
+    }
     // Un tick durante gli await non deve aver accreditato il bambino eliminato.
     await usage?.forget(id);
     _syncAloneClock();
