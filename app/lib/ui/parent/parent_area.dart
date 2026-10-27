@@ -247,8 +247,7 @@ class _PinSectionState extends State<_PinSection> {
             )),
             trailing: TextButton(
               onPressed: () async {
-                await AdultGate.pin.clearResetNotice();
-                _load();
+                if (await AdultGate.dismissResetNotice(context)) _load();
               },
               child: Text(l.gateResetSeen),
             ),

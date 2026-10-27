@@ -172,6 +172,57 @@ void main() {
     expect((await restarted.remainingLock()).inSeconds, inInclusiveRange(59, 60));
   });
 
+  group('protezione dopo un reset col blocco del tablet', () {
+    test('per 7 giorni serve il vecchio codice; poi cade', () async {
+      await pin.set('4821');
+      final code = await pin.newRecoveryCode();
+      expect(await pin.recoveryProtected, isFalse);
+      await pin.reset(how: RecoveryChannel.device);
+      await pin.set('1111'); // il nuovo PIN lo conosce anche chi ha resettato
+      expect(await pin.recoveryProtected, isTrue);
+      expect(await pin.verifyRecoveryCode('AAAA-AAAA'), PinResult.wrong);
+      expect(await pin.verifyRecoveryCode(code), PinResult.ok);
+      expect(await pin.hasRecoveryCode, isTrue); // verificare non consuma né resetta
+      clock = clock.add(AdultPin.protectionPeriod + const Duration(minutes: 1));
+      expect(await pin.recoveryProtected, isFalse);
+    });
+
+    test("chiudere l'avviso non toglie la protezione", () async {
+      await pin.set('4821');
+      await pin.newRecoveryCode();
+      await pin.reset(how: RecoveryChannel.device);
+      await pin.clearResetNotice();
+      expect(await pin.recoveryProtected, isTrue);
+    });
+
+    test('reset col codice di recupero o senza codice: nessuna protezione', () async {
+      await pin.set('4821');
+      await pin.reset(how: RecoveryChannel.device); // nessun codice da chiedere
+      expect(await pin.recoveryProtected, isFalse);
+      final code = await pin.newRecoveryCode();
+      expect(await pin.recover(code), PinResult.ok);
+      expect(await pin.recoveryProtected, isFalse);
+    });
+
+    test('la verifica del vecchio codice rispetta le attese', () async {
+      await pin.set('4821');
+      await pin.newRecoveryCode();
+      await pin.reset(how: RecoveryChannel.device);
+      for (var i = 0; i < AdultPin.freeAttempts; i++) {
+        await pin.verifyRecoveryCode('AAAA-AAAA');
+      }
+      expect(await pin.verifyRecoveryCode('AAAA-AAAA'), PinResult.locked);
+    });
+
+    test('forget toglie la protezione', () async {
+      await pin.set('4821');
+      await pin.newRecoveryCode();
+      await pin.reset(how: RecoveryChannel.device);
+      await pin.forget();
+      expect(await pin.recoveryProtected, isFalse);
+    });
+  });
+
   group('reconcile (Keychain iOS oltre la reinstallazione)', () {
     test('DB assente: le chiavi del PIN orfane vengono cancellate', () async {
       await pin.set('1234');

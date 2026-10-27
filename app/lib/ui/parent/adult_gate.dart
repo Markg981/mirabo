@@ -46,9 +46,24 @@ class AdultGate {
     return ok == true;
   }
 
+  /// Come [confirm], ma subito dopo un reset col blocco del tablet chiede
+  /// anche il vecchio codice di recupero: chi conosce solo lo sblocco del
+  /// tablet non può rigenerare il codice, spegnere il recupero o chiudere
+  /// l'avviso (docs/adult-gate.md).
+  static Future<bool> confirmProtected(BuildContext context) async {
+    if (!await confirm(context) || !context.mounted) return false;
+    if (!await pin.recoveryProtected || !context.mounted) return true;
+    final ok = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const AdultLocale(child: _OldCodeDialog()),
+    );
+    return ok == true;
+  }
+
   /// Un nuovo codice di recupero (il vecchio smette di valere), dopo il PIN.
   static Future<void> newRecoveryCode(BuildContext context) async {
-    if (!await confirm(context) || !context.mounted) return;
+    if (!await confirmProtected(context) || !context.mounted) return;
     final code = await pin.newRecoveryCode();
     if (!context.mounted) return;
     await showDialog<void>(
@@ -66,8 +81,17 @@ class AdultGate {
 
   /// Accende o spegne il recupero con il blocco del tablet, dopo il PIN.
   static Future<bool> setDeviceRecovery(BuildContext context, bool on) async {
-    if (!await confirm(context)) return false;
+    // Accenderlo non toglie nulla all'adulto: il vecchio codice serve per spegnerlo.
+    if (!await (on ? confirm(context) : confirmProtected(context))) return false;
     await pin.setDeviceRecovery(on);
+    return true;
+  }
+
+  /// Chiude l'avviso di un reset: serve il PIN (e, subito dopo un reset col
+  /// blocco del tablet, il vecchio codice di recupero).
+  static Future<bool> dismissResetNotice(BuildContext context) async {
+    if (!await confirmProtected(context)) return false;
+    await pin.clearResetNotice();
     return true;
   }
 
@@ -307,6 +331,78 @@ class _GateDialogState extends State<_GateDialog> {
           onPressed: locked || _busy ? null : _submit,
           child: Text(_phase == _Phase.showCode ? l.gateRecoveryWritten : l.gateEnter),
         ),
+      ],
+    );
+  }
+}
+
+/// Chiede il vecchio codice di recupero per le modifiche protette dopo un
+/// reset. Rispetta le attese tra tentativi, come PIN e recupero.
+class _OldCodeDialog extends StatefulWidget {
+  const _OldCodeDialog();
+  @override
+  State<_OldCodeDialog> createState() => _OldCodeDialogState();
+}
+
+class _OldCodeDialogState extends State<_OldCodeDialog> {
+  final _code = TextEditingController();
+  String? _error;
+  bool _busy = false;
+
+  @override
+  void dispose() {
+    _code.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    final l = context.l10n;
+    if (_busy) return;
+    setState(() => _busy = true);
+    final r = await AdultGate.pin.verifyRecoveryCode(_code.text);
+    if (!mounted) return;
+    if (r == PinResult.ok) {
+      Navigator.of(context).pop(true);
+      return;
+    }
+    final wait = r == PinResult.locked ? await AdultGate.pin.remainingLock() : Duration.zero;
+    if (!mounted) return;
+    _code.clear();
+    setState(() {
+      _busy = false;
+      _error = wait > Duration.zero ? l.gatePinWait('${wait.inSeconds + 1} s') : l.gateRecoveryWrong;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    return AlertDialog(
+      title: Text(l.gateRecoveryLabel),
+      content: Column(mainAxisSize: MainAxisSize.min, children: [
+        Padding(padding: const EdgeInsets.only(bottom: 12), child: Text(l.gateRecoveryAsk)),
+        TextField(
+          key: const Key('old-recovery-code'),
+          controller: _code,
+          enabled: !_busy,
+          autofocus: true,
+          autocorrect: false,
+          enableSuggestions: false,
+          textCapitalization: TextCapitalization.characters,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 22, letterSpacing: 3),
+          onSubmitted: (_) => _submit(),
+          decoration: InputDecoration(labelText: l.gateRecoveryLabel, counterText: ''),
+        ),
+        if (_error != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
+          ),
+      ]),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(l.cancel)),
+        FilledButton(onPressed: _busy ? null : _submit, child: Text(l.gateEnter)),
       ],
     );
   }
