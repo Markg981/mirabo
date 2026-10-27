@@ -166,6 +166,27 @@ void main() {
       expect(drive.uploads, 1);
     });
 
+    test('un database con meno dati dell\'ultimo backup non lo sovrascrive in automatico', () async {
+      final drive = _MemoryStore();
+      var now = DateTime(2026, 10, 13);
+      final db = _FakeDb(_sample('Emma')..['sessions'] = [1, 2, 3]);
+      final backup = CloudBackup(db: db, store: drive, now: () => now);
+      await backup.connect();
+      await backup.enable('password del genitore');
+      final good = drive.file;
+
+      // Il profilo c'è ancora ma il resto si è perso.
+      db.data = _sample('Emma')..['sessions'] = [];
+      now = now.add(const Duration(days: 2));
+      await backup.autoBackup();
+      expect(drive.uploads, 1);
+      expect(drive.file, good);
+
+      // A mano il genitore può comunque sovrascrivere.
+      await backup.backupNow();
+      expect(drive.uploads, 2);
+    });
+
     test('backup automatico offline: segnala senza eccezioni', () async {
       final drive = _MemoryStore();
       var now = DateTime(2026, 10, 13);
