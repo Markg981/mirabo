@@ -157,7 +157,7 @@ class _SessionTab extends StatelessWidget {
           icon: Icons.lock_rounded,
           color: MiraboColors.teal,
           title: context.l10n.parentData,
-          subtitle: context.l10n.parentDataHint,
+          subtitle: Features.cloudBackup ? context.l10n.parentDataHint : context.l10n.parentDataHintLocal,
           children: [
             const _PinSection(),
             const SizedBox(height: 12),

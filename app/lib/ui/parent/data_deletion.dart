@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../app_state.dart';
 import '../../data/cloud_backup.dart';
+import '../../features.dart';
 import '../../l10n/l10n.dart';
 import 'adult_gate.dart';
 
@@ -48,7 +49,7 @@ class DataDeletionSection extends StatelessWidget {
           const SizedBox(height: 16),
           Text(l.dataOutsideTitle, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 4),
-          Text(l.dataOutsideBody),
+          Text(Features.cloudBackup ? l.dataOutsideBody : l.dataOutsideBodyLocal),
         ],
       ),
     );
@@ -58,7 +59,7 @@ class DataDeletionSection extends StatelessWidget {
     final l = context.l10n;
     final ok = await showDialog<bool>(
       context: context,
-      builder: (_) => _TypeWordDialog(title: l.dataWipeTitle, body: l.dataWipeBody, word: l.dataWipeWord),
+      builder: (_) => _TypeWordDialog(title: l.dataWipeTitle, body: Features.cloudBackup ? l.dataWipeBody : l.dataWipeBodyLocal, word: l.dataWipeWord),
     );
     if (ok != true || !context.mounted) return;
     final messenger = ScaffoldMessenger.of(context);
