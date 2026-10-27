@@ -238,8 +238,11 @@ class LocalDb {
   /// Un database già presente viene sistemato prima di aprirlo:
   /// - in chiaro (versioni precedenti alla cifratura): convertito con la nuova chiave;
   /// - cifrato ma senza chiave (es. file ripristinato da un backup su un altro
-  ///   dispositivo): illeggibile, quindi eliminato e si riparte da zero, con
-  ///   `reset` vero perché l'app lo dica.
+  ///   dispositivo, o chiave persa dal Keystore/Keychain): illeggibile, quindi
+  ///   messo da parte in quarantena ([quarantinePrefix], al massimo una copia)
+  ///   e si riparte da zero, con `reset` vero perché l'app lo dica. La copia
+  ///   serve a non perdere per sempre i dati se la chiave torna; la elimina
+  ///   "Elimina tutti i dati" ([eraseStorage]).
   /// Un errore del secure storage non è una chiave mancante: arriva al chiamante
   /// e il database resta dov'è.
   static Future<({String value, bool reset})> resolveKey(
@@ -255,7 +258,7 @@ class LocalDb {
     var reset = false;
     if (key == null) {
       if (exists && !plaintext) {
-        await _deleteDatabaseFiles(path);
+        await _quarantine(path);
         reset = true;
       }
       key = _newKey();
@@ -265,6 +268,27 @@ class LocalDb {
     }
     if (plaintext) await _encryptInPlace(path, key);
     return (value: key, reset: reset);
+  }
+
+  /// Prefisso (dopo il nome del database) del file messo in quarantena.
+  static const quarantinePrefix = '.illeggibile-';
+
+  /// Rinomina il database illeggibile invece di cancellarlo e toglie le
+  /// quarantene precedenti: ne resta una sola. -journal/-wal/-shm si eliminano.
+  static Future<void> _quarantine(String path) async {
+    await _deleteQuarantined(path);
+    await File(path).rename('$path$quarantinePrefix${DateTime.now().millisecondsSinceEpoch}');
+    await _deleteDatabaseFiles(path, mainFile: false);
+  }
+
+  /// Elimina i file in quarantena del database in [path].
+  static Future<void> _deleteQuarantined(String path) async {
+    final dir = File(path).parent;
+    final prefix = '${p.basename(path)}$quarantinePrefix';
+    if (!await dir.exists()) return;
+    await for (final e in dir.list()) {
+      if (e is File && p.basename(e.path).startsWith(prefix)) await e.delete();
+    }
   }
 
   static String _newKey() {
@@ -722,13 +746,15 @@ class LocalDb {
     _db = (await open())._db;
   }
 
-  /// Elimina da questo dispositivo il database (con i file -journal/-wal/-shm),
+  /// Elimina da questo dispositivo il database (con i file -journal/-wal/-shm
+  /// e l'eventuale copia in quarantena),
   /// la sua chiave nel secure storage, la cache del nome pronunciato e tutto
   /// ciò che l'app ha nella cartella temporanea (audio delle storie, suoni,
   /// file generati). [supportDir] e [tempDir] servono ai test.
   static Future<void> eraseStorage({Directory? supportDir, Directory? tempDir}) async {
     final support = supportDir ?? await getApplicationSupportDirectory();
     await _deleteDatabaseFiles(p.join(support.path, 'mirabo.db'));
+    await _deleteQuarantined(p.join(support.path, 'mirabo.db'));
     await _deleteTree(Directory(p.join(support.path, 'names')));
     await _storage.delete(key: _keyName);
     final temp = tempDir ?? await getTemporaryDirectory();

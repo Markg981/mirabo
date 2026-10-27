@@ -85,14 +85,22 @@ void main() {
       expect(f.existsSync(), isTrue);
     });
 
-    test('file cifrato senza chiave: si riparte da zero, ma con reset vero (lo si dice)', () async {
+    List<File> quarantined() =>
+        tmp.listSync().whereType<File>().where((e) => e.path.contains('mirabo.db${LocalDb.quarantinePrefix}')).toList();
+
+    test('file cifrato senza chiave: in quarantena (una sola), si riparte da zero con reset vero', () async {
       final rnd = Random(1);
-      final f = File('${tmp.path}/mirabo.db')..writeAsBytesSync(List.generate(4096, (_) => rnd.nextInt(256)));
+      final bytes = List.generate(4096, (_) => rnd.nextInt(256));
+      final f = File('${tmp.path}/mirabo.db')..writeAsBytesSync(bytes);
       File('${f.path}-wal').writeAsStringSync('x');
+      File('${f.path}${LocalDb.quarantinePrefix}1').writeAsStringSync('vecchia');
       final key = await resolve(f.path);
       expect(key.reset, isTrue);
       expect(f.existsSync(), isFalse);
       expect(File('${f.path}-wal').existsSync(), isFalse);
+      final q = quarantined();
+      expect(q, hasLength(1));
+      expect(q.single.readAsBytesSync(), bytes);
     });
 
     test('secure storage che non risponde: errore all\'avvio, il database non si tocca', () async {
