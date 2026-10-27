@@ -21,14 +21,24 @@ class _Repo implements StoryRepository {
   @override
   List<Activity> get activities => const [];
   @override
-  ThemeCatalog themes = ThemeCatalog.fromJson({'version': 1, 'themes': <String>[], 'cells': <Map<String, dynamic>>[]});
+  ThemeCatalog themes = ThemeCatalog.fromJson({
+    'version': 1,
+    'themes': <String>[],
+    'cells': <Map<String, dynamic>>[],
+  });
   @override
   List<Story> storiesIn(String lang) => const [];
   @override
   List<Activity> activitiesIn(String lang) => const [];
   @override
   List<Companion> companionsIn(String lang) => const [
-        Companion(id: CompanionId.bo, name: 'Bo', kind: 'mammut', tagline: '', growth: ['piccolo', 'cresce', 'grande', 'grandissimo']),
+        Companion(
+          id: CompanionId.bo,
+          name: 'Bo',
+          kind: 'mammut',
+          tagline: '',
+          growth: ['piccolo', 'cresce', 'grande', 'grandissimo'],
+        ),
       ];
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -48,28 +58,56 @@ class _Db implements LocalDb {
 }
 
 void main() {
-  for (final size in [const Size(844, 390), const Size(667, 375)]) {
-    testWidgets('casa a ${size.width.toInt()}x${size.height.toInt()}: nessun overflow', (tester) async {
-      tester.view.physicalSize = size;
-      tester.view.devicePixelRatio = 1;
-      addTearDown(tester.view.reset);
-      final p = const ChildProfile(id: 1, name: 'Emma', ageBand: AgeBand.b3to5, companion: CompanionId.bo, aloneSessionMinutes: 0)
-          .withShelf(const []);
-      final state = AppState(db: _Db(p), repo: _Repo(), nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')));
-      await state.init();
-      addTearDown(state.dispose);
-      await tester.pumpWidget(AppStateScope(
-        state: state,
-        child: MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: const Locale('it'),
-          theme: miraboTheme(dyslexiaFont: false, lowStimulation: false),
-          home: const HomeScreen(),
-        ),
-      ));
-      await tester.pump();
-      expect(tester.takeException(), isNull);
-    });
+  for (final size in [
+    const Size(844, 390),
+    const Size(667, 375),
+    const Size(800, 240),
+    const Size(640, 200),
+  ]) {
+    for (final scale in [1.0, 1.3, 2.0]) {
+      testWidgets(
+        'casa a ${size.width.toInt()}x${size.height.toInt()} testo x$scale: nessun overflow',
+        (tester) async {
+          tester.view.physicalSize = size;
+          tester.view.devicePixelRatio = 1;
+          addTearDown(tester.view.reset);
+          final p = const ChildProfile(
+            id: 1,
+            name: 'Emma',
+            ageBand: AgeBand.b3to5,
+            companion: CompanionId.bo,
+            aloneSessionMinutes: 0,
+          ).withShelf(const []);
+          final state = AppState(
+            db: _Db(p),
+            repo: _Repo(),
+            nameVoice: NameVoice(
+              cacheDir: () async => throw const FileSystemException('no'),
+            ),
+          );
+          await state.init();
+          addTearDown(state.dispose);
+          await tester.pumpWidget(
+            AppStateScope(
+              state: state,
+              child: MaterialApp(
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                locale: const Locale('it'),
+                theme: miraboTheme(dyslexiaFont: false, lowStimulation: false),
+                builder: (context, child) => MediaQuery(
+                  data: MediaQuery.of(context)
+                      .copyWith(textScaler: TextScaler.linear(scale)),
+                  child: child!,
+                ),
+                home: const HomeScreen(),
+              ),
+            ),
+          );
+          await tester.pump();
+          expect(tester.takeException(), isNull);
+        },
+      );
+    }
   }
 }

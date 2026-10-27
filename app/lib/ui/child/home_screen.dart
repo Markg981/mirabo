@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               if (state.windingDown) const WinddownNote(),
               Expanded(
                 child: LayoutBuilder(builder: (context, c) {
-                  final size = (c.maxHeight * 0.98).clamp(200.0, 400.0);
+                  final size = (c.maxHeight * 0.98).clamp(100.0, 400.0);
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -87,6 +87,8 @@ class HomeScreen extends StatelessWidget {
                       Flexible(
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 520),
+                          // Con altezza ridotta o testo grande la colonna scorre invece di andare in overflow.
+                          child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(horizontal: 6),
                                           child: SizedBox(
-                                            height: (size * 0.5).clamp(130.0, 190.0),
+                                            height: (size * 0.5).clamp(90.0, 190.0),
                                             child: BigCard(
                                               title: t.label(context.l10n),
                                               color: t.color,
@@ -127,6 +129,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ],
                             ],
+                          ),
                           ),
                         ),
                       ),
