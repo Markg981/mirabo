@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/data/adult_pin.dart';
 
@@ -241,5 +243,18 @@ void main() {
       expect(await pin.verify('1234'), PinResult.ok);
       expect(store.data['adult_pin_keychain_v2'], '1');
     });
+  });
+
+  test('PBKDF2 in isolate: uguale al vettore noto RFC 7914 e tempo indicativo', () async {
+    // RFC 7914 par. 11: PBKDF2-HMAC-SHA-256("passwd","salt",1,64) -> primi 32 byte.
+    const known = '55ac046e56e3089fec1691c22544b605f94185216dde0465e68b9d57c20dacbc';
+    String hex(List<int> b) => b.map((x) => x.toRadixString(16).padLeft(2, '0')).join();
+    expect(hex(await Isolate.run(() => pbkdf2Sha256('passwd', 'salt'.codeUnits, 1))), known);
+    final sw = Stopwatch()..start();
+    final inIsolate = await Isolate.run(() => pbkdf2Sha256('1234', List.filled(16, 7), 20000));
+    final t1 = sw.elapsedMilliseconds;
+    expect(hex(inIsolate), hex(pbkdf2Sha256('1234', List.filled(16, 7), 20000)));
+    // ignore: avoid_print
+    print('PBKDF2 20000 iterazioni, via isolate: $t1 ms');
   });
 }
