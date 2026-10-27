@@ -27,11 +27,12 @@ void main() {
 
   Uint8List u(String s) => Uint8List.fromList(utf8.encode(s));
 
-  Future<Uint8List> pack(Map<String, Uint8List> files, {Object? manifestFiles, required String id}) async {
+  Future<Uint8List> pack(Map<String, Uint8List> files, {Object? manifestFiles, required String id, Map<String, dynamic> extra = const {}}) async {
     final manifest = <String, dynamic>{
       'id': id,
       'kind': 'story',
       'version': 1,
+      ...extra,
       'files': manifestFiles ?? {for (final e in files.entries) e.key: sha256.convert(e.value).toString()},
     };
     final sig = await Ed25519().sign(utf8.encode(PackageVerifier.canonicalJson(manifest)), keyPair: key);
@@ -59,7 +60,7 @@ void main() {
         for (final e in variants.entries) e.key: u(e.value),
       };
 
-  Future<StoryRepository> load(Map<String, Uint8List> pkgs) async {
+  Future<StoryRepository> load(Map<String, Uint8List> pkgs, {String appVersion = '0.1.0'}) async {
     final assets = <String, Uint8List>{
       'assets/companions/companions.json': u('{"companions":[]}'),
       'assets/stories/index.json': u(jsonEncode(pkgs.keys.toList())),
@@ -74,7 +75,7 @@ void main() {
     for (final k in assets.keys) {
       rootBundle.evict(k);
     }
-    final repo = StoryRepository(verifier: PackageVerifier(publicKeyHex: keyHex));
+    final repo = StoryRepository(verifier: PackageVerifier(publicKeyHex: keyHex), appVersion: appVersion);
     await repo.load();
     return repo;
   }
@@ -111,5 +112,33 @@ void main() {
     expect(s.supports(AgeBand.b8to10), isFalse);
     expect(repo.byId('vuota'), isNull);
     expect(repo.rejected.single, contains('vuota'));
+  });
+
+  test('un pacchetto che richiede una versione più recente della app viene scartato, gli altri restano', () async {
+    final repo = await load({
+      'ok.mirabo': await pack(story('ok', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'ok'),
+      'nuovo.mirabo': await pack(story('nuovo', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}),
+          id: 'nuovo', extra: {'minAppVersion': '9.0.0'}),
+    });
+    expect(repo.stories.map((s) => s.id), ['ok']);
+    expect(repo.rejected.single, allOf(contains('nuovo.mirabo'), contains('9.0.0')));
+  });
+
+  test('un formato più recente di quello supportato viene scartato', () async {
+    final repo = await load({
+      'f2.mirabo': await pack(story('f2', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}),
+          id: 'f2', extra: {'formatVersion': 2}),
+    });
+    expect(repo.stories, isEmpty);
+    expect(repo.rejected.single, contains('formato 2'));
+  });
+
+  test('un id duplicato non sostituisce il primo pacchetto: il secondo è scartato', () async {
+    final repo = await load({
+      'a.mirabo': await pack(story('uno', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'uno'),
+      'b.mirabo': await pack(story('uno', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'uno'),
+    });
+    expect(repo.stories.map((s) => s.id), ['uno']);
+    expect(repo.rejected.single, allOf(contains('b.mirabo'), contains('duplicato')));
   });
 }
