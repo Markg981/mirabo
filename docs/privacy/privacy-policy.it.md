@@ -42,7 +42,7 @@ Questa versione non fa copie di sicurezza in rete: i dati stanno solo sul dispos
 
 ## 5. Per quanto tempo conserviamo i dati
 
-Sul dispositivo finché non li elimini: eliminando un profilo si cancellano i suoi dati e le sue impostazioni, senza toccare gli altri profili; *Elimina tutti i dati* riporta l'app al primo avvio (anche il PIN); la disinstallazione toglie tutto. Non conserviamo copie.
+Sul dispositivo finché non li elimini: eliminando un profilo si cancellano i suoi dati e le sue impostazioni, senza toccare gli altri profili; *Elimina tutti i dati* riporta l'app al primo avvio (anche il PIN); la disinstallazione toglie i dati e il database (su iPhone e iPad il Keychain di sistema può conservare alcune chiavi dopo la disinstallazione: l'app cancella quelle del PIN al primo avvio dopo una reinstallazione, e senza il database non danno accesso ad alcun dato). Non conserviamo copie.
 
 ## 6. Con chi condividiamo i dati
 

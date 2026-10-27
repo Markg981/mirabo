@@ -123,13 +123,21 @@ def main() -> int:
                           '(<uses-permission android:name="android.permission.INTERNET" tools:node="remove"/>)')
     # 3b. manifest unito (se una build è stata fatta): permessi e componenti dei plugin
     # devono essere tutti inventariati; il check fallisce su quelli non attesi.
-    merged = sorted((APP / "build" / "app" / "intermediates").glob("merged_manifest*/release/**/AndroidManifest.xml"))         if (APP / "build" / "app" / "intermediates").exists() else []
-    if not merged:
-        warnings.append("manifest unito di release assente: componenti dei plugin non controllati "
-                        "(esegui `flutter build apk --release` prima del controllo)")
+    inter = APP / "build" / "app" / "intermediates"
+    merged = []
+    if inter.exists():
+        # release se c'e'; altrimenti il debug (in CI: processDebugMainManifest, la release
+        # richiede la chiave di firma). Il debug ha in piu' solo INTERNET del template.
+        for variant in ("release", "debug"):
+            merged = sorted(inter.glob(f"merged_manifest*/{variant}/**/AndroidManifest.xml"))
+            if merged:
+                break
+    merged_variant = merged[0].relative_to(inter).parts[1] if merged else ""
     for mf in merged[:1]:
         text = mf.read_text(encoding="utf-8")
         for perm in sorted(set(re.findall(r'<uses-permission[^>]*android:name="([^"]+)"', text))):
+            if merged_variant == "debug" and perm == "android.permission.INTERNET":
+                continue
             if perm not in ok_perms and not perm.startswith(APP_ID + "."):
                 errors.append(f"manifest unito: permesso non inventariato: {perm}")
         comps = set(re.findall(r'<(?:activity|service|receiver|provider)[^>]*android:name="([^"]+)"', text))

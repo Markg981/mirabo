@@ -115,4 +115,22 @@ void main() {
     await t.flush();
     expect(db.map.keys.where((k) => k.startsWith('usage.1.')), isEmpty);
   });
+
+  test('in area genitori il tempo non va al bambino', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    final t = UsageTracker(db: db, profileId: () => 1, clock: () => now);
+    t.resume();
+    now = now.add(const Duration(minutes: 1));
+    t.enterAdultArea();
+    now = now.add(const Duration(minutes: 10));
+    t.resume(); // anche un ritorno in primo piano non riavvia il conteggio
+    now = now.add(const Duration(minutes: 10));
+    t.tick(force: true);
+    t.leaveAdultArea();
+    now = now.add(const Duration(minutes: 2));
+    t.pause();
+    await t.flush();
+    expect(db.map[UsageTracker.key(1, now)], '180');
+  });
 }

@@ -31,7 +31,7 @@ Note.
 
 - **Identificatori.** Il DB usa id numerici locali (`profiles.id`); non c'è alcun ID pubblicitario, ID dispositivo o ID di installazione generato dall'app. Il file del nome contiene l'id profilo e un'impronta del nome.
 - **Account Google.** L'email del genitore resta nel secure storage e transita verso Google solo con il backup attivo. Non ci sono account del bambino.
-- **Keychain su iOS.** Gli elementi del Keychain possono sopravvivere alla disinstallazione e a una reinstallazione (comportamento di piattaforma). Dopo una reinstallazione possono quindi restare `mirabo_backup_account`/`mirabo_backup_key` senza DB. Da verificare su dispositivo; se confermato, l'app dovrà ripulirli al primo avvio. Per le chiavi `adult_pin_*` la pulizia è già fatta (`AdultPin.reconcile`); prova manuale su iPad ancora da eseguire.
+- **Keychain su iOS.** Gli elementi del Keychain possono sopravvivere alla disinstallazione e a una reinstallazione (comportamento di piattaforma). Dopo una reinstallazione possono quindi restare `mirabo_backup_account`/`mirabo_backup_key` senza DB. Da verificare su dispositivo. Oggi l'app non ripulisce queste due chiavi né `mirabo_db_key` (senza DB sono inerti; il backup è fuori dall'MVP). Per le chiavi `adult_pin_*` la pulizia è già fatta (`AdultPin.reconcile`); prova manuale su iPad ancora da eseguire.
 - **Dati dell'area genitore non personali** (`story.parentCard`, testi) sono contenuti degli asset.
 
 ## 2. Backup del sistema operativo
@@ -50,6 +50,7 @@ Le cartelle `app/android` e `app/ios` **sono tracciate** nel repo; `flutter crea
 | Android | `INTERNET` | manifest `main`, con `tools:node="remove"` | Tolto dalla release finché il backup è fuori dall'MVP, anche se un plugin lo chiedesse. `check_inventory.py` fallisce se la rimozione manca |
 | Android | `INTERNET` | manifest `debug`, `profile` | Template Flutter (hot reload, DevTools); non in release |
 | Android | `USE_BIOMETRIC` | manifest `main` | Recupero del PIN adulti con lo sblocco del dispositivo (`local_auth`); nessuna rete |
+| Android | `USE_FINGERPRINT` | manifest unito (aggiunto da `local_auth_android`) | Alias deprecato per Android < 9, stesso scopo di `USE_BIOMETRIC`; nessuna rete. `check_inventory.py` legge il manifest unito (in CI da `processDebugMainManifest`) |
 | Android | (nessun altro) | | Niente microfono, fotocamera, posizione, contatti, archivio esterno, notifiche. Plugin: i manifest uniti dei plugin possono aggiungere permessi: controllare con `aapt dump permissions` sulla release (vedi osservazione, passo 0) |
 | Android | `<queries>` per `PROCESS_TEXT` | manifest `main` | Template Flutter (selezione testo); non è un flusso di rete |
 | iOS | solo `NSFaceIDUsageDescription` | `Info.plist` | Face ID solo per recuperare il PIN adulti (`local_auth`, docs/adult-gate.md). Niente microfono, foto, posizione, tracking. Nessun `NSAppTransportSecurity` eccezioni. Il backup richiede in più, a build, lo schema URL del client OAuth (vedi `backup.md`, da aggiungere quando si configura Google) |

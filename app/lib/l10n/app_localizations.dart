@@ -440,6 +440,12 @@ abstract class AppLocalizations {
   /// **'Scegli la data'**
   String get countdownPick;
 
+  /// No description provided for @countdownPickHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Un grande sceglie la data; poi ogni giorno si colora un giorno.'**
+  String get countdownPickHint;
+
   /// No description provided for @countdownToday.
   ///
   /// In it, this message translates to:

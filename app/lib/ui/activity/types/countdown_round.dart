@@ -34,7 +34,7 @@ class _CountdownRoundState extends State<CountdownRound> {
           children: [
             Text(event, style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(height: 12),
-            const Text('Un grande sceglie la data; poi ogni giorno si colora un giorno.'),
+            Text(context.l10n.countdownPickHint),
             const SizedBox(height: 24),
             ChunkyButton(
               icon: Icons.calendar_month_rounded,

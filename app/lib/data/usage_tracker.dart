@@ -51,8 +51,24 @@ class UsageTracker with WidgetsBindingObserver {
     pause();
   }
 
-  /// L'app torna in primo piano: il conteggio riparte.
+  bool _adultArea = false;
+
+  /// L'adulto entra nell'area genitori: il tempo non è del bambino, quindi
+  /// si chiude il tratto e il conteggio resta fermo finché non si esce.
+  void enterAdultArea() {
+    _adultArea = true;
+    pause();
+  }
+
+  /// L'adulto esce dall'area genitori: il conteggio riparte.
+  void leaveAdultArea() {
+    _adultArea = false;
+    resume();
+  }
+
+  /// L'app torna in primo piano: il conteggio riparte (non nell'area genitori).
   void resume() {
+    if (_adultArea) return;
     _since ??= _now();
     _creditId = profileId();
   }

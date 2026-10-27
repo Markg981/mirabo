@@ -40,6 +40,10 @@ class PackageVerifier {
   PackageVerifier({String? publicKeyHex}) : _publicKeyHex = publicKeyHex ?? trustedPublicKeyHex;
 
   final String _publicKeyHex;
+
+  /// Contro le zip bomb: tetti su voci e dimensione dichiarata totale.
+  static const maxEntries = 2000;
+  static const maxUnpackedBytes = 512 * 1024 * 1024;
   final _ed25519 = Ed25519();
 
   /// Apre e verifica un archivio .mirabo. Lancia [PackageVerificationException]
@@ -54,6 +58,12 @@ class PackageVerifier {
     } catch (_) {
       throw PackageVerificationException('archivio non leggibile');
     }
+    if (archive.files.length > maxEntries) throw PackageVerificationException('troppe voci nell archivio');
+    var declared = 0;
+    for (final f in archive.files) {
+      if (f.isFile) declared += f.size;
+    }
+    if (declared > maxUnpackedBytes) throw PackageVerificationException('archivio troppo grande da estrarre');
     final files = <String, Uint8List>{};
     for (final f in archive.files) {
       if (f.isFile) files[f.name] = Uint8List.fromList(f.content as List<int>);

@@ -77,12 +77,12 @@ abstract final class MiraboColors {
   }
 }
 
-/// Il mondo di una storia: nome breve, icona, colore.
-({String label, IconData icon, Color color}) worldStyle(World w) => switch (w) {
-      World.emozioni => (label: 'Emozioni', icon: Icons.favorite_rounded, color: MiraboColors.rose),
-      World.inclusione => (label: 'Insieme', icon: Icons.diversity_1_rounded, color: MiraboColors.sky),
-      World.ambiente => (label: 'Il bosco', icon: Icons.park_rounded, color: MiraboColors.leaf),
-      World.sicurezza => (label: 'Il mio corpo', icon: Icons.shield_rounded, color: MiraboColors.sun),
+/// Il mondo di una storia: icona e colore (il nome è localizzato: worldShort/worldLong).
+({IconData icon, Color color}) worldStyle(World w) => switch (w) {
+      World.emozioni => (icon: Icons.favorite_rounded, color: MiraboColors.rose),
+      World.inclusione => (icon: Icons.diversity_1_rounded, color: MiraboColors.sky),
+      World.ambiente => (icon: Icons.park_rounded, color: MiraboColors.leaf),
+      World.sicurezza => (icon: Icons.shield_rounded, color: MiraboColors.sun),
     };
 
 Color areaColor(ActivityArea a) => switch (a) {
@@ -129,6 +129,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
     this.repeatPrompt = false,
     this.confirmExit = false,
     this.voiceMissing = false,
+    this.reduceMotion = false,
   });
 
   /// Con [voiceMissing] il dispositivo non ha la voce di sistema per la lingua
@@ -178,8 +179,13 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
   /// Manca la voce di sistema per la lingua del bambino.
   final bool voiceMissing;
 
-  static MiraboTokens of(BuildContext context) =>
-      Theme.of(context).extension<MiraboTokens>() ?? const MiraboTokens(lowStimulation: false);
+  /// "Riduci movimento" del sistema: spegne le animazioni come la bassa stimolazione.
+  final bool reduceMotion;
+
+  static MiraboTokens of(BuildContext context) {
+    final t = Theme.of(context).extension<MiraboTokens>() ?? const MiraboTokens(lowStimulation: false);
+    return MediaQuery.disableAnimationsOf(context) ? t.copyWith(reduceMotion: true) : t;
+  }
 
   /// In bassa stimolazione i colori d'accento perdono saturazione.
   Color tint(Color c) {
@@ -188,7 +194,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
     return hsl.withSaturation(hsl.saturation * 0.35).withLightness((hsl.lightness * 0.9 + 0.08).clamp(0, 1)).toColor();
   }
 
-  bool get animate => !lowStimulation;
+  bool get animate => !lowStimulation && !reduceMotion;
 
   /// Quante volte la consegna si ripete da sola (autonomia 1) se il bambino non
   /// tocca niente: in bassa stimolazione una sola, perché anche la voce che
@@ -208,6 +214,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
     bool? repeatPrompt,
     bool? confirmExit,
     bool? voiceMissing,
+    bool? reduceMotion,
   }) =>
       MiraboTokens(
         lowStimulation: lowStimulation ?? this.lowStimulation,
@@ -218,6 +225,7 @@ class MiraboTokens extends ThemeExtension<MiraboTokens> {
         repeatPrompt: repeatPrompt ?? this.repeatPrompt,
         confirmExit: confirmExit ?? this.confirmExit,
         voiceMissing: voiceMissing ?? this.voiceMissing,
+        reduceMotion: reduceMotion ?? this.reduceMotion,
       );
 
   @override

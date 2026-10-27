@@ -171,6 +171,10 @@ void main() {
       {'schema': 12, 'profiles': 'no'},
       {'schema': 12, 'profiles': [1, 2]},
       {'schema': 12, 'profiles': [profile(2, 'Bea')], 'diary': {'a': 1}},
+      {'schema': 0, 'profiles': [profile(2, 'Bea')]},
+      {'schema': 12, 'profiles': [{...profile(2, 'Bea'), 'name': [1]}]},
+      {'schema': 12, 'profiles': [{...profile(2, 'Bea'), 'id': -5}]},
+      {'schema': 12, 'profiles': [{...profile(2, 'Bea'), 'name': double.infinity}]},
     ]) {
       await expectLater(ldb.importAll(bad), throwsFormatException);
     }
