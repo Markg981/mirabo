@@ -191,6 +191,12 @@ class PackageInstaller {
   int _retiredSequence = 0;
   List<Map<String, dynamic>> _retired = [];
   bool _indexReadable = true;
+
+  /// Versione massima mai vista per id, anche dopo [remove]: impedisce il downgrade.
+  Map<String, int> _maxSeen = {};
+
+  /// Tetto sulla dimensione dell'archivio scaricato (contro OOM e zip bomb).
+  static const maxArchiveBytes = 512 * 1024 * 1024;
   bool _loaded = false;
 
   Future<void> _load() async {
@@ -205,21 +211,35 @@ class PackageInstaller {
       };
       _retiredSequence = j['retiredSequence'] as int? ?? 0;
       _retired = (j['retired'] as List? ?? const []).cast<Map<String, dynamic>>();
+      _maxSeen = {
+        for (final e in ((j['maxSeen'] as Map?) ?? const {}).entries) e.key as String: e.value as int,
+        for (final e in _installed.values) e.id: e.version,
+      };
     } catch (_) {
       _indexReadable = false; // non cancelliamo nulla se non capiamo l'indice
     }
   }
 
   Future<void> _saveIndex(Map<String, InstalledPackage> installed, int sequence, List<Map<String, dynamic>> retired) async {
+    if (!_indexReadable) {
+      // Mai sovrascrivere un indice che non sappiamo leggere: si perderebbero i ritiri.
+      throw InstallException(InstallFailure.io, 'index.json illeggibile: intervento necessario, nessuna modifica');
+    }
     root.createSync(recursive: true);
+    final maxSeen = {..._maxSeen};
+    for (final e in installed.values) {
+      if (e.version > (maxSeen[e.id] ?? 0)) maxSeen[e.id] = e.version;
+    }
     final tmp = File('${_indexFile.path}.tmp');
     await tmp.writeAsString(jsonEncode({
       'packages': {for (final e in installed.entries) e.key: e.value.toJson()},
       'retiredSequence': sequence,
       'retired': retired,
+      'maxSeen': maxSeen,
     }), flush: true);
     await tmp.rename(_indexFile.path); // l'unico punto in cui lo stato "cambia"
     _installed = installed;
+    _maxSeen = maxSeen;
     _retiredSequence = sequence;
     _retired = retired;
   }
@@ -271,13 +291,36 @@ class PackageInstaller {
       _serial(() => _install(source, languages, keepOffline, allowDowngrade));
 
   Future<InstalledPackage> _install(PackageSource source, Set<String>? languages, bool? keepOffline, bool allowDowngrade) async {
+    try {
+      return await _installInner(source, languages, keepOffline, allowDowngrade);
+    } catch (e) {
+      // Il parziale si tiene solo se serve alla ripresa (io, spazio); su ogni altro
+      // errore resterebbe a bloccare i tentativi successivi.
+      final resumable = e is InstallException && (e.failure == InstallFailure.io || e.failure == InstallFailure.insufficientSpace);
+      if (!resumable) {
+        try {
+          final part = File(p.join(_tmp.path, '${_safeName(source.id)}.part'));
+          if (part.existsSync()) part.deleteSync();
+        } catch (_) {}
+      }
+      rethrow;
+    }
+  }
+
+  Future<InstalledPackage> _installInner(PackageSource source, Set<String>? languages, bool? keepOffline, bool allowDowngrade) async {
     await _load();
+    if (!_indexReadable) {
+      throw InstallException(InstallFailure.io, 'index.json illeggibile: installazione bloccata per non perdere i ritiri');
+    }
     await _recover();
     _tmp.createSync(recursive: true);
 
     // 1. Scarico nell'area temporanea, riprendendo dal parziale se c'è.
     final part = File(p.join(_tmp.path, '${_safeName(source.id)}.part'));
     final total = await source.length();
+    if (total != null && total > maxArchiveBytes) {
+      throw InstallException(InstallFailure.notVerified, 'archivio troppo grande ($total byte)');
+    }
     var have = part.existsSync() ? part.lengthSync() : 0;
     if (total != null && have > total) {
       part.deleteSync();
@@ -289,13 +332,21 @@ class PackageInstaller {
       try {
         await for (final chunk in source.read(offset: have)) {
           sink.writeFromSync(chunk);
+          if (sink.positionSync() > maxArchiveBytes) {
+            throw InstallException(InstallFailure.notVerified, 'archivio troppo grande');
+          }
         }
         sink.flushSync();
+      } on InstallException {
+        rethrow;
       } catch (e) {
         throw InstallException(InstallFailure.io, 'download interrotto a ${part.lengthSync()} byte: $e');
       } finally {
         sink.closeSync();
       }
+    }
+    if (part.lengthSync() > maxArchiveBytes) {
+      throw InstallException(InstallFailure.notVerified, 'archivio troppo grande');
     }
     if (total != null && part.lengthSync() != total) {
       throw InstallException(InstallFailure.io, 'download incompleto (${part.lengthSync()} di $total byte)');
@@ -306,12 +357,16 @@ class PackageInstaller {
     final zipBytes = Uint8List.fromList(await part.readAsBytes());
     int unpacked = 0;
     try {
-      for (final f in ZipDecoder().decodeBytes(zipBytes).files) {
+      final files = ZipDecoder().decodeBytes(zipBytes).files;
+      if (files.length > PackageVerifier.maxEntries) throw const FormatException('troppe voci');
+      for (final f in files) {
         if (f.isFile) unpacked += f.size;
       }
     } catch (_) {
-      part.deleteSync();
       throw InstallException(InstallFailure.notVerified, 'archivio non leggibile');
+    }
+    if (unpacked > PackageVerifier.maxUnpackedBytes) {
+      throw InstallException(InstallFailure.notVerified, 'archivio troppo grande da estrarre');
     }
     await _ensureSpace(unpacked * 2 + spaceMargin, 'estrazione'); // file in staging + versione precedente ancora presente
 
@@ -324,7 +379,6 @@ class PackageInstaller {
         return wanted != null && m != null && !wanted.contains(m.group(1));
       });
     } on PackageVerificationException catch (e) {
-      part.deleteSync();
       throw InstallException(InstallFailure.notVerified, e.message);
     }
     final parts = _parts(pkg);
@@ -343,8 +397,9 @@ class PackageInstaller {
       throw InstallException(InstallFailure.retired, '${pkg.id} v${pkg.version} è stato ritirato');
     }
     final current = _installed[pkg.id];
-    if (current != null && pkg.version < current.version && !allowDowngrade) {
-      throw InstallException(InstallFailure.downgrade, '${pkg.id}: v${pkg.version} è più vecchia della v${current.version} installata');
+    final highest = [current?.version ?? 0, _maxSeen[pkg.id] ?? 0].reduce((a, b) => a > b ? a : b);
+    if (pkg.version < highest && !allowDowngrade) {
+      throw InstallException(InstallFailure.downgrade, '${pkg.id}: v${pkg.version} è più vecchia della v$highest già vista');
     }
 
     if (current != null && pkg.version == current.version) {
@@ -419,7 +474,9 @@ class PackageInstaller {
     }
     final sizes = pkg.manifest['sizes'];
     for (final path in paths) {
-      if (path.startsWith('/') || path.contains('\\') || path.split('/').contains('..') || path == 'manifest.json') {
+      final stageRoot = p.join(_tmp.path, 'stage');
+      if (!p.isWithin(stageRoot, p.join(stageRoot, path)) ||
+          path.startsWith('/') || path.contains('\\') || path.split('/').contains('..') || path == 'manifest.json') {
         throw InstallException(InstallFailure.notVerified, 'percorso non ammesso: $path');
       }
       if (sizes is Map && sizes[path] != null && sizes[path] != pkg.bytes(path)!.length) {

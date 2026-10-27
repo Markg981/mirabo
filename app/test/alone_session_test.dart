@@ -77,7 +77,7 @@ void main() {
   testWidgets('mai a metà: il saluto aspetta che la storia finisca', (tester) async {
     final (state, advance) = await start(tester, alone);
     state.holdSession();
-    await advance(const Duration(minutes: 25));
+    await advance(const Duration(minutes: 22));
     expect(state.aloneGoodbye, isFalse);
     state.releaseSession();
     await tester.pump();
@@ -130,7 +130,7 @@ void main() {
   testWidgets('a storia aperta il preavviso resta e il saluto aspetta, senza penalità', (tester) async {
     final (state, advance) = await start(tester, alone);
     state.holdSession();
-    await advance(const Duration(minutes: 30));
+    await advance(const Duration(minutes: 22));
     expect(state.windingDown, isTrue);
     expect(state.aloneGoodbye, isFalse);
     state.releaseSession();
@@ -218,9 +218,27 @@ void main() {
       expect(state.aloneGoodbye, isTrue);
     });
 
-    testWidgets('oltre 10 minuti la sessione riparte da zero', (tester) async {
+    testWidgets('oltre 10 minuti una pausa vera non regala una sessione nuova: resta il residuo del giorno', (tester) async {
       final (state, advance) = await restart(tester, const Duration(minutes: 11));
+      // 12 minuti già usati su 20: ne restano 8.
+      await advance(const Duration(minutes: 7));
+      expect(state.aloneGoodbye, isFalse);
+      await advance(const Duration(minutes: 1));
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('al cambio giorno il tempo consumato si azzera', (tester) async {
+      final (state, advance) = await restart(tester, const Duration(hours: 10));
       await advance(const Duration(minutes: 19));
+      expect(state.aloneGoodbye, isFalse);
+      await advance(const Duration(minutes: 1));
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('hold aperto oltre il tetto: si saluta comunque', (tester) async {
+      final (state, advance) = await start(tester, alone);
+      state.holdSession();
+      await advance(const Duration(minutes: 20) + AppState.holdCap - const Duration(minutes: 1));
       expect(state.aloneGoodbye, isFalse);
       await advance(const Duration(minutes: 1));
       expect(state.aloneGoodbye, isTrue);
@@ -247,7 +265,7 @@ void main() {
     testWidgets('un gioco aperto al limite non viene interrotto', (tester) async {
       final (state, advance) = await start(tester, alone);
       state.holdSession(); // GameShell è avvolto in SessionHold
-      await advance(const Duration(minutes: 25));
+      await advance(const Duration(minutes: 22));
       expect(state.aloneGoodbye, isFalse);
       state.releaseSession();
       await tester.pump();
@@ -260,7 +278,7 @@ void main() {
         state: state,
         child: const MaterialApp(home: SessionHold(child: Text('pagina'))),
       ));
-      await advance(const Duration(minutes: 25));
+      await advance(const Duration(minutes: 22));
       expect(state.aloneGoodbye, isFalse);
       await tester.pumpWidget(const SizedBox());
       await tester.pump();

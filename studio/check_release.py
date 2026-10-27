@@ -111,6 +111,8 @@ def assets() -> list[str]:
         return ["dist/release.json: pacchetti non firmati"]
     if release.get("theme") is not None:
         return [f"dist/release.json: release del solo tema {release['theme']!r}, non il catalogo completo: esegui pack.py --release senza --theme"]
+    if not any(c.get("kind") == "story" for c in release["contents"]):
+        return ["dist/release.json: nessuna storia approvata nel catalogo (la mensola avrebbe solo giochi, fabbrica e calendario): completare revisione e approvazioni prima di pack.py --release"]
     expected = sorted(c["package"] for c in release["contents"])
     found = sorted(json.loads((ASSETS / "stories" / "index.json").read_text(encoding="utf-8")))
     if found != expected:
@@ -130,9 +132,19 @@ def assets() -> list[str]:
     return problems
 
 
+def android_min_sdk(gradle: str) -> list[str]:
+    m = re.search(r"minSdk\s*=\s*(\S+)", gradle)
+    if not m or not m.group(1).isdigit():
+        return ["build.gradle.kts: minSdk non esplicito (flutter.minSdkVersion non garantisce Android 8+)"]
+    if int(m.group(1)) < 26:
+        return [f"build.gradle.kts: minSdk {m.group(1)} < 26 (README promette Android 8+)"]
+    return []
+
+
 def android_signing() -> list[str]:
     problems = []
     gradle = GRADLE.read_text(encoding="utf-8")
+    problems += android_min_sdk(gradle)
     release_block = gradle[gradle.find("buildTypes"):]
     if 'getByName("debug")' in release_block:
         problems.append("build.gradle.kts: la release usa la firma di debug")

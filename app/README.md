@@ -1,17 +1,5 @@
-# mirabo
+# Mirabo (app Flutter)
 
-A new Flutter project.
+App per bambini, offline. Le istruzioni di avvio (versione di Flutter, preparazione dei contenuti con `studio/sync_assets.py`, `flutter pub get`, `flutter run`) sono nel [README della radice](../README.md).
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Le cartelle `android/` e `ios/` sono tracciate e personalizzate (manifest senza permesso INTERNET, regole di backup, `MainActivity`): non eseguire `flutter create .`, che rischia di sovrascriverle.
