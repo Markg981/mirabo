@@ -111,6 +111,8 @@ def assets() -> list[str]:
         return ["dist/release.json: pacchetti non firmati"]
     if release.get("theme") is not None:
         return [f"dist/release.json: release del solo tema {release['theme']!r}, non il catalogo completo: esegui pack.py --release senza --theme"]
+    if not any(c.get("kind") == "story" for c in release["contents"]):
+        return ["dist/release.json: nessuna storia approvata nel catalogo (la mensola avrebbe solo giochi, fabbrica e calendario): completare revisione e approvazioni prima di pack.py --release"]
     expected = sorted(c["package"] for c in release["contents"])
     found = sorted(json.loads((ASSETS / "stories" / "index.json").read_text(encoding="utf-8")))
     if found != expected:
