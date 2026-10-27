@@ -474,6 +474,8 @@ abstract class RoundState<T extends RoundWidget> extends State<T> {
   /// Chiamata dal round quando il bambino risponde: da qui la consegna si
   /// ripete solo se la chiede lui.
   void answer(bool correct, {String? choice}) {
+    // Dopo la risposta giusta un secondo tratto non deve contare due volte.
+    if (lastCorrect == true) return;
     attempts++;
     _repeat?.cancel();
     if (correct) {
