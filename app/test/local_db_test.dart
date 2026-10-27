@@ -145,6 +145,10 @@ void main() {
     await old.insert('gestures', {'profile_id': 99, 'story_id': 'x', 'at': at});
     await old.insert('made_stories',
         {'profile_id': 99, 'who': 'w', 'place': 'p', 'problem': 'x', 'feeling': 'f', 'helper': 'h', 'ending': 'e', 'at': at});
+    // Orfani anche nelle tabelle che la v13 rifà con REFERENCES: la copia non deve fallire.
+    await old.insert('activity_progress', {'profile_id': 99, 'activity_id': 'a', 'level': 1, 'streak': 0, 'sessions': 1});
+    await old.insert('activity_rounds',
+        {'profile_id': 99, 'activity_id': 'a', 'skill': 's', 'level': 1, 'attempts': 1, 'hints': 0, 'choice': 'presentation=x', 'at': at});
     await old.insert('settings', {'key': 'advice_off.1', 'value': '1'});
     await old.close();
 
@@ -156,6 +160,7 @@ void main() {
         ['project=idea;note=due fogli', 'presentation=repeat', null, null, null]);
     final progress = (await db.query('activity_progress')).single;
     expect((progress['level'], progress['sessions']), (2, 3));
+    expect(await count(db, 'activity_rounds', 'profile_id = 99'), 0);
     expect((await db.query('diary')).single['dialogue_answer'], isNull);
     expect(await count(db, 'gestures'), 0);
     expect(await count(db, 'made_stories'), 0);
