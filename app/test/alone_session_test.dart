@@ -168,13 +168,13 @@ void main() {
     state.appHidden();
     await advance(const Duration(minutes: 29));
     state.appResumed();
-    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 1));
     expect(state.mode, SessionMode.together);
 
     state.appHidden();
     await advance(AppState.togetherLapse);
     state.appResumed();
-    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 1));
     expect(state.mode, SessionMode.alone);
   });
 
@@ -222,6 +222,24 @@ void main() {
       await advance(const Duration(minutes: 19));
       expect(state.aloneGoodbye, isFalse);
       await advance(const Duration(minutes: 1));
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('al ritorno in primo piano il limite scaduto in background scatta subito', (tester) async {
+      var now = DateTime(2026, 10, 13, 16);
+      final state = AppState(
+        db: _FakeDb(alone),
+        repo: _NoRepo(),
+        nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')),
+        clock: () => now,
+      );
+      await state.init();
+      addTearDown(state.dispose);
+      state.appHidden();
+      now = now.add(const Duration(minutes: 25)); // il Timer sospeso non è scattato
+      expect(state.aloneGoodbye, isFalse);
+      state.appResumed();
+      await tester.pump(const Duration(milliseconds: 1));
       expect(state.aloneGoodbye, isTrue);
     });
 
