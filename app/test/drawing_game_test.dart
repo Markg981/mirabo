@@ -132,4 +132,25 @@ void main() {
     expect(db.writes, 1);
     expect(db.settings[key], isNotEmpty);
   });
+
+  testWidgets('prima del caricamento il tocco non scarta il foglio salvato', (tester) async {
+    final (state, db) = await start();
+    const saved = '[{"e":"⭐","x":10.0,"y":10.0}]';
+    db.settings[key] = saved;
+    db.gate = Completer<void>();
+    await tester.pumpWidget(host(state));
+    await tester.pump();
+    final g = await tester.startGesture(tester.getCenter(sheet));
+    await g.moveBy(const Offset(20, 0));
+    await g.up();
+    await tester.pump(const Duration(seconds: 2));
+    expect(db.writes, 0);
+    db.gate!.complete();
+    await tester.pump();
+    await tester.pumpWidget(const SizedBox());
+    // Uscendo dopo il caricamento il foglio si risalva (ora normalizzato): c'è
+    // solo il timbro di prima, nessun tratto del tocco scartato.
+    expect(decodeMarks(db.settings[key]!, const Size(100, 100)), hasLength(1));
+
+  });
 }
