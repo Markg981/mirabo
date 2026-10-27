@@ -23,6 +23,10 @@ class _FakeDb implements LocalDb {
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
   @override
+  Future<ChildProfile> insertProfile(ChildProfile p) async => profile = p;
+  @override
+  Future<void> updateProfile(ChildProfile p) async => profile = p;
+  @override
   Future<String?> setting(String key) async => settings[key];
   @override
   Future<void> setSetting(String key, String value) async => settings[key] = value;
@@ -86,6 +90,14 @@ void main() {
     expect(emma.interaction.reading, ReadingLevel.none);
     expect(tokens.textMode, TextMode.full);
     expect(MiraboTokens.forProfile(lowStimulation: false, interaction: emma.interaction).textMode, TextMode.hidden);
+  });
+
+  test('voce assente: creare un profilo o cambiarne la lingua la rileva senza riavviare', () async {
+    final (state, _) = await start(voiceCheck: (code) async => !code.startsWith('en'));
+    await state.createProfile(emma);
+    expect(state.voiceMissingFor(state.currentProfile!), isFalse);
+    await state.updateProfile(emma.copyWith(language: 'en'));
+    expect(state.voiceMissingFor(state.currentProfile!), isTrue);
   });
 
   testWidgets('SpokenButton: l\'altoparlante fa sentire il bottone senza premerlo', (tester) async {
