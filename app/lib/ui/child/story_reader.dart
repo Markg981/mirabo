@@ -46,6 +46,7 @@ class _StoryReaderState extends State<StoryReader> {
   final _tts = FlutterTts();
   final _player = AudioPlayer();
   int _index = 0;
+  bool _navigated = false;
   String? _dialogueAnswer;
   bool _recorded = false;
 
@@ -113,6 +114,8 @@ class _StoryReaderState extends State<StoryReader> {
   Future<void> _resume() async {
     final saved = await _state.storyPosition(_profile, widget.story.id);
     if (!mounted) return;
+    // Se il bambino è già andato avanti, la ripresa arriva tardi: non riporta indietro.
+    if (_navigated) return;
     if (saved > 0 && saved < _variant.screens.length) setState(() => _index = saved);
     _speakCurrent();
   }
@@ -270,6 +273,7 @@ class _StoryReaderState extends State<StoryReader> {
     _lessonTimer?.cancel();
     _gestureTimer?.cancel();
     if (_gestures[_index] == GesturePhase.running) _gestures.remove(_index);
+    _navigated = true;
     setState(() {
       _index = index;
       // Le risposte appartengono alla schermata: la prossima parte da zero.
