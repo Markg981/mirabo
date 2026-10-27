@@ -66,7 +66,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// No description provided for @appTitle.
@@ -3284,6 +3284,66 @@ abstract class AppLocalizations {
   /// **'Riprova'**
   String get startupRetry;
 
+  /// No description provided for @startupAdultOptions.
+  ///
+  /// In it, this message translates to:
+  /// **'Sono un adulto: altre opzioni'**
+  String get startupAdultOptions;
+
+  /// No description provided for @startupEraseWarning.
+  ///
+  /// In it, this message translates to:
+  /// **'Se riprovare non basta, si può cancellare tutto e ripartire da zero. Sono cancellati tutti i dati su questo tablet (profili, progressi, impostazioni) e non si possono recuperare.'**
+  String get startupEraseWarning;
+
+  /// No description provided for @startupEraseConfirm.
+  ///
+  /// In it, this message translates to:
+  /// **'Ho capito: i dati andranno persi per sempre'**
+  String get startupEraseConfirm;
+
+  /// No description provided for @startupErase.
+  ///
+  /// In it, this message translates to:
+  /// **'Azzera i dati e riparti'**
+  String get startupErase;
+
+  /// No description provided for @startupErrorKind.
+  ///
+  /// In it, this message translates to:
+  /// **'Tipo di errore: {kind}'**
+  String startupErrorKind(String kind);
+
+  /// No description provided for @startupErrKeystore.
+  ///
+  /// In it, this message translates to:
+  /// **'archivio delle chiavi del tablet'**
+  String get startupErrKeystore;
+
+  /// No description provided for @startupErrDatabase.
+  ///
+  /// In it, this message translates to:
+  /// **'database (apertura o aggiornamento)'**
+  String get startupErrDatabase;
+
+  /// No description provided for @startupErrFormat.
+  ///
+  /// In it, this message translates to:
+  /// **'dati in un formato non valido'**
+  String get startupErrFormat;
+
+  /// No description provided for @startupErrOther.
+  ///
+  /// In it, this message translates to:
+  /// **'errore non previsto'**
+  String get startupErrOther;
+
+  /// No description provided for @startupEraseFailed.
+  ///
+  /// In it, this message translates to:
+  /// **'Non è stato possibile azzerare i dati. Riprova o riavvia il tablet.'**
+  String get startupEraseFailed;
+
   /// No description provided for @storageResetNotice.
   ///
   /// In it, this message translates to:
@@ -3336,8 +3396,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }
