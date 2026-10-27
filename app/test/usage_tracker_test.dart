@@ -48,6 +48,39 @@ void main() {
     expect(one.first.seconds, 0);
   });
 
+  test('dopo forget(id) un tick non riscrive i secondi del bambino eliminato', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    int? child = 1;
+    final t = UsageTracker(db: db, profileId: () => child, clock: () => now);
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    await t.forget(1); // il bambino 1 sta per essere eliminato
+    db.map.removeWhere((k, _) => k.startsWith('usage.1.'));
+    now = now.add(const Duration(minutes: 2));
+    t.tick(force: true); // il listener di main dopo notifyListeners
+    await t.flush();
+    expect(db.map.keys.where((k) => k.startsWith('usage.1.')), isEmpty);
+  });
+
+  test('dopo wipeAll il nuovo bambino con lo stesso id riparte da zero', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    int? child = 1;
+    final t = UsageTracker(db: db, profileId: () => child, clock: () => now);
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    await t.forget(); // wipeAll
+    db.map.clear();
+    child = null;
+    t.tick(force: true);
+    await t.flush();
+    child = 1; // AUTOINCREMENT riparte da 1
+    final r = await t.lastDays(1);
+    expect(r.last.seconds, 0);
+    expect(db.map.keys.where((k) => k.startsWith('usage.')), isEmpty);
+  });
+
   test('un salvataggio fallito non ferma il conteggio: il tempo non salvato arriva al giro dopo', () async {
     final db = _FakeDb();
     var now = DateTime(2026, 10, 14, 10, 0, 0);
@@ -64,5 +97,22 @@ void main() {
     now = now.add(const Duration(minutes: 2));
     final days = await t.lastDays(1); // il disco ora risponde: 5 + 2 minuti
     expect(days.last.minutes, 7);
+  });
+
+  test('forget durante un salvataggio che fallisce: niente errore, niente secondi del bambino eliminato', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    int? child = 1;
+    final t = UsageTracker(db: db, profileId: () => child, clock: () => now);
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    db.failWrites = 1;
+    t.tick(force: true); // il salvataggio parte e fallirà
+    await t.forget(1); // non rilancia l'errore del salvataggio
+    child = null;
+    db.failWrites = 0;
+    t.tick(force: true);
+    await t.flush();
+    expect(db.map.keys.where((k) => k.startsWith('usage.1.')), isEmpty);
   });
 }

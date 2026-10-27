@@ -508,10 +508,13 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> deleteProfile(int id) async {
+    await usage?.forget(id);
     await db.deleteProfile(id);
     await nameVoice.forget(id);
     profiles = await db.profiles();
     if (currentProfile?.id == id) currentProfile = profiles.isEmpty ? null : profiles.first;
+    // Un tick durante gli await non deve aver accreditato il bambino eliminato.
+    await usage?.forget(id);
     _syncAloneClock();
     notifyListeners();
   }
@@ -594,12 +597,14 @@ class AppState extends ChangeNotifier {
   /// non si tocca (resta ripristinabile e un tablet vuoto non lo sovrascrive):
   /// per cancellare anche quello c'è [CloudBackup.disable] con `deleteRemote`.
   Future<void> wipeAll() async {
+    await usage?.forget();
     await backup.forget();
     await nameVoice.forget();
     await db.eraseAndReopen();
     hemisphere = Hemisphere.fromRegion(_region());
     profiles = const [];
     currentProfile = null;
+    await usage?.forget();
     onboardingSeen = false;
     _childChosen = false;
     _hiddenAt = null;
