@@ -68,7 +68,7 @@ class ActivityPlayer extends StatefulWidget {
 
 enum _Phase { intro, rounds, outro }
 
-class _ActivityPlayerState extends State<ActivityPlayer> {
+class _ActivityPlayerState extends State<ActivityPlayer> with WidgetsBindingObserver {
   final _tts = FlutterTts();
   late final AppState _state;
   late final ChildProfile _profile;
@@ -82,6 +82,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _state = AppStateScope.read(context);
     _profile = _state.currentProfile!;
     _setupVoice();
@@ -89,6 +90,8 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
       profile: _profile,
       companionName: _state.companionOf(_profile).name,
       say: (t) async {
+        // In background la voce tace; il testo resta in vista.
+        if (_inBackground) return;
         try {
           await _tts.stop();
           await _tts.speak(_ctx.withName(t));
@@ -108,6 +111,20 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
     });
   }
 
+  /// Vero finché l'app non è in primo piano: la voce tace e le ripetizioni
+  /// della consegna (ctx.say) vengono scartate.
+  bool _inBackground = false;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _inBackground = false;
+    } else if (!_inBackground) {
+      _inBackground = true;
+      _tts.stop().catchError((_) {});
+    }
+  }
+
   Future<void> _setupVoice() async {
     try {
       await _tts.setLanguage(AppLanguage.fromCode(_profile.language).ttsCode);
@@ -119,6 +136,7 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _tts.stop().catchError((_) {});
     if (!_saved && _progress != null) _state.recordActivity(widget.activity, _progress!, _results);
     super.dispose();

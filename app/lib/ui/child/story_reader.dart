@@ -42,7 +42,7 @@ class StoryReader extends StatefulWidget {
   State<StoryReader> createState() => _StoryReaderState();
 }
 
-class _StoryReaderState extends State<StoryReader> {
+class _StoryReaderState extends State<StoryReader> with WidgetsBindingObserver {
   final _tts = FlutterTts();
   final _player = AudioPlayer();
   int _index = 0;
@@ -86,6 +86,7 @@ class _StoryReaderState extends State<StoryReader> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _state = AppStateScope.read(context);
     _profile = _state.currentProfile!;
     _mode = _state.mode;
@@ -134,6 +135,7 @@ class _StoryReaderState extends State<StoryReader> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _lessonTimer?.cancel();
     _gestureTimer?.cancel();
     _position?.cancel();
@@ -144,6 +146,24 @@ class _StoryReaderState extends State<StoryReader> {
       _state.recordStory(widget.story, completed: false);
     }
     super.dispose();
+  }
+
+  /// Vero finché l'app non è in primo piano: voce e registrazione tacciono.
+  bool _inBackground = false;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      if (!_inBackground) return;
+      _inBackground = false;
+      // Al ritorno la schermata riparte dall'inizio della sua voce.
+      if (mounted) _speakCurrent();
+    } else if (!_inBackground) {
+      _inBackground = true;
+      _highlight(-1);
+      _tts.stop().catchError((_) {});
+      _player.pause().catchError((_) {});
+    }
   }
 
   StoryScreen get _screen => _variant.screens[_index];
@@ -218,6 +238,7 @@ class _StoryReaderState extends State<StoryReader> {
   }
 
   Future<void> _say(String line) async {
+    if (_inBackground) return;
     _ttsReadsText = false;
     _highlight(-1);
     try {
