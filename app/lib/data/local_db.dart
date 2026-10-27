@@ -806,12 +806,21 @@ class LocalDb {
   /// una versione più recente no, perché avrebbe colonne che qui non esistono.
   Future<void> importAll(Map<String, Object?> data) async {
     final schema = data['schema'];
-    if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
+    if (schema is! int || schema < 1 || schema > _version) throw const FormatException('Backup di una versione più recente');
     // Tipi controllati prima di toccare i dati: un file malformato dà un errore chiaro.
     for (final t in _tables) {
       final rows = data[t];
       if (rows != null && (rows is! List || rows.any((r) => r is! Map))) {
         throw FormatException('Backup danneggiato: la sezione "$t" non è valida');
+      }
+      // Valori ammessi: solo numeri finiti, testo e null; gli identificatori non sono negativi.
+      for (final r in (rows as List? ?? const [])) {
+        for (final e in (r as Map).entries) {
+          final v = e.value;
+          final ok = e.key is String &&
+              (v == null || v is String || (v is num && v.isFinite && !((e.key == 'id' || e.key == 'profile_id') && v < 0)));
+          if (!ok) throw FormatException('Backup danneggiato: valore non valido nella sezione "$t"');
+        }
       }
     }
     await _write(() => _db.transaction((tx) async {

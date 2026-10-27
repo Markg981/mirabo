@@ -107,7 +107,13 @@ class BackupCodec {
     } on SecretBoxAuthenticationError {
       throw const WrongPasswordException();
     }
-    return (data: jsonDecode(utf8.decode(clear)) as Map<String, Object?>, key: key);
+    final Map<String, Object?> data;
+    try {
+      data = jsonDecode(utf8.decode(clear)) as Map<String, Object?>;
+    } catch (_) {
+      throw const FormatException('Backup danneggiato');
+    }
+    return (data: data, key: key);
   }
 }
 
