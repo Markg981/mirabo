@@ -40,15 +40,20 @@ Future<void> start() async {
     runApp(StartupFailureApp(error: e, onRetry: start));
     return;
   }
-  if (Features.cloudBackup) {
-    await state.backup.load();
-    // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
-    unawaited(state.backup.autoBackup());
-  } else {
-    // Fuori dall'MVP: nessun accesso a Google. Account e chiave lasciati da una
-    // versione precedente si tolgono dal deposito sicuro (la copia su Drive resta
-    // del genitore: l'area adulta dice come eliminarla).
-    await state.backup.forget();
+  // Il deposito sicuro può fallire: il backup non deve impedire l'avvio.
+  try {
+    if (Features.cloudBackup) {
+      await state.backup.load();
+      // Backup automatico (se attivo e vecchio di un giorno) all'apertura e al ritorno in primo piano.
+      unawaited(state.backup.autoBackup());
+    } else {
+      // Fuori dall'MVP: nessun accesso a Google. Account e chiave lasciati da una
+      // versione precedente si tolgono dal deposito sicuro (la copia su Drive resta
+      // del genitore: l'area adulta dice come eliminarla).
+      await state.backup.forget();
+    }
+  } catch (e, st) {
+    debugPrint('Deposito sicuro del backup non disponibile: $e\n$st');
   }
   // "Insieme" scade se l'app resta a lungo in background (AppState.togetherLapse).
   AppLifecycleListener(
