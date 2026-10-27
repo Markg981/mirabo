@@ -733,6 +733,9 @@ class LocalDb {
       _write(() => _db.insert('settings', {'key': key, 'value': value}, conflictAlgorithm: ConflictAlgorithm.replace));
 
   /// Toglie un'impostazione (torna a "mai scelta").
+  /// Chiude il database (i test d'integrazione ne rileggono il file su disco).
+  Future<void> close() => _db.close();
+
   Future<void> removeSetting(String key) => _write(() => _db.delete('settings', where: 'key = ?', whereArgs: [key]));
 
   /// Ogni scrittura passa da qui: l'errore torna al chiamante e, prima, a
