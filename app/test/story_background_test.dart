@@ -47,9 +47,13 @@ class _CountingState extends AppState {
         );
   int completed = 0;
   Completer<int>? savedPosition;
+  bool positionFails = false;
 
   @override
-  Future<int> storyPosition(ChildProfile p, String storyId) async => savedPosition?.future ?? 0;
+  Future<int> storyPosition(ChildProfile p, String storyId) async {
+    if (positionFails) throw StateError('db');
+    return savedPosition?.future ?? 0;
+  }
   @override
   Future<void> saveStoryPosition(ChildProfile p, String storyId, int index) async {
     await Future<void>.delayed(const Duration(milliseconds: 50));
@@ -126,5 +130,51 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
     expect(calls, contains('flutter_tts:speak'));
+  });
+
+  testWidgets('Se la posizione salvata non si legge, la storia parte comunque', (tester) async {
+    final calls = <String>[];
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(const MethodChannel('flutter_tts'), (call) async {
+      calls.add(call.method);
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(const MethodChannel('flutter_tts'), null));
+
+    final state = _CountingState(emma)..positionFails = true;
+    await state.init();
+    addTearDown(state.dispose);
+
+    const story = Story(
+      id: 'prova',
+      version: 1,
+      title: 'Prova',
+      world: World.emozioni,
+      topic: 't',
+      variantFiles: {},
+      formats: [],
+      togetherOnly: false,
+      keyPhrase: 'k',
+      parentCardFile: '',
+      sources: [],
+      variants: {
+        AgeBand.b3to5: StoryVariant(ageBand: AgeBand.b3to5, screens: [
+          StoryScreen(n: 1, kind: ScreenKind.closing, illustration: Illustration(alt: 'a'), text: 'Fine'),
+        ]),
+      },
+    );
+
+    await tester.pumpWidget(AppStateScope(
+      state: state,
+      child: const MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: Locale('it'),
+        home: StoryReader(story: story),
+      ),
+    ));
+    await tester.pumpAndSettle();
+
+    expect(calls, contains('speak'));
   });
 }

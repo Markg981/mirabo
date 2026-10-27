@@ -113,7 +113,8 @@ class _StoryReaderState extends State<StoryReader> with WidgetsBindingObserver {
   /// Si riparte dalla schermata a cui ci si era fermati; una storia finita
   /// riparte dall'inizio (docs/child-paths.md, "Uscita e ripresa").
   Future<void> _resume() async {
-    final saved = await _state.storyPosition(_profile, widget.story.id);
+    // Se la lettura fallisce si parte dall'inizio: la storia non resta muta.
+    final saved = await _state.storyPosition(_profile, widget.story.id).catchError((_) => 0);
     if (!mounted) return;
     // Se il bambino è già andato avanti, la ripresa arriva tardi: non riporta indietro.
     if (_navigated) return;
