@@ -83,7 +83,11 @@ class AppState extends ChangeNotifier {
   bool voiceMissingFor(ChildProfile p) => voicesMissing.contains(p.language);
 
   /// L'app va in background (o si spegne lo schermo).
-  void appHidden() => _hiddenAt ??= _now();
+  void appHidden() {
+    _hiddenAt ??= _now();
+    // Se il bambino chiude l'app, il riavvio entro [aloneGrace] riprende il conto.
+    if (_aloneSince != null) _bestEffort(() => db.setSetting(aloneLeftAtKey, _now().toIso8601String()));
+  }
 
   /// L'app torna in primo piano: dopo [togetherLapse] "insieme" scade.
   void appResumed() {
@@ -152,6 +156,16 @@ class AppState extends ChangeNotifier {
   /// saluto aspetta che finisca. Cambiare bambino non la azzera; la chiude
   /// solo il genitore cambiando modalità.
   DateTime? _aloneSince;
+
+  /// Chiavi in `settings`: inizio della sessione "da solo" e ultimo momento in
+  /// cui l'app è andata in background. Servono a non regalare un limite nuovo a
+  /// chi chiude e riapre l'app.
+  static const aloneSinceKey = 'alone_since';
+  static const aloneLeftAtKey = 'alone_left_at';
+
+  /// Un riavvio entro questo tempo dall'uscita mantiene il conto del limite;
+  /// oltre, è una sessione nuova (una pausa vera).
+  static const aloneGrace = Duration(minutes: 10);
   Timer? _aloneTimer;
   bool _aloneExpired = false;
   int _holds = 0;
@@ -171,10 +185,22 @@ class AppState extends ChangeNotifier {
   /// Il tempo "da solo" è finito e non c'è niente in corso: si saluta.
   bool get aloneGoodbye => _goodbye;
 
+  /// Il conto del limite non deve mai fermare l'app: se non si salva, vale
+  /// com'era prima (un riavvio riparte da zero).
+  void _bestEffort(Future<void> Function() write) {
+    try {
+      unawaited(write().catchError((_) {}));
+    } catch (_) {}
+  }
+
   void _syncAloneClock() {
     if (mode != SessionMode.alone || currentProfile == null) {
       _aloneTimer?.cancel();
       _aloneTimer = null;
+      if (_aloneSince != null) {
+        _bestEffort(() => db.removeSetting(aloneSinceKey));
+        _bestEffort(() => db.removeSetting(aloneLeftAtKey));
+      }
       _aloneSince = null;
       _aloneExpired = false;
       _goodbye = false;
@@ -183,7 +209,10 @@ class AppState extends ChangeNotifier {
       _near = false;
       return;
     }
-    _aloneSince ??= _now();
+    if (_aloneSince == null) {
+      _aloneSince = _now();
+      _bestEffort(() => db.setSetting(aloneSinceKey, _aloneSince!.toIso8601String()));
+    }
     if (_aloneExpired) return;
     _aloneTimer?.cancel();
     _nearTimer?.cancel();
@@ -277,6 +306,7 @@ class AppState extends ChangeNotifier {
     currentProfile = profiles.isEmpty ? null : profiles.first;
     // Ogni avvio parte da "da solo": "insieme" lo dichiara l'adulto ogni volta.
     mode = SessionMode.alone;
+    await _restoreAloneSince();
     _syncAloneClock();
     notifyListeners();
     if (!nameVoice.enabled) {
@@ -288,6 +318,24 @@ class AppState extends ChangeNotifier {
     // Profili nati prima della cache, o ripristinati da Drive su un tablet nuovo.
     for (final p in profiles) {
       nameVoice.prepare(p);
+    }
+  }
+
+  /// Riavvio entro [aloneGrace] dall'uscita: la sessione "da solo" è la stessa.
+  Future<void> _restoreAloneSince() async {
+    if (_aloneSince != null) return;
+    final DateTime? since, left;
+    try {
+      since = DateTime.tryParse(await db.setting(aloneSinceKey) ?? '');
+      left = DateTime.tryParse(await db.setting(aloneLeftAtKey) ?? '');
+    } catch (_) {
+      return;
+    }
+    if (since == null || left == null) return;
+    final now = _now();
+    if (!left.isBefore(since) && !left.isAfter(now) && now.difference(left) <= aloneGrace) {
+      _aloneSince = since;
+      await db.removeSetting(aloneLeftAtKey);
     }
   }
 

@@ -67,7 +67,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: game.color,
           emojis: game.emojis,
           width: width,
-          onTap: () => _open(GameShell(game: game)),
+          onTap: () => _open(SessionHold(child: GameShell(game: game))),
         ),
       ActivityItem(activity: final a) => BigCard(
           title: a.title,
