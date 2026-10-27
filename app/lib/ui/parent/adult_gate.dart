@@ -71,10 +71,14 @@ class AdultGate {
       context: context,
       barrierDismissible: false,
       builder: (context) => AdultLocale(
-        child: AlertDialog(
-          title: Text(context.l10n.gateRecoveryTitle),
-          content: _RecoveryCodeBody(code: code),
-          actions: [FilledButton(onPressed: () => Navigator.of(context).pop(), child: Text(context.l10n.gateRecoveryWritten))],
+        // Il tasto Indietro non deve far perdere un codice appena generato.
+        child: PopScope(
+          canPop: false,
+          child: AlertDialog(
+            title: Text(context.l10n.gateRecoveryTitle),
+            content: _RecoveryCodeBody(code: code),
+            actions: [FilledButton(onPressed: () => Navigator.of(context).pop(), child: Text(context.l10n.gateRecoveryWritten))],
+          ),
         ),
       ),
     );
@@ -280,7 +284,10 @@ class _GateDialogState extends State<_GateDialog> {
       _Phase.recover => l.gateForgot,
       _Phase.showCode => l.gateRecoveryTitle,
     };
-    return AlertDialog(
+    return PopScope(
+      // Col codice in vista Indietro non chiude: l'adulto deve prima averlo scritto.
+      canPop: _phase != _Phase.showCode,
+      child: AlertDialog(
       title: Text(title),
       content: SingleChildScrollView(
         child: Column(
@@ -333,6 +340,7 @@ class _GateDialogState extends State<_GateDialog> {
           child: Text(_phase == _Phase.showCode ? l.gateRecoveryWritten : l.gateEnter),
         ),
       ],
+    ),
     );
   }
 }
