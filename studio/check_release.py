@@ -132,9 +132,19 @@ def assets() -> list[str]:
     return problems
 
 
+def android_min_sdk(gradle: str) -> list[str]:
+    m = re.search(r"minSdk\s*=\s*(\S+)", gradle)
+    if not m or not m.group(1).isdigit():
+        return ["build.gradle.kts: minSdk non esplicito (flutter.minSdkVersion non garantisce Android 8+)"]
+    if int(m.group(1)) < 26:
+        return [f"build.gradle.kts: minSdk {m.group(1)} < 26 (README promette Android 8+)"]
+    return []
+
+
 def android_signing() -> list[str]:
     problems = []
     gradle = GRADLE.read_text(encoding="utf-8")
+    problems += android_min_sdk(gradle)
     release_block = gradle[gradle.find("buildTypes"):]
     if 'getByName("debug")' in release_block:
         problems.append("build.gradle.kts: la release usa la firma di debug")

@@ -68,6 +68,13 @@ def test_impronta_diversa_dall_approvazione_blocca(release_dir, monkeypatch):
     assert any("impronta" in p for p in check_release.assets())
 
 
+@pytest.mark.parametrize("riga,esito", [
+    ("minSdk = 26", 0), ("minSdk = 24", 1), ("minSdk = flutter.minSdkVersion", 1), ("", 1),
+])
+def test_min_sdk_almeno_26(riga, esito):
+    assert len(check_release.android_min_sdk(f"defaultConfig {{\n {riga}\n}}")) == esito
+
+
 def test_catalogo_senza_storie_blocca(release_dir):
     assets, release_json = release_dir
     release = json.loads(release_json.read_text(encoding="utf-8"))
