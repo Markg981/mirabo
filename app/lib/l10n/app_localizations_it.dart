@@ -2337,4 +2337,20 @@ class AppLocalizationsIt extends AppLocalizations {
   String storageResetNotice(String date) {
     return 'Il $date Mirabò è ripartito da zero: i dati che c\'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.';
   }
+
+  @override
+  String get rejectedPackagesTitle =>
+      'Alcuni contenuti non sono stati caricati';
+
+  @override
+  String rejectedPackagesBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count pacchetti di contenuti sono stati scartati perché non hanno superato i controlli (firma o integrità). Non verranno mostrati ai bambini. Reinstalla o aggiorna Mirabò dallo store.',
+      one: '1 pacchetto di contenuti è stato scartato perché non ha superato i controlli (firma o integrità). Non verrà mostrato ai bambini. Reinstalla o aggiorna Mirabò dallo store.',
+    );
+    return '$_temp0';
+  }
 }

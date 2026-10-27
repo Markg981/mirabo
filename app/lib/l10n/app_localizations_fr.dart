@@ -2349,4 +2349,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String storageResetNotice(String date) {
     return 'Le $date, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n\'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues.';
   }
+
+  @override
+  String get rejectedPackagesTitle =>
+      'Certains contenus n\'ont pas été chargés';
+
+  @override
+  String rejectedPackagesBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count paquets de contenus ont été écartés car ils n\'ont pas passé les contrôles (signature ou intégrité). Ils ne seront pas montrés aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.',
+      one: '1 paquet de contenus a été écarté car il n\'a pas passé les contrôles (signature ou intégrité). Il ne sera pas montré aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.',
+    );
+    return '$_temp0';
+  }
 }

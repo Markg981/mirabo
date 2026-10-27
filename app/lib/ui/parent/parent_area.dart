@@ -99,6 +99,26 @@ class ParentArea extends StatelessWidget {
   }
 }
 
+/// Avvisa l'adulto che dei pacchetti di contenuti sono stati scartati dai controlli
+/// (firma o integrità) e non compaiono ai bambini. Con zero pacchetti non mostra nulla.
+class RejectedPackagesNote extends StatelessWidget {
+  const RejectedPackagesNote({super.key, required this.count});
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    if (count == 0) return const SizedBox.shrink();
+    return Card(
+      key: const Key('rejected-packages'),
+      child: ListTile(
+        leading: const Icon(Icons.report_gmailerrorred_rounded),
+        title: Text(context.l10n.rejectedPackagesTitle),
+        subtitle: Text(context.l10n.rejectedPackagesBody(count)),
+      ),
+    );
+  }
+}
+
 class _SessionTab extends StatelessWidget {
   const _SessionTab({required this.state, required this.profile});
   final AppState state;
@@ -109,6 +129,7 @@ class _SessionTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
       children: [
+        RejectedPackagesNote(count: state.repo.rejected.length),
         for (final p in state.profiles)
           if (p.bandToConfirm != null) _BandConfirmCard(state: state, profile: p),
         for (final code in state.voicesMissing)

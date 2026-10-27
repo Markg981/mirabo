@@ -2342,4 +2342,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String storageResetNotice(String date) {
     return 'Am $date hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden.';
   }
+
+  @override
+  String get rejectedPackagesTitle => 'Einige Inhalte wurden nicht geladen';
+
+  @override
+  String rejectedPackagesBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count Inhaltspakete wurden verworfen, weil sie die Prüfungen (Signatur oder Integrität) nicht bestanden haben. Sie werden Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.',
+      one: '1 Inhaltspaket wurde verworfen, weil es die Prüfungen (Signatur oder Integrität) nicht bestanden hat. Es wird Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.',
+    );
+    return '$_temp0';
+  }
 }

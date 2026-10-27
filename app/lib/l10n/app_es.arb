@@ -567,5 +567,7 @@
   "startupFailedBody": "No se ha borrado nada. Vuelve a intentarlo; si vuelve a pasar, revisa el espacio libre de la tableta y reiníciala.",
   "startupTooNewBody": "Los datos de esta tableta son de una versión más reciente de Mirabò. No se ha borrado nada: actualiza la app desde la tienda.",
   "startupRetry": "Reintentar",
-  "storageResetNotice": "El {date} Mirabò empezó de cero: los datos de esta tableta estaban cifrados con una clave que la tableta ya no tiene (pasa, por ejemplo, tras restaurar desde otro dispositivo) y no se podían leer."
+  "storageResetNotice": "El {date} Mirabò empezó de cero: los datos de esta tableta estaban cifrados con una clave que la tableta ya no tiene (pasa, por ejemplo, tras restaurar desde otro dispositivo) y no se podían leer.",
+  "rejectedPackagesTitle": "Algunos contenidos no se cargaron",
+  "rejectedPackagesBody": "{count, plural, =1{Se descartó 1 paquete de contenidos porque no superó los controles (firma o integridad). No se mostrará a los niños. Reinstala o actualiza Mirabò desde la tienda.} other{Se descartaron {count} paquetes de contenidos porque no superaron los controles (firma o integridad). No se mostrarán a los niños. Reinstala o actualiza Mirabò desde la tienda.}}"
 }

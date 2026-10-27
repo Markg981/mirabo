@@ -567,5 +567,7 @@
   "startupFailedBody": "Rien n'a été effacé. Réessayez ; si cela se reproduit, vérifiez l'espace libre sur la tablette et redémarrez-la.",
   "startupTooNewBody": "Les données de cette tablette viennent d'une version plus récente de Mirabò. Rien n'a été effacé : mettez l'app à jour depuis le store.",
   "startupRetry": "Réessayer",
-  "storageResetNotice": "Le {date}, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues."
+  "storageResetNotice": "Le {date}, Mirabò est reparti de zéro : les données de cette tablette étaient chiffrées avec une clé que la tablette n'a plus (cela arrive, par exemple, après une restauration depuis un autre appareil) et ne pouvaient pas être lues.",
+  "rejectedPackagesTitle": "Certains contenus n'ont pas été chargés",
+  "rejectedPackagesBody": "{count, plural, =1{1 paquet de contenus a été écarté car il n'a pas passé les contrôles (signature ou intégrité). Il ne sera pas montré aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.} other{{count} paquets de contenus ont été écartés car ils n'ont pas passé les contrôles (signature ou intégrité). Ils ne seront pas montrés aux enfants. Réinstalle ou mets à jour Mirabò depuis le store.}}"
 }

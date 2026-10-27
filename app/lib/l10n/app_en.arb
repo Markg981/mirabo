@@ -567,5 +567,7 @@
   "startupFailedBody": "Nothing has been deleted. Try again; if it happens again, check the tablet's free space and restart it.",
   "startupTooNewBody": "The data on this tablet comes from a newer version of Mirabò. Nothing has been deleted: update the app from the store.",
   "startupRetry": "Try again",
-  "storageResetNotice": "On {date} Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn't be read."
+  "storageResetNotice": "On {date} Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn't be read.",
+  "rejectedPackagesTitle": "Some content was not loaded",
+  "rejectedPackagesBody": "{count, plural, =1{1 content package was discarded because it failed the checks (signature or integrity). It will not be shown to children. Reinstall or update Mirabò from the store.} other{{count} content packages were discarded because they failed the checks (signature or integrity). They will not be shown to children. Reinstall or update Mirabò from the store.}}"
 }

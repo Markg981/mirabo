@@ -1,5 +1,7 @@
 # Distribuzione dei contenuti
 
+> **Stato: fuori dall'MVP.** La release MVP è senza rete: i contenuti sono solo i pacchetti firmati inclusi negli asset, letti da `StoryRepository`. `PackageInstaller` (installazione, ritiro, rollback, "Mantieni offline") è codice preparato e coperto da `app/test/package_installer_test.dart`, ma nessun punto dell'app lo chiama: ciò che segue descrive il progetto per una versione futura con download, non il comportamento della release. In particolare "alla prima connessione" e il ritiro non valgono finché non c'è la rete. Nell'MVP la firma protegge la pipeline di build; l'app verifica i pacchetti inclusi all'avvio e, se ne scarta qualcuno (`StoryRepository.rejected`), l'area adulta lo segnala con il conteggio.
+
 Prepara la distribuzione remota senza il server. I pacchetti contengono solo dati e asset (JSON, testo, audio, immagini), mai codice: i motori dei giochi restano nel binario.
 
 ## Dove sta cosa

@@ -567,5 +567,7 @@
   "startupFailedBody": "Es wurde nichts gelöscht. Versuche es noch einmal; passiert es wieder, prüfe den freien Speicher des Tablets und starte es neu.",
   "startupTooNewBody": "Die Daten auf diesem Tablet stammen von einer neueren Version von Mirabò. Es wurde nichts gelöscht: Aktualisiere die App im Store.",
   "startupRetry": "Erneut versuchen",
-  "storageResetNotice": "Am {date} hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden."
+  "storageResetNotice": "Am {date} hat Mirabò neu begonnen: Die Daten auf diesem Tablet waren mit einem Schlüssel verschlüsselt, den das Tablet nicht mehr hat (das passiert z. B. nach einer Wiederherstellung von einem anderen Gerät), und konnten nicht gelesen werden.",
+  "rejectedPackagesTitle": "Einige Inhalte wurden nicht geladen",
+  "rejectedPackagesBody": "{count, plural, =1{1 Inhaltspaket wurde verworfen, weil es die Prüfungen (Signatur oder Integrität) nicht bestanden hat. Es wird Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.} other{{count} Inhaltspakete wurden verworfen, weil sie die Prüfungen (Signatur oder Integrität) nicht bestanden haben. Sie werden Kindern nicht gezeigt. Installiere Mirabò neu oder aktualisiere es im Store.}}"
 }

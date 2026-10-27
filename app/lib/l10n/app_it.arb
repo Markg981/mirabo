@@ -602,5 +602,8 @@
   "startupTooNewBody": "I dati su questo tablet sono di una versione più recente di Mirabò. Non è stato cancellato niente: aggiorna l'app dallo store.",
   "startupRetry": "Riprova",
   "storageResetNotice": "Il {date} Mirabò è ripartito da zero: i dati che c'erano su questo tablet erano cifrati con una chiave che il tablet non ha più (succede, per esempio, dopo un ripristino da un altro dispositivo) e non si potevano leggere.",
-  "@storageResetNotice": {"placeholders": {"date": {"type": "String"}}}
+  "@storageResetNotice": {"placeholders": {"date": {"type": "String"}}},
+  "rejectedPackagesTitle": "Alcuni contenuti non sono stati caricati",
+  "rejectedPackagesBody": "{count, plural, =1{1 pacchetto di contenuti è stato scartato perché non ha superato i controlli (firma o integrità). Non verrà mostrato ai bambini. Reinstalla o aggiorna Mirabò dallo store.} other{{count} pacchetti di contenuti sono stati scartati perché non hanno superato i controlli (firma o integrità). Non verranno mostrati ai bambini. Reinstalla o aggiorna Mirabò dallo store.}}",
+  "@rejectedPackagesBody": {"placeholders": {"count": {"type": "int"}}}
 }

@@ -2330,4 +2330,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String storageResetNotice(String date) {
     return 'On $date Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn\'t be read.';
   }
+
+  @override
+  String get rejectedPackagesTitle => 'Some content was not loaded';
+
+  @override
+  String rejectedPackagesBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count content packages were discarded because they failed the checks (signature or integrity). They will not be shown to children. Reinstall or update Mirabò from the store.',
+      one: '1 content package was discarded because it failed the checks (signature or integrity). It will not be shown to children. Reinstall or update Mirabò from the store.',
+    );
+    return '$_temp0';
+  }
 }
