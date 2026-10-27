@@ -748,10 +748,15 @@ class LocalDb {
 
   /// Cancellazione completa: chiude il database, elimina file e chiave e ne
   /// apre uno nuovo e vuoto, come al primo avvio. Vedi [eraseStorage].
+  /// Se la cancellazione fallisce il database viene comunque riaperto (mai
+  /// chiuso in silenzio fino al riavvio) e l'errore arriva a chi chiama.
   Future<void> eraseAndReopen() async {
     await _db.close();
-    await eraseStorage();
-    _db = (await open())._db;
+    try {
+      await eraseStorage();
+    } finally {
+      _db = (await open())._db;
+    }
   }
 
   /// Elimina da questo dispositivo il database (con i file -journal/-wal/-shm
@@ -778,6 +783,8 @@ class LocalDb {
       if (await e.exists()) await e.delete(recursive: true);
     } on FileSystemException catch (err) {
       debugPrint('Cancellazione non riuscita: ${err.path}');
+      // Non si dichiara cancellato ciò che è rimasto sul dispositivo.
+      rethrow;
     }
   }
 

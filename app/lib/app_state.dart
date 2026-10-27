@@ -640,6 +640,8 @@ class AppState extends ChangeNotifier {
     currentProfile = null;
     await usage?.forget();
     onboardingSeen = false;
+    onboardingLanguage = null;
+    onboardingBand = null;
     _childChosen = false;
     _hiddenAt = null;
     mode = SessionMode.alone;
