@@ -73,3 +73,13 @@ def test_impronta_diversa_dall_approvazione_blocca(release_dir, monkeypatch):
 ])
 def test_min_sdk_almeno_26(riga, esito):
     assert len(check_release.android_min_sdk(f"defaultConfig {{\n {riga}\n}}")) == esito
+
+
+def test_catalogo_senza_storie_blocca(release_dir):
+    assets, release_json = release_dir
+    release = json.loads(release_json.read_text(encoding="utf-8"))
+    release["contents"] = []
+    release_json.write_text(json.dumps(release), encoding="utf-8")
+    (assets / "stories" / "index.json").write_text("[]", encoding="utf-8")
+    problems = check_release.assets()
+    assert any("nessuna storia" in p for p in problems)
