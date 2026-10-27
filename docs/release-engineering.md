@@ -31,7 +31,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 
 - La CI compila iOS (senza firma) anche sulle pull request, non solo dopo il merge.
 - **Pagine da 16 KB (Android 15+).** `studio/check_native.py` legge ogni libreria `.so` a 64 bit dell'APK o dell'AAB: segmenti ELF allineati a 16 KB e, nell'APK, librerie non compresse allineate nello zip. In CI gira sull'APK di debug, che ha le stesse librerie dei plugin della release. Ultimo esito: 9 librerie a 64 bit, nessun problema. Il packaging delle librerie native non usa il formato legacy (`useLegacyPackaging = false`).
-- **Requisiti degli store:** `targetSdk` arriva da Flutter; `minSdk = 26` (Android 8, decisione del prodotto) è fissato in `app/android/app/build.gradle.kts`, perché Flutter 3.47.7 darebbe 24; dichiarazioni Families e Kids in `store/`. iOS: il privacy manifest dei plugin arriva con i Pod; serve anche quello dell'app (`PrivacyInfo.xcprivacy`), da aggiungere in Xcode alla prima archiviazione. **Aperto.**
+- **Requisiti degli store:** `targetSdk` arriva da Flutter; `minSdk = 26` (Android 8, decisione del prodotto) è fissato in `app/android/app/build.gradle.kts`, perché Flutter 3.47.7 darebbe 24; dichiarazioni Families e Kids in `store/`. iOS: il privacy manifest dei plugin arriva con i Pod; quello dell'app è `app/ios/Runner/PrivacyInfo.xcprivacy` (nessun tracciamento, nessun dato raccolto, nessuna API a motivo richiesto usata dal codice dell'app), collegato alle Resources del target Runner e verificato da `studio/check_privacy.py`; da riconfermare alla prima archiviazione in Xcode (il report privacy dell'archivio riunisce anche i manifest dei Pod). **Fatto.** Restano aperti titolare, contatto e data nelle informative (campi provvisori).
 
 ## 4. Ciclo dei dati
 
