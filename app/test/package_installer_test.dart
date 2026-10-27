@@ -33,6 +33,19 @@ class _MemorySource implements PackageSource {
   }
 }
 
+class _HugeSource implements PackageSource {
+  bool read_ = false;
+  @override
+  String get id => 'huge';
+  @override
+  Future<int?> length() async => PackageInstaller.maxArchiveBytes + 1;
+  @override
+  Stream<List<int>> read({int offset = 0}) {
+    read_ = true;
+    return const Stream.empty();
+  }
+}
+
 void main() {
   late SimpleKeyPair studio;
   late SimpleKeyPair stranger;
@@ -272,6 +285,50 @@ void main() {
         inst.install(_MemorySource(await build(version: 1))),
         throwsA(isA<InstallException>().having((e) => e.failure, 'failure', InstallFailure.downgrade)),
       );
+    });
+  });
+
+  group('robustezza dell installatore (R3 C-22)', () {
+    test('downgrade rifiutato anche dopo remove', () async {
+      final inst = installer();
+      await inst.install(_MemorySource(await build(version: 2)));
+      await inst.remove('lia');
+      await expectLater(
+        installer().install(_MemorySource(await build(version: 1))),
+        throwsA(isA<InstallException>().having((e) => e.failure, 'failure', InstallFailure.downgrade)),
+      );
+      expect((await installer().install(_MemorySource(await build(version: 3)))).version, 3);
+    });
+
+    test('index.json illeggibile: errore e file intatto, mai sovrascritto', () async {
+      contentRoot.createSync(recursive: true);
+      final index = File(p.join(contentRoot.path, 'index.json'))..writeAsStringSync('{non json');
+      await expectLater(
+        installer().install(_MemorySource(await build())),
+        throwsA(isA<InstallException>().having((e) => e.failure, 'failure', InstallFailure.io)),
+      );
+      expect(index.readAsStringSync(), '{non json');
+    });
+
+    test('errore non di verifica: il .part non resta a bloccare il tentativo successivo', () async {
+      final bytes = await build();
+      var boom = true;
+      final inst = installer(checkpoint: (stage) async {
+        if (boom && stage == 'downloaded') throw StateError('imprevisto');
+      });
+      await expectLater(inst.install(_MemorySource(bytes)), throwsA(isA<StateError>()));
+      expect(File(p.join(contentRoot.path, 'tmp', 'pkg.part')).existsSync(), isFalse);
+      boom = false;
+      expect((await inst.install(_MemorySource(bytes))).version, 1);
+    });
+
+    test('archivio oltre il tetto: rifiutato prima di scaricare', () async {
+      final huge = _HugeSource();
+      await expectLater(
+        installer().install(huge),
+        throwsA(isA<InstallException>().having((e) => e.failure, 'failure', InstallFailure.notVerified)),
+      );
+      expect(huge.read_, isFalse);
     });
   });
 
