@@ -208,3 +208,45 @@ jobs:
         run: flutter pub get --enforce-lockfile
       - working-directory: app
         run: flutter build ios --no-codesign
+
+  cifratura:
+    # I test in app/test usano SQLite in chiaro (ffi): solo su un emulatore si verifica
+    # che il file di LocalDb sia davvero cifrato con SQLCipher.
+    name: Cifratura del database (emulatore Android)
+    runs-on: ubuntu-latest
+    needs: [content, rilascio]
+    if: ${{ !cancelled() && !failure() }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Abilita KVM per l'emulatore
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version-file: app/pubspec.yaml
+          cache: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r studio/requirements.txt
+      - name: Chiave di firma effimera per la CI
+        run: python studio/keygen.py
+      - name: "Sincronizza gli asset (come Android: anche le bozze)"
+        run: python studio/sync_assets.py --include-drafts
+      - name: Dipendenze esatte di app/pubspec.lock
+        working-directory: app
+        run: flutter pub get --enforce-lockfile
+      - uses: reactivecircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          working-directory: app
+          script: flutter test integration_test/cifratura_test.dart -d emulator-5554
