@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
+import 'package:cryptography/cryptography.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -17,6 +20,11 @@ typedef NameSynth = Future<bool> Function(String text, String language, String p
 /// cache (decisione della spec). Le storie registrate lo inseriscono nei punti
 /// `audio.nameSlots`, così la voce dice il nome senza registrarlo.
 ///
+/// Su disco (`names/`) l'audio sta solo cifrato (AES-GCM, chiave nel secure
+/// storage): `name_<id>_<impronta>.enc`. Per la riproduzione serve un file, che
+/// si decifra nella cartella temporanea (`names_play/`) e si rigenera quando
+/// manca; i file in chiaro di versioni precedenti in `names/` si cancellano.
+///
 /// Un file per profilo: `name_<id>_<impronta>.<ext>`. L'impronta cambia con
 /// nome, lingua e velocità; il nome non compare nel nome del file. Quando cambia,
 /// il file vecchio del profilo si cancella.
@@ -25,9 +33,16 @@ typedef NameSynth = Future<bool> Function(String text, String language, String p
 /// nome non va al motore TTS; [forget] resta, per togliere i file lasciati da
 /// una versione precedente.
 class NameVoice {
-  NameVoice({NameSynth? synth, Future<Directory> Function()? cacheDir, this.enabled = Features.spokenName})
-      : _synth = synth ?? _systemSynth,
-        _cacheDir = cacheDir ?? _defaultCacheDir;
+  NameVoice({
+    NameSynth? synth,
+    Future<Directory> Function()? cacheDir,
+    Future<Directory> Function()? playDir,
+    Future<List<int>> Function()? keyProvider,
+    this.enabled = Features.spokenName,
+  })  : _synth = synth ?? _systemSynth,
+        _cacheDir = cacheDir ?? _defaultCacheDir,
+        _playDir = playDir ?? (() async => Directory('${(await getTemporaryDirectory()).path}/names_play')),
+        _key = keyProvider ?? _secureKey;
 
   final bool enabled;
 
@@ -36,6 +51,8 @@ class NameVoice {
 
   final NameSynth _synth;
   final Future<Directory> Function() _cacheDir;
+  final Future<Directory> Function() _playDir;
+  final Future<List<int>> Function() _key;
   final Map<String, Future<File?>> _pending = {};
   Future<void> _queue = Future.value();
 
@@ -71,32 +88,80 @@ class NameVoice {
   /// Cancella il nome di un profilo (eliminato) o di tutti (id null).
   Future<void> forget([int? profileId]) async {
     _pending.removeWhere((k, _) => profileId == null || k.startsWith('$profileId|'));
-    try {
-      final dir = await _namesDir();
-      if (!await dir.exists()) return;
-      await for (final f in dir.list()) {
-        final name = f.uri.pathSegments.last;
-        if (profileId == null || name.startsWith('name_${profileId}_')) await f.delete();
-      }
-    } catch (_) {}
+    for (final get in [_namesDir, _playDir]) {
+      try {
+        final dir = await get();
+        if (!await dir.exists()) continue;
+        await for (final f in dir.list()) {
+          final name = f.uri.pathSegments.last;
+          if (profileId == null || name.startsWith('name_${profileId}_')) await f.delete();
+        }
+      } catch (_) {}
+    }
   }
 
   Future<File?> _generate(int profileId, String name, String ttsCode) async {
     final dir = await _namesDir();
     await dir.create(recursive: true);
+    final play = await _playDir();
+    await play.create(recursive: true);
     final stamp = sha1.convert(utf8.encode('$name|$ttsCode|$speechRate')).toString().substring(0, 16);
     final ext = Platform.isIOS ? 'caf' : 'wav';
-    final file = File('${dir.path}/name_${profileId}_$stamp.$ext');
-    if (await file.exists() && await file.length() > 0) return file;
+    final base = 'name_${profileId}_$stamp';
+    final plain = File('${play.path}/$base.$ext');
+    final enc = File('${dir.path}/$base.enc');
 
-    // Il nome è cambiato (o è la prima volta): via i file vecchi del profilo.
+    // Via i file in chiaro di versioni precedenti e quelli di un nome vecchio.
     await for (final f in dir.list()) {
-      if (f.uri.pathSegments.last.startsWith('name_${profileId}_')) await f.delete();
+      final n = f.uri.pathSegments.last;
+      if (n != '$base.enc' && (!n.endsWith('.enc') || n.startsWith('name_${profileId}_'))) await f.delete();
     }
-    final ok = await _synth(name, ttsCode, file.path);
-    if (ok && await file.exists() && await file.length() > 0) return file;
-    if (await file.exists()) await file.delete();
+    await for (final f in play.list()) {
+      final n = f.uri.pathSegments.last;
+      if (n.startsWith('name_${profileId}_') && n != '$base.$ext') await f.delete();
+    }
+
+    if (await plain.exists() && await plain.length() > 0) return plain;
+    if (await enc.exists()) {
+      try {
+        await plain.writeAsBytes(await _decrypt(await enc.readAsBytes()), flush: true);
+        return plain;
+      } catch (_) {
+        await enc.delete(); // illeggibile (chiave persa): si rigenera
+        if (await plain.exists()) await plain.delete();
+      }
+    }
+    final ok = await _synth(name, ttsCode, plain.path);
+    if (ok && await plain.exists() && await plain.length() > 0) {
+      await enc.writeAsBytes(await _encrypt(await plain.readAsBytes()), flush: true);
+      return plain;
+    }
+    if (await plain.exists()) await plain.delete();
     return null;
+  }
+
+  Future<List<int>> _encrypt(List<int> data) async {
+    final box = await AesGcm.with256bits().encrypt(data, secretKey: SecretKey(await _key()));
+    return box.concatenation();
+  }
+
+  Future<List<int>> _decrypt(List<int> data) async {
+    final box = SecretBox.fromConcatenation(Uint8List.fromList(data), nonceLength: 12, macLength: 16);
+    return AesGcm.with256bits().decrypt(box, secretKey: SecretKey(await _key()));
+  }
+
+  static const _storage = FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock_this_device),
+  );
+
+  /// Chiave a 256 bit nel secure storage, creata la prima volta.
+  static Future<List<int>> _secureKey() async {
+    final stored = await _storage.read(key: 'name_voice_key');
+    if (stored != null) return base64Decode(stored);
+    final key = await AesGcm.with256bits().newSecretKey().then((k) => k.extractBytes());
+    await _storage.write(key: 'name_voice_key', value: base64Encode(key));
+    return key;
   }
 
   Future<Directory> _namesDir() async => Directory('${(await _cacheDir()).path}/names');

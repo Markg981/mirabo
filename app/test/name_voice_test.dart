@@ -15,6 +15,8 @@ void main() {
   NameVoice voice({bool enabled = true}) => NameVoice(
         enabled: enabled,
         cacheDir: () async => tmp,
+        playDir: () async => Directory('${tmp.path}/play'),
+        keyProvider: () async => List.filled(32, 7),
         synth: (text, language, path) async {
           calls.add((text, language));
           if (!synthWorks) return false;
@@ -67,6 +69,7 @@ void main() {
       await v.fileFor(profile(name: 'Emmy', language: 'en'));
       expect(calls.last, ('Emmy', 'en-GB'));
       expect(Directory('${tmp.path}/names').listSync(), hasLength(1));
+      expect(Directory('${tmp.path}/play').listSync(), hasLength(1));
     });
 
     test('se la sintesi fallisce restituisce null e riprova la volta dopo', () async {
@@ -101,6 +104,26 @@ void main() {
       final old = await voice().fileFor(profile());
       await voice(enabled: false).forget();
       expect(old!.existsSync(), isFalse);
+    });
+
+    test('su disco in names/ resta solo il cifrato; il chiaro si rigenera senza TTS', () async {
+      final v = voice();
+      final f = await v.fileFor(profile());
+      final names = Directory('${tmp.path}/names').listSync().whereType<File>().toList();
+      expect(names.every((e) => e.path.endsWith('.enc')), isTrue);
+      expect(names.single.lengthSync(), greaterThan(3));
+      expect(names.single.readAsBytesSync(), isNot([1, 2, 3]));
+      f!.deleteSync();
+      final again = await voice().fileFor(profile());
+      expect(again!.readAsBytesSync(), [1, 2, 3]);
+      expect(calls, hasLength(1));
+    });
+
+    test('un file in chiaro di una versione precedente in names/ viene tolto', () async {
+      final legacy = File('${tmp.path}/names/name_1_abc.wav')..createSync(recursive: true);
+      legacy.writeAsBytesSync([9, 9]);
+      await voice().fileFor(profile());
+      expect(legacy.existsSync(), isFalse);
     });
 
     test('prepare non fallisce mai', () async {
