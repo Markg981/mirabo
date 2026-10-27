@@ -9,7 +9,8 @@ che funziona o una build iOS compilata non bastano. Si controlla che:
   quella del repository, non una effimera generata da keygen.py in CI, e
   corrisponda alla chiave privata dello studio se è su questo computer;
 - gli asset vengano da `sync_assets.py --release`: niente bozze, solo il
-  catalogo approvato (dist/release.json), pacchetto per pacchetto;
+  catalogo approvato (dist/release.json), pacchetto per pacchetto, con sha256,
+  tema (non una release parziale) e impronte delle approvazioni;
 - Android abbia la firma di distribuzione (android/key.properties) e nessuna
   firma di debug per la release;
 - le funzioni fuori dall'MVP siano spente per default (lib/features.dart) e
@@ -22,6 +23,7 @@ Esce con 1 se qualcosa blocca la distribuzione.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import shutil
@@ -41,6 +43,7 @@ FEATURES = APP / "lib" / "features.dart"
 RELEASE_JSON = ROOT / "dist" / "release.json"
 
 sys.path.insert(0, str(ROOT / "studio"))
+import approvals  # noqa: E402
 import check_native  # noqa: E402
 
 
@@ -99,17 +102,32 @@ def assets() -> list[str]:
     build = json.loads(build_file.read_text(encoding="utf-8"))
     if build.get("build") != "release" or build.get("drafts"):
         return [f"asset di sviluppo ({build}): esegui python studio/sync_assets.py --release"]
+    if not isinstance(build.get("packages"), dict):
+        return ["app/assets/build.json non generato da sync_assets.py (manca l'elenco degli sha256): esegui python studio/sync_assets.py --release"]
     if not RELEASE_JSON.exists():
         return ["dist/release.json assente: il catalogo approvato non è stato impacchettato"]
     release = json.loads(RELEASE_JSON.read_text(encoding="utf-8"))
     if not release.get("signed"):
         return ["dist/release.json: pacchetti non firmati"]
+    if release.get("theme") is not None:
+        return [f"dist/release.json: release del solo tema {release['theme']!r}, non il catalogo completo: esegui pack.py --release senza --theme"]
     expected = sorted(c["package"] for c in release["contents"])
     found = sorted(json.loads((ASSETS / "stories" / "index.json").read_text(encoding="utf-8")))
     if found != expected:
         extra, missing = sorted(set(found) - set(expected)), sorted(set(expected) - set(found))
         return [f"asset diversi dal catalogo approvato: in più {extra}, mancanti {missing}"]
-    return []
+    problems: list[str] = []
+    for c in release["contents"]:
+        name = c["package"]
+        actual = hashlib.sha256((ASSETS / "stories" / name).read_bytes()).hexdigest()
+        if actual != c["sha256"]:
+            problems.append(f"{name}: sha256 dell'asset diverso da dist/release.json (pacchetto vecchio o alterato)")
+        if build["packages"].get(name) != c["sha256"]:
+            problems.append(f"{name}: sha256 diverso da quello registrato in build.json da sync_assets.py")
+        entry = approvals.latest(c["kind"], c["id"])
+        if entry is None or entry["fingerprint"] != c["fingerprint"]:
+            problems.append(f"{c['kind']} {c['id']}: l'impronta in dist/release.json non è quella dell'ultima approvazione")
+    return problems
 
 
 def android_signing() -> list[str]:
