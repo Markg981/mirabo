@@ -6,6 +6,7 @@ import '../../l10n/l10n.dart';
 import '../../models/story.dart';
 import '../design/palette.dart';
 import '../design/widgets.dart';
+import 'adult_gate.dart';
 
 /// La storia di esempio dell'onboarding: ha anche un'attività per la casa.
 const onboardingStoryId = 'sassolino-magico';
@@ -15,15 +16,17 @@ const onboardingStoryId = 'sassolino-magico';
 /// materiale, "Prova con tuo figlio". Non raccoglie dati, non chiede account,
 /// non mostra prezzi. Si riapre dall'area adulti (`reopened`).
 ///
-/// Punto di aggancio per il PIN degli adulti: [beforeChildProfile] viene
-/// atteso dopo l'ultimo passo e prima di passare al profilo del bambino.
+/// Dopo l'ultimo passo, prima del profilo del bambino, l'adulto sceglie il PIN
+/// e riceve il codice di recupero (gli stessi dialoghi del lucchetto). Se
+/// annulla, il PIN si crea al primo tocco del lucchetto. [beforeChildProfile]
+/// sostituisce questo passo (nei test).
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key, this.reopened = false, this.beforeChildProfile});
 
   /// Riaperto dall'area adulti: niente scelta di lingua/fascia, si chiude con "Chiudi".
   final bool reopened;
 
-  /// Facoltativo: es. la configurazione del PIN. Null per ora.
+  /// Facoltativo: sostituisce la creazione del PIN.
   final Future<void> Function(BuildContext context)? beforeChildProfile;
 
   @override
@@ -73,7 +76,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       Navigator.of(context).pop();
       return;
     }
-    await widget.beforeChildProfile?.call(context);
+    final before = widget.beforeChildProfile;
+    if (before != null) {
+      await before(context);
+    } else if (!await AdultGate.pin.isSet && mounted) {
+      await AdultGate.confirm(context);
+    }
+    if (!mounted) return;
     await state.finishOnboarding(language: _language, band: _band);
   }
 

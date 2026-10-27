@@ -38,6 +38,8 @@ Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è sta
 - nuovo codice di recupero (`AdultGate.newRecoveryCode`) e recupero con il blocco del tablet acceso o spento (`AdultGate.setDeviceRecovery`);
 - cancellazione dei dati su questo tablet e, se il backup è acceso a compilazione, di quello su Drive (`data_deletion.dart`, via `AdultGate.open`; nella release MVP solo i dati del tablet);
 
+L'onboarding, dopo l'ultimo passo, fa scegliere il PIN all'adulto e mostra il codice di recupero con gli stessi dialoghi. Se annulla, o se l'onboarding era già stato completato senza PIN, il PIN si crea al primo tocco del lucchetto.
+
 `AdultGate.open(context, then: ...)` mantiene la firma: ora chiede il PIN (o ne fa creare uno) e poi esegue `then`.
 
 ## Percorsi di ingresso verificati

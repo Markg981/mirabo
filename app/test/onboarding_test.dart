@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/app_state.dart';
 import 'package:mirabo/content/story_repository.dart';
+import 'package:mirabo/data/adult_pin.dart';
 import 'package:mirabo/data/local_db.dart';
 import 'package:mirabo/l10n/l10n.dart';
 import 'package:mirabo/main.dart';
 import 'package:mirabo/models/profile.dart';
 import 'package:mirabo/models/story.dart';
+import 'package:mirabo/ui/parent/adult_gate.dart';
 import 'package:mirabo/ui/parent/onboarding_screen.dart';
 import 'package:mirabo/ui/parent/profile_form.dart';
 
@@ -73,6 +75,7 @@ void main() {
       previous?.call(details);
     };
     addTearDown(() => FlutterError.onError = previous);
+    AdultGate.pin = AdultPin(store: MemoryPinStore(), iterations: 10);
     final d = db ?? _FakeDb();
     final state = AppState(db: d, repo: _FakeRepo(story));
     await state.init();
@@ -113,6 +116,19 @@ void main() {
     await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
 
+    // L'adulto sceglie il PIN e vede il codice di recupero prima del profilo.
+    expect(find.byType(OnboardingScreen), findsOneWidget);
+    expect(await AdultGate.pin.isSet, isFalse);
+    final fields = find.byType(TextField);
+    await tester.enterText(fields.at(0), '4821');
+    await tester.enterText(fields.at(1), '4821');
+    await tester.tap(find.byType(FilledButton).last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(FilledButton).last); // codice di recupero annotato
+    await tester.pumpAndSettle();
+    expect(await AdultGate.pin.isSet, isTrue);
+    expect(await AdultGate.pin.hasRecoveryCode, isTrue);
+
     expect(find.byType(ProfileForm), findsOneWidget);
     expect(find.byType(OnboardingScreen), findsNothing);
     expect(state.onboardingBand, AgeBand.b3to5);
@@ -125,6 +141,10 @@ void main() {
     await tester.tap(find.byKey(const Key('onboarding-skip')));
     await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
+    // Annullando la scelta del PIN si prosegue: verrà chiesto al primo tocco del lucchetto.
+    await tester.tap(find.byType(TextButton).last);
+    await tester.pumpAndSettle();
+    expect(await AdultGate.pin.isSet, isFalse);
     expect(find.byType(ProfileForm), findsOneWidget);
     expect(state.onboardingSeen, isTrue);
     expect(db.settings[AppState.onboardingSeenKey], '1');
