@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/app_state.dart';
 import 'package:mirabo/audio/name_voice.dart';
@@ -251,6 +252,26 @@ void main() {
       state.releaseSession();
       await tester.pump();
       expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('SessionHold trattiene il saluto finché la pagina è aperta, anche per giochi e calendario', (tester) async {
+      final (state, advance) = await start(tester, alone);
+      await tester.pumpWidget(AppStateScope(
+        state: state,
+        child: const MaterialApp(home: SessionHold(child: Text('pagina'))),
+      ));
+      await advance(const Duration(minutes: 25));
+      expect(state.aloneGoodbye, isFalse);
+      await tester.pumpWidget(const SizedBox());
+      await tester.pump();
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    test('lo scaffale avvolge in SessionHold storie, giochi, attività e calendario della natura', () {
+      final src = File('lib/ui/child/category_screen.dart').readAsStringSync();
+      for (final page in ['StoryReader(', 'GameShell(', 'ActivityPlayer(', 'NatureCalendar(']) {
+        expect(src, contains('SessionHold(child: $page'), reason: page);
+      }
     });
   });
 }

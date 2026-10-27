@@ -93,7 +93,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: MiraboColors.leaf,
           emojis: const ['☀️', '🍂', '🐞'],
           width: width,
-          onTap: () => _open(const NatureCalendar()),
+          onTap: () => _open(const SessionHold(child: NatureCalendar())),
         ),
     };
   }
