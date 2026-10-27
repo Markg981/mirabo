@@ -15,7 +15,7 @@ docs/      Specifica, formato delle storie, guida di stile
 
 ## Primi passi su Windows
 
-1. Installa Flutter nella versione esatta indicata in `app/pubspec.yaml` (campo `flutter:` sotto `environment`, la stessa che usa la CI) seguendo <https://docs.flutter.dev/get-started/install/windows>, più Android Studio e un emulatore tablet (es. Pixel Tablet API 34) oppure un tablet Android con il debug USB. Serve anche Python 3.12.
+1. Installa Flutter nella versione esatta indicata in `app/pubspec.yaml` (campo `flutter:` sotto `environment`, la stessa che usa la CI) seguendo <https://docs.flutter.dev/get-started/install/windows>, più Android Studio e un emulatore tablet (es. Pixel Tablet API 34) oppure un tablet Android con il debug USB. Serve anche Python: versione di riferimento e minima 3.12 (`.python-version`, la usa la CI); la CI prova anche 3.14.
 2. Le cartelle `app/android/` e `app/ios/` sono già nel repository: non eseguire `flutter create .`.
 3. Prepara i contenuti. `app/assets/` è ignorata da git e `pubspec.yaml` ne dichiara le cartelle, quindi senza questo passo l'app parte senza storie (o la build fallisce). Dalla radice del repository:
 

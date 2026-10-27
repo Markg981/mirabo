@@ -23,7 +23,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 | Flutter 3.47.7 (Dart 3.13) | `app/pubspec.yaml`, `environment.flutter` (versione esatta). La CI lo legge con `flutter-version-file` | Cambia la versione, `flutter pub get`, CI verde, commit insieme a `pubspec.lock` |
 | Pacchetti Dart | `app/pubspec.lock`, ora nel repository. CI con `flutter pub get --enforce-lockfile` | `flutter pub upgrade <pacchetto>` e commit del lock |
 | Gradle, AGP, Kotlin, Java | `gradle-wrapper.properties`, `settings.gradle.kts` (AGP 9.1.0, Kotlin 2.4.0), Java 17 | A mano, con una build di prova sulle due piattaforme |
-| Python dello studio | `studio/requirements.txt`, versioni esatte anche delle dipendenze indirette; Python 3.12 in CI | Cambia qui, `pip install -r`, CI |
+| Python dello studio | `studio/requirements.txt`, versioni esatte anche delle dipendenze indirette; Python 3.12 (`.python-version`, minima) e 3.14 in CI sul job dei contenuti | Cambia qui, `pip install -r`, CI |
 
 **Resta aperto:** i Pod iOS. `Podfile` e `Podfile.lock` li genera `flutter create` sul Mac e non sono nel repository. Alla prima build iOS di distribuzione vanno generati e committati.
 
