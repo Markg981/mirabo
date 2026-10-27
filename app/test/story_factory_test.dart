@@ -14,12 +14,14 @@ import 'package:mirabo/models/story.dart';
 import 'package:mirabo/theme.dart';
 import 'package:mirabo/ui/child/read_along_text.dart';
 import 'package:mirabo/ui/child/story_factory.dart';
+import 'package:mirabo/ui/design/widgets.dart';
 
 /// Solo la parte di LocalDb che usa la fabbrica.
 class _FakeDb implements LocalDb {
   _FakeDb(this.profile);
   final ChildProfile profile;
   final List<MadeStory> saved = [];
+  bool failWrites = false;
 
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
@@ -28,6 +30,7 @@ class _FakeDb implements LocalDb {
   Future<String?> setting(String key) async => null;
   @override
   Future<MadeStory> addMadeStory(MadeStory s) async {
+    if (failWrites) throw const FileSystemException('disco pieno');
     final row = s.toRow()..['id'] = saved.length + 1;
     saved.add(MadeStory.fromRow(row));
     return saved.last;
@@ -89,6 +92,35 @@ void main() {
     await tester.pumpAndSettle();
     return (db, state);
   }
+
+  testWidgets('se il salvataggio fallisce il bottone si riabilita e non resta bloccato', (tester) async {
+    final (db, _) = await pumpFactory(tester, AgeBand.b6to7);
+    db.failWrites = true;
+    await tester.tap(find.text('Inventane una'));
+    await tester.pump(const Duration(milliseconds: 650));
+    await tester.pumpAndSettle();
+
+    final picks = ['Un piccolo drago', 'Il bosco', 'Il temporale', 'La paura', 'Un orso gentile', 'Una festa'];
+    for (final pick in picks) {
+      await tester.tap(find.text(pick));
+      await tester.pump(const Duration(milliseconds: 650));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(pick == picks.last ? 'Leggiamo la storia!' : 'Avanti'));
+      await tester.pump(const Duration(milliseconds: 650));
+      await tester.pumpAndSettle();
+    }
+
+    expect(db.saved, isEmpty);
+    expect(find.byType(ReadAlongText), findsNothing);
+    final button = find.widgetWithText(ChunkyButton, 'Leggiamo la storia!');
+    expect(tester.widget<ChunkyButton>(button).onPressed, isNotNull, reason: 'si può riprovare');
+
+    db.failWrites = false;
+    await tester.tap(find.text('Leggiamo la storia!'));
+    await tester.pump(const Duration(milliseconds: 650));
+    await tester.pumpAndSettle();
+    expect(db.saved, hasLength(1));
+  });
 
   testWidgets('si sceglie un pezzo per passo, si salva e si legge', (tester) async {
     final (db, _) = await pumpFactory(tester, AgeBand.b6to7);
