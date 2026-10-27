@@ -310,7 +310,10 @@ class AppState extends ChangeNotifier {
   }
 
   /// Il compagno, le storie e le attività arrivano nella lingua del bambino.
-  Companion companionOf(ChildProfile p) => repo.companionsIn(p.language).firstWhere((c) => c.id == p.companion);
+  Companion companionOf(ChildProfile p) => repo.companionsIn(p.language).firstWhere(
+        (c) => c.id == p.companion,
+        orElse: () => repo.companionsIn(p.language).first,
+      );
 
   List<Story> storiesFor(ChildProfile p, {SessionMode? mode}) =>
       repo.storiesIn(p.language).where((s) => p.canOpen(s, mode ?? this.mode)).toList();
@@ -385,7 +388,7 @@ class AppState extends ChangeNotifier {
     await db.addRounds(p.id, activity, results);
     // Il livello non cambia da solo: lo sceglie il bambino a fine attività
     // (più semplice / ancora così / più sfida), vedi setActivityLevel.
-    await db.saveProgress(before.copyWith(sessions: before.sessions + 1, lastPlayed: DateTime.now()));
+    await db.saveProgress(before.copyWith(sessions: before.sessions + 1, lastPlayed: _now()));
   }
 
   /// Scelta facoltativa a fine attività: cambia solo il livello di quell'attività
@@ -476,7 +479,7 @@ class AppState extends ChangeNotifier {
       storyId: story.id,
       mode: mode,
       completed: completed,
-      when: DateTime.now(),
+      when: _now(),
     ));
     if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
   }
@@ -549,6 +552,10 @@ class AppState extends ChangeNotifier {
     hemisphere = Hemisphere.fromRegion(_region());
     profiles = const [];
     currentProfile = null;
+    onboardingSeen = false;
+    _childChosen = false;
+    _hiddenAt = null;
+    mode = SessionMode.alone;
     _syncAloneClock();
     notifyListeners();
   }

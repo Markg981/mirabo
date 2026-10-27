@@ -58,7 +58,7 @@ class _CountdownRoundState extends State<CountdownRound> {
     final today = DateTime.now();
     final remaining = DateUtils.dateOnly(date).difference(DateUtils.dateOnly(today)).inDays;
     final dayIndex = (_days - remaining).clamp(0, _daily.length - 1);
-    final todaysTask = remaining <= 0 ? 'Oggi è il giorno! Buona scuola, ${widget.ctx.profile.name}.' : _daily[dayIndex];
+    final todaysTask = remaining <= 0 ? context.l10n.countdownTodayTask(widget.ctx.profile.name) : _daily[dayIndex];
 
     return Column(
       children: [
