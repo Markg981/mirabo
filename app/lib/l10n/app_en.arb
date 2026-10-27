@@ -65,6 +65,8 @@
   "countdownPick": "Pick the date",
   "countdownToday": "It's today!",
   "countdownTodaySay": "Today is the day!",
+  "countdownTodayTask": "Today is the day! Have a great day at school, {name}.",
+  "@countdownTodayTask": { "placeholders": { "name": { "type": "String" } } },
   "countdownDaysTo": "{count, plural, =1{1 day to go until: {event}} other{{count} days to go until: {event}}}",
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{1 day to go. {task}} other{{count} days to go. {task}}}",
@@ -115,6 +117,8 @@
   "memoryIntroFood": "Find who eats what: an animal and its food.",
   "memoryIntroHome": "Turn three cards: an animal, its food and its home.",
   "memoryCovered": "Face-down card",
+  "memoryCardFaceUp": "{name}, face-up",
+  "drawColorName": "Colour {color, select, rose{pink} apricot{orange} sun{yellow} leaf{green} sky{light blue} plum{purple} brown{brown} ink{black} other{{color}}}",
   "animalName": "{animal, select, dog{dog} cat{cat} rabbit{rabbit} fox{fox} bear{bear} panda{panda} frog{frog} monkey{monkey} lion{lion} tiger{tiger} cow{cow} pig{pig} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{the squirrel} penguin{the penguin} monkey{the monkey} rabbit{the rabbit} bear{the bear} panda{the panda} chestnut{the chestnut} fish{the fish} banana{the banana} carrot{the carrot} honey{the honey} bamboo{the bamboo} tree{the tree} ice{the ice} palm{the palm tree} burrow{the burrow} forest{the forest} mountain{the mountain} other{{item}}}",
 
@@ -187,6 +191,7 @@
   "hemisphere": "{place, select, north{Northern hemisphere} south{Southern hemisphere} equator{Near the equator} other{{place}}}",
   "parentData": "Your data",
   "parentDataHint": "Profiles, diary and progress stay on this device, encrypted. The Google Drive backup below is optional.",
+  "parentDataHintLocal": "Profiles, diary and progress stay on this device, encrypted.",
   "parentWipe": "Delete all Mirabò data on this tablet",
   "parentWipeConfirmTitle": "Delete everything?",
   "parentWipeConfirm": "Profiles and diary will be erased from this device. This can't be undone. Any Google Drive backup stays where it is.",
@@ -509,6 +514,7 @@
   "onbPromiseBody": "Mirabò is for children aged 3 to 10 and the adult who plays alongside them.",
   "onbFactFree": "Free",
   "onbFactOffline": "Works offline: the cloud is your choice",
+  "onbFactOfflineLocal": "Works offline: your data stays on the device",
   "onbFactNoAds": "No ads",
   "onbFactNoAccount": "No account for the child",
   "onbSetupTitle": "Language and age group",
@@ -525,6 +531,7 @@
   "onbClose": "Close",
   "dataWipeTitle": "Delete everything from this tablet?",
   "dataWipeBody": "Profiles, progress, diary, creations and generated files (including the name's voice) will be permanently deleted, along with the database and its key. The tablet will go back to how it was on first launch. This cannot be undone. Any Google Drive backup is not touched.",
+  "dataWipeBodyLocal": "Profiles, progress, diary, creations and generated files (including the name's voice) will be permanently deleted, along with the database and its key. The tablet will go back to how it was on first launch. This cannot be undone.",
   "dataWipeTypePrompt": "To confirm, type {word}",
   "@dataWipeTypePrompt": {"placeholders": {"word": {"type": "String"}}},
   "dataWipeWord": "DELETE",
@@ -538,6 +545,7 @@
   "dataRemoteFailed": "The Google Drive backup was NOT deleted (probably no network, or Google sign-in is needed again). Nothing has changed: connect to the internet and try again.",
   "dataOutsideTitle": "What the app cannot control",
   "dataOutsideBody": "Mirabò cannot delete your operating system's backups (the phone or tablet backup on iCloud or Google), nor files you have already exported, printed or shared. For those: open the iCloud or Google settings on the device and delete old backups, and remove saved or sent files by hand. If anything is left in your Drive, you can find and delete it in Drive > Settings > Manage apps.",
+  "dataOutsideBodyLocal": "Mirabò cannot delete your operating system's backups (the phone or tablet backup on iCloud or Google), nor files you have already exported, printed or shared. For those: open the iCloud or Google settings on the device and delete old backups, and remove saved or sent files by hand.",
   "gateRecoveryTitle": "Your recovery code",
   "gateRecoveryBody": "Write it on paper and keep it away from the tablet: you need it if you forget the PIN. It won't be shown again.",
   "gateRecoveryWritten": "I've written it down",
@@ -561,5 +569,7 @@
   "startupFailedBody": "Nothing has been deleted. Try again; if it happens again, check the tablet's free space and restart it.",
   "startupTooNewBody": "The data on this tablet comes from a newer version of Mirabò. Nothing has been deleted: update the app from the store.",
   "startupRetry": "Try again",
-  "storageResetNotice": "On {date} Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn't be read."
+  "storageResetNotice": "On {date} Mirabò started over: the data on this tablet was encrypted with a key the tablet no longer has (this can happen, for example, after restoring from another device), so it couldn't be read.",
+  "rejectedPackagesTitle": "Some content was not loaded",
+  "rejectedPackagesBody": "{count, plural, =1{1 content package was discarded because it failed the checks (signature or integrity). It will not be shown to children. Reinstall or update Mirabò from the store.} other{{count} content packages were discarded because they failed the checks (signature or integrity). They will not be shown to children. Reinstall or update Mirabò from the store.}}"
 }

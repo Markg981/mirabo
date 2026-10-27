@@ -49,6 +49,9 @@ class _StoryReaderState extends State<StoryReader> {
   String? _dialogueAnswer;
   bool _recorded = false;
 
+  /// "Ho finito" già toccato: un secondo tocco non registra né chiude di nuovo.
+  bool _finishing = false;
+
   /// Pausa di conseguenza (una per storia): l'ultima mossa provata e tutte
   /// quelle provate. Restano se si torna indietro.
   String? _tryId;
@@ -267,13 +270,21 @@ class _StoryReaderState extends State<StoryReader> {
     _lessonTimer?.cancel();
     _gestureTimer?.cancel();
     if (_gestures[_index] == GesturePhase.running) _gestures.remove(_index);
-    setState(() => _index = index);
+    setState(() {
+      _index = index;
+      // Le risposte appartengono alla schermata: la prossima parte da zero.
+      _dialogueAnswer = null;
+      _tryId = null;
+      _tried.clear();
+    });
     _state.saveStoryPosition(_profile, widget.story.id, index);
     _speakCurrent();
   }
 
   Future<void> _next() async {
     if (_isLast) {
+      if (_finishing) return;
+      _finishing = true;
       _recorded = true;
       await _state.saveStoryPosition(_profile, widget.story.id, 0);
       await _state.recordStory(widget.story, completed: true);
@@ -578,7 +589,7 @@ class _StoryReaderState extends State<StoryReader> {
         ),
       );
     }
-    final tried = _tryId == null ? null : pause.options.firstWhere((o) => o.id == _tryId);
+    final tried = _tryId == null ? null : pause.options.where((o) => o.id == _tryId).firstOrNull;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -675,9 +686,10 @@ class _StoryReaderState extends State<StoryReader> {
           text: _withName(_dialogueAnswer == null
               ? dialogue.alonePrompt.forCompanion(_profile.companion)
               : dialogue.options
-                  .firstWhere((o) => o.id == _dialogueAnswer)
-                  .reaction
-                  .forCompanion(_profile.companion)),
+                      .where((o) => o.id == _dialogueAnswer)
+                      .map((o) => o.reaction.forCompanion(_profile.companion))
+                      .firstOrNull ??
+                  dialogue.alonePrompt.forCompanion(_profile.companion)),
         ),
         const SizedBox(height: 12),
         Wrap(

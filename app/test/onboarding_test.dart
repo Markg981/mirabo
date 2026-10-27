@@ -88,22 +88,29 @@ void main() {
     expect(find.byType(ProfileForm), findsNothing);
 
     await tester.tap(find.byKey(const Key('onboarding-next'))); // promessa -> lingua e fascia
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('onb-band-3-5')));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.tap(find.byKey(const Key('onb-lang-en')));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
 
     await tester.tap(find.byKey(const Key('onboarding-next'))); // assaggio della storia
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(find.text(story.title), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('onboarding-next'))); // attività e materiale
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(find.textContaining('• '), findsWidgets);
 
     await tester.tap(find.byKey(const Key('onboarding-next'))); // prova con tuo figlio
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('onboarding-go')));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
 
     expect(find.byType(ProfileForm), findsOneWidget);
@@ -116,6 +123,7 @@ void main() {
   testWidgets('si può saltare subito e viene ricordato', (tester) async {
     final (state, db) = await start(tester);
     await tester.tap(find.byKey(const Key('onboarding-skip')));
+    await tester.pump(const Duration(milliseconds: 650));
     await tester.pumpAndSettle();
     expect(find.byType(ProfileForm), findsOneWidget);
     expect(state.onboardingSeen, isTrue);

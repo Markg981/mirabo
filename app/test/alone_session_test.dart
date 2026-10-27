@@ -16,8 +16,13 @@ class _FakeDb implements LocalDb {
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
 
+  final settings = <String, String>{};
   @override
-  Future<String?> setting(String key) async => null;
+  Future<String?> setting(String key) async => settings[key];
+  @override
+  Future<void> setSetting(String key, String value) async => settings[key] = value;
+  @override
+  Future<void> removeSetting(String key) async => settings.remove(key);
   @override
   Future<void> updateProfile(ChildProfile p) async => profile = p;
 
@@ -42,10 +47,10 @@ void main() {
 
   // I Timer di testWidgets sono finti: tester.pump li fa scattare. L'orologio
   // dell'app avanza insieme a loro.
-  Future<(AppState, Future<void> Function(Duration))> start(WidgetTester tester, ChildProfile p) async {
-    var now = DateTime(2026, 10, 13, 16);
+  Future<(AppState, Future<void> Function(Duration))> start(WidgetTester tester, ChildProfile p, {_FakeDb? db, DateTime? at}) async {
+    var now = at ?? DateTime(2026, 10, 13, 16);
     final state = AppState(
-      db: _FakeDb(p),
+      db: db ?? _FakeDb(p),
       repo: _NoRepo(),
       nameVoice: NameVoice(cacheDir: () async => throw const FileSystemException('no')),
       clock: () => now,
@@ -180,5 +185,54 @@ void main() {
     expect(state.mode, SessionMode.together);
     await state.selectProfile(const ChildProfile(id: 2, name: 'U', ageBand: AgeBand.b3to5, companion: CompanionId.bo, aloneSessionMinutes: 0));
     expect(state.mode, SessionMode.alone);
+  });
+
+  group('riavvio dell app', () {
+    // Primo avvio, poi l'app va in background a +12 min e viene chiusa; la
+    // seconda istanza riparte [gap] dopo, sullo stesso database.
+    // Il processo muore: niente timer in sospeso. Il fine test lo smaltisce di nuovo.
+    Future<void> state0(AppState s) async {
+      s.setMode(SessionMode.together); // ferma i timer senza dispose
+    }
+
+    Future<(AppState, Future<void> Function(Duration))> restart(WidgetTester tester, Duration gap) async {
+      final db = _FakeDb(alone);
+      final (first, advance) = await start(tester, alone, db: db);
+      await advance(const Duration(minutes: 12));
+      first.appHidden();
+      final saved = Map.of(db.settings);
+      await state0(first);
+      db.settings..clear()..addAll(saved);
+      await tester.pump();
+      final second = await start(tester, alone, db: db, at: DateTime(2026, 10, 13, 16, 12).add(gap));
+      return second;
+    }
+
+    testWidgets('entro 10 minuti il conto continua: il limite scade con quello di prima', (tester) async {
+      final (state, advance) = await restart(tester, const Duration(minutes: 5));
+      await advance(const Duration(minutes: 2));
+      expect(state.aloneGoodbye, isFalse);
+      await advance(const Duration(minutes: 1));
+      // 12 + 5 + 3 = 20 minuti dall'inizio: il limite di prima, non uno nuovo.
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('oltre 10 minuti la sessione riparte da zero', (tester) async {
+      final (state, advance) = await restart(tester, const Duration(minutes: 11));
+      await advance(const Duration(minutes: 19));
+      expect(state.aloneGoodbye, isFalse);
+      await advance(const Duration(minutes: 1));
+      expect(state.aloneGoodbye, isTrue);
+    });
+
+    testWidgets('un gioco aperto al limite non viene interrotto', (tester) async {
+      final (state, advance) = await start(tester, alone);
+      state.holdSession(); // GameShell è avvolto in SessionHold
+      await advance(const Duration(minutes: 25));
+      expect(state.aloneGoodbye, isFalse);
+      state.releaseSession();
+      await tester.pump();
+      expect(state.aloneGoodbye, isTrue);
+    });
   });
 }

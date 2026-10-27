@@ -31,7 +31,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 
 - La CI compila iOS (senza firma) anche sulle pull request, non solo dopo il merge.
 - **Pagine da 16 KB (Android 15+).** `studio/check_native.py` legge ogni libreria `.so` a 64 bit dell'APK o dell'AAB: segmenti ELF allineati a 16 KB e, nell'APK, librerie non compresse allineate nello zip. In CI gira sull'APK di debug, che ha le stesse librerie dei plugin della release. Ultimo esito: 9 librerie a 64 bit, nessun problema. Il packaging delle librerie native non usa il formato legacy (`useLegacyPackaging = false`).
-- **Requisiti degli store:** `targetSdk` e `minSdk` arrivano da Flutter (Android 8+ come da decisioni del prodotto); dichiarazioni Families e Kids in `store/`. iOS: il privacy manifest dei plugin arriva con i Pod; serve anche quello dell'app (`PrivacyInfo.xcprivacy`), da aggiungere in Xcode alla prima archiviazione. **Aperto.**
+- **Requisiti degli store:** `targetSdk` arriva da Flutter; `minSdk = 26` (Android 8, decisione del prodotto) è fissato in `app/android/app/build.gradle.kts`, perché Flutter 3.47.7 darebbe 24; dichiarazioni Families e Kids in `store/`. iOS: il privacy manifest dei plugin arriva con i Pod; serve anche quello dell'app (`PrivacyInfo.xcprivacy`), da aggiungere in Xcode alla prima archiviazione. **Aperto.**
 
 ## 4. Ciclo dei dati
 
@@ -42,7 +42,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 | Ritorno a una versione precedente | Il database di una versione più recente non si apre e non si tocca: schermata "aggiorna l'app" | `data_lifecycle_test` |
 | Cambio fascia | Il punto della storia resta della fascia di prima; mensola automatica rifatta | `data_lifecycle_test`, `child_paths_test` |
 | Chiusura forzata o memoria finita | Ogni scrittura è subito su disco: al riavvio profilo, mensola e punto della storia ci sono; si riparte "da solo" | `data_lifecycle_test` (seconda connessione senza chiudere la prima) |
-| Chiave sparita (ripristino su un altro dispositivo) | Il database illeggibile si elimina, ma l'onboarding lo dice con la data | `data_lifecycle_test` |
+| Chiave sparita (ripristino su un altro dispositivo) | Il database illeggibile va in quarantena (una copia, eliminata da "Elimina tutti i dati"), si riparte da zero e l'onboarding lo dice con la data | `data_lifecycle_test` |
 | Secure storage che non risponde | Nessuna cancellazione: schermata d'errore con "Riprova" | `data_lifecycle_test` |
 | Cancellazione | Profilo o tutti i dati, compresa la chiave | `data_deletion_test`, `local_db_test` |
 
