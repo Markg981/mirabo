@@ -482,6 +482,8 @@ class AppState extends ChangeNotifier {
     _syncAloneClock();
     notifyListeners();
     nameVoice.prepare(saved);
+    // Al primo profilo main ha controllato a lista vuota: la voce si verifica ora.
+    await checkVoices();
   }
 
   Future<void> updateProfile(ChildProfile p) async {
@@ -493,6 +495,7 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     // Se nome e lingua non sono cambiati il file c'è già e non si rigenera.
     nameVoice.prepare(p);
+    if (before != null && before.language != p.language) await checkVoices();
     // Con un'altra fascia o lingua i materiali sono altri: la mensola
     // automatica si rifà subito, senza aspettare la settimana.
     if (before != null && p.shelfAuto != null && (before.ageBand != p.ageBand || before.language != p.language)) {
