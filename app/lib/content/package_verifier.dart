@@ -41,9 +41,16 @@ class PackageVerifier {
 
   final String _publicKeyHex;
 
-  /// Contro le zip bomb: tetti su voci e dimensione dichiarata totale.
+  /// Contro le zip bomb: tetti controllati sulle intestazioni dell'archivio,
+  /// prima di decomprimere. I pacchetti attuali sono lontanissimi (misurati su
+  /// 198: max 37 KB, 27 voci, 14 KB per voce, 93 KB totali, rapporto 5).
+  static const maxArchiveBytes = 64 * 1024 * 1024;
   static const maxEntries = 2000;
-  static const maxUnpackedBytes = 512 * 1024 * 1024;
+  static const maxEntryBytes = 64 * 1024 * 1024;
+  static const maxUnpackedBytes = 256 * 1024 * 1024;
+
+  /// Rapporto massimo fra dimensione dichiarata decompressa e archivio.
+  static const maxCompressionRatio = 200;
   final _ed25519 = Ed25519();
 
   /// Apre e verifica un archivio .mirabo. Lancia [PackageVerificationException]
@@ -52,6 +59,7 @@ class PackageVerifier {
   /// [isOptional] indica i file che possono mancare (le parti di lingue non
   /// scaricate): se presenti vengono comunque verificati.
   Future<VerifiedPackage> open(Uint8List archiveBytes, {bool Function(String path)? isOptional}) async {
+    if (archiveBytes.length > maxArchiveBytes) throw PackageVerificationException('archivio troppo grande');
     final Archive archive;
     try {
       archive = ZipDecoder().decodeBytes(archiveBytes);
@@ -61,9 +69,14 @@ class PackageVerifier {
     if (archive.files.length > maxEntries) throw PackageVerificationException('troppe voci nell archivio');
     var declared = 0;
     for (final f in archive.files) {
-      if (f.isFile) declared += f.size;
+      if (!f.isFile) continue;
+      if (f.size > maxEntryBytes) throw PackageVerificationException('voce troppo grande: ${f.name}');
+      declared += f.size;
     }
     if (declared > maxUnpackedBytes) throw PackageVerificationException('archivio troppo grande da estrarre');
+    if (declared > archiveBytes.length * maxCompressionRatio) {
+      throw PackageVerificationException('rapporto di compressione sospetto');
+    }
     final files = <String, Uint8List>{};
     for (final f in archive.files) {
       if (f.isFile) files[f.name] = Uint8List.fromList(f.content as List<int>);
