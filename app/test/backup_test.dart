@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/data/backup_codec.dart';
@@ -90,6 +92,17 @@ void main() {
       final key = await BackupKey.derive('una password lunga', iterations: 1000);
       final file = await BackupCodec.encrypt(_sample('Emma'), key);
       expect(BackupCodec.decrypt(file, 'un\'altra password'), throwsA(isA<WrongPasswordException>()));
+    });
+
+    test('iterazioni fuori dai limiti nel file: rifiutate senza derivare', () async {
+      final key = await BackupKey.derive('una password lunga', iterations: 1000);
+      final env = jsonDecode(utf8.decode(await BackupCodec.encrypt(_sample('Emma'), key))) as Map<String, Object?>;
+      for (final n in [0, BackupCodec.maxIterations + 1, 2000000000]) {
+        (env['kdf'] as Map)['iterations'] = n;
+        expect(BackupCodec.decrypt(utf8.encode(jsonEncode(env)), 'una password lunga'), throwsFormatException);
+      }
+      (env['kdf'] as Map)['iterations'] = 'tante';
+      expect(BackupCodec.decrypt(utf8.encode(jsonEncode(env)), 'una password lunga'), throwsFormatException);
     });
 
     test('file che non è un backup', () {

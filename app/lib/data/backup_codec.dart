@@ -54,6 +54,11 @@ class BackupCodec {
   /// Password troppo corte rendono inutile la cifratura.
   static const minPasswordLength = 8;
 
+  /// Limiti accettati per le iterazioni lette dal file: un file manomesso non
+  /// deve poter bloccare il dispositivo con una derivazione senza fine.
+  static const minIterations = 1000;
+  static const maxIterations = 2 * iterations;
+
   static Future<List<int>> encrypt(Map<String, Object?> data, BackupKey key) async {
     final box = await AesGcm.with256bits().encrypt(
       utf8.encode(jsonEncode(data)),
@@ -79,14 +84,23 @@ class BackupCodec {
       throw const FormatException('Non è un backup di Mirabò');
     }
     if (env['mirabo_backup'] != formatVersion) throw const FormatException('Formato di backup sconosciuto');
-    final kdf = env['kdf'] as Map<String, Object?>;
-    final key = await BackupKey.derive(password,
-        salt: base64.decode(kdf['salt'] as String), iterations: kdf['iterations'] as int);
-    final box = SecretBox(
-      base64.decode(env['data'] as String),
-      nonce: base64.decode(env['nonce'] as String),
-      mac: Mac(base64.decode(env['mac'] as String)),
-    );
+    final BackupKey key;
+    final SecretBox box;
+    try {
+      final kdf = env['kdf'] as Map<String, Object?>;
+      final n = kdf['iterations'] as int;
+      if (n < minIterations || n > maxIterations) throw const FormatException('Parametri del backup non validi');
+      key = await BackupKey.derive(password, salt: base64.decode(kdf['salt'] as String), iterations: n);
+      box = SecretBox(
+        base64.decode(env['data'] as String),
+        nonce: base64.decode(env['nonce'] as String),
+        mac: Mac(base64.decode(env['mac'] as String)),
+      );
+    } on FormatException {
+      rethrow;
+    } catch (_) {
+      throw const FormatException('Backup danneggiato');
+    }
     final List<int> clear;
     try {
       clear = await AesGcm.with256bits().decrypt(box, secretKey: SecretKey(key.bytes));

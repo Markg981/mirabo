@@ -163,6 +163,21 @@ void main() {
     await db.close();
   });
 
+  test('un backup con tipi sbagliati dà un errore chiaro e non tocca i dati', () async {
+    final db = await openCurrent('${tmp.path}/t.db');
+    final ldb = LocalDb.forTest(db);
+    await ldb.importAll({'schema': 12, 'profiles': [profile(1, 'Ada')]});
+    for (final bad in [
+      {'schema': 12, 'profiles': 'no'},
+      {'schema': 12, 'profiles': [1, 2]},
+      {'schema': 12, 'profiles': [profile(2, 'Bea')], 'diary': {'a': 1}},
+    ]) {
+      await expectLater(ldb.importAll(bad), throwsFormatException);
+    }
+    expect((await db.query('profiles')).map((r) => r['id']), [1]);
+    await db.close();
+  });
+
   test('un backup di prima della v13 si ripristina senza tentativi, risposte né righe orfane', () async {
     final db = await openCurrent('${tmp.path}/e.db');
     const at = '2026-10-10T10:00:00.000';

@@ -804,6 +804,13 @@ class LocalDb {
   Future<void> importAll(Map<String, Object?> data) async {
     final schema = data['schema'];
     if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
+    // Tipi controllati prima di toccare i dati: un file malformato dà un errore chiaro.
+    for (final t in _tables) {
+      final rows = data[t];
+      if (rows != null && (rows is! List || rows.any((r) => r is! Map))) {
+        throw FormatException('Backup danneggiato: la sezione "$t" non è valida');
+      }
+    }
     await _write(() => _db.transaction((tx) async {
       for (final t in _tables.reversed) {
         await tx.delete(t);
