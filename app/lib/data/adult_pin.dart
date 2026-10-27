@@ -13,7 +13,11 @@ abstract class PinStore {
 }
 
 class SecurePinStore implements PinStore {
-  const SecurePinStore([this._s = const FlutterSecureStorage()]);
+  const SecurePinStore([this._s = const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    // Come LocalDb: solo questo dispositivo, niente migrazione via backup.
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock_this_device),
+  )]);
   final FlutterSecureStorage _s;
   @override
   Future<String?> read(String key) => _s.read(key: key);
@@ -56,6 +60,7 @@ class AdultPin {
 
   static const minLength = 4;
   static const maxLength = 6;
+  static const _kMigrated = 'adult_pin_keychain_v2';
   static const _kHash = 'adult_pin_hash';
   static const _kSalt = 'adult_pin_salt';
   static const _kFails = 'adult_pin_fails';
@@ -66,6 +71,7 @@ class AdultPin {
   static const _kDeviceRecovery = 'adult_pin_device_recovery';
   static const _kResetAt = 'adult_pin_reset_at';
   static const _kResetHow = 'adult_pin_reset_how';
+  static const _kResetPending = 'adult_pin_reset_pending';
 
   /// Lettere e cifre del codice di recupero, senza quelle che si confondono
   /// scrivendole a mano (0/O, 1/I/L).
@@ -76,6 +82,35 @@ class AdultPin {
   static const freeAttempts = 3;
 
   final PinStore _store;
+
+  /// Tutte le chiavi scritte da questa classe (esclusa la spia di migrazione).
+  static const _allKeys = [
+    _kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt,
+    _kDeviceRecovery, _kResetAt, _kResetHow,
+  ];
+
+  /// Da chiamare all'apertura del DB. [dbExisted]: il file del database c'era
+  /// già. Il Keychain iOS sopravvive alla reinstallazione, il DB no: senza DB
+  /// le chiavi del PIN sono orfane e si cancellano. Altrimenti, una volta sola,
+  /// le chiavi esistenti si riscrivono con l'accessibilità attuale
+  /// (`first_unlock_this_device`) senza perdere il PIN.
+  static Future<void> reconcile(PinStore store, {required bool dbExisted}) async {
+    if (!dbExisted) {
+      for (final k in _allKeys) {
+        await store.delete(k);
+      }
+      await store.write(_kMigrated, '1');
+      return;
+    }
+    if (await store.read(_kMigrated) != null) return;
+    for (final k in _allKeys) {
+      final v = await store.read(k);
+      if (v == null) continue;
+      await store.delete(k);
+      await store.write(k, v);
+    }
+    await store.write(_kMigrated, '1');
+  }
   final DateTime Function() _now;
   final int iterations;
 
@@ -104,6 +139,13 @@ class AdultPin {
     await _store.write(_kSalt, base64.encode(salt));
     await _store.write(_kHash, base64.encode(_derive(pin, salt)));
     await _clearFails();
+    // Il nuovo PIN esiste: ora il recupero in corso si chiude e un eventuale
+    // codice di recupero usato smette di valere.
+    if (await _store.read(_kResetPending) == RecoveryChannel.code.name) {
+      await _store.delete(_kRecHash);
+      await _store.delete(_kRecSalt);
+    }
+    await _store.delete(_kResetPending);
   }
 
   /// Tempo di attesa residuo (zero se si può provare). L'attesa è salvata come
@@ -153,14 +195,16 @@ class AdultPin {
     return _fail();
   }
 
-  /// Dopo un recupero riuscito tramite un canale adulto: toglie il vecchio PIN
-  /// e le attese. I dati del bambino (database, profili, progressi) non si toccano.
+  /// Dopo un recupero riuscito tramite un canale adulto: azzera le attese e
+  /// segna il recupero "in corso". Il vecchio PIN resta valido fino a quando
+  /// [set] non scrive quello nuovo (reset atomico): se l'adulto annulla o l'app
+  /// si chiude prima, il tablet non resta senza PIN e chi lo tocca non entra.
+  /// I dati del bambino (database, profili, progressi) non si toccano.
   /// Resta un avviso con data e canale ([resetNotice]), che l'area adulta
   /// mostra finché l'adulto non lo chiude: un reset fatto da altri si vede.
   Future<void> reset({RecoveryChannel how = RecoveryChannel.device}) async {
-    await _store.delete(_kHash);
-    await _store.delete(_kSalt);
     await _clearFails();
+    await _store.write(_kResetPending, how.name);
     await _store.write(_kResetAt, '${_now().millisecondsSinceEpoch}');
     await _store.write(_kResetHow, how.name);
   }
@@ -180,25 +224,25 @@ class AdultPin {
   Future<bool> get hasRecoveryCode async => (await _store.read(_kRecHash)) != null;
 
   /// Il codice di recupero al posto del PIN dimenticato. Conta come un
-  /// tentativo di PIN (stesse attese). Se è giusto toglie il PIN e il codice,
-  /// che vale una volta: con il PIN nuovo se ne crea un altro.
+  /// tentativo di PIN (stesse attese). Se è giusto avvia il reset; il codice
+  /// vale una volta, ma si consuma solo quando [set] scrive il PIN nuovo (con
+  /// quello se ne crea un altro).
   Future<PinResult> recover(String code) async {
     if ((await remainingLock()) > Duration.zero) return PinResult.locked;
     final h = await _store.read(_kRecHash);
     final s = await _store.read(_kRecSalt);
     final normalized = code.toUpperCase().replaceAll(RegExp('[^A-Z0-9]'), '');
     if (h != null && s != null && _constantTimeEquals(base64.encode(_derive(normalized, base64.decode(s))), h)) {
-      await _store.delete(_kRecHash);
-      await _store.delete(_kRecSalt);
       await reset(how: RecoveryChannel.code);
       return PinResult.ok;
     }
     return _fail();
   }
 
-  /// Recupero con il blocco del tablet: acceso salvo scelta dell'adulto, che
-  /// lo spegne se il bambino conosce il codice del tablet o ha l'impronta registrata.
-  Future<bool> get deviceRecovery async => (await _store.read(_kDeviceRecovery)) != '0';
+  /// Recupero con il blocco del tablet: spento di default, lo accende solo
+  /// l'adulto. Chi ha il codice del tablet o l'impronta (spesso un bambino)
+  /// altrimenti azzererebbe il PIN e chiuderebbe l'avviso prima dell'adulto.
+  Future<bool> get deviceRecovery async => (await _store.read(_kDeviceRecovery)) == '1';
 
   Future<void> setDeviceRecovery(bool on) => _store.write(_kDeviceRecovery, on ? '1' : '0');
 
@@ -219,7 +263,7 @@ class AdultPin {
   /// *Elimina tutti i dati*: il tablet torna come al primo avvio, quindi senza
   /// PIN, codice di recupero, attese, scelta sul recupero e avvisi.
   Future<void> forget() async {
-    for (final k in [_kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow]) {
+    for (final k in [_kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow, _kResetPending]) {
       await _store.delete(k);
     }
   }

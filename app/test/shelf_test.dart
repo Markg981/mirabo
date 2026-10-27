@@ -242,6 +242,18 @@ void main() {
       expect(state.currentProfile!.shelfRotatedAt, now);
     });
 
+    test('una modifica del genitore durante la rotazione non viene sovrascritta', () async {
+      final stale = state.currentProfile!;
+      db.onUsage = () async {
+        db.onUsage = null;
+        await state.updateProfile(stale.copyWith(name: 'Nuovo'));
+      };
+      await state.rotateShelf(stale);
+      expect(db.profile.name, 'Nuovo');
+      expect(db.profile.shelfAuto, isNotNull);
+      expect(state.currentProfile!.name, 'Nuovo');
+    });
+
     test('"Cambia adesso" ruota subito; la scelta del genitore non si tocca', () async {
       await state.rotateShelf(state.currentProfile!);
       final first = shown();
@@ -283,6 +295,7 @@ class _FakeDb implements LocalDb {
   ChildProfile profile;
   final List<ShelfUse> usage = [];
   final List<ShelfStint> history = [];
+  Future<void> Function()? onUsage;
 
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
@@ -292,8 +305,10 @@ class _FakeDb implements LocalDb {
   @override
   Future<void> updateProfile(ChildProfile p) async => profile = p;
   @override
-  Future<List<ShelfUse>> shelfUsage(int profileId, {required DateTime since}) async =>
-      usage.where((u) => !u.at.isBefore(since)).toList();
+  Future<List<ShelfUse>> shelfUsage(int profileId, {required DateTime since}) async {
+    await onUsage?.call();
+    return usage.where((u) => !u.at.isBefore(since)).toList();
+  }
   @override
   Future<List<ShelfStint>> shelfHistory(int profileId) async => List.of(history);
   @override

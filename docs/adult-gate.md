@@ -9,7 +9,7 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 ## Come funziona
 
 - Primo ingresso nell'area adulta: l'adulto sceglie un PIN di 4-6 cifre e lo ripete.
-- Conservazione: sale casuale (16 byte) e hash PBKDF2-HMAC-SHA256 (20.000 iterazioni) in `flutter_secure_storage` (Keychain / Keystore). Il PIN non è mai salvato in chiaro e non sta nel database né nel backup. Nessun cambio di schema DB.
+- Conservazione: sale casuale (16 byte) e hash PBKDF2-HMAC-SHA256 (20.000 iterazioni) in `flutter_secure_storage` (Keychain / Keystore). Il PIN non è mai salvato in chiaro e non sta nel database né nel backup. Su iOS le chiavi usano `first_unlock_this_device` (come la chiave del DB: non migrano via backup). Il Keychain sopravvive alla reinstallazione, il DB no: all'apertura, se il file del DB non esiste, le chiavi `adult_pin_*` orfane vengono cancellate. Una tantum, le chiavi esistenti si riscrivono con la nuova accessibilità senza perdere il PIN. Nessun cambio di schema DB.
 - Tentativi: 3 errori liberi, poi attesa di 30 s, 60 s, 5 min, 15 min, 1 h (tetto). L'attesa è salvata e sopravvive alla chiusura dell'app; durante l'attesa anche il PIN giusto è rifiutato. L'attesa è salvata come durata residua, non come ora di fine: spostare l'orologio indietro non la annulla né la allunga; con l'app aperta spostarlo avanti non serve, perché scorre solo col tempo monotono. Dopo un riavvio vale l'orologio, ma gli errori consecutivi restano e l'attesa successiva sale.
 - Il PIN giusto azzera il contatore.
 
@@ -17,12 +17,14 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 
 Due canali; nessuno dei due cancella qualcosa del bambino (profili, progressi, database, backup).
 
-1. **Codice di recupero.** Quando l'adulto sceglie il PIN la prima volta (o dopo aver usato il codice), l'app mostra una volta sola un codice di 8 caratteri (`ABCD-EFGH`, senza 0/O e 1/I/L) da scrivere su un foglio lontano dal tablet. Se ne conservano solo sale e hash PBKDF2, come per il PIN. I tentativi contano come tentativi di PIN (stesse attese). Usato una volta, il codice non vale più: con il PIN nuovo se ne crea un altro. Dall'area adulta si può generare un codice nuovo (dopo il PIN); il vecchio smette di valere.
+1. **Codice di recupero.** Quando l'adulto sceglie il PIN la prima volta (o dopo aver usato il codice), l'app mostra una volta sola un codice di 8 caratteri (`ABCD-EFGH`, senza 0/O e 1/I/L) da scrivere su un foglio lontano dal tablet. Se ne conservano solo sale e hash PBKDF2, come per il PIN. I tentativi contano come tentativi di PIN (stesse attese). Usato una volta, il codice non vale più dal momento in cui è scritto il PIN nuovo: con quello se ne crea un altro. Dall'area adulta si può generare un codice nuovo (dopo il PIN); il vecchio smette di valere.
 2. **Blocco del tablet** (`local_auth`: biometria o blocco schermo). **Acceso salvo scelta dell'adulto**, che lo spegne nell'area adulta (sezione dati, dopo il PIN) se il bambino conosce il codice di sblocco del tablet o ha la sua impronta registrata. Spento, "Ho dimenticato il PIN" offre solo il codice di recupero.
+
+Il reset è atomico: il vecchio PIN resta valido finché il nuovo non è scritto, quindi annullare la scelta (o chiudere l'app) a metà non lascia il tablet senza PIN; il codice di recupero si consuma solo col PIN nuovo.
 
 Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è stato reimpostato il … con il blocco del tablet"), finché l'adulto non lo chiude: un reset fatto dal bambino si vede.
 
-**Il caso del bambino che conosce il codice del tablet.** Con il recupero dal blocco acceso il bambino può azzerare il PIN, ma l'avviso lo rende visibile al primo ingresso dell'adulto. Spegnendolo, l'unica via resta il codice di recupero scritto su carta. Se l'adulto perde anche quello, non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
+**Il caso del bambino che conosce il codice del tablet.** Il recupero dal blocco è spento di default (lo accende l'adulto dall'area adulta): se fosse acceso, chi ha il codice o l'impronta potrebbe azzerare il PIN, entrare per primo e chiudere l'avviso con "Visto". Quando è acceso rispetta le attese da blocco e l'avviso resta visibile al primo ingresso dell'adulto. Spento, l'unica via resta il codice di recupero scritto su carta. Se l'adulto perde anche quello, non esiste altra via che non cancelli i dati (resta la reinstallazione, che li elimina).
 
 ## Operazioni che richiedono di nuovo il PIN
 

@@ -8,7 +8,7 @@ Cinque passi, ognuno con "Salta" (porta subito al profilo del bambino):
 
 | Tempo | Passo | Contenuto |
 | --- | --- | --- |
-| 0–10 s | Promessa | "Storie da esplorare, giochi da capire, idee da provare insieme" e quattro fatti verificati: gratuita, funziona offline (il cloud è opt-in), senza pubblicità, nessun account per il bambino. Nessun claim di efficacia. |
+| 0–10 s | Promessa | "Storie da esplorare, giochi da capire, idee da provare insieme" e quattro fatti verificati: gratuita, funziona offline (nell’MVP i dati restano sul tablet; il cloud è opt-in e compare solo se attivo in `features.dart`), senza pubblicità, nessun account per il bambino. Nessun claim di efficacia. |
 | 10–20 s | Lingua e fascia | Lingua (l'interfaccia la segue subito) e fascia d'età. Il resto si regola dopo dall'area adulti. |
 | 20–40 s | Assaggio | Inizio e frase chiave di una storia di esempio (`sassolino-magico`) nella lingua e fascia scelte; senza iscrizione. |
 | 40–50 s | Attività reale | L'attività per la casa della stessa storia (`home-activity.json`): obiettivo e materiale della fascia. |

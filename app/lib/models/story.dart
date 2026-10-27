@@ -528,7 +528,8 @@ class Story {
   final String? parentCard;
   final HomeActivity? homeActivity;
 
-  bool supports(AgeBand band) => variantFiles.containsKey(band);
+  /// Con i contenuti caricati conta la variante davvero presente, non quella dichiarata.
+  bool supports(AgeBand band) => variants.isEmpty ? variantFiles.containsKey(band) : variants.containsKey(band);
 
   factory Story.fromJson(Map<String, dynamic> j) => Story(
         id: j['id'] as String,

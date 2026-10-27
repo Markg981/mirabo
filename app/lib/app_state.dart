@@ -95,7 +95,11 @@ class AppState extends ChangeNotifier {
     _hiddenAt = null;
     if (hidden != null && mode == SessionMode.together && _now().difference(hidden) >= togetherLapse) {
       unawaited(setMode(SessionMode.alone));
+      return;
     }
+    // Un Timer sospeso in background può scattare in ritardo (iOS): si
+    // riallinea il conto del limite all'orologio.
+    if (hidden != null && mode == SessionMode.alone) _syncAloneClock();
   }
 
   final LocalDb db;
@@ -422,7 +426,10 @@ class AppState extends ChangeNotifier {
       now: now,
     );
     await db.moveShelf(fresh.id, before: current, after: next, at: now);
-    await updateProfile(fresh.withAutoShelf(next, now));
+    // Durante gli await il genitore può aver modificato il profilo: si
+    // riparte dalla copia corrente, non da quella presa prima.
+    final latest = profiles.firstWhere((x) => x.id == fresh.id, orElse: () => fresh);
+    await updateProfile(latest.withAutoShelf(next, now));
   }
 
   /// Il genitore cambia la mensola; null la lascia riempire da sola.
@@ -482,6 +489,8 @@ class AppState extends ChangeNotifier {
     _syncAloneClock();
     notifyListeners();
     nameVoice.prepare(saved);
+    // Al primo profilo main ha controllato a lista vuota: la voce si verifica ora.
+    await checkVoices();
   }
 
   Future<void> updateProfile(ChildProfile p) async {
@@ -493,6 +502,7 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     // Se nome e lingua non sono cambiati il file c'è già e non si rigenera.
     nameVoice.prepare(p);
+    if (before != null && before.language != p.language) await checkVoices();
     // Con un'altra fascia o lingua i materiali sono altri: la mensola
     // automatica si rifà subito, senza aspettare la settimana.
     if (before != null && p.shelfAuto != null && (before.ageBand != p.ageBand || before.language != p.language)) {
@@ -512,7 +522,11 @@ class AppState extends ChangeNotifier {
     await db.deleteProfile(id);
     await nameVoice.forget(id);
     profiles = await db.profiles();
-    if (currentProfile?.id == id) currentProfile = profiles.isEmpty ? null : profiles.first;
+    if (currentProfile?.id == id) {
+      currentProfile = profiles.isEmpty ? null : profiles.first;
+      // Un altro bambino: "insieme" valeva per chi è stato eliminato.
+      mode = SessionMode.alone;
+    }
     // Un tick durante gli await non deve aver accreditato il bambino eliminato.
     await usage?.forget(id);
     _syncAloneClock();
@@ -532,7 +546,12 @@ class AppState extends ChangeNotifier {
       completed: completed,
       when: _now(),
     ));
-    if (completed) await updateProfile(p.copyWith(storiesCompleted: p.storiesCompleted + 1));
+    if (completed) {
+      // La copia presa prima dell'await può essere vecchia (profilo
+      // modificato, altra storia chiusa): si rilegge quella corrente.
+      final latest = profiles.firstWhere((x) => x.id == p.id, orElse: () => p);
+      await updateProfile(latest.copyWith(storiesCompleted: latest.storiesCompleted + 1));
+    }
   }
 
   /// Il genitore segna nel diario che il bambino ha fatto il gesto di una

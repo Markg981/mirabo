@@ -154,7 +154,28 @@ class _ActivityPlayerState extends State<ActivityPlayer> {
   @override
   Widget build(BuildContext context) {
     final progress = _progress;
-    if (progress == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    if (progress == null) {
+      // Anche durante il caricamento il bambino può uscire (nessun gioco senza via d'uscita).
+      return Scaffold(
+        body: SceneBackdrop(
+          child: SafeArea(
+            child: Stack(
+              children: [
+                const Center(child: CircularProgressIndicator()),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                  child: RoundIconButton(
+                    icon: Icons.close_rounded,
+                    tooltip: context.l10n.close,
+                    onPressed: () => Navigator.of(context).maybePop(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     final companion = _state.companionOf(_profile);
     final level = widget.activity.level(progress.level);
 

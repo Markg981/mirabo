@@ -8,6 +8,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
+import 'adult_pin.dart';
 import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
@@ -67,6 +68,8 @@ class LocalDb {
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
     final path = p.join(dir.path, 'mirabo.db');
+    // Il Keychain iOS sopravvive alla reinstallazione: senza DB il PIN è orfano.
+    await AdultPin.reconcile(const SecurePinStore(), dbExisted: await File(path).exists());
     final key = await resolveKey(
       path,
       read: () => _storage.read(key: _keyName),
@@ -804,6 +807,13 @@ class LocalDb {
   Future<void> importAll(Map<String, Object?> data) async {
     final schema = data['schema'];
     if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
+    // Tipi controllati prima di toccare i dati: un file malformato dà un errore chiaro.
+    for (final t in _tables) {
+      final rows = data[t];
+      if (rows != null && (rows is! List || rows.any((r) => r is! Map))) {
+        throw FormatException('Backup danneggiato: la sezione "$t" non è valida');
+      }
+    }
     await _write(() => _db.transaction((tx) async {
       for (final t in _tables.reversed) {
         await tx.delete(t);
