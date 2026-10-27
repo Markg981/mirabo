@@ -296,6 +296,7 @@ Ogni figura ha `e` oppure `paint`. Le persone si mettono con i piedi sotto la li
 ```
 
 - **Compatibilità**: l'app installa solo se `formatVersion` è minore o uguale al formato che conosce e la sua versione è almeno `minAppVersion` (in `story.json` si può alzare con `minAppVersion`, default `0.1.0`).
+- **Nomi dei file**: i percorsi in `files` non possono contenere caratteri fuori dal BMP (oltre U+FFFF, es. emoji): la forma canonica ordina le chiavi per code point in Python e per unità UTF-16 in Dart, e i due ordini divergono solo per quei caratteri. `validate.py` (`check_manifest`) li rifiuta.
 - **Dimensioni e hash**: `sizes` e `size` (byte non compressi) servono al controllo preventivo dello spazio; ogni file ha il suo sha256 in `files`.
 - **Tracciabilità editoriale**: `author` (campo facoltativo `author` di `story.json` o `activity.json`); `reviewer`, `approvedVersion` e `fingerprint` vengono dal registro delle approvazioni `content/reviews/approvals.json` e ci sono solo se l'approvazione vale per la versione e l'impronta esatte del contenuto impacchettato, per storie e attività (vedi [launch-catalog.md](launch-catalog.md)). Nei pacchetti di sviluppo (`--include-drafts`) sono `null` e `fingerprint` manca.
 - **Lingue e audio**: vedi `docs/content-distribution.md`.

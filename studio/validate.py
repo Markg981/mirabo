@@ -553,6 +553,10 @@ def check_manifest(manifest: dict) -> list[str]:
         errors.append(f"{label}: 'sizes' e 'files' non elencano gli stessi file")
     elif sum(sizes.values()) != manifest["size"]:
         errors.append(f"{label}: 'size' non è la somma di 'sizes'")
+    # Python ordina le chiavi per code point, Dart per unità UTF-16: coincidono solo nel BMP.
+    astral = sorted(f for f in files if any(ord(c) > 0xFFFF for c in f))
+    if astral:
+        errors.append(f"{label}: nomi file con caratteri fuori dal BMP non ammessi (ordine canonico diverso tra studio e app): {astral}")
     in_parts = [f for part in manifest["parts"].values() for f in part]
     if sorted(in_parts) != sorted(files):
         errors.append(f"{label}: 'parts' deve contenere ogni file una volta sola")
