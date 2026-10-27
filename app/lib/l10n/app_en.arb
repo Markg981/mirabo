@@ -63,6 +63,7 @@
   "checklistAllDone": "All ready, good night",
   "enoughForToday": "That's enough for today",
   "countdownPick": "Pick the date",
+  "countdownPickHint": "A grown-up picks the date; then each day one more day gets colored in.",
   "countdownToday": "It's today!",
   "countdownTodaySay": "Today is the day!",
   "countdownTodayTask": "Today is the day! Have a great day at school, {name}.",

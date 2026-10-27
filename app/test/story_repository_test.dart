@@ -27,11 +27,11 @@ void main() {
 
   Uint8List u(String s) => Uint8List.fromList(utf8.encode(s));
 
-  Future<Uint8List> pack(Map<String, Uint8List> files, {Object? manifestFiles, required String id, Map<String, dynamic> extra = const {}}) async {
+  Future<Uint8List> pack(Map<String, Uint8List> files, {Object? manifestFiles, Object version = 1, required String id, Map<String, dynamic> extra = const {}}) async {
     final manifest = <String, dynamic>{
       'id': id,
       'kind': 'story',
-      'version': 1,
+      'version': version,
       ...extra,
       'files': manifestFiles ?? {for (final e in files.entries) e.key: sha256.convert(e.value).toString()},
     };
@@ -87,6 +87,16 @@ void main() {
     });
     expect(repo.stories.map((s) => s.id), ['ok']);
     expect(repo.rejected.single, contains('rotto.mirabo'));
+  });
+
+  test('version di tipo errato o hash non stringa nel manifest scartano solo quel pacchetto', () async {
+    final repo = await load({
+      'ok.mirabo': await pack(story('ok', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'ok'),
+      'ver.mirabo': await pack(story('ver', {'6-7': '6-7.json'}), version: '1', id: 'ver'),
+      'hash.mirabo': await pack(story('hash', {'6-7': '6-7.json'}), manifestFiles: {'story.json': 5}, id: 'hash'),
+    });
+    expect(repo.stories.map((s) => s.id), ['ok']);
+    expect(repo.rejected, hasLength(2));
   });
 
   test('un JSON italiano illeggibile scarta solo quel pacchetto', () async {

@@ -290,9 +290,14 @@ class _StoryReaderState extends State<StoryReader> {
       if (_finishing) return;
       _finishing = true;
       _recorded = true;
-      await _state.saveStoryPosition(_profile, widget.story.id, 0);
-      await _state.recordStory(widget.story, completed: true);
-      if (mounted) Navigator.of(context).pop();
+      try {
+        await _state.saveStoryPosition(_profile, widget.story.id, 0);
+        await _state.recordStory(widget.story, completed: true);
+      } catch (_) {
+        // Il banner di errore lo dice all'adulto (LocalDb.onSaveError): il bambino esce comunque.
+      } finally {
+        if (mounted) Navigator.of(context).pop();
+      }
       return;
     }
     _go(_index + 1);
@@ -400,6 +405,12 @@ class _StoryReaderState extends State<StoryReader> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             ScreenText(text: screen.text, current: _word, readAlong: _readAlong, onWord: _say),
+                            // Il resto scorre: con il testo di sistema ingrandito supera l'altezza.
+                            Flexible(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
                             // La frase-chiave resta anche per chi legge solo le lettere.
                             if (screen.isKeyPhrase && tokens.textMode != TextMode.hidden)
                               Padding(
@@ -459,6 +470,10 @@ class _StoryReaderState extends State<StoryReader> {
                                     : 96,
                               ),
                             ],
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

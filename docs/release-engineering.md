@@ -23,7 +23,7 @@ Una build ripetuta non cambia perché il canale `stable` è avanzato.
 | Flutter 3.47.7 (Dart 3.13) | `app/pubspec.yaml`, `environment.flutter` (versione esatta). La CI lo legge con `flutter-version-file` | Cambia la versione, `flutter pub get`, CI verde, commit insieme a `pubspec.lock` |
 | Pacchetti Dart | `app/pubspec.lock`, ora nel repository. CI con `flutter pub get --enforce-lockfile` | `flutter pub upgrade <pacchetto>` e commit del lock |
 | Gradle, AGP, Kotlin, Java | `gradle-wrapper.properties`, `settings.gradle.kts` (AGP 9.1.0, Kotlin 2.4.0), Java 17 | A mano, con una build di prova sulle due piattaforme |
-| Python dello studio | `studio/requirements.txt`, versioni esatte anche delle dipendenze indirette; Python 3.12 in CI | Cambia qui, `pip install -r`, CI |
+| Python dello studio | `studio/requirements.txt`, versioni esatte anche delle dipendenze indirette; Python 3.12 (`.python-version`, minima) e 3.14 in CI sul job dei contenuti | Cambia qui, `pip install -r`, CI |
 
 **Resta aperto:** i Pod iOS. `Podfile` e `Podfile.lock` li genera `flutter create` sul Mac e non sono nel repository. Alla prima build iOS di distribuzione vanno generati e committati.
 
@@ -92,6 +92,21 @@ python studio/check_release.py --aab app/build/app/outputs/bundle/release/app-re
 ```
 
 `check_release.py` verifica la versione di Flutter e il lock, la chiave pubblica, gli asset pacchetto per pacchetto contro `dist/release.json` (sha256 ricalcolati, nessuna release di un solo tema, `build.json` generato da `sync_assets.py`, impronte uguali all'ultima approvazione), la firma Android, le funzioni spente, `check_privacy.py --release` e, sul binario, che sia di release (niente `kernel_blob.bin`) e pronto per i 16 KB. Su questo checkout di sviluppo oggi blocca, come deve: asset di sviluppo, nessun `key.properties`, campi del titolare ancora da compilare.
+
+### Secrets del rilascio
+
+`.github/workflows/release.yml` si avvia solo a mano (`workflow_dispatch`, environment `release`): esegue `sync_assets.py --release`, `pack.py --release --sign`, la build dell'AAB firmato, `check_release.py --aab` e l'upload sul track interno di Google Play. Se un secret manca si ferma subito, prima di ogni build, nominando quelli assenti. I secrets non sono nel repository e vanno creati in Settings, Secrets and variables, Actions (meglio sull'environment `release`).
+
+| Secret | Contenuto |
+| --- | --- |
+| `ANDROID_KEYSTORE_BASE64` | Keystore di upload, in base64 (`base64 -w0 release.jks`) |
+| `ANDROID_KEYSTORE_PASSWORD` | Password del keystore |
+| `ANDROID_KEY_ALIAS` | Alias della chiave nel keystore |
+| `ANDROID_KEY_PASSWORD` | Password della chiave |
+| `PLAY_SERVICE_ACCOUNT_JSON` | JSON del service account di Google Play Console, con permesso di rilascio sull'app |
+| `PACKAGES_SIGNING_KEY_BASE64` | `studio/keys/signing.key` in base64: la chiave privata dei pacchetti, la cui parte pubblica è in `trusted_key.dart` |
+
+In `ci.yml` il job dei contenuti esegue una prova a vuoto di `check_release.py`: finché mancano approvazioni e campi dell'informativa deve uscire con 1, e la prova fallisce se esce con altro. Quando il rilascio diventa approvabile la prova va sostituita con il controllo vero.
 
 ## Quando la criticità è chiusa
 

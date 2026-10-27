@@ -219,6 +219,19 @@ void main() {
       await state.init();
     });
 
+    test('con la scrittura che fallisce il rinnovo non riparte a ogni rebuild', () async {
+      db.failWrites = true;
+      now = now.add(const Duration(days: 8));
+      for (var n = 0; n < 5; n++) {
+        state.shelfFor(state.currentProfile!, mode: SessionMode.together);
+        await pumpEventQueue();
+      }
+      expect(db.moves, 1);
+      db.failWrites = false;
+      await state.rotateShelf(state.currentProfile!, force: true);
+      expect(db.moves, 2);
+    });
+
     List<String> shown() => Shelf.keysOf(state.shelfFor(state.currentProfile!, mode: SessionMode.together));
 
     test('stessa settimana stessa mensola; dopo sette giorni cambia, ma ciò che è usato resta', () async {
@@ -296,6 +309,8 @@ class _FakeDb implements LocalDb {
   final List<ShelfUse> usage = [];
   final List<ShelfStint> history = [];
   Future<void> Function()? onUsage;
+  int moves = 0;
+  bool failWrites = false;
 
   @override
   Future<List<ChildProfile>> profiles() async => [profile];
@@ -313,7 +328,10 @@ class _FakeDb implements LocalDb {
   Future<List<ShelfStint>> shelfHistory(int profileId) async => List.of(history);
   @override
   Future<void> moveShelf(int profileId,
-      {required List<String> before, required List<String> after, required DateTime at}) async {
+      {required List<String> before, required List<String> after, required DateTime at, ChildProfile? save}) async {
+    moves++;
+    if (failWrites) throw StateError('scrittura fallita');
+    if (save != null) profile = save;
     for (var n = 0; n < history.length; n++) {
       final s = history[n];
       if (s.to == null && before.contains(s.key) && !after.contains(s.key)) history[n] = ShelfStint(s.key, s.from, at);

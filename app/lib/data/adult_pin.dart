@@ -72,11 +72,16 @@ class AdultPin {
   static const _kResetAt = 'adult_pin_reset_at';
   static const _kResetHow = 'adult_pin_reset_how';
   static const _kResetPending = 'adult_pin_reset_pending';
+  static const _kProtectUntil = 'adult_pin_protect_until';
 
   /// Lettere e cifre del codice di recupero, senza quelle che si confondono
   /// scrivendole a mano (0/O, 1/I/L).
   static const _recoveryAlphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
   static const recoveryLength = 8;
+
+  /// Dopo un reset col blocco del tablet, per quanto tempo cambiare il codice
+  /// di recupero o spegnere il recupero richiede il vecchio codice di recupero.
+  static const protectionPeriod = Duration(days: 7);
 
   /// Errori consecutivi tollerati prima della prima attesa.
   static const freeAttempts = 3;
@@ -86,7 +91,7 @@ class AdultPin {
   /// Tutte le chiavi scritte da questa classe (esclusa la spia di migrazione).
   static const _allKeys = [
     _kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt,
-    _kDeviceRecovery, _kResetAt, _kResetHow,
+    _kDeviceRecovery, _kResetAt, _kResetHow, _kProtectUntil,
   ];
 
   /// Da chiamare all'apertura del DB. [dbExisted]: il file del database c'era
@@ -207,6 +212,43 @@ class AdultPin {
     await _store.write(_kResetPending, how.name);
     await _store.write(_kResetAt, '${_now().millisecondsSinceEpoch}');
     await _store.write(_kResetHow, how.name);
+    // Chi ha solo il blocco del tablet (spesso un bambino) ora conosce anche il
+    // PIN nuovo: per un periodo, codice e recupero si toccano solo col vecchio
+    // codice di recupero, che resta valido. Con il codice di recupero in mano
+    // non serve: lo ha l'adulto.
+    if (how == RecoveryChannel.device && await hasRecoveryCode) {
+      await _store.write(_kProtectUntil, '${_now().add(protectionPeriod).millisecondsSinceEpoch}');
+    } else {
+      await _store.delete(_kProtectUntil);
+    }
+  }
+
+  /// Vero se dopo un reset col blocco del tablet cambiare il codice di recupero
+  /// o spegnere il recupero richiede il vecchio codice ([verifyRecoveryCode]).
+  /// Vale anche dopo che l'avviso è stato chiuso.
+  Future<bool> get recoveryProtected async {
+    final until = int.tryParse(await _store.read(_kProtectUntil) ?? '');
+    if (until == null) return false;
+    if (_now().millisecondsSinceEpoch >= until) {
+      await _store.delete(_kProtectUntil);
+      return false;
+    }
+    return await hasRecoveryCode;
+  }
+
+  /// Controlla il codice di recupero senza avviare un reset: per le modifiche
+  /// protette. Conta come un tentativo di PIN (stesse attese).
+  Future<PinResult> verifyRecoveryCode(String code) async {
+    if ((await remainingLock()) > Duration.zero) return PinResult.locked;
+    if (await _recoveryMatches(code)) return PinResult.ok;
+    return _fail();
+  }
+
+  Future<bool> _recoveryMatches(String code) async {
+    final h = await _store.read(_kRecHash);
+    final s = await _store.read(_kRecSalt);
+    final normalized = code.toUpperCase().replaceAll(RegExp('[^A-Z0-9]'), '');
+    return h != null && s != null && _constantTimeEquals(base64.encode(_derive(normalized, base64.decode(s))), h);
   }
 
   /// Codice di recupero: si mostra una volta sola, alla creazione, e se ne
@@ -229,10 +271,7 @@ class AdultPin {
   /// quello se ne crea un altro).
   Future<PinResult> recover(String code) async {
     if ((await remainingLock()) > Duration.zero) return PinResult.locked;
-    final h = await _store.read(_kRecHash);
-    final s = await _store.read(_kRecSalt);
-    final normalized = code.toUpperCase().replaceAll(RegExp('[^A-Z0-9]'), '');
-    if (h != null && s != null && _constantTimeEquals(base64.encode(_derive(normalized, base64.decode(s))), h)) {
+    if (await _recoveryMatches(code)) {
       await reset(how: RecoveryChannel.code);
       return PinResult.ok;
     }
@@ -263,7 +302,7 @@ class AdultPin {
   /// *Elimina tutti i dati*: il tablet torna come al primo avvio, quindi senza
   /// PIN, codice di recupero, attese, scelta sul recupero e avvisi.
   Future<void> forget() async {
-    for (final k in [_kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow, _kResetPending]) {
+    for (final k in [_kHash, _kSalt, _kFails, _kLockLeft, _kLockRef, _kRecHash, _kRecSalt, _kDeviceRecovery, _kResetAt, _kResetHow, _kResetPending, _kProtectUntil]) {
       await _store.delete(k);
     }
   }

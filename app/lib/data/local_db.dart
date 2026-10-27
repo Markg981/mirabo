@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
 import 'adult_pin.dart';
+import 'retention.dart';
 import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
@@ -90,6 +91,7 @@ class LocalDb {
     );
     // Le righe tolte dalla v13 non restano nelle pagine libere del file.
     if (minimized) await db.execute('VACUUM');
+    await pruneExpired(db);
     // Si riparte da zero, ma non in silenzio: l'adulto lo legge al primo avvio.
     if (key.reset) await db.insert('settings', {'key': storageResetKey, 'value': DateTime.now().toIso8601String()});
     return LocalDb._(db);
@@ -678,20 +680,22 @@ class LocalDb {
   }
 
   /// Registra il cambio della mensola automatica da [before] ad [after]:
-  /// chi esce chiude il suo periodo, chi entra ne apre uno.
-  Future<void> moveShelf(int profileId, {required List<String> before, required List<String> after, required DateTime at}) =>
-      _write(() async {
-    final when = at.toIso8601String();
-    final batch = _db.batch();
-    for (final k in before.where((k) => !after.contains(k))) {
-      batch.update('shelf_history', {'to_at': when},
-          where: 'profile_id = ? AND item_key = ? AND to_at IS NULL', whereArgs: [profileId, k]);
-    }
-    for (final k in after.where((k) => !before.contains(k))) {
-      batch.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
-    }
-    await batch.commit(noResult: true);
-  });
+  /// chi esce chiude il suo periodo, chi entra ne apre uno. Con [save] anche
+  /// il profilo si aggiorna nella stessa transazione: o tutto o niente, così
+  /// un nuovo tentativo non aggiunge righe a `shelf_history`.
+  Future<void> moveShelf(int profileId,
+          {required List<String> before, required List<String> after, required DateTime at, ChildProfile? save}) =>
+      _write(() => _db.transaction((tx) async {
+        final when = at.toIso8601String();
+        for (final k in before.where((k) => !after.contains(k))) {
+          await tx.update('shelf_history', {'to_at': when},
+              where: 'profile_id = ? AND item_key = ? AND to_at IS NULL', whereArgs: [profileId, k]);
+        }
+        for (final k in after.where((k) => !before.contains(k))) {
+          await tx.insert('shelf_history', {'profile_id': profileId, 'item_key': k, 'from_at': when});
+        }
+        if (save != null) await tx.update('profiles', save.toRow(), where: 'id = ?', whereArgs: [save.id]);
+      }));
 
   /// Le idee proposte da [since] in poi.
   Future<List<({String day, String key})>> dailyIdeas(int profileId, {required DateTime since}) async {
@@ -744,10 +748,15 @@ class LocalDb {
 
   /// Cancellazione completa: chiude il database, elimina file e chiave e ne
   /// apre uno nuovo e vuoto, come al primo avvio. Vedi [eraseStorage].
+  /// Se la cancellazione fallisce il database viene comunque riaperto (mai
+  /// chiuso in silenzio fino al riavvio) e l'errore arriva a chi chiama.
   Future<void> eraseAndReopen() async {
     await _db.close();
-    await eraseStorage();
-    _db = (await open())._db;
+    try {
+      await eraseStorage();
+    } finally {
+      _db = (await open())._db;
+    }
   }
 
   /// Elimina da questo dispositivo il database (con i file -journal/-wal/-shm
@@ -774,6 +783,8 @@ class LocalDb {
       if (await e.exists()) await e.delete(recursive: true);
     } on FileSystemException catch (err) {
       debugPrint('Cancellazione non riuscita: ${err.path}');
+      // Non si dichiara cancellato ciò che è rimasto sul dispositivo.
+      rethrow;
     }
   }
 
@@ -806,12 +817,21 @@ class LocalDb {
   /// una versione più recente no, perché avrebbe colonne che qui non esistono.
   Future<void> importAll(Map<String, Object?> data) async {
     final schema = data['schema'];
-    if (schema is! int || schema > _version) throw const FormatException('Backup di una versione più recente');
+    if (schema is! int || schema < 1 || schema > _version) throw const FormatException('Backup di una versione più recente');
     // Tipi controllati prima di toccare i dati: un file malformato dà un errore chiaro.
     for (final t in _tables) {
       final rows = data[t];
       if (rows != null && (rows is! List || rows.any((r) => r is! Map))) {
         throw FormatException('Backup danneggiato: la sezione "$t" non è valida');
+      }
+      // Valori ammessi: solo numeri finiti, testo e null; gli identificatori non sono negativi.
+      for (final r in (rows as List? ?? const [])) {
+        for (final e in (r as Map).entries) {
+          final v = e.value;
+          final ok = e.key is String &&
+              (v == null || v is String || (v is num && v.isFinite && !((e.key == 'id' || e.key == 'profile_id') && v < 0)));
+          if (!ok) throw FormatException('Backup danneggiato: valore non valido nella sezione "$t"');
+        }
       }
     }
     await _write(() => _db.transaction((tx) async {

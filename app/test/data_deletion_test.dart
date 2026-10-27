@@ -85,6 +85,21 @@ void main() {
       expect(await LocalDb.hasKey(), isFalse);
     });
 
+    test('se un file in cartella temporanea non si cancella, l’errore viene riportato', () async {
+      final locked = File('${temp.path}/bloccato.wav');
+      await locked.writeAsString('suono');
+      // Un file aperto non si elimina su Windows: altrove il caso non si riproduce.
+      final handle = await locked.open(mode: FileMode.write);
+      try {
+        await expectLater(
+          LocalDb.eraseStorage(supportDir: support, tempDir: temp),
+          throwsA(isA<FileSystemException>()),
+        );
+      } finally {
+        await handle.close();
+      }
+    }, skip: !Platform.isWindows);
+
     test('la chiave del backup si dimentica sul tablet ma il file su Drive resta', () async {
       final drive = _Drive();
       final backup = CloudBackup(db: _FakeDb(), store: drive);

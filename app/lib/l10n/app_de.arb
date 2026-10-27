@@ -63,6 +63,7 @@
   "checklistAllDone": "Alles fertig, gute Nacht",
   "enoughForToday": "Für heute reicht's",
   "countdownPick": "Datum wählen",
+  "countdownPickHint": "Ein Erwachsener wählt das Datum; dann wird jeden Tag ein Tag ausgemalt.",
   "countdownToday": "Es ist heute!",
   "countdownTodaySay": "Heute ist der Tag!",
   "countdownTodayTask": "Heute ist der Tag! Viel Spaß in der Schule, {name}.",

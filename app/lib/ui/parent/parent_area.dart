@@ -26,8 +26,31 @@ import 'shelf_tab.dart';
 /// Area genitore: modalità della sessione, profili, mensola, schede "Come parlarne",
 /// diario, sviluppo (statistiche solo per l'adulto, confronto con sé stesso)
 /// e stampabili.
-class ParentArea extends StatelessWidget {
+class ParentArea extends StatefulWidget {
   const ParentArea({super.key});
+
+  @override
+  State<ParentArea> createState() => _ParentAreaState();
+}
+
+class _ParentAreaState extends State<ParentArea> {
+  UsageTracker? _usage;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Finché l'adulto è qui il tempo d'uso non va al bambino.
+    if (_usage == null) {
+      _usage = AppStateScope.of(context).usage;
+      _usage?.enterAdultArea();
+    }
+  }
+
+  @override
+  void dispose() {
+    _usage?.leaveAdultArea();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -247,8 +270,7 @@ class _PinSectionState extends State<_PinSection> {
             )),
             trailing: TextButton(
               onPressed: () async {
-                await AdultGate.pin.clearResetNotice();
-                _load();
+                if (await AdultGate.dismissResetNotice(context)) _load();
               },
               child: Text(l.gateResetSeen),
             ),
