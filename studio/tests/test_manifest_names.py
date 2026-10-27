@@ -17,9 +17,24 @@ def manifest(names):
 
 def test_nome_astrale_rifiutato():
     errs = validate.check_manifest(manifest(["story.json", "img/\U0001F600.png"]))
-    assert any("fuori dal BMP" in e for e in errs)
+    assert errs  # ora lo scarta già lo schema; il controllo sul BMP resta come seconda difesa
 
 
 def test_nome_bmp_accettato():
-    errs = validate.check_manifest(manifest(["story.json", "img/è￿.png"]))
-    assert not any("fuori dal BMP" in e for e in errs)
+    errs = validate.check_manifest(manifest(["story.json", "img/è.png"]))
+    assert errs == []
+
+
+def test_nomi_pericolosi_rifiutati_dallo_schema():
+    for bad in ["../x.json", "/etc/passwd", "a\\b.json", "a/../b.json", "a//b.json", "x:y.json", ".nascosto"]:
+        assert validate.check_manifest(manifest(["story.json", bad])), bad
+
+
+# Vettore condiviso con app/test/package_verifier_canonical_test.dart: stessa uscita attesa.
+VETTORE = {"é": 1, "a": ["ü", "€", "\U0001F600"], "z": {"！": "x", "b": 'è"\\\n'}}
+ATTESO = '{"a":["ü","€","\U0001F600"],"z":{"b":"è\\"\\\\\\n","！":"x"},"é":1}'
+
+
+def test_json_canonico_non_ascii():
+    import pack
+    assert pack.canonical(VETTORE).decode("utf-8") == ATTESO
