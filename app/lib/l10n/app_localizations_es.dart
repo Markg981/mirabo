@@ -447,6 +447,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get memoryCovered => 'Carta boca abajo';
 
   @override
+  String memoryCardFaceUp(Object name) {
+    return '$name, descubierta';
+  }
+
+  @override
+  String drawColorName(String color) {
+    String _temp0 = intl.Intl.selectLogic(color, {
+      'rose': 'rosa',
+      'apricot': 'naranja',
+      'sun': 'amarillo',
+      'leaf': 'verde',
+      'sky': 'celeste',
+      'plum': 'morado',
+      'brown': 'marrón',
+      'ink': 'negro',
+      'other': '$color',
+    });
+    return 'Color $_temp0';
+  }
+
+  @override
   String animalName(String animal) {
     String _temp0 = intl.Intl.selectLogic(animal, {
       'dog': 'el perro',

@@ -117,6 +117,8 @@
   "memoryIntroFood": "Encuentra quién come qué: un animal y su comida.",
   "memoryIntroHome": "Da la vuelta a tres cartas: un animal, su comida y su casa.",
   "memoryCovered": "Carta boca abajo",
+  "memoryCardFaceUp": "{name}, descubierta",
+  "drawColorName": "Color {color, select, rose{rosa} apricot{naranja} sun{amarillo} leaf{verde} sky{celeste} plum{morado} brown{marrón} ink{negro} other{{color}}}",
   "animalName": "{animal, select, dog{el perro} cat{el gato} rabbit{el conejo} fox{el zorro} bear{el oso} panda{el panda} frog{la rana} monkey{el mono} lion{el león} tiger{el tigre} cow{la vaca} pig{el cerdo} other{{animal}}}",
   "memoryItemName": "{item, select, squirrel{la ardilla} penguin{el pingüino} monkey{el mono} rabbit{el conejo} bear{el oso} panda{el panda} chestnut{la castaña} fish{el pez} banana{el plátano} carrot{la zanahoria} honey{la miel} bamboo{el bambú} tree{el árbol} ice{el hielo} palm{la palmera} burrow{la madriguera} forest{el bosque} mountain{la montaña} other{{item}}}",
 

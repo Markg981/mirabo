@@ -250,6 +250,7 @@ class _Bar extends StatelessWidget {
     return Semantics(
       button: true,
       label: context.l10n.xyloNoteA11y(label),
+      onTap: onTap,
       child: GestureDetector(
         onTapDown: (_) => onTap(),
         child: AnimatedContainer(

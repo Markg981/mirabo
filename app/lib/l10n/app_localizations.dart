@@ -728,6 +728,18 @@ abstract class AppLocalizations {
   /// **'Carta coperta'**
   String get memoryCovered;
 
+  /// No description provided for @memoryCardFaceUp.
+  ///
+  /// In it, this message translates to:
+  /// **'{name}, scoperta'**
+  String memoryCardFaceUp(Object name);
+
+  /// No description provided for @drawColorName.
+  ///
+  /// In it, this message translates to:
+  /// **'Colore {color, select, rose{rosa} apricot{arancio} sun{giallo} leaf{verde} sky{azzurro} plum{viola} brown{marrone} ink{nero} other{{color}}}'**
+  String drawColorName(String color);
+
   /// No description provided for @animalName.
   ///
   /// In it, this message translates to:
