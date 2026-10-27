@@ -93,6 +93,21 @@ python studio/check_release.py --aab app/build/app/outputs/bundle/release/app-re
 
 `check_release.py` verifica la versione di Flutter e il lock, la chiave pubblica, gli asset pacchetto per pacchetto contro `dist/release.json` (sha256 ricalcolati, nessuna release di un solo tema, `build.json` generato da `sync_assets.py`, impronte uguali all'ultima approvazione), la firma Android, le funzioni spente, `check_privacy.py --release` e, sul binario, che sia di release (niente `kernel_blob.bin`) e pronto per i 16 KB. Su questo checkout di sviluppo oggi blocca, come deve: asset di sviluppo, nessun `key.properties`, campi del titolare ancora da compilare.
 
+### Secrets del rilascio
+
+`.github/workflows/release.yml` si avvia solo a mano (`workflow_dispatch`, environment `release`): esegue `sync_assets.py --release`, `pack.py --release --sign`, la build dell'AAB firmato, `check_release.py --aab` e l'upload sul track interno di Google Play. Se un secret manca si ferma subito, prima di ogni build, nominando quelli assenti. I secrets non sono nel repository e vanno creati in Settings, Secrets and variables, Actions (meglio sull'environment `release`).
+
+| Secret | Contenuto |
+| --- | --- |
+| `ANDROID_KEYSTORE_BASE64` | Keystore di upload, in base64 (`base64 -w0 release.jks`) |
+| `ANDROID_KEYSTORE_PASSWORD` | Password del keystore |
+| `ANDROID_KEY_ALIAS` | Alias della chiave nel keystore |
+| `ANDROID_KEY_PASSWORD` | Password della chiave |
+| `PLAY_SERVICE_ACCOUNT_JSON` | JSON del service account di Google Play Console, con permesso di rilascio sull'app |
+| `PACKAGES_SIGNING_KEY_BASE64` | `studio/keys/signing.key` in base64: la chiave privata dei pacchetti, la cui parte pubblica è in `trusted_key.dart` |
+
+In `ci.yml` il job dei contenuti esegue una prova a vuoto di `check_release.py`: finché mancano approvazioni e campi dell'informativa deve uscire con 1, e la prova fallisce se esce con altro. Quando il rilascio diventa approvabile la prova va sostituita con il controllo vero.
+
 ## Quando la criticità è chiusa
 
 Le modifiche superano controlli mirati sui componenti interessati (sopra, in CI) **e** la verifica finale sulle build di distribuzione: `check_release.py` senza blocchi sull'AAB e sull'IPA firmati, più le misure e i casi del ciclo dei dati ripetuti sul dispositivo minimo. Un APK debug funzionante o una build iOS compilata non bastano.

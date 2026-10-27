@@ -40,6 +40,17 @@ jobs:
         run: python studio/release.py
       - name: Pacchetti non firmati (la firma richiede la chiave privata, che non è in CI)
         run: python studio/pack.py
+      - name: Prova a vuoto del controllo di rilascio (deve bloccare finché mancano le approvazioni)
+        run: |
+          set +e
+          python studio/check_release.py
+          code=$?
+          if [ "$code" -ne 1 ]; then
+            echo "check_release.py doveva uscire con 1 (rilascio non approvabile), è uscito con $code."
+            echo "Se ora passa, le approvazioni sono complete: sostituisci questa prova con il controllo vero."
+            exit 1
+          fi
+          echo "Atteso: il rilascio è bloccato (codice 1)."
       - name: Registro delle approvazioni append-only (confronto con la base della PR)
         if: github.event_name == 'pull_request'
         run: |
