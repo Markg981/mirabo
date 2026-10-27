@@ -99,12 +99,12 @@ void main() {
     expect(await pin.verify('1234'), PinResult.locked);
   });
 
-  test('recupero con il blocco del tablet: acceso salvo scelta dell\'adulto', () async {
-    expect(await pin.deviceRecovery, isTrue);
-    await pin.setDeviceRecovery(false);
+  test('recupero con il blocco del tablet: spento di default, lo accende un adulto', () async {
     expect(await pin.deviceRecovery, isFalse);
     await pin.setDeviceRecovery(true);
     expect(await pin.deviceRecovery, isTrue);
+    await pin.setDeviceRecovery(false);
+    expect(await pin.deviceRecovery, isFalse);
   });
 
   test('"Elimina tutti i dati" toglie PIN, codice, attese e avvisi: come al primo avvio', () async {
