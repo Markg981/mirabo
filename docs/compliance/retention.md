@@ -7,11 +7,13 @@ Principio: **i dati restano finché la famiglia usa l'app o fino alla cancellazi
 | Dato | Dove | Tempo | Motivazione | Cancellazione |
 | --- | --- | --- | --- | --- |
 | Profilo (nome, fascia, preferenze) | DB locale | Finché il profilo esiste | Personalizza l'app | Eliminazione del profilo (cascade) o *Elimina tutti i dati* |
-| Progressi, round, scaffale | DB locale | Finché il profilo esiste; proposta: round dettagliati oltre 12 mesi aggregati o eliminati (da implementare) | Servono al consiglio di interazione e alla crescita; il dettaglio vecchio non serve | idem |
+| Progressi delle attività (livello, sessioni) | `activity_progress` | Finché il profilo esiste | Servono al consiglio di interazione e alla crescita | idem |
+| Round delle attività (abilità, istante, scelta) | `activity_rounds` | 12 mesi, poi eliminati all'apertura del DB (`pruneExpired`) | Il dettaglio vecchio non serve; i progressi restano | idem |
+| Diario, giorni nella natura, storico della mensola | `diary`, `nature_days`, `shelf_history` | Finché il profilo esiste | Alimentano la crescita e la rotazione dei materiali | idem |
 | Gesti del diario | DB locale | Finché il profilo esiste | Alimentano la crescita del compagno | idem |
 | Osservazioni libere del genitore | `settings.parent_notes_<id>` | Finché le tiene il genitore | Dato del genitore, potenzialmente sensibile | idem; cancellazione singola da verificare in UI |
-| Tempi d'uso giornalieri | `settings.usage.<profilo>.<data>` | Proposta: 90 giorni (la scheda guarda gli ultimi 30); oggi non scadono (da implementare) | Oltre 90 giorni non servono | idem |
-| Idee scartate, cache calendario | `settings`, `daily_ideas` | Finché il profilo esiste | Evitano di riproporre idee | idem |
+| Tempi d'uso giornalieri | `settings.usage.<profilo>.<data>` | 90 giorni (la scheda guarda gli ultimi 30), poi eliminati all'apertura del DB (`pruneExpired`) | Oltre 90 giorni non servono | idem |
+| Idee scartate, idee per oggi | `settings`, `daily_ideas` | Finché il profilo esiste | Evitano di riproporre idee | idem |
 | Storie inventate | DB locale | Finché le tiene la famiglia | Contenuto della famiglia | idem |
 | Audio del nome (TTS) | `names/name_<id>_*` | Finché il profilo esiste e il nome non cambia | Evita di rigenerarlo | Cambio nome, eliminazione profilo, *Elimina tutti i dati* (`forget`) |
 | Chiave del DB | Secure storage | Finché esiste il DB | Senza chiave il DB è illeggibile: si rinomina in `mirabo.db.illeggibile-<istante>` (una sola copia, finché non si elimina tutto) e se ne apre uno vuoto | Disinstallazione; "Elimina tutti i dati" (cancella anche la quarantena); cancellare la chiave rende il DB irrecuperabile |
@@ -28,3 +30,12 @@ Principio: **i dati restano finché la famiglia usa l'app o fino alla cancellazi
 6. **Disinstallazione**: i dati e il DB sono rimossi dal sistema; su Android anche la chiave. Su iOS il Keychain può sopravvivere: restano `mirabo_db_key` (inutile senza il DB) e, se c'erano, le chiavi del backup, mentre le chiavi `adult_pin_*` orfane si cancellano al primo avvio dopo la reinstallazione (`AdultPin.reconcile`). Prova su iPad ancora da eseguire; il backup su Drive resta (per scelta).
 
 Se in futuro nascesse un backend o un servizio di assistenza con ticket, vanno definiti qui tempi propri (proposta: ticket cancellati 12 mesi dopo la chiusura).
+
+## Potatura automatica
+
+Ad ogni apertura del DB `pruneExpired` (`app/lib/data/retention.dart`) toglie i contatori d'uso oltre 90 giorni e i round oltre 12 mesi. Non blocca mai l'avvio: un errore si registra e non si solleva. Test: `app/test/retention_test.dart`.
+
+## Da decidere
+
+- Le durate (90 giorni, 12 mesi) sono proposte coerenti con la scheda dei 30 giorni: da confermare con il consulente.
+- `shelf_history` e `diary` non scadono: crescono di una riga per rotazione o sessione, quindi poco; valutare un limite.
