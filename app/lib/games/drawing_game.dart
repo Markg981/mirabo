@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
@@ -64,6 +65,12 @@ class _DrawingGameState extends State<DrawingGame> {
   int _version = 0;
   bool _loaded = false;
   Timer? _saveTimer;
+  // Misura del foglio all'ultimo layout: i punti si salvano in proporzione.
+  Size _size = Size.zero;
+  // Tratti già chiusi disegnati una volta sola: durante un tratto si ridisegna
+  // solo l'ultimo segno.
+  ui.Picture? _closed;
+  int _closedCount = 0;
   Color _color = MiraboColors.sky;
   double _width = 18;
   bool _eraser = false;
@@ -82,9 +89,10 @@ class _DrawingGameState extends State<DrawingGame> {
   @override
   void dispose() {
     _saveTimer?.cancel();
+    _closed?.dispose();
     // Uscendo prima che il caricamento finisca il foglio in memoria è vuoto:
     // salvarlo cancellerebbe quello vero.
-    if (_loaded || _marks.isNotEmpty) _saveNow();
+    _saveNow();
     super.dispose();
   }
 
@@ -94,13 +102,18 @@ class _DrawingGameState extends State<DrawingGame> {
   Future<void> _load() async {
     final state = _state = AppStateScope.maybeRead(context);
     final profile = state?.currentProfile;
-    if (state == null || profile == null) return;
+    if (state == null || profile == null) {
+      // Senza stato non c'è nulla da caricare: si può disegnare subito.
+      setState(() => _loaded = true);
+      return;
+    }
     final raw = await state.savedDrawing(profile);
     if (!mounted) return;
-    _loaded = true;
-    if (raw == null || _marks.isNotEmpty) return;
     setState(() {
-      _marks.addAll(decodeMarks(raw).cast<_Mark>());
+      _loaded = true;
+      if (raw == null) return;
+      _marks.addAll(decodeMarks(raw, _size).cast<_Mark>());
+      _invalidateCache();
       _version++;
     });
   }
@@ -111,16 +124,43 @@ class _DrawingGameState extends State<DrawingGame> {
   }
 
   void _saveNow() {
+    if (!_loaded) return;
     final state = _state;
     final profile = state?.currentProfile;
     if (state == null || profile == null) return;
-    state.saveDrawing(profile, _marks.isEmpty ? null : encodeMarks(_marks));
+    state.saveDrawing(profile, _marks.isEmpty ? null : encodeMarks(_marks, _size));
+  }
+
+  void _invalidateCache() {
+    _closed?.dispose();
+    _closed = null;
+    _closedCount = 0;
+  }
+
+  /// Aggiunge alla cache i segni non ancora inclusi (tutti tranne quello che
+  /// sta per nascere).
+  void _extendCache() {
+    final rec = ui.PictureRecorder();
+    final c = Canvas(rec);
+    if (_closed != null) c.drawPicture(_closed!);
+    for (final m in _marks.skip(_closedCount)) {
+      _paintMark(c, m);
+    }
+    _closed?.dispose();
+    _closed = rec.endRecording();
+    _closedCount = _marks.length;
   }
 
   void _start(Offset p) {
+    // Prima del caricamento il foglio salvato verrebbe scartato.
+    if (!_loaded) return;
+    if (_marks.length >= _maxMarks) {
+      _marks.removeAt(0);
+      _invalidateCache();
+    }
+    _extendCache();
     setState(() {
       _version++;
-      if (_marks.length >= _maxMarks) _marks.removeAt(0);
       if (_stamp != null) {
         _marks.add(_Stamp(_stamp!, p));
       } else {
@@ -130,6 +170,7 @@ class _DrawingGameState extends State<DrawingGame> {
   }
 
   void _move(Offset p) {
+    if (!_loaded) return;
     final last = _marks.lastOrNull;
     if (_stamp == null && last is _Stroke && last.points.length < _maxPointsPerStroke) {
       setState(() {
@@ -200,7 +241,10 @@ class _DrawingGameState extends State<DrawingGame> {
                 onPanCancel: _save,
                 child: Semantics(
                   label: context.l10n.drawingSheet,
-                  child: CustomPaint(painter: _SheetPainter(_marks, _version), size: Size.infinite),
+                  child: LayoutBuilder(builder: (context, box) {
+                    _size = box.biggest;
+                    return CustomPaint(painter: _SheetPainter(_marks, _version, _closed, _closedCount), size: Size.infinite);
+                  }),
                 ),
               ),
             ),
@@ -239,6 +283,7 @@ class _DrawingGameState extends State<DrawingGame> {
                         : () {
                             setState(() {
                               _marks.removeLast();
+                              _invalidateCache();
                               _version++;
                             });
                             _save();
@@ -253,6 +298,7 @@ class _DrawingGameState extends State<DrawingGame> {
                         : () {
                             setState(() {
                               _marks.clear();
+                              _invalidateCache();
                               _version++;
                             });
                             _save();
@@ -270,34 +316,48 @@ class _DrawingGameState extends State<DrawingGame> {
 }
 
 /// Il foglio in JSON per i `settings`: tratti (colore, spessore, punti) e timbri.
-String encodeMarks(List<Object> marks) => jsonEncode([
+/// Le coordinate sono in proporzione al foglio [size] (0..1), così non si
+/// spostano con un'altra finestra; i fogli vecchi, una lista di pixel, si
+/// leggono ancora.
+String encodeMarks(List<Object> marks, Size size) {
+  double nx(double x) => size.width > 0 ? double.parse((x / size.width).toStringAsFixed(4)) : x;
+  double ny(double y) => size.height > 0 ? double.parse((y / size.height).toStringAsFixed(4)) : y;
+  return jsonEncode({
+    'v': 2,
+    'm': [
       for (final m in marks.cast<_Mark>())
         switch (m) {
-          _Stroke s => {'c': s.color.toARGB32(), 'w': s.width, 'p': [for (final p in s.points) ...[p.dx.roundToDouble(), p.dy.roundToDouble()]]},
-          _Stamp t => {'e': t.emoji, 'x': t.at.dx.roundToDouble(), 'y': t.at.dy.roundToDouble()},
+          _Stroke s => {'c': s.color.toARGB32(), 'w': s.width, 'p': [for (final p in s.points) ...[nx(p.dx), ny(p.dy)]]},
+          _Stamp t => {'e': t.emoji, 'x': nx(t.at.dx), 'y': ny(t.at.dy)},
         },
-    ]);
+    ],
+  });
+}
 
 /// Il contrario di [encodeMarks]; un foglio illeggibile riparte vuoto.
-List<Object> decodeMarks(String raw) {
+List<Object> decodeMarks(String raw, Size size) {
   try {
+    final j = jsonDecode(raw);
+    // Formato vecchio: lista di segni con pixel assoluti.
+    final normalized = j is Map;
+    final sx = normalized ? size.width : 1.0, sy = normalized ? size.height : 1.0;
     return [
-      for (final m in (jsonDecode(raw) as List).cast<Map<String, dynamic>>())
+      for (final m in ((normalized ? j['m'] : j) as List).cast<Map<String, dynamic>>())
         if (m['e'] is String)
-          _Stamp(m['e'] as String, Offset((m['x'] as num).toDouble(), (m['y'] as num).toDouble()))
+          _Stamp(m['e'] as String, Offset((m['x'] as num).toDouble() * sx, (m['y'] as num).toDouble() * sy))
         else
-          _strokeFrom(m),
+          _strokeFrom(m, sx, sy),
     ];
   } catch (_) {
     return [];
   }
 }
 
-_Stroke _strokeFrom(Map<String, dynamic> m) {
+_Stroke _strokeFrom(Map<String, dynamic> m, double sx, double sy) {
   final s = _Stroke(Color(m['c'] as int), (m['w'] as num).toDouble());
   final p = (m['p'] as List).cast<num>();
   for (var i = 0; i + 1 < p.length; i += 2) {
-    s.points.add(Offset(p[i].toDouble(), p[i + 1].toDouble()));
+    s.points.add(Offset(p[i].toDouble() * sx, p[i + 1].toDouble() * sy));
   }
   return s;
 }
@@ -363,36 +423,43 @@ class _ToolButton extends StatelessWidget {
   }
 }
 
+void _paintMark(Canvas canvas, _Mark m) {
+  switch (m) {
+    case _Stroke s:
+      final paint = Paint()
+        ..color = s.color
+        ..strokeWidth = s.width
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..style = PaintingStyle.stroke;
+      if (s.points.length == 1) {
+        canvas.drawCircle(s.points.first, s.width / 2, paint..style = PaintingStyle.fill);
+      } else {
+        final path = Path()..moveTo(s.points.first.dx, s.points.first.dy);
+        for (final p in s.points.skip(1)) {
+          path.lineTo(p.dx, p.dy);
+        }
+        canvas.drawPath(path, paint);
+      }
+    case _Stamp st:
+      final tp = TextPainter(text: TextSpan(text: st.emoji, style: const TextStyle(fontSize: 64)), textDirection: TextDirection.ltr)
+        ..layout();
+      tp.paint(canvas, st.at - Offset(tp.width / 2, tp.height / 2));
+  }
+}
+
 class _SheetPainter extends CustomPainter {
-  _SheetPainter(this.marks, this.version);
+  _SheetPainter(this.marks, this.version, this.closed, this.closedCount);
   final List<_Mark> marks;
   final int version;
+  final ui.Picture? closed;
+  final int closedCount;
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (final m in marks) {
-      switch (m) {
-        case _Stroke s:
-          final paint = Paint()
-            ..color = s.color
-            ..strokeWidth = s.width
-            ..strokeCap = StrokeCap.round
-            ..strokeJoin = StrokeJoin.round
-            ..style = PaintingStyle.stroke;
-          if (s.points.length == 1) {
-            canvas.drawCircle(s.points.first, s.width / 2, paint..style = PaintingStyle.fill);
-          } else {
-            final path = Path()..moveTo(s.points.first.dx, s.points.first.dy);
-            for (final p in s.points.skip(1)) {
-              path.lineTo(p.dx, p.dy);
-            }
-            canvas.drawPath(path, paint);
-          }
-        case _Stamp st:
-          final tp = TextPainter(text: TextSpan(text: st.emoji, style: const TextStyle(fontSize: 64)), textDirection: TextDirection.ltr)
-            ..layout();
-          tp.paint(canvas, st.at - Offset(tp.width / 2, tp.height / 2));
-      }
+    if (closed != null) canvas.drawPicture(closed!);
+    for (final m in marks.skip(closed == null ? 0 : closedCount)) {
+      _paintMark(canvas, m);
     }
   }
 

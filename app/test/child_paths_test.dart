@@ -67,9 +67,15 @@ void main() {
   });
 
   test('disegno: il foglio salvato torna uguale; uno illeggibile riparte vuoto', () async {
-    const raw = '[{"c":4278190335,"w":18.0,"p":[10.0,20.0,30.0,40.0]},{"e":"⭐","x":5.0,"y":6.0}]';
-    expect(encodeMarks(decodeMarks(raw)), raw);
-    expect(decodeMarks('non è json'), isEmpty);
+    const size = Size(200, 100);
+    const raw = '{"v":2,"m":[{"c":4278190335,"w":18.0,"p":[0.05,0.2,0.15,0.4]},{"e":"⭐","x":0.025,"y":0.06}]}';
+    expect(encodeMarks(decodeMarks(raw, size), size), raw);
+    // Stesso foglio, finestra doppia: i punti restano nello stesso posto relativo.
+    expect(encodeMarks(decodeMarks(raw, size * 2), size * 2), raw);
+    // Formato vecchio in pixel: si legge così com'è e si salva normalizzato.
+    const old = '[{"c":4278190335,"w":18.0,"p":[10.0,20.0,30.0,40.0]},{"e":"⭐","x":5.0,"y":6.0}]';
+    expect(encodeMarks(decodeMarks(old, size), size), raw);
+    expect(decodeMarks('non è json', size), isEmpty);
 
     final (state, _) = await start();
     expect(await state.savedDrawing(emma), isNull);
