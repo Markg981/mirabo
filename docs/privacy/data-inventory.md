@@ -50,6 +50,7 @@ Le cartelle `app/android` e `app/ios` **sono tracciate** nel repo; `flutter crea
 | Android | `INTERNET` | manifest `main`, con `tools:node="remove"` | Tolto dalla release finché il backup è fuori dall'MVP, anche se un plugin lo chiedesse. `check_inventory.py` fallisce se la rimozione manca |
 | Android | `INTERNET` | manifest `debug`, `profile` | Template Flutter (hot reload, DevTools); non in release |
 | Android | `USE_BIOMETRIC` | manifest `main` | Recupero del PIN adulti con lo sblocco del dispositivo (`local_auth`); nessuna rete |
+| Android | `USE_FINGERPRINT` | manifest unito (aggiunto da `local_auth_android`) | Alias deprecato per Android < 9, stesso scopo di `USE_BIOMETRIC`; nessuna rete. `check_inventory.py` legge il manifest unito (in CI da `processDebugMainManifest`) |
 | Android | (nessun altro) | | Niente microfono, fotocamera, posizione, contatti, archivio esterno, notifiche. Plugin: i manifest uniti dei plugin possono aggiungere permessi: controllare con `aapt dump permissions` sulla release (vedi osservazione, passo 0) |
 | Android | `<queries>` per `PROCESS_TEXT` | manifest `main` | Template Flutter (selezione testo); non è un flusso di rete |
 | iOS | solo `NSFaceIDUsageDescription` | `Info.plist` | Face ID solo per recuperare il PIN adulti (`local_auth`, docs/adult-gate.md). Niente microfono, foto, posizione, tracking. Nessun `NSAppTransportSecurity` eccezioni. Il backup richiede in più, a build, lo schema URL del client OAuth (vedi `backup.md`, da aggiungere quando si configura Google) |
