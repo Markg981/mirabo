@@ -12,6 +12,7 @@ import 'package:mirabo/games/game.dart';
 import 'package:mirabo/l10n/l10n.dart';
 import 'package:mirabo/models/profile.dart';
 import 'package:mirabo/models/story.dart';
+import 'package:mirabo/ui/design/palette.dart';
 
 class _Db implements LocalDb {
   _Db(this.profile);
@@ -77,6 +78,24 @@ void main() {
 
   CustomPainter painter(WidgetTester t) => t.widget<CustomPaint>(sheet).painter!;
 
+  testWidgets('colori e strumenti hanno nome, stato e un bersaglio non più piccolo del minimo', (tester) async {
+    final handle = tester.ensureSemantics();
+    final (state, _) = await start();
+    await tester.pumpWidget(host(state));
+    await tester.pump();
+    final min = MiraboTokens.of(tester.element(sheet)).minTarget;
+    for (final name in ['Gomma', 'Pennello medio', '⭐']) {
+      final f = find.bySemanticsLabel(name);
+      expect(f, findsOneWidget, reason: name);
+      final s = tester.getSemantics(f);
+      expect(s.flagsCollection.isButton, isTrue, reason: name);
+      expect(s.rect.width, greaterThanOrEqualTo(min - 0.1), reason: name);
+      expect(s.rect.height, greaterThanOrEqualTo(min - 0.1), reason: name);
+    }
+    final sel = find.byWidgetPredicate((w) => w is Semantics && w.properties.button == true && w.properties.selected == true);
+    expect(sel, findsWidgets);
+    handle.dispose();
+  });
   testWidgets('shouldRepaint è falso a foglio invariato, vero dopo un segno', (tester) async {
     final (state, _) = await start();
     await tester.pumpWidget(host(state));

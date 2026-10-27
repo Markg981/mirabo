@@ -208,6 +208,11 @@ class _DrawingGameState extends State<DrawingGame> {
                   const Divider(height: 20),
                   for (final w in _widths)
                     _ToolButton(
+                      label: switch (_widths.indexOf(w)) {
+                        0 => context.l10n.drawingBrushThin,
+                        1 => context.l10n.drawingBrushMedium,
+                        _ => context.l10n.drawingBrushThick,
+                      },
                       selected: _stamp == null && _width == w,
                       onTap: () => setState(() {
                         _width = w;
@@ -258,6 +263,7 @@ class _DrawingGameState extends State<DrawingGame> {
                 children: [
                   for (final s in _stamps)
                     _ToolButton(
+                      label: s,
                       selected: _stamp == s,
                       onTap: () => setState(() {
                         _stamp = s;
@@ -370,7 +376,9 @@ class _Swatch extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Padding(
+  Widget build(BuildContext context) {
+    final m = MiraboTokens.of(context).minTarget;
+    return Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Semantics(
           button: true,
@@ -378,32 +386,45 @@ class _Swatch extends StatelessWidget {
           label: name,
           onTap: onTap,
           child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            width: selected ? 58 : 50,
-            height: selected ? 58 : 50,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: selected ? 5 : 3),
-              boxShadow: [BoxShadow(color: MiraboColors.deep(color, 0.15), offset: const Offset(0, 4))],
+          // L'area che risponde al tocco è almeno quella minima dei bambini,
+          // anche se il cerchio disegnato è più piccolo.
+          child: SizedBox(
+            width: m,
+            height: m,
+            child: Center(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 150),
+                width: selected ? 58 : 50,
+                height: selected ? 58 : 50,
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: selected ? 5 : 3),
+                  boxShadow: [BoxShadow(color: MiraboColors.deep(color, 0.15), offset: const Offset(0, 4))],
+                ),
+              ),
             ),
           ),
           ),
         ),
       );
+  }
 }
 
 class _ToolButton extends StatelessWidget {
-  const _ToolButton({required this.selected, required this.onTap, required this.child, this.tooltip});
+  const _ToolButton({required this.selected, required this.onTap, required this.child, this.tooltip, this.label});
   final bool selected;
   final VoidCallback? onTap;
   final Widget child;
   final String? tooltip;
+  /// Nome letto dai lettori di schermo quando non c'è un tooltip.
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
+    final m = MiraboTokens.of(context).minTarget;
     final btn = Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Material(
@@ -414,12 +435,21 @@ class _ToolButton extends StatelessWidget {
           onTap: onTap,
           child: Opacity(
             opacity: onTap == null ? 0.35 : 1,
-            child: SizedBox(width: 58, height: 54, child: Center(child: child)),
+            child: SizedBox(width: m > 58 ? m : 58, height: m > 54 ? m : 54, child: Center(child: child)),
           ),
         ),
       ),
     );
-    return tooltip == null ? btn : Tooltip(message: tooltip, child: btn);
+    final named = Semantics(
+      button: true,
+      selected: selected,
+      enabled: onTap != null,
+      label: tooltip ?? label,
+      excludeSemantics: true,
+      onTap: onTap,
+      child: btn,
+    );
+    return tooltip == null ? named : Tooltip(message: tooltip, child: named);
   }
 }
 
