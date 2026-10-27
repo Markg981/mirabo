@@ -27,6 +27,7 @@ class CloudBackup extends ChangeNotifier {
   static const _keyName = 'mirabo_backup_key';
   static const _accountName = 'mirabo_backup_account';
   static const _lastName = 'mirabo_backup_last';
+  static const _rowsName = 'mirabo_backup_rows';
   static const _storage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
     iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock_this_device),
@@ -35,6 +36,9 @@ class CloudBackup extends ChangeNotifier {
   BackupKey? _key;
   String? account;
   DateTime? lastBackup;
+
+  /// Righe totali dell'ultimo backup caricato o ripristinato (0 se ignoto).
+  int _lastRows = 0;
   bool busy = false;
 
   /// L'ultimo backup automatico non è riuscito (rete, permesso revocato...).
@@ -49,6 +53,7 @@ class CloudBackup extends ChangeNotifier {
     account = await _storage.read(key: _accountName);
     final last = await _storage.read(key: _lastName);
     lastBackup = last == null ? null : DateTime.parse(last);
+    _lastRows = int.tryParse(await _storage.read(key: _rowsName) ?? '') ?? 0;
     notifyListeners();
   }
 
@@ -76,6 +81,7 @@ class CloudBackup extends ChangeNotifier {
         await _storage.write(key: _accountName, value: account);
         lastBackup = _now();
         await _storage.write(key: _lastName, value: lastBackup!.toIso8601String());
+        await _saveRows(r.data);
       });
 
   Future<void> backupNow() => _busy(_upload);
@@ -86,6 +92,12 @@ class CloudBackup extends ChangeNotifier {
     if (!enabled || busy || (last != null && _now().difference(last) < autoInterval)) return;
     // Un tablet senza profili (appena azzerato) non deve sovrascrivere il backup.
     if ((await db.profiles()).isEmpty) return;
+    // Un database con meno dati dell'ultimo backup (danneggiato, svuotato) non
+    // lo sovrascrive: il genitore può farlo a mano con "Fai il backup adesso".
+    if (_countRows(await db.exportAll()) < _lastRows) {
+      debugPrint('Backup automatico saltato: meno dati dell\'ultimo backup');
+      return;
+    }
     try {
       if (!await store.reconnect()) throw StateError('Serve di nuovo l\'accesso a Google');
       await backupNow();
@@ -117,7 +129,8 @@ class CloudBackup extends ChangeNotifier {
     account = null;
     lastBackup = null;
     lastAutoFailed = false;
-    for (final k in [_keyName, _accountName, _lastName]) {
+    _lastRows = 0;
+    for (final k in [_keyName, _accountName, _lastName, _rowsName]) {
       await _storage.delete(key: k);
     }
     notifyListeners();
@@ -126,10 +139,21 @@ class CloudBackup extends ChangeNotifier {
   Future<void> _upload() async {
     final key = _key;
     if (key == null) throw StateError('Backup non attivo');
-    await store.upload(await BackupCodec.encrypt(await db.exportAll(), key));
+    final data = await db.exportAll();
+    await store.upload(await BackupCodec.encrypt(data, key));
+    await _saveRows(data);
     lastBackup = _now();
     lastAutoFailed = false;
     await _storage.write(key: _lastName, value: lastBackup!.toIso8601String());
+  }
+
+  /// Criterio semplice: il numero totale di righe in tutte le tabelle.
+  static int _countRows(Map<String, Object?> data) =>
+      data.values.whereType<List>().fold(0, (n, rows) => n + rows.length);
+
+  Future<void> _saveRows(Map<String, Object?> data) async {
+    _lastRows = _countRows(data);
+    await _storage.write(key: _rowsName, value: '$_lastRows');
   }
 
   Future<T> _busy<T>(Future<T> Function() f) async {

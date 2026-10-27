@@ -106,7 +106,9 @@ class PackageVerifier {
   /// Verifica la firma Ed25519 di un documento JSON (manifest, elenco dei ritirati)
   /// e la rimuove dalla mappa. Lancia [PackageVerificationException] se manca o non vale.
   Future<void> verifySignedDocument(Map<String, dynamic> doc, {String what = 'documento'}) async {
-    final signatureHex = doc.remove('signature') as String?;
+    final rawSignature = doc.remove('signature');
+    if (rawSignature != null && rawSignature is! String) throw PackageVerificationException('firma non valida');
+    final signatureHex = rawSignature as String?;
     if (signatureHex == null) throw PackageVerificationException('$what non firmato');
     final bool ok;
     try {

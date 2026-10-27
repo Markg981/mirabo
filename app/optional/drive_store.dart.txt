@@ -16,7 +16,6 @@ import 'package:mirabo/data/backup_store.dart';
 ///   --dart-define=GOOGLE_IOS_CLIENT_ID=<id client iOS>      (iOS)
 class DriveStore implements BackupStore {
   static const _scopes = [drive.DriveApi.driveAppdataScope];
-  static const _fileName = 'mirabo-backup.json';
   static const _serverClientId = String.fromEnvironment('GOOGLE_SERVER_CLIENT_ID');
   static const _iosClientId = String.fromEnvironment('GOOGLE_IOS_CLIENT_ID');
 
@@ -67,49 +66,57 @@ class DriveStore implements BackupStore {
     return drive.DriveApi(authz.authClient(scopes: _scopes));
   }
 
-  Future<String?> _fileId(drive.DriveApi api) async {
+  /// Copie presenti nell'appDataFolder: nome -> id, solo quelle di Mirabò.
+  Future<Map<String, String>> _files(drive.DriveApi api) async {
     final list = await api.files.list(
       spaces: 'appDataFolder',
-      q: "name = '$_fileName' and trashed = false",
-      $fields: 'files(id)',
-      pageSize: 1,
+      q: "name contains 'mirabo-backup' and trashed = false",
+      $fields: 'files(id,name)',
+      pageSize: 100,
     );
-    return list.files?.firstOrNull?.id;
+    return {for (final f in list.files ?? <drive.File>[]) if (f.id != null && f.name != null) f.name!: f.id!};
   }
 
+  /// Carica una copia nuova (non sovrascrive); solo a upload riuscito cancella
+  /// le più vecchie oltre [BackupRules.keepCopies].
   @override
   Future<void> upload(List<int> bytes) async {
     final api = await _api();
     final media = drive.Media(Stream.value(bytes), bytes.length, contentType: 'application/json');
-    final id = await _fileId(api);
-    if (id == null) {
-      await api.files.create(
-        drive.File(name: _fileName, parents: ['appDataFolder']),
-        uploadMedia: media,
-      );
-    } else {
-      await api.files.update(drive.File(), id, uploadMedia: media);
+    await api.files.create(
+      drive.File(name: BackupRules.newName(DateTime.now()), parents: ['appDataFolder']),
+      uploadMedia: media,
+    );
+    try {
+      final files = await _files(api);
+      for (final name in BackupRules.toPrune(files.keys)) {
+        await api.files.delete(files[name]!);
+      }
+    } catch (_) {
+      // La pulizia si ripete al prossimo backup: il nuovo è già al sicuro.
     }
   }
 
+  /// Scarica la copia più recente, con un tetto alla dimensione.
   @override
   Future<List<int>?> download() async {
     final api = await _api();
-    final id = await _fileId(api);
-    if (id == null) return null;
-    final media = await api.files.get(id, downloadOptions: drive.DownloadOptions.fullMedia) as drive.Media;
-    final bytes = <int>[];
-    await for (final chunk in media.stream) {
-      bytes.addAll(chunk);
+    final files = await _files(api);
+    final newest = BackupRules.newestFirst(files.keys).firstOrNull;
+    if (newest == null) return null;
+    final media = await api.files.get(files[newest]!, downloadOptions: drive.DownloadOptions.fullMedia) as drive.Media;
+    if (media.length != null && media.length! > BackupRules.maxDownloadBytes) {
+      throw const FormatException('Backup troppo grande');
     }
-    return bytes;
+    return BackupRules.readLimited(media.stream);
   }
 
   @override
   Future<void> deleteRemote() async {
     final api = await _api();
-    final id = await _fileId(api);
-    if (id != null) await api.files.delete(id);
+    for (final id in (await _files(api)).values) {
+      await api.files.delete(id);
+    }
   }
 
   @override

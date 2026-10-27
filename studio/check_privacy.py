@@ -32,7 +32,32 @@ def placeholders() -> list[str]:
     return out
 
 
+MANIFEST = ROOT / "app" / "ios" / "Runner" / "PrivacyInfo.xcprivacy"
+PBXPROJ = ROOT / "app" / "ios" / "Runner.xcodeproj" / "project.pbxproj"
+
+
+def manifest_problems(manifest: Path = MANIFEST, pbxproj: Path = PBXPROJ) -> list[str]:
+    """Il privacy manifest iOS dell'app esiste, non dichiara tracciamento ed è nel target Runner."""
+    if not manifest.is_file():
+        return [f"{manifest.name} mancante in app/ios/Runner"]
+    out = []
+    text = manifest.read_text(encoding="utf-8")
+    if not re.search(r"<key>NSPrivacyTracking</key>\s*<false/>", text):
+        out.append(f"{manifest.name}: NSPrivacyTracking deve essere false")
+    for key in ("NSPrivacyCollectedDataTypes", "NSPrivacyAccessedAPITypes"):
+        if f"<key>{key}</key>" not in text:
+            out.append(f"{manifest.name}: manca {key}")
+    if "PrivacyInfo.xcprivacy in Resources" not in pbxproj.read_text(encoding="utf-8"):
+        out.append("PrivacyInfo.xcprivacy non è nelle Resources del target Runner (project.pbxproj)")
+    return out
+
+
 def main() -> int:
+    problems = manifest_problems()
+    for p in problems:
+        print(p)
+    if problems:
+        return 1
     found = placeholders()
     for p in found:
         print(p)
