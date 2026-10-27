@@ -75,7 +75,7 @@ Elenco approvato machine-readable: `docs/privacy/approved-dependencies.json` (co
 | `just_audio` | Narrazione e xilofono da file locali (`setAudioSource` con file/`Uri` locali) | Nessuno: nel codice non ci sono URL. Il plugin saprebbe leggere flussi remoti, ma non gli vengono passati |
 | `flutter_tts` | `FlutterTts().speak` / `synthesizeToFile`, lingua e velocità; **nessun** `setEngine` | **Dipende dal dispositivo.** Chiama il TTS di sistema. iOS: `AVSpeechSynthesizer`, sul dispositivo. Android: motore predefinito scelto dall'utente; con motori come Google TTS una voce non installata può essere sintetizzata in rete, e allora il testo (anche il nome del bambino) esce verso il fornitore del motore. Il codice non lo impedisce né lo rileva: da misurare (`network-observation.md`, scenario TTS) e, se serve, imporre voci offline |
 | `google_sign_in`, `googleapis`, `extension_google_sign_in_as_googleapis_auth` | **Tolti dalla build MVP** (analisi M7): niente SDK Google, niente componenti Play Services auth/credentials nel manifest unito, niente SDK GoogleSignIn su iOS. Il codice Drive è conservato in `app/optional/drive_store.dart.txt` dietro `BackupStore` (in build c'è `NullBackupStore`); riattivazione in `backup.md` | Nessuna: nel binario non c'è più codice di rete verso Google |
-| `flutter` / `flutter_test` / `flutter_lints` | SDK, test, analisi | Nessuno in release |
+| `flutter` / `flutter_test` / `flutter_lints` / `integration_test` | SDK, test, test su emulatore, analisi | Nessuno in release |
 
 Cosa **non** c'è: analytics, crash reporting, pubblicità, remote config, push, deep link, `url_launcher`, WebView, `google_fonts` (i font sono negli asset, licenza OFL).
 
