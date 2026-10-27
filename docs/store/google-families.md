@@ -16,7 +16,7 @@ Fasce Google: "5 and under", "6–8", "9–12". Mirabò è rivolto a bambini 3�
 | --- | --- | --- |
 | Identificatori | Niente ID pubblicitario (AAID) né altri identificatori persistenti per pubblicità o analytics | Nessuna dipendenza di pubblicità o analytics; l'app non legge AAID |
 | Posizione | Niente raccolta di posizione precisa | Nessun permesso di posizione |
-| SDK | Solo SDK certificati per le Families se rivolti ai bambini | Nessuno SDK attivo che comunichi in rete. `google_sign_in`, `googleapis`, `extension_google_sign_in_as_googleapis_auth` sono nella build ma inattivi (backup fuori dall'MVP) e la release non ha il permesso `INTERNET`. **Consigliato**: toglierli dal `pubspec.yaml` prima dell'invio, così non c'è nulla da dichiarare |
+| SDK | Solo SDK certificati per le Families se rivolti ai bambini | Nessuno SDK attivo che comunichi in rete. `google_sign_in`, `googleapis`, `extension_google_sign_in_as_googleapis_auth` sono stati tolti dalla build (analisi M7; codice Drive in `app/optional/`), la release non ha il permesso `INTERNET` e `check_inventory.py` controlla il manifest unito: nulla da dichiarare |
 | Pubblicità | Solo reti certificate, contenuti adatti | Nessuna pubblicità |
 | Permessi | Solo quelli necessari | `USE_BIOMETRIC` (recupero del PIN con lo sblocco del tablet). `INTERNET` è tolto dal manifest unito della release con `tools:node="remove"`, anche se un plugin lo chiedesse. Da confermare con `aapt dump permissions` sul pacchetto in uscita |
 | Gate adulti per ciò che esce dall'app | Richiesto | PIN dell'area adulta di 4-6 cifre, richiesto di nuovo per le operazioni delicate (`docs/adult-gate.md`). Non è un consenso genitoriale verificato |

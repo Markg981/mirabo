@@ -28,6 +28,7 @@ APPROVED = ROOT / "docs" / "privacy" / "approved-dependencies.json"
 NETWORK_API = re.compile(
     r"\b(HttpClient|Socket\.connect|SecureSocket|WebSocket|RawSocket)\b|package:(http|dio|web_socket_channel)/"
 )
+APP_ID = "com.markg981.mirabo"  # prefisso del permesso DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 URL = re.compile(r"https?://")
 
 
@@ -120,6 +121,21 @@ def main() -> int:
         if manifest.parent.name == "main" and "backup" not in FEATURES_ON and "android.permission.INTERNET" not in removed:
             errors.append(f"{manifest.relative_to(ROOT)}: con il backup fuori dall'MVP INTERNET va tolto "
                           '(<uses-permission android:name="android.permission.INTERNET" tools:node="remove"/>)')
+    # 3b. manifest unito (se una build è stata fatta): permessi e componenti dei plugin
+    # devono essere tutti inventariati; il check fallisce su quelli non attesi.
+    merged = sorted((APP / "build" / "app" / "intermediates").glob("merged_manifest*/release/**/AndroidManifest.xml"))         if (APP / "build" / "app" / "intermediates").exists() else []
+    if not merged:
+        warnings.append("manifest unito di release assente: componenti dei plugin non controllati "
+                        "(esegui `flutter build apk --release` prima del controllo)")
+    for mf in merged[:1]:
+        text = mf.read_text(encoding="utf-8")
+        for perm in sorted(set(re.findall(r'<uses-permission[^>]*android:name="([^"]+)"', text))):
+            if perm not in ok_perms and not perm.startswith(APP_ID + "."):
+                errors.append(f"manifest unito: permesso non inventariato: {perm}")
+        comps = set(re.findall(r'<(?:activity|service|receiver|provider)[^>]*android:name="([^"]+)"', text))
+        for c in sorted(comps):
+            if not any(c.startswith(pref) for pref in approved.get("android_component_prefixes", [])):
+                errors.append(f"manifest unito: componente non inventariato: {c}")
     plist = APP / "ios" / "Runner" / "Info.plist"
     if plist.exists():
         for key in re.findall(r"<key>(NS\w+UsageDescription)</key>", plist.read_text(encoding="utf-8")):

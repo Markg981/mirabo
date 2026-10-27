@@ -56,7 +56,7 @@ Tutto resta sul dispositivo, nel database cifrato (SQLCipher) o nel deposito sic
 | **Nome sintetizzato** | Nessun file del nome nella cache; il nome non va al motore TTS (che su Android può essere di rete): le battute si dicono senza nome ("Tu cosa faresti?") e le registrazioni si sentono intere | `NameVoice` spento (`name_voice_test.dart`); `fillName` e `spokenWithName` in ogni punto in cui si parla (`child_name_test.dart`) |
 | **Resti di una versione precedente** | All'avvio si tolgono i file del nome e, dal deposito sicuro, account Google, chiave e data dell'ultimo backup | `AppState.init`, `main.dart`. La copia su Drive e l'autorizzazione Google restano nell'account del genitore: l'area adulta (*Cosa resta fuori dall'app*) dice come eliminarle |
 
-Restano nella build, inattive, le librerie di Google (`google_sign_in`, `googleapis`). iOS non ha un equivalente del permesso di rete. Prima dell'invio agli store conviene toglierle dal `pubspec.yaml`, così le dichiarazioni degli SDK diventano più semplici ([store/apple-kids.md](../store/apple-kids.md)).
+Le librerie di Google (`google_sign_in`, `googleapis`) sono state tolte dal `pubspec.yaml` (analisi M7): il codice Drive è conservato in `app/optional/` e in build c'è `NullBackupStore` ([backup.md](../backup.md)). `check_inventory.py` controlla anche il manifest unito di release.
 
 ## 4. Cancellazione di un profilo
 

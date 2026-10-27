@@ -2,7 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mirabo/data/backup_codec.dart';
 import 'package:mirabo/data/cloud_backup.dart';
-import 'package:mirabo/data/drive_store.dart';
+import 'package:mirabo/data/backup_store.dart';
 import 'package:mirabo/data/local_db.dart';
 import 'package:mirabo/models/profile.dart';
 

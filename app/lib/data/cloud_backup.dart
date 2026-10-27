@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'backup_codec.dart';
-import 'drive_store.dart';
+import 'backup_store.dart';
 import 'local_db.dart';
 
 /// Backup opt-in sul Drive personale del genitore.
@@ -16,7 +16,7 @@ import 'local_db.dart';
 /// a ogni backup), l'account e la data dell'ultimo backup, nel secure storage.
 class CloudBackup extends ChangeNotifier {
   CloudBackup({required this.db, BackupStore? store, DateTime Function()? now})
-      : store = store ?? DriveStore(),
+      : store = store ?? const NullBackupStore(),
         _now = now ?? DateTime.now;
 
   final LocalDb db;
