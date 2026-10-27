@@ -60,8 +60,9 @@ void main() {
         for (final e in variants.entries) e.key: u(e.value),
       };
 
-  Future<StoryRepository> load(Map<String, Uint8List> pkgs, {String appVersion = '0.1.0'}) async {
+  Future<StoryRepository> load(Map<String, Uint8List> pkgs, {String appVersion = '0.1.0', String themes = '{"cells":[]}'}) async {
     final assets = <String, Uint8List>{
+      'assets/education/themes.json': u(themes),
       'assets/companions/companions.json': u('{"companions":[]}'),
       'assets/stories/index.json': u(jsonEncode(pkgs.keys.toList())),
       for (final e in pkgs.entries) 'assets/stories/${e.key}': e.value,
@@ -106,6 +107,25 @@ void main() {
     });
     expect(repo.stories.map((s) => s.id), ['ok']);
     expect(repo.rejected, hasLength(1));
+  });
+
+  test('una traduzione rotta esclude la storia da quella lingua, senza ripiegare sull italiano', () async {
+    final repo = await load({
+      'ok.mirabo': await pack(story('ok', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6}), id: 'ok'),
+      'tr.mirabo': await pack(
+        story('tr', {'6-7': '6-7.json'}, variants: {'6-7.json': variant6, 'i18n/de/6-7.json': '{"screens": 3}'}),
+        id: 'tr',
+      ),
+    });
+    expect(repo.storiesIn('it').map((s) => s.id), unorderedEquals(['ok', 'tr']));
+    expect(repo.storiesIn('de').map((s) => s.id), ['ok']);
+    expect(repo.rejected, isEmpty);
+  });
+
+  test('un themes.json illeggibile è segnalato tra i contenuti rifiutati', () async {
+    final repo = await load({}, themes: 'non json');
+    expect(repo.themes.isEmpty, isTrue);
+    expect(repo.rejected.single, contains('themes.json'));
   });
 
   test('una variante assente non è offerta; senza varianti leggibili la storia è scartata', () async {
