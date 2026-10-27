@@ -94,6 +94,20 @@ class UsageTracker with WidgetsBindingObserver {
 
   Future<void> _saving = Future.value();
 
+  /// Prima di cancellare un bambino ([id]) o tutto ([id] null): scarta i secondi
+  /// non ancora salvati e smette di accreditare, poi attende i salvataggi già
+  /// partiti. Così nessuna riga `usage.*` rinasce dopo l'eliminazione.
+  /// Il conteggio riprende al prossimo [tick] sul bambino attuale.
+  Future<void> forget([int? id]) {
+    if (id == null) {
+      _pending.clear();
+    } else {
+      _pending.removeWhere((k, _) => k.startsWith('usage.$id.'));
+    }
+    _creditId = null;
+    return _saving;
+  }
+
   /// Scritture una dopo l'altra: due salvataggi insieme si perderebbero minuti.
   Future<void> flush() => _saving = _saving.then((_) => _flush());
 
