@@ -8,6 +8,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
+import 'adult_pin.dart';
 import '../models/activity.dart';
 import '../models/made_story.dart';
 import '../models/nature_day.dart';
@@ -67,6 +68,8 @@ class LocalDb {
   static Future<LocalDb> open() async {
     final dir = await getApplicationSupportDirectory();
     final path = p.join(dir.path, 'mirabo.db');
+    // Il Keychain iOS sopravvive alla reinstallazione: senza DB il PIN è orfano.
+    await AdultPin.reconcile(const SecurePinStore(), dbExisted: await File(path).exists());
     final key = await resolveKey(
       path,
       read: () => _storage.read(key: _keyName),

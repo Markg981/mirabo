@@ -171,4 +171,24 @@ void main() {
     expect(await restarted.verify('0000'), PinResult.locked);
     expect((await restarted.remainingLock()).inSeconds, inInclusiveRange(59, 60));
   });
+
+  group('reconcile (Keychain iOS oltre la reinstallazione)', () {
+    test('DB assente: le chiavi del PIN orfane vengono cancellate', () async {
+      await pin.set('1234');
+      await pin.newRecoveryCode();
+      expect(store.data, isNotEmpty);
+      await AdultPin.reconcile(store, dbExisted: false);
+      expect(await pin.isSet, isFalse);
+      expect(await pin.hasRecoveryCode, isFalse);
+      expect(store.data.keys.where((k) => k != 'adult_pin_keychain_v2'), isEmpty);
+    });
+
+    test('DB presente: il PIN esistente resta valido dopo la migrazione', () async {
+      await pin.set('1234');
+      await AdultPin.reconcile(store, dbExisted: true);
+      expect(await pin.isSet, isTrue);
+      expect(await pin.verify('1234'), PinResult.ok);
+      expect(store.data['adult_pin_keychain_v2'], '1');
+    });
+  });
 }
