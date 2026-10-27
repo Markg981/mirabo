@@ -5,10 +5,15 @@ La chiave privata finisce in studio/keys/signing.key (cartella ignorata da git:
 conservala in un posto sicuro e NON metterla mai nel repository).
 La chiave pubblica viene scritta in app/lib/content/trusted_key.dart.
 
+Limiti: i permessi 0o600 valgono solo su POSIX; su Windows non proteggono (usa una
+cartella con ACL ristrette). La chiave NON è cifrata a riposo. Per ruotarla: rigenera
+con --force, ripubblica l'app con la nuova chiave pubblica e ri-firma tutti i pacchetti.
+
 Uso: python studio/keygen.py [--force]
 """
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -34,8 +39,12 @@ def main() -> int:
         return 1
     KEY_DIR.mkdir(parents=True, exist_ok=True)
     key = SigningKey.generate()
-    PRIVATE.write_bytes(key.encode())
-    PRIVATE.chmod(0o600)
+    # Permessi ristretti già alla creazione (nessuna finestra con la chiave leggibile).
+    if force:
+        PRIVATE.unlink(missing_ok=True)
+    fd = os.open(PRIVATE, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "wb") as f:
+        f.write(key.encode())
     PUBLIC_DART.parent.mkdir(parents=True, exist_ok=True)
     PUBLIC_DART.write_text(DART_TEMPLATE.format(hex=key.verify_key.encode().hex()), encoding="utf-8")
     print(f"Chiave privata: {PRIVATE} (fuori dal repo)")
