@@ -68,7 +68,12 @@ class DataDeletionSection extends StatelessWidget {
     try {
       await state.wipeAll();
       // Come al primo avvio: anche PIN, codice di recupero e avvisi dell'area adulta.
-      await AdultGate.pin.forget();
+      try {
+        await AdultGate.pin.forget();
+      } catch (_) {
+        // Il vecchio PIN non deve restare: un secondo tentativo prima di segnalare l'errore.
+        await AdultGate.pin.forget();
+      }
       message = l.dataWipeDone;
     } catch (e) {
       debugPrint('Cancellazione non riuscita: $e');

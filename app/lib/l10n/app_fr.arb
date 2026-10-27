@@ -65,6 +65,8 @@
   "countdownPick": "Choisis la date",
   "countdownToday": "C'est aujourd'hui !",
   "countdownTodaySay": "C'est le grand jour !",
+  "countdownTodayTask": "C'est le grand jour ! Bonne école, {name}.",
+  "@countdownTodayTask": { "placeholders": { "name": { "type": "String" } } },
   "countdownDaysTo": "{count, plural, =1{Plus que 1 jour avant : {event}} other{Plus que {count} jours avant : {event}}}",
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{Plus que 1 jour. {task}} other{Plus que {count} jours. {task}}}",

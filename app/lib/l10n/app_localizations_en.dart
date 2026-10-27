@@ -258,6 +258,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get countdownTodaySay => 'Today is the day!';
 
   @override
+  String countdownTodayTask(String name) {
+    return 'Today is the day! Have a great day at school, $name.';
+  }
+
+  @override
   String countdownDaysTo(int count, String event) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

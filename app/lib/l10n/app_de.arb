@@ -65,6 +65,8 @@
   "countdownPick": "Datum wählen",
   "countdownToday": "Es ist heute!",
   "countdownTodaySay": "Heute ist der Tag!",
+  "countdownTodayTask": "Heute ist der Tag! Viel Spaß in der Schule, {name}.",
+  "@countdownTodayTask": { "placeholders": { "name": { "type": "String" } } },
   "countdownDaysTo": "{count, plural, =1{Noch 1 Tag bis: {event}} other{Noch {count} Tage bis: {event}}}",
   "@countdownDaysTo": { "placeholders": { "count": { "type": "int" }, "event": { "type": "String" } } },
   "countdownDaysSay": "{count, plural, =1{Noch 1 Tag. {task}} other{Noch {count} Tage. {task}}}",

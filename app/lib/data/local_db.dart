@@ -777,20 +777,6 @@ class LocalDb {
   /// Vero se la chiave del database è ancora nel secure storage.
   static Future<bool> hasKey() async => await _storage.read(key: _keyName) != null;
 
-  /// "Elimina tutti i dati": cancella profili, diario e impostazioni.
-  Future<void> wipe() async {
-    await _db.delete('settings');
-    await _db.delete('daily_ideas');
-    await _db.delete('shelf_history');
-    await _db.delete('nature_days');
-    await _db.delete('made_stories');
-    await _db.delete('gestures');
-    await _db.delete('activity_rounds');
-    await _db.delete('activity_progress');
-    await _db.delete('diary');
-    await _db.delete('profiles');
-  }
-
   /// Tabelle nell'ordine di inserimento (prima i profili, poi chi li riferisce).
   static const _tables = [
     'profiles',

@@ -132,12 +132,15 @@ class _XylophoneGameState extends State<XylophoneGame> {
     });
     final p = _players[i];
     await p.seek(Duration.zero);
+    if (!mounted) return;
     p.play();
 
-    if (_songMode && i == _song[_songPos]) {
+    if (_songMode && _songPos < _song.length && i == _song[_songPos]) {
       setState(() => _songPos++);
       if (_songPos == _song.length) {
-        Future.delayed(const Duration(milliseconds: 900), widget.ctx.onFinished);
+        Future.delayed(const Duration(milliseconds: 900), () {
+          if (mounted) widget.ctx.onFinished();
+        });
       }
     }
   }

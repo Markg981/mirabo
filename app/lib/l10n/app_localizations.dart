@@ -452,6 +452,12 @@ abstract class AppLocalizations {
   /// **'Oggi è il giorno!'**
   String get countdownTodaySay;
 
+  /// No description provided for @countdownTodayTask.
+  ///
+  /// In it, this message translates to:
+  /// **'Oggi è il giorno! Buona scuola, {name}.'**
+  String countdownTodayTask(String name);
+
   /// No description provided for @countdownDaysTo.
   ///
   /// In it, this message translates to:
