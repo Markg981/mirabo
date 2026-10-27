@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:isolate';
 import 'dart:math';
 
 import 'package:crypto/crypto.dart';
@@ -53,10 +54,16 @@ class PinResetNotice {
 /// errore oltre la soglia, l'attesa cresce. Il PIN non cancella né tocca i
 /// dati del bambino: il reset sostituisce solo questo segreto.
 class AdultPin {
-  AdultPin({PinStore? store, DateTime Function()? now, Duration Function()? monotonic, this.iterations = 20000})
-      : _store = store ?? const SecurePinStore(),
+  AdultPin({
+    PinStore? store,
+    DateTime Function()? now,
+    Duration Function()? monotonic,
+    this.iterations = 20000,
+    Future<List<int>> Function(String pin, List<int> salt, int iterations)? derive,
+  })  : _store = store ?? const SecurePinStore(),
         _now = now ?? DateTime.now,
-        _mono = monotonic ?? _defaultMono;
+        _mono = monotonic ?? _defaultMono,
+        _kdf = derive ?? _isolateKdf;
 
   static const minLength = 4;
   static const maxLength = 6;
@@ -118,6 +125,13 @@ class AdultPin {
   }
   final DateTime Function() _now;
   final int iterations;
+  final Future<List<int>> Function(String, List<int>, int) _kdf;
+
+  /// Sotto testWidgets il clock finto non vede il ritorno dell'isolate: i test
+  /// di widget passano [derive] con [syncKdf].
+  static Future<List<int>> _isolateKdf(String pin, List<int> salt, int it) =>
+      Isolate.run(() => pbkdf2Sha256(pin, salt, it));
+  static Future<List<int>> syncKdf(String pin, List<int> salt, int it) async => pbkdf2Sha256(pin, salt, it);
 
   // Orologio monotono del processo: non si sposta cambiando l'ora del
   // dispositivo. Vale solo finché l'app resta aperta.
@@ -142,7 +156,7 @@ class AdultPin {
     final rnd = Random.secure();
     final salt = List<int>.generate(16, (_) => rnd.nextInt(256));
     await _store.write(_kSalt, base64.encode(salt));
-    await _store.write(_kHash, base64.encode(_derive(pin, salt)));
+    await _store.write(_kHash, base64.encode(await _derive(pin, salt)));
     await _clearFails();
     // Il nuovo PIN esiste: ora il recupero in corso si chiude e un eventuale
     // codice di recupero usato smette di valere.
@@ -192,7 +206,7 @@ class AdultPin {
     final h = await _store.read(_kHash);
     final s = await _store.read(_kSalt);
     if (h == null || s == null) return PinResult.wrong;
-    final candidate = base64.encode(_derive(pin, base64.decode(s)));
+    final candidate = base64.encode(await _derive(pin, base64.decode(s)));
     if (_constantTimeEquals(candidate, h)) {
       await _clearFails();
       return PinResult.ok;
@@ -248,7 +262,7 @@ class AdultPin {
     final h = await _store.read(_kRecHash);
     final s = await _store.read(_kRecSalt);
     final normalized = code.toUpperCase().replaceAll(RegExp('[^A-Z0-9]'), '');
-    return h != null && s != null && _constantTimeEquals(base64.encode(_derive(normalized, base64.decode(s))), h);
+    return h != null && s != null && _constantTimeEquals(base64.encode(await _derive(normalized, base64.decode(s))), h);
   }
 
   /// Codice di recupero: si mostra una volta sola, alla creazione, e se ne
@@ -259,7 +273,7 @@ class AdultPin {
         List.generate(recoveryLength, (_) => _recoveryAlphabet.codeUnitAt(rnd.nextInt(_recoveryAlphabet.length))));
     final salt = List<int>.generate(16, (_) => rnd.nextInt(256));
     await _store.write(_kRecSalt, base64.encode(salt));
-    await _store.write(_kRecHash, base64.encode(_derive(code, salt)));
+    await _store.write(_kRecHash, base64.encode(await _derive(code, salt)));
     return '${code.substring(0, 4)}-${code.substring(4)}';
   }
 
@@ -324,19 +338,9 @@ class AdultPin {
     await _store.delete(_kLockRef);
   }
 
-  List<int> _derive(String pin, List<int> salt) {
-    // PBKDF2-HMAC-SHA256, un solo blocco da 32 byte.
-    final hmac = Hmac(sha256, utf8.encode(pin));
-    var u = hmac.convert([...salt, 0, 0, 0, 1]).bytes;
-    final out = List<int>.from(u);
-    for (var i = 1; i < iterations; i++) {
-      u = hmac.convert(u).bytes;
-      for (var j = 0; j < out.length; j++) {
-        out[j] ^= u[j];
-      }
-    }
-    return out;
-  }
+  /// PBKDF2 in un isolate separato: 20000 HMAC sul thread UI possono far
+  /// scattare l'interfaccia sui tablet economici. Output identico a prima.
+  Future<List<int>> _derive(String pin, List<int> salt) => _kdf(pin, salt, iterations);
 
   bool _constantTimeEquals(String a, String b) {
     if (a.length != b.length) return false;
@@ -346,4 +350,18 @@ class AdultPin {
     }
     return r == 0;
   }
+}
+
+/// PBKDF2-HMAC-SHA256, un solo blocco da 32 byte.
+List<int> pbkdf2Sha256(String pin, List<int> salt, int iterations) {
+  final hmac = Hmac(sha256, utf8.encode(pin));
+  var u = hmac.convert([...salt, 0, 0, 0, 1]).bytes;
+  final out = List<int>.from(u);
+  for (var i = 1; i < iterations; i++) {
+    u = hmac.convert(u).bytes;
+    for (var j = 0; j < out.length; j++) {
+      out[j] ^= u[j];
+    }
+  }
+  return out;
 }

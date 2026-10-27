@@ -7,7 +7,7 @@ import 'package:mirabo/ui/parent/adult_gate.dart';
 /// Il codice di recupero è salvato prima di mostrarlo: il tasto Indietro non deve chiuderlo.
 void main() {
   testWidgets('con il codice di recupero in vista, Indietro non chiude il dialog', (tester) async {
-    AdultGate.pin = AdultPin(store: MemoryPinStore(), iterations: 10);
+    AdultGate.pin = AdultPin(store: MemoryPinStore(), iterations: 10, derive: AdultPin.syncKdf);
     late BuildContext ctx;
     await tester.pumpWidget(MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,

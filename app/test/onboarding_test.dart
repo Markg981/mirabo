@@ -75,7 +75,7 @@ void main() {
       previous?.call(details);
     };
     addTearDown(() => FlutterError.onError = previous);
-    AdultGate.pin = AdultPin(store: MemoryPinStore(), iterations: 10);
+    AdultGate.pin = AdultPin(store: MemoryPinStore(), iterations: 10, derive: AdultPin.syncKdf);
     final d = db ?? _FakeDb();
     final state = AppState(db: d, repo: _FakeRepo(story));
     await state.init();
