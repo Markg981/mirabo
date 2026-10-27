@@ -17,8 +17,10 @@ Il PIN è **un gate di accesso**: tiene il bambino fuori dalle impostazioni, dal
 
 Due canali; nessuno dei due cancella qualcosa del bambino (profili, progressi, database, backup).
 
-1. **Codice di recupero.** Quando l'adulto sceglie il PIN la prima volta (o dopo aver usato il codice), l'app mostra una volta sola un codice di 8 caratteri (`ABCD-EFGH`, senza 0/O e 1/I/L) da scrivere su un foglio lontano dal tablet. Se ne conservano solo sale e hash PBKDF2, come per il PIN. I tentativi contano come tentativi di PIN (stesse attese). Usato una volta, il codice non vale più: con il PIN nuovo se ne crea un altro. Dall'area adulta si può generare un codice nuovo (dopo il PIN); il vecchio smette di valere.
+1. **Codice di recupero.** Quando l'adulto sceglie il PIN la prima volta (o dopo aver usato il codice), l'app mostra una volta sola un codice di 8 caratteri (`ABCD-EFGH`, senza 0/O e 1/I/L) da scrivere su un foglio lontano dal tablet. Se ne conservano solo sale e hash PBKDF2, come per il PIN. I tentativi contano come tentativi di PIN (stesse attese). Usato una volta, il codice non vale più dal momento in cui è scritto il PIN nuovo: con quello se ne crea un altro. Dall'area adulta si può generare un codice nuovo (dopo il PIN); il vecchio smette di valere.
 2. **Blocco del tablet** (`local_auth`: biometria o blocco schermo). **Acceso salvo scelta dell'adulto**, che lo spegne nell'area adulta (sezione dati, dopo il PIN) se il bambino conosce il codice di sblocco del tablet o ha la sua impronta registrata. Spento, "Ho dimenticato il PIN" offre solo il codice di recupero.
+
+Il reset è atomico: il vecchio PIN resta valido finché il nuovo non è scritto, quindi annullare la scelta (o chiudere l'app) a metà non lascia il tablet senza PIN; il codice di recupero si consuma solo col PIN nuovo.
 
 Dopo ogni reset l'area adulta mostra un avviso con data e canale ("Il PIN è stato reimpostato il … con il blocco del tablet"), finché l'adulto non lo chiude: un reset fatto dal bambino si vede.
 
