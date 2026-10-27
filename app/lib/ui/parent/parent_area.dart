@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'adult_gate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -607,7 +608,7 @@ class _DiaryTabState extends State<_DiaryTab> {
       leading: Icon(e.completed ? Icons.check_rounded : Icons.remove_rounded),
       title: Text(story?.title ?? e.storyId),
       subtitle: Text([
-        '${e.when.day}/${e.when.month}/${e.when.year}',
+        DateFormat.yMd(Localizations.localeOf(context).toString()).format(e.when),
         e.mode == SessionMode.together ? context.l10n.diaryTogether : context.l10n.diaryAlone,
       ].join(' · ')),
     ));
@@ -961,7 +962,7 @@ class _DevelopmentTabState extends State<_DevelopmentTab> {
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(n.text),
-                    subtitle: Text('${n.when.day}/${n.when.month}/${n.when.year}'),
+                    subtitle: Text(DateFormat.yMd(Localizations.localeOf(context).toString()).format(n.when)),
                     trailing: IconButton(
                       tooltip: l.exploreNotesDelete,
                       icon: const Icon(Icons.delete_outline),
