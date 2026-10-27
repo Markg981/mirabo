@@ -5,10 +5,17 @@ import 'package:mirabo/data/usage_tracker.dart';
 /// Solo la parte di LocalDb che usano le impostazioni.
 class _FakeDb implements LocalDb {
   final map = <String, String>{};
+  int failWrites = 0;
   @override
   Future<String?> setting(String key) async => map[key];
   @override
-  Future<void> setSetting(String key, String value) async => map[key] = value;
+  Future<void> setSetting(String key, String value) async {
+    if (failWrites > 0) {
+      failWrites--;
+      throw StateError('disco pieno');
+    }
+    map[key] = value;
+  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -39,5 +46,23 @@ void main() {
     expect(two.last.minutes, 3);
     expect(one.length, 7);
     expect(one.first.seconds, 0);
+  });
+
+  test('un salvataggio fallito non ferma il conteggio: il tempo non salvato arriva al giro dopo', () async {
+    final db = _FakeDb();
+    var now = DateTime(2026, 10, 14, 10, 0, 0);
+    final t = UsageTracker(db: db, profileId: () => 1, clock: () => now);
+
+    t.resume();
+    now = now.add(const Duration(minutes: 5));
+    db.failWrites = 1;
+    t.pause(); // il salvataggio fallisce: l'errore non resta non gestito e non ferma nulla
+    await Future<void>.delayed(Duration.zero);
+    expect(db.map, isEmpty);
+    t.resume();
+
+    now = now.add(const Duration(minutes: 2));
+    final days = await t.lastDays(1); // il disco ora risponde: 5 + 2 minuti
+    expect(days.last.minutes, 7);
   });
 }
